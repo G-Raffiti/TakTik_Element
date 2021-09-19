@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b6bf79595345fba0f9a3372c40b672, type: 3}
+  m_Name: Skill_BasicHeal
+  m_EditorClassIdentifier: 
+  name: Basic Heal
+  element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
+  icon: {fileID: 21300000, guid: d50c040ac858e3c41b084977191ad501, type: 3}
+  effect: {fileID: 11400000, guid: 8c734bc4710505049b4bfb0000e64a6d, type: 2}
+  gridEffect: {fileID: 11400000, guid: 39ba26b024b9f9d4484c710b43bb2d0d, type: 2}
+  affect: 1
+  range:
+    RangeType: 1
+    RangeValue: 3
+    ZoneType: 1
+    Radius: 0
+    NeedView: 1
+    NeedTarget: 1
+    SelfCast: 0
+    CanBeModified: 1
+  power:
+    Basic: 4
+    Spell: 100
+    Skill: 100
+    Affinity:
+      Fire: 50
+      Nature: 50
+      Water: 100
+  statusEffects: []

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a534540fb4fa47de84ef2db78cf180a1, type: 3}
+  m_Name: Affix_Affinity_Fire
+  m_EditorClassIdentifier: 
+  type: 10
+  rank: 2
+  color: {r: 0.7921569, g: 0.15686275, b: 0, a: 1}
+  tier: 0a000000140000002800000050000000

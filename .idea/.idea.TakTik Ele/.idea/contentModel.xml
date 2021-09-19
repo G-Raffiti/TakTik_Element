@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Program Perso\Unity Project\TakTik Ele" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="CustomUnitGeneratorHelper.cs" t="Include" />
+          <e p="GridGenerators" t="Include">
+            <e p="EquilateralHexGridGenerator.cs" t="Include" />
+            <e p="HexagonalHexGridGenerator.cs" t="Include" />
+            <e p="ICellGridGenerator.cs" t="Include" />
+            <e p="RectangularHexGridGenerator.cs" t="Include" />
+            <e p="RectangularSquareGridGenerator.cs" t="Include" />
+            <e p="TriangularHexGridGenerator.cs" t="Include" />
+          </e>
+          <e p="GridHelper.cs" t="Include" />
+          <e p="GridHelperUtils.cs" t="Include" />
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="MHLab" t="Include">
+            <e p="AutoSaver" t="Include">
+              <e p="Editor" t="Include">
+                <e p="AutoSaver.cs" t="Include" />
+                <e p="AutoSaverEditor.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Resources" t="Include">
+          <e p="ToolTip" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="IInfo.cs" t="Include" />
+              <e p="InfoBehaviour.cs" t="Include" />
+              <e p="Tooltip.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="_DragAndDropSystem" t="Include">
+            <e p="DragAndDropCell.cs" t="Include" />
+            <e p="DragAndDropItem.cs" t="Include" />
+          </e>
+          <e p="_EventSystem" t="Include">
+            <e p="CustomEvents" t="Include">
+              <e p="BaseGameEvent.cs" t="Include" />
+              <e p="BoolEvent.cs" t="Include" />
+              <e p="CellEvent.cs" t="Include" />
+              <e p="FloatEvent.cs" t="Include" />
+              <e p="GridObjectEvent.cs" t="Include" />
+              <e p="InfoEvent.cs" t="Include" />
+              <e p="IntEvent.cs" t="Include" />
+              <e p="ItemEvent.cs" t="Include" />
+              <e p="SkillEvent.cs" t="Include" />
+              <e p="UnitEvent.cs" t="Include" />
+              <e p="VoidEvent.cs" t="Include" />
+            </e>
+            <e p="Listeners" t="Include">
+              <e p="BaseGameEventListener.cs" t="Include" />
+              <e p="BoolListener.cs" t="Include" />
+              <e p="CellListener.cs" t="Include" />
+              <e p="FloatListener.cs" t="Include" />
+              <e p="GridObjectListener.cs" t="Include" />
+              <e p="IGameEventListener.cs" t="Include" />
+              <e p="InfoListener.cs" t="Include" />
+              <e p="IntListener.cs" t="Include" />
+              <e p="ItemListener.cs" t="Include" />
+              <e p="SkillListener.cs" t="Include" />
+              <e p="UnitListener.cs" t="Include" />
+              <e p="VoidListener.cs" t="Include" />
+            </e>
+            <e p="UnityEvents" t="Include">
+              <e p="UnityBoolEvent.cs" t="Include" />
+              <e p="UnityCellEvent.cs" t="Include" />
+              <e p="UnityFloatEvent.cs" t="Include" />
+              <e p="UnityGridObjectEvent.cs" t="Include" />
+              <e p="UnityInfoEvent.cs" t="Include" />
+              <e p="UnityIntEvent.cs" t="Include" />
+              <e p="UnityItemEvent.cs" t="Include" />
+              <e p="UnitySkillEvent.cs" t="Include" />
+              <e p="UnityUnitEvent.cs" t="Include" />
+              <e p="UnityVoidEvent.cs" t="Include" />
+            </e>
+            <e p="Void.cs" t="Include" />
+          </e>
+          <e p="_Instances" t="Include">
+            <e p="DataBase.cs" t="Include" />
+            <e p="KeepBetweenScene.cs" t="Include" />
+          </e>
+          <e p="_SaveSystem" t="Include">
+            <e p="Interface_ISavable.cs" t="Include" />
+            <e p="SavableEntity.cs" t="Include" />
+            <e p="SavingLoading.cs" t="Include" />
+          </e>
+          <e p="_ScriptableObject" t="Include">
+            <e p="Element.cs" t="Include" />
+            <e p="Rarity.cs" t="Include" />
+          </e>
+          <e p="BattleOver" t="Include">
+            <e p="BossBattle.cs" t="Include" />
+            <e p="DeathBattle.cs" t="Include" />
+            <e p="EndConditionSO.cs" t="Include" />
+            <e p="LootBoxes.cs" t="Include" />
+          </e>
+          <e p="Cells" t="Include">
+            <e p="Board.cs" t="Include" />
+            <e p="BoardSO.cs" t="Include" />
+            <e p="Cell.cs" t="Include" />
+            <e p="DataBaseBoard.cs" t="Include" />
+            <e p="DataBaseCell.cs" t="Include" />
+            <e p="Hexagon.cs" t="Include" />
+            <e p="Square.cs" t="Include" />
+            <e p="Tile.cs" t="Include" />
+          </e>
+          <e p="Gears" t="Include">
+            <e p="DataBaseGear.cs" t="Include" />
+            <e p="Gear.cs" t="Include" />
+            <e p="GearSO.cs" t="Include" />
+            <e p="InfoGear.cs" t="Include" />
+            <e p="Inventory.cs" t="Include" />
+            <e p="InventoryUI.cs" t="Include" />
+          </e>
+          <e p="Grid" t="Include">
+            <e p="BattleStateManager.cs" t="Include" />
+            <e p="GridStates" t="Include">
+              <e p="BattleState.cs" t="Include" />
+              <e p="BattleStateBeginning.cs" t="Include" />
+              <e p="BattleStateBlockInput.cs" t="Include" />
+              <e p="BattleStateSkillSelected.cs" t="Include" />
+              <e p="BattleStateUnitSelected.cs" t="Include" />
+            </e>
+            <e p="UnitGenerators" t="Include">
+              <e p="CustomUnitGenerator.cs" t="Include" />
+              <e p="IUnitGenerator.cs" t="Include" />
+              <e p="RandomUnitGenerator.cs" t="Include" />
+            </e>
+          </e>
+          <e p="GridObjects" t="Include">
+            <e p="GridObject.cs" t="Include" />
+            <e p="GridObjectSO.cs" t="Include" />
+            <e p="LootBox.cs" t="Include" />
+            <e p="Stone.cs" t="Include" />
+          </e>
+          <e p="Gui" t="Include">
+            <e p="CameraController.cs" t="Include" />
+          </e>
+          <e p="Pathfinding" t="Include">
+            <e p="Algorithms" t="Include">
+              <e p="AStarPathfinding.cs" t="Include" />
+              <e p="DijkstraPathfinding.cs" t="Include" />
+              <e p="IPathfinding.cs" t="Include" />
+            </e>
+            <e p="DataStructs" t="Include">
+              <e p="HeapPriorityQueue.cs" t="Include" />
+              <e p="IGraphNode.cs" t="Include" />
+              <e p="IPriorityQueue.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Players" t="Include">
+            <e p="HumanPlayer.cs" t="Include" />
+            <e p="NaiveAiPlayer.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+          </e>
+          <e p="SceneManagement" t="Include">
+            <e p="BattleFade.cs" t="Include" />
+            <e p="ChangeScene.cs" t="Include" />
+          </e>
+          <e p="Skills" t="Include">
+            <e p="_Zone" t="Include">
+              <e p="Zone.cs" t="Include" />
+            </e>
+            <e p="DataBaseRelic.cs" t="Include" />
+            <e p="Deck.cs" t="Include" />
+            <e p="IEffect.cs" t="Include" />
+            <e p="RelicChoiceUI.cs" t="Include" />
+            <e p="RelicInfo.cs" t="Include" />
+            <e p="RelicSO.cs" t="Include" />
+            <e p="ScriptableObject_Effect" t="Include">
+              <e p="Attack.cs" t="Include" />
+              <e p="Curse.cs" t="Include" />
+              <e p="FloorStatus.cs" t="Include" />
+              <e p="Healing.cs" t="Include" />
+              <e p="Learning.cs" t="Include" />
+              <e p="LifeSteel.cs" t="Include" />
+              <e p="Medicine.cs" t="Include" />
+              <e p="SkillEffect.cs" t="Include" />
+              <e p="Spell.cs" t="Include" />
+            </e>
+            <e p="ScriptableObject_GridEffect" t="Include">
+              <e p="Pull.cs" t="Include" />
+              <e p="PushFix.cs" t="Include" />
+              <e p="PushFromImpact.cs" t="Include" />
+              <e p="SkillGridEffect.cs" t="Include" />
+              <e p="TeleportTo.cs" t="Include" />
+            </e>
+            <e p="ScriptableObject_RelicEffect" t="Include">
+              <e p="RelicEffect.cs" t="Include" />
+              <e p="RelicEffectAffectChange.cs" t="Include" />
+              <e p="RelicEffectElementSwap.cs" t="Include" />
+              <e p="RelicEffectNeedView.cs" t="Include" />
+              <e p="RelicEffectRangeType.cs" t="Include" />
+              <e p="RelicEffectZoneType.cs" t="Include" />
+            </e>
+            <e p="SkillInfo.cs" t="Include" />
+            <e p="SkillSO.cs" t="Include" />
+          </e>
+          <e p="Stats" t="Include">
+            <e p="Affinity.cs" t="Include" />
+            <e p="Affix.cs" t="Include" />
+            <e p="AffixSO.cs" t="Include" />
+            <e p="BattleStats.cs" t="Include" />
+            <e p="DataBaseAffix.cs" t="Include" />
+            <e p="Power.cs" t="Include" />
+            <e p="Range.cs" t="Include" />
+          </e>
+          <e p="StatusEffect" t="Include">
+            <e p="Buff.cs" t="Include" />
+            <e p="Burned.cs" t="Include" />
+            <e p="Corruption.cs" t="Include" />
+            <e p="FrostRage.cs" t="Include" />
+            <e p="Poison.cs" t="Include" />
+            <e p="StatusSO.cs" t="Include" />
+          </e>
+          <e p="Units" t="Include">
+            <e p="BattleGenerator.cs" t="Include" />
+            <e p="BattleHero.cs" t="Include" />
+            <e p="DataBaseMonster.cs" t="Include" />
+            <e p="Hero.cs" t="Include" />
+            <e p="IMovable.cs" t="Include" />
+            <e p="Monster.cs" t="Include" />
+            <e p="MonsterSO.cs" t="Include" />
+            <e p="Unit.cs" t="Include" />
+            <e p="UnitStates" t="Include">
+              <e p="UnitState.cs" t="Include" />
+              <e p="UnitStateMarkedAsFinished.cs" t="Include" />
+              <e p="UnitStateMarkedAsFriendly.cs" t="Include" />
+              <e p="UnitStateMarkedAsReachableEnemy.cs" t="Include" />
+              <e p="UnitStateMarkedAsSelected.cs" t="Include" />
+              <e p="UnitStateNormal.cs" t="Include" />
+            </e>
+          </e>
+          <e p="UserInterface" t="Include">
+            <e p="ColorSet.cs" t="Include" />
+            <e p="Icon_UI.cs" t="Include" />
+            <e p="TurnOrderPrefab.cs" t="Include" />
+            <e p="TurnOrderUI.cs" t="Include" />
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+            <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+            <e p="TMP_Bitmap.shader" t="Include" />
+            <e p="TMP_SDF Overlay.shader" t="Include" />
+            <e p="TMP_SDF SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+            <e p="TMP_SDF-Mobile SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface.shader" t="Include" />
+            <e p="TMP_SDF.shader" t="Include" />
+            <e p="TMP_Sprite.shader" t="Include" />
+            <e p="TMPro.cginc" t="Include" />
+            <e p="TMPro_Mobile.cginc" t="Include" />
+            <e p="TMPro_Properties.cginc" t="Include" />
+            <e p="TMPro_Surface.cginc" t="Include" />
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="TakTik Ele.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\Travail\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Travail\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_TakTik Ele.-1170786588.00" t="ExcludeRecursive" />
+  </component>
+</project>

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a418db8050448387e61904e1e27583, type: 3}
+  m_Name: Monster_EyeYellow
+  m_EditorClassIdentifier: 
+  unitName: Wierd Eye
+  element: {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
+  basicStats:
+    TurnPoint: 0
+    HP: 50
+    Shield: 0
+    Dodge: 2
+    Speed: 6
+    Power:
+      Basic: 1
+      Spell: 100
+      Skill: 100
+      Affinity:
+        Fire: 100
+        Nature: 100
+        Water: 100
+    MP: 2
+    AP: 2
+    Range:
+      RangeType: 1
+      RangeValue: 0
+      ZoneType: 1
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      SelfCast: 0
+      CanBeModified: 0
+    Focus: 1
+  randomStats:
+    TurnPoint: 0
+    HP: 20
+    Shield: 0
+    Dodge: 0
+    Speed: 3
+    Power:
+      Basic: 5
+      Spell: 100
+      Skill: 100
+      Affinity:
+        Fire: 80
+        Nature: 150
+        Water: 80
+    MP: 1
+    AP: 1
+    Range:
+      RangeType: 1
+      RangeValue: 1
+      ZoneType: 1
+      Radius: 1
+      NeedView: 0
+      NeedTarget: 0
+      SelfCast: 0
+      CanBeModified: 0
+    Focus: 5
+  prefab: {fileID: 1179847595273300741, guid: 89efd93c7d9c49c4b8310941e959cfba, type: 3}
+  unitSprite: {fileID: 21300000, guid: c154cc3db4bacdb4aa53b4e898d3fa51, type: 3}
+  level: 1
+  relic: {fileID: 11400000, guid: f6775c6e8567d094db3a7d26423dbe8b, type: 2}
+  rewardType: 3
+  type: 0
+  skill: {fileID: 11400000, guid: c9290534a81ed6540b16d0b08612ab8f, type: 2}

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b6bf79595345fba0f9a3372c40b672, type: 3}
+  m_Name: Skill_Basic_Nature_LeefArrow
+  m_EditorClassIdentifier: 
+  name: Leef Arrow
+  element: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
+  icon: {fileID: 21300000, guid: 422ece861f78bfd4d8d971d1a1311270, type: 3}
+  effect: {fileID: 11400000, guid: 452a531074872114086cc085a037c9a2, type: 2}
+  gridEffect: {fileID: 0}
+  affect: 2
+  range:
+    RangeType: 4
+    RangeValue: 4
+    ZoneType: 0
+    Radius: 0
+    NeedView: 1
+    NeedTarget: 1
+    SelfCast: 0
+    CanBeModified: 1
+  power:
+    Basic: 4
+    Spell: 70
+    Skill: 120
+    Affinity:
+      Fire: 80
+      Nature: 120
+      Water: 80
+  statusEffects: []

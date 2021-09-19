@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8f456c99fe420aafd100bf0ded2a84, type: 3}
+  m_Name: DataBase_Gear
+  m_EditorClassIdentifier: 
+  gears:
+  - {fileID: 11400000, guid: ebc5def6e3cd2034d96cdba76949f339, type: 2}
+  - {fileID: 11400000, guid: 239cfda956bd4024eab83e7c84b4b5fc, type: 2}
+  - {fileID: 11400000, guid: 250e990f13d54164d821aa61701ef49f, type: 2}
+  - {fileID: 11400000, guid: f75440c8468c5d845b79083a823744f2, type: 2}
+  - {fileID: 11400000, guid: 71f67804fbc8e454590cd95452c6a982, type: 2}
