@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using _EventSystem.CustomEvents;
+using _EventSystem.Listeners;
 using _ScriptableObject;
 using Cells;
 using Skills._Zone;
@@ -9,12 +13,16 @@ using Stats;
 using StatusEffect;
 using Units;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Skills
 {
-    public class Deck : MonoBehaviour
+    public class Deck : MonoBehaviour, IGameEventListener<bool>
     {
+        [SerializeField] private BoolEvent onEndBattle;
         public List<SkillSO> Skills = new List<SkillSO>();
+        public List<SkillSO> ConsumedSkills = new List<SkillSO>();
+        public List<SkillSO> UsedSkills { get; set; }
         public List<RelicSO> Relics = new List<RelicSO>();
         private List<IEffect> effects = new List<IEffect>();
 
@@ -28,13 +36,23 @@ namespace Skills
         public Element Element { get; private set; }
         public EAffect Affect { get; private set; }
 
+        private void Start()
+        {
+            UsedSkills = new List<SkillSO>();
+            onEndBattle.RegisterListener(this);
+        }
+
         /// <summary>
         /// Shuffle the Deck and change the Actual Skill to an other one
         /// All Skills can be selected as the new one except the one that has been used
         /// </summary>
         public void ShuffleDeck()
         {
-            
+            if (Skills.Count < 1)
+            {
+                Skills.AddRange(UsedSkills);
+                UsedSkills = new List<SkillSO>();
+            }
             List<SkillSO> _list = Skills.Count == 1 ? Skills : Skills.Where(_skill => _skill != ActualSkill).ToList();
             ActualSkill = _list[Random.Range(0, _list.Count)];
 
@@ -120,7 +138,7 @@ namespace Skills
         }
 
         #endregion
-        
+
         /// <summary>
         /// Methode Called on Skill Use, it will trigger all Skill Effects and Grid Effects on the Affected Cells
         /// </summary>
@@ -133,20 +151,27 @@ namespace Skills
                 return false;
             }
 
-            if (effects.Find(_effect => _effect is Learning) != null)
+            Debug.Log($"{_skillInfo.Unit} Use {_skillInfo.ColouredName()}");
+        if (effects.Find(_effect => _effect is Learning) != null)
             {
                 effects.Find(_effect => _effect is Learning).Use(_cell, _skillInfo);
+                Skills.Remove(ActualSkill);
+                ConsumedSkills.Add(ActualSkill);
                 return true;
             }
-
+            
+            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
+            _zone.Sort((_cell1, _cell2) =>
+                _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
+            
+            //TODO : Play Skill animation
+            StartCoroutine(HighlightZone(_zone));
+            
             foreach (IEffect _effect in effects)
             {
                 _effect.Use(_cell, _skillInfo);
             }
-
-            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
-            _zone.Sort((_cell1, _cell2) =>
-                _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
+            
             foreach (Buff _buff in _skillInfo.Buffs)
             {
                 foreach (Cell _cellAffected in _zone)
@@ -156,6 +181,10 @@ namespace Skills
                         _unitAffected.ApplyBuff(_buff);
                 }
             }
+
+            Skills.Remove(ActualSkill);
+            if (ActualSkill.Consumable) ConsumedSkills.Add(ActualSkill);
+            else UsedSkills.Add(ActualSkill);
             
             return true;
         }
@@ -167,6 +196,34 @@ namespace Skills
             if (_relicSO != null)
                 Relics.AddRange(_relicSO);
             ShuffleDeck();
+        }
+
+        public static IEnumerator HighlightZone(List<Cell> zone)
+        {
+            foreach (Cell _cell in zone)
+            {
+                _cell.MarkAsHighlighted();
+                yield return new WaitForSeconds(0.05f);
+            }
+            foreach (Cell _cell in zone)
+            {
+                _cell.MarkAsHighlighted();
+            }
+            yield return new WaitForSeconds(0.2f);
+            zone.ForEach(c => c.UnMark());
+        }
+
+        public void OnEventRaised(bool item)
+        {
+            Skills.AddRange(ConsumedSkills);
+            ConsumedSkills = new List<SkillSO>();
+        }
+
+        public void LastSkill()
+        {
+            ActualSkill = Skills[Skills.Count - 1];
+
+            UpdateSkill();
         }
     }
 }

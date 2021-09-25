@@ -23,6 +23,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 0
     - 7
@@ -32,6 +33,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 0
@@ -41,6 +43,7 @@ MonoBehaviour:
     - 0
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 1
@@ -50,6 +53,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 7
@@ -59,6 +63,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 8
@@ -68,6 +73,7 @@ MonoBehaviour:
     - 8
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 2
     - 0
@@ -77,6 +83,7 @@ MonoBehaviour:
     - 0
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 2
     - 1
@@ -86,6 +93,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 2
     - 7
@@ -95,6 +103,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 2
     - 8
@@ -104,6 +113,7 @@ MonoBehaviour:
     - 8
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 0
@@ -113,6 +123,7 @@ MonoBehaviour:
     - 0
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 1
@@ -122,6 +133,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 7
@@ -131,6 +143,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 8
@@ -140,6 +153,7 @@ MonoBehaviour:
     - 8
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 4
     - 0
@@ -149,6 +163,7 @@ MonoBehaviour:
     - 0
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 4
     - 1
@@ -158,6 +173,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 4
     - 7
@@ -167,6 +183,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 4
     - 8
@@ -176,6 +193,7 @@ MonoBehaviour:
     - 8
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 0
@@ -185,6 +203,7 @@ MonoBehaviour:
     - 0
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 1
@@ -194,6 +213,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 7
@@ -203,6 +223,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 8
@@ -212,6 +233,7 @@ MonoBehaviour:
     - 8
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 6
     - 0
@@ -221,6 +243,7 @@ MonoBehaviour:
     - 0
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 6
     - 7
@@ -230,6 +253,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 6
     - 8
@@ -239,6 +263,7 @@ MonoBehaviour:
     - 8
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 0
@@ -248,6 +273,7 @@ MonoBehaviour:
     - 0
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 1
@@ -257,6 +283,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 7
@@ -266,6 +293,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 8
@@ -275,6 +303,7 @@ MonoBehaviour:
     - 8
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 8
     - 1
@@ -284,6 +313,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 8
     - 7
@@ -293,6 +323,7 @@ MonoBehaviour:
     - 7
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 0
     - 6
@@ -302,6 +333,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 0
     - 5
@@ -311,6 +343,7 @@ MonoBehaviour:
     - 5
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 0
     - 4
@@ -320,6 +353,7 @@ MonoBehaviour:
     - 4
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 0
     - 3
@@ -329,6 +363,7 @@ MonoBehaviour:
     - 3
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 0
     - 2
@@ -338,6 +373,7 @@ MonoBehaviour:
     - 2
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 2
     - 6
@@ -347,6 +383,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 6
@@ -356,6 +393,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 5
@@ -365,6 +403,7 @@ MonoBehaviour:
     - 5
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 4
@@ -374,6 +413,7 @@ MonoBehaviour:
     - 4
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 3
@@ -383,6 +423,7 @@ MonoBehaviour:
     - 3
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 5
     - 2
@@ -392,6 +433,7 @@ MonoBehaviour:
     - 2
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 6
@@ -401,6 +443,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 5
@@ -410,6 +453,7 @@ MonoBehaviour:
     - 5
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 4
@@ -419,6 +463,7 @@ MonoBehaviour:
     - 4
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 3
@@ -428,6 +473,7 @@ MonoBehaviour:
     - 3
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 3
     - 2
@@ -437,6 +483,7 @@ MonoBehaviour:
     - 2
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 6
@@ -446,6 +493,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 5
@@ -455,6 +503,7 @@ MonoBehaviour:
     - 5
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 4
@@ -464,6 +513,7 @@ MonoBehaviour:
     - 4
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 3
@@ -473,6 +523,7 @@ MonoBehaviour:
     - 3
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 1
     - 2
@@ -482,6 +533,7 @@ MonoBehaviour:
     - 2
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 6
     - 6
@@ -491,6 +543,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 6
     - 1
@@ -500,6 +553,7 @@ MonoBehaviour:
     - 1
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 6
@@ -509,6 +563,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 5
@@ -518,6 +573,7 @@ MonoBehaviour:
     - 5
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 4
@@ -527,6 +583,7 @@ MonoBehaviour:
     - 4
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 3
@@ -536,6 +593,7 @@ MonoBehaviour:
     - 3
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 7
     - 2
@@ -545,6 +603,7 @@ MonoBehaviour:
     - 2
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 8
     - 6
@@ -554,6 +613,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 8
     - 5
@@ -563,6 +623,7 @@ MonoBehaviour:
     - 5
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 8
     - 4
@@ -572,6 +633,7 @@ MonoBehaviour:
     - 4
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 8
     - 3
@@ -581,6 +643,7 @@ MonoBehaviour:
     - 3
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 8
     - 2
@@ -590,6 +653,7 @@ MonoBehaviour:
     - 2
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 4
     - 6
@@ -599,6 +663,7 @@ MonoBehaviour:
     - 6
     type: 3
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 4
     - 5
@@ -608,6 +673,7 @@ MonoBehaviour:
     - 5
     type: 0
     gridObject: {fileID: 11400000, guid: 96e9f23377e0b3e45b1798472d02bcb6, type: 2}
+    isSpawn: 0
   - position:
     - 4
     - 4
@@ -617,6 +683,7 @@ MonoBehaviour:
     - 4
     type: 0
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 4
     - 3
@@ -626,6 +693,7 @@ MonoBehaviour:
     - 3
     type: 0
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 6
     - 5
@@ -635,6 +703,7 @@ MonoBehaviour:
     - 5
     type: 0
     gridObject: {fileID: 11400000, guid: 96e9f23377e0b3e45b1798472d02bcb6, type: 2}
+    isSpawn: 0
   - position:
     - 6
     - 4
@@ -644,6 +713,7 @@ MonoBehaviour:
     - 4
     type: 0
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 6
     - 3
@@ -653,6 +723,7 @@ MonoBehaviour:
     - 3
     type: 0
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 2
     - 5
@@ -662,6 +733,7 @@ MonoBehaviour:
     - 5
     type: 0
     gridObject: {fileID: 11400000, guid: 96e9f23377e0b3e45b1798472d02bcb6, type: 2}
+    isSpawn: 0
   - position:
     - 2
     - 4
@@ -671,6 +743,7 @@ MonoBehaviour:
     - 4
     type: 0
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 2
     - 3
@@ -680,6 +753,7 @@ MonoBehaviour:
     - 3
     type: 0
     gridObject: {fileID: 0}
+    isSpawn: 0
   - position:
     - 2
     - 2
@@ -687,8 +761,9 @@ MonoBehaviour:
     offsetCoord:
     - 2
     - 2
-    type: 4
+    type: 0
     gridObject: {fileID: 0}
+    isSpawn: 1
   - position:
     - 4
     - 2
@@ -696,8 +771,9 @@ MonoBehaviour:
     offsetCoord:
     - 4
     - 2
-    type: 4
+    type: 0
     gridObject: {fileID: 0}
+    isSpawn: 1
   - position:
     - 6
     - 2
@@ -705,8 +781,9 @@ MonoBehaviour:
     offsetCoord:
     - 6
     - 2
-    type: 4
+    type: 0
     gridObject: {fileID: 0}
+    isSpawn: 1
   camera:
     x: 4
     y: 4

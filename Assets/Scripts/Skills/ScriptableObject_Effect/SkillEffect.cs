@@ -23,6 +23,7 @@ namespace Skills.ScriptableObject_Effect
     {
         [SerializeField] private ESkill type;
         public ESkill Type => type;
+        
         public override Dictionary<Cell, int> DamageValue(Cell _cell, SkillInfo _skillInfo)
         {
             Dictionary<Cell, int> ret = new Dictionary<Cell, int>();

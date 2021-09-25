@@ -23,6 +23,7 @@ namespace Grid.GridStates
         /// <param name="cell">Cell that was deselected.</param>
         public virtual void OnCellDeselected(Cell cell)
         {
+            if(cell == null) return;
             cell.UnMark();
         }
 
@@ -32,6 +33,7 @@ namespace Grid.GridStates
         /// <param name="cell">Cell that was selected.</param>
         public virtual void OnCellSelected(Cell cell)
         {
+            if(cell == null) return;
             cell.MarkAsHighlighted();
         }
 
@@ -41,6 +43,7 @@ namespace Grid.GridStates
         /// <param name="cell">Cell that was clicked.</param>
         public virtual void OnCellClicked(Cell cell)
         {
+            if(cell == null) return;
         }
 
         /// <summary>

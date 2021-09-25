@@ -365,10 +365,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell: {fileID: 0}
+  Inventory:
+    gears: []
+  UnitName: 
+  onUnitMoved: {fileID: 11400000, guid: f00c2e11c76f95d4ab1c9582337fb7db, type: 2}
   BattleStats:
     TurnPoint: 0
     HP: 0
     Shield: 0
+    Dodge: 0
     Speed: 0
     Power:
       Basic: 0
@@ -386,18 +391,19 @@ MonoBehaviour:
       ZoneType: 0
       Radius: 0
       NeedView: 0
+      NeedTarget: 0
       SelfCast: 0
       CanBeModified: 0
     Focus: 0
   playerNumber: 0
   movementAnimationSpeed: 10
   colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
-  UnitName: 
   frame: {fileID: 3480699983691178143}
   back: {fileID: 3480699983416903647}
   unitSprite: {fileID: 8294017069078302248}
   info: {fileID: 1220656103392055339}
   shadow: {fileID: 991324253262739922}
+  isDying: 0
 --- !u!111 &6800174335220356956
 Animation:
   m_ObjectHideFlags: 0

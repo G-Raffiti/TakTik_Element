@@ -81,19 +81,16 @@ namespace Cells
 
         protected internal virtual void OnMouseEnter()
         {
-            if (CellHighlighted != null)
-                CellHighlighted.Invoke(this, new EventArgs());
+            CellHighlighted?.Invoke(this, new EventArgs());
         }
         protected internal virtual void OnMouseExit()
         {
-            if (CellDehighlighted != null)
-                CellDehighlighted.Invoke(this, new EventArgs());
+            CellDehighlighted?.Invoke(this, new EventArgs());
         }
 
         internal void OnMouseDown()
         {
-            if (CellClicked != null)
-                CellClicked.Invoke(this, new EventArgs());
+            CellClicked?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -234,5 +231,7 @@ namespace Cells
         /// return the Value at witch the Buffs are effective on the Cell
         /// </summary>
         public abstract int Power { get; }
+
+        public bool isSpawnPlace;
     }
 }

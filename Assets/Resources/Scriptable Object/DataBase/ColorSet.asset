@@ -20,11 +20,4 @@ MonoBehaviour:
   enemyColor: {r: 1, g: 0.8178636, b: 0, a: 1}
   transparency: {r: 1, g: 1, b: 1, a: 0.29803923}
   elementShadow: {r: 0.9, g: 0.9, b: 0.9, a: 1}
-  HP: {r: 1, g: 0, b: 0.018630981, a: 1}
-  MP: {r: 0, g: 0.6792453, b: 0.16268381, a: 1}
-  AP: {r: 1, g: 0.6417511, b: 0, a: 1}
-  Speed: {r: 1, g: 0.9614235, b: 0, a: 1}
-  TurnPoint: {r: 0, g: 1, b: 0.927727, a: 1}
-  Fire: {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
-  Nature: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
-  Water: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
+  turnPoint: {r: 0, g: 0.914711, b: 1, a: 1}

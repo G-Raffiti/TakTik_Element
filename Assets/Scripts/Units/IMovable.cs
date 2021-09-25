@@ -20,6 +20,8 @@ namespace Units
             set => cell = value;
         }
 
+        public abstract string getName();
+
         public virtual void Move(Cell destinationCell, List<Cell> path)
         {
             Movable.Move(this, destinationCell, path);

@@ -1,4 +1,5 @@
-﻿using _EventSystem.CustomEvents;
+﻿using System;
+using _EventSystem.CustomEvents;
 using _EventSystem.Listeners;
 using UnityEngine;
 
@@ -12,6 +13,11 @@ namespace SceneManagement
         private void Start()
         {
             onBattleEnd.RegisterListener(this);
+        }
+
+        private void OnDestroy()
+        {
+            onBattleEnd.UnregisterListener(this);
         }
 
         private void StartNewBattle()

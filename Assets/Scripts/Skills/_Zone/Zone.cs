@@ -146,10 +146,11 @@ namespace Skills._Zone
 
         private static List<Cell> GetLine(Cell cell, int radius)
         {
+            Vector2 direction = GetDirection(cell);
             List<Cell> _ret = new List<Cell>();
             for (int i = 0; i < radius + 1; i++)
             {
-                Cell _cellInRange = BattleStateManager.instance.Cells.Find(c => c.OffsetCoord == cell.OffsetCoord + GetDirection(cell) * i);
+                Cell _cellInRange = BattleStateManager.instance.Cells.Find(c => c.OffsetCoord == cell.OffsetCoord + direction * i);
                 if (_cellInRange == null) continue;
                 _ret.Add(_cellInRange);
             }

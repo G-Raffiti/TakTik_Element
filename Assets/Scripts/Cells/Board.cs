@@ -73,6 +73,7 @@ namespace Cells
             }
             
             boardTest.SaveBoard(Cells, background.sprite, mainCamera);
+            Debug.Log($"Board SO saved in {boardTest.name}");
         }
         
         /// <summary>
@@ -109,6 +110,7 @@ namespace Cells
                 if (_t != null)
                 {
                     _t.OffsetCoord = new Vector2(_Cell.offsetCoord[0], _Cell.offsetCoord[1]);
+                    _t.isSpawnPlace = _Cell.isSpawn;
                 }
 
                 if (_Cell.gridObject == null) continue;

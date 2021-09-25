@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Grid\UnitGenerators\RandomUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\_Instances\DataBase.cs" />
      <Compile Include="Assets\Scripts\Stats\Range.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\SceneKeeper.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectAffectChange.cs" />
      <Compile Include="Assets\Scripts\GridObjects\GridObject.cs" />
      <Compile Include="Assets\Scripts\Cells\DataBaseBoard.cs" />
@@ -177,6 +178,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\ItemEvent.cs" />
      <Compile Include="Assets\Scripts\Units\BattleHero.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\IntEvent.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\PlayingUnitsInfo_UI.cs" />
      <Compile Include="Assets\Scripts\Gears\InfoGear.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\UnitListener.cs" />
      <Compile Include="Assets\Scripts\Grid\GridStates\BattleStateBeginning.cs" />

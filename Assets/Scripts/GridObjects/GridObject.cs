@@ -6,6 +6,7 @@ using _Instances;
 using Cells;
 using Gears;
 using Grid;
+using Grid.GridStates;
 using Pathfinding.Algorithms;
 using Units;
 using UnityEngine;
@@ -51,6 +52,7 @@ namespace GridObjects
         }
         
         [SerializeField] private float moveAnimSpeed;
+
         public override float MovementAnimationSpeed => moveAnimSpeed;
 
         public bool IsInteractable =>
@@ -88,6 +90,8 @@ namespace GridObjects
 
         public override IEnumerator OnDestroyed()
         {
+            BattleStateManager.instance.BlockInputs();
+            
             gridObjectDestroyed.Raise(Cell);
             
             while (IsMoving)
@@ -104,6 +108,8 @@ namespace GridObjects
             
             Cell.FreeTheCell();
             Destroy(gameObject);
+            
+            BattleStateManager.instance.OnSkillUsed();
         }
 
         public void Interact(Unit _unit)
@@ -120,6 +126,11 @@ namespace GridObjects
         public override void AutoSortOrder()
         {
             GetComponent<SpriteRenderer>().sortingOrder = 100 - (int)transform.position.y;
+        }
+        
+        public override string getName()
+        {
+            return GridObjectSO.Name;
         }
     }
 }

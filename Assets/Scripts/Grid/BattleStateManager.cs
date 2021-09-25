@@ -198,8 +198,7 @@ namespace Grid
             Units.Add(unit.GetComponent<Unit>());
             unit.GetComponent<Unit>().UnitDestroyed += TriggerOnUnitDestroyed;
 
-            if (UnitAdded != null)
-                UnitAdded.Invoke(this, new UnitCreatedEventArgs(unit));
+            UnitAdded?.Invoke(this, new UnitCreatedEventArgs(unit));
         }
 
         /// <summary>
@@ -207,10 +206,12 @@ namespace Grid
         /// </summary>
         public virtual void StartGame()
         {
+            List<Hero> heroesPlaced = GameObject.Find("Player").GetComponentsInChildren<Hero>().Where(h => h.isPlaced).ToList();
+            if (heroesPlaced.Count <= 0) return;
+            
             KeepBetweenScene.StartBattle();
             BattleState.OnStateExit();
             InitializeUnits();
-
             onStartGame.Raise();
             StartTurn();
         }
@@ -219,6 +220,8 @@ namespace Grid
         /// </summary>
         public virtual void EndTurn()
         {
+            if (PlayingUnit is Monster {isPlaying: true}) return;
+            
             BattleState = new BattleStateBlockInput(this);
             if (endCondition.battleIsOver(this))
             {
@@ -302,10 +305,8 @@ namespace Grid
             
             PlayingUnit = Units[0];
             
-            Debug.Log($"Player {PlayingUnit.playerNumber}: {PlayingUnit.gameObject.name} start Turn");
-            
-            onUnitStartTurn.Raise(PlayingUnit);
-            
+            Debug.Log($"Player {PlayingUnit.playerNumber}: {PlayingUnit.UnitName} start Turn");
+
             PlayingUnit.BattleStats.TurnPoint -= TurnCost;
             foreach (Unit _unit in Units.Where(_unit => _unit != PlayingUnit))
             {
@@ -313,6 +314,7 @@ namespace Grid
             }
 
             Players.Find(p => p.playerNumber == PlayingUnit.playerNumber).Play(this);
+            onUnitStartTurn.Raise(PlayingUnit);
         }
 
         private void Corruption()
@@ -333,7 +335,7 @@ namespace Grid
             _cell.AddBuff(new Buff(_cell, CorruptionSO));
             _cell.isCorrupted = true;
         }
-        
+
         /// <summary>
         /// Method Called after using a Skill or after that any Unit Fall in an UnderGround Tile.
         /// </summary>
@@ -345,10 +347,11 @@ namespace Grid
                 EndTurn();
                 return;
             }
-            
+
             // This Method Work only during the Player Turn
-            if (PlayingUnit.playerNumber == 0)
-                BattleState = new BattleStateUnitSelected(this, PlayingUnit);
+            if (PlayingUnit.playerNumber != 0) return;
+            BattleState = new BattleStateBlockInput(this);
+            BattleState = new BattleStateUnitSelected(this, PlayingUnit);
         }
 
         public void BlockInputs()

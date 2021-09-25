@@ -29,7 +29,7 @@ namespace Grid.GridStates
         {
             stateManager.Cells.ForEach(c => c.UnMark());
             
-            List<Cell> _freeCells = stateManager.Cells.FindAll(h => h.GetComponent<Cell>().isWalkable);
+            List<Cell> _freeCells = stateManager.Cells.FindAll(c => c.isWalkable && c.Buffs.Count == 0);
             
             List<Cell> _enemiesCells = new List<Cell>();
             while (_enemiesCells.Count < monsters.Count)
@@ -47,13 +47,14 @@ namespace Grid.GridStates
             foreach (Hero _hero in GameObject.Find("Player").GetComponentsInChildren<Hero>())
             {
                 if (_hero.isDead) continue;
+                _hero.isPlaced = false;
                 heroes.Add(_hero);
             }
 
             List<Cell> _spawnCells = new List<Cell>();
             foreach (Cell _cell in StateManager.Cells)
             {
-                if (_cell.CellType == ETile.Spawn)
+                if (_cell.isSpawnPlace)
                 {
                     _spawnCells.Add(_cell);
                 }
@@ -91,8 +92,10 @@ namespace Grid.GridStates
         {
             for (int i = 0; i < heroes.Count; i++)
             {
-                if (heroes[i].isPlaced) continue;
-                Object.DestroyImmediate(prefabHeroes[i]);
+                if (!heroes[i].isPlaced)
+                {
+                    Object.DestroyImmediate(prefabHeroes[i]);
+                }
             }
             foreach (Cell _cell in stateManager.Cells)
             {

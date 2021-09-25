@@ -244,6 +244,8 @@
           <e p="UserInterface" t="Include">
             <e p="ColorSet.cs" t="Include" />
             <e p="Icon_UI.cs" t="Include" />
+            <e p="PlayingUnitsInfo_UI.cs" t="Include" />
+            <e p="SceneKeeper.cs" t="Include" />
             <e p="TurnOrderPrefab.cs" t="Include" />
             <e p="TurnOrderUI.cs" t="Include" />
           </e>

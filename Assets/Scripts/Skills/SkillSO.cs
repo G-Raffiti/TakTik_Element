@@ -24,6 +24,8 @@ namespace Skills
         [SerializeField] private Power power;
         [SerializeField] private List<StatusSO> statusEffects;
 
+        [SerializeField] private bool consumable;
+
         public string Name => name;
         public Element Element => element;
         public Sprite Icon => icon;
@@ -34,5 +36,6 @@ namespace Skills
         public Range Range => range;
         public Power Power => power;
         public List<StatusSO> StatusEffects => statusEffects;
+        public bool Consumable => consumable;
     }
 }

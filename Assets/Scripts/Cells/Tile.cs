@@ -17,7 +17,6 @@ namespace Cells
         Tree,
         Lava,
         Void,
-        Spawn,
     }
     public class Tile : Square, IInfo
     {
@@ -207,6 +206,7 @@ namespace Cells
         public float[] offsetCoord = new float[2];
         public ETile type;
         public GridObjectSO gridObject = null;
+        public bool isSpawn;
 
         public SavedCell(Cell _toSave)
         {
@@ -225,6 +225,8 @@ namespace Cells
             {
                 gridObject = _toSave.CurrentGridObject.GridObjectSO;
             }
+
+            isSpawn = _toSave.isSpawnPlace;
         }
     }
 }

@@ -28,13 +28,18 @@ namespace _Instances
 
         public void Start()
         {
+            DontDestroyOnLoad(gameObject.transform);
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+            
             Monster = dataMonster;
             Relic = dataRelic;
             Cell = dataCell;
             Affix = dataAffix;
             Gear = dataGear;
             Board = dataBoard;
-            Instance = this;
         }
 
         public static void RunCoroutine(IEnumerator coroutine)

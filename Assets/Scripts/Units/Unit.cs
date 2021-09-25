@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _EventSystem.CustomEvents;
 using _ScriptableObject;
 using Cells;
 using Gears;
@@ -26,6 +27,10 @@ namespace Units
     {
         
         public string UnitName;
+        public override string getName()
+        {
+            return UnitName;
+        }
         
     #region Event Handler
         /// <summary>
@@ -49,7 +54,7 @@ namespace Units
         /// <summary>
         /// UnitMoved event is invoked when unit moves from one cell to another.
         /// </summary>
-        //public event EventHandler<MovementEventArgs> UnitMoved;
+        [SerializeField] private UnitEvent onUnitMoved;
         
         protected virtual void OnMouseDown()
         {
@@ -212,6 +217,7 @@ namespace Units
         /// </summary>
         protected virtual void OnMoveFinished()
         {
+            onUnitMoved.Raise(this);
         }
 
         ///<summary>
@@ -363,13 +369,32 @@ namespace Units
         /// <param name="element">Element Type of the attack</param>
         public void DefendHandler(Unit aggressor, float damage, Element element)
         {
+            Debug.Log($"Damage : {aggressor.UnitName} did {damage} {element.Type} damage to {UnitName}");
             int _damageTaken = Defend(aggressor, damage, element);
+            
+            if (BattleStats.Shield > 0)
+            {
+                if (BattleStats.Shield < _damageTaken)
+                {
+                    _damageTaken -= BattleStats.Shield;
+                    BattleStats.Shield = 0;
+                }
+                else
+                {
+                    BattleStats.Shield -= _damageTaken;
+                    _damageTaken = 0;
+                }
+            }
+                
             BattleStats.HP -= _damageTaken;
             if (BattleStats.HP > total.HP) 
                 BattleStats.HP = total.HP;
+            
             if(_damageTaken > 0)
                 MarkAsDefending(aggressor);
-            OnHit(aggressor, _damageTaken, element);
+            if(_damageTaken != 0)
+                OnHit(aggressor, _damageTaken, element);
+            
             DefenceActionPerformed();
 
             UnitAttacked?.Invoke(this, new AttackEventArgs(aggressor, this, (int)damage));
@@ -391,7 +416,6 @@ namespace Units
         /// <returns>Amount of damage that the unit has taken</returns>        
         protected int Defend(Unit aggressor, float damage, Element element)
         {
-            //TODO : Defence System Dodge - Shield - HP
 
             if (BattleStats.Dodge >= 1)
             {
@@ -399,7 +423,7 @@ namespace Units
                 return 0;
             }
 
-            return (int) (damage * (1 + BattleStats.GetDamageTaken(element.Type) / 100f));
+            return (int) (damage * (BattleStats.GetDamageTaken(element.Type) / 100f));
         }
 
         public int DamageTaken(Unit aggressor, float damage, Element element)

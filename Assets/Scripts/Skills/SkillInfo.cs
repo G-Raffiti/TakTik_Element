@@ -65,10 +65,12 @@ namespace Skills
             if (!deck.UseSkill(this, cell)) return;
             
             Unit.BattleStats.AP -= Cost;
-            deck.ShuffleDeck();
+            if (!(Skill.Effect is Learning)) deck.ShuffleDeck();
+            else deck.LastSkill();
             CreateSkill(BattleStateManager.instance.PlayingUnit);
             
             BattleStateManager.instance.OnSkillUsed();
+            OnSkillUsed.Raise();
         }
 
         public List<Cell> GetZoneOfEffect(Cell _cell)

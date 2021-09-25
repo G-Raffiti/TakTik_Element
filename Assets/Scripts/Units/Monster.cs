@@ -25,6 +25,7 @@ namespace Units
         [SerializeField] private SkillInfo skill;
         [SerializeField] private UnitEvent onDeathLoot;
         [SerializeField] private UnitEvent onDeathRelic;
+        public bool isPlaying;
 
         public SkillSO Skill => skill.Skill;
 
@@ -68,6 +69,8 @@ namespace Units
             deck.Initialize(monster.Skill, Relics);
             
             skill.CreateSkill(this);
+            
+            
             
             InitializeSprite();
         }

@@ -35,6 +35,14 @@ namespace Skills.ScriptableObject_GridEffect
             DataBase.RunCoroutine(Push(affecteds, _skillInfo.Unit.Cell, _skillInfo, Strength));
         }
 
+        /// <summary>
+        /// Coroutine that move 
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <param name="_from"></param>
+        /// <param name="skill"></param>
+        /// <param name="strength"></param>
+        /// <returns></returns>
         public static IEnumerator Push(List<IMovable> targets, Cell _from, SkillInfo skill, int strength)
         {
             targets.Sort((target1, target2) =>
@@ -89,19 +97,25 @@ namespace Skills.ScriptableObject_GridEffect
             if(_distance != 0)
                 while (target.IsMoving) yield return null;
             
+            Debug.Log($"Push : {skill.Unit.UnitName} pushed {target.getName()} of {_distance} Cells");
+            
             // If an Unit hit an other object, both take damage
-            if (_distance < strength)
-            {
-                if (target != null && target is Unit u)
-                    u.DefendHandler(skill.Unit, (strength - _distance) * skill.Unit.BattleStats.Power.Physic(EElement.None), Element.None());
-                Cell obstacleCell = BattleStateManager.instance.Cells.Find(c =>
-                    c.OffsetCoord == target.Cell.OffsetCoord + Zone.Direction(_from, _targetedCell));
-                if (obstacleCell == null) yield break;
-                Unit obstacle = obstacleCell.CurrentUnit;
-                if (obstacle != null)
-                    obstacle.DefendHandler(skill.Unit,
-                        (strength - _distance) * skill.Unit.BattleStats.Power.Physic(EElement.None), Element.None());
-            }
+            if (_distance >= strength) yield break;
+            Cell obstacleCell = BattleStateManager.instance.Cells.Find(c =>
+                c.OffsetCoord == target.Cell.OffsetCoord + Zone.Direction(_from, _targetedCell));
+            Unit obstacle = null;
+            
+            if (obstacleCell != null)
+                 obstacle = obstacleCell.CurrentUnit;
+            
+            if (target == obstacle) yield break;
+            
+            if (target != null && target is Unit u)
+                u.DefendHandler(skill.Unit, (strength - _distance) * skill.Unit.BattleStats.Power.Physic(EElement.None), Element.None());
+
+            if (obstacle != null)
+                obstacle.DefendHandler(skill.Unit,
+                    (strength - _distance) * skill.Unit.BattleStats.Power.Physic(EElement.None), Element.None());
         }
 
         public override string InfoEffect(SkillInfo _skillInfo)

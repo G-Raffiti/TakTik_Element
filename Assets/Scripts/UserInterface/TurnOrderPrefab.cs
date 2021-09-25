@@ -97,10 +97,12 @@ namespace UserInterface
         public override string GetInfoLeft()
         {
             string str = "";
-            str += $"<sprite name=HP> <color={colorSet.HexColor(EColor.HP)}>{unit.BattleStats.HP} </color>/ {unit.Total.HP}\n";
-            str += $"<sprite name=AP> <color={colorSet.HexColor(EColor.AP)}>{(int)unit.BattleStats.AP} </color>/ {(int)unit.Total.AP}\n";
-            str += $"<sprite name=MP> <color={colorSet.HexColor(EColor.MP)}>{(int)unit.BattleStats.MP} </color>/ {(int)unit.Total.MP}\n";
-            str += $"<sprite name=Speed> <color={colorSet.HexColor(EColor.Speed)}>{unit.BattleStats.Speed} </color> \n";
+            str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)unit.Total.AP}</color>    ";
+            str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.MP)}>{(int)unit.Total.MP}</color>\n";
+            str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.HP)}>{unit.BattleStats.HP} </color>/ {unit.Total.HP}\n";
+            if (unit.BattleStats.Shield > 0) str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{unit.BattleStats.Shield} </color>/ {unit.Total.Shield}\n"; 
+            if ((int) unit.BattleStats.Dodge > 0) str += $"<sprite name=Dodge> <color={colorSet.HexColor(EAffix.Dodge)}>{(int) unit.BattleStats.Dodge} </color>/ {(int) unit.Total.Dodge}\n"; 
+            str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{unit.BattleStats.Speed} </color> \n";
             str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{unit.BattleStats.TurnPoint} </color> \n";
 
             return str;
@@ -110,10 +112,10 @@ namespace UserInterface
         {
             string str = "";
             str += $"Basic Power: {unit.BattleStats.Power.Basic} \n";
-            str += $"Spell Power : <color={colorSet.HexColor(EColor.fire)}>{unit.BattleStats.Power.MagicPercent(EElement.Fire)}</color>/<color={colorSet.HexColor(EColor.water)}>{unit.BattleStats.Power.MagicPercent(EElement.Water)}</color>/<color={colorSet.HexColor(EColor.nature)}>{unit.BattleStats.Power.MagicPercent(EElement.Nature)}</color> (%) \n";
-            str += $"Skill Power : <color={colorSet.HexColor(EColor.fire)}>{unit.BattleStats.Power.PhysicPercent(EElement.Fire)}</color>/<color={colorSet.HexColor(EColor.water)}>{unit.BattleStats.Power.PhysicPercent(EElement.Water)}</color>/<color={colorSet.HexColor(EColor.nature)}>{unit.BattleStats.Power.PhysicPercent(EElement.Nature)}</color> (%) \n";
-            str += $"Focus Power : <color={colorSet.HexColor(EColor.fire)}>{unit.BattleStats.GetFocus(EElement.Fire)}</color>/<color={colorSet.HexColor(EColor.water)}>{unit.BattleStats.GetFocus(EElement.Water)}</color>/<color={colorSet.HexColor(EColor.nature)}>{unit.BattleStats.GetFocus(EElement.Nature)}</color> \n";
-            str += $"Damage Taken : <color={colorSet.HexColor(EColor.fire)}>{affinityDef(EElement.Fire)}</color>/<color={colorSet.HexColor(EColor.water)}>{affinityDef(EElement.Water)}</color>/<color={colorSet.HexColor(EColor.nature)}>{affinityDef(EElement.Nature)}</color> (%) \n";
+            str += $"Spell Power : <sprite name=Fire><color={colorSet.HexColor(EAffix.Fire)}>{unit.BattleStats.Power.MagicPercent(EElement.Fire)}</color>  <sprite name=Water><color={colorSet.HexColor(EAffix.Water)}>{unit.BattleStats.Power.MagicPercent(EElement.Water)}</color>  <sprite name=Nature><color={colorSet.HexColor(EAffix.Nature)}>{unit.BattleStats.Power.MagicPercent(EElement.Nature)}</color> (%) \n";
+            str += $"Skill Power :  <sprite name=Fire><color={colorSet.HexColor(EAffix.Fire)}>{unit.BattleStats.Power.PhysicPercent(EElement.Fire)}</color>  <sprite name=Water><color={colorSet.HexColor(EAffix.Water)}>{unit.BattleStats.Power.PhysicPercent(EElement.Water)}</color>  <sprite name=Nature><color={colorSet.HexColor(EAffix.Nature)}>{unit.BattleStats.Power.PhysicPercent(EElement.Nature)}</color> (%) \n";
+            str += $"Focus Power :  <sprite name=Fire><color={colorSet.HexColor(EAffix.Fire)}>{unit.BattleStats.GetFocus(EElement.Fire)}</color>  <sprite name=Water><color={colorSet.HexColor(EAffix.Water)}>{unit.BattleStats.GetFocus(EElement.Water)}</color>  <sprite name=Nature><color={colorSet.HexColor(EAffix.Nature)}>{unit.BattleStats.GetFocus(EElement.Nature)}</color> \n";
+            str += $"Damage Taken :  <sprite name=Fire><color={colorSet.HexColor(EAffix.Fire)}>{affinityDef(EElement.Fire)}</color>  <sprite name=Water><color={colorSet.HexColor(EAffix.Water)}>{affinityDef(EElement.Water)}</color>  <sprite name=Nature><color={colorSet.HexColor(EAffix.Nature)}>{affinityDef(EElement.Nature)}</color> (%) \n";
 
             return str;
         }

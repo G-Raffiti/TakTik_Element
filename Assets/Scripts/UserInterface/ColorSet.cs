@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using _Instances;
 using _ScriptableObject;
+using Stats;
 using UnityEngine;
 
 namespace UserInterface
 {
         
-    public enum EColor {none, unMark, highlighted, reachable, path, transparency, enemy, ally, elementShadow, elementFull, HP, MP, AP, Speed, TurnPoint, fire, nature, water}
+    public enum EColor {none, unMark, highlighted, reachable, path, transparency, enemy, ally, elementShadow, elementFull, TurnPoint}
     
     [CreateAssetMenu(fileName = "ColorSet_", menuName = "Scriptable Object/UI/Color Set")]
     public class ColorSet : ScriptableObject
@@ -18,44 +20,49 @@ namespace UserInterface
         [SerializeField] private Color enemyColor;
         [SerializeField] private Color transparency;
         [SerializeField] private Color elementShadow;
-        [SerializeField] private Color HP;
-        [SerializeField] private Color MP;
-        [SerializeField] private Color AP;
-        [SerializeField] private Color Speed;
-        [SerializeField] private Color TurnPoint;
-        [SerializeField] private Element Fire;
-        [SerializeField] private Element Nature;
-        [SerializeField] private Element Water;
+        [SerializeField] private Color turnPoint;
 
 
         public Dictionary<EColor, Color> GetColors()
         {
-            Dictionary<EColor, Color> Colors = new Dictionary<EColor, Color>();
-            Colors.Add(EColor.none, Color.clear);
-            Colors.Add(EColor.unMark, unMarkColor);
-            Colors.Add(EColor.highlighted, highlightedColor);
-            Colors.Add(EColor.reachable, reachableColor);
-            Colors.Add(EColor.path, pathColor);
-            Colors.Add(EColor.transparency, transparency);
-            Colors.Add(EColor.enemy, enemyColor);
-            Colors.Add(EColor.ally, allyColor);
-            Colors.Add(EColor.elementShadow, elementShadow);
-            Colors.Add(EColor.elementFull, Color.white);
-            Colors.Add(EColor.HP, HP);
-            Colors.Add(EColor.MP, MP);
-            Colors.Add(EColor.AP, AP);
-            Colors.Add(EColor.Speed, Speed);
-            Colors.Add(EColor.TurnPoint, TurnPoint);
-            Colors.Add(EColor.fire, Fire.TextColour);
-            Colors.Add(EColor.nature, Nature.TextColour);
-            Colors.Add(EColor.water, Water.TextColour);
+            Dictionary<EColor, Color> Colors = new Dictionary<EColor, Color>
+            {
+                {EColor.none, Color.clear},
+                {EColor.unMark, unMarkColor},
+                {EColor.highlighted, highlightedColor},
+                {EColor.reachable, reachableColor},
+                {EColor.path, pathColor},
+                {EColor.transparency, transparency},
+                {EColor.enemy, enemyColor},
+                {EColor.ally, allyColor},
+                {EColor.elementShadow, elementShadow},
+                {EColor.elementFull, Color.white},
+                {EColor.TurnPoint, turnPoint},
+            };
 
             return Colors;
         }
 
+        public static Dictionary<EAffix, Color> GetAffixColors()
+        {
+            Dictionary<EAffix, Color> Colors = new Dictionary<EAffix, Color>();
+            foreach (KeyValuePair<EAffix,AffixSO> _dataAffix in DataBase.Affix.Affixes)
+            {
+                Colors.Add(_dataAffix.Key, _dataAffix.Value.Color);
+            }
+
+            return Colors;
+        }
+        
+
         public string HexColor(EColor color)
         {
             return $"#{ColorUtility.ToHtmlStringRGB(GetColors()[color])}";
+        }
+        
+        public string HexColor(EAffix _affix)
+        {
+            return $"#{ColorUtility.ToHtmlStringRGB(GetAffixColors()[_affix])}";
         }
         
         public static string HexColor(Color color)
