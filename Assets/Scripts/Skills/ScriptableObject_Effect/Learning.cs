@@ -12,7 +12,7 @@ namespace Skills.ScriptableObject_Effect
         {
             if (Zone.GetUnitAffected(_cell, _skillInfo) is Monster _monster)
             {
-                _skillInfo.Deck.Skills.Add(_monster.Skill);
+                _skillInfo.Deck.LearnSkill(_monster.Skill);
             }
         }
 

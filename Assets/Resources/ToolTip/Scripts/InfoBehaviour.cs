@@ -16,7 +16,7 @@ namespace Resources.ToolTip.Scripts
         [SerializeField] protected VoidEvent TooltipOff = null;
         private bool gameStarted = false;
 
-        public void DisplayIcon()
+        public virtual void DisplayIcon()
         {
             if (gameObject.GetComponent<Image>() != null)
             {

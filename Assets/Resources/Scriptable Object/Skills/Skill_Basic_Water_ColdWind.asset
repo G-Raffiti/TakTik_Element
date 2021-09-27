@@ -37,3 +37,5 @@ MonoBehaviour:
       Water: 0
   statusEffects:
   - {fileID: 11400000, guid: 97177b0e3fa996540ae8446c59cc7d78, type: 2}
+  consumable: 0
+  cost: 1

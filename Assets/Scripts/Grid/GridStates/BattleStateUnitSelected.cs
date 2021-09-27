@@ -59,30 +59,10 @@ namespace Grid.GridStates
             base.OnCellDeselected(cell);
             if (!EventSystem.current.IsPointerOverGameObject())
                 TooltipOff.Raise();
-            foreach (Cell _cell in currentPath)
-            {
-                if (pathsInRange.Contains(_cell))
-                    _cell.MarkAsReachable();
-                else
-                    _cell.UnMark();
-            }
-            foreach (Unit _unit in unitsMarkedInRange)
-            {
-                _unit.UnMark();
-            }
-            unitsMarkedInRange.Clear();
-            foreach (Unit _unit in unitsInRange)
-            {
-                _unit.MarkAsReachableEnemy();
-            }
-
-            foreach (GridObject _gridObject in cellGrid.GridObjects)
-            {
-                _gridObject.Cell.UnMark();
-                if (!_gridObject.IsInteractable) continue;
-                _gridObject.Cell.MarkAsInteractable();
-            }
+            
+            MarkCellsBack();
         }
+        
         public override void OnCellSelected(Cell cell)
         {
             base.OnCellSelected(cell);
@@ -93,6 +73,12 @@ namespace Grid.GridStates
                     TooltipOn.Raise((Tile) cell);
                 else TooltipOn.Raise(cell.CurrentGridObject.GridObjectSO);
             }
+
+            if (cell.CurrentUnit is Monster _monster)
+            {
+                _monster.ShowRange();
+            }
+            
             if (!pathsInRange.Contains(cell)) return;
 
             currentPath = unit.FindPath(StateManager.Cells, cell);
@@ -119,13 +105,12 @@ namespace Grid.GridStates
                     cell.MarkAsHighlighted();
                     continue;
                 }
-                
+
                 if (_gridObject.IsInteractableFrom(cell))
                 {
                     _gridObject.Cell.MarkAsInteractable();
                 }
                 else _gridObject.Cell.UnMark();
-                
             }
         }
 
@@ -134,6 +119,12 @@ namespace Grid.GridStates
             unit.OnUnitSelected();
             unitCell = unit.Cell;
 
+            MarkCellsBack();
+
+        }
+
+        private void MarkCellsBack()
+        {
             pathsInRange = unit.GetAvailableDestinations(StateManager.Cells);
             IEnumerable<Cell> _cellsNotInRange = StateManager.Cells.Except(pathsInRange);
 
@@ -153,7 +144,7 @@ namespace Grid.GridStates
                 if(_object.IsInteractable)
                     _object.Cell.MarkAsInteractable();
             }
-            
+
             foreach (Unit _currentUnit in StateManager.Units)
             {
                 if (_currentUnit.playerNumber.Equals(unit.playerNumber))
@@ -165,10 +156,6 @@ namespace Grid.GridStates
                     unitsInRange.Add(_currentUnit);
                 }
             }
-
-            if (unitCell.GetNeighbours(StateManager.Cells).FindAll(c => c.movementCost <= unit.BattleStats.MP).Count == 0
-                && unitsInRange.Count == 0)
-                unit.SetState(new UnitStateMarkedAsFinished(unit));
         }
         public override void OnStateExit()
         {

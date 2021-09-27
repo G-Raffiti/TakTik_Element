@@ -66,9 +66,9 @@ namespace Units
             baseStats = monster.Stats();
             BattleStats = new BattleStats(baseStats + Inventory.GearStats());
             total = BattleStats;
-            deck.Initialize(monster.Skill, Relics);
+            deck.InitializeForMonster(monster.Skill, Relics);
             
-            skill.CreateSkill(this);
+            skill.UpdateSkill(0,this);
             
             
             
@@ -88,10 +88,7 @@ namespace Units
         public bool IsUnitTargetable(Unit other, Cell sourceCell)
         {
             List<Cell> inRange = new List<Cell>();
-            foreach (Cell _cell in Zone.GetRange(skill.Range, sourceCell))
-            {
-                inRange.AddRange(skill.GetZoneOfEffect(_cell).Except(inRange));
-            }
+            inRange.AddRange(skill.Range.NeedView ? Zone.CellsInView(skill) : Zone.CellsInRange(skill));
 
             return inRange.Contains(other.Cell);
         }
@@ -120,6 +117,24 @@ namespace Units
             skill.UseSkill(_cell);
         }
 
+
+        public void ShowRange()
+        {
+            foreach (Cell _cell in BattleStateManager.instance.Cells)
+            {           
+                _cell.UnMark();
+            }
+            foreach (Cell _cellInRange in Zone.GetRange(skill.Range, Cell))
+            {
+                _cellInRange.MarkAsUnReachable();
+            }
+
+            foreach (Cell _cell in Zone.CellsInView(skill))
+            {
+                _cell.MarkAsInteractable();
+            }
+        }
+        
         public override IEnumerator OnDestroyed()
         {
             isDying = true;

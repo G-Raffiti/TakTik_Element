@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Cells;
 using Grid;
@@ -13,7 +14,7 @@ using static UnityEngine.Vector2;
 namespace Skills._Zone
 {
     public enum EZone 
-    { Self, Basic, Contact, Line, Ranged ,Square, Cross, Cone}
+    { Self, Basic, Contact, Line, Ranged ,Square, Cross, Cone, Perpendicular}
     // Self = only sender, Basic = get cell distance in all directions, Contact = only neighbours of the sender, Line = 1 Direction, Ranged = Basic - Contact, Cross = Line in all 4 Directions 
     
     public enum EAffect
@@ -45,6 +46,7 @@ namespace Skills._Zone
                 case EZone.Ranged: return Ranged(cell, range.Radius);
                 case EZone.Line: return GetLine(cell, range.Radius);
                 case EZone.Cone: return GetCone(cell, range.Radius);
+                case EZone.Perpendicular: return GetPerpendicular(cell, range.Radius);
                 default: return new List<Cell>(1) {cell};
             }
         }
@@ -55,7 +57,7 @@ namespace Skills._Zone
         /// <param name="range">skill Range</param>
         /// <param name="cell">unit's Cell who play the skill</param>
         /// <returns></returns>
-        public static IEnumerable<Cell> GetRange(Range range, Cell cell)
+        public static List<Cell> GetRange(Range range, Cell cell)
         {
             switch (range.RangeType)
             {
@@ -89,7 +91,7 @@ namespace Skills._Zone
             List<Cell> _ret = new List<Cell>();
             foreach (Vector2 _direction in Directions)
             {
-                for (int i = 0; i < radius; i++)
+                for (int i = 0; i < radius + 1; i++)
                 {
                     Cell _cellInRange = BattleStateManager.instance.Cells.Find(c => c.OffsetCoord == cell.OffsetCoord + _direction * i);
                     if (_cellInRange == null) continue;
@@ -102,14 +104,7 @@ namespace Skills._Zone
 
         private static List<Cell> Ranged(Cell cell, int radius)
         {
-            List<Cell> _ret = Basic(cell, radius);
-            _ret.Remove(cell);
-            foreach (Cell _neighbour in cell.Neighbours)
-            {
-                _ret.Remove(_neighbour);
-            }
-
-            return _ret;
+            return new List<Cell>(BattleStateManager.instance.Cells.Where(c => c.GetDistance(cell) <= radius).ToList()).Where(_cell => _cell.GetDistance(cell) > 2).ToList();
         }
 
         public static Vector2 Direction(Cell start, Cell destination)
@@ -160,27 +155,29 @@ namespace Skills._Zone
 
         private static List<Cell> GetCone(Cell cell, int radius)
         {
-            List<Cell> _ret = new List<Cell>(){};
+            List<Cell> _ret = new List<Cell>() { };
             Vector2 direction = GetDirection(cell);
 
-            List<Cell> _baseLine = new List<Cell>(){cell};
-            for (int i = 1; i < radius + 1; i++)
+            List<Cell> _baseLine = new List<Cell>() {cell};
+            for (int i = 0; i < radius + 1; i++)
             {
                 if (BattleStateManager.instance.Cells.Find(c =>
                     c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * i) != null)
                     _baseLine.Add(BattleStateManager.instance.Cells.Find(c =>
-                    c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * i));
-                if(BattleStateManager.instance.Cells.Find(c =>
+                        c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * i));
+                if (BattleStateManager.instance.Cells.Find(c =>
                     c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * -i) != null)
                     _baseLine.Add(BattleStateManager.instance.Cells.Find(c =>
-                    c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * -i));
+                        c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * -i));
             }
 
             foreach (Cell baseCell in _baseLine)
             {
-                for (int i = 0; i < radius - (baseCell.GetDistance(cell)/2); i++)
+                for (int i = 0; i < radius + 1 - (baseCell.GetDistance(cell)) / 2; i++)
                 {
-                    Cell _cellInRange = BattleStateManager.instance.Cells.Find(c => c.OffsetCoord == baseCell.OffsetCoord + direction * i);
+                    Cell _cellInRange =
+                        BattleStateManager.instance.Cells.Find(c =>
+                            c.OffsetCoord == baseCell.OffsetCoord + direction * i);
                     if (_cellInRange == null) continue;
                     _ret.Add(_cellInRange);
                 }
@@ -188,6 +185,27 @@ namespace Skills._Zone
 
             return _ret;
         }
+
+        private static List<Cell> GetPerpendicular(Cell cell, int radius)
+        {
+            List<Cell> _ret = new List<Cell>();
+            List<Cell> _line = new List<Cell>();
+            if (Math.Abs(GetDirection(cell).y) > 0)
+            {
+                _line = new List<Cell>(
+                    BattleStateManager.instance.Cells.Where(c => c.OffsetCoord.y == cell.OffsetCoord.y));
+            }
+            else if (Math.Abs(GetDirection(cell).x) > 0)
+            {
+                _line = new List<Cell>(
+                    BattleStateManager.instance.Cells.Where(c => c.OffsetCoord.x == cell.OffsetCoord.x));
+            }
+
+            _ret = new List<Cell>(_line.Where(c => c.GetDistance(cell) <= radius));
+
+            return _ret;
+        }
+
         #endregion
 
         /// <summary>
@@ -248,7 +266,7 @@ namespace Skills._Zone
         /// <param name="_startCell">from where you are looking</param>
         /// <param name="_cellsInRange">The List of cell you want to test (if you want to try every Cell use BattleStateManager.instance.Cells) </param>
         /// <returns></returns>
-        private static List<Cell> FieldOfView(Cell _startCell, IEnumerable<Cell> _cellsInRange)
+        private static List<Cell> FieldOfView(Cell _startCell, List<Cell> _cellsInRange)
         {
             List<Cell> _fieldOfView = new List<Cell>();
             List<Cell> _notTested = new List<Cell>(_cellsInRange);
@@ -263,6 +281,8 @@ namespace Skills._Zone
 
                 foreach (Cell _t in _inTest)
                 {
+                    if (!_cellsInRange.Contains(_t))
+                        continue;
                     if (!_fieldOfView.Contains(_t))
                     {
                         if (!_t.isTaken)
@@ -371,7 +391,7 @@ namespace Skills._Zone
                 case EZone.Cross:
                     return "<sprite name=ZoneCross>";
                 default:
-                    return "<sprite name=ZoneSelf>";
+                    return type.ToString();
             }
         }
     }

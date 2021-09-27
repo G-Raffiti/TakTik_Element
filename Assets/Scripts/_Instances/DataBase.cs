@@ -18,6 +18,7 @@ namespace _Instances
         public static DataBaseAffix Affix;
         public static DataBaseGear Gear;
         public static DataBaseBoard Board;
+        public static DataBaseSkill Skill;
 
         [SerializeField] private DataBaseMonster dataMonster;
         [SerializeField] private DataBaseRelic dataRelic;
@@ -25,6 +26,7 @@ namespace _Instances
         [SerializeField] private DataBaseAffix dataAffix;
         [SerializeField] private DataBaseGear dataGear;
         [SerializeField] private DataBaseBoard dataBoard;
+        [SerializeField] private DataBaseSkill dataSkill;
 
         public void Start()
         {
@@ -40,6 +42,7 @@ namespace _Instances
             Affix = dataAffix;
             Gear = dataGear;
             Board = dataBoard;
+            Skill = dataSkill;
         }
 
         public static void RunCoroutine(IEnumerator coroutine)

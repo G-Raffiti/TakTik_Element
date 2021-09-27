@@ -20,7 +20,7 @@ MonoBehaviour:
   affect: 0
   range:
     RangeType: 6
-    RangeValue: 5
+    RangeValue: 4
     ZoneType: 1
     Radius: 2
     NeedView: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
     SelfCast: 1
     CanBeModified: 0
   power:
-    Basic: 1
+    Basic: 3
     Spell: 120
     Skill: 50
     Affinity:
@@ -36,3 +36,5 @@ MonoBehaviour:
       Nature: 50
       Water: 50
   statusEffects: []
+  consumable: 0
+  cost: 2

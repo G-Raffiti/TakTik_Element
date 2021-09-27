@@ -36,3 +36,5 @@ MonoBehaviour:
       Nature: 100
       Water: 100
   statusEffects: []
+  consumable: 0
+  cost: 1

@@ -20,13 +20,13 @@ MonoBehaviour:
   affect: 0
   range:
     RangeType: 6
-    RangeValue: 2
-    ZoneType: 3
+    RangeValue: 3
+    ZoneType: 8
     Radius: 1
     NeedView: 1
     NeedTarget: 0
     SelfCast: 0
-    CanBeModified: 0
+    CanBeModified: 1
   power:
     Basic: 2
     Spell: 120
@@ -36,3 +36,5 @@ MonoBehaviour:
       Nature: 120
       Water: 120
   statusEffects: []
+  consumable: 0
+  cost: 1

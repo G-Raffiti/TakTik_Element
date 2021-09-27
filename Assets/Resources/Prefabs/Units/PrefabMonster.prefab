@@ -245,6 +245,7 @@ MonoBehaviour:
   skill: {fileID: 7113906381904510399}
   onDeathLoot: {fileID: 11400000, guid: efdfb0120a87c204eb44c4662e8a7485, type: 2}
   onDeathRelic: {fileID: 11400000, guid: e1b6e3df89647e240baa05ca6e70a64a, type: 2}
+  isPlaying: 0
 --- !u!111 &5516700394536520283
 Animation:
   m_ObjectHideFlags: 0
@@ -278,6 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEndBattle: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   Skills: []
+  UsedSkills: []
   ConsumedSkills: []
   Relics: []
 --- !u!1 &1179847596799417192
@@ -535,8 +537,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
-  newSkill: {fileID: 0}
+  OnSkillUsed: {fileID: 0}
+  Clickable: 0
+  icon: {fileID: 6295843279142771036}
   deck: {fileID: 1592649995665758689}
 --- !u!114 &1866037586018437890
 MonoBehaviour:
@@ -550,7 +553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf205233608453e9e41a6a456b285b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 6295843279142771036}
 --- !u!1 &3787124189353937577
 GameObject:
   m_ObjectHideFlags: 0

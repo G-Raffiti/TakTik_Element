@@ -26,6 +26,7 @@ namespace Skills
             
             BattleStateManager.instance.BlockInputs();
             
+            DecksSlots.ForEach(cell => cell.RemoveItem());
             MonsterSlots.ForEach(cell => cell.RemoveItem());
             MonsterName.text = _monster.UnitName;
 
@@ -63,19 +64,19 @@ namespace Skills
                 if (i == 0 && DecksSlots[0].GetInfoRelic() != null)
                 {
                     deck1.Relics.Add(DecksSlots[0].GetInfoRelic().Relic);
-                    deck1.UpdateSkill();
+                    deck1.UpdateActualSkill();
                 }
 
                 if (i == 1 && DecksSlots[1].GetInfoRelic() != null)
                 {
                     deck2.Relics.Add(DecksSlots[1].GetInfoRelic().Relic);
-                    deck2.UpdateSkill();
+                    deck2.UpdateActualSkill();
                 }
                 
                 if (i == 2 && DecksSlots[2].GetInfoRelic() != null)
                 {
                     deck3.Relics.Add(DecksSlots[2].GetInfoRelic().Relic);
-                    deck3.UpdateSkill();
+                    deck3.UpdateActualSkill();
                 }
             }
 

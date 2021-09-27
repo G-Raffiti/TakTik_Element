@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
 using _EventSystem.Listeners;
+using _Extension;
+using _Instances;
 using _ScriptableObject;
 using Cells;
 using Skills._Zone;
@@ -21,8 +23,8 @@ namespace Skills
     {
         [SerializeField] private BoolEvent onEndBattle;
         public List<SkillSO> Skills = new List<SkillSO>();
+        public List<SkillSO> UsedSkills = new List<SkillSO>();
         public List<SkillSO> ConsumedSkills = new List<SkillSO>();
-        public List<SkillSO> UsedSkills { get; set; }
         public List<RelicSO> Relics = new List<RelicSO>();
         private List<IEffect> effects = new List<IEffect>();
 
@@ -35,6 +37,7 @@ namespace Skills
         public List<StatusSO> StatusEffects { get; private set; }
         public Element Element { get; private set; }
         public EAffect Affect { get; private set; }
+        public int Cost { get; private set; }
 
         private void Start()
         {
@@ -42,35 +45,56 @@ namespace Skills
             onEndBattle.RegisterListener(this);
         }
 
+        private void OnDestroy()
+        {
+            onEndBattle.UnregisterListener(this);
+        }
+
         /// <summary>
-        /// Shuffle the Deck and change the Actual Skill to an other one
-        /// All Skills can be selected as the new one except the one that has been used
+        /// Shuffle the Deck and the Discard together and change the Actual Skill to be the first of the shuffled list.
         /// </summary>
         public void ShuffleDeck()
         {
+            Skills.AddRange(UsedSkills);
+            UsedSkills = new List<SkillSO>();
+
             if (Skills.Count < 1)
             {
-                Skills.AddRange(UsedSkills);
-                UsedSkills = new List<SkillSO>();
+                Skills.Add(DataBase.Skill.Learning);
             }
-            List<SkillSO> _list = Skills.Count == 1 ? Skills : Skills.Where(_skill => _skill != ActualSkill).ToList();
-            ActualSkill = _list[Random.Range(0, _list.Count)];
-
-            UpdateSkill();
+            
+            Skills.Shuffle();
+            NextSkill();
         }
 
-        public void UpdateSkill()
+        /// <summary>
+        /// Method Called when a Skill is Used to find the next one.
+        /// </summary>
+        public void NextSkill()
         {
+            if (Skills.Count == 0)
+            {
+                ShuffleDeck();
+            }
+
+            ActualSkill = Skills[0];
+            UpdateActualSkill();
+        }
+
+        public void UpdateSkill(int index)
+        {
+            SkillSO _skill = Skills[index];
+            Cost = _skill.Cost;
             effects = new List<IEffect>();
-            range = ActualSkill.Range;
-            Power = ActualSkill.Power;
-            StatusEffects = ActualSkill.StatusEffects;
-            Element = ActualSkill.Element;
-            Affect = ActualSkill.Affect;
-            if (ActualSkill.Effect != null)
-                effects.Add(ActualSkill.Effect);
-            if (ActualSkill.GridEffect != null)
-                effects.Add(ActualSkill.GridEffect);
+            range = new Range(_skill.Range);
+            Power = new Power(_skill.Power);
+            StatusEffects = new List<StatusSO>(_skill.StatusEffects);
+            Element = _skill.Element;
+            Affect = _skill.Affect;
+            if (_skill.Effect != null)
+                effects.Add(_skill.Effect);
+            if (_skill.GridEffect != null)
+                effects.Add(_skill.GridEffect);
             
             foreach (RelicSO _relic in Relics)
             {
@@ -89,13 +113,18 @@ namespace Skills
 
             effects.Sort((_effect, _effect1) => _effect.ActionsOrder.CompareTo(_effect1.ActionsOrder));
         }
+        
+        public void UpdateActualSkill()
+        {
+            UpdateSkill(0);
+        }
 
         public void Initialize()
         {
             ShuffleDeck();
         }
-
-        #region Change Methode for Relics
+        
+    #region Change Methode for Relics
 
         /// <summary>
         /// Public Method for the Relics to change the Element of the Skills
@@ -136,8 +165,18 @@ namespace Skills
         {
             range.NeedView = _needView;
         }
+        
+        /// <summary> 
+        /// Public Method for Relics to change the Skill's Cost
+        /// </summary>
+        public void ChangeCost(int _added)
+        {
+            Cost += _added;
+            if (Cost < 0)
+                Cost = 0;
+        }
 
-        #endregion
+    #endregion
 
         /// <summary>
         /// Methode Called on Skill Use, it will trigger all Skill Effects and Grid Effects on the Affected Cells
@@ -152,11 +191,9 @@ namespace Skills
             }
 
             Debug.Log($"{_skillInfo.Unit} Use {_skillInfo.ColouredName()}");
-        if (effects.Find(_effect => _effect is Learning) != null)
+            if (effects.Find(_effect => _effect is Learning) != null)
             {
                 effects.Find(_effect => _effect is Learning).Use(_cell, _skillInfo);
-                Skills.Remove(ActualSkill);
-                ConsumedSkills.Add(ActualSkill);
                 return true;
             }
             
@@ -185,17 +222,23 @@ namespace Skills
             Skills.Remove(ActualSkill);
             if (ActualSkill.Consumable) ConsumedSkills.Add(ActualSkill);
             else UsedSkills.Add(ActualSkill);
+            NextSkill();
             
             return true;
         }
 
-        public void Initialize(SkillSO _skillSO, List<RelicSO> _relicSO)
+        /// <summary>
+        /// Method Called on Monster Spawn to initialize the Info Skill they Use.
+        /// </summary>
+        /// <param name="_skillSO"></param>
+        /// <param name="_relicSO"></param>
+        public void InitializeForMonster(SkillSO _skillSO, List<RelicSO> _relicSO)
         {
             if (_skillSO != null)
                 Skills.Add(_skillSO);
             if (_relicSO != null)
                 Relics.AddRange(_relicSO);
-            ShuffleDeck();
+            NextSkill();
         }
 
         public static IEnumerator HighlightZone(List<Cell> zone)
@@ -219,11 +262,14 @@ namespace Skills
             ConsumedSkills = new List<SkillSO>();
         }
 
-        public void LastSkill()
+        public void LearnSkill(SkillSO _monsterSkill)
         {
-            ActualSkill = Skills[Skills.Count - 1];
-
-            UpdateSkill();
+            Skills.Remove(ActualSkill);
+            ConsumedSkills.Add(ActualSkill);
+            List<SkillSO> _newList = new List<SkillSO> {_monsterSkill};
+            _newList.AddRange(Skills);
+            Skills = new List<SkillSO>(_newList);
+            NextSkill();
         }
     }
 }

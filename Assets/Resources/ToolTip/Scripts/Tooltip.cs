@@ -47,7 +47,7 @@ namespace Resources.ToolTip.Scripts
             float _rightEdgeToScreenEdgeDistance = Screen.width - (_newPos.x + backgroundRectTransform.rect.width * popupCanvas.scaleFactor) - padding;
             if (_rightEdgeToScreenEdgeDistance < 0)
             {
-                _newPos.x += _rightEdgeToScreenEdgeDistance;
+                _newPos.x = Input.mousePosition.x - backgroundRectTransform.rect.width * popupCanvas.scaleFactor - offset.x;
             }
 
             #region if the Tooltip place is not on the Left of the mouse 

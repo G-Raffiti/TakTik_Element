@@ -16,7 +16,7 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
   icon: {fileID: 21300000, guid: d50c040ac858e3c41b084977191ad501, type: 3}
   effect: {fileID: 11400000, guid: 8c734bc4710505049b4bfb0000e64a6d, type: 2}
-  gridEffect: {fileID: 11400000, guid: 39ba26b024b9f9d4484c710b43bb2d0d, type: 2}
+  gridEffect: {fileID: 0}
   affect: 1
   range:
     RangeType: 1
@@ -36,3 +36,5 @@ MonoBehaviour:
       Nature: 50
       Water: 100
   statusEffects: []
+  consumable: 0
+  cost: 1

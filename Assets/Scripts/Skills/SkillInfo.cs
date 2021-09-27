@@ -13,6 +13,7 @@ using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Range = Stats.Range;
 
 namespace Skills
@@ -23,12 +24,35 @@ namespace Skills
     public class SkillInfo : InfoBehaviour
     {
         [SerializeField] private VoidEvent OnSkillUsed;
-        [SerializeField] private InfoEvent newSkill;
+        [SerializeField] private bool Clickable;
+        [SerializeField] private Image icon;
+
+        public override void DisplayIcon()
+        {
+            if (icon != null)
+                icon.sprite = GetIcon();
+            EnableIcon();
+        }
+
+        public void EnableIcon()
+        {
+            if (icon == null) return;
+            if ((BattleStateManager.instance.PlayingUnit.playerNumber == 0 && (int) BattleStateManager.instance.PlayingUnit.BattleStats.AP > 0) || !Clickable)
+            {
+                icon.color = Color.white;
+            }
+            else icon.color = Color.gray;
+        }
         
         public SkillSO Skill { get; private set; }
         public Unit Unit { get; private set; }
         [FormerlySerializedAs("Deck")] [SerializeField] private Deck deck;
-        public Deck Deck => deck;
+        public Deck Deck
+        {
+            get => deck;
+            set => deck = value;
+        }
+
         public Range Range { get; private set; }
         public Power Power { get; private set; }
         public Element Element { get; private set; }
@@ -36,10 +60,11 @@ namespace Skills
         public int Cost { get; private set; }
         public ESkill Type { get; private set; }
         public List<Buff> Buffs { get; private set; }
-        
-        public void CreateSkill(Unit _unit)
+
+        public void UpdateSkill(int index, Unit _unit)
         {
-            Skill = deck.ActualSkill;
+            deck.UpdateSkill(index);
+            Skill = deck.Skills[index];
             Unit = _unit;
             if (Skill.Range.CanBeModified)
                 Range = deck.Range + Unit.BattleStats.Range;
@@ -47,30 +72,21 @@ namespace Skills
             Power = deck.Power + Unit.BattleStats.Power;
             Element = deck.Element;
             Affect = deck.Affect;
-            Cost = 1;
+            Cost = deck.Cost;
             Type = Skill.Type;
-            newSkill?.Raise(this);
             Buffs = new List<Buff>();
             deck.StatusEffects.ForEach(status => Buffs.Add(new Buff(Unit, status)));
         }
 
-        public void CreateSkillForPlayingUnit()
-        {
-            CreateSkill(BattleStateManager.instance.PlayingUnit);
-        }
-        
         public void UseSkill(Cell cell)
         {
             if (Unit.BattleStats.AP < Cost) return;
             if (!deck.UseSkill(this, cell)) return;
-            
+
             Unit.BattleStats.AP -= Cost;
-            if (!(Skill.Effect is Learning)) deck.ShuffleDeck();
-            else deck.LastSkill();
-            CreateSkill(BattleStateManager.instance.PlayingUnit);
-            
+
             BattleStateManager.instance.OnSkillUsed();
-            OnSkillUsed.Raise();
+            OnSkillUsed?.Raise();
         }
 
         public List<Cell> GetZoneOfEffect(Cell _cell)
@@ -116,6 +132,7 @@ namespace Skills
 
         public override void OnPointerClick(PointerEventData eventData)
         {
+            if (!Clickable) return;
             if (Unit.BattleStats.AP >= 1)
                 BattleStateManager.instance.BattleState = new BattleStateSkillSelected(BattleStateManager.instance, this);
         }

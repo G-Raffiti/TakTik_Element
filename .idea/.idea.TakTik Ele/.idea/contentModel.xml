@@ -85,6 +85,9 @@
             </e>
             <e p="Void.cs" t="Include" />
           </e>
+          <e p="_Extension" t="Include">
+            <e p="Extension.cs" t="Include" />
+          </e>
           <e p="_Instances" t="Include">
             <e p="DataBase.cs" t="Include" />
             <e p="KeepBetweenScene.cs" t="Include" />
@@ -171,7 +174,9 @@
             <e p="_Zone" t="Include">
               <e p="Zone.cs" t="Include" />
             </e>
+            <e p="AllDecks.cs" t="Include" />
             <e p="DataBaseRelic.cs" t="Include" />
+            <e p="DataBaseSkill.cs" t="Include" />
             <e p="Deck.cs" t="Include" />
             <e p="IEffect.cs" t="Include" />
             <e p="RelicChoiceUI.cs" t="Include" />
@@ -196,6 +201,7 @@
               <e p="TeleportTo.cs" t="Include" />
             </e>
             <e p="ScriptableObject_RelicEffect" t="Include">
+              <e p="Cost.cs" t="Include" />
               <e p="RelicEffect.cs" t="Include" />
               <e p="RelicEffectAffectChange.cs" t="Include" />
               <e p="RelicEffectElementSwap.cs" t="Include" />
@@ -243,6 +249,7 @@
           </e>
           <e p="UserInterface" t="Include">
             <e p="ColorSet.cs" t="Include" />
+            <e p="DeckUI.cs" t="Include" />
             <e p="Icon_UI.cs" t="Include" />
             <e p="PlayingUnitsInfo_UI.cs" t="Include" />
             <e p="SceneKeeper.cs" t="Include" />

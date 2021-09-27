@@ -25,6 +25,7 @@ namespace Skills
         [SerializeField] private List<StatusSO> statusEffects;
 
         [SerializeField] private bool consumable;
+        [SerializeField] private int cost;
 
         public string Name => name;
         public Element Element => element;
@@ -37,5 +38,6 @@ namespace Skills
         public Power Power => power;
         public List<StatusSO> StatusEffects => statusEffects;
         public bool Consumable => consumable;
+        public int Cost => cost;
     }
 }

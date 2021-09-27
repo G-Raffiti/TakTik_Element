@@ -22,7 +22,7 @@ MonoBehaviour:
     RangeType: 1
     RangeValue: 1
     ZoneType: 7
-    Radius: 3
+    Radius: 2
     NeedView: 1
     NeedTarget: 0
     SelfCast: 0
@@ -36,3 +36,5 @@ MonoBehaviour:
       Nature: 100
       Water: 120
   statusEffects: []
+  consumable: 0
+  cost: 1
