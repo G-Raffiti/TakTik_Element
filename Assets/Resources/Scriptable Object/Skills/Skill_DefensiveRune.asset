@@ -10,32 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36b6bf79595345fba0f9a3372c40b672, type: 3}
-  m_Name: Skill_Basic_Water_FrostSword
+  m_Name: Skill_DefensiveRune
   m_EditorClassIdentifier: 
-  name: Frost Sword
-  element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
-  icon: {fileID: 21300000, guid: fcea45ab634d051478288d9258cf6ef2, type: 3}
+  name: Defensive Rune
+  element: {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}
+  icon: {fileID: 21300000, guid: e10cfead34fd0af4a86f1e3010ca268f, type: 3}
   effects:
-  - {fileID: 11400000, guid: c76c6094c4075f741b58e2f0c8c3f2a8, type: 2}
+  - {fileID: 11400000, guid: 552c6bb57926019498311e4241b699b7, type: 2}
   gridEffect: {fileID: 0}
   affect: 0
   range:
-    RangeType: 2
+    RangeType: 1
     RangeValue: 0
-    ZoneType: 3
+    ZoneType: 1
     Radius: 2
-    NeedView: 1
+    NeedView: 0
     NeedTarget: 0
-    SelfCast: 0
+    SelfCast: 1
     CanBeModified: 1
   power:
-    Basic: 4
+    Basic: 0
     Spell: 100
     Skill: 100
     Affinity:
       Fire: 100
       Nature: 100
       Water: 100
-  statusEffects: []
+  statusEffects:
+  - {fileID: 11400000, guid: 98a1bfaf955b9ac46af5d494cc6829ce, type: 2}
   consumable: 0
   cost: 1

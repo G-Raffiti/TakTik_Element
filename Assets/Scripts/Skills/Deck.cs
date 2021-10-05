@@ -83,7 +83,11 @@ namespace Skills
 
         public void UpdateSkill(int index)
         {
-            SkillSO _skill = Skills[index];
+            UpdateSkill(Skills[index]);
+        }
+
+        public void UpdateSkill(SkillSO _skill)
+        {
             Cost = _skill.Cost;
             effects = new List<IEffect>();
             range = new Range(_skill.Range);
@@ -91,8 +95,8 @@ namespace Skills
             StatusEffects = new List<StatusSO>(_skill.StatusEffects);
             Element = _skill.Element;
             Affect = _skill.Affect;
-            if (_skill.Effect != null)
-                effects.Add(_skill.Effect);
+            if (_skill.Effects.Count > 0)
+                effects.AddRange(_skill.Effects);
             if (_skill.GridEffect != null)
                 effects.Add(_skill.GridEffect);
             
@@ -197,26 +201,17 @@ namespace Skills
                 return true;
             }
             
+
+            
+            //TODO : Play Skill animation
             List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
             _zone.Sort((_cell1, _cell2) =>
                 _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
-            
-            //TODO : Play Skill animation
             StartCoroutine(HighlightZone(_zone));
             
             foreach (IEffect _effect in effects)
             {
                 _effect.Use(_cell, _skillInfo);
-            }
-            
-            foreach (Buff _buff in _skillInfo.Buffs)
-            {
-                foreach (Cell _cellAffected in _zone)
-                {
-                    Unit _unitAffected = Zone.GetUnitAffected(_cellAffected, _skillInfo);
-                    if (_unitAffected != null)
-                        _unitAffected.ApplyBuff(_buff);
-                }
             }
 
             Skills.Remove(ActualSkill);

@@ -10,32 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36b6bf79595345fba0f9a3372c40b672, type: 3}
-  m_Name: Skill_BasicHeal
+  m_Name: Skill_Acrobatics
   m_EditorClassIdentifier: 
-  name: Basic Heal
-  element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
-  icon: {fileID: 21300000, guid: d50c040ac858e3c41b084977191ad501, type: 3}
+  name: Acrobatics
+  element: {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}
+  icon: {fileID: 21300000, guid: 79bb64894c126064bb46fc82e61dc276, type: 3}
   effects:
-  - {fileID: 11400000, guid: 8c734bc4710505049b4bfb0000e64a6d, type: 2}
+  - {fileID: 11400000, guid: c76c6094c4075f741b58e2f0c8c3f2a8, type: 2}
   gridEffect: {fileID: 0}
   affect: 0
   range:
     RangeType: 1
-    RangeValue: 3
-    ZoneType: 0
+    RangeValue: 0
+    ZoneType: 1
     Radius: 0
     NeedView: 1
     NeedTarget: 1
-    SelfCast: 0
-    CanBeModified: 0
+    SelfCast: 1
+    CanBeModified: 1
   power:
-    Basic: 4
+    Basic: 0
     Spell: 100
-    Skill: 0
+    Skill: 100
     Affinity:
-      Fire: 50
-      Nature: 50
+      Fire: 100
+      Nature: 100
       Water: 100
-  statusEffects: []
+  statusEffects:
+  - {fileID: 11400000, guid: f9845b0e51c847c4b834da63ed1bf017, type: 2}
   consumable: 0
   cost: 1

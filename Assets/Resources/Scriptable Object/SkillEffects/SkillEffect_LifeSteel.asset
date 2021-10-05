@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SkillEffect_LifeSteel
   m_EditorClassIdentifier: 
   actionsOrder: 6
-  type: 6
+  type: 5
   percent: 25

@@ -15,7 +15,8 @@ MonoBehaviour:
   name: Frost Sword
   element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
   icon: {fileID: 21300000, guid: ec6a2c45e3d7c464f948470fd4c5b698, type: 3}
-  effect: {fileID: 11400000, guid: c76c6094c4075f741b58e2f0c8c3f2a8, type: 2}
+  effects:
+  - {fileID: 0}
   gridEffect: {fileID: 0}
   affect: 0
   range:
@@ -26,7 +27,7 @@ MonoBehaviour:
     NeedView: 0
     NeedTarget: 0
     SelfCast: 1
-    CanBeModified: 0
+    CanBeModified: 1
   power:
     Basic: 0
     Spell: 0
@@ -36,6 +37,6 @@ MonoBehaviour:
       Nature: 0
       Water: 0
   statusEffects:
-  - {fileID: 11400000, guid: 97177b0e3fa996540ae8446c59cc7d78, type: 2}
+  - {fileID: 11400000, guid: 59348793ef1b0a449bf96d3e718c3d9f, type: 2}
   consumable: 0
   cost: 1

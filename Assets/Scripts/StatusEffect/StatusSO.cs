@@ -17,7 +17,7 @@ namespace StatusEffect
         public abstract void ActiveEffect(Buff _buff, Unit _unit);
         public abstract void PassiveEffect(Buff _buff, Unit _unit);
         public abstract void EndPassiveEffect(Buff _buff, Unit _unit);
-        public abstract int GetPower(Unit sender);
+        public abstract float GetPower(Unit sender);
         public abstract int GetDuration(Unit sender);
         public abstract string InfoEffect(Buff _buff);
         public abstract string InfoApply();
@@ -33,6 +33,6 @@ namespace StatusEffect
             return ret;
         }
 
-        public string Name => $"<color#={ColorUtility.ToHtmlStringRGB(Element.TextColour)}>{name}</color>";
+        public string Name => $"<color=#{ColorUtility.ToHtmlStringRGB(Element.TextColour)}>{name}</color>";
     }
 }

@@ -44,7 +44,7 @@ namespace Skills.ScriptableObject_Effect
             {
                 Unit _unitAffected = Zone.GetUnitAffected(_cellInZone, _skillInfo);
                 if (_unitAffected != null)
-                    ret.Add(_cellInZone, _unitAffected.DamageTaken(_skillInfo.Unit, _heal, _skillInfo.Element));
+                    ret.Add(_cellInZone, _unitAffected.DamageTaken(_heal, _skillInfo.Element));
             }
 
             return ret;

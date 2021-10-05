@@ -84,6 +84,7 @@
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderUI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Void.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
+     <Compile Include="Assets\Scripts\Skills\AllDecks.cs" />
      <Compile Include="Assets\Scripts\Gears\Gear.cs" />
      <Compile Include="Assets\Scripts\BattleOver\BossBattle.cs" />
      <Compile Include="Assets\Scripts\Stats\Power.cs" />
@@ -116,6 +117,7 @@
      <Compile Include="Assets\Scripts\Pathfinding\DataStructs\IPriorityQueue.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityUnitEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\BoolEvent.cs" />
+     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\Cost.cs" />
      <Compile Include="Assets\Scripts\Skills\DataBaseSkill.cs" />
      <Compile Include="Assets\Scripts\Grid\UnitGenerators\IUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\Gears\GearSO.cs" />
@@ -169,6 +171,7 @@
      <Compile Include="Assets\Scripts\Skills\RelicSO.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\VoidEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\SkillEvent.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\DeckUI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityFloatEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityBoolEvent.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavingLoading.cs" />
@@ -190,12 +193,13 @@
      <Compile Include="Assets\Scripts\SceneManagement\ChangeScene.cs" />
      <Compile Include="Assets\Scripts\_DragAndDropSystem\DragAndDropItem.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\PushFromImpact.cs" />
+     <Compile Include="Assets\Scripts\StatusEffect\StatsBonus.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\Stats\AffixSO.cs" />
      <Compile Include="Assets\Scripts\Pathfinding\DataStructs\HeapPriorityQueue.cs" />
      <Compile Include="Assets\Scripts\Skills\Deck.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\TeleportTo.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Curse.cs" />
+     <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\ApplyBuff.cs" />
      <Compile Include="Assets\Scripts\Units\IMovable.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectZoneType.cs" />
      <Compile Include="Assets\Scripts\UserInterface\ColorSet.cs" />
@@ -205,9 +209,6 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\CellEvent.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Stone.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\DeckUI.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\Cost.cs" />
-     <Compile Include="Assets\Scripts\Skills\AllDecks.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

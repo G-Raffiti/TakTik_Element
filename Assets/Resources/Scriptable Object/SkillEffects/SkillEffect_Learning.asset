@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SkillEffect_Learning
   m_EditorClassIdentifier: 
   actionsOrder: 0
+  type: 6

@@ -93,6 +93,16 @@ namespace Units
             return inRange.Contains(other.Cell);
         }
 
+        public void Attack(Unit other)
+        {
+            skill.UseSkill(DataBase.Skill.MonsterAttack, other.Cell, this);
+        }
+
+        public override bool IsUnitAttackable(Unit other, Cell sourceCell)
+        {
+            return Zone.GetRange(BattleStats.Range + DataBase.Skill.MonsterAttack.Range, cell).Contains(other.Cell);
+        }
+
         /// <summary>
         /// Try to use the Monsters Skill without damaging any ally
         /// </summary>
@@ -101,8 +111,9 @@ namespace Units
         public void UseSkill(Unit _target, List<Unit> _myUnits)
         {
             if (!IsUnitTargetable(_target, Cell)) return;
-            Cell _cell = null;
+            Cell _cell = _target.Cell;
             bool ally = false;
+            
             foreach (Cell _cellInRange in Zone.GetRange(skill.Range, Cell))
             {
                 _myUnits.ForEach(u =>

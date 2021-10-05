@@ -16,7 +16,7 @@ namespace Skills
         [SerializeField] private Element element;
         [SerializeField] private Sprite icon;
         
-        [SerializeField] private SkillEffect effect;
+        [SerializeField] private List<SkillEffect> effects;
         [SerializeField] private SkillGridEffect gridEffect;
         [SerializeField] private EAffect affect;
         
@@ -30,8 +30,8 @@ namespace Skills
         public string Name => name;
         public Element Element => element;
         public Sprite Icon => icon;
-        public ESkill Type => effect.Type;
-        public SkillEffect Effect => effect;
+        public ESkill Type => effects[0].Type;
+        public List<SkillEffect> Effects => effects;
         public SkillGridEffect GridEffect => gridEffect;
         public EAffect Affect => affect;
         public Range Range => range;

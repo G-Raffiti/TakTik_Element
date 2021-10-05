@@ -221,11 +221,19 @@ namespace Grid
         public virtual void EndTurn()
         {
             if (PlayingUnit is Monster {isPlaying: true}) return;
-            
+
             BattleState = new BattleStateBlockInput(this);
+            
             if (endCondition.battleIsOver(this))
             {
                 onBattleIsOver.Raise(endCondition.WinCondition);
+            }
+            
+            Cells.ForEach(c => c.OnEndTurn());
+            
+            foreach (Cell _cell in Cells.Where(c => c.isTaken && c.CurrentUnit != null && c.Buffs.Count > 0))
+            {
+                _cell.Buffs.ForEach(b => b.OnEndTurn(_cell.CurrentUnit));
             }
 
             PlayingUnit.OnTurnEnd();
@@ -292,10 +300,12 @@ namespace Grid
         private void StartTurn()
         {
             BattleState = new BattleStateBlockInput(this);
+
             TurnCount += 1f / Units.Count;
             foreach (Unit _unit in Units)
             {
                 _unit.Buffs.ForEach(b => b.OnStartTurn(_unit));
+                _unit.Cell.Buffs.ForEach(b => b.OnStartTurn(_unit));
             }
 
             foreach (GridObjects.GridObject _gridObject in GridObjects)

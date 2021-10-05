@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _SaveSystem;
 using Grid;
 using GridObjects;
@@ -82,6 +83,22 @@ namespace Cells
                 buffs.Add(buff);
                 effect.sprite = buff.Effect.OnFloorSprite;
             }
+        }
+
+        public override void OnEndTurn()
+        {
+            buffs.ForEach(b => b.Duration -= 1);
+            List<Buff> newList = new List<Buff>(Buffs);
+            newList.ForEach(b =>
+            {
+                if (b.Duration <= 0)
+                {
+                    buffs.Remove(b);
+                }
+            });
+            if (Buffs.Count <= 0)
+                effect.sprite = null;
+            
         }
         
         public override List<Cell> Neighbours

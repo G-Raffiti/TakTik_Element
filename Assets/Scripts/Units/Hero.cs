@@ -53,6 +53,10 @@ namespace Units
             unit.UnitDestroyed += Unit_UnitDestroyed;
         }
 
+        public void UpdateHP()
+        {
+            ActualHP = unit.BattleStats.HP;
+        }
         private void Unit_UnitDestroyed(object _sender, DeathEventArgs _e)
         {
             isDead = true;
@@ -60,7 +64,7 @@ namespace Units
 
         private void Unit_UnitAttacked(object _sender, AttackEventArgs _e)
         {
-            if (_sender is Unit { } u) ActualHP = u.BattleStats.HP;
+            UpdateHP();
         }
 
         public object CaptureState()

@@ -19,7 +19,7 @@ namespace StatusEffect
         {
         }
 
-        public override int GetPower(Unit sender)
+        public override float GetPower(Unit sender)
         {
             return sender.BattleStats.Power.Magic(Element.Type);
         }

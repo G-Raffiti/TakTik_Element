@@ -38,6 +38,7 @@ namespace Units
         {
             base.UpdateStats();
             hero.Inventory.gears = new List<Gear>(Inventory.gears);
+            hero.UpdateHP();
         }
     }
 }

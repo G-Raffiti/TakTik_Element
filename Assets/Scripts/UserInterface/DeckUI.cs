@@ -32,10 +32,13 @@ namespace UserInterface
             for (int i = 0; i < transform.childCount; i++)
             {
                 skills.Add(transform.GetChild(i).gameObject.GetComponent<SkillInfo>(), transform.childCount - i - 1);
-                Debug.Log(transform.GetChild(i).gameObject + "" + (transform.childCount - i - 1));
             }
 
-            decks = GameObject.Find("Decks").GetComponent<AllDecks>().Decks;
+            decks = new List<Deck>();
+            foreach (Transform _child in GameObject.Find("Decks").transform)
+            {
+                decks.Add(_child.gameObject.GetComponent<Deck>());
+            }
             int number = transform.GetSiblingIndex();
             foreach (SkillInfo _skillsKey in skills.Keys)
             {

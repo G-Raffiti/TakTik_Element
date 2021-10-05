@@ -8,10 +8,9 @@ using UnityEngine;
 
 namespace Skills.ScriptableObject_Effect
 {
-    [CreateAssetMenu(fileName = "SkillEffect_Curse", menuName = "Scriptable Object/Skills/Skill Effect Curse")]
-    public class Curse : SkillEffect
+    [CreateAssetMenu(fileName = "SkillEffect_ApplyBuff", menuName = "Scriptable Object/Skills/Skill Effect Buff")]
+    public class ApplyBuff : SkillEffect
     {
-        //Todo : Curse et le Deck font le même effet d'application des Buffs => à changer !
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
             foreach (Cell cell in Zone.GetZone(_skillInfo.Range, _cell).Where(cell => cell.CurrentUnit != null))
@@ -38,7 +37,7 @@ namespace Skills.ScriptableObject_Effect
         
         public override string InfoEffect()
         {
-            return "do Damage according to the Unit's Skill Power and Element Affinity";
+            return "";
         }
     }
 }
