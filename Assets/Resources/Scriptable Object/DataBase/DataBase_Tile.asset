@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: DataBase_Tile
   m_EditorClassIdentifier: 
   AllCells:
-  - {fileID: 4402840596544465073, guid: a082fed6373903c41ab67db3bf4cd458, type: 3}
-  - {fileID: 1723400094342632241, guid: 4aed18593e4f2f54aa7c2e28dc8c0629, type: 3}
-  - {fileID: 3514851088044678175, guid: 1fcd430318543c349bf57aebbe783c91, type: 3}
-  - {fileID: 1723400094342632241, guid: d4bceb606d0c6d644b2106b30b663ea8, type: 3}
+  - {fileID: 11400000, guid: 856ae6d57f583cb4ba0187587762fdff, type: 2}
+  - {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+  - {fileID: 11400000, guid: 2825041786cedb34599cefae29701ca3, type: 2}
+  - {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+  tilePrefab: {fileID: 6712281766112923691, guid: 8beabed794f7e654597950d6a3cbbf21,
+    type: 3}
   gridObjectPrefab: {fileID: 3480699985351151856, guid: b884904d45c69b54884ca6d210d373bd,
     type: 3}
+  corruptionSO: {fileID: 11400000, guid: a331d7623793a7f458530ea66cc3069e, type: 2}

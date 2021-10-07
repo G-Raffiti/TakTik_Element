@@ -3,7 +3,7 @@ using Cells;
 using UnityEditor;
 using UnityEngine;
 
-namespace TbsFramework.EditorUtils.GridGenerators
+namespace Editor.GridGenerators
 {
     /// <summary>
     /// Generates rectangular shaped grid of hexagons.
@@ -38,7 +38,7 @@ namespace TbsFramework.EditorUtils.GridGenerators
                     hexagon.transform.position = new Vector3((j * hexSize.x * 0.75f), (i * hexSize.y) + (j % 2 == 0 ? 0 : hexSize.y * 0.5f), 0);
                     hexagon.GetComponent<Hexagon>().OffsetCoord = new Vector2(Width - j - 1, Height - i - 1);
                     hexagon.GetComponent<Hexagon>().hexGridType = hexGridType;
-                    hexagon.GetComponent<Hexagon>().movementCost = 1;
+                    hexagon.GetComponent<Hexagon>().MovementCost = 1;
                     hexagons.Add(hexagon.GetComponent<Cell>());
 
                     hexagon.transform.parent = CellsParent;

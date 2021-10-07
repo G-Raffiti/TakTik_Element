@@ -1,19 +1,18 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
-using System;
+using System.Reflection;
 using Cells;
+using Editor.GridGenerators;
 using Grid;
 using Grid.UnitGenerators;
 using GridObjects;
 using Gui;
 using Players;
-using TbsFramework.EditorUtils.GridGenerators;
-using Units;
+using UnityEditor;
+using UnityEngine;
 
-namespace TbsFramework.EditorUtils
+namespace Editor
 {
     class GridHelper : EditorWindow
     {
@@ -43,8 +42,7 @@ namespace TbsFramework.EditorUtils
         Dictionary<string, object> parameterValues;
 
         BoolWrapper tileEditModeOn = new BoolWrapper(false);
-        [SerializeField]
-        Cell tilePrefab;
+        [SerializeField] private CellSO tilePrefab;
         int tilePaintingRadius = 1;
         int lastPaintedHash = -1;
 
@@ -276,7 +274,7 @@ namespace TbsFramework.EditorUtils
             }
             tilePaintingRadius = EditorGUILayout.IntSlider(new GUIContent("Brush radius"), tilePaintingRadius, 1, 4);
             EditorGUI.BeginChangeCheck();
-            tilePrefab = (Cell)EditorGUILayout.ObjectField("Tile prefab", tilePrefab, typeof(Cell), true, new GUILayoutOption[0]);
+            tilePrefab = (CellSO)EditorGUILayout.ObjectField("Tile prefab", tilePrefab, typeof(CellSO), true, new GUILayoutOption[0]);
             if (EditorGUI.EndChangeCheck())
             {
                 lastPaintedHash = -1;
@@ -465,7 +463,7 @@ namespace TbsFramework.EditorUtils
             HandleUtility.Repaint();
             if (Event.current.button == 0 && (Event.current.type == EventType.MouseDrag || Event.current.type == EventType.MouseDown)) 
             {
-                if (unitEditModeOn.value && selectedCell.isTaken)
+                if (unitEditModeOn.value && selectedCell.IsTaken)
                 {
                     return;
                 }
@@ -520,25 +518,8 @@ namespace TbsFramework.EditorUtils
                     List<Cell> cellsInRange = cells.Where(c => c.GetDistance(selectedCell) <= tilePaintingRadius - 1).ToList();
                     foreach (Cell c in cellsInRange)
                     {
-                        if (tilePrefab == PrefabUtility.GetCorrespondingObjectFromSource(c))
-                        {
-                            continue;
-                        }
-                        Cell newCell = (PrefabUtility.InstantiatePrefab(tilePrefab.gameObject, c.transform.parent) as GameObject).GetComponent<Cell>();
-                        newCell.transform.position = c.transform.position;
-
-                        try
-                        {
-                            c.CopyFields(newCell);
-                            Undo.RegisterCreatedObjectUndo(newCell.gameObject, "Tile painting");
-                            Undo.DestroyObjectImmediate(c.gameObject);
-                        }
-                        catch (Exception e)
-                        {
-                            Debug.LogError(string.Format("{0} - Probably you are using wrong tile prefab", e.Message));
-                            DestroyImmediate(newCell.gameObject);
-                        }
-
+                        c.CellSO = tilePrefab;
+                        tilePrefab.Spawn(c as TileIsometric);
                     }
                     Undo.CollapseUndoOperations(group);
                     Undo.IncrementCurrentGroup();
@@ -694,9 +675,6 @@ namespace TbsFramework.EditorUtils
             unitGenerator.unitsParent = objects.transform;
             unitGenerator.cellsParent = cellGrid.transform;
 
-            /*var guiControllerScript = guiController.GetComponent<GUIController>();
-            guiControllerScript.cellGrid = cellGrid.GetComponent<CellGrid>();*/
-
             foreach (string fieldName in parameterValues.Keys)
             {
                 FieldInfo prop = generator.GetType().GetField(fieldName);
@@ -707,7 +685,7 @@ namespace TbsFramework.EditorUtils
             }
             GridInfo gridInfo = generator.GenerateGrid();
             
-            Camera camera = Camera.main;
+            Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
             camera.transform.position = gridInfo.Center;
             camera.transform.position -= new Vector3(0, 0, (gridInfo.Dimensions.x > gridInfo.Dimensions.y ? gridInfo.Dimensions.x : gridInfo.Dimensions.y) * Mathf.Sqrt(3) / 2);
             camera.orthographicSize = camera.transform.position.x + 1;
@@ -764,11 +742,11 @@ namespace TbsFramework.EditorUtils
                         lastPaintedHash = -1;
                         if (PrefabUtility.GetPrefabInstanceStatus(Selection.activeGameObject) == PrefabInstanceStatus.Connected)
                         {
-                            tilePrefab = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject).GetComponent<Cell>();
+                            tilePrefab = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject).GetComponent<Cell>().CellSO;
                         }
                         else
                         {
-                            tilePrefab = Selection.activeGameObject.GetComponent<Cell>();
+                            tilePrefab = Selection.activeGameObject.GetComponent<Cell>().CellSO;
                         }
                         Repaint();
                     }

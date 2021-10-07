@@ -19,6 +19,7 @@ namespace GridObjects
     {
         [SerializeField] private GridObjectSO gridObject;
         [SerializeField] private CellEvent gridObjectDestroyed;
+        [SerializeField] private SpriteRenderer spriteRenderer;
         public GridObjectSO GridObjectSO
         {
             get => gridObject;
@@ -26,6 +27,12 @@ namespace GridObjects
         }
 
         private bool isUsed = false;
+
+        public override void Move(Cell destinationCell, List<Cell> path)
+        {
+            if (!GridObjectSO.Movable) return;
+            base.Move(destinationCell, path);
+        }
 
         /// <summary>
         /// Coroutine that play the Movement Animation on the Grid
@@ -67,7 +74,11 @@ namespace GridObjects
 
         public void Initialize()
         {
-            GetComponent<SpriteRenderer>().sprite = gridObject.Image;
+            spriteRenderer.sprite = gridObject.Image;
+            float halfHeight = spriteRenderer.bounds.size.y/2;
+            Debug.Log(halfHeight);
+            spriteRenderer.gameObject.transform.localPosition = new Vector3(0, halfHeight-0.4f);
+            Debug.Log(spriteRenderer.gameObject.transform.localPosition);
             AutoSortOrder();
             Cell.Take(this);
         }
@@ -125,7 +136,7 @@ namespace GridObjects
         
         public override void AutoSortOrder()
         {
-            GetComponent<SpriteRenderer>().sortingOrder = 100 - (int)transform.position.y;
+            spriteRenderer.sortingOrder = 500 - (int)(transform.position.y/0.577f);
         }
         
         public override string getName()

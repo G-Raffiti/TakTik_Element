@@ -11,13 +11,13 @@ namespace Skills.ScriptableObject_GridEffect
     {
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            if (_cell.isWalkable)
+            if (_cell.IsWalkable)
             {
                 Teleport(_cell, _skillInfo.Unit);
             }
             else
             {
-                List<Cell> Neighbours = _cell.Neighbours.Where(_neighbour => _neighbour.isWalkable).ToList();
+                List<Cell> Neighbours = _cell.Neighbours.Where(_neighbour => _neighbour.IsWalkable).ToList();
                 Neighbours.Sort((c1,c2) => c1.GetDistance(_skillInfo.Unit.Cell).CompareTo(c2.GetDistance(_skillInfo.Unit.Cell)));
                 
                 if (Neighbours.Count >= 1)
@@ -47,7 +47,7 @@ namespace Skills.ScriptableObject_GridEffect
 
         public override bool CanUse(Cell _cell, SkillInfo _skillInfo)
         {
-            return _cell.isWalkable || _cell.Neighbours.Any(_neighbour => _neighbour.isWalkable || _skillInfo.Unit.Cell == _cell);
+            return _cell.IsWalkable || _cell.Neighbours.Any(_neighbour => _neighbour.IsWalkable || _skillInfo.Unit.Cell == _cell);
         }
     }
 }

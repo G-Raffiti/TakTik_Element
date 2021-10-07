@@ -1,11 +1,11 @@
 ﻿using Grid.UnitGenerators;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
-namespace TbsFramework.EditorUtils
+namespace Editor
 {
     [CustomEditor(typeof(CustomUnitGenerator))]
-    public class CustomUnitGeneratorHelper : Editor
+    public class CustomUnitGeneratorHelper : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {

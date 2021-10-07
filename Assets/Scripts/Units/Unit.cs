@@ -181,7 +181,7 @@ namespace Units
 
         public override void AutoSortOrder()
         {
-            unitSprite.sortingOrder = 100 - (int)transform.position.y;
+            unitSprite.sortingOrder = 500 - (int)(transform.position.y/0.577f);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Units
         public override IEnumerator MovementAnimation(List<Cell> path)
         {
             IsMoving = true;
-            Color[] _colors = getColors();
+            TileIsometric.CellState _state = ((TileIsometric) Cell).State;
             path.Reverse();
             foreach (Cell _cell in path)
             {
@@ -208,7 +208,7 @@ namespace Units
             }
 
             IsMoving = false;
-            MarkBack(_colors);
+            MarkBack(_state);
             OnMoveFinished();
         }
         
@@ -225,14 +225,14 @@ namespace Units
         /// </summary>
         public virtual bool IsCellMovableTo(Cell _cell)
         {
-            return _cell.isWalkable;
+            return _cell.IsWalkable;
         }
         /// <summary>
         /// Method indicates if unit is capable of moving through cell given as parameter.
         /// </summary>
         public virtual bool IsCellTraversable(Cell _cell)
         {
-            return _cell.isWalkable;
+            return _cell.IsWalkable;
         }
         
         /// <summary>
@@ -251,7 +251,7 @@ namespace Units
                 }
                 List<Cell> _path = _paths[_key];
 
-                float _pathCost = _path.Sum(c => c.movementCost);
+                float _pathCost = _path.Sum(c => c.MovementCost);
                 if (_pathCost <= BattleStats.MP)
                 {
                     cachedPaths.Add(_key, _path);
@@ -304,7 +304,7 @@ namespace Units
                     _ret[_cell] = new Dictionary<Cell, float>();
                     foreach (Cell _neighbour in _cell.GetNeighbours(cells).FindAll(IsCellTraversable))
                     {
-                        _ret[_cell][_neighbour] = _neighbour.movementCost;
+                        _ret[_cell][_neighbour] = _neighbour.MovementCost;
                     }
                 }
             }
@@ -436,8 +436,6 @@ namespace Units
 
         public ColorSet colorSet;
         [Header("Unity Infos")]
-        [SerializeField] private SpriteRenderer frame;
-        [SerializeField] private SpriteRenderer back;
         [SerializeField] protected SpriteRenderer unitSprite;
         [SerializeField] private TextMeshProUGUI info;
         [SerializeField] private TextMeshProUGUI shadow;
@@ -459,26 +457,11 @@ namespace Units
         }
 
         /// <summary>
-        /// Method to get the ActualMarking
-        /// </summary>
-        public Color[] getColors()
-        {
-            Color[] _colorSaved = new Color[3];
-            _colorSaved[0] = back.color;
-            _colorSaved[1] = frame.color;
-            _colorSaved[2] = unitSprite.color;
-
-            return _colorSaved;
-        }
-        
-        /// <summary>
         /// Method to set to the Marking
         /// </summary>
-        public void MarkBack(Color[] _colors)
+        public void MarkBack(TileIsometric.CellState state)
         {
-            back.color = _colors[0];
-            frame.color = _colors[1];
-            unitSprite.color = _colors[2];
+            ((TileIsometric)Cell).MarkAs(state);
         }
         
         /// <summary>
@@ -487,9 +470,6 @@ namespace Units
         protected void MarkAsMoving()
         {
             AutoSortOrder();
-            back.color = Colors[EColor.none];
-            frame.color = Colors[EColor.none];
-            unitSprite.color = Colors[EColor.elementFull];
         }
         
         /// <summary>
@@ -497,9 +477,7 @@ namespace Units
         /// </summary>
         public void MarkAsFriendly()
         {
-            back.color = Colors[EColor.ally] * Colors[EColor.transparency];
-            frame.color = Colors[EColor.none];
-            unitSprite.color = Colors[EColor.elementShadow];
+            cell?.UnMark();
         }
         
         /// <summary>
@@ -507,9 +485,7 @@ namespace Units
         /// </summary>
         public void MarkAsReachableEnemy()
         {
-            back.color = Colors[EColor.enemy] * Colors[EColor.transparency];
-            frame.color = Colors[EColor.enemy];
-            unitSprite.color = Colors[EColor.elementShadow];
+            cell?.MarkAsReachable();
         }
         
         /// <summary>
@@ -517,9 +493,7 @@ namespace Units
         /// </summary>
         public void MarkAsSelected()
         {
-            back.color = Colors[EColor.ally] * Colors[EColor.transparency];
-            frame.color = Colors[EColor.ally];
-            unitSprite.color = Colors[EColor.elementFull];
+            cell?.MarkAsHighlighted();
         }
         
         /// <summary>
@@ -535,9 +509,7 @@ namespace Units
         /// </summary>
         public void UnMark()
         {
-            back.color = Colors[EColor.none];
-            frame.color = Colors[EColor.none];
-            unitSprite.color = Colors[EColor.elementShadow];
+            cell?.UnMark();
         }
         
         /// <summary>
@@ -646,7 +618,7 @@ namespace Units
         public override IEnumerator OnDestroyed()
         {
             isDying = true;
-            Cell.isTaken = false;
+            Cell.FreeTheCell();
             MarkAsDestroyed();
             yield return new WaitWhile(IsAnimPlaying);
             UnitDestroyed?.Invoke(this, new DeathEventArgs(this));

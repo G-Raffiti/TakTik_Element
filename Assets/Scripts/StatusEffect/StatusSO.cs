@@ -20,7 +20,6 @@ namespace StatusEffect
         public abstract float GetPower(Unit sender);
         public abstract int GetDuration(Unit sender);
         public abstract string InfoEffect(Buff _buff);
-        public abstract string InfoApply();
         public abstract string InfoOnUnit(Buff _buff, Unit _unit);
 
         public virtual Buff AddBuff(Buff a, Buff b)
@@ -34,5 +33,7 @@ namespace StatusEffect
         }
 
         public string Name => $"<color=#{ColorUtility.ToHtmlStringRGB(Element.TextColour)}>{name}</color>";
+
+        public abstract string InfoOnFloor(Buff _buff);
     }
 }

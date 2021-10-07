@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cells;
 using UnityEditor;
+using UnityEngine;
 
-namespace TbsFramework.EditorUtils.GridGenerators
+namespace Editor.GridGenerators
 {
     /// <summary>
     /// Generates equilateral shaped grid of hexagons.
@@ -37,7 +37,7 @@ namespace TbsFramework.EditorUtils.GridGenerators
                     hexagon.transform.position = new Vector3((i * hexSize.x * 0.75f), (i * hexSize.y * 0.5f) + (j * hexSize.y), 0);
                     hexagon.GetComponent<Hexagon>().OffsetCoord = new Vector2(SideA - i - 1, SideB - j - 1 - (i / 2));
                     hexagon.GetComponent<Hexagon>().hexGridType = hexGridType;
-                    hexagon.GetComponent<Hexagon>().movementCost = 1;
+                    hexagon.GetComponent<Hexagon>().MovementCost = 1;
                     hexagons.Add(hexagon.GetComponent<Cell>());
 
                     hexagon.transform.parent = CellsParent;

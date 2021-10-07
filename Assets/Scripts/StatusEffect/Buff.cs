@@ -2,16 +2,17 @@
 using Cells;
 using Grid;
 using Units;
+using UnityEngine;
 
 namespace StatusEffect
 {
     [Serializable]
     public class Buff
     {
-        public int Duration { get; set; }
-        public float Power { get; set; }
+        public int Duration;
+        public float Power;
 
-        private StatusSO StatusEffect;
+        [SerializeField] private StatusSO StatusEffect;
         public StatusSO Effect => StatusEffect;
         public Buff(Buff _buff)
         {
@@ -43,7 +44,7 @@ namespace StatusEffect
         {
             StatusEffect = _status;
             Duration = 1000;
-            Power = tile.Power;
+            Power = 10;
         }
         
         /// <summary>
@@ -97,6 +98,15 @@ namespace StatusEffect
         public string InfoOnUnit(Buff _buff, Unit _unit)
         {
             return StatusEffect.InfoOnUnit(_buff, _unit);
+        }
+
+        /// <summary>
+        /// Info Given on CtRl holded while Hovering a Cell
+        /// </summary>
+        /// <returns></returns>
+        public string InfoBuffOnCell()
+        {
+            return StatusEffect.InfoOnFloor(this);
         }
     }
 }

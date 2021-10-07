@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cells;
 using UnityEditor;
+using UnityEngine;
 
-namespace TbsFramework.EditorUtils.GridGenerators
+namespace Editor.GridGenerators
 {
     /// <summary>
     /// Generates rectangular shaped grid of squares.
@@ -35,7 +35,7 @@ namespace TbsFramework.EditorUtils.GridGenerators
 
                     square.transform.position = new Vector3(i * squareSize.x, j * squareSize.y, 0);
                     square.GetComponent<Cell>().OffsetCoord = new Vector2(i, j);
-                    square.GetComponent<Cell>().movementCost = 1;
+                    square.GetComponent<Cell>().MovementCost = 1;
                     ret.Add(square.GetComponent<Cell>());
 
                     square.transform.parent = CellsParent;

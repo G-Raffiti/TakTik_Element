@@ -22,48 +22,17 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/SceneKeeper.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PlayingUnitsInfo_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Extention/Extention.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Extension/Extension.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Learning.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/DataBase.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicChoiceUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Icon_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/DeckUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Listeners/IGameEventListener.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateSkillSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/Cost.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ShuffleBtn.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateUnitSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/SkillGridEffect.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Corruption.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Burned.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/FrostRage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Poison.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/TurnOrderPrefab.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Curse.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/ApplyBuff.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/SkillEffect.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatusSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/IEffect.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Healing.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Medicine.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Spell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Buff.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Square.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/BattleStateManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Tile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecks.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Deck.cs" />
@@ -71,8 +40,39 @@
       <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/InfoBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DataBaseSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/NaiveAiPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Iso.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectangularSquareGridGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/CustomUnitGeneratorHelper.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Tile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/SavedTile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/SavedCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateSkillSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateUnitSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/UnitGenerators/RandomUnitGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/DataBaseCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Buff.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatusSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Poison.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Corruption.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Burned.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Drowned.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ColorSet.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/TurnOrderPrefab.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/DataBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/CellSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateBeginning.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectIsoGridGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Isometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
@@ -113,24 +113,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs</url>
-          <line>21</line>
-          <properties documentPath="C:\Program Perso\Unity Project\TakTik Ele\Assets\Scripts\GridObjects\GridObjectSO.cs" initialLine="20" containingFunctionPresentation="property 'Type'">
-            <startOffsets>
-              <option value="628" />
-            </startOffsets>
-            <endOffsets>
-              <option value="632" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

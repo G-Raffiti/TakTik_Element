@@ -2,7 +2,7 @@
 using Cells;
 using UnityEngine;
 
-namespace TbsFramework.EditorUtils.GridGenerators
+namespace Editor.GridGenerators
 {
     public abstract class ICellGridGenerator
     {

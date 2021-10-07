@@ -15,4 +15,5 @@ MonoBehaviour:
   allBoards:
   - {fileID: 11400000, guid: e02823b5c6b39484299f2f0a1cb12805, type: 2}
   - {fileID: 11400000, guid: fd80f53bf95ee2441a637b2e49189464, type: 2}
-  - {fileID: 11400000, guid: 728c602873b2b58429437663110886aa, type: 2}
+  - {fileID: 11400000, guid: 0cf52e5c3a4293c488edf8360a460e83, type: 2}
+  - {fileID: 11400000, guid: 80e8a557c0dc1ca478b63d9df092e59f, type: 2}

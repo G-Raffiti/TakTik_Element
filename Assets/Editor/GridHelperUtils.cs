@@ -3,7 +3,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace TbsFramework.EditorUtils
+namespace Editor
 {
     public class GridHelperUtils
     {

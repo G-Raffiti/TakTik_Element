@@ -14,6 +14,7 @@
             <e p="ICellGridGenerator.cs" t="Include" />
             <e p="RectangularHexGridGenerator.cs" t="Include" />
             <e p="RectangularSquareGridGenerator.cs" t="Include" />
+            <e p="RectIsoGridGenerator.cs" t="Include" />
             <e p="TriangularHexGridGenerator.cs" t="Include" />
           </e>
           <e p="GridHelper.cs" t="Include" />
@@ -111,11 +112,14 @@
             <e p="Board.cs" t="Include" />
             <e p="BoardSO.cs" t="Include" />
             <e p="Cell.cs" t="Include" />
+            <e p="CellSO.cs" t="Include" />
             <e p="DataBaseBoard.cs" t="Include" />
             <e p="DataBaseCell.cs" t="Include" />
             <e p="Hexagon.cs" t="Include" />
+            <e p="Isometric.cs" t="Include" />
+            <e p="SavedCell.cs" t="Include" />
             <e p="Square.cs" t="Include" />
-            <e p="Tile.cs" t="Include" />
+            <e p="TileIsometric.cs" t="Include" />
           </e>
           <e p="Gears" t="Include">
             <e p="DataBaseGear.cs" t="Include" />
@@ -145,6 +149,7 @@
             <e p="GridObjectSO.cs" t="Include" />
             <e p="LootBox.cs" t="Include" />
             <e p="Stone.cs" t="Include" />
+            <e p="Tree.cs" t="Include" />
           </e>
           <e p="Gui" t="Include">
             <e p="CameraController.cs" t="Include" />
@@ -225,7 +230,7 @@
             <e p="Buff.cs" t="Include" />
             <e p="Burned.cs" t="Include" />
             <e p="Corruption.cs" t="Include" />
-            <e p="FrostRage.cs" t="Include" />
+            <e p="Drowned.cs" t="Include" />
             <e p="Poison.cs" t="Include" />
             <e p="StatsBonus.cs" t="Include" />
             <e p="StatusSO.cs" t="Include" />

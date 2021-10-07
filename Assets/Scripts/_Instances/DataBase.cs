@@ -35,7 +35,12 @@ namespace _Instances
                 Instance = this;
             else
                 Destroy(gameObject);
-            
+
+            InstantiateDataBases();
+        }
+
+        public void InstantiateDataBases()
+        {
             Monster = dataMonster;
             Relic = dataRelic;
             Cell = dataCell;
