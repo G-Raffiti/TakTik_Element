@@ -233,5 +233,7 @@ namespace Cells
         public abstract int Power { get; }
 
         public bool isSpawnPlace;
+
+        public abstract void OnEndTurn();
     }
 }

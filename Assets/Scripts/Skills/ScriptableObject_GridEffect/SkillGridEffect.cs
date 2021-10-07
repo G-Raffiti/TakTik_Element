@@ -13,7 +13,7 @@ namespace Skills.ScriptableObject_GridEffect
         MoveTo,
         Teleport,
         TeleportTo,
-        Bring,
+        Pull,
         GoAwayFrom,
     }
     

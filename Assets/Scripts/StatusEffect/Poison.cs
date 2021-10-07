@@ -22,14 +22,14 @@ namespace StatusEffect
         {
         }
 
-        public override int GetPower(Unit sender)
+        public override float GetPower(Unit sender)
         {
             return sender.BattleStats.GetFocus(Element.Type);
         }
 
         public override int GetDuration(Unit sender)
         {
-            return Math.Max(1, (int)(sender.BattleStats.Focus * (durationPerFocusPercent / 100f)));
+            return Math.Max(1, (int)(sender.BattleStats.GetFocus(Element.Type) * (durationPerFocusPercent / 100f)));
         }
 
         public override string InfoEffect(Buff _buff)

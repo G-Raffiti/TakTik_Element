@@ -26,23 +26,6 @@ namespace Skills
         [SerializeField] private VoidEvent OnSkillUsed;
         [SerializeField] private bool Clickable;
         [SerializeField] private Image icon;
-
-        public override void DisplayIcon()
-        {
-            if (icon != null)
-                icon.sprite = GetIcon();
-            EnableIcon();
-        }
-
-        public void EnableIcon()
-        {
-            if (icon == null) return;
-            if ((BattleStateManager.instance.PlayingUnit.playerNumber == 0 && (int) BattleStateManager.instance.PlayingUnit.BattleStats.AP > 0) || !Clickable)
-            {
-                icon.color = Color.white;
-            }
-            else icon.color = Color.gray;
-        }
         
         public SkillSO Skill { get; private set; }
         public Unit Unit { get; private set; }
@@ -61,10 +44,10 @@ namespace Skills
         public ESkill Type { get; private set; }
         public List<Buff> Buffs { get; private set; }
 
-        public void UpdateSkill(int index, Unit _unit)
+        public void UpdateSkill(SkillSO _skillSO, Unit _unit)
         {
-            deck.UpdateSkill(index);
-            Skill = deck.Skills[index];
+            deck.UpdateSkill(_skillSO);
+            Skill = _skillSO;
             Unit = _unit;
             if (Skill.Range.CanBeModified)
                 Range = deck.Range + Unit.BattleStats.Range;
@@ -77,7 +60,35 @@ namespace Skills
             Buffs = new List<Buff>();
             deck.StatusEffects.ForEach(status => Buffs.Add(new Buff(Unit, status)));
         }
-
+        public void UpdateSkill(int index, Unit _unit)
+        {
+            UpdateSkill(deck.Skills[index], _unit);
+        }
+        
+        /// <summary>
+        /// Method Called by the IA to Use a Skill that is not in the Deck
+        /// </summary>
+        /// <param name="skill">
+        /// the skill to Use
+        /// </param>
+        /// <param name="cell">
+        /// the targeted Cell
+        /// </param>
+        /// <param name="sender">
+        /// the Unit who use the skill
+        /// </param>
+        public void UseSkill(SkillSO skill, Cell cell, Unit sender)
+        {
+            UpdateSkill(skill, sender);
+            UseSkill(cell);
+            Deck.NextSkill();
+            UpdateSkill(0, Unit);
+        }
+        
+        /// <summary>
+        /// Method Called buy the Player by Clicking in the Icon in BattleScene
+        /// </summary>
+        /// <param name="cell"></param>
         public void UseSkill(Cell cell)
         {
             if (Unit.BattleStats.AP < Cost) return;
@@ -89,6 +100,11 @@ namespace Skills
             OnSkillUsed?.Raise();
         }
 
+        /// <summary>
+        /// Return the Zone to Highlight to show the cell touched by the Actual Skill
+        /// </summary>
+        /// <param name="_cell"></param>
+        /// <returns></returns>
         public List<Cell> GetZoneOfEffect(Cell _cell)
         {
             return Zone.GetZone(Range, _cell);
@@ -103,7 +119,7 @@ namespace Skills
         public override string GetInfoLeft()
         {
             string str = "";
-            deck.Effects.ForEach(effect => str += effect.InfoEffect(this) + "\n");
+            Skill.Effects.ForEach(effect => str += effect.InfoEffect(this) + "\n");
             return str;
         }
 
@@ -135,6 +151,23 @@ namespace Skills
             if (!Clickable) return;
             if (Unit.BattleStats.AP >= 1)
                 BattleStateManager.instance.BattleState = new BattleStateSkillSelected(BattleStateManager.instance, this);
+        }
+        
+        public override void DisplayIcon()
+        {
+            if (icon != null)
+                icon.sprite = GetIcon();
+            EnableIcon();
+        }
+
+        public void EnableIcon()
+        {
+            if (icon == null) return;
+            if ((BattleStateManager.instance.PlayingUnit.playerNumber == 0 && (int) BattleStateManager.instance.PlayingUnit.BattleStats.AP > 0) || !Clickable)
+            {
+                icon.color = Color.white;
+            }
+            else icon.color = Color.gray;
         }
 
         #endregion

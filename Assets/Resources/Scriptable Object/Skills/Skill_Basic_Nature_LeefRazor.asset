@@ -15,7 +15,8 @@ MonoBehaviour:
   name: Leef Razor
   element: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
   icon: {fileID: 21300000, guid: ed458013766a0174e8d3dd724203abb0, type: 3}
-  effect: {fileID: 11400000, guid: c60b3c24cd1398f44b058da6022d9988, type: 2}
+  effects:
+  - {fileID: 11400000, guid: c60b3c24cd1398f44b058da6022d9988, type: 2}
   gridEffect: {fileID: 0}
   affect: 0
   range:

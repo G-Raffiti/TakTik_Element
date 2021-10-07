@@ -100,8 +100,8 @@ namespace UserInterface
             str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)unit.Total.AP}</color>    ";
             str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.MP)}>{(int)unit.Total.MP}</color>\n";
             str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.HP)}>{unit.BattleStats.HP} </color>/ {unit.Total.HP}\n";
-            if (unit.BattleStats.Shield > 0) str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{unit.BattleStats.Shield} </color>/ {unit.Total.Shield}\n"; 
-            if ((int) unit.BattleStats.Dodge > 0) str += $"<sprite name=Dodge> <color={colorSet.HexColor(EAffix.Dodge)}>{(int) unit.BattleStats.Dodge} </color>/ {(int) unit.Total.Dodge}\n"; 
+            str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{unit.BattleStats.Shield} </color>/ {unit.Total.Shield}\n"; 
+            str += $"<sprite name=Dodge> <color={colorSet.HexColor(EAffix.Dodge)}>{(int) unit.BattleStats.Dodge} </color>/ {(int) unit.Total.Dodge}\n"; 
             str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{unit.BattleStats.Speed} </color> \n";
             str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{unit.BattleStats.TurnPoint} </color> \n";
 

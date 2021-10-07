@@ -15,7 +15,9 @@ MonoBehaviour:
   name: Poison Rune
   element: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
   icon: {fileID: 21300000, guid: 01e89c2f18b0bb9429c4fe9282fa28c6, type: 3}
-  effect: {fileID: 11400000, guid: 552c6bb57926019498311e4241b699b7, type: 2}
+  effects:
+  - {fileID: 11400000, guid: 552c6bb57926019498311e4241b699b7, type: 2}
+  - {fileID: 11400000, guid: c76c6094c4075f741b58e2f0c8c3f2a8, type: 2}
   gridEffect: {fileID: 0}
   affect: 0
   range:
@@ -23,10 +25,10 @@ MonoBehaviour:
     RangeValue: 4
     ZoneType: 1
     Radius: 1
-    NeedView: 0
+    NeedView: 1
     NeedTarget: 0
     SelfCast: 1
-    CanBeModified: 0
+    CanBeModified: 1
   power:
     Basic: 0
     Spell: 0

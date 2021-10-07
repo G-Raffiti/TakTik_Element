@@ -15,7 +15,6 @@ namespace Skills.ScriptableObject_Effect
         Spell,
         Healing,
         Buff,
-        Curse,
         LifeSteel,
         Learning,
     }

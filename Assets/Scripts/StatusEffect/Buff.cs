@@ -1,5 +1,6 @@
 ﻿using System;
 using Cells;
+using Grid;
 using Units;
 
 namespace StatusEffect
@@ -8,7 +9,7 @@ namespace StatusEffect
     public class Buff
     {
         public int Duration { get; set; }
-        public int Power { get; set; }
+        public float Power { get; set; }
 
         private StatusSO StatusEffect;
         public StatusSO Effect => StatusEffect;
@@ -50,6 +51,7 @@ namespace StatusEffect
         /// </summary>
         public void OnEndTurn(Unit _unit)
         {
+            if (_unit != BattleStateManager.instance.PlayingUnit) return;
             if (!StatusEffect.BetweenTurn) 
                 StatusEffect.ActiveEffect(this, _unit);
         }

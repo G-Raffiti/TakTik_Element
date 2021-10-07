@@ -17,9 +17,9 @@ namespace Skills
         }
 
         [SerializeField] private SkillSO learning;
+        [SerializeField] private SkillSO monsterAttack;
         public SkillSO Learning => learning;
+        public SkillSO MonsterAttack => monsterAttack;
 
-        private SkillSO BasicAttack;
-        
     }
 }

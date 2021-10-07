@@ -166,7 +166,7 @@ namespace Units
         /// <summary>
         /// Dictionary of all Cells and best Path to go to this Cells
         /// </summary>
-        protected Dictionary<Cell, List<Cell>> cachedPaths = null;
+        public Dictionary<Cell, List<Cell>> cachedPaths = null;
 
         /// <summary>
         /// Determines speed of movement animation.
@@ -370,7 +370,14 @@ namespace Units
         public void DefendHandler(Unit aggressor, float damage, Element element)
         {
             Debug.Log($"Damage : {aggressor.UnitName} did {damage} {element.Type} damage to {UnitName}");
-            int _damageTaken = Defend(aggressor, damage, element);
+            int _damageTaken = Defend(damage, element);
+            bool dodged = false;
+            if (BattleStats.Dodge >= 1 && _damageTaken > 0)
+            {
+                BattleStats.Dodge -= 1;
+                _damageTaken = (int)(_damageTaken * 0.5f);
+                dodged = true;
+            }
             
             if (BattleStats.Shield > 0)
             {
@@ -392,8 +399,7 @@ namespace Units
             
             if(_damageTaken > 0)
                 MarkAsDefending(aggressor);
-            if(_damageTaken != 0)
-                OnHit(aggressor, _damageTaken, element);
+            OnHit(aggressor, _damageTaken, element, dodged);
             
             DefenceActionPerformed();
 
@@ -414,21 +420,14 @@ namespace Units
         /// <param name="damage">Amount of damage that the attack caused</param>
         /// <param name="element">Element of the damage</param>
         /// <returns>Amount of damage that the unit has taken</returns>        
-        protected int Defend(Unit aggressor, float damage, Element element)
+        protected int Defend(float damage, Element element)
         {
-
-            if (BattleStats.Dodge >= 1)
-            {
-                BattleStats.Dodge -= 1;
-                return 0;
-            }
-
             return (int) (damage * (BattleStats.GetDamageTaken(element.Type) / 100f));
         }
 
-        public int DamageTaken(Unit aggressor, float damage, Element element)
+        public int DamageTaken(float damage, Element element)
         {
-            return Defend(aggressor, damage, element);
+            return Defend(damage, element);
         }
         
     #endregion
@@ -544,11 +543,12 @@ namespace Units
         /// <summary>
         /// Method to Show to the player what happened and how much damage was done
         /// </summary>
-        protected void OnHit(Unit aggressor, int damage, Element element)
+        protected void OnHit(Unit aggressor, int damage, Element element, bool dodged)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(element.TextColour);
-            info.text = damage > 0 ? $"- <color=#{_hexColor}>{damage}</color> HP" : $"+ {-damage} HP";
-            shadow.text = damage > 0 ? $"- {damage} HP" : $"+ {-damage} HP";
+            string dodge = dodged? "Dodge! " : "";
+            info.text = damage > 0 ? $"{dodge}- <color=#{_hexColor}>{damage}</color> HP" : $"+ {-damage} HP";
+            shadow.text = damage > 0 ? $"{dodge}- {damage} HP" : $"+ {-damage} HP";
             anim.PlayQueued("TextFade");
         }
 

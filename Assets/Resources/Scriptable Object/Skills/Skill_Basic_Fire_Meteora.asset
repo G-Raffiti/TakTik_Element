@@ -15,7 +15,8 @@ MonoBehaviour:
   name: Meteora
   element: {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
   icon: {fileID: 21300000, guid: e800974cfb4fc8343929906c5218aef4, type: 3}
-  effect: {fileID: 11400000, guid: c60b3c24cd1398f44b058da6022d9988, type: 2}
+  effects:
+  - {fileID: 11400000, guid: c60b3c24cd1398f44b058da6022d9988, type: 2}
   gridEffect: {fileID: 11400000, guid: 0272e7fa218dc7749adea0ed421a4c8c, type: 2}
   affect: 0
   range:

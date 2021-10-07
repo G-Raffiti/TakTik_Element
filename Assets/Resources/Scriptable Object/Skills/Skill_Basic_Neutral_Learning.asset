@@ -15,7 +15,8 @@ MonoBehaviour:
   name: Learning
   element: {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}
   icon: {fileID: 21300000, guid: 174decfcab36230469d11c012de0a6e5, type: 3}
-  effect: {fileID: 11400000, guid: b1ab9f1b3a3209b4b8acc9285188dc54, type: 2}
+  effects:
+  - {fileID: 11400000, guid: b1ab9f1b3a3209b4b8acc9285188dc54, type: 2}
   gridEffect: {fileID: 0}
   affect: 2
   range:
@@ -37,3 +38,4 @@ MonoBehaviour:
       Water: 100
   statusEffects: []
   consumable: 1
+  cost: 0

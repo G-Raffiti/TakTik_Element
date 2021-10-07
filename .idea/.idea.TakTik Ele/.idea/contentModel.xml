@@ -183,8 +183,8 @@
             <e p="RelicInfo.cs" t="Include" />
             <e p="RelicSO.cs" t="Include" />
             <e p="ScriptableObject_Effect" t="Include">
+              <e p="ApplyBuff.cs" t="Include" />
               <e p="Attack.cs" t="Include" />
-              <e p="Curse.cs" t="Include" />
               <e p="FloorStatus.cs" t="Include" />
               <e p="Healing.cs" t="Include" />
               <e p="Learning.cs" t="Include" />
@@ -227,6 +227,7 @@
             <e p="Corruption.cs" t="Include" />
             <e p="FrostRage.cs" t="Include" />
             <e p="Poison.cs" t="Include" />
+            <e p="StatsBonus.cs" t="Include" />
             <e p="StatusSO.cs" t="Include" />
           </e>
           <e p="Units" t="Include">

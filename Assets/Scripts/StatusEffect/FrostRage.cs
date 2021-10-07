@@ -15,7 +15,7 @@ namespace StatusEffect
         public override void PassiveEffect(Buff _buff, Unit _unit)
         {
             _unit.BattleStats.Power.Affinity.Water += _buff.Power * 5;
-            _unit.BattleStats.Speed -= _buff.Power;
+            _unit.BattleStats.Speed -= (int)_buff.Power;
             if (_unit.BattleStats.Speed < 1)
                 _unit.BattleStats.Speed = 1;
         }
@@ -23,10 +23,10 @@ namespace StatusEffect
         public override void EndPassiveEffect(Buff _buff, Unit _unit)
         {
             _unit.BattleStats.Power.Affinity.Water -= _buff.Power * 5;
-            _unit.BattleStats.Speed += _buff.Power;
+            _unit.BattleStats.Speed += (int)_buff.Power;
         }
 
-        public override int GetPower(Unit sender)
+        public override float GetPower(Unit sender)
         {
             return sender.BattleStats.GetFocus(Element.Type);
         }

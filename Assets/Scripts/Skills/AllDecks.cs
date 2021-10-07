@@ -6,6 +6,8 @@ using _Instances;
 using Grid;
 using Units;
 using UnityEngine;
+using UnityEngine.UI;
+using Void = _EventSystem.Void;
 
 namespace Skills
 {
@@ -39,6 +41,7 @@ namespace Skills
 
         public void Shuffle()
         {
+            Debug.Log("Hello !");
             if (BattleStateManager.instance.PlayingUnit.BattleStats.AP < 1 || used) return;
             BattleStateManager.instance.PlayingUnit.BattleStats.AP--;
             used = true;
@@ -52,6 +55,8 @@ namespace Skills
 
         public void OnEventRaised(Unit item)
         {
+            GameObject.Find("UI_BattleScene/DecksUI/ShuffleBtn").GetComponent<Button>().onClick.RemoveAllListeners();
+            GameObject.Find("UI_BattleScene/DecksUI/ShuffleBtn").GetComponent<Button>().onClick.AddListener(Shuffle);
             used = false;
         }
     }

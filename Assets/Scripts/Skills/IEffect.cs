@@ -27,7 +27,7 @@ namespace Skills
         /// <summary>
         /// Infos of the Effect with value for the Tooltip
         /// </summary>
-        public virtual string InfoEffect(SkillInfo _skillInfo) { return ""; }
+        public abstract string InfoEffect(SkillInfo _skillInfo);
 
         /// <summary>
         /// Infos of effects you can see on Relics

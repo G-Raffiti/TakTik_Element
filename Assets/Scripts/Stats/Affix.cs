@@ -20,5 +20,10 @@ namespace Stats
         {
             return value > 0 ? $"+ {(int) value} {affix.Name} " : $"- {(int) value} {affix.Name} ";
         }
+
+        public string Value(int _value)
+        {
+            return $"{_value} {affix.Icon(affix.Type)}";
+        }
     }
 }
