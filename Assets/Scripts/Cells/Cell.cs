@@ -5,6 +5,7 @@ using Pathfinding.DataStructs;
 using StatusEffect;
 using Units;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Cells
 {
@@ -13,7 +14,6 @@ namespace Cells
     /// </summary>
     public abstract class Cell : MonoBehaviour, IGraphNode, IEquatable<Cell>
     {
-        [HideInInspector]
         [SerializeField]
         private Vector2 offsetCoord;
         /// <summary>
@@ -21,44 +21,43 @@ namespace Cells
         /// </summary>
         public Vector2 OffsetCoord { get { return offsetCoord; } set { offsetCoord = value; } }
 
-        
+
         /// <summary>
         /// Indicates if something is occupying the cell.
         /// </summary>
-        [Header("Cell Parameters")]
-        public bool isTaken;
+        public virtual bool IsTaken => GetCurrentIMovable() != null;
 
         /// <summary>
         /// Indicate if you can fall in it.
         /// </summary>
-        public bool isUnderGround;
-        
+        public abstract bool IsUnderGround { get; set; }
+
         /// <summary>
         /// Indicate if the Tile is NOT Taken and NOT underground
         /// </summary>
-        public bool isWalkable => !isTaken && !isUnderGround;
-
+        public virtual bool IsWalkable => !IsTaken && !IsUnderGround;
+        
         /// <summary>
         /// Cost of moving through the cell.
         /// </summary>
-        public float movementCost = 1;
+        [HideInInspector]
+        public float MovementCost = 1;
 
         /// <summary>
         /// Return the Unit on it
         /// </summary>
-        public Unit CurrentUnit { get; set; }
+        public Unit CurrentUnit { get; private set; }
         
         /// <summary>
         /// Return the GridObject on it
         /// </summary>
-        public GridObject CurrentGridObject { get; set; }
+        public GridObject CurrentGridObject { get; private set; }
         
         /// <summary>
         /// Return the Unit or the GridObject on it
         /// </summary>
         public IMovable GetCurrentIMovable()
         {
-            if (!isTaken) return null;
             if (CurrentUnit != null) return CurrentUnit;
             if (CurrentGridObject != null) return CurrentGridObject;
             return null;
@@ -176,7 +175,13 @@ namespace Cells
         /// </summary>
         public void FreeTheCell()
         {
-            isTaken = false;
+            if (CurrentUnit != null)
+            {
+                Buffs.ForEach(b =>
+                {
+                    b.Undo(CurrentUnit);
+                });
+            }
             CurrentUnit = null;
             CurrentGridObject = null;
         }
@@ -186,19 +191,27 @@ namespace Cells
         /// </summary>
         public void Take(IMovable _movable)
         {
-            if (isUnderGround)
+            _movable.Cell?.FreeTheCell();
+            
+            if (IsUnderGround)
             {
                 _movable.StartCoroutine(_movable.Fall(this));
                 return;
             }
 
-            isTaken = true;
-            if (_movable is Unit _unit) 
-                CurrentUnit = _unit;
-            if (_movable is GridObject _gridObject)
+            if (_movable is Unit _unit)
             {
-                CurrentGridObject = _gridObject;
+                CurrentUnit = _unit;
+                Buffs.ForEach(b =>
+                {
+                    b.OnStartTurn(CurrentUnit);
+                    b.OnEndTurn(CurrentUnit);
+                    b.Apply(CurrentUnit);
+                });
             }
+            else if (_movable is GridObject _gridObject)
+                CurrentGridObject = _gridObject;
+            
             _movable.Cell = this;
         }
         
@@ -216,24 +229,22 @@ namespace Cells
         /// return if the Cell has the Buff Corruption applied to it.
         /// </summary>
         public abstract bool isCorrupted { get; set; }
-        
-        /// <summary>
-        /// return the Type of Tile it is (Used to recreate Board)
-        /// </summary>
-        public abstract ETile CellType { get; }
-        
+
         /// <summary>
         /// return the List of all Buff applied to the Cell
         /// </summary>
-        public abstract List<Buff> Buffs { get; }
-        
+        public abstract List<Buff> Buffs { get; set; }
+
+        public abstract CellSO CellSO { get; set; }
+
         /// <summary>
-        /// return the Value at witch the Buffs are effective on the Cell
+        /// Bool Used on Enemy Spawn
         /// </summary>
-        public abstract int Power { get; }
+        public bool IsSpawnPlace;
 
-        public bool isSpawnPlace;
-
+        /// <summary>
+        /// Method called to apply effects of Buffs to the Current Unit.
+        /// </summary>
         public abstract void OnEndTurn();
     }
 }

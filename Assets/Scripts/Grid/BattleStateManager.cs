@@ -231,7 +231,7 @@ namespace Grid
             
             Cells.ForEach(c => c.OnEndTurn());
             
-            foreach (Cell _cell in Cells.Where(c => c.isTaken && c.CurrentUnit != null && c.Buffs.Count > 0))
+            foreach (Cell _cell in Cells.Where(c => c.IsTaken && c.CurrentUnit != null && c.Buffs.Count > 0))
             {
                 _cell.Buffs.ForEach(b => b.OnEndTurn(_cell.CurrentUnit));
             }
@@ -270,8 +270,6 @@ namespace Grid
         [SerializeField] public VoidEvent onStartGame;
         private float TurnCount = 1;
         public int Turn => (int)TurnCount;
-
-        [SerializeField] private StatusSO CorruptionSO;
 
         public Unit PlayingUnit { get; private set; }
 
@@ -342,7 +340,7 @@ namespace Grid
 
         private void CorruptCell(Cell _cell)
         {
-            _cell.AddBuff(new Buff(_cell, CorruptionSO));
+            _cell.AddBuff(new Buff(_cell, DataBase.Cell.CorruptionSO));
             _cell.isCorrupted = true;
         }
 
@@ -373,7 +371,7 @@ namespace Grid
 
         public void AddCell(Cell _newCell, Cell _toDestroy)
         {
-            if (_toDestroy.isTaken)
+            if (_toDestroy.IsTaken)
             {
                 if (_toDestroy.CurrentGridObject != null)
                 {
@@ -382,7 +380,7 @@ namespace Grid
 
                 if (_toDestroy.CurrentUnit != null)
                 {
-                    Cell destination = _toDestroy.Neighbours.Where(c => !c.isTaken).ToList()[0];
+                    Cell destination = _toDestroy.Neighbours.Where(c => !c.IsTaken).ToList()[0];
                     if (destination != null)
                         _toDestroy.CurrentUnit.Move(destination, new List<Cell>() {destination});
                     else _toDestroy.CurrentUnit.OnDestroyed();
@@ -397,7 +395,7 @@ namespace Grid
 
         public void RemoveGridObject(Cell _toDestroy)
         {
-            if (!_toDestroy.isTaken) return;
+            if (!_toDestroy.IsTaken) return;
             if (_toDestroy.CurrentGridObject != null)
             {
                 GridObjects.Remove(_toDestroy.CurrentGridObject);

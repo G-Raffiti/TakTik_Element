@@ -35,16 +35,15 @@ namespace StatusEffect
             return $"Corruption Damage: <color=#{_hexColor}>{_buff.Power}</color>% of the Unit's HP at the End of the Unit Turn";
         }
 
-        public override string InfoApply()
-        {
-            return
-                $"Corruption Damage are always 10% of the remaining Life +1";
-        }
-
         public override string InfoOnUnit(Buff _buff, Unit _unit)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
             return $"Corrupted: -<color=#{_hexColor}>10%</color> of HP / Turn \n Duration: last {_buff.Duration} Turn";
+        }
+
+        public override string InfoOnFloor(Buff _buff)
+        {
+            return InfoEffect(_buff);
         }
     }
 }

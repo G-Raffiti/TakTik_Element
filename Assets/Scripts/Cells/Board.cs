@@ -2,6 +2,7 @@
 using _Instances;
 using BattleOver;
 using GridObjects;
+using UnityEditor;
 using UnityEngine;
 
 namespace Cells
@@ -13,7 +14,7 @@ namespace Cells
         /// BoardSO to Save or to test
         /// </summary>
         [SerializeField] private BoardSO boardTest;
-        private List<SavedCell> Cells = new List<SavedCell>();
+        private List<SavedCell> SavedCells = new List<SavedCell>();
         [SerializeField] private SpriteRenderer background;
         [SerializeField] private Camera mainCamera;
         
@@ -44,8 +45,8 @@ namespace Cells
         [ContextMenu("Save Board")]
         public void SaveBoard()
         {
-            dataBase.Start();
-            Cells = new List<SavedCell>();
+            dataBase.InstantiateDataBases();
+            SavedCells = new List<SavedCell>();
 
             List<GridObject> _gridObjects = new List<GridObject>();
             foreach (Transform _child in GameObject.Find("Objects").transform)
@@ -68,11 +69,11 @@ namespace Cells
                 Cell _Cell = _child.gameObject.GetComponent<Cell>();
                 if (_Cell != null)
                 {
-                    Cells.Add(new SavedCell(_child.gameObject.GetComponent<Cell>()));
+                    SavedCells.Add(new SavedCell(_child.gameObject.GetComponent<TileIsometric>()));
                 }
             }
             
-            boardTest.SaveBoard(Cells, background.sprite, mainCamera);
+            boardTest.SaveBoard(SavedCells, background.sprite, mainCamera);
             Debug.Log($"Board SO saved in {boardTest.name}");
         }
         
@@ -101,25 +102,27 @@ namespace Cells
 
             background.sprite = null;
             
-            foreach (SavedCell _Cell in _data.Cells)
+            foreach (SavedCell _SavedCell in _data.Cells)
             {
-                GameObject instance = Instantiate(DataBase.Cell.Cells[_Cell.type]) as GameObject;
+                
+                GameObject instance = PrefabUtility.InstantiatePrefab(DataBase.Cell.TilePrefab) as GameObject;
                 instance.transform.SetParent(transform);
-                instance.transform.position = new Vector3(_Cell.position[0],_Cell.position[1],_Cell.position[2]);
-                Cell _t = instance.GetComponent<Cell>();
-                if (_t != null)
+                instance.transform.position = new Vector3(_SavedCell.position[0],_SavedCell.position[1],_SavedCell.position[2]);
+                TileIsometric _cell = instance.GetComponent<TileIsometric>();
+                if (_cell != null)
                 {
-                    _t.OffsetCoord = new Vector2(_Cell.offsetCoord[0], _Cell.offsetCoord[1]);
-                    _t.isSpawnPlace = _Cell.isSpawn;
+                    _cell.CellSO = _SavedCell.type;
+                    _cell.OffsetCoord = new Vector2(_SavedCell.offsetCoord[0], _SavedCell.offsetCoord[1]);
+                    _cell.IsSpawnPlace = _SavedCell.isSpawn;
                 }
 
-                if (_Cell.gridObject == null) continue;
+                if (_SavedCell.gridObject == null) continue;
                 GameObject gridObject = Instantiate(DataBase.Cell.GridObjectPrefab) as GameObject;
                 gridObject.transform.SetParent(GameObject.Find("Objects").transform);
-                gridObject.transform.position = new Vector3(_Cell.position[0],_Cell.position[1],_Cell.position[2]);
-                gridObject.GetComponent<GridObject>().GridObjectSO = _Cell.gridObject;
+                gridObject.transform.position = new Vector3(_SavedCell.position[0],_SavedCell.position[1],_SavedCell.position[2]);
+                gridObject.GetComponent<GridObject>().GridObjectSO = _SavedCell.gridObject;
                 
-                _t.Take(gridObject.GetComponent<GridObject>());
+                _cell.Take(gridObject.GetComponent<GridObject>());
             }
 
             background.sprite = _data.Background;

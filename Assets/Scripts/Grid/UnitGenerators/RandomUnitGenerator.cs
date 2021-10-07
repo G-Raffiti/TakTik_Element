@@ -27,7 +27,7 @@ namespace Grid.UnitGenerators
             unitsParent = GameObject.Find("Units").transform;
             List<Unit> _ret = new List<Unit>();
 
-            List<Cell> _freeCells = cells.FindAll(h => h.GetComponent<Cell>().isTaken == false);
+            List<Cell> _freeCells = cells.FindAll(h => h.GetComponent<Cell>().IsTaken == false);
             _freeCells = _freeCells.OrderBy(h => rnd.Next()).ToList();
 
             for (int _i = 0; _i < numberOfPlayers; _i++)
@@ -36,7 +36,6 @@ namespace Grid.UnitGenerators
                 {
                     Cell _cell = _freeCells.ElementAt(0);
                     _freeCells.RemoveAt(0);
-                    _cell.GetComponent<Cell>().isTaken = true;
 
                     GameObject _unit = Instantiate(unitPrefab);
                     _unit.transform.position = _cell.transform.position + new Vector3(0, 0, 0);
@@ -44,6 +43,7 @@ namespace Grid.UnitGenerators
                     _unit.GetComponent<Unit>().Cell = _cell.GetComponent<Cell>();
                     _unit.GetComponent<Unit>().Initialize();
                     _unit.transform.parent = unitsParent;
+                    _cell.GetComponent<Cell>().Take(_unit.GetComponent<Unit>());
 
 
                     _ret.Add(_unit.GetComponent<Unit>());

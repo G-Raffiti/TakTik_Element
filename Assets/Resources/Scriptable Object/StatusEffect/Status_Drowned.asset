@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864d68b9921e43e191f167f31280d554, type: 3}
+  m_Name: Status_Drowned
+  m_EditorClassIdentifier: 
+  betweenTurn: 0
+  element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
+  onFloorSprite: {fileID: 4318182838925834494, guid: 657e1ca158bcc9c46a5fb7d2870dc833,
+    type: 3}
+  name: Drowning
+  percent: 25

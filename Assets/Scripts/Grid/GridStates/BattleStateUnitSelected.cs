@@ -36,7 +36,7 @@ namespace Grid.GridStates
         {
             if (unit.IsMoving)
                 return;
-            if (cell.isTaken && cell.CurrentGridObject != null)
+            if (cell.IsTaken && cell.CurrentGridObject != null)
             {
                 if (cell.CurrentGridObject.IsInteractable)
                 {
@@ -70,7 +70,7 @@ namespace Grid.GridStates
                 (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)))
             {
                 if (cell.CurrentGridObject == null)
-                    TooltipOn.Raise((Tile) cell);
+                    TooltipOn.Raise((TileIsometric) cell);
                 else TooltipOn.Raise(cell.CurrentGridObject.GridObjectSO);
             }
 

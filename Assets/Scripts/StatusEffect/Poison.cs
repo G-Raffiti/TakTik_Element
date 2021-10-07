@@ -7,11 +7,10 @@ namespace StatusEffect
     [CreateAssetMenu(fileName = "Status_Poison", menuName = "Scriptable Object/Status Effects/Poisoned")]
     public class Poison : StatusSO
     {
-        [SerializeField] private float damagePerSpeedPercent = 10;
         [SerializeField] private float durationPerFocusPercent = 50;
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
-            _unit.DefendHandler(_unit, _buff.Power * (_unit.BattleStats.Speed * damagePerSpeedPercent / 100f), Element);
+            _unit.DefendHandler(_unit, _buff.Power, Element);
         }
 
         public override void PassiveEffect(Buff _buff, Unit _unit)
@@ -38,17 +37,16 @@ namespace StatusEffect
             return $"Poison Damage: <color=#{_hexColor}>{_buff.Power}</color> each time an Unit play their Turn \n Duration: {_buff.Duration} Turn";
         }
 
-        public override string InfoApply()
-        {
-            return
-                $"Damage depend of Focus of {Element.Name} and {damagePerSpeedPercent}% of the Targeted Unit's Speed \n Duration depend on Focus of {Element.Name} ({durationPerFocusPercent}%)";
-        }
-
         public override string InfoOnUnit(Buff _buff, Unit _unit)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
             return
-                $"Poisoned: -<color=#{_hexColor}>{(int)(_buff.Power * (_unit.BattleStats.Speed * damagePerSpeedPercent / 100f))}</color> HP / Unit's Turn\nDuration: last for {_buff.Duration} Turn";
+                $"Poisoned: -<color=#{_hexColor}>{(int)_buff.Power}</color> HP / Unit's Turn\nDuration: last for {_buff.Duration} Turn";
+        }
+
+        public override string InfoOnFloor(Buff _buff)
+        {
+            return InfoEffect(_buff);
         }
     }
 }

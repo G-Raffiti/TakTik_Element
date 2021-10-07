@@ -19,7 +19,7 @@ namespace UserInterface
         [SerializeField] private ColorSet colorSet;
         private Dictionary<EColor, Color> colors = new Dictionary<EColor, Color>();
 
-        private Color[] unitMark = new Color[3];
+        private TileIsometric.CellState unitMark;
         
         private Unit unit;
         private BattleStateManager cellGrid;
@@ -62,7 +62,7 @@ namespace UserInterface
 
         public override void OnPointerEnter(PointerEventData _eventData)
         {
-            unitMark = unit.getColors();
+            unitMark = ((TileIsometric)unit.Cell).State;
             unit.MarkAsSelected();
             TooltipOn.Raise(this);
         }

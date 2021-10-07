@@ -62,10 +62,10 @@ namespace Units
             Cell destination = destinationCell;
             path.Sort((_cell, _cell1) => _cell.GetDistance(movable.Cell).CompareTo(_cell1.GetDistance(movable.Cell)));
                         
-            List<Cell> deadEnd = path.Where(c => c.isWalkable != true).ToList();
+            List<Cell> deadEnd = path.Where(c => c.IsWalkable != true).ToList();
             if (deadEnd.Count > 0)
             {
-                if (deadEnd[0].isUnderGround)
+                if (deadEnd[0].IsUnderGround)
                     destination = deadEnd[0];
                 else
                 {
@@ -104,7 +104,7 @@ namespace Units
             }
             
             
-            if (destination.isUnderGround)
+            if (destination.IsUnderGround)
             {
                 movable.StartCoroutine(movable.Fall(movable.Cell));
             }

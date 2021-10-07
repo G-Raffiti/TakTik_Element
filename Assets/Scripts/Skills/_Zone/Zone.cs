@@ -285,13 +285,13 @@ namespace Skills._Zone
                         continue;
                     if (!_fieldOfView.Contains(_t))
                     {
-                        if (!_t.isTaken)
+                        if (!_t.IsTaken)
                             _fieldOfView.Add(_t);
                         else if (_t.GetCurrentIMovable() != null)
                             _fieldOfView.Add(_t);
                     }
                     
-                    if (_t.isTaken && !_t.Equals(_startCell))
+                    if (_t.IsTaken && !_t.Equals(_startCell))
                         break;
                 }
             }
@@ -325,15 +325,15 @@ namespace Skills._Zone
                         _affected = _cell.GetCurrentIMovable();
                     break;
                 case EAffect.OnlyAlly:
-                    if (_cell.isTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == _skillInfo.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == _skillInfo.Unit.playerNumber)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyEnemy:
-                    if (_cell.isTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != _skillInfo.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != _skillInfo.Unit.playerNumber)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlySelf:
-                    if (_cell.isTaken && _cell.CurrentUnit == _skillInfo.Unit)
+                    if (_cell.IsTaken && _cell.CurrentUnit == _skillInfo.Unit)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyOthers:

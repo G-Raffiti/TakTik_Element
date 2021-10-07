@@ -21,6 +21,10 @@ namespace UserInterface
         [SerializeField] private Color transparency;
         [SerializeField] private Color elementShadow;
         [SerializeField] private Color turnPoint;
+        [SerializeField] private Sprite selectFrame;
+        public Sprite SelectFrame => selectFrame;
+        [SerializeField] private Sprite fullFrame;
+        public Sprite FullFrame => fullFrame;
 
 
         public Dictionary<EColor, Color> GetColors()

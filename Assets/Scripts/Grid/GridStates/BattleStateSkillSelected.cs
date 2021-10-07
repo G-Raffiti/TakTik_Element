@@ -82,7 +82,7 @@ namespace Grid.GridStates
                 (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)))
             {
                 if (cell.CurrentGridObject == null)
-                    TooltipOn.Raise((Tile) cell);
+                    TooltipOn.Raise((TileIsometric)cell);
                 else TooltipOn.Raise(cell.CurrentGridObject.GridObjectSO);
             }
             if (usable.Contains(cell))

@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\UserInterface\SceneKeeper.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectAffectChange.cs" />
      <Compile Include="Assets\Scripts\GridObjects\GridObject.cs" />
+     <Compile Include="Assets\Scripts\Cells\CellSO.cs" />
      <Compile Include="Assets\Scripts\Cells\DataBaseBoard.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
      <Compile Include="Assets\Scripts\Pathfinding\Algorithms\DijkstraPathfinding.cs" />
@@ -91,7 +92,6 @@
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\LifeSteel.cs" />
      <Compile Include="Assets\Scripts\Grid\GridStates\BattleStateSkillSelected.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\IGameEventListener.cs" />
-     <Compile Include="Assets\Scripts\StatusEffect\FrostRage.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityInfoEvent.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavableEntity.cs" />
      <Compile Include="Assets\Scripts\Skills\RelicChoiceUI.cs" />
@@ -121,15 +121,17 @@
      <Compile Include="Assets\Scripts\Skills\DataBaseSkill.cs" />
      <Compile Include="Assets\Scripts\Grid\UnitGenerators\IUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\Gears\GearSO.cs" />
-     <Compile Include="Assets\Scripts\Cells\Tile.cs" />
+     <Compile Include="Assets\Scripts\Cells\TileIsometric.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Burned.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsFriendly.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Poison.cs" />
      <Compile Include="Assets\Scripts\Stats\Affix.cs" />
      <Compile Include="Assets\Scripts\Stats\Affinity.cs" />
+     <Compile Include="Assets\Scripts\GridObjects\Tree.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectNeedView.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Healing.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnitySkillEvent.cs" />
+     <Compile Include="Assets\Scripts\Cells\Isometric.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\PushFix.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Medicine.cs" />
      <Compile Include="Assets\Scripts\Gui\CameraController.cs" />
@@ -172,6 +174,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\VoidEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\SkillEvent.cs" />
      <Compile Include="Assets\Scripts\UserInterface\DeckUI.cs" />
+     <Compile Include="Assets\Scripts\Cells\SavedCell.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityFloatEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityBoolEvent.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavingLoading.cs" />
@@ -188,6 +191,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\UnitListener.cs" />
      <Compile Include="Assets\Scripts\Grid\GridStates\BattleStateBeginning.cs" />
      <Compile Include="Assets\Scripts\Cells\Cell.cs" />
+     <Compile Include="Assets\Scripts\StatusEffect\Drowned.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillInfo.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\InfoEvent.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\ChangeScene.cs" />

@@ -74,10 +74,10 @@ namespace Skills.ScriptableObject_GridEffect
             
             // look if there is an Obstacle in the Path
             IMovable obstacle = null;
-            List<Cell> deadEnd = _path.Where(c => !c.isWalkable).ToList();
+            List<Cell> deadEnd = _path.Where(c => !c.IsWalkable).ToList();
             if (deadEnd.Count > 0)
             {
-                if (deadEnd[0].isUnderGround)
+                if (deadEnd[0].IsUnderGround)
                     destination = deadEnd[0];
                 else
                 {

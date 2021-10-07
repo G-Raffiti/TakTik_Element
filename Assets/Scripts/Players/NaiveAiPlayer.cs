@@ -131,10 +131,10 @@ namespace Players
             foreach (Cell _potentialDestination in _potentialDestinations)
             {
                 List<Cell> _path = _unit.FindPath(cellGrid.Cells, _potentialDestination);
-                if ((_shortestPath == null && _path.Sum(h => h.movementCost) > 0) || _shortestPath != null && (_path.Sum(h => h.movementCost) < _shortestPath.Sum(h => h.movementCost) && _path.Sum(h => h.movementCost) > 0))
+                if ((_shortestPath == null && _path.Sum(h => h.MovementCost) > 0) || _shortestPath != null && (_path.Sum(h => h.MovementCost) < _shortestPath.Sum(h => h.MovementCost) && _path.Sum(h => h.MovementCost) > 0))
                     _shortestPath = _path;
 
-                float _pathCost = _path.Sum(h => h.movementCost);
+                float _pathCost = _path.Sum(h => h.MovementCost);
                 if (_pathCost > 0 && _pathCost <= _unit.BattleStats.MP)
                 {
                     _unit.Move(_potentialDestination, _path);
@@ -151,7 +151,7 @@ namespace Players
                 foreach (Cell _potentialDestination in _shortestPath.Intersect(_unit.GetAvailableDestinations(cellGrid.Cells)).OrderByDescending(h => h.GetDistance(_unit.Cell)))
                 {
                     List<Cell> _path = _unit.FindPath(cellGrid.Cells, _potentialDestination);
-                    float _pathCost = _path.Sum(h => h.movementCost);
+                    float _pathCost = _path.Sum(h => h.MovementCost);
                     if (_pathCost > 0 && _pathCost <= _unit.BattleStats.MP)
                     {
                         _unit.Move(_potentialDestination, _path);

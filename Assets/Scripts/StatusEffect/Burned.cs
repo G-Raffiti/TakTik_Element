@@ -35,16 +35,16 @@ namespace StatusEffect
             return $"Burning Damage: <color=#{_hexColor}>{_buff.Power}</color> at the End of the Unit Turn \n Duration: {_buff.Duration} Turn";
         }
 
-        public override string InfoApply()
-        {
-            return
-                $"Burning damage depend of the {Element.Name} Affinity and the Spell Power \n Duration depend on Focus of {Element.Name}";
-        }
-
         public override string InfoOnUnit(Buff _buff, Unit _unit)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
             return $"Burned: -<color=#{_hexColor}>{_buff.Power}</color> HP / Turn \n Duration: last {_buff.Duration} Turn";
+        }
+
+        public override string InfoOnFloor(Buff _buff)
+        {
+            string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
+            return $"Burned: -<color=#{_hexColor}>{_buff.Power}</color> HP / Turn \n Duration: {_buff.Duration} Turn";
         }
     }
 }

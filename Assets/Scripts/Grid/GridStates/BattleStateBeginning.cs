@@ -29,7 +29,7 @@ namespace Grid.GridStates
         {
             stateManager.Cells.ForEach(c => c.UnMark());
             
-            List<Cell> _freeCells = stateManager.Cells.FindAll(c => c.isWalkable && c.Buffs.Count == 0);
+            List<Cell> _freeCells = stateManager.Cells.FindAll(c => c.IsWalkable && c.Buffs.Count == 0);
             
             List<Cell> _enemiesCells = new List<Cell>();
             while (_enemiesCells.Count < monsters.Count)
@@ -54,7 +54,7 @@ namespace Grid.GridStates
             List<Cell> _spawnCells = new List<Cell>();
             foreach (Cell _cell in StateManager.Cells)
             {
-                if (_cell.isSpawnPlace)
+                if (_cell.IsSpawnPlace)
                 {
                     _spawnCells.Add(_cell);
                 }
@@ -79,7 +79,7 @@ namespace Grid.GridStates
             {
                 GameObject _pref = Object.Instantiate(heroes[i].Prefab, GameObject.Find("Units").transform);
                 heroes[i].Spawn(_pref);
-                _pref.transform.position = new Vector3(-1, i);
+                _pref.transform.position = new Vector3(-3, i);
                 _pref.GetComponent<Unit>().InitializeSprite();
                 prefabHeroes.Add(_pref);
             }
@@ -114,7 +114,7 @@ namespace Grid.GridStates
         
         public override void OnCellClicked(Cell _cell)
         {
-            if (setupCells.Contains(_cell) &! _cell.isTaken)
+            if (setupCells.Contains(_cell) &! _cell.IsTaken)
             {
                 prefabHeroes[index].transform.position = _cell.transform.position;
 

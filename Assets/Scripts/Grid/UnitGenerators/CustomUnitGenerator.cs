@@ -56,7 +56,7 @@ namespace Grid.UnitGenerators
             foreach (Transform _unit in unitsParent)
             {
                 Transform _closestCell = _cells.OrderBy(h => Math.Abs((h.transform.position - _unit.transform.position).magnitude)).First();
-                if (!_closestCell.GetComponent<Cell>().isTaken)
+                if (!_closestCell.GetComponent<Cell>().IsTaken)
                 {
                     Vector3 _offset = new Vector3(0, _closestCell.GetComponent<Cell>().GetCellDimensions().y, 0);
                     _unit.localPosition = _closestCell.transform.localPosition + _offset;

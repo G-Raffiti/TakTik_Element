@@ -91,15 +91,15 @@ namespace StatusEffect
             return str;
         }
 
-        public override string InfoApply()
-        {
-            return
-                $"{description} depend on {powerDependency} of {Element.Name} ({powerPercent}%) \n Duration depend on Focus ({durationPerFocusPercent}%)";
-        }
-
         public override string InfoOnUnit(Buff _buff, Unit _unit)
         {
             return InfoEffect(_buff);
+        }
+
+        public override string InfoOnFloor(Buff _buff)
+        {
+            string str = "When any Unit enter this Cell it will be Buffed: \n";
+            return str + InfoEffect(_buff);
         }
     }
 }
