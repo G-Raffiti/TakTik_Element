@@ -30,6 +30,7 @@ sysinfo.txt
 *.stackdump
 Temp
 .vs
+*.csproj
 *.log
 *.meta
 EditorInstance.json
