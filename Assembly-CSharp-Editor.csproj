@@ -59,9 +59,9 @@
      <Compile Include="Assets\Editor\GridGenerators\ICellGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridGenerators\HexagonalHexGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridHelperUtils.cs" />
-     <Compile Include="Assets\Editor\GridGenerators\RectIsoGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridGenerators\RectangularHexGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridGenerators\EquilateralHexGridGenerator.cs" />
+     <Compile Include="Assets\Editor\GridGenerators\RectIsoGridGenerator.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
