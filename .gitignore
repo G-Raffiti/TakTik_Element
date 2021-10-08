@@ -30,6 +30,7 @@ sysinfo.txt
 *.stackdump
 Temp
 .vs
+.idea
 *.csproj
 *.log
 *.meta

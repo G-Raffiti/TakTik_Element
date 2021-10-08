@@ -46,9 +46,9 @@ namespace Grid
             }
         }
 
-        public int NumberOfPlayers { get; private set; }
-        
-        public int CurrentPlayerNumber { get; protected set; }
+        private int NumberOfPlayers { get; set; }
+
+        private int CurrentPlayerNumber { get; set; }
 
         /// <summary>
         /// GameObject that holds player objects.
@@ -62,10 +62,10 @@ namespace Grid
 
         public bool GameFinished { get; private set; }
         public List<Player> Players { get; private set; }
-        public List<Cell> Cells { get; protected set; }
-        public List<Unit> Units { get; protected set; }
+        public List<Cell> Cells { get; private set; }
+        public List<Unit> Units { get; private set; }
 
-        public void Initialize()
+        private void Initialize()
         {
             BattleState = new BattleStateBlockInput(this);
             if (!Equals(instance, this))
@@ -95,7 +95,7 @@ namespace Grid
         /// <summary>
         /// Method Called to register all Cells to Events and create Lists of Cells and GridObjects
         /// </summary>
-        public virtual void InitializeCells()
+        private void InitializeCells()
         {
             Board _board = GetComponent<Board>();
 
@@ -128,7 +128,7 @@ namespace Grid
             GridObjects.ForEach(g => g.Initialize());
         }
 
-        public virtual void InitializeUnits()
+        private void InitializeUnits()
         {
             Units = new List<Unit>();
             IUnitGenerator _unitGenerator = GetComponent<IUnitGenerator>();
@@ -153,17 +153,17 @@ namespace Grid
             PlayingUnit = Units[0];
         }
 
-        protected void OnCellDehighlighted(object sender, EventArgs e)
+        private void OnCellDehighlighted(object sender, EventArgs e)
         {
             BattleState.OnCellDeselected(sender as Cell);
         }
 
-        protected void OnCellHighlighted(object sender, EventArgs e)
+        private void OnCellHighlighted(object sender, EventArgs e)
         {
             BattleState.OnCellSelected(sender as Cell);
         }
 
-        protected void OnCellClicked(object sender, EventArgs e)
+        private void OnCellClicked(object sender, EventArgs e)
         {
             BattleState.OnCellClicked(sender as Cell);
         }
@@ -193,7 +193,7 @@ namespace Grid
         /// Adds unit to the game
         /// </summary>
         /// <param name="unit">Unit to add</param>
-        public void AddUnit(Transform unit)
+        private void AddUnit(Transform unit)
         {
             Units.Add(unit.GetComponent<Unit>());
             unit.GetComponent<Unit>().UnitDestroyed += TriggerOnUnitDestroyed;
@@ -204,7 +204,7 @@ namespace Grid
         /// <summary>
         /// Method is called once, at the beggining of the game.
         /// </summary>
-        public virtual void StartGame()
+        private void StartGame()
         {
             List<Hero> heroesPlaced = GameObject.Find("Player").GetComponentsInChildren<Hero>().Where(h => h.isPlaced).ToList();
             if (heroesPlaced.Count <= 0) return;
@@ -218,7 +218,7 @@ namespace Grid
         /// <summary>
         /// Method makes turn transitions. It is called by player at the end of his turn.
         /// </summary>
-        public virtual void EndTurn()
+        public void EndTurn()
         {
             if (PlayingUnit is Monster {isPlaying: true}) return;
 
@@ -283,7 +283,7 @@ namespace Grid
         }
 
         [ContextMenu("Beginning")]
-        public IEnumerator BattleBeginning()
+        private IEnumerator BattleBeginning()
         {
             yield return new WaitForSeconds(0.2f);
             BattleState = new BattleStateBeginning(this, BattleGenerator.GenerateEnemies(endCondition.Type));
