@@ -31,7 +31,6 @@ sysinfo.txt
 Temp
 .vs
 idea
-*.csproj
 *.log
 *.meta
 EditorInstance.json
