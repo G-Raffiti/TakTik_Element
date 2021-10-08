@@ -30,7 +30,6 @@ sysinfo.txt
 *.stackdump
 Temp
 .vs
-idea
 *.log
 *.meta
 EditorInstance.json
