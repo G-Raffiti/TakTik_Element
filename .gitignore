@@ -36,3 +36,7 @@ ProjectSettings
 EditorInstance.json
 Library
 =======
+Assembly-CSharp-Editor-firstpass.csproj
+Assembly-CSharp-Editor.csproj
+*.csproj
+Assembly-CSharp.csproj
