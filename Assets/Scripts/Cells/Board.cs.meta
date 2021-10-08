@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c184bc5b22494016962fc69f08c08873
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - boardData: {instanceID: 0}
+  - dataBaseTile: {fileID: 11400000, guid: 6618fa75710ab1945afb66352ddc218a, type: 2}
+  - background: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

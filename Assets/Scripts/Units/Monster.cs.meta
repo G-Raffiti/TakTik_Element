@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 78a74e4170e643fb9716a36f169ace43
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cell: {instanceID: 0}
+  - colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
+  - frame: {instanceID: 0}
+  - back: {instanceID: 0}
+  - unitSprite: {instanceID: 0}
+  - info: {instanceID: 0}
+  - shadow: {instanceID: 0}
+  - deck: {instanceID: 0}
+  - skill: {instanceID: 0}
+  - onDeathLoot: {fileID: 11400000, guid: 0b851d65aed4825428f65acce3554aa4, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

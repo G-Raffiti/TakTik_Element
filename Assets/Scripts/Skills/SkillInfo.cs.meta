@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d2ceb8aeac4c4990948a40335b37c398
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
+  - TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
+  - OnSkillUse: {fileID: 11400000, guid: 444ca71365665e8419c411908ce808db, type: 2}
+  - OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
+  - newSkill: {instanceID: 0}
+  - Deck: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

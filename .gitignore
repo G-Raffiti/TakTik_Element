@@ -31,7 +31,8 @@ sysinfo.txt
 Temp
 .vs
 *.log
-*.meta
+idea
+ProjectSettings
 EditorInstance.json
 Library
 =======
