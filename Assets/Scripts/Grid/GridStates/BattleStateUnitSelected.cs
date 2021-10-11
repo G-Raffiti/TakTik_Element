@@ -41,7 +41,7 @@ namespace Grid.GridStates
                 if (cell.CurrentGridObject.IsInteractable)
                 {
                     cell.CurrentGridObject.Interact(unit);
-                    if (StateManager.GameFinished) return;
+                    if (StateManager.endCondition.battleIsOver(cellGrid)) return;
                     StateManager.BattleState = new BattleStateUnitSelected(StateManager, unit);
                 }
             }

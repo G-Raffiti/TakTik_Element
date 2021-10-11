@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using _EventSystem.CustomEvents;
-using _EventSystem.Listeners;
 using Grid;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Void = _EventSystem.Void;
 
 namespace Resources.ToolTip.Scripts
 {
-    public abstract class InfoBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IInfo, IGameEventListener<Void>
+    public abstract class InfoBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IInfo
     {
         [SerializeField] protected InfoEvent TooltipOn = null;
         [SerializeField] protected VoidEvent TooltipOff = null;
-        private bool gameStarted = false;
+        private bool gameStarted => BattleStateManager.instance.GameStarted;
 
         /// <summary>
         /// Method Called to generate the Sprite of Info Prefabs
@@ -31,7 +28,6 @@ namespace Resources.ToolTip.Scripts
         private IEnumerator Start()
         {
             yield return new WaitForSeconds(1);
-            BattleStateManager.instance.onStartGame.RegisterListener(this);
         }
 
         /// <summary>
@@ -80,11 +76,6 @@ namespace Resources.ToolTip.Scripts
             TooltipOff.Raise();
         }
 
-        public virtual void OnPointerClick(PointerEventData eventData) { }
-
-        public void OnEventRaised(Void item)
-        {
-            gameStarted = true;
-        }
+        public virtual void OnPointerClick(PointerEventData eventData){}
     }
 }

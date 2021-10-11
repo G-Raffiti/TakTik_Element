@@ -241,6 +241,7 @@ MonoBehaviour:
   skill: {fileID: 7113906381904510399}
   onDeathLoot: {fileID: 11400000, guid: efdfb0120a87c204eb44c4662e8a7485, type: 2}
   onDeathRelic: {fileID: 11400000, guid: e1b6e3df89647e240baa05ca6e70a64a, type: 2}
+  onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
   isPlaying: 0
 --- !u!111 &5516700394536520283
 Animation:
@@ -369,10 +370,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 0}
   Clickable: 0
   icon: {fileID: 6295843279142771036}
   deck: {fileID: 1592649995665758689}
+  onSkillSelected: {fileID: 0}
+  OnSkillUsed: {fileID: 0}
 --- !u!114 &1866037586018437890
 MonoBehaviour:
   m_ObjectHideFlags: 0

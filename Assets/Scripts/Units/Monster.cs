@@ -23,8 +23,11 @@ namespace Units
         [Header("Monster Special")]
         [SerializeField] private Deck deck;
         [SerializeField] private SkillInfo skill;
+        
+        [Header("Event Sender")]
         [SerializeField] private UnitEvent onDeathLoot;
         [SerializeField] private UnitEvent onDeathRelic;
+        [SerializeField] private VoidEvent onActionDone;
         public bool isPlaying;
 
         public SkillSO Skill => skill.Skill;
@@ -154,20 +157,18 @@ namespace Units
                 onDeathLoot.Raise(this);
                 yield return new WaitForSeconds(0.1f);
                 GameObject inventory = GameObject.Find("InventoryUI");
-                BattleStateManager.instance.BlockInputs();
                 while (inventory.activeSelf)
                     yield return null;
-                BattleStateManager.instance.OnSkillUsed();
+                onActionDone.Raise();
             }
             if (RewardType == EReward.Relic || Type == EMonster.Boss)
             {
                 onDeathRelic.Raise(this);
                 yield return new WaitForSeconds(0.3f);
                 GameObject relicChoice = GameObject.Find("RelicChoiceUI");
-                BattleStateManager.instance.BlockInputs();
                 while (relicChoice.activeSelf)
                     yield return null;
-                BattleStateManager.instance.OnSkillUsed();
+                onActionDone.Raise();
             }
 
             yield return base.OnDestroyed();

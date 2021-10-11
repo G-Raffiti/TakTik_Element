@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _EventSystem.CustomEvents;
-using _EventSystem.Listeners;
-using _Instances;
 using Grid;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
-using Void = _EventSystem.Void;
 
 namespace Skills
 {
-    public class AllDecks : MonoBehaviour, IGameEventListener<Unit>
+    public class AllDecks : MonoBehaviour
     {
         public List<Deck> Decks;
         private static GameObject instance;
-        [SerializeField] private VoidEvent onSkillUsed;
-        [SerializeField] private UnitEvent onUnitStartTurn;
+        
         private bool used = false;
+
+        [Header("Event Sender")] 
+        [SerializeField] private VoidEvent onActionDone;
+        
+        [Header("Event Listener")] 
+        [SerializeField] private UnitEvent onUnitStartTurn;
+        [SerializeField] private VoidEvent onShuffleDecks;
         
         private void Start() 
         {
@@ -31,12 +33,20 @@ namespace Skills
             {
                 Decks.Add(_child.gameObject.GetComponent<Deck>());
             }
-            onUnitStartTurn.RegisterListener(this);
+
+            onUnitStartTurn.EventListeners += OnEventRaised;
+            onShuffleDecks.EventListeners += Shuffle;
         }
 
         private void OnDestroy()
         {
-            onUnitStartTurn.UnregisterListener(this);
+            onUnitStartTurn.EventListeners -= OnEventRaised;
+            onShuffleDecks.EventListeners -= Shuffle;
+        }
+
+        private void Shuffle(Void _obj)
+        {
+            Shuffle();
         }
 
         public void Shuffle()
@@ -49,7 +59,7 @@ namespace Skills
             foreach (Deck _deck in Decks)
             {
                 _deck.ShuffleDeck();
-                onSkillUsed.Raise();
+                onActionDone.Raise();
             }
         }
 

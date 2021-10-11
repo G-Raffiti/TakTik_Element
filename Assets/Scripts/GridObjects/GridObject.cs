@@ -1,16 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using _EventSystem.CustomEvents;
-using _Instances;
 using Cells;
-using Gears;
 using Grid;
-using Grid.GridStates;
-using Pathfinding.Algorithms;
 using Units;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace GridObjects
 {
@@ -20,6 +14,7 @@ namespace GridObjects
         [SerializeField] private GridObjectSO gridObject;
         [SerializeField] private CellEvent gridObjectDestroyed;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private VoidEvent onActionDone;
         public GridObjectSO GridObjectSO
         {
             get => gridObject;
@@ -101,8 +96,6 @@ namespace GridObjects
 
         public override IEnumerator OnDestroyed()
         {
-            BattleStateManager.instance.BlockInputs();
-            
             gridObjectDestroyed.Raise(Cell);
             
             while (IsMoving)
@@ -120,7 +113,7 @@ namespace GridObjects
             Cell.FreeTheCell();
             Destroy(gameObject);
             
-            BattleStateManager.instance.OnSkillUsed();
+            onActionDone.Raise();
         }
 
         public void Interact(Unit _unit)

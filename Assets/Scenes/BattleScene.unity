@@ -240,6 +240,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 769016293}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &13636203
 Animation:
@@ -491,6 +492,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 292710433}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &29043019
 Animation:
@@ -1377,6 +1379,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1540167863}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &47822301
 Animation:
@@ -2185,6 +2188,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 2114506595}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &79903693
 Animation:
@@ -3355,6 +3359,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 918355488}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &129076462
 Animation:
@@ -4906,6 +4911,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 575828228}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &189228076
 Animation:
@@ -5006,9 +5012,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1553736487}
-        m_TargetAssemblyTypeName: Skills.AllDecks, Assembly-CSharp
-        m_MethodName: Shuffle
+      - m_Target: {fileID: 11400000, guid: 3c7854f985a4a984082920dbb20a24cb, type: 2}
+        m_TargetAssemblyTypeName: _EventSystem.CustomEvents.VoidEvent, Assembly-CSharp
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5500,6 +5506,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 386621758}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &230913284
 Animation:
@@ -5569,6 +5576,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1722276113}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &233122099
 Animation:
@@ -5895,6 +5903,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 453453420}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &249473128
 Animation:
@@ -6540,6 +6549,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 456511282}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &284169194
 Animation:
@@ -7184,6 +7194,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1191544009}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &318501090
 Animation:
@@ -7344,6 +7355,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1797554807}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &324674398
 Animation:
@@ -7715,6 +7727,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1276452578}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &327247614
 Animation:
@@ -8131,10 +8144,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 0
   icon: {fileID: 685702790}
   deck: {fileID: 1043034013}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &361066438
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8289,8 +8303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
-  unityEventResponse:
+  _GameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
+  _UnityEventResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 362799869}
@@ -8387,6 +8401,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 2065792076}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &369156461
 Animation:
@@ -9667,6 +9682,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1405012296}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &415526162
 Animation:
@@ -11064,10 +11080,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 0
   icon: {fileID: 258926669}
   deck: {fileID: 1758409901}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &459244931
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11413,6 +11430,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 2029860609}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &470263353
 Animation:
@@ -12017,10 +12035,6 @@ GameObject:
   - component: {fileID: 497996689}
   - component: {fileID: 497996690}
   - component: {fileID: 497996691}
-  - component: {fileID: 497996696}
-  - component: {fileID: 497996697}
-  - component: {fileID: 497996698}
-  - component: {fileID: 497996699}
   m_Layer: 0
   m_Name: CellGrid
   m_TagString: Untagged
@@ -12040,13 +12054,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7b95ecb2f54710902f86642b92c3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
-  TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
+  onStartBattle: {fileID: 11400000, guid: 77f1b310c828eb14bbd2d03b8e329416, type: 2}
+  onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
+  onGridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
+    type: 2}
+  onSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
+  onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
+  onMonsterPlay: {fileID: 11400000, guid: be98f1bbe9430bf4c880c6b0a81474e3, type: 2}
+  onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  onBattleStarted: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
   onBattleIsOver: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
-  playersParent: {fileID: 1737196881}
-  NextCorruptionTurn: 0
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
-  onStartGame: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
+  tooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
+  tooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
 --- !u!114 &497996690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12256,118 +12277,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &497996696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497996688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 77f1b310c828eb14bbd2d03b8e329416, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 497996689}
-        m_TargetAssemblyTypeName: Grid.BattleStateManager, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &497996697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497996688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 497996689}
-        m_TargetAssemblyTypeName: Grid.BattleStateManager, Assembly-CSharp
-        m_MethodName: EndTurn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &497996698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497996688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 497996689}
-        m_TargetAssemblyTypeName: Grid.BattleStateManager, Assembly-CSharp
-        m_MethodName: OnSkillUsed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &497996699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497996688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01bfa663376b32648a20182c1e953820, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 497996689}
-        m_TargetAssemblyTypeName: Grid.BattleStateManager, Assembly-CSharp
-        m_MethodName: RemoveGridObject
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &498516681
 GameObject:
   m_ObjectHideFlags: 0
@@ -12893,6 +12802,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 174208215}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &508288285
 Animation:
@@ -13053,6 +12963,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1729606069}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &509223537
 Animation:
@@ -13665,6 +13576,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 2111367793}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &541775627
 Animation:
@@ -14159,6 +14071,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1693630505}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &551563658
 Animation:
@@ -14746,6 +14659,47 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 3672102831562226764, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _GameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51,
+        type: 2}
+    - target: {fileID: 3672102831562226764, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672102831562226764, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672102831562226764, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1366537549}
+    - target: {fileID: 3672102831562226764, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672102831562226764, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideTooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672102831562226764, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Resources.ToolTip.Scripts.Tooltip, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672102831562226764, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7100774714111676442, guid: b919d50da52185c48825b88694213045,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -15131,6 +15085,47 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8822047942810230381, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _GameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0,
+        type: 2}
+    - target: {fileID: 8822047942810230381, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822047942810230381, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822047942810230381, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1366537549}
+    - target: {fileID: 8822047942810230381, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822047942810230381, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822047942810230381, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Resources.ToolTip.Scripts.Tooltip, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822047942810230381, guid: b919d50da52185c48825b88694213045,
+        type: 3}
+      propertyPath: _UnityEventResponse.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b919d50da52185c48825b88694213045, type: 3}
 --- !u!1 &575828225
@@ -15395,6 +15390,8 @@ MonoBehaviour:
   deck1: {fileID: 1043034013}
   deck2: {fileID: 2072130046}
   deck3: {fileID: 1758409901}
+  onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
+  onActionDone: {fileID: 0}
 --- !u!1001 &586638234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16067,6 +16064,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 177086605}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &625117074
 Animation:
@@ -17607,6 +17605,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 681870977}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &749835497
 Animation:
@@ -19399,10 +19398,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 0
   icon: {fileID: 589641169}
   deck: {fileID: 2072130046}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &857764644
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19463,6 +19463,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 425694286}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &869449285
 Animation:
@@ -20156,6 +20157,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1258006274}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &883850570
 Animation:
@@ -20225,6 +20227,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 39741157}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &886584112
 Animation:
@@ -20460,6 +20463,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 744989380}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &905775501
 Animation:
@@ -21503,6 +21507,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 559786800}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &936642223
 Animation:
@@ -21889,6 +21894,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1590654073}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &966551779
 Animation:
@@ -22669,6 +22675,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 651959728}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1022705783
 Animation:
@@ -22738,6 +22745,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1888768993}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1026041738
 Animation:
@@ -22974,10 +22982,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 1
   icon: {fileID: 127819901}
   deck: {fileID: 2072130046}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &1033340895
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23167,22 +23176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
-  unityEventResponse:
+  _GameEvent: {fileID: 0}
+  _UnityEventResponse:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1043034013}
-        m_TargetAssemblyTypeName: Skills.Deck, Assembly-CSharp
-        m_MethodName: Initialize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1043034013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23857,6 +23854,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 918413556}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1082371804
 Animation:
@@ -24290,6 +24288,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 2028526306}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1112175498
 Animation:
@@ -24450,6 +24449,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 216862729}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1128669343
 Animation:
@@ -25264,6 +25264,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 491230876}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1168476305
 Animation:
@@ -25424,6 +25425,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1479230048}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1176504682
 Animation:
@@ -25593,6 +25595,8 @@ MonoBehaviour:
   MonsterSlots:
   - {fileID: 440416730}
   - {fileID: 128566736}
+  onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
+  onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
 --- !u!1 &1191544006
 GameObject:
   m_ObjectHideFlags: 0
@@ -26437,6 +26441,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 498938622}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1213604666
 Animation:
@@ -26792,10 +26797,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 0
   icon: {fileID: 1236455920}
   deck: {fileID: 1758409901}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &1231655648
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27160,10 +27166,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 0
   icon: {fileID: 155488084}
   deck: {fileID: 0}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &1244321612
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27368,6 +27375,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 498516684}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1255384037
 Animation:
@@ -27801,6 +27809,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 678048808}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1264410310
 Animation:
@@ -28297,22 +28306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
-  unityEventResponse:
+  _GameEvent: {fileID: 0}
+  _UnityEventResponse:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1284911198}
-        m_TargetAssemblyTypeName: _Instances.KeepBetweenScene, Assembly-CSharp
-        m_MethodName: StartBattle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1286174308
 GameObject:
   m_ObjectHideFlags: 0
@@ -28564,6 +28561,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1593829565}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1293278691
 Animation:
@@ -28736,6 +28734,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1286174311}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1321018447
 Animation:
@@ -29889,6 +29888,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1358245690}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366537549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7173677713745220523, guid: b919d50da52185c48825b88694213045,
+    type: 3}
+  m_PrefabInstance: {fileID: 568475040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44edb789fb5a2ee4b982510a41ffbb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1370370642
 GameObject:
   m_ObjectHideFlags: 0
@@ -31662,6 +31673,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 785621171}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1415742289
 Animation:
@@ -31958,10 +31970,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 1
   icon: {fileID: 163617275}
   deck: {fileID: 1043034013}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &1444941496
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32270,7 +32283,7 @@ RectTransform:
   - {fileID: 585425254}
   - {fileID: 707679725}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -32289,8 +32302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a0fa7cbb564fc5b6b5f1269b98beff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: d194e5a9adad9ce49a3a3863b0225101, type: 2}
-  unityEventResponse:
+  _GameEvent: {fileID: 11400000, guid: d194e5a9adad9ce49a3a3863b0225101, type: 2}
+  _UnityEventResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1188434641}
@@ -32341,60 +32354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64da2febf38a460d8fcdb49489629261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: efdfb0120a87c204eb44c4662e8a7485, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1188434641}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1188434643}
-        m_TargetAssemblyTypeName: Gears.InventoryUI, Assembly-CSharp
-        m_MethodName: ShowOnKill
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1130287620}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!114 &1455264720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1455264713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64da2febf38a460d8fcdb49489629261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: e1b6e3df89647e240baa05ca6e70a64a, type: 2}
-  unityEventResponse:
+  _GameEvent: {fileID: 11400000, guid: e1b6e3df89647e240baa05ca6e70a64a, type: 2}
+  _UnityEventResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 585425253}
@@ -32422,6 +32383,58 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1662339562}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1455264720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455264713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64da2febf38a460d8fcdb49489629261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _GameEvent: {fileID: 11400000, guid: efdfb0120a87c204eb44c4662e8a7485, type: 2}
+  _UnityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1188434641}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1188434643}
+        m_TargetAssemblyTypeName: Gears.InventoryUI, Assembly-CSharp
+        m_MethodName: ShowOnKill
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1130287620}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -32850,6 +32863,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 258941304}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1487258896
 Animation:
@@ -33576,8 +33590,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Decks: []
-  onSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
+  onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
+  onShuffleDecks: {fileID: 11400000, guid: 3c7854f985a4a984082920dbb20a24cb, type: 2}
 --- !u!1 &1560652897
 GameObject:
   m_ObjectHideFlags: 0
@@ -33694,6 +33709,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1379228147}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1566877759
 Animation:
@@ -33856,6 +33872,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1340826978}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1573254800
 Animation:
@@ -34490,6 +34507,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 547449098}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1597078184
 Animation:
@@ -35957,6 +35975,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1199220790}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1682640415
 Animation:
@@ -36027,10 +36046,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 1
   icon: {fileID: 508133997}
   deck: {fileID: 1758409901}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &1686997313
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36083,6 +36103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
+  onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
+  onMonsterPlay: {fileID: 11400000, guid: be98f1bbe9430bf4c880c6b0a81474e3, type: 2}
 --- !u!1001 &1693160576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36768,6 +36790,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 280908700}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1718650996
 Animation:
@@ -37492,22 +37515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
-  unityEventResponse:
+  _GameEvent: {fileID: 0}
+  _UnityEventResponse:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1758409901}
-        m_TargetAssemblyTypeName: Skills.Deck, Assembly-CSharp
-        m_MethodName: Initialize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1758409901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37795,6 +37806,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1939695543}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1796723449
 Animation:
@@ -38154,6 +38166,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1769091517}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1800902197
 Animation:
@@ -38223,6 +38236,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1833013470}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1810094391
 Animation:
@@ -39102,6 +39116,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1370370645}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1838987079
 Animation:
@@ -39172,10 +39187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Clickable: 0
   icon: {fileID: 557239242}
   deck: {fileID: 1043034013}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!222 &1864340740
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39236,6 +39252,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1623181566}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1874187392
 Animation:
@@ -39305,6 +39322,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 94913470}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1878282955
 Animation:
@@ -40316,6 +40334,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 327163296}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1918418356
 Animation:
@@ -40675,6 +40694,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 2144641711}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1944301278
 Animation:
@@ -41144,6 +41164,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1451943960}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1965147873
 Animation:
@@ -41304,6 +41325,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 1834077703}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &1977531449
 Animation:
@@ -42459,22 +42481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
-  unityEventResponse:
+  _GameEvent: {fileID: 0}
+  _UnityEventResponse:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2072130046}
-        m_TargetAssemblyTypeName: Skills.Deck, Assembly-CSharp
-        m_MethodName: Initialize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2072130046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42648,8 +42658,6 @@ GameObject:
   - component: {fileID: 2104929194}
   - component: {fileID: 2104929193}
   - component: {fileID: 2104929196}
-  - component: {fileID: 2104929198}
-  - component: {fileID: 2104929197}
   m_Layer: 5
   m_Name: Turn Order
   m_TagString: Untagged
@@ -42755,62 +42763,8 @@ MonoBehaviour:
   prefabUnitIcon: {fileID: 2357642254451993300, guid: 4e27d990c2b54494c8b39aa86062ba71,
     type: 3}
   Turn: {fileID: 1329088171}
---- !u!114 &2104929197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104929191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64da2febf38a460d8fcdb49489629261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2104929196}
-        m_TargetAssemblyTypeName: UserInterface.TurnOrderUI, Assembly-CSharp
-        m_MethodName: UpdateDisplay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2104929198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104929191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
-  unityEventResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2104929196}
-        m_TargetAssemblyTypeName: UserInterface.TurnOrderUI, Assembly-CSharp
-        m_MethodName: Initialize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
+  onGameStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
 --- !u!1 &2111367790
 GameObject:
   m_ObjectHideFlags: 0
@@ -43552,6 +43506,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 879105790}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &2124574175
 Animation:
@@ -43724,6 +43679,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 822746606}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &2131328849
 Animation:
@@ -43793,6 +43749,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 392369277}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &2134173875
 Animation:
@@ -44164,6 +44121,7 @@ MonoBehaviour:
   gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
     type: 2}
   spriteRenderer: {fileID: 788450482}
+  onActionDone: {fileID: 0}
   moveAnimSpeed: 10
 --- !u!111 &2146189742
 Animation:

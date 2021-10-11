@@ -3,34 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
+using _EventSystem.Listeners;
 using _Instances;
 using BattleOver;
 using Cells;
 using Grid.GridStates;
 using Grid.UnitGenerators;
+using GridObjects;
 using Players;
+using Skills;
 using StatusEffect;
 using Units;
 using UnityEngine;
+using Void = _EventSystem.CustomEvents.Void;
 
 namespace Grid
 {
     [RequireComponent(typeof(Board))]
     public class BattleStateManager : MonoBehaviour
     {
-
-        /// <summary>
-        /// UnitAdded event is invoked each time AddUnit method is called.
-        /// </summary>
-        public event EventHandler<UnitCreatedEventArgs> UnitAdded;
-
-        public InfoEvent TooltipOn;
-        public VoidEvent TooltipOff;
-
-        [SerializeField] private BoolEvent onBattleIsOver;
-        private EndConditionSO endCondition;
-
-        private BattleState battleState; //The grid delegates some of its behaviours to cellGridState object.
+        public static BattleStateManager instance;
+        private BattleState battleState;                                //The grid delegates some of its behaviours to cellGridState object.
         public BattleState BattleState
         {
             get
@@ -46,34 +39,147 @@ namespace Grid
             }
         }
 
-        private int NumberOfPlayers { get; set; }
+        public EndConditionSO endCondition { get; private set; }
+        private List<Player> Players { get; set; }
+        public List<Cell> Cells { get; private set; }
+        public List<Unit> Units { get; private set; }
+        public List<GridObject> GridObjects { get; private set; }
+        public Unit PlayingUnit { get; private set; }
+        
+        [Header("Event Listener")]
+        [SerializeField] private VoidEvent onStartBattle;
+        [SerializeField] private VoidEvent onEndTurn;
+        [SerializeField] private CellEvent onGridObjectDestroyed;
+        [SerializeField] private VoidEvent onSkillUsed;
+        [SerializeField] private VoidEvent onUIEnable;
+        [SerializeField] private VoidEvent onMonsterPlay;
+        [SerializeField] private VoidEvent onActionDone;
+        [SerializeField] private SkillEvent onSkillSelected;
+        
+        [Header("Event Sender")]
+        [SerializeField] private VoidEvent onBattleStarted;
+        [SerializeField] private BoolEvent onBattleIsOver;
+        [SerializeField] private UnitEvent onUnitStartTurn;
+        
+        [Header("Event Holder")]
+        [SerializeField] private InfoEvent tooltipOn;
+        [SerializeField] private VoidEvent tooltipOff;
+        public InfoEvent TooltipOn => tooltipOn;
+        public VoidEvent TooltipOff => tooltipOff;
+        
+        private const int TurnCost = 20;
+        private const int CorruptionTurn = 3;
+        public int NextCorruptionTurn { get; private set; }
+        private float TurnCount = 1;
+        public int Turn => (int)TurnCount;
+        public bool GameStarted { get; private set; }
 
-        private int CurrentPlayerNumber { get; set; }
 
         /// <summary>
         /// GameObject that holds player objects.
         /// </summary>
-        public Transform playersParent;
-
-        public BattleStateManager()
+        //public Transform playersParent;
+        private void Start()
         {
-            battleState = new BattleStateBlockInput(this);
+            onEndTurn.EventListeners += EndTurn;
+            onGridObjectDestroyed.EventListeners += RemoveGridObject;
+            onSkillUsed.EventListeners += SkillUsed;
+            onUIEnable.EventListeners += BlockInputs;
+            onMonsterPlay.EventListeners += BlockInputs;
+            onActionDone.EventListeners += ActionDone;
+            onStartBattle.EventListeners += StartBattle;
+            onSkillSelected.EventListeners += SkillSelected;
+            Initialize();
         }
 
-        public bool GameFinished { get; private set; }
-        public List<Player> Players { get; private set; }
-        public List<Cell> Cells { get; private set; }
-        public List<Unit> Units { get; private set; }
+        private void OnDestroy()
+        {
+            onEndTurn.EventListeners -= EndTurn;
+            onGridObjectDestroyed.EventListeners -= RemoveGridObject;
+            onSkillUsed.EventListeners -= SkillUsed;
+            onUIEnable.EventListeners -= BlockInputs;
+            onMonsterPlay.EventListeners -= BlockInputs;
+            onActionDone.EventListeners -= ActionDone;
+            onStartBattle.EventListeners -= StartBattle;
+            onSkillSelected.EventListeners -= SkillSelected;
+        }
+        
+    #region Event Handler
+        private void BlockInputs(Void _obj)
+        {
+            BlockInputs();
+        }
 
+        private void SkillUsed(Void _obj)
+        {
+            SkillUsed();
+        }
+        
+        private void EndTurn(Void item)
+        {
+            EndTurn();
+        }
+
+        private void ActionDone(Void _obj)
+        {
+            ActionDone();
+        }
+        
+        private void StartBattle(Void _obj)
+        {
+            StartBattle();
+        }
+        
+        /// <summary>
+        /// Link the CellsEvent to the BattleState Deselected
+        /// </summary>
+        private void OnCellUnselected(object sender, EventArgs e)
+        {
+            BattleState.OnCellDeselected(sender as Cell);
+        }
+
+        /// <summary>
+        /// Link the CellsEvent to the BattleState Selected
+        /// </summary>
+        private void OnCellSelected(object sender, EventArgs e)
+        {
+            BattleState.OnCellSelected(sender as Cell);
+        }
+
+        /// <summary>
+        /// Link the CellsEvent to the BattleState Clicked
+        /// </summary>
+        private void OnCellClicked(object sender, EventArgs e)
+        {
+            BattleState.OnCellClicked(sender as Cell);
+        }
+
+        /// <summary>
+        /// Method Called by a DeathEvent to Start the On UnitDestroyed Coroutine
+        /// </summary>
+        private void TriggerOnUnitDestroyed(object sender, DeathEventArgs e)
+        {
+            StartCoroutine(UnitDestroyed(sender));
+        }
+        
+    #endregion
+
+    #region Initialisation
+
+        
+        /// <summary>
+        /// Method Called in Start to Setup the scene
+        /// </summary>
         private void Initialize()
         {
+            Transform playersParent = GameObject.Find("Players").transform;
+            
             BattleState = new BattleStateBlockInput(this);
             if (!Equals(instance, this))
             {
                 instance = this;
             }
             
-            GameFinished = false;
             Players = new List<Player>();
             for (int _i = 0; _i < playersParent.childCount; _i++)
             {
@@ -83,13 +189,16 @@ namespace Grid
                 else
                     Debug.LogError("Invalid object in Players Parent game object");
             }
-            NumberOfPlayers = Players.Count;
-            CurrentPlayerNumber = Players.Min(p => p.playerNumber);
 
             InitializeCells();
             
             NextCorruptionTurn = CorruptionTurn;
             StartCoroutine(BattleBeginning());
+        }
+        private IEnumerator BattleBeginning()
+        {
+            yield return new WaitForSeconds(0.2f);
+            BattleState = new BattleStateBeginning(this, BattleGenerator.GenerateEnemies(endCondition.Type));
         }
 
         /// <summary>
@@ -115,8 +224,8 @@ namespace Grid
             foreach (Cell _cell in Cells)
             {
                 _cell.CellClicked += OnCellClicked;
-                _cell.CellHighlighted += OnCellHighlighted;
-                _cell.CellDehighlighted += OnCellDehighlighted;
+                _cell.CellHighlighted += OnCellSelected;
+                _cell.CellDehighlighted += OnCellUnselected;
                 _cell.GetComponent<Cell>().GetNeighbours(Cells);
             }
 
@@ -128,6 +237,29 @@ namespace Grid
             GridObjects.ForEach(g => g.Initialize());
         }
 
+        #endregion
+
+    #region Battle Start
+
+        /// <summary>
+        /// Method is called once, at the beggining of the game.
+        /// </summary>
+        private void StartBattle()
+        {
+            List<Hero> heroesPlaced = GameObject.Find("Player").GetComponentsInChildren<Hero>().Where(h => h.isPlaced).ToList();
+            if (heroesPlaced.Count <= 0) return;
+            
+            KeepBetweenScene.StartBattle();
+            BattleState.OnStateExit();
+            InitializeUnits();
+            onBattleStarted.Raise();
+            GameStarted = true;
+            StartTurn();
+        }
+        
+        /// <summary>
+        /// Method Called to Snap Units to their Cells and register all Units.
+        /// </summary>
         private void InitializeUnits()
         {
             Units = new List<Unit>();
@@ -153,73 +285,14 @@ namespace Grid
             PlayingUnit = Units[0];
         }
 
-        private void OnCellDehighlighted(object sender, EventArgs e)
-        {
-            BattleState.OnCellDeselected(sender as Cell);
-        }
+        #endregion
 
-        private void OnCellHighlighted(object sender, EventArgs e)
-        {
-            BattleState.OnCellSelected(sender as Cell);
-        }
-
-        private void OnCellClicked(object sender, EventArgs e)
-        {
-            BattleState.OnCellClicked(sender as Cell);
-        }
-
-        /// <summary>
-        /// Coroutine Called while a Unit is Dying
-        /// </summary>
-        private IEnumerator OnUnitDestroyed(object sender, DeathEventArgs e)
-        {
-            while (((Unit) sender).isDying)
-                yield return null;
-            Units.Remove((Unit) sender);
-            
-            if (endCondition.battleIsOver(this))
-            {
-                BattleState = new BattleStateBlockInput(this);
-                onBattleIsOver.Raise(endCondition.WinCondition);
-            }
-        }
-
-        private void TriggerOnUnitDestroyed(object sender, DeathEventArgs e)
-        {
-            StartCoroutine(OnUnitDestroyed(sender, e));
-        }
-
-        /// <summary>
-        /// Adds unit to the game
-        /// </summary>
-        /// <param name="unit">Unit to add</param>
-        private void AddUnit(Transform unit)
-        {
-            Units.Add(unit.GetComponent<Unit>());
-            unit.GetComponent<Unit>().UnitDestroyed += TriggerOnUnitDestroyed;
-
-            UnitAdded?.Invoke(this, new UnitCreatedEventArgs(unit));
-        }
-
-        /// <summary>
-        /// Method is called once, at the beggining of the game.
-        /// </summary>
-        private void StartGame()
-        {
-            List<Hero> heroesPlaced = GameObject.Find("Player").GetComponentsInChildren<Hero>().Where(h => h.isPlaced).ToList();
-            if (heroesPlaced.Count <= 0) return;
-            
-            KeepBetweenScene.StartBattle();
-            BattleState.OnStateExit();
-            InitializeUnits();
-            onStartGame.Raise();
-            StartTurn();
-        }
         /// <summary>
         /// Method makes turn transitions. It is called by player at the end of his turn.
         /// </summary>
-        public void EndTurn()
+        private void EndTurn()
         {
+
             if (PlayingUnit is Monster {isPlaying: true}) return;
 
             BattleState = new BattleStateBlockInput(this);
@@ -235,8 +308,12 @@ namespace Grid
             {
                 _cell.Buffs.ForEach(b => b.OnEndTurn(_cell.CurrentUnit));
             }
-
-            PlayingUnit.OnTurnEnd();
+            
+            if (PlayingUnit != null)
+            {
+                PlayingUnit.OnTurnEnd();
+            }
+            
             SortByTurnPoints();
             foreach (Unit _unit in Units)
             {
@@ -257,48 +334,12 @@ namespace Grid
             
             StartTurn();
         }
-
-
-        #region Const Turn Cost;
-        private const int TurnCost = 20;
-        private const int CorruptionTurn = 3;
-        #endregion
-
-        public int NextCorruptionTurn; 
-        
-        [SerializeField] private UnitEvent onUnitStartTurn;
-        [SerializeField] public VoidEvent onStartGame;
-        private float TurnCount = 1;
-        public int Turn => (int)TurnCount;
-
-        public Unit PlayingUnit { get; private set; }
-
-        public static BattleStateManager instance;
-        
-        public List<GridObjects.GridObject> GridObjects { get; private set; }
-
-        private void Start()
-        {
-            Initialize();
-        }
-
-        [ContextMenu("Beginning")]
-        private IEnumerator BattleBeginning()
-        {
-            yield return new WaitForSeconds(0.2f);
-            BattleState = new BattleStateBeginning(this, BattleGenerator.GenerateEnemies(endCondition.Type));
-        }
-
-        private void SortByTurnPoints()
-        {
-            Units.Sort((u1, u2) => u1.BattleStats.TurnPoint.CompareTo(u2.BattleStats.TurnPoint));
-            Units.Reverse();
-        }
-
         private void StartTurn()
         {
             BattleState = new BattleStateBlockInput(this);
 
+            PlayingUnit = Units[0];
+            
             TurnCount += 1f / Units.Count;
             foreach (Unit _unit in Units)
             {
@@ -310,9 +351,7 @@ namespace Grid
             {
                 _gridObject.OnStartTurn();
             }
-            
-            PlayingUnit = Units[0];
-            
+
             Debug.Log($"Player {PlayingUnit.playerNumber}: {PlayingUnit.UnitName} start Turn");
 
             PlayingUnit.BattleStats.TurnPoint -= TurnCost;
@@ -325,6 +364,12 @@ namespace Grid
             onUnitStartTurn.Raise(PlayingUnit);
         }
 
+        private void SortByTurnPoints()
+        {
+            Units.Sort((u1, u2) => u1.BattleStats.TurnPoint.CompareTo(u2.BattleStats.TurnPoint));
+            Units.Reverse();
+        }
+        
         private void Corruption()
         {
             NextCorruptionTurn += 1;
@@ -343,11 +388,11 @@ namespace Grid
             _cell.AddBuff(new Buff(_cell, DataBase.Cell.CorruptionSO));
             _cell.isCorrupted = true;
         }
-
+            
         /// <summary>
-        /// Method Called after using a Skill or after that any Unit Fall in an UnderGround Tile.
+        /// Method Called to set the State to the last State.
         /// </summary>
-        public void OnSkillUsed()
+        private void ActionDone()
         {
             // Verification if the Playing Unit is still alive
             if (PlayingUnit != Units[0])
@@ -358,15 +403,37 @@ namespace Grid
 
             // This Method Work only during the Player Turn
             if (PlayingUnit.playerNumber != 0) return;
-            BattleState = new BattleStateBlockInput(this);
             BattleState = new BattleStateUnitSelected(this, PlayingUnit);
         }
 
-        public void BlockInputs()
+        private void SkillSelected(SkillInfo skill)
         {
+            BattleState = new BattleStateSkillSelected(this, skill);
+        }
+        
+        /// <summary>
+        /// Method Called after using a Skill or after that any Unit Fall in an UnderGround Tile.
+        /// </summary>
+        private void SkillUsed()
+        {
+            // Verification if the Playing Unit is still alive
+            if (PlayingUnit != Units[0])
+            {
+                EndTurn();
+                return;
+            }
+
             // This Method Work only during the Player Turn
-            if (PlayingUnit.playerNumber == 0)
-                BattleState = new BattleStateBlockInput(this);
+            if (PlayingUnit.playerNumber != 0) return;
+            BattleState = new BattleStateUnitSelected(this, PlayingUnit);
+        }
+
+        /// <summary>
+        /// Method Called to Save Block Inputs (Used when UI is enabled or while AI play)
+        /// </summary>
+        private void BlockInputs()
+        {
+            BattleState = new BattleStateBlockInput(this);
         }
 
         public void AddCell(Cell _newCell, Cell _toDestroy)
@@ -383,24 +450,50 @@ namespace Grid
                     Cell destination = _toDestroy.Neighbours.Where(c => !c.IsTaken).ToList()[0];
                     if (destination != null)
                         _toDestroy.CurrentUnit.Move(destination, new List<Cell>() {destination});
-                    else _toDestroy.CurrentUnit.OnDestroyed();
+                    else StartCoroutine(_toDestroy.CurrentUnit.OnDestroyed());
                 }
             }
             Cells.Add(_newCell);
             Cells.Remove(_toDestroy);
             _newCell.CellClicked += OnCellClicked;
-            _newCell.CellHighlighted += OnCellHighlighted;
-            _newCell.CellDehighlighted += OnCellDehighlighted;
+            _newCell.CellHighlighted += OnCellSelected;
+            _newCell.CellDehighlighted += OnCellUnselected;
         }
 
-        public void RemoveGridObject(Cell _toDestroy)
+        private void RemoveGridObject(Cell _toDestroy)
         {
+            BlockInputs();
             if (!_toDestroy.IsTaken) return;
             if (_toDestroy.CurrentGridObject != null)
             {
                 GridObjects.Remove(_toDestroy.CurrentGridObject);
             }
-            OnSkillUsed();
+        }
+        
+        /// <summary>
+        /// Coroutine Called when a Unit is Dying
+        /// </summary>
+        private IEnumerator UnitDestroyed(object sender)
+        {
+            while (((Unit) sender).isDying)
+                yield return null;
+            Units.Remove((Unit) sender);
+            
+            if (endCondition.battleIsOver(this))
+            {
+                BattleState = new BattleStateBlockInput(this);
+                onBattleIsOver.Raise(endCondition.WinCondition);
+            }
+        }
+
+        /// <summary>
+        /// Adds unit to the game
+        /// </summary>
+        /// <param name="unit">Unit to add</param>
+        private void AddUnit(Transform unit)
+        {
+            Units.Add(unit.GetComponent<Unit>());
+            unit.GetComponent<Unit>().UnitDestroyed += TriggerOnUnitDestroyed;
         }
     }
 }

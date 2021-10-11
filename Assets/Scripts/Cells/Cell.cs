@@ -168,7 +168,7 @@ namespace Cells
         /// <summary>
         /// Return a List of the adjacent Cells
         /// </summary>
-        public abstract List<Cell> Neighbours { get; set; }
+        public abstract List<Cell> Neighbours { get; }
 
         /// <summary>
         /// Method that empty the Fields CurrentUnit and CurrentGridObject turn isTaken to false

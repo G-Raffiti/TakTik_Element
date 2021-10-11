@@ -1,33 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _EventSystem.CustomEvents;
-using _EventSystem.Listeners;
 using Grid;
 using Skills;
 using Units;
 using UnityEngine;
-using Void = _EventSystem.Void;
 
 namespace UserInterface
 {
     /// <summary>
     /// Class that Update the Skills UI on Battle Scene
     /// </summary>
-    public class DeckUI : MonoBehaviour, IGameEventListener<Unit>, IGameEventListener<Void>
+    public class DeckUI : MonoBehaviour
     {
-        [SerializeField] private UnitEvent onUnitStartTurn;
-        [SerializeField] private VoidEvent onSkillUsed;
-
         private List<Deck> decks;
-        
         private Dictionary<SkillInfo, int> skills;
         private Unit unit;
 
+        [Header("Event Listener")]
+        [SerializeField] private UnitEvent onUnitStartTurn;
+        [SerializeField] private VoidEvent onSkillUsed;
+
         private void Start()
         {
-            onSkillUsed.RegisterListener(this);
-            onUnitStartTurn.RegisterListener(this);
-
             skills = new Dictionary<SkillInfo, int>();
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -46,13 +40,19 @@ namespace UserInterface
             }
         }
 
-        private void OnDestroy()
+        private void OnEnable()
         {
-            onSkillUsed.UnregisterListener(this);
-            onUnitStartTurn.UnregisterListener(this);
+            onSkillUsed.EventListeners += onSkillUsedRaised;
+            onUnitStartTurn.EventListeners += onUnitStartTurnRaised;
         }
 
-        public void OnEventRaised(Unit item)
+        private void OnDisable()
+        {
+            onSkillUsed.EventListeners -= onSkillUsedRaised;
+            onUnitStartTurn.EventListeners -= onUnitStartTurnRaised;
+        }
+
+        public void onUnitStartTurnRaised(Unit item)
         {
             if (item.playerNumber != 0)
             {
@@ -63,7 +63,7 @@ namespace UserInterface
             UpdateDisplay();
         }
 
-        public void OnEventRaised(Void item)
+        public void onSkillUsedRaised<T>(T param)
         {
             UpdateDisplay();
         }

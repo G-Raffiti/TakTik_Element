@@ -68,7 +68,6 @@ namespace Grid.GridStates
         
         public override void OnCellClicked(Cell _cell)
         {
-            Debug.Log("done");
             if (usable.Contains(_cell))
             {
                 skill.UseSkill(_cell);

@@ -1,29 +1,34 @@
 ﻿using _EventSystem.CustomEvents;
-using _EventSystem.Listeners;
 using Grid;
 using TMPro;
-using Units;
 using UnityEngine;
-using Void = _EventSystem.Void;
 
 namespace UserInterface
 {
-    public class PlayingUnitsInfo_UI : MonoBehaviour, IGameEventListener<Unit>, IGameEventListener<Void>
+    public class PlayingUnitsInfo_UI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI AP;
         [SerializeField] private TextMeshProUGUI APshadow;
         [SerializeField] private TextMeshProUGUI MP;
         [SerializeField] private TextMeshProUGUI MPshadow;
-
+        
+        [Header("Event Listener")]
         [SerializeField] private UnitEvent onStartTurn;
         [SerializeField] private VoidEvent onSkillUsed;
         [SerializeField] private UnitEvent onUnitMoved;
 
-        private void Start()
+        private void OnEnable()
         {
-            onStartTurn.RegisterListener(this);
-            onSkillUsed.RegisterListener(this);
-            onUnitMoved.RegisterListener(this);
+            onStartTurn.EventListeners += OnEventRaised;
+            onSkillUsed.EventListeners += OnEventRaised;
+            onUnitMoved.EventListeners += OnEventRaised;
+        }
+
+        private void OnDisable()
+        {
+            onStartTurn.EventListeners -= OnEventRaised;
+            onSkillUsed.EventListeners -= OnEventRaised;
+            onUnitMoved.EventListeners -= OnEventRaised;
         }
 
         public void UpdateDisplay()
@@ -34,21 +39,9 @@ namespace UserInterface
             MPshadow.text = "" + (int)BattleStateManager.instance.PlayingUnit.BattleStats.MP;
         }
 
-        public void OnEventRaised(Unit item)
+        public void OnEventRaised<T>(T item)
         {
             UpdateDisplay();
-        }
-
-        public void OnEventRaised(Void item)
-        {
-            UpdateDisplay();
-        }
-
-        private void OnDestroy()
-        {
-            onStartTurn.UnregisterListener(this);
-            onSkillUsed.UnregisterListener(this);
-            onUnitMoved.UnregisterListener(this);
         }
     }
 }

@@ -19,7 +19,7 @@ using Random = UnityEngine.Random;
 
 namespace Skills
 {
-    public class Deck : MonoBehaviour, IGameEventListener<bool>
+    public class Deck : MonoBehaviour
     {
         [SerializeField] private BoolEvent onEndBattle;
         public List<SkillSO> Skills = new List<SkillSO>();
@@ -42,12 +42,12 @@ namespace Skills
         private void Start()
         {
             UsedSkills = new List<SkillSO>();
-            onEndBattle.RegisterListener(this);
+            onEndBattle.EventListeners += OnBattleEndRaised;
         }
 
         private void OnDestroy()
         {
-            onEndBattle.UnregisterListener(this);
+            onEndBattle.EventListeners -= OnBattleEndRaised;
         }
 
         /// <summary>
@@ -88,6 +88,7 @@ namespace Skills
 
         public void UpdateSkill(SkillSO _skill)
         {
+            ActualSkill = _skill;
             Cost = _skill.Cost;
             effects = new List<IEffect>();
             range = new Range(_skill.Range);
@@ -202,7 +203,6 @@ namespace Skills
             }
             
 
-            
             //TODO : Play Skill animation
             List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
             _zone.Sort((_cell1, _cell2) =>
@@ -236,7 +236,7 @@ namespace Skills
             NextSkill();
         }
 
-        public static IEnumerator HighlightZone(List<Cell> zone)
+        private static IEnumerator HighlightZone(List<Cell> zone)
         {
             foreach (Cell _cell in zone)
             {
@@ -251,7 +251,7 @@ namespace Skills
             zone.ForEach(c => c.UnMark());
         }
 
-        public void OnEventRaised(bool item)
+        private void OnBattleEndRaised(bool item)
         {
             Skills.AddRange(ConsumedSkills);
             ConsumedSkills = new List<SkillSO>();

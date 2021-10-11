@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _EventSystem.CustomEvents
 {
@@ -7,4 +8,6 @@ namespace _EventSystem.CustomEvents
     {
         public void Raise() => Raise(new Void());
     }
+
+    [SerializeField] public struct Void {};
 }

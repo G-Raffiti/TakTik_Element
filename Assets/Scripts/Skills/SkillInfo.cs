@@ -23,13 +23,16 @@ namespace Skills
     /// </summary>
     public class SkillInfo : InfoBehaviour
     {
-        [SerializeField] private VoidEvent OnSkillUsed;
         [SerializeField] private bool Clickable;
         [SerializeField] private Image icon;
+        [SerializeField] private Deck deck;
+        
+        [Header("Event Sender")] 
+        [SerializeField] private SkillEvent onSkillSelected;
+        [SerializeField] private VoidEvent OnSkillUsed;
         
         public SkillSO Skill { get; private set; }
         public Unit Unit { get; private set; }
-        [FormerlySerializedAs("Deck")] [SerializeField] private Deck deck;
         public Deck Deck
         {
             get => deck;
@@ -96,7 +99,6 @@ namespace Skills
 
             Unit.BattleStats.AP -= Cost;
 
-            BattleStateManager.instance.OnSkillUsed();
             OnSkillUsed?.Raise();
         }
 
@@ -150,7 +152,7 @@ namespace Skills
         {
             if (!Clickable) return;
             if (Unit.BattleStats.AP >= 1)
-                BattleStateManager.instance.BattleState = new BattleStateSkillSelected(BattleStateManager.instance, this);
+                onSkillSelected?.Raise(this);
         }
         
         public override void DisplayIcon()

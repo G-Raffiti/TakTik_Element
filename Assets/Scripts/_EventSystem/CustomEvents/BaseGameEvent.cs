@@ -1,30 +1,18 @@
-﻿using System.Collections.Generic;
-using _EventSystem.Listeners;
+﻿using System;
 using UnityEngine;
-using UserInterface;
 
 namespace _EventSystem.CustomEvents
 {
+    [System.Serializable]
     public abstract class BaseGameEvent<T> : ScriptableObject
     {
-        private readonly List<IGameEventListener<T>> eventListeners = new List<IGameEventListener<T>>();
-
+        // Event keyword makes it so that only this class can trigger the event
+        // Public because anyone can subscribe(+=), and unsubscribe(-=) to/from this event
+        public event Action<T> EventListeners = delegate {};
+        
         public void Raise(T item)
         {
-            for(int _i = eventListeners.Count - 1; _i >= 0; _i--)
-                eventListeners[_i].OnEventRaised(item);
-        }
-
-        public void RegisterListener(IGameEventListener<T> listener)
-        {
-            if(!eventListeners.Contains(listener))
-                eventListeners.Add(listener);
-        }
-
-        public void UnregisterListener(IGameEventListener<T> listener)
-        {
-            if(eventListeners.Contains(listener))
-                eventListeners.Remove(listener);
+            EventListeners(item);
         }
     }
 }

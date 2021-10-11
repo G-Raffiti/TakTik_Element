@@ -9,7 +9,8 @@ namespace Cells
     public abstract class Isometric : Cell
     {
         protected List<Cell> neighbours = null;
-        protected static readonly Vector2[] _directions =
+
+        private static readonly Vector2[] _directions =
         {
             new Vector2(1, 0), new Vector2(-1, 0), new Vector2(0, 1), new Vector2(0, -1)
         };

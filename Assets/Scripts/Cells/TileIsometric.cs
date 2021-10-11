@@ -17,6 +17,7 @@ namespace Cells
         public override List<Buff> Buffs { get; set; }
         public override CellSO CellSO { get => cellSO; set => cellSO = value; }
         public Sprite full { get; set; }
+        public override List<Cell> Neighbours => neighbours;
 
 
         [Header("Unity Infos")]
@@ -99,12 +100,6 @@ namespace Cells
             if (Buffs.Count <= 0)
                 effect.sprite = null;
             
-        }
-        
-        public override List<Cell> Neighbours
-        { 
-            get => neighbours;
-            set => neighbours = value;
         }
 
         public override void FallIn()

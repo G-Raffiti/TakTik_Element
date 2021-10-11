@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _DragAndDropSystem;
+using _EventSystem.CustomEvents;
 using Grid;
 using GridObjects;
 using Stats;
@@ -22,9 +23,13 @@ namespace Gears
         private Inventory heroInventory;
         private Inventory monsterInventory;
 
+        [Header("Event Sender")]
+        [SerializeField] private VoidEvent onUIEnable;
+        [SerializeField] private VoidEvent onActionDone;
+
         public void OpenBox(GridObject lootBox)
         {
-            BattleStateManager.instance.BlockInputs();
+            onUIEnable.Raise();
             
             HeroSlots.ForEach(cell => cell.RemoveItem());
             MonsterSlots.ForEach(cell => cell.RemoveItem());
@@ -40,7 +45,7 @@ namespace Gears
         
         public void ShowOnKill(Unit _monster)
         {
-            BattleStateManager.instance.BlockInputs();
+            onUIEnable.Raise();
             
             HeroSlots.ForEach(cell => cell.RemoveItem());
             MonsterSlots.ForEach(cell => cell.RemoveItem());
@@ -56,7 +61,7 @@ namespace Gears
 
         private void showGear()
         {
-            BattleStateManager.instance.BlockInputs();
+            onUIEnable.Raise();
             
             for (int i = 0; i < heroInventory.gears.Count; i++)
             {
@@ -98,7 +103,7 @@ namespace Gears
             
             gameObject.SetActive(false);
             
-            BattleStateManager.instance.OnSkillUsed();
+            onActionDone.Raise();
         }
     }
 }

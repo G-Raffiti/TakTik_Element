@@ -603,8 +603,6 @@ namespace Editor
             ICellGridGenerator generator = (ICellGridGenerator)Activator.CreateInstance(selectedGenerator);
             generator.CellsParent = cellGrid.transform;
 
-            cellGrid.GetComponent<BattleStateManager>().playersParent = players.transform;
-
             CustomUnitGenerator unitGenerator = cellGrid.AddComponent<CustomUnitGenerator>();
             unitGenerator.unitsParent = objects.transform;
             unitGenerator.cellsParent = cellGrid.transform;
@@ -668,8 +666,6 @@ namespace Editor
 
             ICellGridGenerator generator = (ICellGridGenerator)Activator.CreateInstance(selectedGenerator);
             generator.CellsParent = cellGrid.transform;
-
-            cellGrid.GetComponent<BattleStateManager>().playersParent = players.transform;
 
             CustomUnitGenerator unitGenerator = cellGrid.GetComponent<CustomUnitGenerator>();
             unitGenerator.unitsParent = objects.transform;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _EventSystem.CustomEvents;
 using _Extension;
 using _Instances;
 using Cells;
@@ -20,6 +21,9 @@ namespace Players
         private System.Random rnd;
         private Monster unit;
         bool canAttack = true;
+
+        [SerializeField] private VoidEvent onEndTurn;
+        [SerializeField] private VoidEvent onMonsterPlay;
 
         public NaiveAiPlayer()
         {
@@ -98,7 +102,7 @@ namespace Players
         }
         private IEnumerator Play(Monster _unit)
         {
-            BattleStateManager.instance.BlockInputs();
+            onMonsterPlay.Raise();
             
             List<Unit> _myUnits = cellGrid.Units.FindAll(u => u.playerNumber.Equals(playerNumber)).ToList();
             List<Unit> _enemyUnits = cellGrid.Units.Except(_myUnits).ToList();
@@ -185,11 +189,9 @@ namespace Players
                     yield return null;
                 }// Try to attack or Use the Skill on enemy
             }
-            
-            cellGrid.BlockInputs();
 
             unit.isPlaying = false;
-            cellGrid.EndTurn();
+            onEndTurn.Raise();
                 
         }
     }

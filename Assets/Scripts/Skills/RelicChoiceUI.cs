@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _DragAndDropSystem;
+using _EventSystem.CustomEvents;
 using Gears;
 using Grid;
 using GridObjects;
@@ -20,11 +21,15 @@ namespace Skills
         [SerializeField] private Deck deck2;
         [SerializeField] private Deck deck3;
 
+        [Header("Event Sender")]
+        [SerializeField] private VoidEvent onUIEnable;
+        [SerializeField] private VoidEvent onActionDone;
+
         public void ShowOnKill(Unit _unit)
         {
             Monster _monster = (Monster) _unit;
             
-            BattleStateManager.instance.BlockInputs();
+            onUIEnable.Raise();
             
             DecksSlots.ForEach(cell => cell.RemoveItem());
             MonsterSlots.ForEach(cell => cell.RemoveItem());
@@ -82,7 +87,7 @@ namespace Skills
 
             gameObject.SetActive(false);
             
-            BattleStateManager.instance.OnSkillUsed();
+            onActionDone.Raise();
         }
     }
 }

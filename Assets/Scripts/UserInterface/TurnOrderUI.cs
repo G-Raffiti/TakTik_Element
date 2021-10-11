@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using _EventSystem.CustomEvents;
 using Grid;
 using TMPro;
 using Units;
 using UnityEngine;
+using Void = _EventSystem.CustomEvents.Void;
 
 namespace UserInterface
 {
@@ -12,16 +14,25 @@ namespace UserInterface
         [SerializeField] private GameObject prefabUnitIcon;
         [SerializeField] private TextMeshProUGUI Turn;
         private Dictionary<Unit, GameObject> Icons = new Dictionary<Unit, GameObject>();
-
-        private BattleStateManager cellGrid;
-
+        
+        [Header("Event Listener")] 
+        [SerializeField] private UnitEvent onUnitStartTurn;
+        [SerializeField] private VoidEvent onGameStart;
         private void Start()
         {
-            cellGrid = GameObject.Find("CellGrid").GetComponent<BattleStateManager>();
+            onGameStart.EventListeners += Initialize;
+            onUnitStartTurn.EventListeners += UpdateDisplay;
         }
 
-        public void Initialize()
+        private void OnDestroy()
         {
+            onGameStart.EventListeners -= Initialize;
+            onUnitStartTurn.EventListeners -= UpdateDisplay;
+        }
+
+        public void Initialize(Void v)
+        {
+            BattleStateManager cellGrid = BattleStateManager.instance; 
             Turn.text = $"{cellGrid.Turn}";
             Turn.color = Color.white;
             foreach (Unit _unit1 in cellGrid.Units)
@@ -35,8 +46,9 @@ namespace UserInterface
             }
         }
 
-        public void UpdateDisplay()
+        public void UpdateDisplay(Unit u)
         {
+            BattleStateManager cellGrid = BattleStateManager.instance; 
             if (cellGrid.NextCorruptionTurn > cellGrid.Turn)
                 Turn.text = $"{cellGrid.Turn} \n<size=20>Next Corruption in {cellGrid.NextCorruptionTurn} Turn";
             else Turn.text = $"{cellGrid.Turn}";
@@ -44,10 +56,12 @@ namespace UserInterface
             
             foreach (Unit _unit1 in cellGrid.Units)
             {
-                Unit _unit = (Unit) _unit1;
+                Unit _unit = _unit1;
                 if (_unit == null) continue;
                 Icons[_unit].transform.SetAsLastSibling();
             }
+            
+            Icons[u].transform.SetSiblingIndex(0);
         }
     }
 }

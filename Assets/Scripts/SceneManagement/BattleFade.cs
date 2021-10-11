@@ -5,19 +5,19 @@ using UnityEngine;
 
 namespace SceneManagement
 {
-    public class BattleFade : MonoBehaviour, IGameEventListener<bool>
+    public class BattleFade : MonoBehaviour
     {
         [SerializeField] private BoolEvent onBattleEnd;
         [SerializeField] private ChangeScene SceneManager;
         
         private void Start()
         {
-            onBattleEnd.RegisterListener(this);
+            onBattleEnd.EventListeners += OnBattleEnded;
         }
 
         private void OnDestroy()
         {
-            onBattleEnd.UnregisterListener(this);
+            onBattleEnd.EventListeners -= OnBattleEnded;
         }
 
         private void StartNewBattle()
@@ -32,11 +32,6 @@ namespace SceneManagement
                 YouLoose();
             }
             else YouWin();
-        }
-        
-        public void OnEventRaised(bool item)
-        {
-            OnBattleEnded(item);
         }
 
         private void YouLoose()

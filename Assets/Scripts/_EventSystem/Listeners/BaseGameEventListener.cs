@@ -4,35 +4,39 @@ using UnityEngine.Events;
 
 namespace _EventSystem.Listeners
 {
-    public class BaseGameEventListener<T, TE, TUer> : MonoBehaviour,
-        IGameEventListener<T> where TE : BaseGameEvent<T> where TUer : UnityEvent<T>
+    /// <summary>
+    /// GameEvent Listener as a MonoBehaviour
+    /// </summary>
+    /// <typeparam name="T">Tvpe of Data Sent</typeparam>
+    /// <typeparam name="GE">GameEvent Type</typeparam>
+    /// <typeparam name="UER">Unity Event</typeparam>
+    public abstract class BaseGameEventListener<T, GE, UER> : MonoBehaviour
+        where GE : BaseGameEvent<T>
+        where UER : UnityEvent<T>
     {
-        [SerializeField] private TE gameEvent = null;
-        public TE GameEvent { get { return gameEvent; } set { gameEvent = value; } }
+        [SerializeField]
+        protected GE _GameEvent;
 
-        [SerializeField] private TUer unityEventResponse = null;
+        [SerializeField]
+        protected UER _UnityEventResponse;
 
-        private void OnEnable()
+        protected void OnEnable()
         {
-            if (gameEvent == null) { return; }
-
-            GameEvent.RegisterListener(this);
+            if (_GameEvent is null) return;
+            _GameEvent.EventListeners += TriggerResponses; // Subscribe
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
-            if (gameEvent == null) return;
-
-            GameEvent.UnregisterListener(this);
+            if (_GameEvent is null) return;
+            _GameEvent.EventListeners -= TriggerResponses; // Unsubscribe
         }
 
-        public void OnEventRaised(T item)
+        [ContextMenu("Trigger Responses")]
+        public void TriggerResponses(T val)
         {
-            if (unityEventResponse != null)
-            {
-                unityEventResponse.Invoke(item);
-            }
+            //No need to nullcheck here, UnityEvents do that for us (lets avoid the double nullcheck)
+            _UnityEventResponse.Invoke(val);
         }
     }
 }
-
