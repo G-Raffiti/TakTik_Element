@@ -24,5 +24,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b1ef57890b7b1a42a04cc9ebb21ce9b, type: 2}
   - {fileID: 11400000, guid: a26d586367b307447a19d327177fab3f, type: 2}
   - {fileID: 11400000, guid: 525f8d5e189868c44934d9bd64a44bc0, type: 2}
+  elements:
+  - {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
+  - {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
+  - {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}
+  - {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
   learning: {fileID: 11400000, guid: bd77759ab337d9e4994db2d3bf45b22e, type: 2}
   monsterAttack: {fileID: 11400000, guid: 6941ad382b4f1ab46aedf9eda9cd05c6, type: 2}

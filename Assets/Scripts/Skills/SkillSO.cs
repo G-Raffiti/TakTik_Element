@@ -39,5 +39,26 @@ namespace Skills
         public List<StatusSO> StatusEffects => statusEffects;
         public bool Consumable => consumable;
         public int Cost => cost;
+
+        public void SetDATA(rawSkill _rawSkill)
+        {
+            name = _rawSkill.Name;
+            element = _rawSkill.Element;
+            affect = _rawSkill.Affect;
+            range = new Range(_rawSkill.RangeType, _rawSkill.ZoneType, _rawSkill.RangeValue, _rawSkill.Radius);
+            power = new Power();
+            power.Basic = _rawSkill.Power;
+            consumable = _rawSkill.Consumable;
+            cost = _rawSkill.Cost;
+
+            effects = new List<SkillEffect>();
+            if (_rawSkill.Effect1 != null) effects.Add(_rawSkill.Effect1);
+            if (_rawSkill.Effect2 != null) effects.Add(_rawSkill.Effect2);
+            if (_rawSkill.Effect3 != null) effects.Add(_rawSkill.Effect3);
+
+            if (_rawSkill.GridEffect != null) gridEffect = _rawSkill.GridEffect;
+
+            icon = _rawSkill.Icon;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using Cells;
 using Gears;
 using Skills;
@@ -39,6 +40,7 @@ namespace _Instances
             InstantiateDataBases();
         }
 
+        [ContextMenu("instantiate")]
         public void InstantiateDataBases()
         {
             Monster = dataMonster;

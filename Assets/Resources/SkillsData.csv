@@ -1,0 +1,4 @@
+#,Name,Element,Cost,Effect1,Effect2,Effect3,GridEffect,StatusEffects,RangeType,RangeValue,ZoneType,Radius,NeedView,NeedTarget,Affect,CanBeModified,Power,Consumable,Icon,Skill
+0,Strike,None,1,Attack,,,,,Basic,1,Basic,0,True,False,All,True,5,False,Assassinskill_45,Skill
+1,Learning,None,0,Learning,,,,,Basic,3,Self,0,True,True,Enemy,False,0,True,Update_05,Skill
+2,Guard,None,1,Buff,,,,PhysicShield,Basic,0,Basic,0,True,False,All,True,3,False,Paladinskill_03,Skill
