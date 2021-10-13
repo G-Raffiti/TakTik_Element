@@ -10,7 +10,6 @@ using Skills.ScriptableObject_GridEffect;
 using Skills.ScriptableObject_RelicEffect;
 using Stats;
 using UnityEditor;
-using UnityEditor.Lumin.Packaging.Manifest;
 using UnityEngine;
 
 namespace Editor.Data
