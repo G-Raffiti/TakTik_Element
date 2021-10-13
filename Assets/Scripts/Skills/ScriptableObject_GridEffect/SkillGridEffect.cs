@@ -15,6 +15,7 @@ namespace Skills.ScriptableObject_GridEffect
         TeleportTo,
         Pull,
         GoAwayFrom,
+        PushImpact,
     }
     
     public abstract class SkillGridEffect : IEffect

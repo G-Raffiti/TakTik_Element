@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb306db600d9448dba5beee8f2487ca0, type: 3}
-  m_Name: Status_StatsBonus_FrostRage
+  m_Name: Status_FrostRage
   m_EditorClassIdentifier: 
   betweenTurn: 0
   element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}

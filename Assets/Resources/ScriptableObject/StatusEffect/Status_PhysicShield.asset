@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb306db600d9448dba5beee8f2487ca0, type: 3}
-  m_Name: Status_StatsBonus_PhysicShield
+  m_Name: Status_PhysicShield
   m_EditorClassIdentifier: 
   betweenTurn: 0
   element: {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}

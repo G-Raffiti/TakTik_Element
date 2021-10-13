@@ -21,9 +21,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/CellSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateBeginning.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectIsoGridGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
@@ -65,13 +62,16 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateSkillSelected.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Deck.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CSVReader.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DataBaseSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/rawSkill.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/rawSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/CSVReader.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/DataBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/SkillGridEffect.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/SkillEffect.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/rawSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DataBaseSkill.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

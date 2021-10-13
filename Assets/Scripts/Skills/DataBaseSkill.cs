@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using _ScriptableObject;
+using Skills.ScriptableObject_Effect;
+using Skills.ScriptableObject_GridEffect;
 using Stats;
 using Units;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -29,5 +33,15 @@ namespace Skills
         public SkillSO Learning => learning;
         public SkillSO MonsterAttack => monsterAttack;
 
+        
+        public void AddSkill(SkillSO newSkill)
+        {
+            #if (UNITY_EDITOR)
+            allSkills.Add(newSkill);
+            EditorUtility.SetDirty(this); 
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            #endif
+        }
     }
 }

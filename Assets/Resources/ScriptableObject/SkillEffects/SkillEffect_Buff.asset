@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4faded75d94698bdfbfabb9357010a, type: 3}
-  m_Name: SkillEffect_FloorStatus
+  m_Script: {fileID: 11500000, guid: fea0f302e6e54c1eb8cc267b8e68e9f6, type: 3}
+  m_Name: SkillEffect_Buff
   m_EditorClassIdentifier: 
-  actionsOrder: 9
-  type: 4
+  actionsOrder: 5
+  type: 105

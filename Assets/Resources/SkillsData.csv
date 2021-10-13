@@ -1,4 +1,10 @@
-#,Name,Element,Cost,Effect1,Effect2,Effect3,GridEffect,StatusEffects,RangeType,RangeValue,ZoneType,Radius,NeedView,NeedTarget,Affect,CanBeModified,Power,Consumable,Icon,Skill
+#,Name,Element,Cost,Effect1,Effect2,Effect3,GridEffect,Status,RangeType,RangeValue,ZoneType,Radius,NeedView,NeedTarget,Affect,CanBeModified,Power,Consumable,Icon,Skill
 0,Strike,None,1,Attack,,,,,Basic,1,Basic,0,True,False,All,True,5,False,Assassinskill_45,Skill
-1,Learning,None,0,Learning,,,,,Basic,3,Self,0,True,True,Enemy,False,0,True,Update_05,Skill
-2,Guard,None,1,Buff,,,,PhysicShield,Basic,0,Basic,0,True,False,All,True,3,False,Paladinskill_03,Skill
+1,Learning,None,0,Learning,,,,,Basic,3,Self,0,True,True,OnlyEnemy,False,0,True,Update_05,Skill
+2,Guard,None,1,Buff,,,,PhysicShield,Basic,0,Basic,0,True,False,All,True,5,False,Paladinskill_03,Skill
+3,Poison Cocktail,Nature,1,FloorStatus,Buff,,,Poison,Basic,3,Basic,1,True,False,All,True,3,False,Assassinskill_46,Skill
+4,Tentacule,Nature,1,Attack,,,Pull,,Cross,4,Basic,1,True,False,OnlyOthers,True,3,False,Shamanskill_33,Skill
+5,Leef Razor,Nature,1,Spell,,,,,Cross,3,Perpendicular,1,True,False,OnlyEnemy,True,4,False,healing,Skill
+6,Wave,Water,1,Spell,,,,,Contact,1,Cone,2,True,False,All,True,3,False,Shamanskill_12,Skill
+7,Wind Arrow,Nature,1,Attack,,,,,Ranged,4,Self,0,False,False,All,True,6,False,Warriorskill_17,Skill
+8,Discharge Hit,Fire,1,Attack,,,PushFix_3,,Cross,1,Perpendicular,0,True,False,OnlyOthers,True,5,False,Assassinskill_40,Skill

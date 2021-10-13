@@ -13,12 +13,28 @@ using static UnityEngine.Vector2;
 
 namespace Skills._Zone
 {
-    public enum EZone 
-    { Self, Basic, Contact, Line, Ranged ,Square, Cross, Cone, Perpendicular}
-    // Self = only sender, Basic = get cell distance in all directions, Contact = only neighbours of the sender, Line = 1 Direction, Ranged = Basic - Contact, Cross = Line in all 4 Directions 
-    
+    public enum EZone
+    {
+        Self, 
+        Basic, 
+        Contact, 
+        Line, 
+        Ranged ,
+        Square, 
+        Cross, 
+        Cone, 
+        Perpendicular,
+    }
+
     public enum EAffect
-    { All, OnlyAlly, OnlyEnemy, OnlySelf, OnlyOthers }
+    {
+        All, 
+        OnlyAlly, 
+        OnlyEnemy, 
+        OnlySelf, 
+        OnlyOthers,
+        OnlyUnits,
+    }
 
     public static class Zone
     {

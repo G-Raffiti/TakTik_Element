@@ -58,6 +58,9 @@ namespace Skills
 
             if (_rawSkill.GridEffect != null) gridEffect = _rawSkill.GridEffect;
 
+            statusEffects = new List<StatusSO>();
+            if (_rawSkill.Status != null) statusEffects.Add(_rawSkill.Status);
+
             icon = _rawSkill.Icon;
         }
     }

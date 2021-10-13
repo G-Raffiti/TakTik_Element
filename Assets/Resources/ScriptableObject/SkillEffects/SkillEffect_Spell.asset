@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SkillEffect_Spell
   m_EditorClassIdentifier: 
   actionsOrder: 5
-  type: 2
+  type: 103

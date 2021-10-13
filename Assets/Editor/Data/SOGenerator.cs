@@ -72,8 +72,12 @@ namespace Editor.Data
             rawSkill rawSkill = new rawSkill(csvSkill);
             newSkill.SetDATA(rawSkill);
             
-            AssetDatabase.CreateAsset(newSkill, $"Assets/testCreation/Skill_{rawSkill.Element.Type}_{rawSkill.Name}.asset");
+            AssetDatabase.CreateAsset(newSkill, $"Assets/Resources/ScriptableObject/Skills/Skill_{rawSkill.Element.Type}_{rawSkill.Name}.asset");
             AssetDatabase.SaveAssets();
+
+            DataBase.Skill.AddSkill(
+                UnityEngine.Resources.Load<SkillSO>(
+                    $"ScriptableObject/Skills/Skill_{rawSkill.Element.Type}_{rawSkill.Name}"));
         }
 
         private static bool IsCSVFile(string path)
