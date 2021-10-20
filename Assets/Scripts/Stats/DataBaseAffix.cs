@@ -37,6 +37,8 @@ namespace Stats
     public class DataBaseAffix : ScriptableObject
     {
         [SerializeField] private List<AffixSO> affixes;
+        
+        public List<AffixSO> AllAffixes => affixes;
 
         public Dictionary<EAffix, AffixSO> Affixes => GetAffixes();
         

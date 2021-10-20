@@ -13,35 +13,32 @@ MonoBehaviour:
   m_Name: DataBase_Skill
   m_EditorClassIdentifier: 
   allSkills:
-  - {fileID: 11400000, guid: c9290534a81ed6540b16d0b08612ab8f, type: 2}
-  - {fileID: 11400000, guid: 88066dc7e46e300419dd58dff04dc526, type: 2}
-  - {fileID: 11400000, guid: 0080326b1428daa45925bdddd801c835, type: 2}
-  - {fileID: 11400000, guid: d081375f97783de4fa4fbee576ff1a13, type: 2}
-  - {fileID: 11400000, guid: 5aa84171db7f2534198a2bf0890c3923, type: 2}
-  - {fileID: 11400000, guid: b6b7235fb104a2f428728bbcd2930469, type: 2}
-  - {fileID: 11400000, guid: dc2a781cfa313db468aad46e202e18f3, type: 2}
-  - {fileID: 11400000, guid: eabea6b415450794d9b6430fd0e4e199, type: 2}
-  - {fileID: 11400000, guid: 9b1ef57890b7b1a42a04cc9ebb21ce9b, type: 2}
-  - {fileID: 11400000, guid: a26d586367b307447a19d327177fab3f, type: 2}
-  - {fileID: 11400000, guid: 525f8d5e189868c44934d9bd64a44bc0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ef25c4691893e6642b62bee55c21df5b, type: 2}
+  - {fileID: 11400000, guid: f17bb9c356168b34598320db817ae195, type: 2}
   elements:
   - {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
   - {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
   - {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}
   - {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
-  allSkillEffects:
-  - {fileID: 11400000, guid: 452a531074872114086cc085a037c9a2, type: 2}
-  - {fileID: 11400000, guid: c76c6094c4075f741b58e2f0c8c3f2a8, type: 2}
-  - {fileID: 11400000, guid: 552c6bb57926019498311e4241b699b7, type: 2}
-  - {fileID: 11400000, guid: 8c734bc4710505049b4bfb0000e64a6d, type: 2}
-  - {fileID: 11400000, guid: b1ab9f1b3a3209b4b8acc9285188dc54, type: 2}
-  - {fileID: 11400000, guid: bc89a5ba915174e4c83c0cd900dea305, type: 2}
-  - {fileID: 11400000, guid: 8618d49373b83dc469e55f442a54c1a4, type: 2}
-  - {fileID: 11400000, guid: c60b3c24cd1398f44b058da6022d9988, type: 2}
-  allGridEffects:
-  - {fileID: 11400000, guid: 3f2a4fb0903407946accb46f6dd47a9d, type: 2}
-  - {fileID: 11400000, guid: 1f235d5309666dc4f9abebde9e56a427, type: 2}
-  - {fileID: 11400000, guid: 0272e7fa218dc7749adea0ed421a4c8c, type: 2}
-  - {fileID: 11400000, guid: e6411559cfe59784282caccc88555a36, type: 2}
-  learning: {fileID: 11400000, guid: bd77759ab337d9e4994db2d3bf45b22e, type: 2}
-  monsterAttack: {fileID: 11400000, guid: 6941ad382b4f1ab46aedf9eda9cd05c6, type: 2}
+  learning: {fileID: 0}
+  monsterAttack: {fileID: 0}

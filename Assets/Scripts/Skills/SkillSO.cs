@@ -5,6 +5,7 @@ using Skills.ScriptableObject_Effect;
 using Skills.ScriptableObject_GridEffect;
 using Stats;
 using StatusEffect;
+using Units;
 using UnityEngine;
 
 namespace Skills
@@ -26,6 +27,7 @@ namespace Skills
 
         [SerializeField] private bool consumable;
         [SerializeField] private int cost;
+        [SerializeField] private EArchetype archetype;
 
         public string Name => name;
         public Element Element => element;
@@ -39,18 +41,29 @@ namespace Skills
         public List<StatusSO> StatusEffects => statusEffects;
         public bool Consumable => consumable;
         public int Cost => cost;
+        public EArchetype Archetype => archetype;
 
         public void SetDATA(rawSkill _rawSkill)
         {
             name = _rawSkill.Name;
             element = _rawSkill.Element;
             affect = _rawSkill.Affect;
-            range = new Range(_rawSkill.RangeType, _rawSkill.ZoneType, _rawSkill.RangeValue, _rawSkill.Radius);
+            range = new Range
+            {
+                RangeValue = _rawSkill.RangeValue,
+                CanBeModified = _rawSkill.CanBeModified,
+                NeedTarget = _rawSkill.NeedTarget,
+                NeedView = _rawSkill.NeedView,
+                Radius = _rawSkill.Radius,
+                RangeType = _rawSkill.RangeType,
+                ZoneType = _rawSkill.ZoneType,
+            };
             power = new Power();
             power.Basic = _rawSkill.Power;
             consumable = _rawSkill.Consumable;
             cost = _rawSkill.Cost;
 
+            archetype = _rawSkill.Archetype;
             effects = new List<SkillEffect>();
             if (_rawSkill.Effect1 != null) effects.Add(_rawSkill.Effect1);
             if (_rawSkill.Effect2 != null) effects.Add(_rawSkill.Effect2);

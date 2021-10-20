@@ -14,7 +14,6 @@ namespace Stats
         public int Radius;
         public bool NeedView;
         public bool NeedTarget;
-        public bool SelfCast;
         public bool CanBeModified;
 
         public Range(EZone _rangeType, EZone _zoneType, float range, float radius)
@@ -25,7 +24,6 @@ namespace Stats
             Radius = (int) radius;
             NeedView = true;
             NeedTarget = false;
-            SelfCast = true;
             CanBeModified = true;
         }
         public Range(Range range)
@@ -36,7 +34,6 @@ namespace Stats
             Radius = range.Radius;
             NeedView = range.NeedView;
             NeedTarget = range.NeedTarget;
-            SelfCast = range.SelfCast;
             CanBeModified = range.CanBeModified;
         }
 
@@ -48,7 +45,6 @@ namespace Stats
             Radius = (int)a;
             NeedView = true;
             NeedTarget = true;
-            SelfCast = true;
             CanBeModified = true;
         }
 
@@ -122,8 +118,6 @@ namespace Stats
             if (nt > 0) ret.NeedTarget = max.NeedTarget;
             
             int sc = Random.Range(0, 2);
-            ret.SelfCast = min.SelfCast;
-            if (sc > 0) ret.SelfCast = min.SelfCast;
 
             int cm = Random.Range(0, 2);
             ret.CanBeModified = min.CanBeModified;
@@ -140,10 +134,9 @@ namespace Stats
                 str += $"Zone: {Radius} {Zone.ZoneToString(ZoneType)}\n";
             }
 
-            if (NeedTarget || !NeedView || !SelfCast) str += "<size=35>";
+            if (NeedTarget || !NeedView) str += "<size=35>";
             if (!NeedView) str += "<sprite name=DontNeedView>";
             if (NeedTarget) str += "<sprite name=NeedTarget>";
-            if (!SelfCast) str += "<sprite name=CantSelfTarget>";
             if (!CanBeModified) str += "\n<size=25>Range Can't be modified\n";
             return str;
         }

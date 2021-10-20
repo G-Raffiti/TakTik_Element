@@ -7,6 +7,7 @@ using Skills.ScriptableObject_Effect;
 using Skills.ScriptableObject_GridEffect;
 using Stats;
 using StatusEffect;
+using Units;
 using UnityEngine;
 using Resources = UnityEngine.Resources;
 
@@ -15,6 +16,7 @@ namespace Skills
     public struct rawSkill
     {
         public string Name;
+        public EArchetype Archetype;
         public Element Element;
         public int Cost;
         public SkillEffect Effect1;
@@ -37,6 +39,7 @@ namespace Skills
         public rawSkill(bool no)
         {
             Name = "";
+            Archetype = EArchetype.None;
             Element = Element.None();
             Cost = 0;
             Effect1 = null;
@@ -61,6 +64,7 @@ namespace Skills
         {
             this = new rawSkill(false);
             Name = CSVSkill["Name"].ToString();
+            Enum.TryParse(CSVSkill["Archetype"].ToString(), out Archetype);
             Element = UnityEngine.Resources.Load<Element>(
                 $"ScriptableObject/Elements/Element_{CSVSkill["Element"]}");
             int.TryParse(CSVSkill["Cost"].ToString(), out Cost);
@@ -87,5 +91,6 @@ namespace Skills
             Icon = UnityEngine.Resources.Load<Sprite>(
                 $"Sprite/2000_Icons/All_Skill/{CSVSkill["Icon"]}");
         }
+
     }
 }

@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fddddc278040e3b851ae147520d1c2, type: 3}
   m_Name: DataBase_Monster
   m_EditorClassIdentifier: 
-  allMonster:
-  - {fileID: 11400000, guid: d021a6ede996dc94d9ce8a7c9e666f0b, type: 2}
-  - {fileID: 11400000, guid: 6b570cf3d47108c4aa1e494b36a1c74c, type: 2}
-  - {fileID: 11400000, guid: 1489297e3dc06844b90353fc79fd336d, type: 2}
+  allMonsters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 68d645494d85c5843b0462c39a4e1f82, type: 2}
+  - {fileID: 11400000, guid: 407b4687c4bbc7e47a9a67083d4dc405, type: 2}
+  - {fileID: 11400000, guid: 60b29974ecfb6054c9308b1e7d0447c3, type: 2}
+  - {fileID: 11400000, guid: cf047b251181bcb4f83bbf3cd7770409, type: 2}
+  - {fileID: 11400000, guid: 356d6af3fc0f27b47b3dd0de3c013618, type: 2}
+  - {fileID: 11400000, guid: 87f7322a71d2eb346a266dde3383e59c, type: 2}

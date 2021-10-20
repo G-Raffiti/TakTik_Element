@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b6bf79595345fba0f9a3372c40b672, type: 3}
+  m_Name: Skill_Fire_Smith Hammer
+  m_EditorClassIdentifier: 
+  name: Smith Hammer
+  element: {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
+  icon: {fileID: 21300000, guid: b0292d64cf08cdf4586802ae1fa17d4d, type: 3}
+  effects:
+  - {fileID: 11400000, guid: 452a531074872114086cc085a037c9a2, type: 2}
+  gridEffect: {fileID: 0}
+  affect: 4
+  range:
+    RangeType: 2
+    RangeValue: 0
+    ZoneType: 1
+    Radius: 1
+    NeedView: 0
+    NeedTarget: 0
+    CanBeModified: 1
+  power:
+    Basic: 4
+    Spell: 100
+    Skill: 100
+    Affinity:
+      Fire: 100
+      Nature: 100
+      Water: 100
+  statusEffects: []
+  consumable: 0
+  cost: 1
+  archetype: 1

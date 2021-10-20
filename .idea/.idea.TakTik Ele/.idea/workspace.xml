@@ -21,18 +21,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectIsoGridGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Isometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/Player.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/GameEvent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnitGameEvent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/AGameEventListener.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/UnitUnityEvent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnitUnityEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnitGameEventListener.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/test.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/test.cs" />
@@ -52,7 +40,6 @@
       <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateUnitSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicChoiceUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InventoryUI.cs" />
@@ -64,14 +51,27 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/CSVReader.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/rawSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/CSVReader.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/DataBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Spell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/SkillGridEffect.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/SkillEffect.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/DataBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/DataBaseAffix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/rawGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/DataBaseGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/GearSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/Data/zv.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/DataBaseMonster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/rawMonster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Range.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/rawSkill.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DataBaseSkill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_ScriptableObject/Element.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

@@ -130,6 +130,7 @@
             <e p="InfoGear.cs" t="Include" />
             <e p="Inventory.cs" t="Include" />
             <e p="InventoryUI.cs" t="Include" />
+            <e p="rawGear.cs" t="Include" />
           </e>
           <e p="Grid" t="Include">
             <e p="BattleStateManager.cs" t="Include" />
@@ -246,6 +247,7 @@
             <e p="IMovable.cs" t="Include" />
             <e p="Monster.cs" t="Include" />
             <e p="MonsterSO.cs" t="Include" />
+            <e p="rawMonster.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
             <e p="UnitStates" t="Include">
               <e p="UnitState.cs" t="Include" />
@@ -305,5 +307,6 @@
     </e>
     <e p="C:\Users\Travail\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Travail\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_TakTik Ele.-1170786588.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Travail\AppData\Roaming\JetBrains\Rider2020.3\scratches" t="IncludeRecursive" />
   </component>
 </project>

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using Cells;
 using Grid;
 using GridObjects;
@@ -243,9 +241,6 @@ namespace Skills._Zone
                     _inRange.Add(_cell);
                 }
             }
-            
-            if (!skill.Range.SelfCast)
-                _inRange.Remove(_startCell);
 
             return _inRange;
         }
@@ -269,9 +264,6 @@ namespace Skills._Zone
                     _inRange.Add(_cell);
                 }
             }
-            
-            if (!skill.Range.SelfCast)
-                _inRange.Remove(_startCell);
 
             return _inRange;
         }

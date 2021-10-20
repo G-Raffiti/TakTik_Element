@@ -69,12 +69,16 @@ namespace Units
             baseStats = monster.Stats();
             BattleStats = new BattleStats(baseStats + Inventory.GearStats());
             total = BattleStats;
-            deck.InitializeForMonster(monster.Skill, Relics);
+            
+            if (monster.Skill != null)
+                deck.InitializeForMonster(monster.Skill, Relics);
+            else
+            {
+                deck.InitializeForMonster(DataBase.Skill.GetSkillFor(monster), Relics);
+            }
             
             skill.UpdateSkill(0,this);
-            
-            
-            
+
             InitializeSprite();
         }
         
@@ -170,6 +174,7 @@ namespace Units
                     yield return null;
                 onActionDone.Raise();
             }
+            //TODO : Skill on death
 
             yield return base.OnDestroyed();
         }

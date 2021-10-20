@@ -19,6 +19,14 @@ namespace Units
     {
         Minion, Boss, Invoc,
     }
+
+    public enum EArchetype
+    {
+        None,
+        Warrior,
+        Caster,
+        Ranger,
+    }
     
     [CreateAssetMenu(fileName = "Monster_", menuName = "Scriptable Object/New Monster")]
     public class MonsterSO : ScriptableObject
@@ -37,6 +45,7 @@ namespace Units
         [SerializeField] private RelicSO relic;
         [SerializeField] private EReward rewardType;
         [SerializeField] private EMonster type;
+        [SerializeField] private EArchetype archetype;
         [SerializeField] private SkillSO skill;
         
         public SkillSO Skill => skill;
@@ -94,7 +103,8 @@ namespace Units
         public int Level => level;
         public Sprite UnitSprite => unitSprite;
         public Element Element => element;
-        
+        public EArchetype Archetype => archetype;
+
         /// <summary>
         /// Create the Prefab with the Stats at the Cell Location
         /// </summary>
@@ -108,8 +118,21 @@ namespace Units
             {
                 _monster.Spawn(this, KeepBetweenScene.Stage);
             }
-
             _cell.Take(_monster);
+        }
+
+        public void SetDATA(rawMonster _rawMonster)
+        {
+            unitName = _rawMonster.unitName;
+            element = _rawMonster.element;
+            basicStats = _rawMonster.basicStats;
+            unitSprite = _rawMonster.unitSprite;
+            level = _rawMonster.level;
+            relic = _rawMonster.relic;
+            rewardType = _rawMonster.rewardType;
+            type = _rawMonster.type;
+            archetype = _rawMonster.archetype;
+            prefab = UnityEngine.Resources.Load<GameObject>($"Prefabs/Units/PrefabMonster");
         }
     }
 }

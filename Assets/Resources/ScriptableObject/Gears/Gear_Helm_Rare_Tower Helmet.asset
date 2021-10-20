@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fb5286b2764e3ebd92a34453587aa6, type: 3}
+  m_Name: Gear_Helm_Rare_Tower Helmet
+  m_EditorClassIdentifier: 
+  rarity: {fileID: 11400000, guid: 5010e17869a041148b3976042753ef28, type: 2}
+  type: 4
+  icon: {fileID: 21300000, guid: 0a3bcc206ddcb5043b15199357ed36fb, type: 3}
+  gearName: Tower Helmet
+  mainStat:
+    affix: {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
+    value: 15
+  specialEffect: {fileID: 0}
+  nonAffixs:
+  - {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}

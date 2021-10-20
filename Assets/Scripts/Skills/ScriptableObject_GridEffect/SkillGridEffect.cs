@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using Cells;
-using Skills._Zone;
-using Units;
 using UnityEngine;
 
 namespace Skills.ScriptableObject_GridEffect

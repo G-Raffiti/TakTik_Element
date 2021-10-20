@@ -1,0 +1,13 @@
+Monster,#,Name,Element,HP,Shield,Dodge,Speed,Power,MP,AP,Range,Zone,Focus,Sprite,Level,RewardType,Relic,Type,Archetype
+Monster,0,Water Fly,Water,15,0,4,12,2,3,1,0,0,2,Ice Avian,1,Gear,,Minion,Warrior
+Monster,1,Lava Shroom,Fire,40,0,0,9,3,2,1,1,1,3,Fire Lava Spawn,1,Gear,,Minion,Caster
+Monster,2,Black Snake,Nature,30,0,0,11,4,4,1,0,0,5,Colossal Snake Black,1,Gear,,Minion,Warrior
+Monster,3,Water Drake,Water,15,25,0,9,5,3,2,0,0,0,Dragon King Blue,2,Gear,,Minion,Warrior
+Monster,4,Dryads Archer,Nature,20,0,1,11,1,1,2,2,0,1,Dryads Archer,1,Gear,,Minion,Ranger
+Monster,5,Temple Guard,Fire,50,0,0,10,4,3,1,0,0,3,Egypt Axe,1,Gear,,Minion,Warrior
+Monster,6,Egypt Chariot,Fire,40,0,0,9,4,3,1,2,0,3,Egypt Chariot,1,Gear,,Minion,Ranger
+Monster,7,Goblin Archer,Nature,30,0,1,9,4,3,1,2,0,3,Goblin Archer,1,Gear,,Minion,Ranger
+Monster,8,Ice Turtle,Water,25,15,0,9,4,3,1,2,0,3,Ice Turtle,1,Gear,,Minion,Ranger
+Monster,9,Fire Volcanic Maiden,Fire,55,0,0,8,4,2,1,1,1,2,Fire Volcanic Maiden,2,Gear,,Minion,Caster
+Monster,10,Elemental Titan Aquos,Water,40,15,0,8,4,2,1,1,1,2,Elemental Titan Aquos,2,Gear,,Minion,Caster
+Monster,11,Forest Fairy Filia,Nature,45,0,1,8,4,2,1,1,1,2,Forest Fairy Filia,2,Gear,,Minion,Caster

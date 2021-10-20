@@ -8,7 +8,7 @@ namespace _ScriptableObject
     [CreateAssetMenu(fileName = "Element_", menuName = "Scriptable Object/New Element")]
     public class Element : ScriptableObject
     {
-        [SerializeField] private new string name;
+        [SerializeField] private string elementName;
         [SerializeField] private Color textColour;
         [SerializeField] private EElement type;
 
@@ -16,9 +16,11 @@ namespace _ScriptableObject
         public Color TextColour => textColour;
         public EElement Type => type;
 
+        public string ElementName => elementName;
+
         public Element()
         {
-            name = "None";
+            elementName = "None";
             textColour = Color.white;
             type = EElement.None;
         }
@@ -31,7 +33,7 @@ namespace _ScriptableObject
         private string ColorName()
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(TextColour);
-            return $"<color=#{_hexColor}>{name}</color>";
+            return $"<color=#{_hexColor}>{elementName}</color>";
         }
     }
 

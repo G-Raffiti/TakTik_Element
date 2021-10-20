@@ -18060,7 +18060,6 @@ MonoBehaviour:
       Radius: 0
       NeedView: 0
       NeedTarget: 0
-      SelfCast: 0
       CanBeModified: 0
     Focus: 3
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
@@ -22613,7 +22612,6 @@ MonoBehaviour:
       Radius: 0
       NeedView: 0
       NeedTarget: 0
-      SelfCast: 0
       CanBeModified: 0
     Focus: 3
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
@@ -23194,11 +23192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEndBattle: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   Skills:
-  - {fileID: 11400000, guid: 0080326b1428daa45925bdddd801c835, type: 2}
-  - {fileID: 11400000, guid: dab02807dd74aa44eb46373778d80bc6, type: 2}
-  - {fileID: 11400000, guid: 4e4cd82a8f574444c87bc818bc211b9e, type: 2}
-  - {fileID: 11400000, guid: dab02807dd74aa44eb46373778d80bc6, type: 2}
-  - {fileID: 11400000, guid: bd77759ab337d9e4994db2d3bf45b22e, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   UsedSkills: []
   ConsumedSkills: []
   Relics: []
@@ -33959,7 +33956,6 @@ MonoBehaviour:
       Radius: 0
       NeedView: 0
       NeedTarget: 0
-      SelfCast: 0
       CanBeModified: 0
     Focus: 3
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
@@ -37533,11 +37529,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEndBattle: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   Skills:
-  - {fileID: 11400000, guid: bd77759ab337d9e4994db2d3bf45b22e, type: 2}
-  - {fileID: 11400000, guid: c9290534a81ed6540b16d0b08612ab8f, type: 2}
-  - {fileID: 11400000, guid: eabea6b415450794d9b6430fd0e4e199, type: 2}
-  - {fileID: 11400000, guid: 5aa84171db7f2534198a2bf0890c3923, type: 2}
-  - {fileID: 11400000, guid: dab02807dd74aa44eb46373778d80bc6, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
+  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
   UsedSkills: []
   ConsumedSkills: []
   Relics: []
@@ -42499,11 +42495,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEndBattle: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   Skills:
-  - {fileID: 11400000, guid: ac9a6a69d67f74941b4ef25ac6c0175e, type: 2}
-  - {fileID: 11400000, guid: b6b7235fb104a2f428728bbcd2930469, type: 2}
-  - {fileID: 11400000, guid: d081375f97783de4fa4fbee576ff1a13, type: 2}
-  - {fileID: 11400000, guid: d081375f97783de4fa4fbee576ff1a13, type: 2}
-  - {fileID: 11400000, guid: bd77759ab337d9e4994db2d3bf45b22e, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
+  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
   UsedSkills: []
   ConsumedSkills: []
   Relics: []

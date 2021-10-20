@@ -142,6 +142,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\Units\BattleGenerator.cs" />
      <Compile Include="Assets\Scripts\GridObjects\LootBox.cs" />
+     <Compile Include="Assets\Scripts\Gears\rawGear.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityIntEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\UnitEvent.cs" />
      <Compile Include="Assets\Scripts\Cells\BoardSO.cs" />
@@ -206,12 +207,13 @@
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectZoneType.cs" />
      <Compile Include="Assets\Scripts\UserInterface\ColorSet.cs" />
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderPrefab.cs" />
+     <Compile Include="Assets\Scripts\Skills\rawSkill.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\VoidListener.cs" />
      <Compile Include="Assets\Scripts\Skills\DataBaseRelic.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\CellEvent.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Stone.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\Skills\rawSkill.cs" />
+     <Compile Include="Assets\Scripts\Units\rawMonster.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

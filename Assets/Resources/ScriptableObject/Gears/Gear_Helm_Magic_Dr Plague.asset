@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fb5286b2764e3ebd92a34453587aa6, type: 3}
+  m_Name: Gear_Helm_Magic_Dr Plague
+  m_EditorClassIdentifier: 
+  rarity: {fileID: 11400000, guid: 171ce1537f1b2a04a805fc48fde07f0b, type: 2}
+  type: 4
+  icon: {fileID: 21300000, guid: 89997cf7250a64b40a40e4e3a158a4cb, type: 3}
+  gearName: Dr Plague
+  mainStat:
+    affix: {fileID: 11400000, guid: 1c0546b6b986d0247a365eda98c4ae3f, type: 2}
+    value: 3
+  specialEffect: {fileID: 0}
+  nonAffixs:
+  - {fileID: 11400000, guid: 0a54b820cb0f1724a9c066346e212734, type: 2}
+  - {fileID: 11400000, guid: 6f1f9d9dc9f8d364f92c555e271fdb29, type: 2}
+  - {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}
+  - {fileID: 11400000, guid: d470aae0b1808944e8c1555566875f90, type: 2}
+  - {fileID: 11400000, guid: a54c8531756dbb94d912c5ba3ae1a0db, type: 2}
+  - {fileID: 11400000, guid: f10f8b289c23dd9458535edbc81c24bb, type: 2}

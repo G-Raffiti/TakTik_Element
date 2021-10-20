@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b6bf79595345fba0f9a3372c40b672, type: 3}
+  m_Name: Skill_Water_Encre
+  m_EditorClassIdentifier: 
+  name: Encre
+  element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
+  icon: {fileID: 21300000, guid: 66066be941170b94bb4393b75005e9cf, type: 3}
+  effects:
+  - {fileID: 11400000, guid: 452a531074872114086cc085a037c9a2, type: 2}
+  gridEffect: {fileID: 11400000, guid: 1f235d5309666dc4f9abebde9e56a427, type: 2}
+  affect: 0
+  range:
+    RangeType: 1
+    RangeValue: 3
+    ZoneType: 3
+    Radius: 1
+    NeedView: 1
+    NeedTarget: 0
+    CanBeModified: 1
+  power:
+    Basic: 5
+    Spell: 100
+    Skill: 100
+    Affinity:
+      Fire: 100
+      Nature: 100
+      Water: 100
+  statusEffects: []
+  consumable: 0
+  cost: 1
+  archetype: 3

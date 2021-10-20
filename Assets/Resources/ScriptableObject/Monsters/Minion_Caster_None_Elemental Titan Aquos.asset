@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a418db8050448387e61904e1e27583, type: 3}
+  m_Name: Minion_Caster_None_Elemental Titan Aquos
+  m_EditorClassIdentifier: 
+  unitName: Elemental Titan Aquos
+  element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
+  basicStats:
+    TurnPoint: 0
+    HP: 40
+    Shield: 15
+    Dodge: 0
+    Speed: 8
+    Power:
+      Basic: 4
+      Spell: 100
+      Skill: 100
+      Affinity:
+        Fire: 100
+        Nature: 100
+        Water: 100
+    MP: 2
+    AP: 1
+    Range:
+      RangeType: 1
+      RangeValue: 1
+      ZoneType: 1
+      Radius: 1
+      NeedView: 1
+      NeedTarget: 0
+      CanBeModified: 1
+    Focus: 2
+  randomStats:
+    TurnPoint: 0
+    HP: 0
+    Shield: 0
+    Dodge: 0
+    Speed: 0
+    Power:
+      Basic: 0
+      Spell: 100
+      Skill: 100
+      Affinity:
+        Fire: 100
+        Nature: 100
+        Water: 100
+    MP: 0
+    AP: 0
+    Range:
+      RangeType: 0
+      RangeValue: 0
+      ZoneType: 0
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      CanBeModified: 0
+    Focus: 0
+  prefab: {fileID: 1179847595273300741, guid: 89efd93c7d9c49c4b8310941e959cfba, type: 3}
+  unitSprite: {fileID: 21300000, guid: 09fd44b1120593143954d33e04dea19f, type: 3}
+  level: 2
+  relic: {fileID: 0}
+  rewardType: 1
+  type: 0
+  archetype: 2
+  skill: {fileID: 0}

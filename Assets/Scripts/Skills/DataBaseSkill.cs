@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
+using System.Linq;
 using _ScriptableObject;
 using Skills.ScriptableObject_Effect;
-using Skills.ScriptableObject_GridEffect;
 using Stats;
 using Units;
 using UnityEditor;
@@ -36,12 +35,25 @@ namespace Skills
         
         public void AddSkill(SkillSO newSkill)
         {
+            if (AllSkills.Contains(newSkill)) return;
             #if (UNITY_EDITOR)
             allSkills.Add(newSkill);
             EditorUtility.SetDirty(this); 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             #endif
+        }
+
+        public void ClearDataBase()
+        {
+            allSkills = new List<SkillSO>();
+        }
+
+        public SkillSO GetSkillFor(MonsterSO _monster)
+        {
+            List<SkillSO> ret = allSkills.Where(s => s.Element == _monster.Element && s.Archetype == _monster.Archetype)
+                .ToList();
+            return ret[Random.Range(0, ret.Count)];
         }
     }
 }

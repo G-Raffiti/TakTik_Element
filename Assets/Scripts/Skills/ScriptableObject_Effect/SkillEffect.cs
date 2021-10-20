@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using _ScriptableObject;
+﻿using System.Collections.Generic;
 using Cells;
-using Grid;
-using Units;
 using UnityEngine;
 
 namespace Skills.ScriptableObject_Effect
