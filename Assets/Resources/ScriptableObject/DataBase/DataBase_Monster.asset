@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: DataBase_Monster
   m_EditorClassIdentifier: 
   allMonsters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 11400000, guid: 68d645494d85c5843b0462c39a4e1f82, type: 2}
   - {fileID: 11400000, guid: 407b4687c4bbc7e47a9a67083d4dc405, type: 2}
   - {fileID: 11400000, guid: 60b29974ecfb6054c9308b1e7d0447c3, type: 2}

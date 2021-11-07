@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a418db8050448387e61904e1e27583, type: 3}
   m_Name: Minion_Caster_None_Forest Fairy Filia
   m_EditorClassIdentifier: 
-  unitName: Forest Fairy Filia
+  unitName: Forest Fairy
   element: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
   basicStats:
     TurnPoint: 0
