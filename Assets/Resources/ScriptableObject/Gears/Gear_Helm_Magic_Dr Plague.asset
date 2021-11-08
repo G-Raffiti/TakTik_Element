@@ -17,13 +17,10 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 89997cf7250a64b40a40e4e3a158a4cb, type: 3}
   gearName: Dr Plague
   mainStat:
-    affix: {fileID: 11400000, guid: 1c0546b6b986d0247a365eda98c4ae3f, type: 2}
+    affix: {fileID: 11400000, guid: de10b57ee800f4344a3abc9fd7124ae7, type: 2}
     value: 3
   specialEffect: {fileID: 0}
   nonAffixs:
   - {fileID: 11400000, guid: 0a54b820cb0f1724a9c066346e212734, type: 2}
   - {fileID: 11400000, guid: 6f1f9d9dc9f8d364f92c555e271fdb29, type: 2}
   - {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}
-  - {fileID: 11400000, guid: d470aae0b1808944e8c1555566875f90, type: 2}
-  - {fileID: 11400000, guid: a54c8531756dbb94d912c5ba3ae1a0db, type: 2}
-  - {fileID: 11400000, guid: f10f8b289c23dd9458535edbc81c24bb, type: 2}

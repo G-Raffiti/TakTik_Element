@@ -19,6 +19,7 @@ namespace UserInterface
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onSkillUsed;
+        [SerializeField] private VoidEvent onActionDone;
 
         private void Start()
         {
@@ -44,12 +45,14 @@ namespace UserInterface
         {
             onSkillUsed.EventListeners += onSkillUsedRaised;
             onUnitStartTurn.EventListeners += onUnitStartTurnRaised;
+            onActionDone.EventListeners += onSkillUsedRaised;
         }
 
         private void OnDisable()
         {
             onSkillUsed.EventListeners -= onSkillUsedRaised;
             onUnitStartTurn.EventListeners -= onUnitStartTurnRaised;
+            onActionDone.EventListeners -= onSkillUsedRaised;
         }
 
         public void onUnitStartTurnRaised(Unit item)

@@ -21,11 +21,7 @@ MonoBehaviour:
     value: 5
   specialEffect: {fileID: 0}
   nonAffixs:
-  - {fileID: 11400000, guid: f10f8b289c23dd9458535edbc81c24bb, type: 2}
-  - {fileID: 11400000, guid: a54c8531756dbb94d912c5ba3ae1a0db, type: 2}
   - {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}
-  - {fileID: 11400000, guid: d470aae0b1808944e8c1555566875f90, type: 2}
-  - {fileID: 11400000, guid: 1c0546b6b986d0247a365eda98c4ae3f, type: 2}
   - {fileID: 11400000, guid: 03645eb28cbebc749917757f29043bab, type: 2}
   - {fileID: 11400000, guid: 6f8603e1c93fa5244b2c124354c7331a, type: 2}
   - {fileID: 11400000, guid: c6da5e4f41c8e7b40bfa9b8de6e3d116, type: 2}

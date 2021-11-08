@@ -23,5 +23,4 @@ MonoBehaviour:
   nonAffixs:
   - {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
   - {fileID: 11400000, guid: 4dc7ffa5bd3d5aa4888feaee1576915b, type: 2}
-  - {fileID: 11400000, guid: 427837ebfb0b9164195446a71519556b, type: 2}
   - {fileID: 11400000, guid: 03645eb28cbebc749917757f29043bab, type: 2}

@@ -42,16 +42,13 @@ namespace Units
             int.TryParse(csvMonster["Focus"].ToString(), out int focus);
             basicStats = new BattleStats
             {
-                TurnPoint = 0,
                 HP = hp,
                 Shield = shield,
-                Dodge = dodge,
                 Speed = speed,
-                Power = new Power(power),
+                Power = power,
                 MP = mp,
                 AP = ap,
                 Range = new Range(EZone.Basic, EZone.Basic, range, zone),
-                Focus = focus,
             };
             unitSprite = UnityEngine.Resources.Load<Sprite>($"Sprite/Monsters/{csvMonster["Sprite"].ToString()}");
             int.TryParse(csvMonster["Level"].ToString(), out level);

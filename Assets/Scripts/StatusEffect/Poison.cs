@@ -7,7 +7,7 @@ namespace StatusEffect
     [CreateAssetMenu(fileName = "Status_Poison", menuName = "Scriptable Object/Status Effects/Poisoned")]
     public class Poison : StatusSO
     {
-        [SerializeField] private float durationPerFocusPercent = 50;
+        [SerializeField] private int duration = 10;
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
             _unit.DefendHandler(_unit, _buff.Power, Element);
@@ -23,12 +23,12 @@ namespace StatusEffect
 
         public override float GetPower(Unit sender)
         {
-            return sender.BattleStats.GetFocus(Element.Type);
+            return sender.BattleStats.GetPower(Element.Type);
         }
 
         public override int GetDuration(Unit sender)
         {
-            return Math.Max(1, (int)(sender.BattleStats.GetFocus(Element.Type) * (durationPerFocusPercent / 100f)));
+            return duration;
         }
 
         public override string InfoEffect(Buff _buff)

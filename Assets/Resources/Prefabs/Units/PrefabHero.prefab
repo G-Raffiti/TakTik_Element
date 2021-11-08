@@ -203,20 +203,16 @@ MonoBehaviour:
     gears: []
   UnitName: 
   onUnitMoved: {fileID: 11400000, guid: f00c2e11c76f95d4ab1c9582337fb7db, type: 2}
+  TurnPoint: 0
   BattleStats:
-    TurnPoint: 0
     HP: 0
     Shield: 0
-    Dodge: 0
     Speed: 0
-    Power:
-      Basic: 0
-      Spell: 0
-      Skill: 0
-      Affinity:
-        Fire: 0
-        Nature: 0
-        Water: 0
+    Power: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
     MP: 0
     AP: 0
     Range:
@@ -226,14 +222,10 @@ MonoBehaviour:
       Radius: 0
       NeedView: 0
       NeedTarget: 0
-      SelfCast: 0
       CanBeModified: 0
-    Focus: 0
   playerNumber: 0
   movementAnimationSpeed: 10
   colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
-  frame: {fileID: 0}
-  back: {fileID: 0}
   unitSprite: {fileID: 8294017069078302248}
   info: {fileID: 1220656103392055339}
   shadow: {fileID: 991324253262739922}
@@ -282,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3725990125870873374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3480699985351151859}
@@ -328,7 +320,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: 21300000, guid: b0d0a2a2f71b7e94bba50d1beaac3e04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecdc6c598e786454b8b538957f52298f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

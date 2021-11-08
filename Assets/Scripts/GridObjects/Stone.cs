@@ -21,7 +21,7 @@ namespace GridObjects
         public override void Interact(Unit actor, Cell location)
         {
             base.Interact(actor, location);
-            DataBase.RunCoroutine(Push(actor, location.CurrentGridObject, (int)(actor.BattleStats.Power.Physic(EElement.None)/weight)));
+            DataBase.RunCoroutine(Push(actor, location.CurrentGridObject, (int)(actor.BattleStats.Power/weight)));
         }
         
         
@@ -73,7 +73,7 @@ namespace GridObjects
                 Unit obstacle = obstacleCell.CurrentUnit;
                 if (obstacle != null)
                     obstacle.DefendHandler(actor,
-                        (strength - _distance) * actor.BattleStats.Power.Physic(EElement.None), Element.None());
+                        (strength - _distance) * actor.BattleStats.Power, Element.None());
             }
         }
 

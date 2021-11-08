@@ -16,3 +16,4 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
   onFloorSprite: {fileID: 21300000, guid: 4c56a42f0e188314f8ae503d60a2cc4a, type: 3}
   name: Burn
+  duration: 2

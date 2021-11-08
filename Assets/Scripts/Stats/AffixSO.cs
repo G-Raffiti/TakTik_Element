@@ -18,76 +18,33 @@ namespace Stats
         public BattleStats GenerateBS(float value)
         {
             BattleStats ret = new BattleStats(0);
-            
-            switch (type)
+
+            switch (Type)
             {
-                case EAffix.HP:
-                    ret.HP += (int) value;
+                case EAffix.HP: ret.HP = (int) value;
                     break;
-                case EAffix.AP:
-                    ret.AP += (int) value;
+                case EAffix.AP: ret.AP = (int) value;
                     break;
-                case EAffix.MP:
-                    ret.MP += (int) value;
+                case EAffix.MP: ret.MP = (int) value;
                     break;
-                case EAffix.Dext:
-                    ret.Focus += (int) value;
-                    ret.Dodge += value * 0.5f;
+                case EAffix.Speed: ret.Speed = (int) value;
                     break;
-                case EAffix.Strength:
-                    ret.Power.Skill += value * 10;
-                    ret.HP += (int)value * 5;
+                case EAffix.Shield: ret.Shield = (int) value;
                     break;
-                case EAffix.Intel:
-                    ret.Power.Spell += value * 10;
-                    ret.Shield += (int) value * 2;
+                case EAffix.Fire: ret.Affinity.Fire = value;
                     break;
-                case EAffix.Focus:
-                    ret.Focus += (int) value;
+                case EAffix.Nature: ret.Affinity.Nature = value;
                     break;
-                case EAffix.Speed:
-                    ret.Speed += (int)value;
+                case EAffix.Water: ret.Affinity.Water = value;
                     break;
-                case EAffix.Affinity:
-                    ret.Power.Affinity.Fire += value;
-                    ret.Power.Affinity.Nature += value;
-                    ret.Power.Affinity.Water += value;
+                case EAffix.Power: ret.Power = (int) value;
                     break;
-                case EAffix.Fire:
-                    ret.Power.Affinity.Fire += value;
+                case EAffix.Range: ret.Range.RangeValue = (int) value;
                     break;
-                case EAffix.Water:
-                    ret.Power.Affinity.Water += value;
-                    break;
-                case EAffix.Nature:
-                    ret.Power.Affinity.Nature += value;
-                    break;
-                case EAffix.SkillPower:
-                    ret.Power.Skill += value;
-                    break;
-                case EAffix.SpellPower:
-                    ret.Power.Spell += value;
-                    break;
-                case EAffix.Power:
-                    ret.Power.Skill += value;
-                    ret.Power.Spell += value;
-                    break;
-                case EAffix.Shield:
-                    ret.Shield += (int)value;
-                    break;
-                case EAffix.Dodge:
-                    ret.Dodge += value;
-                    break;
-                case EAffix.Range:
-                    ret.Range.RangeValue += (int) value;
-                    break;
-                case EAffix.Zone:
-                    ret.Range.Radius += (int) value;
-                    break;
-                case EAffix.BasicPower:
-                    ret.Power.Basic += (int) value;
+                case EAffix.Zone: ret.Range.Radius = (int) value;
                     break;
                 default:
+                    Debug.LogError("Error in Affix Type");
                     break;
             }
 
@@ -111,36 +68,18 @@ namespace Stats
                     return "<sprite name=Speed>";
                 case EAffix.Shield:
                     return "<sprite name=Shield>";
-                case EAffix.Dodge:
-                    return "<sprite name=Dodge>";
-                case EAffix.Dext:
-                    return "<sprite name=Dext>";
-                case EAffix.Strength:
-                    return "<sprite name=Str>";
-                case EAffix.Intel:
-                    return "<sprite name=Intel>";
                 case EAffix.Fire:
                     return "<sprite name=Fire>";
                 case EAffix.Water:
                     return "<sprite name=Water>";
                 case EAffix.Nature:
                     return "<sprite name=Nature>";
-                case EAffix.BasicPower:
-                    return "<sprite name=BasicPower>";
-                case EAffix.Focus:
-                    return "<sprite name=Focus>";
                 case EAffix.Power:
                     return "<sprite name=Power>";
-                case EAffix.SkillPower:
-                    return "<sprite name=Skill>";
-                case EAffix.SpellPower:
-                    return "<sprite name=Spell>";
                 case EAffix.Range:
                     return "<sprite name=Range>";
                 case EAffix.Zone:
                     return "<sprite name=Zone>";
-                case EAffix.Affinity:
-                    return "<sprite name=Affinity>";
                 default:
                     return "ERROR";
             }

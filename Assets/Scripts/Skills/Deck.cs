@@ -33,7 +33,7 @@ namespace Skills
         public SkillSO ActualSkill { get; private set; }
         private Range range;
         public Range Range => range;
-        public Power Power { get; private set; }
+        public int Power { get; private set; }
         public List<StatusSO> StatusEffects { get; private set; }
         public Element Element { get; private set; }
         public EAffect Affect { get; private set; }
@@ -92,7 +92,7 @@ namespace Skills
             Cost = _skill.Cost;
             effects = new List<IEffect>();
             range = new Range(_skill.Range);
-            Power = new Power(_skill.Power);
+            Power = _skill.Power;
             StatusEffects = new List<StatusSO>(_skill.StatusEffects);
             Element = _skill.Element;
             Affect = _skill.Affect;

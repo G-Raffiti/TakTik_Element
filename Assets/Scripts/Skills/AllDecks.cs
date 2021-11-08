@@ -20,7 +20,7 @@ namespace Skills
         [Header("Event Listener")] 
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onShuffleDecks;
-        
+        [SerializeField] private VoidEvent onBattleStart;
         private void Start() 
         {
             DontDestroyOnLoad(gameObject.transform);
@@ -36,12 +36,22 @@ namespace Skills
 
             onUnitStartTurn.EventListeners += OnEventRaised;
             onShuffleDecks.EventListeners += Shuffle;
+            onBattleStart.EventListeners += FirstShuffle;
         }
 
         private void OnDestroy()
         {
             onUnitStartTurn.EventListeners -= OnEventRaised;
             onShuffleDecks.EventListeners -= Shuffle;
+            onBattleStart.EventListeners -= FirstShuffle;
+        }
+
+        private void FirstShuffle(Void _obj)
+        {
+            foreach (Deck _deck in Decks)
+            {
+                _deck.ShuffleDeck();
+            }
         }
 
         private void Shuffle(Void _obj)
@@ -51,7 +61,6 @@ namespace Skills
 
         public void Shuffle()
         {
-            Debug.Log("Hello !");
             if (BattleStateManager.instance.PlayingUnit.BattleStats.AP < 1 || used) return;
             BattleStateManager.instance.PlayingUnit.BattleStats.AP--;
             used = true;
