@@ -1,0 +1,107 @@
+﻿using System;
+using System.Collections.Generic;
+using _Instances;
+using Players;
+using Resources.ToolTip.Scripts;
+using Units;
+using UnityEngine;
+
+namespace UserInterface
+{
+    public class InventoryUI : MonoBehaviour
+    {
+        [SerializeField] private List<TurnOrderPrefab> Portraits;
+
+        private void Start()
+        {
+            for (int i = 0; i < Portraits.Count; i++)
+            {
+                Portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
+            }
+        }
+    }
+
+    public class Portrait : InfoBehaviour
+    {
+        [SerializeField] private ColorSet colorSet;
+        private BattleHero unit;
+        public void Initialise(Hero _hero)
+        {
+            unit = gameObject.AddComponent<BattleHero>();
+            unit.Spawn(_hero);
+            icon.sprite = unit.UnitSprite;
+            health.GetComponent<Image>().fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
+        }
+        
+        public override string GetInfoMain()
+        {
+            string str = "";
+            str += ColouredName();
+            if (unit.playerNumber == 0)
+            {
+                str +=  "\nHero" + "\n";
+            }
+
+            else str +=  "\nMonster" + "\n";
+
+            return str;
+        }
+
+        public override string GetInfoLeft()
+        {
+            string str = "";
+            str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)unit.Total.AP}</color>    ";
+            str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.MP)}>{(int)unit.Total.MP}</color>\n";
+            str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.HP)}>{unit.BattleStats.HP} </color>/ {unit.Total.HP}\n";
+            str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{unit.BattleStats.Shield} </color>/ {unit.Total.Shield}\n"; 
+            str += $"<sprite name=Dodge> <color={colorSet.HexColor(EAffix.Dodge)}>{(int) unit.BattleStats.Dodge} </color>/ {(int) unit.Total.Dodge}\n"; 
+            str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{unit.BattleStats.Speed} </color> \n";
+            str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{unit.BattleStats.TurnPoint} </color> \n";
+
+            return str;
+        }
+
+        public override string GetInfoRight()
+        {
+            string str = "";
+            str += $"Basic Power: {unit.BattleStats.Power.Basic} \n";
+            str += $"Spell Power : <sprite name=Fire><color={colorSet.HexColor(EAffix.Fire)}>{unit.BattleStats.Power.MagicPercent(EElement.Fire)}</color>  <sprite name=Water><color={colorSet.HexColor(EAffix.Water)}>{unit.BattleStats.Power.MagicPercent(EElement.Water)}</color>  <sprite name=Nature><color={colorSet.HexColor(EAffix.Nature)}>{unit.BattleStats.Power.MagicPercent(EElement.Nature)}</color> (%) \n";
+            str += $"Skill Power :  <sprite name=Fire><color={colorSet.HexColor(EAffix.Fire)}>{unit.BattleStats.Power.PhysicPercent(EElement.Fire)}</color>  <sprite name=Water><color={colorSet.HexColor(EAffix.Water)}>{unit.BattleStats.Power.PhysicPercent(EElement.Water)}</color>  <sprite name=Nature><color={colorSet.HexColor(EAffix.Nature)}>{unit.BattleStats.Power.PhysicPercent(EElement.Nature)}</color> (%) \n";
+            str += $"Focus Power :  <sprite name=Fire><color={colorSet.HexColor(EAffix.Fire)}>{unit.BattleStats.GetFocus(EElement.Fire)}</color>  <sprite name=Water><color={colorSet.HexColor(EAffix.Water)}>{unit.BattleStats.GetFocus(EElement.Water)}</color>  <sprite name=Nature><color={colorSet.HexColor(EAffix.Nature)}>{unit.BattleStats.GetFocus(EElement.Nature)}</color> \n";
+            str += $"Damage Taken :  <sprite name=Fire><color={colorSet.HexColor(EAffix.Fire)}>{affinityDef(EElement.Fire)}</color>  <sprite name=Water><color={colorSet.HexColor(EAffix.Water)}>{affinityDef(EElement.Water)}</color>  <sprite name=Nature><color={colorSet.HexColor(EAffix.Nature)}>{affinityDef(EElement.Nature)}</color> (%) \n";
+
+            return str;
+        }
+
+        private string affinityDef(EElement ele)
+        {
+            if (unit.BattleStats.GetDamageTaken(ele) == 100) return "--";
+            string str = "";
+            if (unit.BattleStats.GetDamageTaken(ele) > 100)
+                str += "+";
+            str += (int) unit.BattleStats.GetDamageTaken(ele) - 100;
+            str += "%";
+            return str;
+        }
+
+        public override string GetInfoDown()
+        {
+            return unit.Buffs.Aggregate("", (_current, _buff) => _current + (_buff.InfoOnUnit(_buff, unit) + "\n"));
+        }
+
+        public override string ColouredName()
+        {
+            string hexColour;
+            if (unit.playerNumber == 0)
+                hexColour = colorSet.HexColor(EColor.ally);
+            else 
+                hexColour = colorSet.HexColor(EColor.enemy);
+            return $"<color={hexColour}>{unit.UnitName}</color>";
+        }
+
+        public override Sprite GetIcon()
+        {
+            return unit.UnitSprite;
+        }
+    }
+}

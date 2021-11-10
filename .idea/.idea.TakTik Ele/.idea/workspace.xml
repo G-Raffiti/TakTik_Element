@@ -18,17 +18,12 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.5.7/Editor/Collaborate/UserInterface/CollaborateWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnitGameEventListener.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/test.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/test.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/CustomEvents/BoolEvent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Listeners/BoolListener.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Listeners/BaseGameEventListener.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/CustomEvents/BaseGameEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Void.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/UnityVoidEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/NaiveAiPlayer.cs" />
@@ -72,6 +67,12 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DataBaseSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_ScriptableObject/Element.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/CustomEvents/BaseGameEvent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/MenuPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/Player.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Inventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/InventoryUI.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

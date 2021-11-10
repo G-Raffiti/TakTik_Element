@@ -94,6 +94,7 @@
           <e p="_Instances" t="Include">
             <e p="DataBase.cs" t="Include" />
             <e p="KeepBetweenScene.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
           </e>
           <e p="_SaveSystem" t="Include">
             <e p="Interface_ISavable.cs" t="Include" />
@@ -259,9 +260,12 @@
             </e>
           </e>
           <e p="UserInterface" t="Include">
+            <e p="ButtonPanel.cs" t="Include" />
             <e p="ColorSet.cs" t="Include" />
             <e p="DeckUI.cs" t="Include" />
             <e p="Icon_UI.cs" t="Include" />
+            <e p="InventoryUI.cs" t="Include" />
+            <e p="MenuPanel.cs" t="Include" />
             <e p="PlayingUnitsInfo_UI.cs" t="Include" />
             <e p="SceneKeeper.cs" t="Include" />
             <e p="TurnOrderPrefab.cs" t="Include" />
