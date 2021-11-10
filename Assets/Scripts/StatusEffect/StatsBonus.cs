@@ -14,8 +14,7 @@ namespace StatusEffect
         [SerializeField] private List<Affix> Bonus;
         [SerializeField] private List<Affix> Malus;
         [SerializeField] private bool isDefinitive;
-        [SerializeField] private float durationPerFocusPercent;
-        [SerializeField] private EDependency powerDependency;
+        [SerializeField] private int duration;
         [SerializeField] private float powerPercent;
         [SerializeField] private string description;
 
@@ -49,28 +48,14 @@ namespace StatusEffect
             _unit.BattleStats -= bonus;
         }
         
-        
-
         public override float GetPower(Unit sender)
         {
-            switch (powerDependency)
-            {
-                case EDependency.Magic:
-                    return sender.BattleStats.Power.Magic(Element.Type) * powerPercent /100f;
-                case EDependency.Physic:
-                    return sender.BattleStats.Power.Physic(Element.Type) * powerPercent /100f;
-                case EDependency.Focus:
-                    return sender.BattleStats.GetFocus(Element.Type) * powerPercent /100f;
-                case EDependency.Affinity:
-                    return sender.BattleStats.Power.Affinity.GetAffinity(Element.Type) * powerPercent /100f;
-                default:
-                    return 1;
-            }
+            return sender.BattleStats.Affinity.GetAffinity(Element.Type) * powerPercent /100f;
         }
 
         public override int GetDuration(Unit sender)
         {
-            return (int)(sender.BattleStats.GetFocus(Element.Type) * (durationPerFocusPercent / 100f));
+            return duration;
         }
 
         public override string InfoEffect(Buff _buff)

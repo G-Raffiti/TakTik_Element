@@ -53,8 +53,8 @@ namespace Units
         public EReward RewardType => rewardType;
         public EMonster Type => type;
 
-        private const float GoodAffinity = 50;
-        private const float BadAffinity = 25;
+        private const float GoodAffinity = +4;
+        private const float BadAffinity = -4;
         private const int SkillRewardBonusAP = 1;
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Units
         public BattleStats Stats()
         {
             BattleStats random = BattleStats.Randomize(randomStats * Math.Max(KeepBetweenScene.Stage - 1, 0), randomStats * KeepBetweenScene.Stage);
-            random.Power.SetAffinity(AffinityFromElement(element));
+            random.Affinity = AffinityFromElement(element);
             if (RewardType == EReward.Skill)
                 random.AP += SkillRewardBonusAP;
 
@@ -73,21 +73,24 @@ namespace Units
 
         private Affinity AffinityFromElement(Element ele)
         {
-            float fire = 100;
-            float nat = 100;
-            float wat = 100;
+            float fire = 0;
+            float nat = 0;
+            float wat = 0;
             switch (ele.Type)
             {
                 case EElement.Fire: 
                     fire += GoodAffinity;
+                    nat += GoodAffinity;
                     wat -= BadAffinity;
                     break;
                 case EElement.Nature:
                     nat += GoodAffinity;
+                    wat += GoodAffinity;
                     fire -= BadAffinity;
                     break;
                 case EElement.Water:
                     wat += GoodAffinity;
+                    fire += GoodAffinity;
                     nat -= BadAffinity;
                     break;
                 case EElement.None:

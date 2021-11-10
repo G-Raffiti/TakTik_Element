@@ -110,18 +110,18 @@ namespace Skills.ScriptableObject_GridEffect
             if (target == obstacle) yield break;
             
             if (target != null && target is Unit u)
-                u.DefendHandler(skill.Unit, (strength - _distance) * skill.Unit.BattleStats.Power.Physic(EElement.None), Element.None());
+                u.DefendHandler(skill.Unit, (strength - _distance) * skill.Unit.BattleStats.Power, Element.None());
 
             if (obstacle != null)
                 obstacle.DefendHandler(skill.Unit,
-                    (strength - _distance) * skill.Unit.BattleStats.Power.Physic(EElement.None), Element.None());
+                    (strength - _distance) * skill.Unit.BattleStats.Power, Element.None());
         }
 
         public override string InfoEffect(SkillInfo _skillInfo)
         {
             string str = InfoEffect();
             str +=
-                $"\nDamage the Unit {_skillInfo.Unit.BattleStats.Power.Physic(EElement.None)} x the Number of Cell not crossed if there is an obstacle";
+                $"\nDamage the Unit {_skillInfo.Unit.BattleStats.Power} x the Number of Cell not crossed if there is an obstacle";
             return str;
         }
 

@@ -21,7 +21,6 @@ MonoBehaviour:
     value: 1
   Malus: []
   isDefinitive: 0
-  durationPerFocusPercent: 3
-  powerDependency: 1
+  duration: 2
   powerPercent: 100
   description: Add some <sprite name=Shield>

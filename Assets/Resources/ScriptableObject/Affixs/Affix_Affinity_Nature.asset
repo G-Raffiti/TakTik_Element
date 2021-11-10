@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a534540fb4fa47de84ef2db78cf180a1, type: 3}
   m_Name: Affix_Affinity_Nature
   m_EditorClassIdentifier: 
-  type: 12
-  rank: 2
+  type: 7
   color: {r: 0.046585154, g: 0.4433962, b: 0, a: 1}
-  tier: 0a000000140000002800000050000000
+  tier: 02000000040000000800000010000000

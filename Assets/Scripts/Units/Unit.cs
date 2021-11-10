@@ -85,6 +85,11 @@ namespace Units
     #endregion
 
     #region Unit Stats
+
+        /// <summary>
+        /// it represent the initiative of the unit, this point are used to take a round
+        /// </summary>
+        public int TurnPoint;
         
         /// <summary>
         /// Actual Stats of the Unit, Can be modified from all Sources,
@@ -349,7 +354,7 @@ namespace Units
         /// <returns></returns>
         protected virtual AttackAction DealDamage(Unit _unitToAttack)
         {
-            return new AttackAction(BattleStats.Power.Basic, 1f);
+            return new AttackAction(BattleStats.Power, 1f);
         }
         
         /// <summary>
@@ -371,13 +376,9 @@ namespace Units
         {
             Debug.Log($"Damage : {aggressor.UnitName} did {damage} {element.Type} damage to {UnitName}");
             int _damageTaken = Defend(damage, element);
-            bool dodged = false;
-            if (BattleStats.Dodge >= 1 && _damageTaken > 0)
-            {
-                BattleStats.Dodge -= 1;
-                _damageTaken = (int)(_damageTaken * 0.5f);
-                dodged = true;
-            }
+            
+            if(_damageTaken > 0)
+                MarkAsDefending(aggressor);
             
             if (BattleStats.Shield > 0)
             {
@@ -396,10 +397,6 @@ namespace Units
             BattleStats.HP -= _damageTaken;
             if (BattleStats.HP > total.HP) 
                 BattleStats.HP = total.HP;
-            
-            if(_damageTaken > 0)
-                MarkAsDefending(aggressor);
-            OnHit(aggressor, _damageTaken, element, dodged);
             
             DefenceActionPerformed();
 
@@ -422,7 +419,7 @@ namespace Units
         /// <returns>Amount of damage that the unit has taken</returns>        
         protected int Defend(float damage, Element element)
         {
-            return (int) (damage * (BattleStats.GetDamageTaken(element.Type) / 100f));
+            return (int) BattleStats.GetDamageTaken(damage, element.Type);
         }
 
         public int DamageTaken(float damage, Element element)
@@ -666,11 +663,9 @@ namespace Units
             BattleStats actual = new BattleStats(newTotal)
             {
                 Shield = BattleStats.Shield + Math.Max(0, diff.Shield),
-                Dodge = BattleStats.Dodge + Math.Max(0, diff.Dodge),
                 HP = BattleStats.HP + Math.Max(0, diff.HP),
                 AP = BattleStats.AP + Math.Max(0, diff.AP),
                 MP = BattleStats.MP + Math.Max(0, diff.MP),
-                TurnPoint = BattleStats.TurnPoint,
             };
 
             BattleStats = new BattleStats(actual);

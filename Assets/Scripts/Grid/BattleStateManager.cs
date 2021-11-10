@@ -279,7 +279,7 @@ namespace Grid
 
             for (int i = 0; i < Units.Count; i++)
             {
-                Units[i].BattleStats.TurnPoint += TurnCost * 2 + Units[i].BattleStats.Speed + i;
+                Units[i].TurnPoint += TurnCost * 2 + Units[i].BattleStats.Speed + i;
             }
             Units.Reverse();
             PlayingUnit = Units[0];
@@ -354,10 +354,10 @@ namespace Grid
 
             Debug.Log($"Player {PlayingUnit.playerNumber}: {PlayingUnit.UnitName} start Turn");
 
-            PlayingUnit.BattleStats.TurnPoint -= TurnCost;
+            PlayingUnit.TurnPoint -= TurnCost;
             foreach (Unit _unit in Units.Where(_unit => _unit != PlayingUnit))
             {
-                _unit.BattleStats.TurnPoint += _unit.BattleStats.Speed;
+                _unit.TurnPoint += _unit.BattleStats.Speed;
             }
 
             Players.Find(p => p.playerNumber == PlayingUnit.playerNumber).Play(this);
@@ -366,7 +366,7 @@ namespace Grid
 
         private void SortByTurnPoints()
         {
-            Units.Sort((u1, u2) => u1.BattleStats.TurnPoint.CompareTo(u2.BattleStats.TurnPoint));
+            Units.Sort((u1, u2) => u1.TurnPoint.CompareTo(u2.TurnPoint));
             Units.Reverse();
         }
         

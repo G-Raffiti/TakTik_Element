@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 95d600f23891e224ba9d125f8198e607, type: 3}
   gearName: Spiky Stepps
   mainStat:
-    affix: {fileID: 11400000, guid: d470aae0b1808944e8c1555566875f90, type: 2}
+    affix: {fileID: 11400000, guid: 4dc7ffa5bd3d5aa4888feaee1576915b, type: 2}
     value: 5
   specialEffect: {fileID: 0}
   nonAffixs: []

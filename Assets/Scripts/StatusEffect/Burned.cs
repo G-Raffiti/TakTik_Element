@@ -6,6 +6,7 @@ namespace StatusEffect
     [CreateAssetMenu(fileName = "Status_Burning", menuName = "Scriptable Object/Status Effects/Burned")]
     public class Burned : StatusSO
     {
+        [SerializeField] private int duration;
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
             _unit.DefendHandler(_unit, _buff.Power, Element);
@@ -21,12 +22,12 @@ namespace StatusEffect
 
         public override float GetPower(Unit sender)
         {
-            return sender.BattleStats.Power.Magic(Element.Type);
+            return sender.BattleStats.GetPower(Element.Type);
         }
 
         public override int GetDuration(Unit sender)
         {
-            return sender.BattleStats.GetFocus(Element.Type);
+            return duration;
         }
 
         public override string InfoEffect(Buff _buff)

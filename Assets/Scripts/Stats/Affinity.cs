@@ -26,14 +26,21 @@ namespace Stats
             Water = _affinity.Water;
         }
 
+        public Affinity(float a)
+        {
+            Fire = a;
+            Nature = a;
+            Water = a;
+        }
+
         public float GetAffinity(EElement Element)
         {
             switch (Element)
             {
-                case EElement.Fire : return Fire / 100f;
-                case EElement.Nature : return Nature / 100f;
-                case EElement.Water : return Water / 100f;
-                default : return 1;
+                case EElement.Fire : return Fire;
+                case EElement.Nature : return Nature;
+                case EElement.Water : return Water;
+                default : return 0;
             }
         }
 
@@ -43,6 +50,24 @@ namespace Stats
             _ret.Fire += b.Fire;
             _ret.Nature += b.Nature;
             _ret.Water += b.Water;
+            return _ret;
+        }
+
+        public static Affinity operator +(Affinity a, int b)
+        {
+            Affinity _ret = new Affinity(a);
+            _ret.Fire += b;
+            _ret.Nature += b;
+            _ret.Water += b;
+            return _ret;
+        }
+        
+        public static Affinity operator *(Affinity a, float b)
+        {
+            Affinity _ret = new Affinity(a);
+            _ret.Fire *= b;
+            _ret.Nature *= b;
+            _ret.Water *= b;
             return _ret;
         }
         
@@ -58,19 +83,28 @@ namespace Stats
         public static Affinity operator *(Affinity a, Affinity b)
         {
             Affinity _ret = new Affinity(a);
-            _ret.Fire = ((_ret.Fire/100f) * (b.Fire/100f)) * 100;
-            _ret.Nature = ((_ret.Nature/100f) * (b.Nature/100f)) * 100;
-            _ret.Water = ((_ret.Water/100f) * (b.Water/100f)) * 100;
+            _ret.Fire *= b.Fire;
+            _ret.Nature *= b.Nature;
+            _ret.Water *= b.Water;
             return _ret;
         }
 
         public static Affinity Pow(Affinity a, Affinity b)
         {
             Affinity _ret = new Affinity(a);
-            _ret.Fire = Mathf.Pow((_ret.Fire/100f),(b.Fire/100f)) * 100;
-            _ret.Nature = Mathf.Pow((_ret.Nature/100f), (b.Nature/100f)) * 100;
-            _ret.Water = Mathf.Pow((_ret.Water/100f), (b.Water/100f)) * 100;
+            _ret.Fire = Mathf.Pow(_ret.Fire,b.Fire);
+            _ret.Nature = Mathf.Pow(_ret.Nature, b.Nature);
+            _ret.Water = Mathf.Pow(_ret.Water, b.Water);
             return _ret;
+        }
+
+        public static Affinity Random(Affinity _min, Affinity _max)
+        {
+            Affinity ret = new Affinity();
+            ret.Fire = UnityEngine.Random.Range(_min.Fire, _max.Fire);
+            ret.Nature = UnityEngine.Random.Range(_min.Nature, _max.Nature);
+            ret.Water = UnityEngine.Random.Range(_min.Water, _max.Water);
+            return ret;
         }
     }
 }

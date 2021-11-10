@@ -17,12 +17,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e38f5ca9bfee3b145b6dbe7b20b8c2f4, type: 3}
   gearName: Wisardus Robus
   mainStat:
-    affix: {fileID: 11400000, guid: 5698c52ed9a8a9548ae745c82a7e683e, type: 2}
-    value: 3
+    affix: {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}
+    value: 1
   specialEffect: {fileID: 0}
   nonAffixs:
   - {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
-  - {fileID: 11400000, guid: 427837ebfb0b9164195446a71519556b, type: 2}
-  - {fileID: 11400000, guid: 406f3645e2a21394b809e3a9d0b32207, type: 2}
-  - {fileID: 11400000, guid: dee1a78da457654499a28081f713c194, type: 2}
-  - {fileID: 11400000, guid: a54c8531756dbb94d912c5ba3ae1a0db, type: 2}

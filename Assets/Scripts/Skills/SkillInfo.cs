@@ -40,7 +40,7 @@ namespace Skills
         }
 
         public Range Range { get; private set; }
-        public Power Power { get; private set; }
+        public int Power { get; private set; }
         public Element Element { get; private set; }
         public EAffect Affect { get; private set; }
         public int Cost { get; private set; }
@@ -173,5 +173,10 @@ namespace Skills
         }
 
         #endregion
+
+        public int GetPower(EElement _elementType)
+        {
+            return Power + Unit.BattleStats.GetPower(_elementType);
+        }
     }
 }

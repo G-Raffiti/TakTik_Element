@@ -1,5 +1,6 @@
 ﻿using System;
 using Skills._Zone;
+using Units;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -138,6 +139,13 @@ namespace Stats
             if (!NeedView) str += "<sprite name=DontNeedView>";
             if (NeedTarget) str += "<sprite name=NeedTarget>";
             if (!CanBeModified) str += "\n<size=25>Range Can't be modified\n";
+            return str;
+        }
+        
+        public string ToString(Unit unit)
+        {
+            string str = $"Range: {RangeValue} {Zone.ZoneToString(RangeType)}\n";
+            str += $"Zone: {Radius} {Zone.ZoneToString(ZoneType)}\n";
             return str;
         }
     }
