@@ -8,7 +8,7 @@ namespace _Instances
     {
         private static PlayerData instance;
         private List<Hero> heroes;
-        public List<Hero> Heroes => Heroes;
+        public List<Hero> Heroes => heroes;
 
         public static PlayerData getInstance()
         {
@@ -19,6 +19,7 @@ namespace _Instances
 
         private PlayerData()
         {
+            heroes = new List<Hero>();
             if (GameObject.Find("Player") != null)
             {
                 foreach (Transform _child in GameObject.Find("Player").transform)

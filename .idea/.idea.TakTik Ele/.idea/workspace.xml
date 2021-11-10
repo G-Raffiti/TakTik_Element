@@ -22,8 +22,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Listeners/BaseGameEventListener.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Void.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/UnityVoidEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/NaiveAiPlayer.cs" />
@@ -70,9 +68,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/CustomEvents/BaseGameEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonPanel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/MenuPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/Player.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Inventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/InventoryUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Inventory_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/Player.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
