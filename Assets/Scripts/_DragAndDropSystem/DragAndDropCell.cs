@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _EventSystem.CustomEvents;
 using Gears;
 using Skills;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace _DragAndDropSystem
 	[RequireComponent(typeof(Image))]
 	public class DragAndDropCell : MonoBehaviour, IDropHandler
 	{
+		[SerializeField] private VoidEvent onItemMoved;
 		public enum CellType                                                    // Cell types
 		{
 			Swap,                                                               // Items will be swapped between any cells
@@ -98,6 +100,7 @@ namespace _DragAndDropSystem
 				myDadItem.MakeRaycast(true);                                  	// Enable item's raycast
 			}
 			UpdateBackgroundState();
+			onItemMoved?.Raise();
 		}
 
 		/// <summary>

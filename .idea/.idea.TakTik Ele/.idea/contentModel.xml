@@ -94,7 +94,7 @@
           <e p="_Instances" t="Include">
             <e p="DataBase.cs" t="Include" />
             <e p="KeepBetweenScene.cs" t="Include" />
-            <e p="Player.cs" t="Include" />
+            <e p="PlayerData.cs" t="Include" />
           </e>
           <e p="_SaveSystem" t="Include">
             <e p="Interface_ISavable.cs" t="Include" />
@@ -178,6 +178,10 @@
           <e p="SceneManagement" t="Include">
             <e p="BattleFade.cs" t="Include" />
             <e p="ChangeScene.cs" t="Include" />
+          </e>
+          <e p="Shops" t="Include">
+            <e p="Forge.cs" t="Include" />
+            <e p="ForgeUI.cs" t="Include" />
           </e>
           <e p="Skills" t="Include">
             <e p="_Zone" t="Include">

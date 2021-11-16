@@ -1,7 +1,6 @@
 ﻿using Resources.ToolTip.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using UserInterface;
 
 namespace Gears
@@ -37,7 +36,7 @@ namespace Gears
         public override string GetInfoRight()
         {
             string ret = "\n(implicit)";
-            Gear.Affixes.ForEach(affix => ret += $"\n{affix.affix.TierRange(Gear.Stage)}");
+            Gear.Affixes.ForEach(affix => ret += $"\n{affix.affix.TierRange(affix.getTier())}");
             return ret;
         }
 

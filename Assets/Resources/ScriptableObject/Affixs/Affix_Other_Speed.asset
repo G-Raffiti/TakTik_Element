@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Affix_Other_Speed
   m_EditorClassIdentifier: 
   type: 3
-  rank: 1
   color: {r: 1, g: 0.9320468, b: 0, a: 1}
-  tier: 02000000040000000600000008000000
+  tier: 020000000400000006000000080000000a000000

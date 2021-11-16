@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc7ec619939c8e4a9c214065b21b37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onItemMoved: {fileID: 11400000, guid: 35dbf531972b8a644b025cfae12615b9, type: 2}
   cellType: 0
   empty: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
   full: {r: 0.31764707, g: 0.31764707, b: 0.31764707, a: 1}

@@ -12,8 +12,10 @@ namespace Stats
         [SerializeField] private Color color;
         [SerializeField] private int[] tier = new int[4];
 
+
         public EAffix Type => type;
         public Color Color => color;
+        public int[] Tier => tier;
 
         public BattleStats GenerateBS(float value)
         {
@@ -94,6 +96,11 @@ namespace Stats
         public int getValue(int lvl)
         {
             return Random.Range(tier[Math.Max(0, lvl - 1)], tier[lvl] + 1);
+        }
+
+        public float getValueOfTier(int _tier)
+        {
+            return Random.Range(tier[Math.Max(0, _tier - 1)], tier[_tier] + 1);
         }
 
         public string TierRange(int lvl)

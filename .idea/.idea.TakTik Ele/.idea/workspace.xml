@@ -22,14 +22,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Void.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/UnityVoidEvent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/NaiveAiPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/TurnOrderUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PlayingUnitsInfo_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecks.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/CustomEvents/VoidEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateUnitSelected.cs" />
@@ -70,9 +62,17 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/MenuPanel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Inventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/InventoryUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Inventory_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/Player.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Inventory_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InfoGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ForgeUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Forge.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Gear.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

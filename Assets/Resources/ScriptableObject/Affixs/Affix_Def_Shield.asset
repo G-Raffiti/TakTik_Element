@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Affix_Def_Shield
   m_EditorClassIdentifier: 
   type: 4
-  rank: 3
   color: {r: 0, g: 0.9903989, b: 1, a: 1}
-  tier: 050000000a0000000f00000014000000
+  tier: 050000000a0000000f0000001400000019000000

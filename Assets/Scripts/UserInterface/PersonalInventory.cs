@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _DragAndDropSystem;
 using Resources.ToolTip.Scripts;
 using Stats;
 using Units;
@@ -14,25 +15,30 @@ namespace UserInterface
         [SerializeField] private ColorSet colorSet;
         [SerializeField] private Image icon;
         [SerializeField] private Image health;
-        [SerializeField] private List<Transform> slots;
+        [SerializeField] private List<DragAndDropCell> slots;
         private BattleStats BattleStats;
         private BattleStats baseStats;
         private BattleStats total;
         
         public Hero Hero { get; private set; }
 
-        public List<Transform> Slots => slots;
+        public List<DragAndDropCell> Slots => slots;
 
         public void Initialize(Hero _hero)
         {
             Hero = _hero;
-            
-            baseStats = _hero.BattleStats;
+            icon.sprite = Hero.UnitSprite;
+
+            UpdateStats();
+        }
+
+        public void UpdateStats()
+        {
+            baseStats = Hero.BattleStats;
             BattleStats = new BattleStats(baseStats + Hero.Inventory.GearStats());
             total = BattleStats;
-            BattleStats.HP = _hero.ActualHP;
+            BattleStats.HP = Hero.ActualHP;
             
-            icon.sprite = Hero.UnitSprite;
             health.GetComponent<Image>().fillAmount = BattleStats.HP / (float)total.HP;
         }
         

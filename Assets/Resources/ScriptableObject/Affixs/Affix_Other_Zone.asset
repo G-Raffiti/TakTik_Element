@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 10
   color: {r: 1, g: 1, b: 1, a: 1}
-  tier: 01000000010000000100000002000000
+  tier: 010000000200000003000000
