@@ -46,11 +46,11 @@ namespace Gears
         {
             GearSO = DataBase.Gear.GetRandom();
             Affixes = new List<Affix>();
-            Stage = 0;
+            Stage = KeepBetweenScene.Stage;
 
             foreach (KeyValuePair<AffixSO,int> _pair in _gearStats)
             {
-                int value = _pair.Key.getValue(Math.Min(_pair.Key.Tier.Length, _pair.Value));
+                int value = _pair.Key.getValue(Math.Min(_pair.Key.Tier.Length, Math.Max(0, _pair.Value - 1)));
                 Affixes.Add(new Affix(_pair.Key, value));
             }
 

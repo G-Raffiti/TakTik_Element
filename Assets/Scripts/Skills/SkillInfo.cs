@@ -67,7 +67,7 @@ namespace Skills
         {
             UpdateSkill(deck.Skills[index], _unit);
         }
-        
+
         /// <summary>
         /// Method Called by the IA to Use a Skill that is not in the Deck
         /// </summary>

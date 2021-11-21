@@ -36,7 +36,7 @@ namespace Stats
                 else break;
             }
 
-            return tier;
+            return Math.Min(tier, affix.Tier.Length);
         }
     }
 }

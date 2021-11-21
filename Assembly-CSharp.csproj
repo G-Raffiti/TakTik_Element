@@ -143,6 +143,7 @@
      <Compile Include="Assets\Scripts\Grid\BattleStateManager.cs" />
      <Compile Include="Assets\Scripts\Stats\DataBaseAffix.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGridObjectEvent.cs" />
+     <Compile Include="Assets\Scripts\Shops\ForgeUI.cs" />
      <Compile Include="Assets\Scripts\Units\BattleGenerator.cs" />
      <Compile Include="Assets\Scripts\GridObjects\LootBox.cs" />
      <Compile Include="Assets\Scripts\Gears\rawGear.cs" />
@@ -215,12 +216,14 @@
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderPrefab.cs" />
      <Compile Include="Assets\Scripts\Skills\rawSkill.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\VoidListener.cs" />
+     <Compile Include="Assets\Scripts\Shops\DeckUI.cs" />
      <Compile Include="Assets\Scripts\Skills\DataBaseRelic.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\CellEvent.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Stone.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
      <Compile Include="Assets\Scripts\Shops\Forge.cs" />
-     <Compile Include="Assets\Scripts\Shops\ForgeUI.cs" />
+     <Compile Include="Assets\Scripts\Shops\Camp.cs" />
+     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
+     <Compile Include="Assets\Scripts\Shops\CampUI.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

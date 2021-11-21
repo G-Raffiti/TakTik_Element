@@ -24,6 +24,11 @@ namespace Units
         [SerializeField] private Sprite unitSprite;
         [SerializeField] private Sprite icon;
         [SerializeField] private Inventory inventory;
+
+        [SerializeField] private IntEvent onHPChanged;
+
+        public IntEvent OnHPChanged => onHPChanged;
+
         private Unit unit;
 
         public string UnitName => unitName;
@@ -66,6 +71,14 @@ namespace Units
         {
             UpdateHP();
         }
+        
+        
+        public void HealHP(int percent)
+        {
+            BattleStats total = BattleStats + Inventory.GearStats();
+            int MaxHP = total.HP;
+            ActualHP = Math.Min(MaxHP, ActualHP + (int) (MaxHP * percent));
+        }
 
         public object CaptureState()
         {
@@ -86,6 +99,7 @@ namespace Units
             battleStats = _save.battleStats;
             inventory = new Inventory(_save.inventory);
         }
+
     }
 
     [Serializable]

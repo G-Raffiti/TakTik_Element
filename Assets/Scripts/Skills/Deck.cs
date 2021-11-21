@@ -266,5 +266,26 @@ namespace Skills
             Skills = new List<SkillSO>(_newList);
             NextSkill();
         }
+
+        /// <summary>
+        /// Used in Camp to Swap Skill or in Event to Add a Skill to a Specific Deck
+        /// </summary>
+        /// <param name="LearnSkill">Skill to Add in the Deck</param>
+        public void AddSkill(SkillSO LearnSkill)
+        {
+            Skills.Add(LearnSkill);
+        }
+        
+        /// <summary>
+        /// Used in Camp to Swap Skill or in Event to Forget a Skill Completly
+        /// </summary>
+        /// <param name="_Skill"></param>
+        /// <returns></returns>
+        public bool RemoveSkill(SkillSO _Skill)
+        {
+            if (!Skills.Contains(_Skill)) return false;
+            Skills.Remove(_Skill);
+            return true;
+        }
     }
 }

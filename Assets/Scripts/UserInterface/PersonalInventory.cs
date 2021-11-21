@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _DragAndDropSystem;
+using _EventSystem.CustomEvents;
 using Resources.ToolTip.Scripts;
 using Stats;
 using Units;
@@ -15,10 +17,13 @@ namespace UserInterface
         [SerializeField] private ColorSet colorSet;
         [SerializeField] private Image icon;
         [SerializeField] private Image health;
+        [SerializeField] private Image shield;
         [SerializeField] private List<DragAndDropCell> slots;
         private BattleStats BattleStats;
         private BattleStats baseStats;
         private BattleStats total;
+
+        private IntEvent onHPChanged;
         
         public Hero Hero { get; private set; }
 
@@ -29,7 +34,21 @@ namespace UserInterface
             Hero = _hero;
             icon.sprite = Hero.UnitSprite;
 
+            onHPChanged = Hero.OnHPChanged;
+            onHPChanged.EventListeners += UpdateHP;
+
             UpdateStats();
+        }
+
+        private void OnDisable()
+        {
+            onHPChanged.EventListeners -= UpdateHP;
+        }
+
+        private void UpdateHP(int ActualHP)
+        {
+            health.GetComponent<Image>().fillAmount = ActualHP / (float)total.HP;
+            shield.fillAmount = total.Shield / (float) total.HP;
         }
 
         public void UpdateStats()
@@ -39,7 +58,7 @@ namespace UserInterface
             total = BattleStats;
             BattleStats.HP = Hero.ActualHP;
             
-            health.GetComponent<Image>().fillAmount = BattleStats.HP / (float)total.HP;
+            UpdateHP(Hero.ActualHP);
         }
         
         public override void OnPointerEnter(PointerEventData eventData)

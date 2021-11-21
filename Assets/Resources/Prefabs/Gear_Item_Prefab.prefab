@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7325826300287324319}
   - component: {fileID: 7325826300287324316}
   m_Layer: 5
-  m_Name: GearPref
+  m_Name: Gear_Item_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,3 +103,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7133badc078d8a242b39ad4f0e5f4380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
