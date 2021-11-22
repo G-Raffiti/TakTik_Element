@@ -376,10 +376,14 @@ namespace Units
         {
             Debug.Log($"Damage : {aggressor.UnitName} did {damage} {element.Type} damage to {UnitName}");
             int _damageTaken = Defend(damage, element);
+
+            OnHit(_damageTaken, element);
             
-            if(_damageTaken > 0)
+            if (_damageTaken > 0)
+            {
                 MarkAsDefending(aggressor);
-            
+            }
+
             if (BattleStats.Shield > 0)
             {
                 if (BattleStats.Shield < _damageTaken)
@@ -512,12 +516,12 @@ namespace Units
         /// <summary>
         /// Method to Show to the player what happened and how much damage was done
         /// </summary>
-        protected void OnHit(Unit aggressor, int damage, Element element, bool dodged)
+        protected void OnHit(int damage, Element element)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(element.TextColour);
-            string dodge = dodged? "Dodge! " : "";
-            info.text = damage > 0 ? $"{dodge}- <color=#{_hexColor}>{damage}</color> HP" : $"+ {-damage} HP";
-            shadow.text = damage > 0 ? $"{dodge}- {damage} HP" : $"+ {-damage} HP";
+            if (damage == 0) return;
+            info.text = damage > 0 ? $"- <color=#{_hexColor}>{damage}</color> HP" : $"+ {-damage} HP";
+            shadow.text = damage > 0 ? $"- {damage} HP" : $"+ {-damage} HP";
             anim.PlayQueued("TextFade");
         }
 

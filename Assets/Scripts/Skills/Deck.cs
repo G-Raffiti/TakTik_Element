@@ -255,6 +255,9 @@ namespace Skills
         {
             Skills.AddRange(ConsumedSkills);
             ConsumedSkills = new List<SkillSO>();
+            ShuffleDeck();
+            Skills.Sort((s, s2) => String.Compare(s.Name, s2.Name, StringComparison.Ordinal));
+            Skills.Sort((s, s2) => s.Cost.CompareTo(s2.Cost));
         }
 
         public void LearnSkill(SkillSO _monsterSkill)

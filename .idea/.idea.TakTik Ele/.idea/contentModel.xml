@@ -270,7 +270,6 @@
             <e p="ButtonPanel.cs" t="Include" />
             <e p="ColorSet.cs" t="Include" />
             <e p="DeckUI.cs" t="Include" />
-            <e p="Icon_UI.cs" t="Include" />
             <e p="Inventory_UI.cs" t="Include" />
             <e p="MenuPanel.cs" t="Include" />
             <e p="PersonalInventory.cs" t="Include" />

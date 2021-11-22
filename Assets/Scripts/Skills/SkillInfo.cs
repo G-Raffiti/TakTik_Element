@@ -151,7 +151,7 @@ namespace Skills
         public override void OnPointerClick(PointerEventData eventData)
         {
             if (!Clickable) return;
-            if (Unit.BattleStats.AP >= 1)
+            if (Unit.BattleStats.AP >= Cost)
                 onSkillSelected?.Raise(this);
         }
         
@@ -159,17 +159,6 @@ namespace Skills
         {
             if (icon != null)
                 icon.sprite = GetIcon();
-            EnableIcon();
-        }
-
-        public void EnableIcon()
-        {
-            if (icon == null) return;
-            if ((BattleStateManager.instance.PlayingUnit.playerNumber == 0 && (int) BattleStateManager.instance.PlayingUnit.BattleStats.AP > 0) || !Clickable)
-            {
-                icon.color = Color.white;
-            }
-            else icon.color = Color.gray;
         }
 
         #endregion

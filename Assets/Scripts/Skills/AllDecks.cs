@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using Grid;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
+using Void = _EventSystem.CustomEvents.Void;
 
 namespace Skills
 {
@@ -21,6 +23,7 @@ namespace Skills
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onShuffleDecks;
         [SerializeField] private VoidEvent onBattleStart;
+
         private void Start() 
         {
             DontDestroyOnLoad(gameObject.transform);
@@ -28,12 +31,13 @@ namespace Skills
                 instance = gameObject;
             else
                 Destroy(gameObject);
+            
             Decks = new List<Deck>();
             foreach (Transform _child in transform)
             {
                 Decks.Add(_child.gameObject.GetComponent<Deck>());
             }
-
+            
             onUnitStartTurn.EventListeners += OnEventRaised;
             onShuffleDecks.EventListeners += Shuffle;
             onBattleStart.EventListeners += FirstShuffle;
@@ -74,8 +78,8 @@ namespace Skills
 
         public void OnEventRaised(Unit item)
         {
-            GameObject.Find("UI_BattleScene/DecksUI/ShuffleBtn").GetComponent<Button>().onClick.RemoveAllListeners();
-            GameObject.Find("UI_BattleScene/DecksUI/ShuffleBtn").GetComponent<Button>().onClick.AddListener(Shuffle);
+            GameObject.Find("UI_BattleScene/Right/ShuffleBtn").GetComponent<Button>().onClick.RemoveAllListeners();
+            GameObject.Find("UI_BattleScene/Right/ShuffleBtn").GetComponent<Button>().onClick.AddListener(Shuffle);
             used = false;
         }
     }

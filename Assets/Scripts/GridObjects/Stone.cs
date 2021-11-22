@@ -21,7 +21,8 @@ namespace GridObjects
         public override void Interact(Unit actor, Cell location)
         {
             base.Interact(actor, location);
-            DataBase.RunCoroutine(Push(actor, location.CurrentGridObject, (int)(actor.BattleStats.Power/weight)));
+            DataBase.RunCoroutine(Push(actor, location.CurrentGridObject, 3));
+            //TODO : créer une variable de distance à la place de strength
         }
         
         

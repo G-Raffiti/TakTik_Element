@@ -8,20 +8,21 @@ namespace UserInterface
     public class PlayingUnitsInfo_UI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI AP;
-        [SerializeField] private TextMeshProUGUI APshadow;
         [SerializeField] private TextMeshProUGUI MP;
-        [SerializeField] private TextMeshProUGUI MPshadow;
         
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onStartTurn;
         [SerializeField] private VoidEvent onSkillUsed;
         [SerializeField] private UnitEvent onUnitMoved;
+        [SerializeField] private VoidEvent onActionDone;
 
         private void OnEnable()
         {
             onStartTurn.EventListeners += OnEventRaised;
             onSkillUsed.EventListeners += OnEventRaised;
             onUnitMoved.EventListeners += OnEventRaised;
+            onActionDone.EventListeners += OnEventRaised;
+
         }
 
         private void OnDisable()
@@ -29,14 +30,13 @@ namespace UserInterface
             onStartTurn.EventListeners -= OnEventRaised;
             onSkillUsed.EventListeners -= OnEventRaised;
             onUnitMoved.EventListeners -= OnEventRaised;
+            onActionDone.EventListeners -= OnEventRaised;
         }
 
         public void UpdateDisplay()
         {
             AP.text = "" + (int)BattleStateManager.instance.PlayingUnit.BattleStats.AP;
-            APshadow.text = "" + (int)BattleStateManager.instance.PlayingUnit.BattleStats.AP;
             MP.text = "" + (int)BattleStateManager.instance.PlayingUnit.BattleStats.MP;
-            MPshadow.text = "" + (int)BattleStateManager.instance.PlayingUnit.BattleStats.MP;
         }
 
         public void OnEventRaised<T>(T item)

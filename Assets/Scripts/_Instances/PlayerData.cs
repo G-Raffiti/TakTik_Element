@@ -32,12 +32,10 @@ namespace _Instances
                 }
             }
             
-            // for test only !
             foreach (AffixSO _affixSO in DataBase.Affix.AllAffixes)
             {
-                craftingMaterial.Add(_affixSO, 25);
+                craftingMaterial.Add(_affixSO, 0);
             }
-            // to remove after test
         }
 
         public void AddMaterial(AffixSO _affix, int number)

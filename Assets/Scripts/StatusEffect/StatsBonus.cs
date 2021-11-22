@@ -26,7 +26,6 @@ namespace StatusEffect
         public override void PassiveEffect(Buff _buff, Unit _unit)
         {
             BattleStats bonus = new BattleStats(0);
-            Debug.Log(Bonus.Count);
             Bonus.ForEach(affix => bonus += affix.affix.GenerateBS(affix.value));
             Malus.ForEach(affix => bonus -= affix.affix.GenerateBS(affix.value));
             bonus *= _buff.Power;

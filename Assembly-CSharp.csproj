@@ -81,7 +81,6 @@
      <Compile Include="Assets\Scripts\Cells\DataBaseBoard.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
      <Compile Include="Assets\Scripts\Pathfinding\Algorithms\DijkstraPathfinding.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\Icon_UI.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderUI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />

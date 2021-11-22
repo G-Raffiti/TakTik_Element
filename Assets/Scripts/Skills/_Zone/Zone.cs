@@ -193,10 +193,12 @@ namespace Skills._Zone
                         BattleStateManager.instance.Cells.Find(c =>
                             c.OffsetCoord == baseCell.OffsetCoord + direction * i);
                     if (_cellInRange == null) continue;
-                    _ret.Add(_cellInRange);
+                    if (!_ret.Contains(_cellInRange))
+                        _ret.Add(_cellInRange);
                 }
             }
 
+            Debug.Log(_ret.Count);
             return _ret;
         }
 

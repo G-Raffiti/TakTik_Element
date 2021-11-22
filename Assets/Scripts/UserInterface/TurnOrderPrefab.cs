@@ -14,6 +14,7 @@ namespace UserInterface
 {
     public class TurnOrderPrefab : InfoBehaviour
     {
+        [SerializeField] private Image team;
         [SerializeField] private Image icon;
         [SerializeField] private Image health;
         [SerializeField] private Image shield;
@@ -47,7 +48,7 @@ namespace UserInterface
                     _teamColor = Color.white;
                     break;
             }
-            GetComponent<Image>().color = _teamColor;
+            team.color = _teamColor;
             icon.sprite = unit.UnitSprite;
             health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
             shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
