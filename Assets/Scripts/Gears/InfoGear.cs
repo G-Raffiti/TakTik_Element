@@ -22,7 +22,7 @@ namespace Gears
 
         public override string GetInfoMain()
         {
-            return ColouredName();
+            return $"<size=35>{ColouredName()}</size>";
         }
 
         public override string GetInfoLeft()

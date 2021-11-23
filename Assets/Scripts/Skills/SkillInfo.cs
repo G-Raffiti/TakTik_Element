@@ -111,6 +111,11 @@ namespace Skills
         {
             return Zone.GetZone(Range, _cell);
         }
+
+        public List<Cell> GetRangeFrom(Cell _cell)
+        {
+            return Range.NeedView ? Zone.CellsInView(this, _cell) : Zone.CellsInRange(this, _cell);
+        }
         
         #region IInfo
         public override string GetInfoMain()
@@ -145,7 +150,7 @@ namespace Skills
         public override string ColouredName()
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"<size=35><color=#{_hexColor}>{Skill.Name}</color></size>";
+            return $"<color=#{_hexColor}>{Skill.Name}</color>";
         }
 
         public override void OnPointerClick(PointerEventData eventData)

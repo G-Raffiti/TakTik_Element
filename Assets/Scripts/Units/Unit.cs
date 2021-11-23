@@ -274,6 +274,8 @@ namespace Units
 
         public List<Cell> FindPath(List<Cell> cells, Cell destination)
         {
+            if (destination == cell)
+                return new List<Cell>() {cell};
             if (cachedPaths != null && cachedPaths.ContainsKey(destination))
             {
                 return cachedPaths[destination];
@@ -592,7 +594,7 @@ namespace Units
         /// <summary>
         /// Method is called at the end of each turn.
         /// </summary>
-        public void OnTurnEnd()
+        public virtual void OnTurnEnd()
         {
             cachedPaths = null;
             buffs.ForEach(b =>

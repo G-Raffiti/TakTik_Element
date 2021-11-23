@@ -110,7 +110,7 @@ namespace Cells
             IsUnderGround = false;
         }
 
-    #region Mark As
+        #region Mark As
     
         public struct CellState
         {
@@ -178,6 +178,13 @@ namespace Cells
         {
             state = new CellState(colorSet.SelectFrame, Colors[EColor.enemy],
                 Colors[EColor.enemy] * Colors[EColor.transparency]);
+            MarkAs(state);
+        }
+        
+        public override void MarkAsValue(Gradient gradient, float value, int max)
+        {
+            state = new CellState(null, Colors[EColor.unMark],
+                gradient.Evaluate(value / max) * Colors[EColor.transparency]);
             MarkAs(state);
         }
 

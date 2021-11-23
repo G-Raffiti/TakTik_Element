@@ -92,6 +92,7 @@
      <Compile Include="Assets\Scripts\Grid\GridStates\BattleStateSkillSelected.cs" />
      <Compile Include="Assets\Scripts\UserInterface\Inventory_UI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityInfoEvent.cs" />
+     <Compile Include="Assets\Scripts\Players\AIPlayer.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavableEntity.cs" />
      <Compile Include="Assets\Scripts\Skills\RelicChoiceUI.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Rarity.cs" />
@@ -108,7 +109,6 @@
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\BoolListener.cs" />
      <Compile Include="Assets\Resources\ToolTip\Scripts\IInfo.cs" />
      <Compile Include="Assets\Scripts\BattleOver\LootBoxes.cs" />
-     <Compile Include="Assets\Scripts\Players\NaiveAiPlayer.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\SkillGridEffect.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\IntListener.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Element.cs" />
@@ -157,6 +157,7 @@
      <Compile Include="Assets\Scripts\StatusEffect\StatusSO.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffect.cs" />
      <Compile Include="Assets\Scripts\Skills\IEffect.cs" />
+     <Compile Include="Assets\Scripts\Shops\CampUI.cs" />
      <Compile Include="Assets\Scripts\Units\rawMonster.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Spell.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\FloatListener.cs" />
@@ -222,7 +223,6 @@
      <Compile Include="Assets\Scripts\Shops\Forge.cs" />
      <Compile Include="Assets\Scripts\Shops\Camp.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\Shops\CampUI.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

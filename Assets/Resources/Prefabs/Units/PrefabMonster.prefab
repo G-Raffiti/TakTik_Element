@@ -367,7 +367,7 @@ MonoBehaviour:
   icon: {fileID: 6295843279142771036}
   deck: {fileID: 1592649995665758689}
   onSkillSelected: {fileID: 0}
-  OnSkillUsed: {fileID: 0}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!1 &3787124189353937577
 GameObject:
   m_ObjectHideFlags: 0

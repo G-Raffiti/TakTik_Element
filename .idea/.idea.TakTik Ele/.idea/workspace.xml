@@ -22,14 +22,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/rawGear.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/DataBaseGear.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/GearSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/Data/zv.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/DataBaseMonster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/rawMonster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Range.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/rawSkill.cs" />
@@ -44,7 +36,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/Player.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Inventory_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InfoGear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ForgeUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Forge.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
@@ -65,14 +56,23 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PlayingUnitsInfo_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecks.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Deck.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateSkillSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InfoGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Isometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

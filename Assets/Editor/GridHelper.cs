@@ -592,7 +592,7 @@ namespace Editor
             for (int i = 0; i < nComputerPlayer; i++)
             {
                 GameObject aiPlayer = new GameObject(string.Format("AI_Player_{0}", players.transform.childCount));
-                aiPlayer.AddComponent<NaiveAiPlayer>();
+                aiPlayer.AddComponent<AIPlayer>();
                 aiPlayer.GetComponent<Player>().playerNumber = players.transform.childCount;
                 aiPlayer.transform.parent = players.transform;
             }

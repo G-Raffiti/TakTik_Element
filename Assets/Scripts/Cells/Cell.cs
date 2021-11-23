@@ -131,6 +131,11 @@ namespace Cells
         /// Method marks the Cell as Interactable. It get Called when a Unit is in range or if an Object can be used.
         /// </summary>
         public abstract void MarkAsInteractable();
+        
+        /// <summary>
+        /// Method marks the Cell with value in IA
+        /// </summary>
+        public abstract void MarkAsValue(Gradient gradient, float value, int max);
 
         public int GetDistance(IGraphNode other)
         {
