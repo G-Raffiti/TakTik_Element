@@ -30,12 +30,12 @@ namespace Skills.ScriptableObject_GridEffect
 
             if (affecteds.Count == 0) return;
             
-            DataBase.RunCoroutine(PushFix.Push(affecteds, _cell, _skillInfo, (int)Math.Max(1, _skillInfo.Unit.BattleStats.GetFocus(_skillInfo.Element.Type)/5f)));
+            DataBase.RunCoroutine(PushFix.Push(affecteds, _cell, _skillInfo, (int)Math.Max(1, _skillInfo.Unit.BattleStats.GetPower(_skillInfo.Element.Type)/5f)));
         }
 
         public override string InfoEffect(SkillInfo _skillInfo)
         {
-            string str = $"<sprite name=Push> {(int)Math.Max(1, _skillInfo.Unit.BattleStats.GetFocus(_skillInfo.Element.Type)/5f)} Away from the Skill's Impact Cell";
+            string str = $"<sprite name=Push> {(int)Math.Max(1, _skillInfo.Unit.BattleStats.GetPower(_skillInfo.Element.Type)/5f)} Away from the Skill's Impact Cell";
             return str;
         }
 

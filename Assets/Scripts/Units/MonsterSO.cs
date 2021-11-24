@@ -45,7 +45,7 @@ namespace Units
         [SerializeField] private RelicSO relic;
         [SerializeField] private EReward rewardType;
         [SerializeField] private EMonster type;
-        [SerializeField] private EArchetype archetype;
+        [SerializeField] private Archetype archetype;
         [SerializeField] private SkillSO skill;
         
         public SkillSO Skill => skill;
@@ -53,8 +53,8 @@ namespace Units
         public EReward RewardType => rewardType;
         public EMonster Type => type;
 
-        private const float GoodAffinity = 50;
-        private const float BadAffinity = 25;
+        private const float GoodAffinity = 3;
+        private const float BadAffinity = 5;
         private const int SkillRewardBonusAP = 1;
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Units
         public BattleStats Stats()
         {
             BattleStats random = BattleStats.Randomize(randomStats * Math.Max(KeepBetweenScene.Stage - 1, 0), randomStats * KeepBetweenScene.Stage);
-            random.Power.SetAffinity(AffinityFromElement(element));
+            random.Affinity = AffinityFromElement(element);
             if (RewardType == EReward.Skill)
                 random.AP += SkillRewardBonusAP;
 
@@ -73,21 +73,24 @@ namespace Units
 
         private Affinity AffinityFromElement(Element ele)
         {
-            float fire = 100;
-            float nat = 100;
-            float wat = 100;
+            float fire = 0;
+            float nat = 0;
+            float wat = 0;
             switch (ele.Type)
             {
                 case EElement.Fire: 
                     fire += GoodAffinity;
+                    nat += BadAffinity;
                     wat -= BadAffinity;
                     break;
                 case EElement.Nature:
                     nat += GoodAffinity;
+                    wat += BadAffinity;
                     fire -= BadAffinity;
                     break;
                 case EElement.Water:
                     wat += GoodAffinity;
+                    fire += BadAffinity;
                     nat -= BadAffinity;
                     break;
                 case EElement.None:
@@ -103,7 +106,7 @@ namespace Units
         public int Level => level;
         public Sprite UnitSprite => unitSprite;
         public Element Element => element;
-        public EArchetype Archetype => archetype;
+        public Archetype Archetype => archetype;
 
         /// <summary>
         /// Create the Prefab with the Stats at the Cell Location

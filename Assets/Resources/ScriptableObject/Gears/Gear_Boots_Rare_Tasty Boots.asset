@@ -17,13 +17,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 02a623f89f5e09345aa9fc0479448f8d, type: 3}
   gearName: Tasty Boots
   mainStat:
-    affix: {fileID: 11400000, guid: 406f3645e2a21394b809e3a9d0b32207, type: 2}
+    affix: {fileID: 11400000, guid: 6f1f9d9dc9f8d364f92c555e271fdb29, type: 2}
     value: 3
   specialEffect: {fileID: 0}
   nonAffixs:
-  - {fileID: 11400000, guid: d470aae0b1808944e8c1555566875f90, type: 2}
-  - {fileID: 11400000, guid: a54c8531756dbb94d912c5ba3ae1a0db, type: 2}
-  - {fileID: 11400000, guid: f10f8b289c23dd9458535edbc81c24bb, type: 2}
   - {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}
-  - {fileID: 11400000, guid: dee1a78da457654499a28081f713c194, type: 2}
-  - {fileID: 11400000, guid: 5698c52ed9a8a9548ae745c82a7e683e, type: 2}

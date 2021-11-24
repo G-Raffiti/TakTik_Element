@@ -25,5 +25,18 @@ namespace Stats
         {
             return $"{_value} {affix.Icon(affix.Type)}";
         }
+
+        public int getTier()
+        {
+            int tier = 0;
+            foreach (int _tier in affix.Tier)
+            {
+                if (value >= _tier)
+                    tier += 1;
+                else break;
+            }
+
+            return Math.Min(tier, affix.Tier.Length);
+        }
     }
 }

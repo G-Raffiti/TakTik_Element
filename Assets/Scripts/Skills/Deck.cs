@@ -33,7 +33,7 @@ namespace Skills
         public SkillSO ActualSkill { get; private set; }
         private Range range;
         public Range Range => range;
-        public Power Power { get; private set; }
+        public int Power { get; private set; }
         public List<StatusSO> StatusEffects { get; private set; }
         public Element Element { get; private set; }
         public EAffect Affect { get; private set; }
@@ -92,7 +92,7 @@ namespace Skills
             Cost = _skill.Cost;
             effects = new List<IEffect>();
             range = new Range(_skill.Range);
-            Power = new Power(_skill.Power);
+            Power = _skill.Power;
             StatusEffects = new List<StatusSO>(_skill.StatusEffects);
             Element = _skill.Element;
             Affect = _skill.Affect;
@@ -255,6 +255,9 @@ namespace Skills
         {
             Skills.AddRange(ConsumedSkills);
             ConsumedSkills = new List<SkillSO>();
+            ShuffleDeck();
+            Skills.Sort((s, s2) => String.Compare(s.Name, s2.Name, StringComparison.Ordinal));
+            Skills.Sort((s, s2) => s.Cost.CompareTo(s2.Cost));
         }
 
         public void LearnSkill(SkillSO _monsterSkill)
@@ -265,6 +268,27 @@ namespace Skills
             _newList.AddRange(Skills);
             Skills = new List<SkillSO>(_newList);
             NextSkill();
+        }
+
+        /// <summary>
+        /// Used in Camp to Swap Skill or in Event to Add a Skill to a Specific Deck
+        /// </summary>
+        /// <param name="LearnSkill">Skill to Add in the Deck</param>
+        public void AddSkill(SkillSO LearnSkill)
+        {
+            Skills.Add(LearnSkill);
+        }
+        
+        /// <summary>
+        /// Used in Camp to Swap Skill or in Event to Forget a Skill Completly
+        /// </summary>
+        /// <param name="_Skill"></param>
+        /// <returns></returns>
+        public bool RemoveSkill(SkillSO _Skill)
+        {
+            if (!Skills.Contains(_Skill)) return false;
+            Skills.Remove(_Skill);
+            return true;
         }
     }
 }

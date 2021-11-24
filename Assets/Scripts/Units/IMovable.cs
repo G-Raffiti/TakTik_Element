@@ -57,6 +57,9 @@ namespace Units
     {
         public static List<Cell> Move(IMovable movable, Cell destinationCell, List<Cell> path)
         {
+            if (movable.Cell == destinationCell)
+                return new List<Cell>();
+            
             movable.IsMoving = true;
             
             Cell destination = destinationCell;

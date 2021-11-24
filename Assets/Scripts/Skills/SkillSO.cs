@@ -22,7 +22,7 @@ namespace Skills
         [SerializeField] private EAffect affect;
         
         [SerializeField] private Range range;
-        [SerializeField] private Power power;
+        [SerializeField] private int power;
         [SerializeField] private List<StatusSO> statusEffects;
 
         [SerializeField] private bool consumable;
@@ -37,7 +37,7 @@ namespace Skills
         public SkillGridEffect GridEffect => gridEffect;
         public EAffect Affect => affect;
         public Range Range => range;
-        public Power Power => power;
+        public int Power => power;
         public List<StatusSO> StatusEffects => statusEffects;
         public bool Consumable => consumable;
         public int Cost => cost;
@@ -58,8 +58,7 @@ namespace Skills
                 RangeType = _rawSkill.RangeType,
                 ZoneType = _rawSkill.ZoneType,
             };
-            power = new Power();
-            power.Basic = _rawSkill.Power;
+            power = _rawSkill.Power;
             consumable = _rawSkill.Consumable;
             cost = _rawSkill.Cost;
 

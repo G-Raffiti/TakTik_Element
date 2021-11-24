@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using _EventSystem.CustomEvents;
 using Grid;
 using Skills;
 using Units;
 using UnityEngine;
+using UnityEngine.Networking.Match;
+using UnityEngine.UI;
 
 namespace UserInterface
 {
@@ -12,31 +16,33 @@ namespace UserInterface
     /// </summary>
     public class DeckUI : MonoBehaviour
     {
-        private List<Deck> decks;
+        [SerializeField] private Image frameOfFirstSkill;
+        [SerializeField] private SkillInfo FirstSkill;
+        private AllDecks allDecks;
         private Dictionary<SkillInfo, int> skills;
         private Unit unit;
 
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onSkillUsed;
+        [SerializeField] private VoidEvent onActionDone;
 
-        private void Start()
+        private IEnumerator Start()
         {
+            allDecks = GameObject.Find("Decks").GetComponent<AllDecks>();
             skills = new Dictionary<SkillInfo, int>();
             for (int i = 0; i < transform.childCount; i++)
             {
                 skills.Add(transform.GetChild(i).gameObject.GetComponent<SkillInfo>(), transform.childCount - i - 1);
             }
-
-            decks = new List<Deck>();
-            foreach (Transform _child in GameObject.Find("Decks").transform)
-            {
-                decks.Add(_child.gameObject.GetComponent<Deck>());
-            }
+            
             int number = transform.GetSiblingIndex();
+            
+            yield return new WaitForSeconds(0.1f);
+            
             foreach (SkillInfo _skillsKey in skills.Keys)
             {
-                _skillsKey.Deck = decks[number];
+                _skillsKey.Deck = allDecks.Decks[number];
             }
         }
 
@@ -44,12 +50,14 @@ namespace UserInterface
         {
             onSkillUsed.EventListeners += onSkillUsedRaised;
             onUnitStartTurn.EventListeners += onUnitStartTurnRaised;
+            onActionDone.EventListeners += onSkillUsedRaised;
         }
 
         private void OnDisable()
         {
             onSkillUsed.EventListeners -= onSkillUsedRaised;
             onUnitStartTurn.EventListeners -= onUnitStartTurnRaised;
+            onActionDone.EventListeners -= onSkillUsedRaised;
         }
 
         public void onUnitStartTurnRaised(Unit item)
@@ -89,6 +97,12 @@ namespace UserInterface
                     _skill.Key.DisplayIcon();
                 }
             }
+
+            if (BattleStateManager.instance.PlayingUnit.BattleStats.AP < 1 || FirstSkill.Cost > FirstSkill.Unit.BattleStats.AP)
+            {
+                frameOfFirstSkill.color = Color.grey;
+            }
+            else frameOfFirstSkill.color = Color.white;
         }
     }
 }

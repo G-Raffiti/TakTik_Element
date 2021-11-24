@@ -26,6 +26,10 @@ namespace _DragAndDropSystem
 		private static string canvasName = "DragAndDropCanvas";                   		// Name of canvas
 		private static int canvasSortOrder = 1000;										// Sort order for canvas
 
+		[Header("Type to change in the Prefabs")]
+		[SerializeField] private DragAndDropCell.ContainType type;
+		public DragAndDropCell.ContainType Type => type;
+
 		/// <summary>
 		/// Awake this instance.
 		/// </summary>

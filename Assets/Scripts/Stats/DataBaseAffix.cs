@@ -12,22 +12,12 @@ namespace Stats
         MP,
         Speed,
         Shield,
-        Dodge,
-        
-        Dext,
-        Strength,
-        Intel,
 
-        Affinity,
         Fire,
         Water,
         Nature,
         
-        BasicPower,
-        Focus,
         Power,
-        SkillPower,
-        SpellPower,
         
         Range,
         Zone,

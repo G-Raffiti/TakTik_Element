@@ -103,9 +103,9 @@ namespace Skills.ScriptableObject_GridEffect
             if (_path.Count < strength) 
             {
                 if (target is Unit u)
-                    u.DefendHandler(skill.Unit, (strength - _path.Count) * skill.Unit.BattleStats.Power.Physic(EElement.None), Element.None());
+                    u.DefendHandler(skill.Unit, (strength - _path.Count) * skill.Unit.BattleStats.Power, Element.None());
                 if (obstacle is Unit o)
-                    o.DefendHandler(skill.Unit, (strength - _path.Count) * skill.Unit.BattleStats.Power.Physic(EElement.None), Element.None());
+                    o.DefendHandler(skill.Unit, (strength - _path.Count) * skill.Unit.BattleStats.Power, Element.None());
             }
         }
 

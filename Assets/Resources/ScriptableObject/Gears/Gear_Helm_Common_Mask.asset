@@ -17,8 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 9cc0eb74febaf0745b5e09500fb635b6, type: 3}
   gearName: Mask
   mainStat:
-    affix: {fileID: 11400000, guid: 57a2db83a5f300b4f90b2cd0dfdbdd31, type: 2}
+    affix: {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
     value: 10
   specialEffect: {fileID: 0}
-  nonAffixs:
-  - {fileID: 11400000, guid: 57a2db83a5f300b4f90b2cd0dfdbdd31, type: 2}
+  nonAffixs: []

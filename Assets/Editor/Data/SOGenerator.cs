@@ -206,14 +206,15 @@ namespace Editor.Data
             rawMonster rawMonster = new rawMonster(csvMonster);
             newMonster.SetDATA(rawMonster);
             
-            if (DataBase.Monster.Monsters.Find(monster => monster.Name == newMonster.Name)) return;
+            if (DataBase.Monster.Monsters.Count != 0)
+                if (DataBase.Monster.Monsters.Find(monster => monster.Name == newMonster.Name)) return;
             
-            AssetDatabase.CreateAsset(newMonster, $"Assets/Resources/ScriptableObject/Monsters/{rawMonster.type}_{newMonster.Archetype}_{newMonster.Element.ElementName}_{rawMonster.unitName}.asset");
+            AssetDatabase.CreateAsset(newMonster, $"Assets/Resources/ScriptableObject/Monsters/{rawMonster.type}_{newMonster.Archetype.Type}_{newMonster.Element.Type}_{rawMonster.unitName}.asset");
             AssetDatabase.SaveAssets();
 
             DataBase.Monster.AddMonster(
                 UnityEngine.Resources.Load<MonsterSO>(
-                    $"ScriptableObject/Monsters/{rawMonster.type}_{newMonster.Archetype}_{newMonster.Element.ElementName}_{rawMonster.unitName}"));
+                    $"ScriptableObject/Monsters/{rawMonster.type}_{newMonster.Archetype.Type}_{newMonster.Element.Type}_{rawMonster.unitName}"));
         }
         
         private static bool IsCSVFile(string path)

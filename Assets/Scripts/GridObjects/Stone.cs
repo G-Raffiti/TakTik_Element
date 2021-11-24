@@ -16,22 +16,17 @@ namespace GridObjects
     [CreateAssetMenu(fileName = "GridObject_Stone_", menuName = "Scriptable Object/Grid Objects/Stone")]
     public class Stone : GridObjectSO
     {
-        [SerializeField] private float weight;
+        [SerializeField] private int pushDistance;
 
         public override void Interact(Unit actor, Cell location)
         {
             base.Interact(actor, location);
-            DataBase.RunCoroutine(Push(actor, location.CurrentGridObject, (int)(actor.BattleStats.Power.Physic(EElement.None)/weight)));
+            DataBase.RunCoroutine(Push(actor, location.CurrentGridObject, pushDistance));
+            //TODO : créer une variable de distance à la place de strength
         }
-        
-        
-        private static IEnumerator Push(Unit actor, IMovable target, int strength)
-        {
-            // find the target
-            if (target == null) yield break;
-            Cell _targetedCell = target.Cell;
-            target.IsMoving = true;
 
+        private static Cell GetDestination(IMovable target, int strength, Cell _targetedCell, Unit actor)
+        {
             // find the destination
             Cell destination = target.Cell;
             
@@ -42,7 +37,18 @@ namespace GridObjects
                 if (arrival == null) break;
                 destination = arrival;
             }
-            
+
+            return destination;
+        }
+        private static IEnumerator Push(Unit actor, IMovable target, int strength)
+        {
+            // find the target
+            if (target == null) yield break;
+            Cell _targetedCell = target.Cell;
+            target.IsMoving = true;
+
+            // find destination 
+            Cell destination = GetDestination(target, strength, _targetedCell, actor);
             
             // find the shortest path between target and destination
             Dictionary<Cell, Dictionary<Cell, float>> _edges = new Dictionary<Cell, Dictionary<Cell, float>>();
@@ -73,9 +79,19 @@ namespace GridObjects
                 Unit obstacle = obstacleCell.CurrentUnit;
                 if (obstacle != null)
                     obstacle.DefendHandler(actor,
-                        (strength - _distance) * actor.BattleStats.Power.Physic(EElement.None), Element.None());
+                        (strength - _distance) * actor.BattleStats.Power, Element.None());
             }
         }
 
+        private Dictionary<Cell, TileIsometric.CellState> savedMark;
+        public override void ShowAction(Unit actor, Cell location)
+        {
+            base.ShowAction(actor, location);
+
+            GetDestination(location.CurrentGridObject, pushDistance, location, actor).MarkAsHighlighted();
+        }
+
+        //public override void UnShowAction(Unit actor, Cell location)
+        
     }
 }

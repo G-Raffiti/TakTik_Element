@@ -161,7 +161,8 @@ namespace Skills._Zone
             {
                 Cell _cellInRange = BattleStateManager.instance.Cells.Find(c => c.OffsetCoord == cell.OffsetCoord + direction * i);
                 if (_cellInRange == null) continue;
-                _ret.Add(_cellInRange);
+                if (!_ret.Contains(_cellInRange))
+                    _ret.Add(_cellInRange);
             }
 
             return _ret;
@@ -193,7 +194,8 @@ namespace Skills._Zone
                         BattleStateManager.instance.Cells.Find(c =>
                             c.OffsetCoord == baseCell.OffsetCoord + direction * i);
                     if (_cellInRange == null) continue;
-                    _ret.Add(_cellInRange);
+                    if (!_ret.Contains(_cellInRange))
+                        _ret.Add(_cellInRange);
                 }
             }
 
@@ -226,17 +228,16 @@ namespace Skills._Zone
         /// Get all the Cell on which you can use a skill
         /// </summary>
         /// <returns></returns>
-        public static List<Cell> CellsInRange(SkillInfo skill)
+        public static List<Cell> CellsInRange(SkillInfo skill, Cell _startCell)
         {
-            Cell _startCell = skill.Unit.Cell;
             List<Cell> _inRange = new List<Cell>();
             
             foreach (Cell _cell in GetRange(skill.Range, _startCell))
             {
-                if (!skill.Range.NeedTarget)
+                if (!skill.Range.NeedTarget && !_inRange.Contains(_cell))
                     _inRange.Add(_cell);
                 
-                else if (GetAffected(_cell, skill) != null)
+                else if (GetAffected(_cell, skill) != null && !_inRange.Contains(_cell))
                 {
                     _inRange.Add(_cell);
                 }
@@ -249,9 +250,8 @@ namespace Skills._Zone
         /// Get all the Cell on which you can use a skill if you need the view
         /// </summary>
         /// <returns></returns>
-        public static List<Cell> CellsInView(SkillInfo skill)
+        public static List<Cell> CellsInView(SkillInfo skill, Cell _startCell)
         {
-            Cell _startCell = skill.Unit.Cell;
             List<Cell> _inRange = new List<Cell>();
 
             foreach (Cell _cell in FieldOfView(_startCell, GetRange(skill.Range, _startCell)))
@@ -314,9 +314,34 @@ namespace Skills._Zone
         /// <returns></returns>
         public static Unit GetUnitAffected(Cell _cell, SkillInfo _skillInfo)
         {
-            if (GetAffected(_cell, _skillInfo) is Unit _affected)
-                return _affected;
-            return null;
+            Unit _affected = null;
+            switch (_skillInfo.Affect)
+            {
+                case EAffect.All :
+                    if (_cell.IsTaken && _cell.CurrentUnit != null)
+                        _affected = _cell.CurrentUnit;
+                    break;
+                case EAffect.OnlyAlly:
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == _skillInfo.Unit.playerNumber)
+                        _affected = _cell.CurrentUnit;
+                    break;
+                case EAffect.OnlyEnemy:
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != _skillInfo.Unit.playerNumber)
+                        _affected = _cell.CurrentUnit;
+                    break;
+                case EAffect.OnlySelf:
+                    if (_cell.IsTaken && _cell.CurrentUnit == _skillInfo.Unit)
+                        _affected = _cell.CurrentUnit;
+                    break;
+                case EAffect.OnlyOthers:
+                    if (_cell.IsTaken && _cell != _skillInfo.Unit.Cell)
+                    {
+                        _affected = _cell.CurrentUnit;
+                    }
+                    break;
+            }
+
+            return _affected;
         }
         
         /// <summary>
@@ -330,6 +355,7 @@ namespace Skills._Zone
             switch (_skillInfo.Affect)
             {
                 case EAffect.All :
+                    if (_cell.IsTaken)
                         _affected = _cell.GetCurrentIMovable();
                     break;
                 case EAffect.OnlyAlly:
@@ -345,13 +371,10 @@ namespace Skills._Zone
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyOthers:
-                    if (_cell != _skillInfo.Unit.Cell)
+                    if (_cell.IsTaken && _cell != _skillInfo.Unit.Cell)
                     {
                         _affected = _cell.GetCurrentIMovable();
                     }
-                    break;
-                default: 
-                    _affected = _cell.GetCurrentIMovable();
                     break;
             }
 
@@ -360,7 +383,7 @@ namespace Skills._Zone
 
         public static GridObject GetObjectAffected(Cell _cell, SkillInfo _skillInfo)
         {
-            if (GetAffected(_cell, _skillInfo) is GridObject _gridObject)
+            if (GetAffected(_cell, _skillInfo) != null && GetAffected(_cell, _skillInfo) is GridObject _gridObject)
             {
                 return _gridObject;
             }
@@ -401,6 +424,18 @@ namespace Skills._Zone
                 default:
                     return type.ToString();
             }
+        }
+
+        public static List<Unit> GetUnitsAffected(SkillInfo _skillInfo, Cell _targetCell)
+        {
+            List<Unit> ret = new List<Unit>();
+            foreach (Cell _cell in GetZone(_skillInfo.Range, _targetCell))
+            {
+                if (GetUnitAffected(_cell, _skillInfo) != null)
+                    ret.Add(GetUnitAffected(_cell, _skillInfo));
+            }
+
+            return ret;
         }
     }
 }

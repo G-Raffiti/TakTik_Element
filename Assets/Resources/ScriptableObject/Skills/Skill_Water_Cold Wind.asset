@@ -27,14 +27,7 @@ MonoBehaviour:
     NeedView: 0
     NeedTarget: 0
     CanBeModified: 1
-  power:
-    Basic: 0
-    Spell: 100
-    Skill: 100
-    Affinity:
-      Fire: 100
-      Nature: 100
-      Water: 100
+  power: 0
   statusEffects:
   - {fileID: 11400000, guid: 59348793ef1b0a449bf96d3e718c3d9f, type: 2}
   consumable: 0

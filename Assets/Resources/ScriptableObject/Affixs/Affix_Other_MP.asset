@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Affix_Other_MP
   m_EditorClassIdentifier: 
   type: 2
-  rank: 0
   color: {r: 0, g: 0.6784314, b: 0.16078432, a: 1}
-  tier: 01000000010000000200000003000000
+  tier: 010000000200000003000000

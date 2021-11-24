@@ -71,9 +71,7 @@ namespace GridObjects
         {
             spriteRenderer.sprite = gridObject.Image;
             float halfHeight = spriteRenderer.bounds.size.y/2;
-            Debug.Log(halfHeight);
             spriteRenderer.gameObject.transform.localPosition = new Vector3(0, halfHeight-0.4f);
-            Debug.Log(spriteRenderer.gameObject.transform.localPosition);
             AutoSortOrder();
             Cell.Take(this);
         }
@@ -87,6 +85,7 @@ namespace GridObjects
         {
             if(cell != null)
                 cell.OnMouseEnter();
+            GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, cell);
         }
         protected virtual void OnMouseExit()
         {

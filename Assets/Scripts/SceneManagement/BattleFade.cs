@@ -1,26 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _EventSystem.Listeners;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using Void = _EventSystem.CustomEvents.Void;
 
 namespace SceneManagement
 {
     public class BattleFade : MonoBehaviour
     {
-        [SerializeField] private BoolEvent onBattleEnd;
         [SerializeField] private ChangeScene SceneManager;
+        [SerializeField] private List<String> ShopSceneNames;
+        
+        [Header("Event Listener")]
+        [SerializeField] private BoolEvent onBattleEnd;
+        [SerializeField] private VoidEvent onQuitShop;
         
         private void Start()
         {
             onBattleEnd.EventListeners += OnBattleEnded;
+            onQuitShop.EventListeners += StartNewBattle;
         }
 
         private void OnDestroy()
         {
             onBattleEnd.EventListeners -= OnBattleEnded;
+            onQuitShop.EventListeners -= StartNewBattle;
         }
 
-        private void StartNewBattle()
+        private void StartNewBattle(Void empty)
         {
             SceneManager.LoadScene("BattleScene");
         }
@@ -41,7 +50,12 @@ namespace SceneManagement
 
         private void YouWin()
         {
-            StartNewBattle();
+            GoToRandomShop();
+        }
+
+        private void GoToRandomShop()
+        {
+            SceneManager.LoadScene(ShopSceneNames[Random.Range(0, ShopSceneNames.Count)]);
         }
 
     }

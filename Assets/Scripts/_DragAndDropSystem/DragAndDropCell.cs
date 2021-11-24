@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _EventSystem.CustomEvents;
 using Gears;
 using Skills;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace _DragAndDropSystem
 	[RequireComponent(typeof(Image))]
 	public class DragAndDropCell : MonoBehaviour, IDropHandler
 	{
+		[SerializeField] private VoidEvent onItemMoved;
 		public enum CellType                                                    // Cell types
 		{
 			Swap,                                                               // Items will be swapped between any cells
@@ -26,6 +28,13 @@ namespace _DragAndDropSystem
 			DropEventEnd,                                                       // Drop event completed
 			ItemAdded,                                                          // Item manualy added into cell
 			ItemWillBeDestroyed                                                 // Called just before item will be destroyed
+		}
+
+		public enum ContainType
+		{
+			Skill,
+			Gear,
+			Relic,
 		}
 
 		public class DropEventDescriptor                                        // Info about item's drop event
@@ -45,6 +54,8 @@ namespace _DragAndDropSystem
 		public Color full = new Color();                                        // Sprite color for filled cell
 		[Tooltip("This cell has unlimited amount of items")]
 		public bool unlimitedSource = false;                                    // Item from this cell will be cloned on drag start
+		[Tooltip("What the Cell can contain")] 
+		public ContainType containType = ContainType.Gear;
 
 		private DragAndDropItem myDadItem;										// Item of this DaD cell
 
@@ -98,6 +109,7 @@ namespace _DragAndDropSystem
 				myDadItem.MakeRaycast(true);                                  	// Enable item's raycast
 			}
 			UpdateBackgroundState();
+			onItemMoved?.Raise();
 		}
 
 		/// <summary>
@@ -106,9 +118,11 @@ namespace _DragAndDropSystem
 		/// <param name="data"></param>
 		public void OnDrop(PointerEventData data)
 		{
+			
 			if (DragAndDropItem.icon != null)
 			{
 				DragAndDropItem item = DragAndDropItem.draggedItem;
+				if (containType != item.Type) return;
 				DragAndDropCell sourceCell = DragAndDropItem.sourceCell;
 				if (DragAndDropItem.icon.activeSelf == true)                    // If icon inactive do not need to drop item into cell
 				{
@@ -145,12 +159,12 @@ namespace _DragAndDropSystem
 												}
 												else
 												{
-													PlaceItem(item);            // Delete old item and place dropped item into this cell
+													PlaceItem(item, sourceCell);            // Delete old item and place dropped item into this cell
 												}
 											}
 											else
 											{
-												PlaceItem(item);                // Place dropped item into this empty cell
+												PlaceItem(item, sourceCell);                // Place dropped item into this empty cell
 											}
 										}
 										break;
@@ -163,7 +177,7 @@ namespace _DragAndDropSystem
 										StartCoroutine(NotifyOnDragEnd(desc));  // Send notification after drop will be finished
 										if (desc.permission == true)            // If drop permitted by application
 										{
-											PlaceItem(item);                    // Place dropped item into this cell
+											PlaceItem(item, sourceCell);                    // Place dropped item into this cell
 										}
 										break;
 								}
@@ -177,7 +191,7 @@ namespace _DragAndDropSystem
 								StartCoroutine(NotifyOnDragEnd(desc));          // Send notification after drop will be finished
 								if (desc.permission == true)                    // If drop permitted by application
 								{
-									PlaceItem(item);                            // Place dropped item in this cell
+									PlaceItem(item, sourceCell);                            // Place dropped item in this cell
 								}
 								break;
 							default:
@@ -203,7 +217,7 @@ namespace _DragAndDropSystem
 		/// Put item into this cell.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		private void PlaceItem(DragAndDropItem item)
+		private void PlaceItem(DragAndDropItem item, DragAndDropCell sourceCell)
 		{
 			if (item != null)
 			{
@@ -217,6 +231,7 @@ namespace _DragAndDropSystem
 						string itemName = item.name;
 						item = Instantiate(item);                               // Clone item from source cell
 						item.name = itemName;
+						CloneItem(item, sourceCell);
 					}
 				}
 				item.transform.SetParent(transform, false);
@@ -227,6 +242,35 @@ namespace _DragAndDropSystem
 			UpdateBackgroundState();
 		}
 
+		/// <summary>
+		/// If the source Cell is Unlimited Copy the value in the item
+		/// </summary>
+		/// <param name="item"></param>
+		/// <param name="sourceCell"></param>
+		private void CloneItem(DragAndDropItem item, DragAndDropCell sourceCell)
+		{
+			
+			switch (containType)
+			{
+				case ContainType.Skill:
+				{
+					item.GetComponent<SkillInfo>().Deck = sourceCell.GetInfoSkill().Deck;
+					item.GetComponent<SkillInfo>().UpdateSkill(sourceCell.GetInfoSkill().Skill, sourceCell.GetInfoSkill().Unit);
+				}
+					break;
+				case ContainType.Gear:
+				{
+					item.GetComponent<InfoGear>().Gear = sourceCell.GetInfoGear().Gear;
+				}
+					break;
+				case ContainType.Relic:
+				{
+					item.GetComponent<RelicInfo>().CreateRelic(sourceCell.GetInfoRelic().Relic);
+					item.GetComponent<RelicInfo>().SetDeck(sourceCell.GetInfoRelic().Deck);
+				}
+					break;
+			}
+		}
 		/// <summary>
 		/// Destroy item in this cell
 		/// </summary>
@@ -335,6 +379,14 @@ namespace _DragAndDropSystem
 		{
 			return GetComponentInChildren<InfoGear>();
 		}
+		
+		/// <summary>
+		/// Get Skill from Cell
+		/// </summary>
+		public SkillInfo GetInfoSkill()
+		{
+			return GetComponentInChildren<SkillInfo>();
+		}
 
 		/// <summary>
 		/// Get InfoRelic from Cell
@@ -352,7 +404,7 @@ namespace _DragAndDropSystem
 		{
 			if (newItem != null)
 			{
-				PlaceItem(newItem);
+				PlaceItem(newItem, this);
 				DropEventDescriptor desc = new DropEventDescriptor();
 				// Fill event descriptor
 				desc.triggerType = TriggerType.ItemAdded;

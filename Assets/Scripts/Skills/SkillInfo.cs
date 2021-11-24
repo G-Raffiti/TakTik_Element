@@ -40,7 +40,7 @@ namespace Skills
         }
 
         public Range Range { get; private set; }
-        public Power Power { get; private set; }
+        public int Power { get; private set; }
         public Element Element { get; private set; }
         public EAffect Affect { get; private set; }
         public int Cost { get; private set; }
@@ -67,7 +67,7 @@ namespace Skills
         {
             UpdateSkill(deck.Skills[index], _unit);
         }
-        
+
         /// <summary>
         /// Method Called by the IA to Use a Skill that is not in the Deck
         /// </summary>
@@ -111,6 +111,11 @@ namespace Skills
         {
             return Zone.GetZone(Range, _cell);
         }
+
+        public List<Cell> GetRangeFrom(Cell _cell)
+        {
+            return Range.NeedView ? Zone.CellsInView(this, _cell) : Zone.CellsInRange(this, _cell);
+        }
         
         #region IInfo
         public override string GetInfoMain()
@@ -145,13 +150,13 @@ namespace Skills
         public override string ColouredName()
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"<size=35><color=#{_hexColor}>{Skill.Name}</color></size>";
+            return $"<color=#{_hexColor}>{Skill.Name}</color>";
         }
 
         public override void OnPointerClick(PointerEventData eventData)
         {
             if (!Clickable) return;
-            if (Unit.BattleStats.AP >= 1)
+            if (Unit.BattleStats.AP >= Cost)
                 onSkillSelected?.Raise(this);
         }
         
@@ -159,19 +164,13 @@ namespace Skills
         {
             if (icon != null)
                 icon.sprite = GetIcon();
-            EnableIcon();
-        }
-
-        public void EnableIcon()
-        {
-            if (icon == null) return;
-            if ((BattleStateManager.instance.PlayingUnit.playerNumber == 0 && (int) BattleStateManager.instance.PlayingUnit.BattleStats.AP > 0) || !Clickable)
-            {
-                icon.color = Color.white;
-            }
-            else icon.color = Color.gray;
         }
 
         #endregion
+
+        public int GetPower(EElement _elementType)
+        {
+            return Power + Unit.BattleStats.GetPower(_elementType);
+        }
     }
 }

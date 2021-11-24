@@ -85,6 +85,11 @@ namespace Units
     #endregion
 
     #region Unit Stats
+
+        /// <summary>
+        /// it represent the initiative of the unit, this point are used to take a round
+        /// </summary>
+        public int TurnPoint;
         
         /// <summary>
         /// Actual Stats of the Unit, Can be modified from all Sources,
@@ -269,6 +274,8 @@ namespace Units
 
         public List<Cell> FindPath(List<Cell> cells, Cell destination)
         {
+            if (destination == cell)
+                return new List<Cell>() {cell};
             if (cachedPaths != null && cachedPaths.ContainsKey(destination))
             {
                 return cachedPaths[destination];
@@ -349,7 +356,7 @@ namespace Units
         /// <returns></returns>
         protected virtual AttackAction DealDamage(Unit _unitToAttack)
         {
-            return new AttackAction(BattleStats.Power.Basic, 1f);
+            return new AttackAction(BattleStats.Power, 1f);
         }
         
         /// <summary>
@@ -371,14 +378,14 @@ namespace Units
         {
             Debug.Log($"Damage : {aggressor.UnitName} did {damage} {element.Type} damage to {UnitName}");
             int _damageTaken = Defend(damage, element);
-            bool dodged = false;
-            if (BattleStats.Dodge >= 1 && _damageTaken > 0)
-            {
-                BattleStats.Dodge -= 1;
-                _damageTaken = (int)(_damageTaken * 0.5f);
-                dodged = true;
-            }
+
+            OnHit(_damageTaken, element);
             
+            if (_damageTaken > 0)
+            {
+                MarkAsDefending(aggressor);
+            }
+
             if (BattleStats.Shield > 0)
             {
                 if (BattleStats.Shield < _damageTaken)
@@ -396,10 +403,6 @@ namespace Units
             BattleStats.HP -= _damageTaken;
             if (BattleStats.HP > total.HP) 
                 BattleStats.HP = total.HP;
-            
-            if(_damageTaken > 0)
-                MarkAsDefending(aggressor);
-            OnHit(aggressor, _damageTaken, element, dodged);
             
             DefenceActionPerformed();
 
@@ -422,7 +425,7 @@ namespace Units
         /// <returns>Amount of damage that the unit has taken</returns>        
         protected int Defend(float damage, Element element)
         {
-            return (int) (damage * (BattleStats.GetDamageTaken(element.Type) / 100f));
+            return (int) BattleStats.GetDamageTaken(damage, element.Type);
         }
 
         public int DamageTaken(float damage, Element element)
@@ -515,12 +518,12 @@ namespace Units
         /// <summary>
         /// Method to Show to the player what happened and how much damage was done
         /// </summary>
-        protected void OnHit(Unit aggressor, int damage, Element element, bool dodged)
+        protected void OnHit(int damage, Element element)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(element.TextColour);
-            string dodge = dodged? "Dodge! " : "";
-            info.text = damage > 0 ? $"{dodge}- <color=#{_hexColor}>{damage}</color> HP" : $"+ {-damage} HP";
-            shadow.text = damage > 0 ? $"{dodge}- {damage} HP" : $"+ {-damage} HP";
+            if (damage == 0) return;
+            info.text = damage > 0 ? $"- <color=#{_hexColor}>{damage}</color> HP" : $"+ {-damage} HP";
+            shadow.text = damage > 0 ? $"- {damage} HP" : $"+ {-damage} HP";
             anim.PlayQueued("TextFade");
         }
 
@@ -591,7 +594,7 @@ namespace Units
         /// <summary>
         /// Method is called at the end of each turn.
         /// </summary>
-        public void OnTurnEnd()
+        public virtual void OnTurnEnd()
         {
             cachedPaths = null;
             buffs.ForEach(b =>
@@ -666,11 +669,9 @@ namespace Units
             BattleStats actual = new BattleStats(newTotal)
             {
                 Shield = BattleStats.Shield + Math.Max(0, diff.Shield),
-                Dodge = BattleStats.Dodge + Math.Max(0, diff.Dodge),
                 HP = BattleStats.HP + Math.Max(0, diff.HP),
                 AP = BattleStats.AP + Math.Max(0, diff.AP),
                 MP = BattleStats.MP + Math.Max(0, diff.MP),
-                TurnPoint = BattleStats.TurnPoint,
             };
 
             BattleStats = new BattleStats(actual);

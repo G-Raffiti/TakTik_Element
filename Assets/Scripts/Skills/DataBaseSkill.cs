@@ -51,7 +51,7 @@ namespace Skills
 
         public SkillSO GetSkillFor(MonsterSO _monster)
         {
-            List<SkillSO> ret = allSkills.Where(s => s.Element == _monster.Element && s.Archetype == _monster.Archetype)
+            List<SkillSO> ret = allSkills.Where(s => s.Element == _monster.Element && s.Archetype == _monster.Archetype.Type)
                 .ToList();
             return ret[Random.Range(0, ret.Count)];
         }

@@ -27,14 +27,7 @@ MonoBehaviour:
     NeedView: 1
     NeedTarget: 1
     CanBeModified: 0
-  power:
-    Basic: 0
-    Spell: 100
-    Skill: 100
-    Affinity:
-      Fire: 100
-      Nature: 100
-      Water: 100
+  power: 0
   statusEffects: []
   consumable: 1
   cost: 0

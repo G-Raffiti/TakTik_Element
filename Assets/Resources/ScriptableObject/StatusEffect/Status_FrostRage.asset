@@ -23,8 +23,7 @@ MonoBehaviour:
   - affix: {fileID: 11400000, guid: e01d331a5f498334eb8464e536eff088, type: 2}
     value: 1
   isDefinitive: 0
-  durationPerFocusPercent: 30
-  powerDependency: 3
+  duration: 3
   powerPercent: 20
   description: Augment the <sprite name=Water> Affinity and decrease the <sprite
     name=Speed>
