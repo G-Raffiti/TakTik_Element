@@ -75,8 +75,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateBeginning.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfoMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

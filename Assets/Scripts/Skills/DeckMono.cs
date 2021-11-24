@@ -13,11 +13,13 @@ namespace Skills
     {
         [SerializeField] private BoolEvent onEndBattle;
         [SerializeField] private List<SkillSO> Skills = new List<SkillSO>();
-        
+
         private List<SkillSO> HandSkills = new List<SkillSO>();
         private List<SkillSO> UsedSkills = new List<SkillSO>();
         private List<SkillSO> ConsumedSkills = new List<SkillSO>();
         private List<RelicSO> Relics = new List<RelicSO>();
+        
+        public L
         
         public static int HAND_SIZE = 5;
 
@@ -65,15 +67,17 @@ namespace Skills
             int remainRange = n - maxRange;
             
             HandSkills.AddRange(Skills.GetRange(0, maxRange));
+            Skills.RemoveRange(0, maxRange);
 
             if (remainRange > 0)
             {
                 ShuffleDeck();
                 HandSkills.AddRange(Skills.GetRange(0, remainRange));
+                Skills.RemoveRange(0, remainRange);
             }
         }
         
-        public void UpdateSkill(SkillSO skillso)
+        public Skill UpdateSkill(SkillSO skillso)
         {
             Skill skill = new Skill(skillso);
             
@@ -93,7 +97,22 @@ namespace Skills
             }
 
             skill.effects.Sort((_effect, _effect1) => _effect.ActionsOrder.CompareTo(_effect1.ActionsOrder));
+
+            return skill;
         }
+
+        public List<Skill> GetHandSkills()
+        {
+            List<Skill> skills = new List<Skill>();
+            
+            foreach (SkillSO skill in HandSkills)
+            {
+                skills.Add(UpdateSkill(skill));
+            }
+
+            return skills;
+        }
+        
     /*    
     #region Change Methode for Relics
 
@@ -231,6 +250,13 @@ namespace Skills
             if (!Skills.Contains(_Skill)) return false;
             Skills.Remove(_Skill);
             return true;
+        }
+
+        public void PrintDebug()
+        {
+            Debug.Log("pile: " + Skills.Count + "/n" +
+                      "hand: " + HandSkills.Count + "/n" +
+                      "used: " + UsedSkills.Count);
         }
     }
 }

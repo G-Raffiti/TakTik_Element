@@ -44623,7 +44623,7 @@ MonoBehaviour:
   Deck: {fileID: 0}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
-  onShuffleDecks: {fileID: 11400000, guid: 3c7854f985a4a984082920dbb20a24cb, type: 2}
+  onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
   onBattleStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
 --- !u!1001 &760090917746347817
 PrefabInstance:
