@@ -80,7 +80,6 @@
      <Compile Include="Assets\Scripts\Cells\DataBaseBoard.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
      <Compile Include="Assets\Scripts\Pathfinding\Algorithms\DijkstraPathfinding.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\Icon_UI.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderUI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
@@ -106,7 +105,6 @@
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\BoolListener.cs" />
      <Compile Include="Assets\Resources\ToolTip\Scripts\IInfo.cs" />
      <Compile Include="Assets\Scripts\BattleOver\LootBoxes.cs" />
-     <Compile Include="Assets\Scripts\Players\NaiveAiPlayer.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\SkillGridEffect.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\IntListener.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Element.cs" />
@@ -212,8 +210,14 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\CellEvent.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Stone.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\Icon_UI.cs" />
+     <Compile Include="Assets\Scripts\Players\NaiveAiPlayer.cs" />
+     <Compile Include="Assets\Scripts\Skills\DeckMono.cs" />
+     <Compile Include="Assets\Scripts\Skills\Skill.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\DeckMonoUI.cs" />
+     <Compile Include="Assets\Scripts\Skills\AllDecksMono.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillInfoMono.cs" />
      <Compile Include="Assets\Scripts\Skills\DeckSimplify.cs" />
-     <Compile Include="Assets\Scripts\Skills\AllDecksSimplify.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

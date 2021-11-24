@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using Grid;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
+using Void = _EventSystem.CustomEvents.Void;
 
 namespace Skills
 {
-    public class AllDecksSimplify : MonoBehaviour
+    public class AllDecksMono : MonoBehaviour
     {
-        public List<DeckSimplify> Decks;
+        public DeckMono Deck;
         private static GameObject instance;
         
         private bool used = false;
@@ -20,7 +22,8 @@ namespace Skills
         [Header("Event Listener")] 
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onShuffleDecks;
-        
+        [SerializeField] private VoidEvent onBattleStart;
+
         private void Start() 
         {
             DontDestroyOnLoad(gameObject.transform);
@@ -28,20 +31,25 @@ namespace Skills
                 instance = gameObject;
             else
                 Destroy(gameObject);
-            Decks = new List<DeckSimplify>();
-            foreach (Transform _child in transform)
-            {
-                Decks.Add(_child.gameObject.GetComponent<DeckSimplify>());
-            }
 
+            Deck = transform.GetComponentInChildren<DeckMono>();
+            
             onUnitStartTurn.EventListeners += OnEventRaised;
             onShuffleDecks.EventListeners += Shuffle;
+            onBattleStart.EventListeners += FirstShuffle;
         }
 
         private void OnDestroy()
         {
             onUnitStartTurn.EventListeners -= OnEventRaised;
             onShuffleDecks.EventListeners -= Shuffle;
+            onBattleStart.EventListeners -= FirstShuffle;
+        }
+
+        private void FirstShuffle(Void _obj)
+        {
+            Deck.ShuffleDeck();
+            Deck.Draw();
         }
 
         private void Shuffle(Void _obj)
@@ -51,22 +59,18 @@ namespace Skills
 
         public void Shuffle()
         {
-            Debug.Log("Shuffle deck");
             if (BattleStateManager.instance.PlayingUnit.BattleStats.AP < 1 || used) return;
             BattleStateManager.instance.PlayingUnit.BattleStats.AP--;
             used = true;
             
-            foreach (DeckSimplify _deck in Decks)
-            {
-                _deck.ShuffleDeck();
-                onActionDone.Raise();
-            }
+            Deck.ShuffleDeck();
+            onActionDone.Raise();
         }
 
         public void OnEventRaised(Unit item)
         {
-            GameObject.Find("UI_BattleScene/DecksUI/ShuffleBtn").GetComponent<Button>().onClick.RemoveAllListeners();
-            GameObject.Find("UI_BattleScene/DecksUI/ShuffleBtn").GetComponent<Button>().onClick.AddListener(Shuffle);
+            GameObject.Find("UI_BattleScene/Right/ShuffleBtn").GetComponent<Button>().onClick.RemoveAllListeners();
+            GameObject.Find("UI_BattleScene/Right/ShuffleBtn").GetComponent<Button>().onClick.AddListener(Shuffle);
             used = false;
         }
     }

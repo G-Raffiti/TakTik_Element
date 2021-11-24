@@ -17,10 +17,15 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+<<<<<<< Updated upstream
+=======
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+>>>>>>> Stashed changes
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.5.7/Editor/Collaborate/UserInterface/CollaborateWindow.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
+<<<<<<< Updated upstream
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateBeginning.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectIsoGridGenerator.cs" />
@@ -46,11 +51,32 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/UnityVoidEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/NaiveAiPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/TurnOrderUI.cs" />
+=======
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ForgeUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Forge.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Gear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Decks.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Decks_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropItem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Camp.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/CampUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/DeckUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicChoiceUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/TurnOrderPrefab.cs" />
+>>>>>>> Stashed changes
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PlayingUnitsInfo_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecks.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/CustomEvents/VoidEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
+<<<<<<< Updated upstream
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateUnitSelected.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicChoiceUI.cs" />
@@ -62,6 +88,14 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateSkillSelected.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Deck.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CSVReader.cs" />
+=======
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InfoGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Isometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
+>>>>>>> Stashed changes
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DataBaseSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/rawSkill.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" />
@@ -69,9 +103,23 @@
       <option value="$PROJECT_DIR$/Assets/Editor/Data/CSVReader.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/DataBase.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
+<<<<<<< Updated upstream
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckSimplify.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksSimplify.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckUI.cs" />
+=======
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckMonoUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfoMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" />
+>>>>>>> Stashed changes
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
@@ -120,6 +168,7 @@
       <option name="presentableId" value="Default" />
       <updated>1633649099781</updated>
       <workItem from="1633649133169" duration="5345000" />
+      <workItem from="1637779689576" duration="12128000" />
     </task>
     <servers />
   </component>
