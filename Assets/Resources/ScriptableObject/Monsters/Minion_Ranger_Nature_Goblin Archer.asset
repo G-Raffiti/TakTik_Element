@@ -10,49 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a418db8050448387e61904e1e27583, type: 3}
-  m_Name: Minion_Caster_None_Lava Shroom
+  m_Name: Minion_Ranger_Nature_Goblin Archer
   m_EditorClassIdentifier: 
-  unitName: Lava Shroom
-  element: {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
+  unitName: Goblin Archer
+  element: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
   basicStats:
-    TurnPoint: 0
-    HP: 40
+    HP: 30
     Shield: 0
-    Dodge: 0
     Speed: 9
-    Power:
-      Basic: 3
-      Spell: 100
-      Skill: 100
-      Affinity:
-        Fire: 100
-        Nature: 100
-        Water: 100
-    MP: 2
+    Power: 4
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 3
     AP: 1
     Range:
       RangeType: 1
-      RangeValue: 1
+      RangeValue: 2
       ZoneType: 1
-      Radius: 1
+      Radius: 0
       NeedView: 1
       NeedTarget: 0
       CanBeModified: 1
-    Focus: 3
   randomStats:
-    TurnPoint: 0
     HP: 0
     Shield: 0
-    Dodge: 0
     Speed: 0
-    Power:
-      Basic: 0
-      Spell: 100
-      Skill: 100
-      Affinity:
-        Fire: 100
-        Nature: 100
-        Water: 100
+    Power: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
     MP: 0
     AP: 0
     Range:
@@ -63,12 +52,11 @@ MonoBehaviour:
       NeedView: 0
       NeedTarget: 0
       CanBeModified: 0
-    Focus: 0
   prefab: {fileID: 1179847595273300741, guid: 89efd93c7d9c49c4b8310941e959cfba, type: 3}
-  unitSprite: {fileID: 21300000, guid: c0f58ad0aab3588468b82c9d7fe6492d, type: 3}
+  unitSprite: {fileID: 21300000, guid: c618ef8ac1081334bbd510e5c4fc077e, type: 3}
   level: 1
   relic: {fileID: 0}
   rewardType: 1
   type: 0
-  archetype: 2
+  archetype: {fileID: 11400000, guid: 288b6b0423974364ead2886bee71229f, type: 2}
   skill: {fileID: 0}

@@ -45,7 +45,7 @@ namespace Units
         [SerializeField] private RelicSO relic;
         [SerializeField] private EReward rewardType;
         [SerializeField] private EMonster type;
-        [SerializeField] private EArchetype archetype;
+        [SerializeField] private Archetype archetype;
         [SerializeField] private SkillSO skill;
         
         public SkillSO Skill => skill;
@@ -53,8 +53,8 @@ namespace Units
         public EReward RewardType => rewardType;
         public EMonster Type => type;
 
-        private const float GoodAffinity = +4;
-        private const float BadAffinity = -4;
+        private const float GoodAffinity = 3;
+        private const float BadAffinity = 5;
         private const int SkillRewardBonusAP = 1;
 
         /// <summary>
@@ -80,17 +80,17 @@ namespace Units
             {
                 case EElement.Fire: 
                     fire += GoodAffinity;
-                    nat += GoodAffinity;
+                    nat += BadAffinity;
                     wat -= BadAffinity;
                     break;
                 case EElement.Nature:
                     nat += GoodAffinity;
-                    wat += GoodAffinity;
+                    wat += BadAffinity;
                     fire -= BadAffinity;
                     break;
                 case EElement.Water:
                     wat += GoodAffinity;
-                    fire += GoodAffinity;
+                    fire += BadAffinity;
                     nat -= BadAffinity;
                     break;
                 case EElement.None:
@@ -106,7 +106,7 @@ namespace Units
         public int Level => level;
         public Sprite UnitSprite => unitSprite;
         public Element Element => element;
-        public EArchetype Archetype => archetype;
+        public Archetype Archetype => archetype;
 
         /// <summary>
         /// Create the Prefab with the Stats at the Cell Location

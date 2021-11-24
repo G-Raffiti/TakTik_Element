@@ -37,6 +37,11 @@ namespace GridObjects
             location.MarkAsReachable();
         }
 
+        public virtual void ShowAction(Unit actor, Cell location)
+        {
+            if (!GetZoneOfInteraction(location).Contains(actor.Cell)) return;
+        }
+
         #region IInfo
 
         public virtual string GetInfoMain()
@@ -61,5 +66,7 @@ namespace GridObjects
         }
 
     #endregion
+
+    
     }
 }

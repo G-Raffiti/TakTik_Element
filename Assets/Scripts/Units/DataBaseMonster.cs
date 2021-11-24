@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using _ScriptableObject;
 using Skills;
 using UnityEditor;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Units
     public class DataBaseMonster : ScriptableObject
     {
         [SerializeField] private List<MonsterSO> allMonsters;
+
         public List<MonsterSO> Monsters => allMonsters;
         public List<MonsterSO> AllMinions => allMonsters.Where(monster => monster.Type == EMonster.Minion).ToList();
         public List<MonsterSO> AllBosses => allMonsters.Where(monster => monster.Type == EMonster.Boss).ToList();

@@ -10,49 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a418db8050448387e61904e1e27583, type: 3}
-  m_Name: Minion_Ranger_None_Egypt Chariot
+  m_Name: Minion_Caster_Fire_Lava Shroom
   m_EditorClassIdentifier: 
-  unitName: Egypt Chariot
+  unitName: Lava Shroom
   element: {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
   basicStats:
-    TurnPoint: 0
     HP: 40
     Shield: 0
-    Dodge: 0
     Speed: 9
-    Power:
-      Basic: 4
-      Spell: 100
-      Skill: 100
-      Affinity:
-        Fire: 100
-        Nature: 100
-        Water: 100
-    MP: 3
+    Power: 3
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 2
     AP: 1
     Range:
       RangeType: 1
-      RangeValue: 2
+      RangeValue: 1
       ZoneType: 1
-      Radius: 0
+      Radius: 1
       NeedView: 1
       NeedTarget: 0
       CanBeModified: 1
-    Focus: 3
   randomStats:
-    TurnPoint: 0
     HP: 0
     Shield: 0
-    Dodge: 0
     Speed: 0
-    Power:
-      Basic: 0
-      Spell: 100
-      Skill: 100
-      Affinity:
-        Fire: 100
-        Nature: 100
-        Water: 100
+    Power: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
     MP: 0
     AP: 0
     Range:
@@ -63,12 +52,11 @@ MonoBehaviour:
       NeedView: 0
       NeedTarget: 0
       CanBeModified: 0
-    Focus: 0
   prefab: {fileID: 1179847595273300741, guid: 89efd93c7d9c49c4b8310941e959cfba, type: 3}
-  unitSprite: {fileID: 21300000, guid: 866873a7d14292e4b9ab59f6600b017b, type: 3}
+  unitSprite: {fileID: 21300000, guid: c0f58ad0aab3588468b82c9d7fe6492d, type: 3}
   level: 1
   relic: {fileID: 0}
   rewardType: 1
   type: 0
-  archetype: 3
+  archetype: {fileID: 11400000, guid: 3f5880bcde2bb1145bc6c44671fdfe80, type: 2}
   skill: {fileID: 0}

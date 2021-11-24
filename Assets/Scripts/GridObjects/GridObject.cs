@@ -85,6 +85,7 @@ namespace GridObjects
         {
             if(cell != null)
                 cell.OnMouseEnter();
+            GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, cell);
         }
         protected virtual void OnMouseExit()
         {

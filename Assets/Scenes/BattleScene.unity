@@ -35920,17 +35920,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  evaluationValues:
-    MPCost: 3
-    DirectTargetEnemy: 5
-    DirectTargetAlly: -5
-    ZoneTargetEnemy: 7
-    ZoneTargetAlly: -9
-    NearToEnemy: 2
-    NearToAlly: -1
-    NearToObject: 4
-    CorruptedCell: -8
-    DeBuffOnCell: -5
   onSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
   onMonsterPlay: {fileID: 11400000, guid: be98f1bbe9430bf4c880c6b0a81474e3, type: 2}

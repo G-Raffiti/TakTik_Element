@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\_Instances\DataBase.cs" />
      <Compile Include="Assets\Scripts\Stats\Range.cs" />
      <Compile Include="Assets\Scripts\UserInterface\SceneKeeper.cs" />
+     <Compile Include="Assets\Scripts\_ScriptableObject\Archetype.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectAffectChange.cs" />
      <Compile Include="Assets\Scripts\GridObjects\GridObject.cs" />
      <Compile Include="Assets\Scripts\Cells\CellSO.cs" />

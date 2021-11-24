@@ -15,5 +15,5 @@ MonoBehaviour:
   type: 1
   movable: 1
   image: {fileID: 21300000, guid: 9352d68ca4f8ac24a97851c5f19ee00d, type: 3}
-  damage: 2
-  weight: 1
+  name: Stone
+  pushDistance: 3

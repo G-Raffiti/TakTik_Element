@@ -102,6 +102,7 @@
             <e p="SavingLoading.cs" t="Include" />
           </e>
           <e p="_ScriptableObject" t="Include">
+            <e p="Archetype.cs" t="Include" />
             <e p="Element.cs" t="Include" />
             <e p="Rarity.cs" t="Include" />
           </e>

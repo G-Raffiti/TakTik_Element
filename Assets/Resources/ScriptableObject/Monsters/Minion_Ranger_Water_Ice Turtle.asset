@@ -10,26 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a418db8050448387e61904e1e27583, type: 3}
-  m_Name: Minion_Ranger_None_Dryads Archer
+  m_Name: Minion_Ranger_Water_Ice Turtle
   m_EditorClassIdentifier: 
-  unitName: Dryads Archer
-  element: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
+  unitName: Ice Turtle
+  element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
   basicStats:
-    TurnPoint: 0
-    HP: 20
-    Shield: 0
-    Dodge: 1
-    Speed: 11
-    Power:
-      Basic: 1
-      Spell: 100
-      Skill: 100
-      Affinity:
-        Fire: 100
-        Nature: 100
-        Water: 100
-    MP: 1
-    AP: 2
+    HP: 25
+    Shield: 15
+    Speed: 9
+    Power: 4
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 3
+    AP: 1
     Range:
       RangeType: 1
       RangeValue: 2
@@ -38,21 +33,15 @@ MonoBehaviour:
       NeedView: 1
       NeedTarget: 0
       CanBeModified: 1
-    Focus: 1
   randomStats:
-    TurnPoint: 0
     HP: 0
     Shield: 0
-    Dodge: 0
     Speed: 0
-    Power:
-      Basic: 0
-      Spell: 100
-      Skill: 100
-      Affinity:
-        Fire: 100
-        Nature: 100
-        Water: 100
+    Power: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
     MP: 0
     AP: 0
     Range:
@@ -63,12 +52,11 @@ MonoBehaviour:
       NeedView: 0
       NeedTarget: 0
       CanBeModified: 0
-    Focus: 0
   prefab: {fileID: 1179847595273300741, guid: 89efd93c7d9c49c4b8310941e959cfba, type: 3}
-  unitSprite: {fileID: 21300000, guid: 81a1ad75fcef8364189608f9b76d4c9d, type: 3}
+  unitSprite: {fileID: 21300000, guid: c773bc0167f53dc44b2262873117b39a, type: 3}
   level: 1
   relic: {fileID: 0}
   rewardType: 1
   type: 0
-  archetype: 3
+  archetype: {fileID: 11400000, guid: 288b6b0423974364ead2886bee71229f, type: 2}
   skill: {fileID: 0}

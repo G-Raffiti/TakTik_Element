@@ -184,7 +184,7 @@ namespace Cells
         public override void MarkAsValue(Gradient gradient, float value, int max)
         {
             state = new CellState(null, Colors[EColor.unMark],
-                gradient.Evaluate(value / max) * Colors[EColor.transparency]);
+                gradient.Evaluate(Mathf.Clamp((value / max), 0f, 1f)) * Colors[EColor.transparency]);
             MarkAs(state);
         }
 

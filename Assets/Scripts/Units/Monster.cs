@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
 using _Instances;
+using _ScriptableObject;
 using Cells;
 using Gears;
 using Grid;
+using Players;
 using Skills;
 using Skills._Zone;
 using Stats;
@@ -32,6 +34,7 @@ namespace Units
 
         public SkillSO Skill => skill.Skill;
 
+        public Archetype Archetype { get; private set; }
         public List<RelicSO> Relics { get; private set; }
         public EReward RewardType { get; private set; }
         public EMonster Type { get; private set; }
@@ -47,6 +50,8 @@ namespace Units
             unitSprite.sprite = monster.UnitSprite;
             RewardType = monster.RewardType;
             Type = monster.Type;
+            Archetype = monster.Archetype;
+            
             Relics = new List<RelicSO>();
             if (monster.Relic != null)
             {

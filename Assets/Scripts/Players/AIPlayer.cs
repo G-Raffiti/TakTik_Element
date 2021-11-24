@@ -44,8 +44,7 @@ namespace Players
         private Dictionary<Cell, int> destinations = new Dictionary<Cell, int>();
         private Dictionary<Cell, Dictionary<Cell, int>> skillTargets = new Dictionary<Cell, Dictionary<Cell, int>>();
 
-        [Header("Evaluation Value")] 
-        [SerializeField] private EvaluationValues evaluationValues;
+        private EvaluationValues evaluationValues;
 
         [Header("Event Listener")]
         [SerializeField] private VoidEvent onSkillUsed;
@@ -68,6 +67,7 @@ namespace Players
             }
             unit = (Monster) stateManager.PlayingUnit;
             monsterSkill = unit.GetComponentInChildren<SkillInfo>();
+            evaluationValues = unit.Archetype.Evaluations;
             
             unit.OnTurnStart();
 
@@ -233,11 +233,19 @@ namespace Players
                 if (monsterSkill.Range.ZoneType == EZone.Self || monsterSkill.Range.Radius < 1)
                     EvaluateDirectTarget(stateManager, monsterSkill);
                 else EvaluateZoneTarget(monsterSkill);
+                
+                // Check Again for the Best Target
+                Best = GetBestDestinationTarget();
             }
+            
+            
             
             // If the Best Target is Still Null Evaluate the distance to the nearest enemy
             if (Best.Target == null)
+            {
+                EvaluateDistanceToAlly(stateManager);
                 EvaluateDistanceToEnemy(stateManager);
+            }
             
             // Get the Best Move After Check
             Best = GetBestDestinationTarget();
@@ -257,7 +265,20 @@ namespace Players
                 int point = (int)(evaluationValues.NearToEnemy * 10f / _cell.GetDistance(enemies[0].Cell));
                 destinations[_cell] += point;
             }
-            
+        }
+        
+        private void EvaluateDistanceToAlly(BattleStateManager stateManager)
+        {
+            // Find the nearest Ally
+            List<Unit> allies = new List<Unit>(stateManager.Units.Where(u => u.playerNumber == unit.playerNumber));
+            allies.Sort((u, u2) => u.Cell.GetDistance(unit.Cell).CompareTo(u2.Cell.GetDistance(unit.Cell)));
+
+            List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);
+            foreach (Cell _cell in destinationsKeys)
+            {
+                int point = (int)(evaluationValues.NearToAlly * 10f / _cell.GetDistance(allies[0].Cell));
+                destinations[_cell] += point;
+            }
         }
         
         private void EvaluateCells(BattleStateManager stateManager)
@@ -331,6 +352,13 @@ namespace Players
                 foreach (Cell _cellInRange in skillTargetsKeys)
                 {
                     List<Unit> affected = new List<Unit>(Zone.GetUnitsAffected(skill, _cellInRange));
+                    
+                    if (skill.GetZoneOfEffect(_cellInRange).Contains(destination))
+                    {
+                        if (skill.Affect == EAffect.All || skill.Affect == EAffect.OnlyAlly || skill.Affect == EAffect.OnlySelf || skill.Affect == EAffect.OnlyUnits)
+                            affected.Add(unit);
+                    }
+                    
                     if (affected.Count != 0)
                     {
                         foreach (Unit _unit in affected)
