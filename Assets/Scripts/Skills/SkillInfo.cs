@@ -1,27 +1,19 @@
 ﻿using System.Collections.Generic;
 using _EventSystem.CustomEvents;
-using _ScriptableObject;
 using Cells;
-using Grid;
-using Grid.GridStates;
 using Resources.ToolTip.Scripts;
 using Skills._Zone;
-using Skills.ScriptableObject_Effect;
 using Stats;
-using StatusEffect;
-using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Range = Stats.Range;
 
 namespace Skills
 {
     /// <summary>
     /// Class to attach to a Button that will give access to a Deck to Use Skills
     /// </summary>
-    public class SkillInfo : InfoBehaviour
+    public class SkillInfo : InfoBehaviour, IPointerClickHandler
     {
         [SerializeField] private bool Clickable;
         [SerializeField] private Image icon;
@@ -29,77 +21,16 @@ namespace Skills
         
         [Header("Event Sender")] 
         [SerializeField] private SkillEvent onSkillSelected;
-        [SerializeField] private VoidEvent OnSkillUsed;
         
-        public SkillSO Skill { get; private set; }
-        public Unit Unit { get; private set; }
-        public Deck Deck
+        public Skill Skill { get; private set; }
+
+        public void UpdateSkill(Skill _skill)
         {
-            get => deck;
-            set => deck = value;
+            Skill = _skill;
         }
-
-        public Range Range { get; private set; }
-        public int Power { get; private set; }
-        public Element Element { get; private set; }
-        public EAffect Affect { get; private set; }
-        public int Cost { get; private set; }
-        public ESkill Type { get; private set; }
-        public List<Buff> Buffs { get; private set; }
-
-        public void UpdateSkill(SkillSO _skillSO, Unit _unit)
+        public void UpdateSkill(int index)
         {
-            deck.UpdateSkill(_skillSO);
-            Skill = _skillSO;
-            Unit = _unit;
-            if (Skill.Range.CanBeModified)
-                Range = deck.Range + Unit.BattleStats.Range;
-            else Range = Skill.Range;
-            Power = deck.Power + Unit.BattleStats.Power;
-            Element = deck.Element;
-            Affect = deck.Affect;
-            Cost = deck.Cost;
-            Type = Skill.Type;
-            Buffs = new List<Buff>();
-            deck.StatusEffects.ForEach(status => Buffs.Add(new Buff(Unit, status)));
-        }
-        public void UpdateSkill(int index, Unit _unit)
-        {
-            UpdateSkill(deck.Skills[index], _unit);
-        }
-
-        /// <summary>
-        /// Method Called by the IA to Use a Skill that is not in the Deck
-        /// </summary>
-        /// <param name="skill">
-        /// the skill to Use
-        /// </param>
-        /// <param name="cell">
-        /// the targeted Cell
-        /// </param>
-        /// <param name="sender">
-        /// the Unit who use the skill
-        /// </param>
-        public void UseSkill(SkillSO skill, Cell cell, Unit sender)
-        {
-            UpdateSkill(skill, sender);
-            UseSkill(cell);
-            Deck.NextSkill();
-            UpdateSkill(0, Unit);
-        }
-        
-        /// <summary>
-        /// Method Called buy the Player by Clicking in the Icon in BattleScene
-        /// </summary>
-        /// <param name="cell"></param>
-        public void UseSkill(Cell cell)
-        {
-            if (Unit.BattleStats.AP < Cost) return;
-            if (!deck.UseSkill(this, cell)) return;
-
-            Unit.BattleStats.AP -= Cost;
-
-            OnSkillUsed?.Raise();
+            UpdateSkill(deck.UsableSkills[index]);
         }
 
         /// <summary>
@@ -109,18 +40,18 @@ namespace Skills
         /// <returns></returns>
         public List<Cell> GetZoneOfEffect(Cell _cell)
         {
-            return Zone.GetZone(Range, _cell);
+            return Zone.GetZone(Skill.Range, _cell);
         }
 
         public List<Cell> GetRangeFrom(Cell _cell)
         {
-            return Range.NeedView ? Zone.CellsInView(this, _cell) : Zone.CellsInRange(this, _cell);
+            return Skill.Range.NeedView ? Zone.CellsInView(this, _cell) : Zone.CellsInRange(this, _cell);
         }
         
         #region IInfo
         public override string GetInfoMain()
         {
-            return $"{ColouredName()}\n{Skill.Type} of {Element.Name}\ncost: {Cost} <sprite name=AP>";
+            return $"{ColouredName()}\n{Skill.Type} of {Skill.Element.Name}\ncost: {Skill.Cost} <sprite name=AP>";
         }
 
         public override string GetInfoLeft()
@@ -132,31 +63,31 @@ namespace Skills
 
         public override string GetInfoRight()
         {
-            return Range.ToString();
+            return Skill.Range.ToString();
         }
 
         public override string GetInfoDown()
         {
             string str = "";
-            Buffs.ForEach(buff => str += buff.InfoBuff());
+            Skill.Buffs.ForEach(buff => str += buff.InfoBuff());
             return str;
         }
 
         public override Sprite GetIcon()
         {
-            return Skill.Icon;
+            return Skill.BaseSkill.Icon;
         }
 
         public override string ColouredName()
         {
-            string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"<color=#{_hexColor}>{Skill.Name}</color>";
+            string _hexColor = ColorUtility.ToHtmlStringRGB(Skill.Element.TextColour);
+            return $"<color=#{_hexColor}>{Skill.BaseSkill.Name}</color>";
         }
 
         public override void OnPointerClick(PointerEventData eventData)
         {
             if (!Clickable) return;
-            if (Unit.BattleStats.AP >= Cost)
+            if (Skill.Unit.BattleStats.AP >= Skill.Cost)
                 onSkillSelected?.Raise(this);
         }
         
@@ -170,7 +101,7 @@ namespace Skills
 
         public int GetPower(EElement _elementType)
         {
-            return Power + Unit.BattleStats.GetPower(_elementType);
+            return Skill.Power;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Skills.ScriptableObject_GridEffect
         
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(_skillInfo.Skill.Range, _cell);
             _zone.Sort((_cell1, _cell2) =>
                 _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
             foreach (Cell _cellAffected in _zone)
