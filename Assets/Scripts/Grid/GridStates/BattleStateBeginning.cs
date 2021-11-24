@@ -13,15 +13,17 @@ namespace Grid.GridStates
         private BattleStateManager stateManager;
         private List<Hero> heroes;
         private List<MonsterSO> monsters;
-        private List<GameObject> prefabHeroes;
-        private int index = 0;
+        private Dictionary<BattleHero, GameObject> prefabHeroes;
+        private GameObject sprite;
+
+        private BattleHero actualHero { get; set; }
         
         public BattleStateBeginning(BattleStateManager _stateManager, List<MonsterSO> _monsters) : base(_stateManager)
         {
             stateManager = _stateManager;
             heroes = new List<Hero>();
             setupCells = new List<Cell>();
-            prefabHeroes = new List<GameObject>();
+            prefabHeroes = new Dictionary<BattleHero, GameObject>();
             monsters = _monsters;
         }
 
@@ -79,78 +81,128 @@ namespace Grid.GridStates
             {
                 GameObject _pref = Object.Instantiate(heroes[i].Prefab, GameObject.Find("Units").transform);
                 heroes[i].Spawn(_pref);
-                _pref.transform.position = new Vector3(-3, i);
+                _pref.transform.position = new Vector3(-2, 3-i);
                 _pref.GetComponent<Unit>().InitializeSprite();
-                prefabHeroes.Add(_pref);
+                prefabHeroes.Add(_pref.GetComponent<BattleHero>(), _pref);
             }
-            
-            prefabHeroes[index].GetComponent<Unit>().MarkAsSelected();
+
+            stateManager.OnHeroSelected.EventListeners += ChangeHero;
+            sprite = GameObject.Find("Layer/Sprite");
         }
         
 
         public override void OnStateExit()
         {
-            for (int i = 0; i < heroes.Count; i++)
+            foreach (BattleHero _hero in prefabHeroes.Keys)
             {
-                if (!heroes[i].isPlaced)
-                {
-                    Object.DestroyImmediate(prefabHeroes[i]);
-                }
+                if(!_hero.Hero.isPlaced)
+                    GameObject.DestroyImmediate(prefabHeroes[_hero]);
             }
+            
             foreach (Cell _cell in stateManager.Cells)
             {
                 _cell.UnMark();
             }
+
+            stateManager.OnHeroSelected.EventListeners -= ChangeHero;
         }
 
-        private void ChangeIndex()
+        private void ChangeHero(Unit hero)
         {
-            prefabHeroes[index].GetComponent<Unit>().UnMark();
-            index += 1;
-            if (index >= prefabHeroes.Count)
-                index = 0;
-            prefabHeroes[index].GetComponent<Unit>().MarkAsSelected();
+            foreach (BattleHero _hero in prefabHeroes.Keys)
+            {
+                _hero.UnMark();
+            }
+
+            actualHero = (BattleHero) hero;
+            actualHero.MarkAsSelected();
         }
-        
+
         public override void OnCellClicked(Cell _cell)
         {
-            if (setupCells.Contains(_cell) &! _cell.IsTaken)
+            if (!setupCells.Contains(_cell))
             {
-                prefabHeroes[index].transform.position = _cell.transform.position;
+                actualHero = null;
+                return;
+            }
+            if (actualHero == null && !_cell.IsTaken) return;
+            if (actualHero == null)
+            {
+                ChangeHero(_cell.CurrentUnit);
+                return;
+            }
 
-                if (prefabHeroes[index].GetComponent<Unit>().Cell != null)
-                {
-                    prefabHeroes[index].GetComponent<Unit>().Cell.FreeTheCell();
-                }
-                else
-                {
-                    heroes[index].isPlaced = true;
-                }
-
-                _cell.Take(prefabHeroes[index].GetComponent<Unit>());
-                prefabHeroes[index].GetComponent<Unit>().AutoSortOrder();
+            if (!_cell.IsTaken) // Place Hero on a Free Cell
+            {
+                actualHero.transform.position = _cell.transform.position;
             }
 
             else
             {
-                ChangeIndex();
+                if (actualHero.Cell != null) // Swap Cell
+                {
+                    Cell actualCell = actualHero.Cell;
+                    
+                    actualCell.FreeTheCell();
+                    _cell.CurrentUnit.transform.position = actualCell.transform.position;
+                    actualCell.Take(_cell.CurrentUnit);
+                    
+                    actualHero.transform.position = _cell.transform.position;
+                }
+
+                else // Swap Position
+                {
+                    _cell.FreeTheCell();
+                    actualHero.transform.position = _cell.transform.position;
+                }
             }
+            
+            _cell.Take(actualHero);
+            actualHero.AutoSortOrder();
+
+            foreach (Cell _setupCell in setupCells)
+            {
+                _setupCell.MarkAsReachable();
+            }
+
+            foreach (BattleHero _hero in prefabHeroes.Keys)
+            {
+                if (_hero != actualHero)
+                {
+                    if (_hero.Cell == _cell)
+                        _hero.Cell = null;
+                }
+                if (_hero.Cell == null)
+                {
+                    int i = heroes.IndexOf(_hero.Hero);
+                    prefabHeroes[_hero].transform.position = new Vector3(-2, 3 - i);
+                }
+            }
+            
+            actualHero.Hero.isPlaced = true;
+            actualHero = null;
         }
 
         public override void OnCellSelected(Cell _selectedCell)
         {
-            if (setupCells.Contains(_selectedCell))
-            {
-                _selectedCell.MarkAsPath();
-            }
+            if (!setupCells.Contains(_selectedCell)) return;
+            _selectedCell.MarkAsPath();
+
+            if (actualHero == null) return;
+            
+            sprite.transform.position = _selectedCell.transform.position + new Vector3(0, 0.7f);
+            sprite.GetComponent<SpriteRenderer>().sprite = actualHero.UnitSprite;
         }
 
         public override void OnCellDeselected(Cell _unselectedCell)
         {
+            sprite.GetComponent<SpriteRenderer>().sprite = null;
+            
             if (setupCells.Contains(_unselectedCell))
-            {
                 _unselectedCell.MarkAsReachable();
-            }
+            
+            if (actualHero != null && _unselectedCell == actualHero.Cell)
+                _unselectedCell.MarkAsHighlighted();
         }
     }
 }

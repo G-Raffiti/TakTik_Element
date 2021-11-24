@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
 using Cells;
@@ -53,6 +54,11 @@ namespace UserInterface
             health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
             shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
             onUnitStartTurn.EventListeners += updateDisplay;
+        }
+
+        private void OnDestroy()
+        {
+            onUnitStartTurn.EventListeners -= updateDisplay;
         }
 
         private void Unit_UnitDestroyed(object _sender, DeathEventArgs _e)

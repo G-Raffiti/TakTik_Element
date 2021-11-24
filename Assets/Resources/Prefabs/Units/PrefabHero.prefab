@@ -230,6 +230,7 @@ MonoBehaviour:
   info: {fileID: 1220656103392055339}
   shadow: {fileID: 991324253262739922}
   isDying: 0
+  onHeroSelected: {fileID: 11400000, guid: d9a5de72d85ce74488ad6e11b7345f14, type: 2}
 --- !u!111 &6800174335220356956
 Animation:
   m_ObjectHideFlags: 0

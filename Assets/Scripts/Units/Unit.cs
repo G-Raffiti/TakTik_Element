@@ -55,8 +55,8 @@ namespace Units
         /// UnitMoved event is invoked when unit moves from one cell to another.
         /// </summary>
         [SerializeField] private UnitEvent onUnitMoved;
-        
-        protected virtual void OnMouseDown()
+
+        public virtual void OnMouseDown()
         {
             if(cell != null)
                 cell.OnMouseDown();

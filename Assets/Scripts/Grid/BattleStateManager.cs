@@ -64,9 +64,13 @@ namespace Grid
         [Header("Event Holder")]
         [SerializeField] private InfoEvent tooltipOn;
         [SerializeField] private VoidEvent tooltipOff;
+        [SerializeField] private UnitEvent onHeroSelected;
+        
         public InfoEvent TooltipOn => tooltipOn;
         public VoidEvent TooltipOff => tooltipOff;
-        
+        public UnitEvent OnHeroSelected => onHeroSelected;
+
+
         private const int TurnCost = 20;
         private const int CorruptionTurn = 3;
         public int NextCorruptionTurn { get; private set; }
@@ -197,6 +201,7 @@ namespace Grid
         }
         private IEnumerator BattleBeginning()
         {
+            //TODO : Trouver solution pour ne pas attendre un temps fix
             yield return new WaitForSeconds(0.2f);
             BattleState = new BattleStateBeginning(this, BattleGenerator.GenerateEnemies(endCondition.Type));
         }

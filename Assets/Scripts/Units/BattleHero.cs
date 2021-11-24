@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using _EventSystem.CustomEvents;
 using Gears;
+using Grid;
 using Stats;
 using StatusEffect;
 using UnityEngine;
@@ -11,8 +13,11 @@ namespace Units
     /// </summary>
     public class BattleHero : Unit
     {
+        [SerializeField] private UnitEvent onHeroSelected;
         private Hero hero;
-        
+
+        public Hero Hero => hero;
+
         public void Spawn(Hero _hero)
         {
             hero = _hero;
@@ -39,6 +44,13 @@ namespace Units
             base.UpdateStats();
             hero.Inventory.gears = new List<Gear>(Inventory.gears);
             hero.UpdateHP();
+        }
+
+        public override void OnMouseDown()
+        {
+            base.OnMouseDown();
+            if (!BattleStateManager.instance.GameStarted)
+                onHeroSelected.Raise(this);
         }
     }
 }
