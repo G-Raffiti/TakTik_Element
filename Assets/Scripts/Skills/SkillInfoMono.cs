@@ -29,32 +29,10 @@ namespace Skills
         [SerializeField] private SkillEvent onSkillSelected;
         [SerializeField] private VoidEvent OnSkillUsed;
         
-        public SkillSO Skill { get; private set; }
         public Unit Unit { get; private set; }
 
-        public Skill skill { get; private set; };
+        public Skill skill { get; private set; }
         public List<Buff> Buffs { get; private set; }
-
-        public void UpdateSkill(SkillSO _skillSO, Unit _unit)
-        {
-            deck.UpdateSkill(_skillSO);
-            Skill = _skillSO;
-            Unit = _unit;
-            if (Skill.Range.CanBeModified)
-                Range = deck.Range + Unit.BattleStats.Range;
-            else Range = Skill.Range;
-            Power = deck.Power + Unit.BattleStats.Power;
-            Element = deck.Element;
-            Affect = deck.Affect;
-            Cost = deck.Cost;
-            Type = Skill.Type;
-            Buffs = new List<Buff>();
-            deck.StatusEffects.ForEach(status => Buffs.Add(new Buff(Unit, status)));
-        }
-        public void UpdateSkill(int index, Unit _unit)
-        {
-            UpdateSkill(deck.Skills[index], _unit);
-        }
 
         /// <summary>
         /// Method Called by the IA to Use a Skill that is not in the Deck
@@ -70,10 +48,12 @@ namespace Skills
         /// </param>
         public void UseSkill(SkillSO skill, Cell cell, Unit sender)
         {
+            /*
             UpdateSkill(skill, sender);
             UseSkill(cell);
             Deck.NextSkill();
             UpdateSkill(0, Unit);
+            */
         }
         
         /// <summary>
@@ -82,10 +62,10 @@ namespace Skills
         /// <param name="cell"></param>
         public void UseSkill(Cell cell)
         {
-            if (Unit.BattleStats.AP < Cost) return;
-            if (!deck.UseSkill(this, cell)) return;
+            if (Unit.BattleStats.AP < skill.cost) return;
+            //if (!deck.UseSkill(this, cell)) return;
 
-            Unit.BattleStats.AP -= Cost;
+            Unit.BattleStats.AP -= skill.cost;
 
             OnSkillUsed?.Raise();
         }
@@ -97,30 +77,30 @@ namespace Skills
         /// <returns></returns>
         public List<Cell> GetZoneOfEffect(Cell _cell)
         {
-            return Zone.GetZone(Range, _cell);
+            return Zone.GetZone(skill.range, _cell);
         }
-
+        
         public List<Cell> GetRangeFrom(Cell _cell)
         {
-            return Range.NeedView ? Zone.CellsInView(this, _cell) : Zone.CellsInRange(this, _cell);
+            return null; //skill.range.NeedView ? Zone.CellsInView(this, _cell) : Zone.CellsInRange(this, _cell);
         }
         
         #region IInfo
         public override string GetInfoMain()
         {
-            return $"{ColouredName()}\n{Skill.Type} of {Element.Name}\ncost: {Cost} <sprite name=AP>";
+            return $"{ColouredName()}\n{skill.skillso.Type} of {skill.element.Name}\ncost: {skill.cost} <sprite name=AP>";
         }
 
         public override string GetInfoLeft()
         {
             string str = "";
-            Skill.Effects.ForEach(effect => str += effect.InfoEffect(this) + "\n");
+            skill.effects.ForEach(effect => str += /*effect.InfoEffect(this) +*/ "\n");
             return str;
         }
 
         public override string GetInfoRight()
         {
-            return Range.ToString();
+            return skill.range.ToString();
         }
 
         public override string GetInfoDown()
@@ -132,20 +112,21 @@ namespace Skills
 
         public override Sprite GetIcon()
         {
-            return Skill.Icon;
+            return skill.skillso.Icon;
         }
 
         public override string ColouredName()
         {
-            string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"<color=#{_hexColor}>{Skill.Name}</color>";
+            string _hexColor = ColorUtility.ToHtmlStringRGB(skill.element.TextColour);
+            return $"<color=#{_hexColor}>{skill.name}</color>";
         }
 
         public override void OnPointerClick(PointerEventData eventData)
         {
-            if (!Clickable) return;
-            if (Unit.BattleStats.AP >= Cost)
+            /*
+            if (Unit.BattleStats.AP >= skill.cost)
                 onSkillSelected?.Raise(this);
+            */
         }
         
         public override void DisplayIcon()
@@ -158,7 +139,7 @@ namespace Skills
 
         public int GetPower(EElement _elementType)
         {
-            return Power + Unit.BattleStats.GetPower(_elementType);
+            return skill.power + Unit.BattleStats.GetPower(_elementType);
         }
     }
 }

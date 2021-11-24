@@ -12,13 +12,14 @@ namespace Skills
     public class DeckMono : MonoBehaviour
     {
         [SerializeField] private BoolEvent onEndBattle;
-        private List<SkillSO> Skills = new List<SkillSO>();
+        [SerializeField] private List<SkillSO> Skills = new List<SkillSO>();
+        
         private List<SkillSO> HandSkills = new List<SkillSO>();
         private List<SkillSO> UsedSkills = new List<SkillSO>();
         private List<SkillSO> ConsumedSkills = new List<SkillSO>();
         private List<RelicSO> Relics = new List<RelicSO>();
         
-        private const int HAND_SIZE = 5;
+        public static int HAND_SIZE = 5;
 
         private void Start()
         {
@@ -29,6 +30,17 @@ namespace Skills
         private void OnDestroy()
         {
             onEndBattle.EventListeners -= OnBattleEndRaised;
+        }
+
+        public void DrawNewHand()
+        {
+            Draw(HAND_SIZE);
+        }
+
+        public void ClearHandSkills()
+        {
+            UsedSkills.AddRange(HandSkills);
+            HandSkills = new List<SkillSO>();
         }
 
         /// <summary>
@@ -43,14 +55,14 @@ namespace Skills
         }
 
         /// <summary>
-        /// Draw a new hand of skills.
+        /// Draw n skills.
         /// </summary>
-        public void Draw()
+        public void Draw(int n)
         {
             HandSkills = new List<SkillSO>();
 
-            int maxRange = (Skills.Count < HAND_SIZE) ? Skills.Count : HAND_SIZE;
-            int remainRange = HAND_SIZE - maxRange;
+            int maxRange = (Skills.Count < n) ? Skills.Count : n;
+            int remainRange = n - maxRange;
             
             HandSkills.AddRange(Skills.GetRange(0, maxRange));
 
@@ -140,7 +152,7 @@ namespace Skills
         /// <summary>
         /// Method Called when a Skill is Used.
         /// </summary>
-        public bool UseSkill(Skill skill)
+        public bool UseSkill(SkillSO skill)
         {
             if (!HandSkills.Contains(skill)) return false;
             
@@ -162,6 +174,7 @@ namespace Skills
             Skills.AddRange(ConsumedSkills);
             ConsumedSkills = new List<SkillSO>();
             ShuffleDeck();
+            Draw(HAND_SIZE);
         }
         
         /// <summary>

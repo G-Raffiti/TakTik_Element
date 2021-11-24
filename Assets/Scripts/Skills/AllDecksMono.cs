@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using _EventSystem.CustomEvents;
-using Grid;
+﻿using _EventSystem.CustomEvents;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,15 +10,13 @@ namespace Skills
     {
         public DeckMono Deck;
         private static GameObject instance;
-        
-        private bool used = false;
 
         [Header("Event Sender")] 
         [SerializeField] private VoidEvent onActionDone;
         
         [Header("Event Listener")] 
         [SerializeField] private UnitEvent onUnitStartTurn;
-        [SerializeField] private VoidEvent onShuffleDecks;
+        [SerializeField] private VoidEvent onEndTurn;
         [SerializeField] private VoidEvent onBattleStart;
 
         private void Start() 
@@ -35,43 +30,31 @@ namespace Skills
             Deck = transform.GetComponentInChildren<DeckMono>();
             
             onUnitStartTurn.EventListeners += OnEventRaised;
-            onShuffleDecks.EventListeners += Shuffle;
             onBattleStart.EventListeners += FirstShuffle;
+            onEndTurn.EventListeners += EndTurn;
         }
 
         private void OnDestroy()
         {
             onUnitStartTurn.EventListeners -= OnEventRaised;
-            onShuffleDecks.EventListeners -= Shuffle;
             onBattleStart.EventListeners -= FirstShuffle;
+            onEndTurn.EventListeners -= EndTurn;
+        }
+
+        public void EndTurn(Void _obj)
+        {
+            Deck.ClearHandSkills();
         }
 
         private void FirstShuffle(Void _obj)
         {
-            Deck.ShuffleDeck();
-            Deck.Draw();
-        }
-
-        private void Shuffle(Void _obj)
-        {
-            Shuffle();
-        }
-
-        public void Shuffle()
-        {
-            if (BattleStateManager.instance.PlayingUnit.BattleStats.AP < 1 || used) return;
-            BattleStateManager.instance.PlayingUnit.BattleStats.AP--;
-            used = true;
-            
-            Deck.ShuffleDeck();
-            onActionDone.Raise();
+            Deck.Initialize();
         }
 
         public void OnEventRaised(Unit item)
         {
-            GameObject.Find("UI_BattleScene/Right/ShuffleBtn").GetComponent<Button>().onClick.RemoveAllListeners();
-            GameObject.Find("UI_BattleScene/Right/ShuffleBtn").GetComponent<Button>().onClick.AddListener(Shuffle);
-            used = false;
+            Deck.DrawNewHand();
+            onActionDone.Raise();
         }
     }
 }
