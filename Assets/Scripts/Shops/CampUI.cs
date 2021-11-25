@@ -47,7 +47,7 @@ namespace Shops
             EmptySlots();
         }
 
-        public void SwapSkillButton()
+        /*public void SwapSkillButton()
         {
             if (SlotSkillSwap1.GetInfoSkill() == null || SlotSkillSwap2.GetInfoSkill() == null) return;
             SkillSwap1 = SlotSkillSwap1.GetInfoSkill();
@@ -63,7 +63,7 @@ namespace Shops
             RelicSwap2 = SlotRelicSwap2.GetInfoRelic();
             if (RelicSwap1.Deck == RelicSwap2.Deck) return;
             onSwapRelic.Raise();
-        }
+        }*/
 
         public void ForgetSkillButton()
         {

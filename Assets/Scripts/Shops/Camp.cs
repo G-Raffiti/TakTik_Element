@@ -21,9 +21,10 @@ namespace Shops
 
         private void Start()
         {
-            onSwapSkill.EventListeners += SwapSkills;
-            onSwapRelic.EventListeners += SwapRelics;
+            /*onSwapSkill.EventListeners += SwapSkills;
+            onSwapRelic.EventListeners += SwapRelics;*/
             onForgetSkill.EventListeners += ForgetSkill;
+            onCampHeal.EventListeners += HealHeroes;
             
             //TODO : Relic that can modify the value of CampPoint
             CampPoint = 2;
@@ -32,14 +33,15 @@ namespace Shops
 
         private void OnDestroy()
         {
-            onSwapSkill.EventListeners -= SwapSkills;
-            onSwapRelic.EventListeners -= SwapRelics;
+            /*onSwapSkill.EventListeners -= SwapSkills;
+            onSwapRelic.EventListeners -= SwapRelics;*/
             onForgetSkill.EventListeners -= ForgetSkill;
+            onCampHeal.EventListeners -= HealHeroes;
         }
 
         public int CampPoint { get; private set; }
 
-        public void SwapSkills(Void empty)
+        /*public void SwapSkills(Void empty)
         {
             if (CampPoint < 1) return;
             CampPoint -= 1;
@@ -55,13 +57,13 @@ namespace Shops
             CampUI _campUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<CampUI>();
             SwapRelic(_campUI.RelicSwap1, _campUI.RelicSwap2);
             onCampPointUsed.Raise(CampPoint);
-        }
+        }*/
 
         public void ForgetSkill(Void empty)
         {
             if (CampPoint < 1) return;
             CampUI _campUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<CampUI>();
-            if (_campUI.SkillForget.Deck.RemoveSkill(_campUI.SkillForget.Skill))
+            if (FindObjectOfType<DeckMono>().RemoveSkill(_campUI.SkillForget.skill.BaseSkill))
             {
                 CampPoint -= 1;
                 onCampPointUsed.Raise(CampPoint);
@@ -73,7 +75,7 @@ namespace Shops
             PlayerData.getInstance().Heroes.ForEach(h => h.HealHP(30));
         }
 
-        private void SwapRelic(RelicInfo a, RelicInfo b)
+        /*private void SwapRelic(RelicInfo a, RelicInfo b)
         {
             a.Deck.Relics.Add(b.Relic);
             b.Deck.Relics.Add(a.Relic);
@@ -87,6 +89,6 @@ namespace Shops
             b.Deck.AddSkill(a.Skill);
             a.Deck.RemoveSkill(a.Skill);
             b.Deck.RemoveSkill(b.Skill);
-        }
+        }*/
     }
 }

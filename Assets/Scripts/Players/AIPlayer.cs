@@ -90,9 +90,9 @@ namespace Players
             bool canMove = unit.BattleStats.MP > 0;
 
             DestinationTarget best;
-            if (unit.BattleStats.AP >= unit.Skill.Cost)
-                best = Evaluate(unit.Skill, stateManager);
-            else best = Evaluate(DataBase.Skill.MonsterAttack, stateManager);
+            if (unit.BattleStats.AP >= unit.monsterSkill.Cost)
+                best = Evaluate(unit.monsterSkill, stateManager);
+            else best = Evaluate(Skill.CreateSkill(DataBase.Skill.MonsterAttack, Relic.CreateRelic(unit.Relics), unit), stateManager);
             
             ColorTheFloor();
             yield return new WaitForSeconds(1);
@@ -129,9 +129,9 @@ namespace Players
                 skillUsed = false;
                 onSkillUsed.EventListeners -= SkillUsed;
 
-                if (unit.BattleStats.AP >= unit.Skill.Cost)
-                    best = Evaluate(unit.Skill, stateManager);
-                else best = Evaluate(DataBase.Skill.MonsterAttack, stateManager);
+                if (unit.BattleStats.AP >= unit.monsterSkill.Cost)
+                    best = Evaluate(unit.monsterSkill, stateManager);
+                else best = Evaluate(Skill.CreateSkill(DataBase.Skill.MonsterAttack, Relic.CreateRelic(unit.Relics), unit), stateManager);
                 ColorTheFloor();
                 yield return new WaitForSeconds(1);
             }
@@ -149,7 +149,7 @@ namespace Players
 
             
             // End Turn
-            monsterSkill.UpdateSkill(unit.Skill, unit);
+            monsterSkill.skill = unit.monsterSkill;
             unit.isPlaying = false;
             
             yield return new WaitForSeconds(1);
@@ -183,7 +183,7 @@ namespace Players
 
         #region Evaluation
 
-        private DestinationTarget Evaluate(SkillSO _skill, BattleStateManager stateManager)
+        private DestinationTarget Evaluate(Skill _skill, BattleStateManager stateManager)
         {
             // Reset Dictionaries
             destinations = new Dictionary<Cell, int>();
@@ -199,15 +199,15 @@ namespace Players
             }
             
             // Set the Skill to Evaluate
-            monsterSkill.UpdateSkill(_skill, unit);
+            monsterSkill.skill = unit.monsterSkill;
             
             // If the MonsterSkill have Zone Get all TargetCell to evaluate
-            if (monsterSkill.Range.ZoneType != EZone.Self || monsterSkill.Range.Radius > 0)
+            if (monsterSkill.skill.Range.ZoneType != EZone.Self || monsterSkill.skill.Range.Radius > 0)
             {
                 foreach (Cell destination in destinations.Keys)
                 {
                     List<Cell> inRange = new List<Cell>();
-                    inRange.AddRange(monsterSkill.Range.NeedView ? Zone.CellsInView(monsterSkill, destination) : Zone.CellsInRange(monsterSkill, destination));
+                    inRange.AddRange(monsterSkill.skill.Range.NeedView ? Zone.CellsInView(monsterSkill.skill, destination) : Zone.CellsInRange(monsterSkill.skill, destination));
                     foreach (Cell _cellInRange in inRange)
                     {
                         skillTargets[destination].Add(_cellInRange, 0);
@@ -219,7 +219,7 @@ namespace Players
             EvaluateCells(stateManager);
             
             // Evaluate the SkillUse Potential
-            if (monsterSkill.Range.ZoneType == EZone.Self || monsterSkill.Range.Radius < 1)
+            if (monsterSkill.skill.Range.ZoneType == EZone.Self || monsterSkill.skill.Range.Radius < 1)
                 EvaluateDirectTarget(stateManager, monsterSkill);
             else EvaluateZoneTarget(monsterSkill);
             
@@ -229,8 +229,8 @@ namespace Players
             // If the Best Target is Null Evaluate with the Monster Basic Attack
             if (Best.Target == null)
             {
-                monsterSkill.UpdateSkill(DataBase.Skill.MonsterAttack, unit);
-                if (monsterSkill.Range.ZoneType == EZone.Self || monsterSkill.Range.Radius < 1)
+                monsterSkill.skill = Skill.CreateSkill(DataBase.Skill.MonsterAttack, Relic.CreateRelic(unit.Relics), unit);
+                if (monsterSkill.skill.Range.ZoneType == EZone.Self || monsterSkill.skill.Range.Radius < 1)
                     EvaluateDirectTarget(stateManager, monsterSkill);
                 else EvaluateZoneTarget(monsterSkill);
                 
@@ -331,7 +331,7 @@ namespace Players
             foreach (Unit _unit in stateManager.Units)
             {
                 List<Cell> inRange = new List<Cell>();
-                inRange.AddRange(skill.Range.NeedView ? Zone.CellsInView(skill, _unit.Cell) : Zone.CellsInRange(skill, _unit.Cell));
+                inRange.AddRange(skill.skill.Range.NeedView ? Zone.CellsInView(skill.skill, _unit.Cell) : Zone.CellsInRange(skill.skill, _unit.Cell));
                 
                 foreach (Cell _cell in inRange.Where(_cell => destinations.ContainsKey(_cell)))
                 {
@@ -355,7 +355,7 @@ namespace Players
                     
                     if (skill.GetZoneOfEffect(_cellInRange).Contains(destination))
                     {
-                        if (skill.Affect == EAffect.All || skill.Affect == EAffect.OnlyAlly || skill.Affect == EAffect.OnlySelf || skill.Affect == EAffect.OnlyUnits)
+                        if (skill.skill.Affect == EAffect.All || skill.skill.Affect == EAffect.OnlyAlly || skill.skill.Affect == EAffect.OnlySelf || skill.skill.Affect == EAffect.OnlyUnits)
                             affected.Add(unit);
                     }
                     
@@ -387,7 +387,7 @@ namespace Players
                 destinationOfMaxValue = destinations.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
             
             Cell targetOfMaxValue = null;
-            if (monsterSkill.Range.ZoneType != EZone.Self || monsterSkill.Range.Radius > 0)
+            if (monsterSkill.skill.Range.ZoneType != EZone.Self || monsterSkill.skill.Range.Radius > 0)
             {
                 if (skillTargets[destinationOfMaxValue].Count != 0)
                 {

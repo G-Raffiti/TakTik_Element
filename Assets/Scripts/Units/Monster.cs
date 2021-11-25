@@ -19,11 +19,11 @@ namespace Units
     /// <summary>
     /// Sub-Class of Units that Link a Monster (Scriptable Object) to a Prefab
     /// </summary>
-    [RequireComponent(typeof(Deck))]
+    [RequireComponent(typeof(DeckMono))]
     public class Monster : Unit
     {
         [Header("Monster Special")]
-        [SerializeField] private Deck deck;
+        [SerializeField] private DeckMono deck;
         [SerializeField] private SkillInfo skill;
         
         [Header("Event Sender")]
@@ -32,7 +32,7 @@ namespace Units
         [SerializeField] private VoidEvent onActionDone;
         public bool isPlaying;
 
-        public SkillSO Skill => skill.Skill;
+        public Skill monsterSkill { get; private set; }
 
         public Archetype Archetype { get; private set; }
         public List<RelicSO> Relics { get; private set; }
@@ -75,14 +75,10 @@ namespace Units
             BattleStats = new BattleStats(baseStats + Inventory.GearStats());
             total = BattleStats;
             
-            if (monster.Skill != null)
-                deck.InitializeForMonster(monster.Skill, Relics);
-            else
-            {
-                deck.InitializeForMonster(DataBase.Skill.GetSkillFor(monster), Relics);
-            }
+            monsterSkill = Skill.CreateSkill(DataBase.Skill.GetSkillFor(monster), Relic.CreateRelic(Relics), this);
             
-            skill.UpdateSkill(0,this);
+            skill.skill = monsterSkill;
+            skill.Unit = this;
 
             InitializeSprite();
         }
@@ -95,7 +91,7 @@ namespace Units
         public override void OnTurnEnd()
         {
             base.OnTurnEnd();
-            skill.UpdateSkill(0, this);
+            skill.skill = monsterSkill;
         }
 
         public void ShowRange()
@@ -104,12 +100,12 @@ namespace Units
             {           
                 _cell.UnMark();
             }
-            foreach (Cell _cellInRange in Zone.GetRange(skill.Range, Cell))
+            foreach (Cell _cellInRange in Zone.GetRange(skill.skill.Range, Cell))
             {
                 _cellInRange.MarkAsUnReachable();
             }
 
-            foreach (Cell _cell in Zone.CellsInView(skill, cell))
+            foreach (Cell _cell in Zone.CellsInView(skill.skill, cell))
             {
                 _cell.MarkAsInteractable();
             }

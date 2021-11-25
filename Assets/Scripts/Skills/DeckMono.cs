@@ -12,13 +12,13 @@ namespace Skills
     public class DeckMono : MonoBehaviour
     {
         [SerializeField] private BoolEvent onEndBattle;
-        [SerializeField] private List<SkillSO> Skills = new List<SkillSO>();
+        [SerializeField] public List<SkillSO> Skills = new List<SkillSO>();
 
         private List<SkillSO> HandSkills = new List<SkillSO>();
         private List<SkillSO> UsedSkills = new List<SkillSO>();
         private List<SkillSO> ConsumedSkills = new List<SkillSO>();
         public List<RelicSO> Relics = new List<RelicSO>();
-        private Relic Relic = new Relic();
+        public Relic Relic = new Relic();
 
         public static int HAND_SIZE = 5;
 
