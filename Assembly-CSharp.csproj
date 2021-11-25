@@ -85,7 +85,6 @@
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderUI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
-     <Compile Include="Assets\Scripts\Skills\AllDecks.cs" />
      <Compile Include="Assets\Scripts\Gears\Gear.cs" />
      <Compile Include="Assets\Scripts\BattleOver\BossBattle.cs" />
      <Compile Include="Assets\Scripts\Stats\Power.cs" />
@@ -214,7 +213,6 @@
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderPrefab.cs" />
      <Compile Include="Assets\Scripts\Skills\rawSkill.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\VoidListener.cs" />
-     <Compile Include="Assets\Scripts\Shops\DeckUI.cs" />
      <Compile Include="Assets\Scripts\Skills\DataBaseRelic.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\CellEvent.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Stone.cs" />

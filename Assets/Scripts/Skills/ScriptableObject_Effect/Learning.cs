@@ -12,7 +12,7 @@ namespace Skills.ScriptableObject_Effect
         {
             if (Zone.GetUnitAffected(_cell, _skillInfo) is Monster _monster)
             {
-                FindObjectOfType<DeckMono>().LearnSkill(_monster.Skill);
+                FindObjectOfType<DeckMono>().LearnSkill(_monster.monsterSkill.BaseSkill);
             }
         }
 
