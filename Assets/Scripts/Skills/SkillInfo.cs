@@ -108,7 +108,7 @@ namespace Skills
         
         public List<Cell> GetRangeFrom(Cell _cell)
         {
-            return null; //skill.range.NeedView ? Zone.CellsInView(this, _cell) : Zone.CellsInRange(this, _cell);
+            return skill.Range.NeedView ? Zone.CellsInView(skill, _cell) : Zone.CellsInRange(skill, _cell);
         }
         
         #region IInfo
@@ -149,10 +149,8 @@ namespace Skills
 
         public override void OnPointerClick(PointerEventData eventData)
         {
-            /*
-            if (Unit.BattleStats.AP >= skill.cost)
+            if (Unit.BattleStats.AP >= skill.Cost)
                 onSkillSelected?.Raise(this);
-            */
         }
         
         public override void DisplayIcon()
