@@ -8,9 +8,9 @@ namespace Skills.ScriptableObject_RelicEffect
     public class RelicEffectRangeType : RelicEffect
     {
         
-        public override void ChangeSkill(Deck _deck, RelicSO _relic)
+        public override void ChangeSkill(Skill _skill, RelicSO _relic)
         {
-            _deck.ChangeRangeType(_relic.Range.RangeType);
+            _skill.ChangeRangeType(_relic.Range.RangeType);
         }
 
         public override string InfoEffect(RelicSO _relic)

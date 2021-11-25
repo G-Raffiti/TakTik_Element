@@ -7,9 +7,9 @@ namespace Skills.ScriptableObject_RelicEffect
     [CreateAssetMenu(fileName = "Relic_Effect_ZoneType_", menuName = "Scriptable Object/Relics/Relic Effect Zone Type Change")]
     public class RelicEffectZoneType : RelicEffect
     {
-        public override void ChangeSkill(Deck _deck, RelicSO _relic)
+        public override void ChangeSkill(Skill _skill, RelicSO _relic)
         {
-            _deck.ChangeZoneType(_relic.Range.ZoneType);
+            _skill.ChangeZoneType(_relic.Range.ZoneType);
         }
 
         public override string InfoEffect(RelicSO _relic)

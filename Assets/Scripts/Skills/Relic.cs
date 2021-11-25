@@ -12,8 +12,9 @@ namespace Skills
 {
     public class Relic
     {
-        public List<RelicEffect> RelicEffects { get; private set; }
+        public List<RelicSO> RelicEffects { get; private set; }
         public List<IEffect> Effects { get; private set; }
+        public EAffect Affect { get; private set; }
         public Range Range { get; private set; }
         public int Power { get; private set; }
         public int Cost { get; private set; }
@@ -29,6 +30,7 @@ namespace Skills
             relic.Cost = 0;
             relic.StatusEffects = new List<StatusSO>();
             relic.Effects = new List<IEffect>();
+            relic.RelicEffects = relics;
             
             foreach (RelicSO _relic in relics)
             {
@@ -36,7 +38,6 @@ namespace Skills
                 relic.Range += _relic.Range;
                 relic.Power += _relic.Power;
                 relic.StatusEffects.AddRange(_relic.StatusEffects);
-                relic.RelicEffects.AddRange(_relic.RelicEffects);
                 
                 if (_relic.Effect != null) relic.Effects.Add(_relic.Effect);
                 if (_relic.GridEffect != null) relic.Effects.Add(_relic.GridEffect);

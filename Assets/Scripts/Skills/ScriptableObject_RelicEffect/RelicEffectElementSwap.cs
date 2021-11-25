@@ -6,9 +6,9 @@ namespace Skills.ScriptableObject_RelicEffect
     [CreateAssetMenu(fileName = "Relic_Effect_Element_Swap_", menuName = "Scriptable Object/Relics/Relic Effect Element Swap")]
     public class RelicEffectElementSwap : RelicEffect
     {
-        public override void ChangeSkill(Deck _deck, RelicSO _relic)
+        public override void ChangeSkill(Skill _skill, RelicSO _relic)
         {
-            _deck.ChangeElement(_relic.Element);
+            _skill.ChangeElement(_relic.Element);
         }
 
         public override string InfoEffect(RelicSO _relic)

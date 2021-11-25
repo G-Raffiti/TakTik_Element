@@ -58,12 +58,76 @@ namespace Skills
             _skill.Effects.AddRange(relic.Effects);
             _skill.BaseSkill = skillSO;
             
-            foreach (RelicEffect _relicEffect in relic.RelicEffects)
+            foreach (RelicSO _relic in relic.RelicEffects)
             {
-                _relicEffect.ChangeSkill(_skill);
+                foreach (RelicEffect _effect in _relic.RelicEffects)
+                {
+                    _effect.ChangeSkill(_skill, _relic);
+                }
             }
-
             return _skill;
         }
+        
+        #region Change Methode for Relics
+
+            /// <summary>
+            /// Public Method for the Relics to change the Element of the Skills
+            /// </summary>
+            public void ChangeElement(Element _element)
+            {
+                Element = _element;
+            }
+            
+            /// <summary>
+            /// Public Method for Relics to change witch Units can be affected by the Skills
+            /// </summary>
+            public void ChangeAffect(EAffect _affect)
+            {
+                Affect = _affect;
+            }
+            
+            /// <summary>
+            /// Public Method for Relics to change the Range Type of the Skills
+            /// </summary>
+            public void ChangeRangeType(EZone _rangeType)
+            {
+                Range range = new Range(Range);
+                range.RangeType = _rangeType;
+                Range = range;
+            }
+            
+            /// <summary>
+            /// Public Method for Relics to change the Zone Type of the Skills
+            /// </summary>
+            public void ChangeZoneType(EZone _zoneType)
+            {
+                Range range = new Range(Range);
+                range.ZoneType = _zoneType;
+                Range = range;
+            }
+            
+            /// <summary> 
+            /// Public Method for Relics to change if the Skills of the Deck need View
+            /// </summary>
+            public void ChangeNeedView(bool _needView)
+            {
+                Range range = new Range(Range);
+                range.NeedView = _needView;
+                Range = range;
+            }
+            
+            /// <summary> 
+            /// Public Method for Relics to change the Skill's Cost
+            /// </summary>
+            public void ChangeCost(int _added)
+            {
+                Cost += _added;
+                if (Cost < 0)
+                    Cost = 0;
+            }
+
+        #endregion
     }
+    
+    
 }

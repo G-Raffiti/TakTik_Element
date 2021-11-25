@@ -1,5 +1,6 @@
 ﻿using _ScriptableObject;
 using Skills._Zone;
+using Stats;
 using UnityEngine;
 
 namespace Skills.ScriptableObject_RelicEffect
@@ -7,9 +8,9 @@ namespace Skills.ScriptableObject_RelicEffect
     [CreateAssetMenu(fileName = "Relic_Effect_Affect_", menuName = "Scriptable Object/Relics/Relic Effect Affect Change")]
     public class RelicEffectAffectChange : RelicEffect
     {
-        public override void ChangeSkill(Deck _deck, RelicSO _relic)
+        public override void ChangeSkill(Skill skill, RelicSO relic)
         {
-            _deck.ChangeAffect(_relic.Affect);
+            skill.ChangeAffect(relic.Affect);
         }
 
         public override string InfoEffect(RelicSO _relic)
