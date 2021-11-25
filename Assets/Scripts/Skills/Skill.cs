@@ -6,6 +6,7 @@ using Skills.ScriptableObject_RelicEffect;
 using Stats;
 using StatusEffect;
 using Units;
+using UnityEngine;
 
 namespace Skills
 {
@@ -53,9 +54,14 @@ namespace Skills
             }
 
             _skill.Effects = new List<IEffect>();
+            
             _skill.Effects.AddRange(skillSO.Effects);
-            _skill.Effects.Add(skillSO.GridEffect);
+            if(skillSO.GridEffect != null)
+                _skill.Effects.Add(skillSO.GridEffect);
             _skill.Effects.AddRange(relic.Effects);
+
+            Debug.Log(_skill.Effects.Count);
+            
             _skill.BaseSkill = skillSO;
             
             foreach (RelicSO _relic in relic.RelicEffects)

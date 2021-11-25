@@ -92,6 +92,7 @@ namespace UserInterface
                 GameObject skillInfo = GameObject.Instantiate(skillBtn, transform);
                 skillInfo.GetComponent<SkillInfo>().skill = skill;
                 skillInfo.GetComponent<SkillInfo>().Unit = currentUnit;
+                skillInfo.GetComponent<SkillInfo>().DisplayIcon();
             }
         }
     }

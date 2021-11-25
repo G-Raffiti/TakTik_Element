@@ -35,47 +35,33 @@ namespace Skills
         public Skill skill;
 
         /// <summary>
-        /// Method Called buy the Player by Clicking in the Icon in BattleScene
-        /// </summary>
-        /// <param name="cell"></param>
-        public void UseSkill(Cell cell)
-        {
-            if (Unit.BattleStats.AP < skill.Cost) return;
-            //if (!deck.UseSkill(this, cell)) return;
-
-            Unit.BattleStats.AP -= skill.Cost;
-
-            OnSkillUsed?.Raise();
-        }
-        
-        /// <summary>
         /// Methode Called on Skill Use, it will trigger all Skill Effects and Grid Effects on the Affected Cells
         /// </summary>
         /// <param name="_cell">Cell Clicked</param>
         /// <returns></returns>
-        public void UseSkill(SkillInfo _skillInfo, Cell _cell)
+        public void UseSkill(Cell _cell)
         {
             if (Unit.BattleStats.AP < skill.Cost) return;
-            if (skill.Effects.Any(_effect => !_effect.CanUse(_cell, _skillInfo)))
+            if (skill.Effects.Any(_effect => !_effect.CanUse(_cell, this)))
                 return;
-            Debug.Log($"{_skillInfo.Unit} Use {_skillInfo.ColouredName()}");
+            Debug.Log($"{Unit.UnitName} Use {ColouredName()}");
             if (skill.Effects.Find(_effect => _effect is Learning) != null)
             {
-                skill.Effects.Find(_effect => _effect is Learning).Use(_cell, _skillInfo);
+                skill.Effects.Find(_effect => _effect is Learning).Use(_cell, this);
                 return;
             }
             
             Unit.BattleStats.AP -= skill.Cost;
             
             //TODO : Play Skill animation
-            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(skill.Range, _cell);
             _zone.Sort((_cell1, _cell2) =>
-                _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
+                _cell1.GetDistance(Unit.Cell).CompareTo(_cell2.GetDistance(Unit.Cell)));
             StartCoroutine(HighlightZone(_zone));
             
             foreach (IEffect _effect in skill.Effects)
             {
-                _effect.Use(_cell, _skillInfo);
+                _effect.Use(_cell, this);
             }
 
             OnSkillUsed.Raise();
@@ -120,7 +106,7 @@ namespace Skills
         public override string GetInfoLeft()
         {
             string str = "";
-            skill.Effects.ForEach(effect => str += /*effect.InfoEffect(this) +*/ "\n");
+            skill.Effects.ForEach(effect => str += effect.InfoEffect(this) + "\n");
             return str;
         }
 
@@ -149,10 +135,8 @@ namespace Skills
 
         public override void OnPointerClick(PointerEventData eventData)
         {
-            /*
-            if (Unit.BattleStats.AP >= skill.cost)
+            if (Unit.BattleStats.AP >= skill.Cost)
                 onSkillSelected?.Raise(this);
-            */
         }
         
         public override void DisplayIcon()
