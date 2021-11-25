@@ -204,6 +204,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\Stats\AffixSO.cs" />
      <Compile Include="Assets\Scripts\Pathfinding\DataStructs\HeapPriorityQueue.cs" />
+     <Compile Include="Assets\Scripts\Skills\Deck.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\TeleportTo.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\ApplyBuff.cs" />
      <Compile Include="Assets\Scripts\Units\IMovable.cs" />
@@ -225,7 +226,6 @@
      <Compile Include="Assets\Scripts\Skills\SkillInfo.cs" />
      <Compile Include="Assets\Scripts\Skills\Relic.cs" />
      <Compile Include="Assets\Scripts\Shops\DeckMonoCampUI.cs" />
-     <Compile Include="Assets\Scripts\Skills\Deck.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

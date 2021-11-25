@@ -96,61 +96,6 @@ namespace Skills
             return skills;
         }
         
-    /*    
-    #region Change Methode for Relics
-
-        /// <summary>
-        /// Public Method for the Relics to change the Element of the Skills
-        /// </summary>
-        public void ChangeElement(Element _element)
-        {
-            Element = _element;
-        }
-        
-        /// <summary>
-        /// Public Method for Relics to change witch Units can be affected by the Skills
-        /// </summary>
-        public void ChangeAffect(EAffect _affect)
-        {
-            Affect = _affect;
-        }
-        
-        /// <summary>
-        /// Public Method for Relics to change the Range Type of the Skills
-        /// </summary>
-        public void ChangeRangeType(EZone _rangeType)
-        {
-            range.RangeType = _rangeType;
-        }
-        
-        /// <summary>
-        /// Public Method for Relics to change the Zone Type of the Skills
-        /// </summary>
-        public void ChangeZoneType(EZone _zoneType)
-        {
-            range.ZoneType = _zoneType;
-        }
-        
-        /// <summary> 
-        /// Public Method for Relics to change if the Skills of the Deck need View
-        /// </summary>
-        public void ChangeNeedView(bool _needView)
-        {
-            range.NeedView = _needView;
-        }
-        
-        /// <summary> 
-        /// Public Method for Relics to change the Skill's Cost
-        /// </summary>
-        public void ChangeCost(int _added)
-        {
-            Cost += _added;
-            if (Cost < 0)
-                Cost = 0;
-        }
-
-    #endregion
-*/
         /// <summary>
         /// Method Called when a Skill is Used.
         /// </summary>
@@ -175,7 +120,7 @@ namespace Skills
             Skills.AddRange(HandSkills);
             HandSkills = new List<SkillSO>();
             ShuffleDeck();
-            Draw(HAND_SIZE);
+            UpdateDeck();
         }
         
         /// <summary>

@@ -85,8 +85,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3250177244620070829}
   - component: {fileID: 3250177244620070816}
-  - component: {fileID: 3250177244620070830}
   - component: {fileID: 3250177244620070831}
+  - component: {fileID: 4299231901406394301}
   m_Layer: 5
   m_Name: SkillInfo_Prefab
   m_TagString: Untagged
@@ -122,25 +122,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3250177244620070828}
   m_CullTransparentMesh: 1
---- !u!114 &3250177244620070830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3250177244620070828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ceb8aeac4c4990948a40335b37c398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
-  TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  Clickable: 1
-  icon: {fileID: 3250177243187742947}
-  deck: {fileID: 0}
-  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
-  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!114 &3250177244620070831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +152,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4299231901406394301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250177244620070828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8013c3ca5c74d9b8a6f9fcb4ef385f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
+  TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
+  icon: {fileID: 3250177243187742947}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
+  Unit: {fileID: 0}
 --- !u!1 &3250177245163837572
 GameObject:
   m_ObjectHideFlags: 0

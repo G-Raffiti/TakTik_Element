@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 1179847595273300743}
   - component: {fileID: -66962559587150305}
   - component: {fileID: 5516700394536520283}
-  - component: {fileID: 1592649995665758689}
+  - component: {fileID: 8809875516459172498}
   m_Layer: 0
   m_Name: PrefabMonster
   m_TagString: Untagged
@@ -231,7 +231,7 @@ MonoBehaviour:
   info: {fileID: 845015662812641807}
   shadow: {fileID: 4880537689874929003}
   isDying: 0
-  deck: {fileID: 1592649995665758689}
+  deck: {fileID: 0}
   skill: {fileID: 7113906381904510399}
   onDeathLoot: {fileID: 11400000, guid: efdfb0120a87c204eb44c4662e8a7485, type: 2}
   onDeathRelic: {fileID: 11400000, guid: e1b6e3df89647e240baa05ca6e70a64a, type: 2}
@@ -256,7 +256,7 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &1592649995665758689
+--- !u!114 &8809875516459172498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,13 +265,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1179847595273300741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9da070231594f43a0230c340a8c8665, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a2177e551834e2f8fab28b5f833b021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onEndBattle: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   Skills: []
-  UsedSkills: []
-  ConsumedSkills: []
   Relics: []
 --- !u!1 &1744856084871621479
 GameObject:
@@ -358,16 +356,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1744856084871621479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ceb8aeac4c4990948a40335b37c398, type: 3}
+  m_Script: {fileID: 11500000, guid: e8013c3ca5c74d9b8a6f9fcb4ef385f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  Clickable: 0
   icon: {fileID: 6295843279142771036}
-  deck: {fileID: 1592649995665758689}
   onSkillSelected: {fileID: 0}
   OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
+  Unit: {fileID: -66962559587150305}
 --- !u!1 &3787124189353937577
 GameObject:
   m_ObjectHideFlags: 0
