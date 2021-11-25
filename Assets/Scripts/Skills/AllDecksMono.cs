@@ -44,17 +44,20 @@ namespace Skills
         public void EndTurn(Void _obj)
         {
             Deck.ClearHandSkills();
+            Deck.PrintDebug();
         }
 
         private void FirstShuffle(Void _obj)
         {
             Deck.Initialize();
+            Deck.PrintDebug();
         }
 
         public void OnEventRaised(Unit item)
         {
+            if (item.playerNumber != 0) return;
             Deck.DrawNewHand();
-            onActionDone.Raise();
+            Deck.PrintDebug();
         }
     }
 }
