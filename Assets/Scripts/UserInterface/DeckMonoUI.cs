@@ -21,6 +21,7 @@ namespace UserInterface
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onSkillUsed;
         [SerializeField] private VoidEvent onActionDone;
+        [SerializeField] private VoidEvent onUnitEndTurn;
 
         private IEnumerator Start()
         {
@@ -36,6 +37,7 @@ namespace UserInterface
             onSkillUsed.EventListeners += onSkillUsedRaised;
             onUnitStartTurn.EventListeners += onUnitStartTurnRaised;
             onActionDone.EventListeners += onSkillUsedRaised;
+            onUnitEndTurn.EventListeners += onEndTurn;
         }
 
         private void OnDisable()
@@ -43,6 +45,7 @@ namespace UserInterface
             onSkillUsed.EventListeners -= onSkillUsedRaised;
             onUnitStartTurn.EventListeners -= onUnitStartTurnRaised;
             onActionDone.EventListeners -= onSkillUsedRaised;
+            onUnitEndTurn.EventListeners -= onEndTurn;
         }
 
         public void onUnitStartTurnRaised(Unit item)
@@ -54,6 +57,15 @@ namespace UserInterface
             else unit = item;
             
             StartCoroutine(DrawAnimation());
+        }
+
+        public void onEndTurn(Void _obj)
+        {
+            int childs = transform.childCount;
+            for (int i = childs - 1; i > 0; i--)
+            {
+                GameObject.Destroy(transform.GetChild(i).gameObject);
+            }
         }
 
         public void onSkillUsedRaised<T>(T param)

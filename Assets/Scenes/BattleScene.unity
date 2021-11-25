@@ -21400,11 +21400,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: bfd0dfd27be08114cba8a4cb14b69f65, type: 2}
+  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
+  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
   - {fileID: 11400000, guid: bfd0dfd27be08114cba8a4cb14b69f65, type: 2}
   - {fileID: 11400000, guid: 8698f857e0785a84fa09b3b5a3c8cf5e, type: 2}
-  - {fileID: 11400000, guid: 8698f857e0785a84fa09b3b5a3c8cf5e, type: 2}
+  - {fileID: 11400000, guid: d7acbddedcc963f4b998fce4a1686e05, type: 2}
+  - {fileID: 11400000, guid: 382335feb2daa614a9ac7fd406b3fbce, type: 2}
+  - {fileID: 11400000, guid: 382335feb2daa614a9ac7fd406b3fbce, type: 2}
 --- !u!1 &965187117
 GameObject:
   m_ObjectHideFlags: 0
@@ -44638,7 +44640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de91a9e8146402fb6436d6ed1a05f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Deck: {fileID: 0}
+  Deck: {fileID: 963500106}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
   onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
