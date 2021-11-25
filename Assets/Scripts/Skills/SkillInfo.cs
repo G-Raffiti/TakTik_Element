@@ -94,7 +94,7 @@ namespace Skills
         
         public List<Cell> GetRangeFrom(Cell _cell)
         {
-            return null; //skill.range.NeedView ? Zone.CellsInView(this, _cell) : Zone.CellsInRange(this, _cell);
+            return skill.Range.NeedView ? Zone.CellsInView(skill, _cell) : Zone.CellsInRange(skill, _cell);
         }
         
         #region IInfo
