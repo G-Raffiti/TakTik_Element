@@ -22,17 +22,18 @@ namespace Skills
     public class Deck : MonoBehaviour
     {
         [SerializeField] private BoolEvent onEndBattle;
+        
+        public List<SkillSO> Hand = new List<SkillSO>();
         public List<SkillSO> Skills = new List<SkillSO>();
         public List<SkillSO> UsedSkills = new List<SkillSO>();
         public List<SkillSO> ConsumedSkills = new List<SkillSO>();
+        
         public List<RelicSO> Relics = new List<RelicSO>();
-        private List<IEffect> effects = new List<IEffect>();
 
-        public List<IEffect> Effects => effects;
-
-        public SkillSO ActualSkill { get; private set; }
-        private Range range;
-        public Range Range => range;
+        public List<Skill> UsableSkills = new List<Skill>();
+        public Skill ActualSkill { get; private set; }
+        public List<IEffect> Effects { get; private set; }
+        public Range Range { get; private set; }
         public int Power { get; private set; }
         public List<StatusSO> StatusEffects { get; private set; }
         public Element Element { get; private set; }
@@ -42,12 +43,41 @@ namespace Skills
         private void Start()
         {
             UsedSkills = new List<SkillSO>();
+            UpdateDeck();
             onEndBattle.EventListeners += OnBattleEndRaised;
         }
 
         private void OnDestroy()
         {
             onEndBattle.EventListeners -= OnBattleEndRaised;
+        }
+
+        /// <summary>
+        /// Add up all the relics
+        /// </summary>
+        public void UpdateDeck()
+        {
+            Range = new Range(0);
+            Power = 0;
+            Cost = 0;
+            StatusEffects = new List<StatusSO>();
+            Effects = new List<IEffect>();
+            
+            foreach (RelicSO _relic in Relics)
+            {
+                Cost += _relic.Cost;
+                Range += _relic.Range;
+                Power += _relic.Power;
+                StatusEffects.AddRange(_relic.StatusEffects);
+                
+                foreach (RelicEffect _relicEffect in _relic.RelicEffects)
+                {
+                    _relicEffect.ChangeSkill(this, _relic);   
+                }
+                
+                if (_relic.Effect != null) Effects.Add(_relic.Effect);
+                if (_relic.GridEffect != null) Effects.Add(_relic.GridEffect);
+            }
         }
 
         /// <summary>
@@ -76,57 +106,7 @@ namespace Skills
             {
                 ShuffleDeck();
             }
-
-            ActualSkill = Skills[0];
-            UpdateActualSkill();
-        }
-
-        public void UpdateSkill(int index)
-        {
-            UpdateSkill(Skills[index]);
-        }
-
-        public void UpdateSkill(SkillSO _skill)
-        {
-            ActualSkill = _skill;
-            Cost = _skill.Cost;
-            effects = new List<IEffect>();
-            range = new Range(_skill.Range);
-            Power = _skill.Power;
-            StatusEffects = new List<StatusSO>(_skill.StatusEffects);
-            Element = _skill.Element;
-            Affect = _skill.Affect;
-            if (_skill.Effects.Count > 0)
-                effects.AddRange(_skill.Effects);
-            if (_skill.GridEffect != null)
-                effects.Add(_skill.GridEffect);
-            
-            foreach (RelicSO _relic in Relics)
-            {
-                range += _relic.Range;
-                Power += _relic.Power;
-                StatusEffects.AddRange(_relic.StatusEffects);
-                
-                foreach (RelicEffect _relicEffect in _relic.RelicEffects)
-                {
-                    _relicEffect.ChangeSkill(this, _relic);   
-                }
-                
-                if (_relic.Effect != null) effects.Add(_relic.Effect);
-                if (_relic.GridEffect != null) effects.Add(_relic.GridEffect);
-            }
-
-            effects.Sort((_effect, _effect1) => _effect.ActionsOrder.CompareTo(_effect1.ActionsOrder));
-        }
-        
-        public void UpdateActualSkill()
-        {
-            UpdateSkill(0);
-        }
-
-        public void Initialize()
-        {
-            ShuffleDeck();
+            ActualSkill = UsableSkills[0];
         }
         
     #region Change Methode for Relics
@@ -152,7 +132,9 @@ namespace Skills
         /// </summary>
         public void ChangeRangeType(EZone _rangeType)
         {
+            Range range = new Range(Range);
             range.RangeType = _rangeType;
+            Range = range;
         }
         
         /// <summary>
@@ -160,7 +142,9 @@ namespace Skills
         /// </summary>
         public void ChangeZoneType(EZone _zoneType)
         {
+            Range range = new Range(Range);
             range.ZoneType = _zoneType;
+            Range = range;
         }
         
         /// <summary> 
@@ -168,7 +152,9 @@ namespace Skills
         /// </summary>
         public void ChangeNeedView(bool _needView)
         {
+            Range range = new Range(Range);
             range.NeedView = _needView;
+            Range = range;
         }
         
         /// <summary> 
@@ -190,33 +176,33 @@ namespace Skills
         /// <returns></returns>
         public bool UseSkill(SkillInfo _skillInfo, Cell _cell)
         {
-            if (effects.Any(_effect => !_effect.CanUse(_cell, _skillInfo)))
+            if (_skillInfo.Skill.Effects.Any(_effect => !_effect.CanUse(_cell, _skillInfo)))
             {
                 return false;
             }
 
-            Debug.Log($"{_skillInfo.Unit} Use {_skillInfo.ColouredName()}");
-            if (effects.Find(_effect => _effect is Learning) != null)
+            Debug.Log($"{_skillInfo.Skill.Unit} Use {_skillInfo.ColouredName()}");
+            if (_skillInfo.Skill.Effects.Find(_effect => _effect is Learning) != null)
             {
-                effects.Find(_effect => _effect is Learning).Use(_cell, _skillInfo);
+                _skillInfo.Skill.Effects.Find(_effect => _effect is Learning).Use(_cell, _skillInfo);
                 return true;
             }
             
 
             //TODO : Play Skill animation
-            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(_skillInfo.Skill.Range, _cell);
             _zone.Sort((_cell1, _cell2) =>
-                _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
+                _cell1.GetDistance(_skillInfo.Skill.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Skill.Unit.Cell)));
             StartCoroutine(HighlightZone(_zone));
             
-            foreach (IEffect _effect in effects)
+            foreach (IEffect _effect in _skillInfo.Skill.Effects)
             {
                 _effect.Use(_cell, _skillInfo);
             }
 
-            Skills.Remove(ActualSkill);
-            if (ActualSkill.Consumable) ConsumedSkills.Add(ActualSkill);
-            else UsedSkills.Add(ActualSkill);
+            Hand.Remove(ActualSkill.BaseSkill);
+            if (ActualSkill.BaseSkill.Consumable) ConsumedSkills.Add(ActualSkill.BaseSkill);
+            else UsedSkills.Add(ActualSkill.BaseSkill);
             NextSkill();
             
             return true;
@@ -262,8 +248,8 @@ namespace Skills
 
         public void LearnSkill(SkillSO _monsterSkill)
         {
-            Skills.Remove(ActualSkill);
-            ConsumedSkills.Add(ActualSkill);
+            Skills.Remove(ActualSkill.BaseSkill);
+            ConsumedSkills.Add(ActualSkill.BaseSkill);
             List<SkillSO> _newList = new List<SkillSO> {_monsterSkill};
             _newList.AddRange(Skills);
             Skills = new List<SkillSO>(_newList);

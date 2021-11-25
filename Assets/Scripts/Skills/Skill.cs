@@ -2,75 +2,62 @@
 using _ScriptableObject;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
-using Skills.ScriptableObject_GridEffect;
 using Stats;
 using StatusEffect;
 using Units;
-using UnityEngine;
 
 namespace Skills
 {
     public class Skill
     {
-        public SkillSO skillso { get; set; }
-        public string name { get; set; }
-        public Element element { get; set; }
-        public Sprite icon { get; set; }
-        
-        public List<IEffect> effects { get; set; }
-        public EAffect affect { get; set; }
-        
-        public Range range { get; set; }
-        public int power { get; set; }
-        public List<StatusSO> statusEffects { get; set; }
-
-        public bool consumable { get; set; }
-        public int cost { get; set; }
-        public EArchetype archetype { get; set; }
+        public Unit Unit { get; private set; }
+        public Deck Deck { get; private set; }
+        public Range Range { get; private set; }
+        public int Power { get; private set; }
+        public Element Element { get; private set; }
+        public EAffect Affect { get; private set; }
+        public int Cost { get; private set; }
+        public ESkill Type { get; private set; }
+        public List<Buff> Buffs { get; private set; }
+        public List<IEffect> Effects { get; private set; }
+        public SkillSO BaseSkill { get; private set; }
 
 
-        public Skill(SkillSO skillso,
-                     string name, 
-                     Element element, 
-                     Sprite icon, 
-                     List<IEffect> effects,
-                     EAffect affect, 
-                     Range range, 
-                     int power, 
-                     List<StatusSO> statusEffects, 
-                     bool consumable, 
-                     int cost, 
-                     EArchetype archetype)
+        public static Skill CreateSkill(SkillSO skillSO, Deck deck, Unit user)
         {
-            this.skillso = skillso;
-            this.name = name;
-            this.element = element;
-            this.icon = icon;
-            this.effects = effects;
-            this.affect = affect;
-            this.range = range;
-            this.power = power;
-            this.statusEffects = statusEffects;
-            this.consumable = consumable;
-            this.cost = cost;
-            this.archetype = archetype;
-        }
-        
-        public Skill(SkillSO skill)
-        {
-            this.skillso = skill;
-            this.name = skill.Name;
-            this.element = skill.Element;
-            this.icon = skill.Icon;
-            this.effects.AddRange(skill.Effects);
-            this.effects.Add(skill.GridEffect);
-            this.affect = skill.Affect;
-            this.range = skill.Range;
-            this.power = skill.Power;
-            this.statusEffects = skill.StatusEffects;
-            this.consumable = skill.Consumable;
-            this.cost = skill.Cost;
-            this.archetype = skill.Archetype;
+            Skill _skill = new Skill();
+            _skill.Unit = user;
+            _skill.Deck = deck;
+            if (skillSO.Range.CanBeModified)
+                _skill.Range = skillSO.Range + deck.Range + user.BattleStats.Range;
+            else
+                _skill.Range = skillSO.Range;
+            _skill.Power = skillSO.Power + deck.Power + user.BattleStats.Power;
+            _skill.Element = skillSO.Element;
+            _skill.Affect = skillSO.Affect;
+            _skill.Cost = skillSO.Cost + deck.Cost;
+            _skill.Type = skillSO.Type;
+            _skill.Buffs = new List<Buff>();
+            
+            foreach (StatusSO _skillSOStatus in skillSO.StatusEffects)
+            {
+                Buff buff = new Buff(user, _skillSOStatus);
+                _skill.Buffs.Add(buff);
+            }
+            
+            foreach (StatusSO _deckStatus in deck.StatusEffects)
+            {
+                Buff buff = new Buff(user, _deckStatus);
+                _skill.Buffs.Add(buff);
+            }
+
+            _skill.Effects = new List<IEffect>();
+            _skill.Effects.AddRange(skillSO.Effects);
+            _skill.Effects.Add(skillSO.GridEffect);
+            _skill.Effects.AddRange(deck.Effects);
+            _skill.BaseSkill = skillSO;
+
+            return _skill;
         }
     }
 }
