@@ -68,7 +68,7 @@ namespace Skills
             Unit.BattleStats.AP -= skill.Cost;
             
             //TODO : Play Skill animation
-            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.Range, _cell);
             _zone.Sort((_cell1, _cell2) =>
                 _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
             StartCoroutine(HighlightZone(_zone));

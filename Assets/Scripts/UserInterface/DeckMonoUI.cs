@@ -1,13 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using _EventSystem.CustomEvents;
 using Grid;
 using Skills;
 using Units;
 using UnityEngine;
-using UnityEngine.Networking.Match;
-using UnityEngine.UI;
 
 namespace UserInterface
 {
@@ -77,8 +73,8 @@ namespace UserInterface
             foreach (Skill skill in deck.GetHandSkills())
             {
                 GameObject skillInfo = GameObject.Instantiate(skillBtn, transform);
-                skillInfo.GetComponent<SkillInfoMono>().skill = skill;
-                skillInfo.GetComponent<SkillInfoMono>().skill = skill;
+                skillInfo.GetComponent<SkillInfo>().skill = skill;
+                skillInfo.GetComponent<SkillInfo>().skill = skill;
             }
             /*
             if (BattleStateManager.instance.PlayingUnit.BattleStats.AP < 1 || FirstSkill.Cost > FirstSkill.Unit.BattleStats.AP)

@@ -1,7 +1,6 @@
 ﻿using _EventSystem.CustomEvents;
 using Units;
 using UnityEngine;
-using UnityEngine.UI;
 using Void = _EventSystem.CustomEvents.Void;
 
 namespace Skills

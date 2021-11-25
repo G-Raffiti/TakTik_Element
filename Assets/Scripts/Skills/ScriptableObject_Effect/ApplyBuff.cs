@@ -13,9 +13,9 @@ namespace Skills.ScriptableObject_Effect
     {
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            foreach (Cell cell in Zone.GetZone(_skillInfo.Range, _cell).Where(cell => cell.CurrentUnit != null))
+            foreach (Cell cell in Zone.GetZone(_skillInfo.skill.Range, _cell).Where(cell => cell.CurrentUnit != null))
             {
-                _skillInfo.Buffs.ForEach(_buff =>
+                _skillInfo.skill.Buffs.ForEach(_buff =>
                 {
                     cell.CurrentUnit.ApplyBuff(_buff);
                 });
@@ -30,7 +30,7 @@ namespace Skills.ScriptableObject_Effect
         public override string InfoEffect(SkillInfo _skillInfo)
         {
             string str = "Apply ";
-            _skillInfo.Buffs.ForEach(_buff => str += $"{_buff.Effect.Name}, ");
+            _skillInfo.skill.Buffs.ForEach(_buff => str += $"{_buff.Effect.Name}, ");
             str += "to the targets";
             return str;
         }

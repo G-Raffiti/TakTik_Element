@@ -38,11 +38,11 @@ namespace Grid.GridStates
                 _cell.UnMark();
             }
             
-            usable.AddRange(skill.Range.NeedView ? Zone.CellsInView(skill.Skill, skill.Unit.Cell) : Zone.CellsInRange(skill, skill.Unit.Cell));
+            usable.AddRange(skill.skill.Range.NeedView ? Zone.CellsInView(skill.skill, skill.Unit.Cell) : Zone.CellsInRange(skill.skill, skill.Unit.Cell));
 
-            if (skill.Range.NeedTarget || skill.Range.NeedView)
+            if (skill.skill.Range.NeedTarget || skill.skill.Range.NeedView)
             {
-                inRange.AddRange(Zone.GetRange(skill.Range, currentUnit.Cell));
+                inRange.AddRange(Zone.GetRange(skill.skill.Range, currentUnit.Cell));
                 foreach (Cell _cell in inRange)
                 {
                     _cell.MarkAsUnReachable();

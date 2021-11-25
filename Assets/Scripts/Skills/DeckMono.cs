@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _Extension;
 using Cells;
-using Skills.ScriptableObject_RelicEffect;
 using Units;
 using UnityEngine;
 

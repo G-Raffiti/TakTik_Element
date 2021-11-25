@@ -20,13 +20,13 @@ namespace Skills.ScriptableObject_GridEffect
         
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.Range, _cell);
 
             List<IMovable> affecteds = new List<IMovable>();
             foreach (Cell _cellAffected in _zone)
             {
-                if (Zone.GetAffected(_cellAffected, _skillInfo) != null)
-                    affecteds.Add(Zone.GetAffected(_cellAffected, _skillInfo));
+                if (Zone.GetAffected(_cellAffected, _skillInfo.skill) != null)
+                    affecteds.Add(Zone.GetAffected(_cellAffected, _skillInfo.skill));
             }
 
             if (affecteds.Count == 0) return;

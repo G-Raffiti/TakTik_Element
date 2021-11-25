@@ -315,7 +315,7 @@ namespace Skills._Zone
         public static Unit GetUnitAffected(Cell _cell, SkillInfo _skillInfo)
         {
             Unit _affected = null;
-            switch (_skillInfo.Affect)
+            switch (_skillInfo.skill.Affect)
             {
                 case EAffect.All :
                     if (_cell.IsTaken && _cell.CurrentUnit != null)
@@ -429,7 +429,7 @@ namespace Skills._Zone
         public static List<Unit> GetUnitsAffected(SkillInfo _skillInfo, Cell _targetCell)
         {
             List<Unit> ret = new List<Unit>();
-            foreach (Cell _cell in GetZone(_skillInfo.Range, _targetCell))
+            foreach (Cell _cell in GetZone(_skillInfo.skill.Range, _targetCell))
             {
                 if (GetUnitAffected(_cell, _skillInfo) != null)
                     ret.Add(GetUnitAffected(_cell, _skillInfo));
