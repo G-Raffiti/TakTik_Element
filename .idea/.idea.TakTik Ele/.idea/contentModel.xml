@@ -183,7 +183,7 @@
           <e p="Shops" t="Include">
             <e p="Camp.cs" t="Include" />
             <e p="CampUI.cs" t="Include" />
-            <e p="DeckUI.cs" t="Include" />
+            <e p="DeckMonoCampUI.cs" t="Include" />
             <e p="Forge.cs" t="Include" />
             <e p="ForgeUI.cs" t="Include" />
           </e>
@@ -191,12 +191,14 @@
             <e p="_Zone" t="Include">
               <e p="Zone.cs" t="Include" />
             </e>
-            <e p="AllDecks.cs" t="Include" />
+            <e p="AllDecksMono.cs" t="Include" />
             <e p="DataBaseRelic.cs" t="Include" />
             <e p="DataBaseSkill.cs" t="Include" />
             <e p="Deck.cs" t="Include" />
+            <e p="DeckMono.cs" t="Include" />
             <e p="IEffect.cs" t="Include" />
             <e p="rawSkill.cs" t="Include" />
+            <e p="Relic.cs" t="Include" />
             <e p="RelicChoiceUI.cs" t="Include" />
             <e p="RelicInfo.cs" t="Include" />
             <e p="RelicSO.cs" t="Include" />
@@ -219,7 +221,6 @@
               <e p="TeleportTo.cs" t="Include" />
             </e>
             <e p="ScriptableObject_RelicEffect" t="Include">
-              <e p="Cost.cs" t="Include" />
               <e p="RelicEffect.cs" t="Include" />
               <e p="RelicEffectAffectChange.cs" t="Include" />
               <e p="RelicEffectElementSwap.cs" t="Include" />
@@ -227,6 +228,7 @@
               <e p="RelicEffectRangeType.cs" t="Include" />
               <e p="RelicEffectZoneType.cs" t="Include" />
             </e>
+            <e p="Skill.cs" t="Include" />
             <e p="SkillInfo.cs" t="Include" />
             <e p="SkillSO.cs" t="Include" />
           </e>
@@ -270,7 +272,7 @@
           <e p="UserInterface" t="Include">
             <e p="ButtonPanel.cs" t="Include" />
             <e p="ColorSet.cs" t="Include" />
-            <e p="DeckUI.cs" t="Include" />
+            <e p="DeckMonoUI.cs" t="Include" />
             <e p="Inventory_UI.cs" t="Include" />
             <e p="MenuPanel.cs" t="Include" />
             <e p="PersonalInventory.cs" t="Include" />

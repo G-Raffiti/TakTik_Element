@@ -14,20 +14,30 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+<<<<<<< Updated upstream
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Skills/Deck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" root0="FORCE_HIGHLIGHTING" />
+=======
+>>>>>>> Stashed changes
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.5.7/Editor/Collaborate/UserInterface/CollaborateWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
+<<<<<<< Updated upstream
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
+=======
+>>>>>>> Stashed changes
       <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InfoGear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
@@ -39,7 +49,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/_ScriptableObject/Archetype.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/DataBaseMonster.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
@@ -58,7 +67,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateSkillSelected.cs" />
+<<<<<<< Updated upstream
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
+=======
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckMonoUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
+>>>>>>> Stashed changes
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/Pull.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFromImpact.cs" />
@@ -69,12 +84,24 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/LifeSteel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Medicine.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Spell.cs" />
+<<<<<<< Updated upstream
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Learning.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Deck.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckMonoUI.cs" />
+=======
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/MonsterSkillInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Deck.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Learning.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Camp.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/CampUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/DeckMonoCampUI.cs" />
+>>>>>>> Stashed changes
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
@@ -97,7 +124,6 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -107,7 +133,6 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
