@@ -18,14 +18,11 @@ namespace Skills
         private List<SkillSO> UsedSkills = new List<SkillSO>();
         private List<SkillSO> ConsumedSkills = new List<SkillSO>();
         private List<RelicSO> Relics = new List<RelicSO>();
-        
-        public L
-        
+
         public static int HAND_SIZE = 5;
 
         private void Start()
         {
-            UsedSkills = new List<SkillSO>();
             onEndBattle.EventListeners += OnBattleEndRaised;
         }
 
@@ -36,6 +33,7 @@ namespace Skills
 
         public void DrawNewHand()
         {
+            if (HandSkills.Count > 0) return;
             Draw(HAND_SIZE);
         }
 
@@ -192,6 +190,10 @@ namespace Skills
         {
             Skills.AddRange(ConsumedSkills);
             ConsumedSkills = new List<SkillSO>();
+            Skills.AddRange(UsedSkills);
+            UsedSkills = new List<SkillSO>();
+            Skills.AddRange(HandSkills);
+            HandSkills = new List<SkillSO>();
             ShuffleDeck();
             Draw(HAND_SIZE);
         }

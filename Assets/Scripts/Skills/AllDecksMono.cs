@@ -55,6 +55,7 @@ namespace Skills
 
         public void OnEventRaised(Unit item)
         {
+            if (item.playerNumber != 0) return;
             Deck.DrawNewHand();
             Deck.PrintDebug();
         }

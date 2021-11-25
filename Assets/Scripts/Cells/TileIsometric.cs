@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _Instances;
 using Grid;
@@ -162,9 +163,21 @@ namespace Cells
 
         public override void MarkAsHighlighted()
         {
-            state = new CellState(colorSet.FullFrame, Colors[EColor.highlighted],
-                Colors[EColor.highlighted] * Colors[EColor.transparency]);
-            MarkAs(state);
+            try
+            {
+                state = new CellState(colorSet.FullFrame, Colors[EColor.highlighted],
+                    Colors[EColor.highlighted] * Colors[EColor.transparency]);
+                MarkAs(state);
+            }
+            catch (KeyNotFoundException e)
+            {
+                Debug.Log(e.StackTrace);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.StackTrace);
+            }
+            
         }
 
         public override void UnMark()
@@ -183,9 +196,16 @@ namespace Cells
         
         public override void MarkAsValue(Gradient gradient, float value, int max)
         {
-            state = new CellState(null, Colors[EColor.unMark],
-                gradient.Evaluate(Mathf.Clamp((value / max), 0f, 1f)) * Colors[EColor.transparency]);
-            MarkAs(state);
+            try
+            {
+                state = new CellState(null, Colors[EColor.unMark],
+                gradient.Evaluate(Mathf.Clamp((value / Math.Max(0.01f,max)), 0f, 1f)) * Colors[EColor.transparency]);
+                MarkAs(state);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.StackTrace);
+            }
         }
 
     #endregion
