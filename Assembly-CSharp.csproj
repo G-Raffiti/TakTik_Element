@@ -85,6 +85,7 @@
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderUI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
+     <Compile Include="Assets\Scripts\Skills\AllDecks.cs" />
      <Compile Include="Assets\Scripts\Gears\Gear.cs" />
      <Compile Include="Assets\Scripts\BattleOver\BossBattle.cs" />
      <Compile Include="Assets\Scripts\Stats\Power.cs" />
@@ -176,7 +177,6 @@
      <Compile Include="Assets\Scripts\Skills\RelicSO.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\VoidEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\SkillEvent.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\DeckUI.cs" />
      <Compile Include="Assets\Scripts\Cells\SavedCell.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityFloatEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityBoolEvent.cs" />
@@ -205,6 +205,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\Stats\AffixSO.cs" />
      <Compile Include="Assets\Scripts\Pathfinding\DataStructs\HeapPriorityQueue.cs" />
+     <Compile Include="Assets\Scripts\Skills\Deck.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\TeleportTo.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\ApplyBuff.cs" />
      <Compile Include="Assets\Scripts\Units\IMovable.cs" />

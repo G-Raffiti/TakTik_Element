@@ -212,6 +212,13 @@ namespace Skills
             Skills.Sort((s, s2) => String.Compare(s.Name, s2.Name, StringComparison.Ordinal));
             Skills.Sort((s, s2) => s.Cost.CompareTo(s2.Cost));
         }
+        
+        public void LearnSkill(SkillSO _monsterSkill)
+        {
+            List<SkillSO> _newList = new List<SkillSO> {_monsterSkill};
+            _newList.AddRange(Skills);
+            Skills = new List<SkillSO>(_newList);
+        }
 
         /// <summary>
         /// Used in Camp to Swap Skill or in Event to Add a Skill to a Specific Deck

@@ -109,7 +109,7 @@ namespace Skills
                 
                 foreach (RelicEffect _relicEffect in _relic.RelicEffects)
                 {
-                    _relicEffect.ChangeSkill(this, _relic);   
+                    //_relicEffect.ChangeSkill(this, _relic);
                 }
                 
                 if (_relic.Effect != null) effects.Add(_relic.Effect);
@@ -204,7 +204,7 @@ namespace Skills
             
 
             //TODO : Play Skill animation
-            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.Range, _cell);
             _zone.Sort((_cell1, _cell2) =>
                 _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
             StartCoroutine(HighlightZone(_zone));

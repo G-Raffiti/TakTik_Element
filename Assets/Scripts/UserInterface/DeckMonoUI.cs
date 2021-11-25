@@ -24,7 +24,7 @@ namespace UserInterface
 
         private IEnumerator Start()
         {
-            AllDecksMono allDecks = GameObject.Find("Decks").GetComponent<AllDecksMono>();
+            AllDecksMono allDecks = GameObject.Find("DeckMono").GetComponent<AllDecksMono>();
             
             yield return new WaitForSeconds(0.1f);
             
@@ -70,19 +70,14 @@ namespace UserInterface
         {
             yield return new WaitForSeconds(0.2f);
 
-            foreach (Skill skill in deck.GetHandSkills())
+            Unit currentUnit = BattleStateManager.instance.PlayingUnit;
+
+            foreach (Skill skill in deck.GetHandSkills(currentUnit))
             {
                 GameObject skillInfo = GameObject.Instantiate(skillBtn, transform);
                 skillInfo.GetComponent<SkillInfo>().skill = skill;
-                skillInfo.GetComponent<SkillInfo>().skill = skill;
+                skillInfo.GetComponent<SkillInfo>().Unit = currentUnit;
             }
-            /*
-            if (BattleStateManager.instance.PlayingUnit.BattleStats.AP < 1 || FirstSkill.Cost > FirstSkill.Unit.BattleStats.AP)
-            {
-                frameOfFirstSkill.color = Color.grey;
-            }
-            else frameOfFirstSkill.color = Color.white;
-            */
         }
     }
 }
