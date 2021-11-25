@@ -35,7 +35,7 @@ namespace Shops
             }
 
             PlayerData.getInstance().Heroes[0].Spawn(actualHero.gameObject);
-
+            
             InitializeDisplay(0);
         }
 
@@ -50,33 +50,34 @@ namespace Shops
             ClearDecks();
 
             DeckMono Deck = GameObject.FindObjectOfType<DeckMono>();
+            Deck.UpdateDeck();
             
-                for (int i = 0; i < Deck.Skills.Count; i++)
-                {
-                    GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, deckPlaceHolder);
-                    _cell.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;
-                    _cell.GetComponent<DragAndDropCell>().unlimitedSource = true;
-                    _cell.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Skill;
+            foreach (SkillSO _skillSO in Deck.Skills)
+            {
+                GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, deckPlaceHolder);
+                _cell.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;
+                _cell.GetComponent<DragAndDropCell>().unlimitedSource = true;
+                _cell.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Skill;
 
-                    GameObject pref = GameObject.Instantiate(prefabSkill.gameObject, _cell.transform);
-                    pref.GetComponent<SkillInfo>().skill = Skill.CreateSkill(Deck.Skills[i], Deck.Relic, actualHero);
-                    pref.GetComponent<SkillInfo>().Unit = actualHero;
-                    pref.GetComponent<SkillInfo>().DisplayIcon();
+                GameObject pref = GameObject.Instantiate(prefabSkill.gameObject, _cell.transform);
+                pref.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, Deck.Relic, actualHero);
+                pref.GetComponent<SkillInfo>().Unit = actualHero;
+                pref.GetComponent<SkillInfo>().DisplayIcon();
 
-                    allSkills.Add(pref.GetComponent<SkillInfo>());
-                }
+                allSkills.Add(pref.GetComponent<SkillInfo>());
+            }
 
-                for (int i = 0; i < Deck.Relics.Count; i++)
-                {
-                    GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, relicPlaceHolder);
-                    _cell.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;
-                    _cell.GetComponent<DragAndDropCell>().unlimitedSource = true;
-                    _cell.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Relic;
+            foreach (RelicSO _relicSO in Deck.Relics)
+            {
+                GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, relicPlaceHolder);
+                _cell.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;
+                _cell.GetComponent<DragAndDropCell>().unlimitedSource = true;
+                _cell.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Relic;
 
-                    GameObject pref = GameObject.Instantiate(prefabRelic.gameObject, _cell.transform);
-                    pref.GetComponent<RelicInfo>().CreateRelic(Deck.Relics[i]);
-                    pref.GetComponent<RelicInfo>().DisplayIcon();
-                }
+                GameObject pref = GameObject.Instantiate(prefabRelic.gameObject, _cell.transform);
+                pref.GetComponent<RelicInfo>().CreateRelic(_relicSO);
+                pref.GetComponent<RelicInfo>().DisplayIcon();
+            }
         }
 
         private void ClearDecks()

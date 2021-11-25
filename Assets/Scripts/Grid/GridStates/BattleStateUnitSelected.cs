@@ -150,12 +150,10 @@ namespace Grid.GridStates
                 if (_currentUnit.playerNumber.Equals(unit.playerNumber))
                     continue;
 
-                if (unit.IsUnitAttackable(_currentUnit, unit.Cell))
-                {
-                    _currentUnit.SetState(new UnitStateMarkedAsReachableEnemy(_currentUnit));
-                    unitsInRange.Add(_currentUnit);
-                }
+                _currentUnit.Cell.MarkAsEnemyCell();
             }
+            
+            unitCell.MarkAsHighlighted();
         }
         public override void OnStateExit()
         {

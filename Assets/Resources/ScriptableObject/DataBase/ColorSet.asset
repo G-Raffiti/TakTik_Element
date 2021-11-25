@@ -16,9 +16,10 @@ MonoBehaviour:
   highlightedColor: {r: 1, g: 1, b: 1, a: 1}
   reachableColor: {r: 0.0010789665, g: 0.8509804, b: 0, a: 1}
   pathColor: {r: 0, g: 0.60113454, b: 0.7176471, a: 1}
-  allyColor: {r: 1, g: 0, b: 0.008056164, a: 1}
-  enemyColor: {r: 1, g: 0.8178636, b: 0, a: 1}
-  transparency: {r: 1, g: 1, b: 1, a: 0.2}
+  allyColor: {r: 0.75968444, g: 0.5330188, b: 1, a: 1}
+  usableColor: {r: 1, g: 0.83413935, b: 0, a: 1}
+  enemyColor: {r: 1, g: 0, b: 0, a: 1}
+  transparency: {r: 1, g: 1, b: 1, a: 0.29803923}
   elementShadow: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   turnPoint: {r: 0, g: 0.914711, b: 1, a: 1}
   selectFrame: {fileID: 21300000, guid: 590692c5feca05046b42c05845f03fc2, type: 3}

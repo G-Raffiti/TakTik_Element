@@ -11,7 +11,7 @@ namespace Skills
         private static GameObject instance;
 
         [Header("Event Sender")] 
-        [SerializeField] private VoidEvent onActionDone;
+        [SerializeField] private VoidEvent onDrawDone;
         
         [Header("Event Listener")] 
         [SerializeField] private UnitEvent onUnitStartTurn;
@@ -43,7 +43,7 @@ namespace Skills
         public void EndTurn(Void _obj)
         {
             Deck.ClearHandSkills();
-            onActionDone.Raise();
+            onDrawDone.Raise();
             Deck.PrintDebug();
         }
 
@@ -57,14 +57,14 @@ namespace Skills
         {
             if (item.playerNumber != 0) return;
             Deck.DrawNewHand();
-            onActionDone.Raise();
+            onDrawDone.Raise();
             Deck.PrintDebug();
         }
 
         public void LearnSkill(SkillSO _skillSO, Skill learning)
         {
             Deck.LearnSkill(_skillSO, learning);
-            onActionDone.Raise();
+            onDrawDone.Raise();
         }
     }
 }

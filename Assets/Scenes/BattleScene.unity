@@ -35467,7 +35467,7 @@ MonoBehaviour:
   skillBtn: {fileID: 3250177244620070828, guid: 9597014960766244e8ff3cd6166a62c0,
     type: 3}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
-  onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
+  onActionDone: {fileID: 11400000, guid: 5df12d826f7fb3e4f8361bd46ddde90f, type: 2}
   onUnitEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
 --- !u!1 &1737196880
 GameObject:
@@ -41978,7 +41978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Deck: {fileID: 963500106}
-  onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
+  onDrawDone: {fileID: 11400000, guid: 5df12d826f7fb3e4f8361bd46ddde90f, type: 2}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
   onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
   onBattleStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}

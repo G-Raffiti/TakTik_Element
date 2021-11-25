@@ -60,8 +60,6 @@ namespace Skills
                 _skill.Effects.Add(skillSO.GridEffect);
             _skill.Effects.AddRange(relic.Effects);
 
-            Debug.Log(_skill.Effects.Count);
-            
             _skill.BaseSkill = skillSO;
             
             foreach (RelicSO _relic in relic.RelicEffects)

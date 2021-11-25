@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7325826300287324317}
   - component: {fileID: 7325826300287324314}
   - component: {fileID: 7325826300287324316}
-  - component: {fileID: 1750407335612133035}
+  - component: {fileID: 3882640058524459029}
   m_Layer: 5
   m_Name: Skill_Item_Prefab
   m_TagString: Untagged
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
---- !u!114 &1750407335612133035
+--- !u!114 &3882640058524459029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,13 +99,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7325826300287324312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ceb8aeac4c4990948a40335b37c398, type: 3}
+  m_Script: {fileID: 11500000, guid: e8013c3ca5c74d9b8a6f9fcb4ef385f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  Clickable: 0
   icon: {fileID: 7325826300287324314}
-  deck: {fileID: 0}
-  onSkillSelected: {fileID: 0}
-  OnSkillUsed: {fileID: 0}
+  onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
+  OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
+  Unit: {fileID: 0}

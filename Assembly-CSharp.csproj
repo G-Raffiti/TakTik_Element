@@ -156,7 +156,6 @@
      <Compile Include="Assets\Scripts\StatusEffect\StatusSO.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffect.cs" />
      <Compile Include="Assets\Scripts\Skills\IEffect.cs" />
-     <Compile Include="Assets\Scripts\Shops\CampUI.cs" />
      <Compile Include="Assets\Scripts\Units\rawMonster.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Spell.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\FloatListener.cs" />

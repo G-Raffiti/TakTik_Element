@@ -137,6 +137,12 @@ namespace Cells
         /// </summary>
         public abstract void MarkAsValue(Gradient gradient, float value, int max);
 
+
+        /// <summary>
+        /// Method marks the Cell with the Enemies Color
+        /// </summary>
+        public abstract void MarkAsEnemyCell();
+
         public int GetDistance(IGraphNode other)
         {
             return GetDistance(other as Cell);
@@ -251,5 +257,6 @@ namespace Cells
         /// Method called to apply effects of Buffs to the Current Unit.
         /// </summary>
         public abstract void OnEndTurn();
+
     }
 }

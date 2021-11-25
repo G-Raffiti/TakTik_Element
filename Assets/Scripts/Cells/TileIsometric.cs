@@ -161,6 +161,13 @@ namespace Cells
             MarkAs(state);
         }
 
+        public override void MarkAsEnemyCell()
+        {
+            state = new CellState(colorSet.SelectFrame, Colors[EColor.enemy],
+                Colors[EColor.enemy] * Colors[EColor.transparency]);
+            MarkAs(state);
+        }
+
         public override void MarkAsHighlighted()
         {
             try
@@ -189,8 +196,8 @@ namespace Cells
 
         public override void MarkAsInteractable()
         {
-            state = new CellState(colorSet.SelectFrame, Colors[EColor.enemy],
-                Colors[EColor.enemy] * Colors[EColor.transparency]);
+            state = new CellState(colorSet.SelectFrame, Colors[EColor.usable],
+                Colors[EColor.usable] * Colors[EColor.transparency]);
             MarkAs(state);
         }
         

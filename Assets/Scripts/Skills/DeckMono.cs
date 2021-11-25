@@ -35,8 +35,8 @@ namespace Skills
 
         public void DrawNewHand()
         {
-            if (HandSkills.Count > 0) return;
-            Draw(HAND_SIZE);
+            if (HandSkills.Count >= HAND_SIZE) return;
+            Draw(HAND_SIZE - HandSkills.Count);
         }
 
         public void ClearHandSkills()
@@ -123,34 +123,6 @@ namespace Skills
             HandSkills = new List<SkillSO>();
             ShuffleDeck();
             UpdateDeck();
-        }
-        
-        /// <summary>
-        /// Method Called on Monster Spawn to initialize the Info Skill they Use.
-        /// </summary>
-        /// <param name="_skillSO"></param>
-        /// <param name="_relicSO"></param>
-        public void InitializeForMonster(SkillSO _skillSO, List<RelicSO> _relicSO)
-        {
-            if (_skillSO != null)
-                Skills.Add(_skillSO);
-            if (_relicSO != null)
-                Relics.AddRange(_relicSO);
-        }
-
-        private static IEnumerator HighlightZone(List<Cell> zone)
-        {
-            foreach (Cell _cell in zone)
-            {
-                _cell.MarkAsHighlighted();
-                yield return new WaitForSeconds(0.05f);
-            }
-            foreach (Cell _cell in zone)
-            {
-                _cell.MarkAsHighlighted();
-            }
-            yield return new WaitForSeconds(0.2f);
-            zone.ForEach(c => c.UnMark());
         }
 
         private void OnBattleEndRaised(bool item)

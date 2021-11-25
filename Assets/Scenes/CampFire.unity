@@ -464,6 +464,75 @@ MonoBehaviour:
   shadow: {fileID: 0}
   isDying: 0
   onHeroSelected: {fileID: 0}
+--- !u!114 &106409114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5753818308420008416, guid: a20741c43a0e66845b19c31ec56b73e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 106409109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106409111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &106409115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106409111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 106409114}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
+        m_TargetAssemblyTypeName: _EventSystem.CustomEvents.BaseGameEvent`1[[System.Int32,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &171462568
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +755,7 @@ MonoBehaviour:
   - {fileID: 2052690947}
   - {fileID: 1430683150}
   - {fileID: 106409112}
-  actualHero: {fileID: 0}
+  actualHero: {fileID: 1022346166}
   onCampPointUsed: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
 --- !u!1 &183110410
 GameObject:
@@ -3588,7 +3657,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1818944351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shops.CampUI, Assembly-CSharp
         m_MethodName: SwapSkillButton
         m_Mode: 1
@@ -4238,6 +4307,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
+--- !u!114 &1022346166 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2531194331963924000, guid: 44d175d01ca3a494c80452149d29f019,
+    type: 3}
+  m_PrefabInstance: {fileID: 1022346165}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b05817fa234f07bc00504ef2ec6190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1065066311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,7 +4440,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1818944351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shops.CampUI, Assembly-CSharp
         m_MethodName: HealButton
         m_Mode: 1
@@ -5985,6 +6066,75 @@ MonoBehaviour:
   shadow: {fileID: 0}
   isDying: 0
   onHeroSelected: {fileID: 0}
+--- !u!114 &1430683152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5753818308420008416, guid: a20741c43a0e66845b19c31ec56b73e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1430683147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430683149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1430683153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430683149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1430683152}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
+        m_TargetAssemblyTypeName: _EventSystem.CustomEvents.BaseGameEvent`1[[System.Int32,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1438851893
 GameObject:
   m_ObjectHideFlags: 0
@@ -8675,7 +8825,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1818944351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shops.CampUI, Assembly-CSharp
         m_MethodName: SwapRelicButton
         m_Mode: 1
@@ -9509,6 +9659,63 @@ MonoBehaviour:
   shadow: {fileID: 0}
   isDying: 0
   onHeroSelected: {fileID: 0}
+--- !u!114 &2052690949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052690945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 5753818308794838501}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
+        m_TargetAssemblyTypeName: _EventSystem.CustomEvents.BaseGameEvent`1[[System.Int32,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2061510037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9760,7 +9967,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1818944351}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shops.CampUI, Assembly-CSharp
         m_MethodName: ForgetSkillButton
         m_Mode: 1
@@ -9891,3 +10098,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a20741c43a0e66845b19c31ec56b73e4, type: 3}
+--- !u!114 &5753818308794838501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5753818308420008416, guid: a20741c43a0e66845b19c31ec56b73e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5753818308794838500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052690945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

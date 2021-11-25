@@ -28,7 +28,7 @@ namespace StatusEffect
             BattleStats bonus = new BattleStats(0);
             Bonus.ForEach(affix => bonus += affix.affix.GenerateBS(affix.value));
             Malus.ForEach(affix => bonus -= affix.affix.GenerateBS(affix.value));
-            bonus *= _buff.Power;
+            bonus = bonus + bonus * _buff.Power;
 
             _unit.BattleStats += bonus;
             if (_unit.BattleStats.Speed <= 0)
@@ -42,7 +42,7 @@ namespace StatusEffect
             BattleStats bonus = new BattleStats();
             Bonus.ForEach(affix => bonus += affix.affix.GenerateBS(affix.value));
             Malus.ForEach(affix => bonus -= affix.affix.GenerateBS(affix.value));
-            bonus *= _buff.Power;
+            bonus = bonus + bonus * _buff.Power;
 
             _unit.BattleStats -= bonus;
         }
@@ -63,12 +63,12 @@ namespace StatusEffect
             if (Bonus.Count > 0)
             {
                 str += $"Stats Bonus:";
-                Bonus.ForEach(affix => str += affix.Value((int)(affix.value * _buff.Power)));
+                Bonus.ForEach(affix => str += affix.Value((int)(affix.value + affix.value * _buff.Power)));
             }
             if (Malus.Count > 0)
             {
                 str += $"\nStats Malus:";
-                Malus.ForEach(affix => str += $"-{affix.Value((int)(affix.value * _buff.Power))}");
+                Malus.ForEach(affix => str += $"-{affix.Value((int)(affix.value + affix.value * _buff.Power))}");
             }
             if (_buff.Duration != 0)
                 str += $"\n Duration: {_buff.Duration} Turn";

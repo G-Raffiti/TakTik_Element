@@ -28,7 +28,6 @@ namespace Shops
             
             //TODO : Relic that can modify the value of CampPoint
             CampPoint = 2;
-            onCampPointUsed.Raise(CampPoint);
         }
 
         private void OnDestroy()
@@ -62,7 +61,7 @@ namespace Shops
         public void ForgetSkill(Void empty)
         {
             if (CampPoint < 1) return;
-            CampUI _campUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<CampUI>();
+            DeckMonoCampUI _campUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<DeckMonoCampUI>();
             if (FindObjectOfType<DeckMono>().RemoveSkill(_campUI.SkillForget.skill.BaseSkill))
             {
                 CampPoint -= 1;

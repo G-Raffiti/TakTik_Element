@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Players;
 using Stats;
 using Units;
 using UnityEngine;
@@ -24,9 +25,9 @@ namespace _Instances
         private PlayerData()
         {
             heroes = new List<Hero>();
-            if (GameObject.Find("Player") != null)
+            if (GameObject.FindObjectOfType<KeepBetweenScene>() != null)
             {
-                foreach (Transform _child in GameObject.Find("Player").transform)
+                foreach (Transform _child in GameObject.FindObjectOfType<KeepBetweenScene>().transform)
                 {
                     heroes.Add(_child.GetComponent<Hero>());
                 }

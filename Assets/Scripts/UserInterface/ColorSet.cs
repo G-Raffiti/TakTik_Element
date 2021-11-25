@@ -7,7 +7,7 @@ using UnityEngine;
 namespace UserInterface
 {
         
-    public enum EColor {none, unMark, highlighted, reachable, path, transparency, enemy, ally, elementShadow, elementFull, TurnPoint}
+    public enum EColor {none, unMark, highlighted, usable, reachable, path, transparency, enemy, ally, elementShadow, elementFull, TurnPoint}
     
     [CreateAssetMenu(fileName = "ColorSet_", menuName = "Scriptable Object/UI/Color Set")]
     public class ColorSet : ScriptableObject
@@ -17,6 +17,7 @@ namespace UserInterface
         [SerializeField] private Color reachableColor;
         [SerializeField] private Color pathColor;
         [SerializeField] private Color allyColor;
+        [SerializeField] private Color usableColor;
         [SerializeField] private Color enemyColor;
         [SerializeField] private Color transparency;
         [SerializeField] private Color elementShadow;
@@ -35,6 +36,7 @@ namespace UserInterface
                 {EColor.unMark, unMarkColor},
                 {EColor.highlighted, highlightedColor},
                 {EColor.reachable, reachableColor},
+                {EColor.usable, usableColor},
                 {EColor.path, pathColor},
                 {EColor.transparency, transparency},
                 {EColor.enemy, enemyColor},

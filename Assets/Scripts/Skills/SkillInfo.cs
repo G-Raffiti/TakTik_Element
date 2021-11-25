@@ -66,7 +66,8 @@ namespace Skills
             }
 
             OnSkillUsed.Raise();
-            DestroyImmediate(this.gameObject);
+            if(BattleStateManager.instance.PlayingUnit.playerNumber == 0)
+                DestroyImmediate(this.gameObject);
         }
         
         private static IEnumerator HighlightZone(List<Cell> zone)
