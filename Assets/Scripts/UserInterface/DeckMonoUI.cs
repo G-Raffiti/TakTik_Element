@@ -83,6 +83,9 @@ namespace UserInterface
             yield return new WaitForSeconds(0.2f);
 
             Unit currentUnit = BattleStateManager.instance.PlayingUnit;
+            if (BattleStateManager.instance.PlayingUnit == null) yield break;
+            
+            Debug.Log(currentUnit);
 
             foreach (Skill skill in deck.GetHandSkills(currentUnit))
             {

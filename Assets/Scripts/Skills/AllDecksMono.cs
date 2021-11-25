@@ -50,7 +50,6 @@ namespace Skills
         private void FirstShuffle(Void _obj)
         {
             Deck.Initialize();
-            onActionDone.Raise();
             Deck.PrintDebug();
         }
 
