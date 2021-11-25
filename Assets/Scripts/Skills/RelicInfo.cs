@@ -11,18 +11,12 @@ namespace Skills
     public class RelicInfo: InfoBehaviour
     {
         public RelicSO Relic { get; private set; }
-        public Deck Deck { get; private set; }
 
         public void CreateRelic(RelicSO _relic)
         {
             Relic = _relic;
         }
 
-        public void SetDeck(Deck _deck)
-        {
-            Deck = _deck;
-        }
-        
         #region InfoBehaviour
         
         public override void OnPointerEnter(PointerEventData eventData)

@@ -85,7 +85,6 @@
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
      <Compile Include="Assets\Scripts\UserInterface\TurnOrderUI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
-     <Compile Include="Assets\Scripts\Skills\AllDecks.cs" />
      <Compile Include="Assets\Scripts\Gears\Gear.cs" />
      <Compile Include="Assets\Scripts\BattleOver\BossBattle.cs" />
      <Compile Include="Assets\Scripts\Stats\Power.cs" />
@@ -199,7 +198,6 @@
      <Compile Include="Assets\Scripts\Cells\Cell.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Drowned.cs" />
      <Compile Include="Assets\Scripts\UserInterface\MenuPanel.cs" />
-     <Compile Include="Assets\Scripts\Skills\SkillInfo.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\InfoEvent.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\ChangeScene.cs" />
      <Compile Include="Assets\Scripts\_DragAndDropSystem\DragAndDropItem.cs" />
@@ -208,7 +206,6 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\Stats\AffixSO.cs" />
      <Compile Include="Assets\Scripts\Pathfinding\DataStructs\HeapPriorityQueue.cs" />
-     <Compile Include="Assets\Scripts\Skills\Deck.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\TeleportTo.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\ApplyBuff.cs" />
      <Compile Include="Assets\Scripts\Units\IMovable.cs" />
@@ -227,7 +224,7 @@
      <Compile Include="Assets\Scripts\Skills\DeckMono.cs" />
      <Compile Include="Assets\Scripts\Skills\Skill.cs" />
      <Compile Include="Assets\Scripts\Skills\AllDecksMono.cs" />
-     <Compile Include="Assets\Scripts\Skills\SkillInfoMono.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillInfo.cs" />
      <Compile Include="Assets\Scripts\UserInterface\DeckMonoUI.cs" />
      <Compile Include="Assets\Scripts\Skills\Relic.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

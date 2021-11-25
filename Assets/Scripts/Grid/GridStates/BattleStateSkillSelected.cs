@@ -38,7 +38,7 @@ namespace Grid.GridStates
                 _cell.UnMark();
             }
             
-            usable.AddRange(skill.Range.NeedView ? Zone.CellsInView(skill, skill.Unit.Cell) : Zone.CellsInRange(skill, skill.Unit.Cell));
+            usable.AddRange(skill.Range.NeedView ? Zone.CellsInView(skill.Skill, skill.Unit.Cell) : Zone.CellsInRange(skill, skill.Unit.Cell));
 
             if (skill.Range.NeedTarget || skill.Range.NeedView)
             {

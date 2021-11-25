@@ -381,9 +381,9 @@ namespace Skills._Zone
             return _affected;
         }
 
-        public static GridObject GetObjectAffected(Cell _cell, SkillInfo _skillInfo)
+        public static GridObject GetObjectAffected(Cell _cell, Skill _skill)
         {
-            if (GetAffected(_cell, _skillInfo) != null && GetAffected(_cell, _skillInfo) is GridObject _gridObject)
+            if (GetAffected(_cell, _skill) != null && GetAffected(_cell, _skill) is GridObject _gridObject)
             {
                 return _gridObject;
             }

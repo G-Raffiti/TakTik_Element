@@ -18,7 +18,7 @@ namespace Skills
         private List<SkillSO> HandSkills = new List<SkillSO>();
         private List<SkillSO> UsedSkills = new List<SkillSO>();
         private List<SkillSO> ConsumedSkills = new List<SkillSO>();
-        private List<RelicSO> Relics = new List<RelicSO>();
+        public List<RelicSO> Relics = new List<RelicSO>();
         private Relic Relic = new Relic();
 
         public static int HAND_SIZE = 5;

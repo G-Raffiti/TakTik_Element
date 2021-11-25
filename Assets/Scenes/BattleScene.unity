@@ -8156,7 +8156,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &378864358
 MonoBehaviour:
@@ -37309,6 +37309,7 @@ GameObject:
   - component: {fileID: 1730116915}
   - component: {fileID: 1730116914}
   - component: {fileID: 1730116916}
+  - component: {fileID: 1730116917}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -37383,6 +37384,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 1
   m_VerticalFit: 0
+--- !u!114 &1730116917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730116912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ebf3e7160cc72544ab02363d528cb32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillBtn: {fileID: 3250177244620070828, guid: 9597014960766244e8ff3cd6166a62c0,
+    type: 3}
+  onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
+  onSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
+  onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
 --- !u!1 &1734178282
 GameObject:
   m_ObjectHideFlags: 0
