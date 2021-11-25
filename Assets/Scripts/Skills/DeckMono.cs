@@ -5,6 +5,7 @@ using _EventSystem.CustomEvents;
 using _Extension;
 using Cells;
 using Skills.ScriptableObject_RelicEffect;
+using Units;
 using UnityEngine;
 
 namespace Skills
@@ -18,6 +19,7 @@ namespace Skills
         private List<SkillSO> UsedSkills = new List<SkillSO>();
         private List<SkillSO> ConsumedSkills = new List<SkillSO>();
         private List<RelicSO> Relics = new List<RelicSO>();
+        private Relic Relic = new Relic();
 
         public static int HAND_SIZE = 5;
 
@@ -75,37 +77,21 @@ namespace Skills
             }
         }
         
-        public Skill UpdateSkill(SkillSO skillso)
+        /// <summary>
+        /// Add up all the relics
+        /// </summary>
+        public void UpdateDeck()
         {
-            Skill skill = new Skill(skillso);
-            
-            foreach (RelicSO _relic in Relics)
-            {
-                skill.range += _relic.Range;
-                skill.power += _relic.Power;
-                skill.statusEffects.AddRange(_relic.StatusEffects);
-                
-                foreach (RelicEffect _relicEffect in _relic.RelicEffects)
-                {
-                    //_relicEffect.ChangeSkill(this, _relic);   
-                }
-                
-                if (_relic.Effect != null) skill.effects.Add(_relic.Effect);
-                if (_relic.GridEffect != null) skill.effects.Add(_relic.GridEffect);
-            }
-
-            skill.effects.Sort((_effect, _effect1) => _effect.ActionsOrder.CompareTo(_effect1.ActionsOrder));
-
-            return skill;
+            Relic = Relic.CreateRelic(Relics);
         }
-
-        public List<Skill> GetHandSkills()
+        
+        public List<Skill> GetHandSkills(Unit unit)
         {
             List<Skill> skills = new List<Skill>();
             
             foreach (SkillSO skill in HandSkills)
             {
-                skills.Add(UpdateSkill(skill));
+                skills.Add(Skill.CreateSkill(skill, Relic, unit));
             }
 
             return skills;
@@ -256,9 +242,9 @@ namespace Skills
 
         public void PrintDebug()
         {
-            Debug.Log("pile: " + Skills.Count + "/n" +
-                      "hand: " + HandSkills.Count + "/n" +
-                      "used: " + UsedSkills.Count);
+            Debug.Log("pile:" + Skills.Count + " " +
+                      "hand:" + HandSkills.Count + " " +
+                      "used:" + UsedSkills.Count);
         }
     }
 }

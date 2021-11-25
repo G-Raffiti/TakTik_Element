@@ -24,6 +24,7 @@ namespace Skills
         
         [SerializeField] private Range range;
         [SerializeField] private int power;
+        [SerializeField] private int cost;
         [SerializeField] private List<StatusSO> statusEffects;
 
         public string Name => name;
@@ -35,6 +36,7 @@ namespace Skills
         public EAffect Affect => affect;
         public Range Range => range;
         public int Power => power;
+        public int Cost => cost;
         public List<StatusSO> StatusEffects => statusEffects;
     }
 }

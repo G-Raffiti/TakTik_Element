@@ -26,9 +26,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Forge.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Gear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Decks.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Decks_UI.cs" />
@@ -73,10 +70,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/BattleStateManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateBeginning.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfoMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfoMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Relic.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

@@ -229,6 +229,7 @@
      <Compile Include="Assets\Scripts\Skills\AllDecksMono.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillInfoMono.cs" />
      <Compile Include="Assets\Scripts\UserInterface\DeckMonoUI.cs" />
+     <Compile Include="Assets\Scripts\Skills\Relic.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

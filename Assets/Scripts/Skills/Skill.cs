@@ -2,6 +2,7 @@
 using _ScriptableObject;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
+using Skills.ScriptableObject_RelicEffect;
 using Stats;
 using StatusEffect;
 using Units;
@@ -11,7 +12,7 @@ namespace Skills
     public class Skill
     {
         public Unit Unit { get; private set; }
-        public Deck Deck { get; private set; }
+        public Relic Relic { get; private set; }
         public Range Range { get; private set; }
         public int Power { get; private set; }
         public Element Element { get; private set; }
@@ -23,19 +24,19 @@ namespace Skills
         public SkillSO BaseSkill { get; private set; }
 
 
-        public static Skill CreateSkill(SkillSO skillSO, Deck deck, Unit user)
+        public static Skill CreateSkill(SkillSO skillSO, Relic relic, Unit user)
         {
             Skill _skill = new Skill();
             _skill.Unit = user;
-            _skill.Deck = deck;
+            _skill.Relic = relic;
             if (skillSO.Range.CanBeModified)
-                _skill.Range = skillSO.Range + deck.Range + user.BattleStats.Range;
+                _skill.Range = skillSO.Range + relic.Range + user.BattleStats.Range;
             else
                 _skill.Range = skillSO.Range;
-            _skill.Power = skillSO.Power + deck.Power + user.BattleStats.Power;
+            _skill.Power = skillSO.Power + relic.Power + user.BattleStats.Power;
             _skill.Element = skillSO.Element;
             _skill.Affect = skillSO.Affect;
-            _skill.Cost = skillSO.Cost + deck.Cost;
+            _skill.Cost = skillSO.Cost + relic.Cost;
             _skill.Type = skillSO.Type;
             _skill.Buffs = new List<Buff>();
             
@@ -45,7 +46,7 @@ namespace Skills
                 _skill.Buffs.Add(buff);
             }
             
-            foreach (StatusSO _deckStatus in deck.StatusEffects)
+            foreach (StatusSO _deckStatus in relic.StatusEffects)
             {
                 Buff buff = new Buff(user, _deckStatus);
                 _skill.Buffs.Add(buff);
@@ -54,8 +55,13 @@ namespace Skills
             _skill.Effects = new List<IEffect>();
             _skill.Effects.AddRange(skillSO.Effects);
             _skill.Effects.Add(skillSO.GridEffect);
-            _skill.Effects.AddRange(deck.Effects);
+            _skill.Effects.AddRange(relic.Effects);
             _skill.BaseSkill = skillSO;
+            
+            foreach (RelicEffect _relicEffect in relic.RelicEffects)
+            {
+                _relicEffect.ChangeSkill(_skill);
+            }
 
             return _skill;
         }
