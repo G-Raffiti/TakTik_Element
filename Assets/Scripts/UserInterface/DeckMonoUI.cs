@@ -62,7 +62,7 @@ namespace UserInterface
         public void onEndTurn(Void _obj)
         {
             int childs = transform.childCount;
-            for (int i = childs - 1; i > 0; i--)
+            for (int i = childs - 1; i > -1; i--)
             {
                 GameObject.Destroy(transform.GetChild(i).gameObject);
             }
