@@ -228,7 +228,7 @@ namespace Skills._Zone
         /// Get all the Cell on which you can use a skill
         /// </summary>
         /// <returns></returns>
-        public static List<Cell> CellsInRange(SkillInfo skill, Cell _startCell)
+        public static List<Cell> CellsInRange(Skill skill, Cell _startCell)
         {
             List<Cell> _inRange = new List<Cell>();
             
@@ -250,7 +250,7 @@ namespace Skills._Zone
         /// Get all the Cell on which you can use a skill if you need the view
         /// </summary>
         /// <returns></returns>
-        public static List<Cell> CellsInView(SkillInfo skill, Cell _startCell)
+        public static List<Cell> CellsInView(Skill skill, Cell _startCell)
         {
             List<Cell> _inRange = new List<Cell>();
 
@@ -349,29 +349,29 @@ namespace Skills._Zone
         /// </summary>
         /// <param name="_cell">the cell that have to be tested</param>
         /// <returns></returns>
-        public static IMovable GetAffected(Cell _cell, SkillInfo _skillInfo)
+        public static IMovable GetAffected(Cell _cell, Skill skill)
         {
             IMovable _affected = null;
-            switch (_skillInfo.Affect)
+            switch (skill.Affect)
             {
                 case EAffect.All :
                     if (_cell.IsTaken)
                         _affected = _cell.GetCurrentIMovable();
                     break;
                 case EAffect.OnlyAlly:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == _skillInfo.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == skill.Unit.playerNumber)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyEnemy:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != _skillInfo.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != skill.Unit.playerNumber)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlySelf:
-                    if (_cell.IsTaken && _cell.CurrentUnit == _skillInfo.Unit)
+                    if (_cell.IsTaken && _cell.CurrentUnit == skill.Unit)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyOthers:
-                    if (_cell.IsTaken && _cell != _skillInfo.Unit.Cell)
+                    if (_cell.IsTaken && _cell != skill.Unit.Cell)
                     {
                         _affected = _cell.GetCurrentIMovable();
                     }

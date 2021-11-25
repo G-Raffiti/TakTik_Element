@@ -16,8 +16,7 @@ namespace UserInterface
     /// </summary>
     public class DeckMonoUI : MonoBehaviour
     {
-        private AllDecks allDecks;
-        private Dictionary<SkillInfo, int> skills;
+        private DeckMono deck;
         private Unit unit;
 
         [SerializeField] private GameObject skillBtn;
@@ -29,21 +28,11 @@ namespace UserInterface
 
         private IEnumerator Start()
         {
-            allDecks = GameObject.Find("Decks").GetComponent<AllDecks>();
-            skills = new Dictionary<SkillInfo, int>();
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                skills.Add(transform.GetChild(i).gameObject.GetComponent<SkillInfo>(), transform.childCount - i - 1);
-            }
-            
-            int number = transform.GetSiblingIndex();
+            AllDecksMono allDecks = GameObject.Find("Decks").GetComponent<AllDecksMono>();
             
             yield return new WaitForSeconds(0.1f);
             
-            foreach (SkillInfo _skillsKey in skills.Keys)
-            {
-                _skillsKey.Deck = allDecks.Decks[number];
-            }
+            deck = allDecks.Deck;
         }
 
         private void OnEnable()
@@ -68,34 +57,28 @@ namespace UserInterface
             }
             else unit = item;
             
-            UpdateDisplay();
+            StartCoroutine(DrawAnimation());
         }
 
         public void onSkillUsedRaised<T>(T param)
         {
-            UpdateDisplay();
+            DrawAnimation();
         }
 
-        private void UpdateDisplay()
+        private void OnSkillUsed()
         {
-            foreach (KeyValuePair<SkillInfo,int> _skill in skills)
+            
+        }
+
+        private IEnumerator DrawAnimation()
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            foreach (Skill skill in deck.GetHandSkills())
             {
-                if (_skill.Key.Deck.Skills.Count - 1 < _skill.Value)
-                {
-                    foreach (Transform _child in _skill.Key.gameObject.transform)
-                    {
-                        _child.gameObject.SetActive(false);
-                    }
-                }
-                else
-                {
-                    foreach (Transform _child in _skill.Key.gameObject.transform)
-                    {
-                        _child.gameObject.SetActive(true);
-                    }
-                    _skill.Key.UpdateSkill(_skill.Value, unit);
-                    _skill.Key.DisplayIcon();
-                }
+                GameObject skillInfo = GameObject.Instantiate(skillBtn, transform);
+                skillInfo.GetComponent<SkillInfoMono>().skill = skill;
+                skillInfo.GetComponent<SkillInfoMono>().skill = skill;
             }
             /*
             if (BattleStateManager.instance.PlayingUnit.BattleStats.AP < 1 || FirstSkill.Cost > FirstSkill.Unit.BattleStats.AP)
