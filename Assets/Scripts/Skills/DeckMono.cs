@@ -77,6 +77,7 @@ namespace Skills
             }
         }
         
+        
         /// <summary>
         /// Add up all the relics
         /// </summary>
@@ -159,22 +160,14 @@ namespace Skills
             Skills.Sort((s, s2) => s.Cost.CompareTo(s2.Cost));
         }
         
-        public void LearnSkill(SkillSO _monsterSkill)
+        public void LearnSkill(SkillSO _monsterSkill, Skill learning)
         {
+            HandSkills.Remove(learning.BaseSkill);
             List<SkillSO> _newList = new List<SkillSO> {_monsterSkill};
-            _newList.AddRange(Skills);
-            Skills = new List<SkillSO>(_newList);
+            _newList.AddRange(HandSkills);
+            HandSkills = new List<SkillSO>(_newList);
         }
 
-        /// <summary>
-        /// Used in Camp to Swap Skill or in Event to Add a Skill to a Specific Deck
-        /// </summary>
-        /// <param name="LearnSkill">Skill to Add in the Deck</param>
-        public void AddSkill(SkillSO LearnSkill)
-        {
-            Skills.Add(LearnSkill);
-        }
-        
         /// <summary>
         /// Used in Camp to Swap Skill or in Event to Forget a Skill Completly
         /// </summary>

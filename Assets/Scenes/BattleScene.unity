@@ -7909,7 +7909,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &378864358
 MonoBehaviour:
@@ -16926,7 +16926,7 @@ MonoBehaviour:
     HP: 100
     Shield: 0
     Speed: 12
-    Power: 0
+    Power: 2
     Affinity:
       Fire: 0
       Nature: 0
@@ -21498,7 +21498,7 @@ MonoBehaviour:
     HP: 100
     Shield: 0
     Speed: 12
-    Power: 0
+    Power: 2
     Affinity:
       Fire: 0
       Nature: 0
@@ -32113,7 +32113,7 @@ MonoBehaviour:
     HP: 100
     Shield: 0
     Speed: 12
-    Power: 0
+    Power: 2
     Affinity:
       Fire: 0
       Nature: 0
@@ -35467,7 +35467,6 @@ MonoBehaviour:
   skillBtn: {fileID: 3250177244620070828, guid: 9597014960766244e8ff3cd6166a62c0,
     type: 3}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
-  onSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
   onUnitEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
 --- !u!1 &1737196880

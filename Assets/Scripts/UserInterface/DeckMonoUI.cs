@@ -19,7 +19,6 @@ namespace UserInterface
 
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onUnitStartTurn;
-        [SerializeField] private VoidEvent onSkillUsed;
         [SerializeField] private VoidEvent onActionDone;
         [SerializeField] private VoidEvent onUnitEndTurn;
 
@@ -34,17 +33,15 @@ namespace UserInterface
 
         private void OnEnable()
         {
-            onSkillUsed.EventListeners += onSkillUsedRaised;
             onUnitStartTurn.EventListeners += onUnitStartTurnRaised;
-            onActionDone.EventListeners += onSkillUsedRaised;
+            onActionDone.EventListeners += onActionDoneRaised;
             onUnitEndTurn.EventListeners += onEndTurn;
         }
 
         private void OnDisable()
         {
-            onSkillUsed.EventListeners -= onSkillUsedRaised;
             onUnitStartTurn.EventListeners -= onUnitStartTurnRaised;
-            onActionDone.EventListeners -= onSkillUsedRaised;
+            onActionDone.EventListeners -= onActionDoneRaised;
             onUnitEndTurn.EventListeners -= onEndTurn;
         }
 
@@ -68,20 +65,19 @@ namespace UserInterface
             }
         }
 
-        public void onSkillUsedRaised<T>(T param)
+        public void onActionDoneRaised<T>(T param)
         {
-            DrawAnimation();
-        }
-
-        private void OnSkillUsed()
-        {
-            
+            StartCoroutine(DrawAnimation());
         }
 
         private IEnumerator DrawAnimation()
         {
-            yield return new WaitForSeconds(0.2f);
-
+            int childs = transform.childCount;
+            for (int i = childs - 1; i > -1; i--)
+            {
+                GameObject.Destroy(transform.GetChild(i).gameObject);
+            }
+            
             Unit currentUnit = BattleStateManager.instance.PlayingUnit;
             if (BattleStateManager.instance.PlayingUnit == null) yield break;
             
@@ -93,6 +89,8 @@ namespace UserInterface
                 skillInfo.GetComponent<SkillInfo>().skill = skill;
                 skillInfo.GetComponent<SkillInfo>().Unit = currentUnit;
                 skillInfo.GetComponent<SkillInfo>().DisplayIcon();
+
+                //yield return new WaitForSeconds(0.2f);
             }
         }
     }

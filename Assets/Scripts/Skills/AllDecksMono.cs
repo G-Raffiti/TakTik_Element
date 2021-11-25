@@ -60,5 +60,11 @@ namespace Skills
             onActionDone.Raise();
             Deck.PrintDebug();
         }
+
+        public void LearnSkill(SkillSO _skillSO, Skill learning)
+        {
+            Deck.LearnSkill(_skillSO, learning);
+            onActionDone.Raise();
+        }
     }
 }

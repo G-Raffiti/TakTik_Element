@@ -65,6 +65,7 @@ namespace Skills
             }
 
             OnSkillUsed.Raise();
+            DestroyImmediate(this.gameObject);
         }
         
         private static IEnumerator HighlightZone(List<Cell> zone)
