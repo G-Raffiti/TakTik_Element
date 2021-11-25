@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using _EventSystem.CustomEvents;
 using _ScriptableObject;
 using Cells;
@@ -28,11 +30,9 @@ namespace Skills
         [Header("Event Sender")] 
         [SerializeField] private SkillEvent onSkillSelected;
         [SerializeField] private VoidEvent OnSkillUsed;
-        
-        public Unit Unit { get; private set; }
 
-        public Skill skill { get; private set; }
-        public List<Buff> Buffs { get; private set; }
+        public Unit Unit;
+        public Skill skill;
 
         /// <summary>
         /// Method Called by the IA to Use a Skill that is not in the Deck
@@ -68,6 +68,54 @@ namespace Skills
             Unit.BattleStats.AP -= skill.cost;
 
             OnSkillUsed?.Raise();
+        }
+        
+        /// <summary>
+        /// Methode Called on Skill Use, it will trigger all Skill Effects and Grid Effects on the Affected Cells
+        /// </summary>
+        /// <param name="_cell">Cell Clicked</param>
+        /// <returns></returns>
+        public void UseSkill(SkillInfo _skillInfo, Cell _cell)
+        {
+            if (Unit.BattleStats.AP < skill.cost) return;
+            if (skill.effects.Any(_effect => !_effect.CanUse(_cell, _skillInfo)))
+                return;
+            Debug.Log($"{_skillInfo.Unit} Use {_skillInfo.ColouredName()}");
+            if (skill.effects.Find(_effect => _effect is Learning) != null)
+            {
+                skill.effects.Find(_effect => _effect is Learning).Use(_cell, _skillInfo);
+                return;
+            }
+            
+            Unit.BattleStats.AP -= skill.cost;
+            
+            //TODO : Play Skill animation
+            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
+            _zone.Sort((_cell1, _cell2) =>
+                _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
+            StartCoroutine(HighlightZone(_zone));
+            
+            foreach (IEffect _effect in skill.effects)
+            {
+                _effect.Use(_cell, _skillInfo);
+            }
+
+            OnSkillUsed.Raise();
+        }
+        
+        private static IEnumerator HighlightZone(List<Cell> zone)
+        {
+            foreach (Cell _cell in zone)
+            {
+                _cell.MarkAsHighlighted();
+                yield return new WaitForSeconds(0.05f);
+            }
+            foreach (Cell _cell in zone)
+            {
+                _cell.MarkAsHighlighted();
+            }
+            yield return new WaitForSeconds(0.2f);
+            zone.ForEach(c => c.UnMark());
         }
 
         /// <summary>
