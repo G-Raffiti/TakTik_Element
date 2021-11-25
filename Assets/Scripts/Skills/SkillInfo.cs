@@ -48,6 +48,7 @@ namespace Skills
             if (skill.Effects.Find(_effect => _effect is Learning) != null)
             {
                 skill.Effects.Find(_effect => _effect is Learning).Use(_cell, this);
+                OnSkillUsed.Raise();
                 return;
             }
             
