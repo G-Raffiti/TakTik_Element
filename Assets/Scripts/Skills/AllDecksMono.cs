@@ -19,7 +19,7 @@ namespace Skills
         [SerializeField] private VoidEvent onEndTurn;
         [SerializeField] private VoidEvent onBattleStart;
 
-        private void Start() 
+        private void Start()
         {
             DontDestroyOnLoad(gameObject.transform);
             if (instance == null)

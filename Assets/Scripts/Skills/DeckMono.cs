@@ -167,11 +167,6 @@ namespace Skills
             return true;
         }
 
-        public void UpdateSkill(int index)
-        {
-            UpdateSkill(Skills[index]);
-        }
-
         public void Initialize()
         {
             Skills.AddRange(ConsumedSkills);

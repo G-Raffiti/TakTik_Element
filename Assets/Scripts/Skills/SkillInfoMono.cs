@@ -35,37 +35,15 @@ namespace Skills
         public Skill skill;
 
         /// <summary>
-        /// Method Called by the IA to Use a Skill that is not in the Deck
-        /// </summary>
-        /// <param name="skill">
-        /// the skill to Use
-        /// </param>
-        /// <param name="cell">
-        /// the targeted Cell
-        /// </param>
-        /// <param name="sender">
-        /// the Unit who use the skill
-        /// </param>
-        public void UseSkill(SkillSO skill, Cell cell, Unit sender)
-        {
-            /*
-            UpdateSkill(skill, sender);
-            UseSkill(cell);
-            Deck.NextSkill();
-            UpdateSkill(0, Unit);
-            */
-        }
-        
-        /// <summary>
         /// Method Called buy the Player by Clicking in the Icon in BattleScene
         /// </summary>
         /// <param name="cell"></param>
         public void UseSkill(Cell cell)
         {
-            if (Unit.BattleStats.AP < skill.cost) return;
+            if (Unit.BattleStats.AP < skill.Cost) return;
             //if (!deck.UseSkill(this, cell)) return;
 
-            Unit.BattleStats.AP -= skill.cost;
+            Unit.BattleStats.AP -= skill.Cost;
 
             OnSkillUsed?.Raise();
         }
@@ -77,17 +55,17 @@ namespace Skills
         /// <returns></returns>
         public void UseSkill(SkillInfo _skillInfo, Cell _cell)
         {
-            if (Unit.BattleStats.AP < skill.cost) return;
-            if (skill.effects.Any(_effect => !_effect.CanUse(_cell, _skillInfo)))
+            if (Unit.BattleStats.AP < skill.Cost) return;
+            if (skill.Effects.Any(_effect => !_effect.CanUse(_cell, _skillInfo)))
                 return;
             Debug.Log($"{_skillInfo.Unit} Use {_skillInfo.ColouredName()}");
-            if (skill.effects.Find(_effect => _effect is Learning) != null)
+            if (skill.Effects.Find(_effect => _effect is Learning) != null)
             {
-                skill.effects.Find(_effect => _effect is Learning).Use(_cell, _skillInfo);
+                skill.Effects.Find(_effect => _effect is Learning).Use(_cell, _skillInfo);
                 return;
             }
             
-            Unit.BattleStats.AP -= skill.cost;
+            Unit.BattleStats.AP -= skill.Cost;
             
             //TODO : Play Skill animation
             List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
@@ -95,7 +73,7 @@ namespace Skills
                 _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
             StartCoroutine(HighlightZone(_zone));
             
-            foreach (IEffect _effect in skill.effects)
+            foreach (IEffect _effect in skill.Effects)
             {
                 _effect.Use(_cell, _skillInfo);
             }
@@ -125,7 +103,7 @@ namespace Skills
         /// <returns></returns>
         public List<Cell> GetZoneOfEffect(Cell _cell)
         {
-            return Zone.GetZone(skill.range, _cell);
+            return Zone.GetZone(skill.Range, _cell);
         }
         
         public List<Cell> GetRangeFrom(Cell _cell)
@@ -136,37 +114,37 @@ namespace Skills
         #region IInfo
         public override string GetInfoMain()
         {
-            return $"{ColouredName()}\n{skill.skillso.Type} of {skill.element.Name}\ncost: {skill.cost} <sprite name=AP>";
+            return $"{ColouredName()}\n{skill.BaseSkill.Type} of {skill.Element.Name}\ncost: {skill.Cost} <sprite name=AP>";
         }
 
         public override string GetInfoLeft()
         {
             string str = "";
-            skill.effects.ForEach(effect => str += /*effect.InfoEffect(this) +*/ "\n");
+            skill.Effects.ForEach(effect => str += /*effect.InfoEffect(this) +*/ "\n");
             return str;
         }
 
         public override string GetInfoRight()
         {
-            return skill.range.ToString();
+            return skill.Range.ToString();
         }
 
         public override string GetInfoDown()
         {
             string str = "";
-            Buffs.ForEach(buff => str += buff.InfoBuff());
+            skill.Buffs.ForEach(buff => str += buff.InfoBuff());
             return str;
         }
 
         public override Sprite GetIcon()
         {
-            return skill.skillso.Icon;
+            return skill.BaseSkill.Icon;
         }
 
         public override string ColouredName()
         {
-            string _hexColor = ColorUtility.ToHtmlStringRGB(skill.element.TextColour);
-            return $"<color=#{_hexColor}>{skill.name}</color>";
+            string _hexColor = ColorUtility.ToHtmlStringRGB(skill.Element.TextColour);
+            return $"<color=#{_hexColor}>{skill.BaseSkill.Name}</color>";
         }
 
         public override void OnPointerClick(PointerEventData eventData)
@@ -187,7 +165,7 @@ namespace Skills
 
         public int GetPower(EElement _elementType)
         {
-            return skill.power + Unit.BattleStats.GetPower(_elementType);
+            return skill.Power + Unit.BattleStats.GetPower(_elementType);
         }
     }
 }
