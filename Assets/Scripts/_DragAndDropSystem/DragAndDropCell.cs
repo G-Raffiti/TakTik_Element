@@ -254,8 +254,8 @@ namespace _DragAndDropSystem
 			{
 				case ContainType.Skill:
 				{
-					item.GetComponent<SkillInfo>().Deck = sourceCell.GetInfoSkill().Deck;
-					item.GetComponent<SkillInfo>().UpdateSkill(sourceCell.GetInfoSkill().Skill, sourceCell.GetInfoSkill().Unit);
+					item.GetComponent<SkillInfo>().skill = sourceCell.GetInfoSkill().skill;
+					item.GetComponent<SkillInfo>().Unit = sourceCell.GetInfoSkill().Unit;
 				}
 					break;
 				case ContainType.Gear:
@@ -266,7 +266,6 @@ namespace _DragAndDropSystem
 				case ContainType.Relic:
 				{
 					item.GetComponent<RelicInfo>().CreateRelic(sourceCell.GetInfoRelic().Relic);
-					item.GetComponent<RelicInfo>().SetDeck(sourceCell.GetInfoRelic().Deck);
 				}
 					break;
 			}
