@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _EventSystem.Listeners;
+using _Instances;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Void = _EventSystem.CustomEvents.Void;
@@ -50,6 +51,12 @@ namespace SceneManagement
 
         private void YouWin()
         {
+            if (KeepBetweenScene.Stage == 1 && KeepBetweenScene.BattleNumber == 0)
+            {
+                StartNewBattle(new Void());
+                return;
+            }
+
             GoToRandomShop();
         }
 

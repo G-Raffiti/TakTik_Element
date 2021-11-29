@@ -9,16 +9,19 @@ namespace _Instances
         public static int Stage = 0;
         private const int BattlePerStage = 3;
         public static int BattleBeforeBoss = BattlePerStage;
+        public static int BattleNumber = 0;
 
         public static void NextStage()
         {
             Stage += 1;
             BattleBeforeBoss = BattlePerStage;
+            BattleNumber = 0;
         }
 
         public static void StartBattle()
         {
             BattleBeforeBoss -= 1;
+            BattleNumber += 1;
             Debug.Log($"Stage = {Stage}, Battle number = {BattlePerStage - BattleBeforeBoss}");
         }
         

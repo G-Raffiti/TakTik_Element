@@ -520,7 +520,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
+      - m_Target: {fileID: 11400000, guid: 2e31f6187584ef8478a2b7cd7dc38858, type: 2}
         m_TargetAssemblyTypeName: _EventSystem.CustomEvents.BaseGameEvent`1[[System.Int32,
           mscorlib
         m_MethodName: Raise
@@ -757,6 +757,7 @@ MonoBehaviour:
   - {fileID: 106409112}
   actualHero: {fileID: 1022346166}
   onCampPointUsed: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
+  onHeroChange: {fileID: 11400000, guid: 2e31f6187584ef8478a2b7cd7dc38858, type: 2}
 --- !u!1 &183110410
 GameObject:
   m_ObjectHideFlags: 0
@@ -6122,7 +6123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
+      - m_Target: {fileID: 11400000, guid: 2e31f6187584ef8478a2b7cd7dc38858, type: 2}
         m_TargetAssemblyTypeName: _EventSystem.CustomEvents.BaseGameEvent`1[[System.Int32,
           mscorlib
         m_MethodName: Raise
@@ -7714,7 +7715,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1818944347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1dbf69b146949e19160eac906de472d, type: 3}
+  m_Script: {fileID: 11500000, guid: 981581f6b236498185b7c14b502be596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   txtCampPoint: {fileID: 1960289166}
@@ -7724,7 +7725,6 @@ MonoBehaviour:
   SlotRelicSwap2: {fileID: 1405607852}
   SlotForgetSkill: {fileID: 495014056}
   onSwapSkill: {fileID: 11400000, guid: 55493fc5e8ab3cf4a83c8b3343e703fa, type: 2}
-  onSwapRelic: {fileID: 11400000, guid: 336fd81f5b4d1bb438145b6454e321d5, type: 2}
   onForgetSkill: {fileID: 11400000, guid: 5189e00702c5d7546ac7e8714789c838, type: 2}
   onCampHeal: {fileID: 11400000, guid: d64eb9599322eea4bbb3fa83420f52d9, type: 2}
   onCampPointUsed: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
@@ -9703,7 +9703,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: f227bea2ed683954b931e2dfd2e8e3a5, type: 2}
+      - m_Target: {fileID: 11400000, guid: 2e31f6187584ef8478a2b7cd7dc38858, type: 2}
         m_TargetAssemblyTypeName: _EventSystem.CustomEvents.BaseGameEvent`1[[System.Int32,
           mscorlib
         m_MethodName: Raise
@@ -9967,9 +9967,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Shops.CampUI, Assembly-CSharp
-        m_MethodName: ForgetSkillButton
+      - m_Target: {fileID: 11400000, guid: 5189e00702c5d7546ac7e8714789c838, type: 2}
+        m_TargetAssemblyTypeName: _EventSystem.CustomEvents.VoidEvent, Assembly-CSharp
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

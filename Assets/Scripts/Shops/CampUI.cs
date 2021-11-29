@@ -19,7 +19,6 @@ namespace Shops
         
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onSwapSkill;
-        [SerializeField] private VoidEvent onSwapRelic;
         [SerializeField] private VoidEvent onForgetSkill;
         [SerializeField] private VoidEvent onCampHeal;
         
@@ -46,24 +45,6 @@ namespace Shops
             txtCampPoint.text = $"You have {campPoint} Camp Points Left";
             EmptySlots();
         }
-
-        /*public void SwapSkillButton()
-        {
-            if (SlotSkillSwap1.GetInfoSkill() == null || SlotSkillSwap2.GetInfoSkill() == null) return;
-            SkillSwap1 = SlotSkillSwap1.GetInfoSkill();
-            SkillSwap2 = SlotSkillSwap2.GetInfoSkill();
-            if (SkillSwap1.Deck == SkillSwap2.Deck) return;
-            onSwapSkill.Raise();
-        }
-
-        public void SwapRelicButton()
-        {
-            if (SlotRelicSwap1.GetInfoRelic() == null || SlotRelicSwap2.GetInfoRelic() == null) return;
-            RelicSwap1 = SlotRelicSwap1.GetInfoRelic();
-            RelicSwap2 = SlotRelicSwap2.GetInfoRelic();
-            if (RelicSwap1.Deck == RelicSwap2.Deck) return;
-            onSwapRelic.Raise();
-        }*/
 
         public void ForgetSkillButton()
         {

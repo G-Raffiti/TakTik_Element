@@ -61,7 +61,7 @@ namespace Shops
         public void ForgetSkill(Void empty)
         {
             if (CampPoint < 1) return;
-            DeckMonoCampUI _campUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<DeckMonoCampUI>();
+            CampUI _campUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<CampUI>();
             if (FindObjectOfType<DeckMono>().RemoveSkill(_campUI.SkillForget.skill.BaseSkill))
             {
                 CampPoint -= 1;

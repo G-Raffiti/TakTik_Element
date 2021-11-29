@@ -22,12 +22,15 @@ namespace Shops
         [SerializeField] private BattleHero actualHero;
         private List<SkillInfo> allSkills { get; set; }
 
-        [Header("Event Listener")] [SerializeField]
-        private IntEvent onCampPointUsed;
+        [Header("Event Listener")] 
+        [SerializeField] private IntEvent onCampPointUsed;
+        [SerializeField] private IntEvent onHeroChange;
 
         private void OnEnable()
         {
+            onHeroChange.EventListeners += ChangeHero;
             onCampPointUsed.EventListeners += InitializeDisplay;
+            
 
             for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
             {
@@ -41,6 +44,7 @@ namespace Shops
 
         private void OnDisable()
         {
+            onHeroChange.EventListeners -= ChangeHero;
             onCampPointUsed.EventListeners -= InitializeDisplay;
         }
 
@@ -60,7 +64,7 @@ namespace Shops
                 _cell.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Skill;
 
                 GameObject pref = GameObject.Instantiate(prefabSkill.gameObject, _cell.transform);
-                pref.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, Deck.Relic, actualHero);
+                pref.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, Deck, actualHero);
                 pref.GetComponent<SkillInfo>().Unit = actualHero;
                 pref.GetComponent<SkillInfo>().DisplayIcon();
 
@@ -104,7 +108,7 @@ namespace Shops
             foreach (SkillInfo _skill in allSkills)
             {
                 SkillSO s = _skill.skill.BaseSkill;
-                _skill.skill = Skill.CreateSkill(s, Deck.Relic, actualHero);
+                _skill.skill = Skill.CreateSkill(s, Deck, actualHero);
             }
         }
     }

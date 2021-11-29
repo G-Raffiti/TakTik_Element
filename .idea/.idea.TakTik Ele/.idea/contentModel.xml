@@ -182,6 +182,7 @@
           </e>
           <e p="Shops" t="Include">
             <e p="Camp.cs" t="Include" />
+            <e p="CampUI.cs" t="Include" />
             <e p="DeckMonoCampUI.cs" t="Include" />
             <e p="Forge.cs" t="Include" />
             <e p="ForgeUI.cs" t="Include" />

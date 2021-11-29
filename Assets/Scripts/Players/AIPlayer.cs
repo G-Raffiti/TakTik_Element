@@ -39,16 +39,16 @@ namespace Players
             public int DeBuffOnCell;
         }
         
-        private Monster unit;
-        private SkillInfo monsterSkill;
-        private Dictionary<Cell, int> destinations = new Dictionary<Cell, int>();
-        private Dictionary<Cell, Dictionary<Cell, int>> skillTargets = new Dictionary<Cell, Dictionary<Cell, int>>();
+        private Monster monster;
+        private static SkillInfo skillInfo;
+        private static Dictionary<Cell, int> destinations = new Dictionary<Cell, int>();
+        private static Dictionary<Cell, Dictionary<Cell, int>> skillTargets = new Dictionary<Cell, Dictionary<Cell, int>>();
 
-        private EvaluationValues evaluationValues;
+        private static EvaluationValues evaluationValues;
 
         [Header("Event Listener")]
         [SerializeField] private VoidEvent onSkillUsed;
-        private bool skillUsed;
+        private static bool skillUsed;
         
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onEndTurn;
@@ -65,11 +65,11 @@ namespace Players
                 stateManager.BattleState = new BattleStateUnitSelected(stateManager, stateManager.PlayingUnit);
                 return;
             }
-            unit = (Monster) stateManager.PlayingUnit;
-            monsterSkill = unit.GetComponentInChildren<SkillInfo>();
-            evaluationValues = unit.Archetype.Evaluations;
+            monster = (Monster) stateManager.PlayingUnit;
+            skillInfo = monster.GetComponentInChildren<SkillInfo>();
+            evaluationValues = monster.Archetype.Evaluations;
             
-            unit.OnTurnStart();
+            monster.OnTurnStart();
 
             // Play
             onMonsterPlay.Raise();
@@ -84,18 +84,23 @@ namespace Players
 
         private IEnumerator Routine(BattleStateManager stateManager)
         {
-            unit.isPlaying = true;
+            monster.isPlaying = true;
 
-            bool canPlay = unit.BattleStats.AP > 0;
-            bool canMove = unit.BattleStats.MP > 0;
+            bool canPlay = monster.BattleStats.AP > 0;
+            bool canMove = monster.BattleStats.MP > 0;
 
             DestinationTarget best;
-            if (unit.BattleStats.AP >= unit.monsterSkill.Cost)
-                best = Evaluate(unit.monsterSkill, stateManager);
-            else best = Evaluate(Skill.CreateSkill(DataBase.Skill.MonsterAttack, Relic.CreateRelic(unit.Relics), unit), stateManager);
+            if (monster.BattleStats.AP >= monster.monsterSkill.Cost)
+                best = Evaluate(monster, monster.monsterSkill.BaseSkill, stateManager);
+            else best = Evaluate(monster, DataBase.Skill.MonsterAttack, stateManager);
             
-            ColorTheFloor();
+            //TODO : possibilité d'activé les couleur de des cells de l'IA via un menu Setting
+            //ColorTheFloor();
+            
             yield return new WaitForSeconds(1);
+
+            Debug.Log("CanPlay ?" + canPlay);
+            Debug.Log("Target ?" + (best.Target != null));
             
             int loop = 0;
             // Loop where the Unit Use all his AP.
@@ -105,54 +110,67 @@ namespace Players
                 Debug.Log(loop);
                 
                 // Move
-                List<Cell> path = unit.FindPath(stateManager.Cells, best.Destination);
-                path.Sort((_cell, _cell1) => _cell.GetDistance(unit.Cell).CompareTo(_cell1.GetDistance(unit.Cell)));
-                path.Reverse();
-                unit.Move(best.Destination, path);
-
-                yield return new WaitUntil(() => !unit.IsMoving);
+                if (best.Destination != monster.Cell)
+                {
+                    List<Cell> path = monster.FindPath(stateManager.Cells, best.Destination);
+                    path.Sort((_cell, _cell1) => _cell.GetDistance(monster.Cell).CompareTo(_cell1.GetDistance(monster.Cell)));
+                    path.Reverse();
+                    monster.Move(best.Destination, path);
+                }
+                
+                Debug.Log("move start");
+                yield return new WaitUntil(() => !monster.IsMoving);
+                Debug.Log("move done");
                 yield return new WaitForSeconds(0.2f);
             
                 // Use Skill
                 onSkillUsed.EventListeners += SkillUsed;
-                monsterSkill.UseSkill(best.Target);
-
+                skillInfo.UseSkill(best.Target);
+                
+                Debug.Log("skill send");
                 yield return new WaitUntil(() => skillUsed);
+                Debug.Log("skill used");
                 yield return new WaitForSeconds(0.2f);
                 
                 UnColor(stateManager);
                 
                 // Check Loop Conditions
-                canPlay = (int) unit.BattleStats.AP > 0;
-                canMove = unit.BattleStats.MP > 0;
+                canPlay = (int) monster.BattleStats.AP > 0;
+                canMove = monster.BattleStats.MP > 0;
                 
                 skillUsed = false;
                 onSkillUsed.EventListeners -= SkillUsed;
 
-                if (unit.BattleStats.AP >= unit.monsterSkill.Cost)
-                    best = Evaluate(unit.monsterSkill, stateManager);
-                else best = Evaluate(Skill.CreateSkill(DataBase.Skill.MonsterAttack, Relic.CreateRelic(unit.Relics), unit), stateManager);
-                ColorTheFloor();
+                if (monster.BattleStats.AP >= monster.monsterSkill.Cost)
+                    best = Evaluate(monster, monster.monsterSkill.BaseSkill, stateManager);
+                else best = Evaluate(monster, DataBase.Skill.MonsterAttack, stateManager);
+                
+                //TODO : possibilité d'activé les couleur de des cells de l'IA via un menu Setting
+                //ColorTheFloor();
                 yield return new WaitForSeconds(1);
+                Debug.Log("end Loop");
             }
 
             // Move one Last Time at the best Place
-            if (canMove)
+            if (canMove && best.Destination != monster.Cell)
             {
                 // Move
-                List<Cell> path = unit.FindPath(stateManager.Cells, best.Destination);
-                path.Sort((_cell, _cell1) => _cell.GetDistance(unit.Cell).CompareTo(_cell1.GetDistance(unit.Cell)));
-                unit.Move(best.Destination, path);
+                List<Cell> path = monster.FindPath(stateManager.Cells, best.Destination);
+                path.Sort((_cell, _cell1) => _cell.GetDistance(monster.Cell).CompareTo(_cell1.GetDistance(monster.Cell)));
+                monster.Move(best.Destination, path);
 
-                yield return new WaitUntil(() => !unit.IsMoving);
+                Debug.Log("start second Move");
+                yield return new WaitUntil(() => !monster.IsMoving);
+                Debug.Log("second Move done");
             }
 
             
             // End Turn
-            monsterSkill.skill = unit.monsterSkill;
-            unit.isPlaying = false;
+            skillInfo.skill = monster.monsterSkill;
+            monster.isPlaying = false;
             
             yield return new WaitForSeconds(1);
+            Debug.Log("end turn");
             
             onEndTurn.Raise();
         }
@@ -183,31 +201,32 @@ namespace Players
 
         #region Evaluation
 
-        private DestinationTarget Evaluate(Skill _skill, BattleStateManager stateManager)
+        private static DestinationTarget Evaluate(Monster _monster, SkillSO _skill, BattleStateManager stateManager)
         {
             // Reset Dictionaries
             destinations = new Dictionary<Cell, int>();
             skillTargets = new Dictionary<Cell, Dictionary<Cell, int>>();
             
             // Get all the Cell to evaluate
-            destinations.Add(unit.Cell, 0);
-            skillTargets.Add(unit.Cell, new Dictionary<Cell, int>());
-            foreach (Cell availableCell in unit.GetAvailableDestinations(stateManager.Cells))
+            destinations.Add(_monster.Cell, 0);
+            skillTargets.Add(_monster.Cell, new Dictionary<Cell, int>());
+            foreach (Cell availableCell in _monster.GetAvailableDestinations(stateManager.Cells))
             {
+                if (destinations.Keys.Contains(availableCell)) continue;
                 destinations.Add(availableCell, 0);
                 skillTargets.Add(availableCell, new Dictionary<Cell, int>());
             }
             
             // Set the Skill to Evaluate
-            monsterSkill.skill = unit.monsterSkill;
+            skillInfo.skill = Skill.CreateSkill(_skill, _monster.monsterSkill.Deck, _monster);
             
             // If the MonsterSkill have Zone Get all TargetCell to evaluate
-            if (monsterSkill.skill.Range.ZoneType != EZone.Self || monsterSkill.skill.Range.Radius > 0)
+            if (skillInfo.skill.Range.ZoneType != EZone.Self || skillInfo.skill.Range.Radius > 0)
             {
                 foreach (Cell destination in destinations.Keys)
                 {
                     List<Cell> inRange = new List<Cell>();
-                    inRange.AddRange(monsterSkill.skill.Range.NeedView ? Zone.CellsInView(monsterSkill.skill, destination) : Zone.CellsInRange(monsterSkill.skill, destination));
+                    inRange.AddRange(skillInfo.skill.Range.NeedView ? Zone.CellsInView(skillInfo.skill, destination) : Zone.CellsInRange(skillInfo.skill, destination));
                     foreach (Cell _cellInRange in inRange)
                     {
                         skillTargets[destination].Add(_cellInRange, 0);
@@ -216,48 +235,46 @@ namespace Players
             }
             
             // Evaluate The Destinations
-            EvaluateCells(stateManager);
+            EvaluateCells(_monster, stateManager);
             
             // Evaluate the SkillUse Potential
-            if (monsterSkill.skill.Range.ZoneType == EZone.Self || monsterSkill.skill.Range.Radius < 1)
-                EvaluateDirectTarget(stateManager, monsterSkill);
-            else EvaluateZoneTarget(monsterSkill);
+            if (skillInfo.skill.Range.ZoneType == EZone.Self || skillInfo.skill.Range.Radius < 1)
+                EvaluateDirectTarget(stateManager, skillInfo);
+            else EvaluateZoneTarget(skillInfo);
             
             // Get the Best Move
-            DestinationTarget Best = GetBestDestinationTarget();
+            DestinationTarget Best = GetBestDestinationTarget(_monster);
             
             // If the Best Target is Null Evaluate with the Monster Basic Attack
             if (Best.Target == null)
             {
-                monsterSkill.skill = Skill.CreateSkill(DataBase.Skill.MonsterAttack, Relic.CreateRelic(unit.Relics), unit);
-                if (monsterSkill.skill.Range.ZoneType == EZone.Self || monsterSkill.skill.Range.Radius < 1)
-                    EvaluateDirectTarget(stateManager, monsterSkill);
-                else EvaluateZoneTarget(monsterSkill);
+                skillInfo.skill = Skill.CreateSkill(DataBase.Skill.MonsterAttack, skillInfo.skill.Deck, _monster);
+                if (skillInfo.skill.Range.ZoneType == EZone.Self || skillInfo.skill.Range.Radius < 1)
+                    EvaluateDirectTarget(stateManager, skillInfo);
+                else EvaluateZoneTarget(skillInfo);
                 
                 // Check Again for the Best Target
-                Best = GetBestDestinationTarget();
+                Best = GetBestDestinationTarget(_monster);
             }
-            
-            
-            
+
             // If the Best Target is Still Null Evaluate the distance to the nearest enemy
             if (Best.Target == null)
             {
-                EvaluateDistanceToAlly(stateManager);
-                EvaluateDistanceToEnemy(stateManager);
+                EvaluateDistanceToAlly(_monster, stateManager);
+                EvaluateDistanceToEnemy(_monster, stateManager);
             }
             
             // Get the Best Move After Check
-            Best = GetBestDestinationTarget();
+            Best = GetBestDestinationTarget(_monster);
             
             return Best;
         }
         
-        private void EvaluateDistanceToEnemy(BattleStateManager stateManager)
+        private static void EvaluateDistanceToEnemy(Unit _unit, BattleStateManager stateManager)
         {
             // Find the nearest Enemy
-            List<Unit> enemies = new List<Unit>(stateManager.Units.Where(u => u.playerNumber != unit.playerNumber));
-            enemies.Sort((u, u2) => u.Cell.GetDistance(unit.Cell).CompareTo(u2.Cell.GetDistance(unit.Cell)));
+            List<Unit> enemies = new List<Unit>(stateManager.Units.Where(u => u.playerNumber != _unit.playerNumber));
+            enemies.Sort((u, u2) => u.Cell.GetDistance(_unit.Cell).CompareTo(u2.Cell.GetDistance(_unit.Cell)));
 
             List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);
             foreach (Cell _cell in destinationsKeys)
@@ -267,11 +284,11 @@ namespace Players
             }
         }
         
-        private void EvaluateDistanceToAlly(BattleStateManager stateManager)
+        private static void EvaluateDistanceToAlly(Unit _unit, BattleStateManager stateManager)
         {
             // Find the nearest Ally
-            List<Unit> allies = new List<Unit>(stateManager.Units.Where(u => u.playerNumber == unit.playerNumber));
-            allies.Sort((u, u2) => u.Cell.GetDistance(unit.Cell).CompareTo(u2.Cell.GetDistance(unit.Cell)));
+            List<Unit> allies = new List<Unit>(stateManager.Units.Where(u => u.playerNumber == _unit.playerNumber));
+            allies.Sort((u, u2) => u.Cell.GetDistance(_unit.Cell).CompareTo(u2.Cell.GetDistance(_unit.Cell)));
 
             List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);
             foreach (Cell _cell in destinationsKeys)
@@ -281,14 +298,14 @@ namespace Players
             }
         }
         
-        private void EvaluateCells(BattleStateManager stateManager)
+        private static void EvaluateCells(Unit _unit, BattleStateManager stateManager)
         {
             // Evaluate Distance from playing Unit
-            int MP = (int)unit.BattleStats.MP * evaluationValues.MPCost;
+            int MP = (int)_unit.BattleStats.MP * evaluationValues.MPCost;
             List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);
             foreach (Cell _cell in destinationsKeys)
             {
-                int Point = MP - unit.FindPath(stateManager.Cells, _cell).Count * evaluationValues.MPCost;
+                int Point = MP - _unit.FindPath(stateManager.Cells, _cell).Count * evaluationValues.MPCost;
                 destinations[_cell] += Point;
             }
             
@@ -300,8 +317,8 @@ namespace Players
                 {
                     if (c.CurrentGridObject != null) Neighbours += evaluationValues.NearToObject;
                     if (c.CurrentUnit == null) continue;
-                    if (c.CurrentUnit.playerNumber != unit.playerNumber) Neighbours += evaluationValues.NearToEnemy;
-                    if (c.CurrentUnit.playerNumber == unit.playerNumber) Neighbours += evaluationValues.NearToAlly;
+                    if (c.CurrentUnit.playerNumber != _unit.playerNumber) Neighbours += evaluationValues.NearToEnemy;
+                    if (c.CurrentUnit.playerNumber == _unit.playerNumber) Neighbours += evaluationValues.NearToAlly;
                 }
                 
                 destinations[_cell] += Neighbours;
@@ -324,9 +341,9 @@ namespace Players
             }
         }
 
-        private void EvaluateDirectTarget(BattleStateManager stateManager, SkillInfo skill)
+        private static void EvaluateDirectTarget(BattleStateManager stateManager, SkillInfo skill)
         {
-            List<Unit> Enemies = stateManager.Units.Where(u => u.playerNumber != unit.playerNumber).ToList();
+            List<Unit> Enemies = stateManager.Units.Where(u => u.playerNumber != skill.Unit.playerNumber).ToList();
             List<Unit> Allies = stateManager.Units.Except(Enemies).ToList();
             foreach (Unit _unit in stateManager.Units)
             {
@@ -343,7 +360,7 @@ namespace Players
             }
         }
 
-        private void EvaluateZoneTarget(SkillInfo skill)
+        private static void EvaluateZoneTarget(SkillInfo skill)
         {
             List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);
             foreach (Cell destination in destinationsKeys)
@@ -356,14 +373,14 @@ namespace Players
                     if (skill.GetZoneOfEffect(_cellInRange).Contains(destination))
                     {
                         if (skill.skill.Affect == EAffect.All || skill.skill.Affect == EAffect.OnlyAlly || skill.skill.Affect == EAffect.OnlySelf || skill.skill.Affect == EAffect.OnlyUnits)
-                            affected.Add(unit);
+                            affected.Add(skill.Unit);
                     }
                     
                     if (affected.Count != 0)
                     {
                         foreach (Unit _unit in affected)
                         {
-                            if (_unit.playerNumber == unit.playerNumber)
+                            if (_unit.playerNumber == skill.Unit.playerNumber)
                                 skillTargets[destination][_cellInRange] += evaluationValues.ZoneTargetAlly;
                             else
                                 skillTargets[destination][_cellInRange] += evaluationValues.ZoneTargetEnemy;
@@ -379,15 +396,15 @@ namespace Players
             }
         }
 
-        private DestinationTarget GetBestDestinationTarget()
+        private static DestinationTarget GetBestDestinationTarget(Unit _unit)
         {
-            Cell destinationOfMaxValue = unit.Cell;
+            Cell destinationOfMaxValue = _unit.Cell;
             
             if (destinations.Count != 0)
                 destinationOfMaxValue = destinations.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
             
             Cell targetOfMaxValue = null;
-            if (monsterSkill.skill.Range.ZoneType != EZone.Self || monsterSkill.skill.Range.Radius > 0)
+            if (skillInfo.skill.Range.ZoneType != EZone.Self || skillInfo.skill.Range.Radius > 0)
             {
                 if (skillTargets[destinationOfMaxValue].Count != 0)
                 {
@@ -400,10 +417,10 @@ namespace Players
             else
             {
                 List<Unit> Targets = new List<Unit>();
-                foreach (Cell _cell in monsterSkill.GetRangeFrom(destinationOfMaxValue))
+                foreach (Cell _cell in skillInfo.GetRangeFrom(destinationOfMaxValue))
                 {
-                    if(Zone.GetUnitAffected(_cell, monsterSkill) != null && Zone.GetUnitAffected(_cell, monsterSkill).playerNumber != unit.playerNumber)
-                        Targets.Add(Zone.GetUnitAffected(_cell, monsterSkill));
+                    if(Zone.GetUnitAffected(_cell, skillInfo) != null && Zone.GetUnitAffected(_cell, skillInfo).playerNumber != _unit.playerNumber)
+                        Targets.Add(Zone.GetUnitAffected(_cell, skillInfo));
                 }
 
                 Targets.Sort((u, u2) => (u.BattleStats.HP+u.BattleStats.Shield).CompareTo(u2.BattleStats.HP+u2.BattleStats.Shield));

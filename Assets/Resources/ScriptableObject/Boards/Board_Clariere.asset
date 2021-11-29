@@ -1665,6 +1665,7 @@ MonoBehaviour:
     gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
     isSpawn: 0
   camera:
-    x: 9
-    y: 5.1930003
+    x: 7.42
+    y: 4.03
+    size: 7.23
   endCondition: {fileID: 11400000, guid: cc05955004d94f247badcedc5801bc01, type: 2}

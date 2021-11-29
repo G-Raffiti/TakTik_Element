@@ -26,7 +26,7 @@ namespace Units
 
         private static List<MonsterSO> GenerateMinions()
         {
-            int _totalLvl = Random.Range(KeepBetweenScene.Stage, KeepBetweenScene.Stage * 2 + 3);
+            int _totalLvl = Random.Range(KeepBetweenScene.Stage + KeepBetweenScene.BattleNumber, KeepBetweenScene.Stage + KeepBetweenScene.BattleNumber * 2 + 1);
             List<MonsterSO> _ret = new List<MonsterSO>();
             int _actualLvl = 0;
             while (_actualLvl < _totalLvl)

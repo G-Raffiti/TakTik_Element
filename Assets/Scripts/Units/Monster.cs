@@ -38,7 +38,7 @@ namespace Units
         public List<RelicSO> Relics { get; private set; }
         public EReward RewardType { get; private set; }
         public EMonster Type { get; private set; }
-        
+
         /// <summary>
         /// Method called at the Unit Instantiation, it's create the Stats and change the Sprite. 
         /// </summary>
@@ -61,21 +61,23 @@ namespace Units
             buffs = new List<Buff>();
             
             Inventory = new Inventory();
-            if (RewardType == EReward.Gear)
-            {
-                Inventory.GenerateGearFor(monster, Stage);
-            }
+            Inventory.GenerateGearFor(monster, Stage);
 
             if (monster.Type == EMonster.Boss)
             {
                 Relics.Add(DataBase.Relic.GetRandom());
             }
 
+            deck.Relics = new List<RelicSO>(Relics);
+            deck.UpdateDeck();
+
             baseStats = monster.Stats();
             BattleStats = new BattleStats(baseStats + Inventory.GearStats());
             total = BattleStats;
-            
-            monsterSkill = Skill.CreateSkill(DataBase.Skill.GetSkillFor(monster), Relic.CreateRelic(Relics), this);
+            monsterSkill = Skill.CreateSkill(DataBase.Skill.GetSkillFor(monster), deck, this);
+
+            if (monsterSkill.Cost > total.AP)
+                total.AP = monsterSkill.Cost;
             
             skill.skill = monsterSkill;
             skill.Unit = this;

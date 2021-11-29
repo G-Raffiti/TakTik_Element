@@ -100,6 +100,7 @@ namespace Cells
                 DestroyImmediate(GameObject.Find("Objects").transform.GetChild(0).gameObject);
             }
 
+            dataBase.InstantiateDataBases();
             background.sprite = null;
             
             foreach (SavedCell _SavedCell in _data.Cells)
@@ -128,7 +129,7 @@ namespace Cells
             background.sprite = _data.Background;
 
             mainCamera.gameObject.transform.position = new Vector3(_data.Camera.x, _data.Camera.y, -15f);
-            mainCamera.orthographicSize = _data.Camera.x + 1;
+            mainCamera.orthographicSize = _data.Camera.size;
             background.transform.position = new Vector3(_data.Camera.x, _data.Camera.y, 0);
             
 

@@ -53,7 +53,7 @@ MonoBehaviour:
       NeedTarget: 0
       CanBeModified: 0
   prefab: {fileID: 1179847595273300741, guid: 89efd93c7d9c49c4b8310941e959cfba, type: 3}
-  unitSprite: {fileID: 21300000, guid: c0f58ad0aab3588468b82c9d7fe6492d, type: 3}
+  unitSprite: {fileID: 21300000, guid: 814da15a6c4af304a800e9b489ed9af9, type: 3}
   level: 1
   relic: {fileID: 0}
   rewardType: 1

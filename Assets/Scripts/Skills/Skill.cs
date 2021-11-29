@@ -13,6 +13,7 @@ namespace Skills
     public class Skill
     {
         public Unit Unit { get; private set; }
+        public DeckMono Deck { get; private set; }
         public Relic Relic { get; private set; }
         public Range Range { get; private set; }
         public int Power { get; private set; }
@@ -25,9 +26,11 @@ namespace Skills
         public SkillSO BaseSkill { get; private set; }
 
 
-        public static Skill CreateSkill(SkillSO skillSO, Relic relic, Unit user)
+        public static Skill CreateSkill(SkillSO skillSO, DeckMono deck, Unit user)
         {
             Skill _skill = new Skill();
+            _skill.Deck = deck;
+            Relic relic = deck.Relic;
             _skill.Unit = user;
             _skill.Relic = relic;
             if (skillSO.Range.CanBeModified)

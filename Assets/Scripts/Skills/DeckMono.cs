@@ -88,11 +88,12 @@ namespace Skills
         
         public List<Skill> GetHandSkills(Unit unit)
         {
+            Debug.Log("Hand Size :" + HandSkills.Count);
             List<Skill> skills = new List<Skill>();
             
             foreach (SkillSO skill in HandSkills)
             {
-                skills.Add(Skill.CreateSkill(skill, Relic, unit));
+                skills.Add(Skill.CreateSkill(skill, this, unit));
             }
 
             return skills;
@@ -101,14 +102,15 @@ namespace Skills
         /// <summary>
         /// Method Called when a Skill is Used.
         /// </summary>
-        public bool UseSkill(SkillSO skill)
+        public bool UseSkill(Skill skill)
         {
-            if (!HandSkills.Contains(skill)) return false;
+            if (!HandSkills.Contains(skill.BaseSkill)) return false;
             
-            if (skill.Consumable) ConsumedSkills.Add(skill);
-            else UsedSkills.Add(skill);
+            if (skill.BaseSkill.Consumable) 
+                ConsumedSkills.Add(skill.BaseSkill);
+            else UsedSkills.Add(skill.BaseSkill);
             
-            HandSkills.Remove(skill);
+            HandSkills.Remove(skill.BaseSkill);
             
             return true;
         }

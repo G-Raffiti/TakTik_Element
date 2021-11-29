@@ -18,8 +18,8 @@ namespace Skills
         [SerializeField] private List<DragAndDropCell> MonsterSlots;
         private List<RelicSO> monsterRelics;
         [SerializeField] private DeckMono deck1;
-        [SerializeField] private DeckMono deck2;
-        [SerializeField] private DeckMono deck3;
+        //[SerializeField] private DeckMono deck2;
+        //[SerializeField] private DeckMono deck3;
 
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onUIEnable;
@@ -72,7 +72,7 @@ namespace Skills
                     deck1.UpdateDeck();
                 }
 
-                if (i == 1 && DecksSlots[1].GetInfoRelic() != null)
+                /*if (i == 1 && DecksSlots[1].GetInfoRelic() != null)
                 {
                     deck2.Relics.Add(DecksSlots[1].GetInfoRelic().Relic);
                     deck2.UpdateDeck();
@@ -82,7 +82,7 @@ namespace Skills
                 {
                     deck3.Relics.Add(DecksSlots[2].GetInfoRelic().Relic);
                     deck3.UpdateDeck();
-                }
+                }*/
             }
 
             gameObject.SetActive(false);

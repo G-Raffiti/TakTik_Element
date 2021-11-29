@@ -19,13 +19,13 @@ namespace UserInterface
 
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onUnitStartTurn;
-        [SerializeField] private VoidEvent onActionDone;
+        [SerializeField] private VoidEvent onDraw;
         [SerializeField] private VoidEvent onUnitEndTurn;
 
         private IEnumerator Start()
         {
             AllDecksMono allDecks = GameObject.Find("DeckMono").GetComponent<AllDecksMono>();
-            
+
             yield return new WaitForSeconds(0.1f);
             
             deck = allDecks.Deck;
@@ -34,14 +34,14 @@ namespace UserInterface
         private void OnEnable()
         {
             onUnitStartTurn.EventListeners += onUnitStartTurnRaised;
-            onActionDone.EventListeners += onActionDoneRaised;
+            onDraw.EventListeners += OnDrawRaised;
             onUnitEndTurn.EventListeners += onEndTurn;
         }
 
         private void OnDisable()
         {
             onUnitStartTurn.EventListeners -= onUnitStartTurnRaised;
-            onActionDone.EventListeners -= onActionDoneRaised;
+            onDraw.EventListeners -= OnDrawRaised;
             onUnitEndTurn.EventListeners -= onEndTurn;
         }
 
@@ -53,7 +53,7 @@ namespace UserInterface
             }
             else unit = item;
             
-            StartCoroutine(DrawAnimation());
+            //StartCoroutine(DrawAnimation());
         }
 
         public void onEndTurn(Void _obj)
@@ -65,18 +65,21 @@ namespace UserInterface
             }
         }
 
-        public void onActionDoneRaised<T>(T param)
+        public void OnDrawRaised<T>(T param)
         {
             StartCoroutine(DrawAnimation());
         }
 
         private IEnumerator DrawAnimation()
         {
+            
             int childs = transform.childCount;
             for (int i = childs - 1; i > -1; i--)
             {
                 GameObject.Destroy(transform.GetChild(i).gameObject);
             }
+            
+            yield return new WaitForSeconds(0.2f);
             
             Unit currentUnit = BattleStateManager.instance.PlayingUnit;
             if (BattleStateManager.instance.PlayingUnit == null) yield break;

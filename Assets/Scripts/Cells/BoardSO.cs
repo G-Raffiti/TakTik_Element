@@ -47,11 +47,13 @@ namespace Cells
     {
         public float x;
         public float y;
+        public float size;
 
         public CameraSaved(Camera _camera)
         {
             x = _camera.transform.position.x;
             y = _camera.transform.position.y;
+            size = _camera.orthographicSize;
         }
     }
 }
