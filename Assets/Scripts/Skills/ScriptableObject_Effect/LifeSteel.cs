@@ -2,8 +2,6 @@
 using System.Linq;
 using _ScriptableObject;
 using Cells;
-using Skills._Zone;
-using Units;
 using UnityEngine;
 
 namespace Skills.ScriptableObject_Effect

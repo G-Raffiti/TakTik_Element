@@ -26,12 +26,12 @@ namespace StatusEffect
         {
         }
 
-        public override float GetPower(Unit sender)
+        public override float GetBuffValue(Unit sender)
         {
             return 0;
         }
 
-        public override int GetDuration(Unit sender)
+        public override int GetBuffDuration(Unit sender)
         {
             return 1;
         }

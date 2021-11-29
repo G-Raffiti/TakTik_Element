@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Linq;
 using Cells;
 using Skills._Zone;
-using Units;
 using UnityEngine;
 
 namespace Skills.ScriptableObject_Effect

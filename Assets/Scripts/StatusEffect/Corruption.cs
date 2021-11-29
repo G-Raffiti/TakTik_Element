@@ -19,12 +19,12 @@ namespace StatusEffect
         {
         }
 
-        public override float GetPower(Unit sender)
+        public override float GetBuffValue(Unit sender)
         {
             return 10 ;
         }
 
-        public override int GetDuration(Unit sender)
+        public override int GetBuffDuration(Unit sender)
         {
             return 10 ;
         }
@@ -32,7 +32,7 @@ namespace StatusEffect
         public override string InfoEffect(Buff _buff)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"Corruption Damage: <color=#{_hexColor}>{_buff.Power}</color>% of the Unit's HP at the End of the Unit Turn";
+            return $"Corruption Damage: <color=#{_hexColor}>{_buff.Value}</color>% of the Unit's HP at the End of the Unit Turn";
         }
 
         public override string InfoOnUnit(Buff _buff, Unit _unit)

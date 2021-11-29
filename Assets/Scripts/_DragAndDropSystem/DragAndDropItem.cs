@@ -1,5 +1,4 @@
-﻿using Gears;
-using Resources.ToolTip.Scripts;
+﻿using Resources.ToolTip.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

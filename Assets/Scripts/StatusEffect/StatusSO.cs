@@ -17,8 +17,8 @@ namespace StatusEffect
         public abstract void ActiveEffect(Buff _buff, Unit _unit);
         public abstract void PassiveEffect(Buff _buff, Unit _unit);
         public abstract void EndPassiveEffect(Buff _buff, Unit _unit);
-        public abstract float GetPower(Unit sender);
-        public abstract int GetDuration(Unit sender);
+        public abstract float GetBuffValue(Unit sender);
+        public abstract int GetBuffDuration(Unit sender);
         public abstract string InfoEffect(Buff _buff);
         public abstract string InfoOnUnit(Buff _buff, Unit _unit);
 
@@ -27,7 +27,7 @@ namespace StatusEffect
             if (a.Effect != b.Effect) return a;
             Buff ret = new Buff(a);
             ret.Duration += b.Duration;
-            ret.Power += b.Power;
+            ret.Value += b.Value;
 
             return ret;
         }

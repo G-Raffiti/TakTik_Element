@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using _EventSystem.CustomEvents;
 using _Instances;
 using _ScriptableObject;
 using Cells;
 using Gears;
-using Grid;
-using Players;
+using Relics;
 using Skills;
 using Skills._Zone;
+using StateMachine;
 using Stats;
 using StatusEffect;
 using UnityEngine;
@@ -83,11 +82,6 @@ namespace Units
             skill.Unit = this;
 
             InitializeSprite();
-        }
-
-        public override bool IsUnitAttackable(Unit other, Cell sourceCell)
-        {
-            return Zone.GetRange(BattleStats.Range + DataBase.Skill.MonsterAttack.Range, cell).Contains(other.Cell);
         }
 
         public override void OnTurnEnd()

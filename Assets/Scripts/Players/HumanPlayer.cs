@@ -1,5 +1,5 @@
-using Grid;
-using Grid.GridStates;
+using StateMachine;
+using StateMachine.GridStates;
 
 namespace Players
 {

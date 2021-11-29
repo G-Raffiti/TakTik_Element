@@ -4,13 +4,13 @@ using System.Linq;
 using System.Reflection;
 using Cells;
 using Editor.GridGenerators;
-using Grid;
-using Grid.UnitGenerators;
 using GridObjects;
-using Gui;
 using Players;
+using StateMachine;
+using StateMachine.UnitGenerators;
 using UnityEditor;
 using UnityEngine;
+using UserInterface;
 
 namespace Editor
 {

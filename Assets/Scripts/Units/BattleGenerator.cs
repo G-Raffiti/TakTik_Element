@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using _Instances;
-using BattleOver;
+using EndConditions;
 using Random = UnityEngine.Random;
 
 namespace Units

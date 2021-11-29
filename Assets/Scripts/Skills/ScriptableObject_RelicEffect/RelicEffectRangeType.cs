@@ -1,5 +1,4 @@
-﻿using _ScriptableObject;
-using Skills._Zone;
+﻿using Relics;
 using UnityEngine;
 
 namespace Skills.ScriptableObject_RelicEffect

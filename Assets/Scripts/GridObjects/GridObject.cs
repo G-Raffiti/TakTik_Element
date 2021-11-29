@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using Cells;
-using Grid;
+using StateMachine;
 using Units;
 using UnityEngine;
 
@@ -59,8 +59,6 @@ namespace GridObjects
 
         public bool IsInteractable =>
             gridObject.GetZoneOfInteraction(Cell).Contains(BattleStateManager.instance.PlayingUnit.Cell) && !isUsed;
-
-        public string Name { get; set; }
 
         public bool IsInteractableFrom(Cell _cell)
         {

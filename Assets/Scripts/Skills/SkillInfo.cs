@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
-using _ScriptableObject;
 using Cells;
-using Grid;
-using Grid.GridStates;
 using Resources.ToolTip.Scripts;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
+using StateMachine;
 using Stats;
-using StatusEffect;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Range = Stats.Range;
 
 namespace Skills
 {

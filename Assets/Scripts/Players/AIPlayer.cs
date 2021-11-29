@@ -2,14 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using _EventSystem.CustomEvents;
 using _Instances;
 using Cells;
-using Grid;
-using Grid.GridStates;
 using Skills;
 using Skills._Zone;
+using StateMachine;
+using StateMachine.GridStates;
 using Units;
 using UnityEngine;
 using Void = _EventSystem.CustomEvents.Void;
@@ -337,7 +336,10 @@ namespace Players
             // Evaluate Buffs on Floor
             foreach (Cell _cell in destinationsKeys)
             {
-                if (_cell.Buffs.Count >= 0) destinations[_cell] += evaluationValues.DeBuffOnCell;
+                int buffs = _cell.Buffs.Count;
+                if (buffs <= 0) continue;
+                
+                destinations[_cell] += buffs * evaluationValues.DeBuffOnCell;
             }
         }
 

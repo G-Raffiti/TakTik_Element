@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Stats;
 using Units;
-using UnityEngine;
 
 namespace Gears
 {

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Instances;
-using Grid;
+using DataBases;
 using Resources.ToolTip.Scripts;
+using StateMachine;
 using StatusEffect;
 using UnityEngine;
-using UserInterface;
 
 namespace Cells
 {
@@ -74,7 +74,7 @@ namespace Cells
             {
                 if (Buffs[i].Effect == buff.Effect)
                 {
-                    Buffs[i] += buff;
+                    Buffs[i].AddBuff(buff);
                     applied = true;
                     break;
                 }

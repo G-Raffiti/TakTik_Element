@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using _EventSystem.CustomEvents;
 using Gears;
+using Relics;
 using Skills;
 using UnityEngine;
 using UnityEngine.EventSystems;

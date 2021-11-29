@@ -1,4 +1,5 @@
 ﻿using System;
+using DataBases;
 
 namespace Stats
 {
@@ -23,7 +24,7 @@ namespace Stats
 
         public string Value(int _value)
         {
-            return $"{_value} {affix.Icon(affix.Type)}";
+            return $"{_value} {affix.Icon}";
         }
 
         public int getTier()

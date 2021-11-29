@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Pathfinding.DataStructs;
 using GridObjects;
-using Pathfinding.DataStructs;
 using StatusEffect;
 using Units;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Cells
 {

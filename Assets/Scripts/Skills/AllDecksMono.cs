@@ -11,7 +11,7 @@ namespace Skills
         private static GameObject instance;
 
         [Header("Event Sender")] 
-        [SerializeField] private VoidEvent onDrawDone;
+        [SerializeField] private VoidEvent onDraw;
         
         [Header("Event Listener")] 
         [SerializeField] private UnitEvent onUnitStartTurn;
@@ -28,14 +28,14 @@ namespace Skills
 
             Deck = transform.GetComponentInChildren<DeckMono>();
             
-            onUnitStartTurn.EventListeners += OnEventRaised;
+            onUnitStartTurn.EventListeners += OnUnitStartTurn;
             onBattleStart.EventListeners += FirstShuffle;
             onEndTurn.EventListeners += EndTurn;
         }
 
         private void OnDestroy()
         {
-            onUnitStartTurn.EventListeners -= OnEventRaised;
+            onUnitStartTurn.EventListeners -= OnUnitStartTurn;
             onBattleStart.EventListeners -= FirstShuffle;
             onEndTurn.EventListeners -= EndTurn;
         }
@@ -43,7 +43,7 @@ namespace Skills
         public void EndTurn(Void _obj)
         {
             Deck.ClearHandSkills();
-            onDrawDone.Raise();
+            onDraw.Raise();
             Deck.PrintDebug();
         }
 
@@ -53,18 +53,18 @@ namespace Skills
             Deck.PrintDebug();
         }
 
-        public void OnEventRaised(Unit item)
+        private void OnUnitStartTurn(Unit item)
         {
             if (item.playerNumber != 0) return;
             Deck.DrawNewHand();
-            onDrawDone.Raise();
+            onDraw.Raise();
             Deck.PrintDebug();
         }
 
         public void LearnSkill(SkillSO _skillSO, Skill learning)
         {
             Deck.LearnSkill(_skillSO, learning);
-            onDrawDone.Raise();
+            onDraw.Raise();
         }
     }
 }

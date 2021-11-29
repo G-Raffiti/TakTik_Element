@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using Cells;
-using Gears;
-using Skills;
-using Stats;
-using Units;
+using DataBases;
 using UnityEngine;
 
 namespace _Instances

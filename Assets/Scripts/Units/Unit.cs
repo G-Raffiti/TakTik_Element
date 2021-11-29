@@ -3,19 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
+using _Pathfinding.Algorithms;
 using _ScriptableObject;
 using Cells;
+using DataBases;
 using Gears;
-using Grid;
-using Grid.GridStates;
-using Pathfinding.Algorithms;
-using Resources.ToolTip.Scripts;
+using StateMachine;
 using Stats;
 using StatusEffect;
 using TMPro;
 using Units.UnitStates;
 using UnityEngine;
-using UserInterface;
 
 namespace Units
 {
@@ -144,7 +142,7 @@ namespace Units
                 if (buffs[i].Effect == _buff.Effect)
                 {
                     buffs[i].Undo(this);
-                    buffs[i] += _buff;
+                    buffs[i].AddBuff(_buff);
                     buffs[i].Apply(this);
                     applied = true;
                     break;
@@ -181,7 +179,7 @@ namespace Units
         
         
         private static DijkstraPathfinding pathfinder = new DijkstraPathfinding();
-        private static Pathfinding.Algorithms.Pathfinding fallbackPathfinder = new AStarPathfinding();
+        private static Pathfinding fallbackPathfinder = new AStarPathfinding();
 
 
         public override void AutoSortOrder()
@@ -321,54 +319,7 @@ namespace Units
         #endregion
     
     #region Fight Attack / Defence
-        /// <summary>
-        /// Method indicates if it is possible to attack a unit from given cell.
-        /// </summary>
-        /// <param name="other">Unit to attack</param>
-        /// <param name="sourceCell">Cell to perform an attack from</param>
-        /// <returns>Boolean value whether unit can be attacked or not</returns>
-        public virtual bool IsUnitAttackable(Unit other, Cell sourceCell)
-        {
-            return sourceCell.GetDistance(other.Cell) <= BattleStats.Range.RangeValue
-                && other.playerNumber != playerNumber
-                && BattleStats.AP >= 1;
-        }
-
-        /// <summary>
-        /// Method performs an attack on given unit.
-        /// </summary>
-        public void AttackHandler(Unit _unitToAttack)
-        {
-            if (!IsUnitAttackable(_unitToAttack, Cell))
-            {
-                return;
-            }
-
-            AttackAction _attackAction = DealDamage(_unitToAttack);
-            MarkAsAttacking(_unitToAttack);
-            _unitToAttack.DefendHandler(this, _attackAction.Damage, Element.None());
-            AttackActionPerformed(_attackAction.ActionCost);
-        }
-        
-        /// <summary>
-        /// Method for calculating damage and action points cost of attacking given unit
-        /// </summary>
-        /// <returns></returns>
-        protected virtual AttackAction DealDamage(Unit _unitToAttack)
-        {
-            return new AttackAction(BattleStats.Power, 1f);
-        }
-        
-        /// <summary>
-        /// Method called after unit performed an attack.
-        /// </summary>
-        /// <param name="actionCost">Action point cost of performed attack</param>
-        protected virtual void AttackActionPerformed(float actionCost)
-        {
-            BattleStats.AP -= actionCost;
-        }
-
-        /// <summary>
+    /// <summary>
         /// Handler method for defending against an attack.
         /// </summary>
         /// <param name="aggressor">Unit that performed the attack</param>
@@ -377,60 +328,51 @@ namespace Units
         public void DefendHandler(Unit aggressor, float damage, Element element)
         {
             Debug.Log($"Damage : {aggressor.UnitName} did {damage} {element.Type} damage to {UnitName}");
-            int _damageTaken = Defend(damage, element);
+
+            int _damageTaken = 0;
+            if (damage > 0)
+                _damageTaken = DamageTaken(damage, element);
+            else _damageTaken = BattleStats.GetHealTaken(damage, element.Type);
 
             OnHit(_damageTaken, element);
             
             if (_damageTaken > 0)
             {
                 MarkAsDefending(aggressor);
+                
+                if (BattleStats.Shield > 0)
+                {
+                    if (BattleStats.Shield < _damageTaken)
+                    {
+                        _damageTaken -= BattleStats.Shield;
+                        BattleStats.Shield = 0;
+                    }
+                    else
+                    {
+                        BattleStats.Shield -= _damageTaken;
+                        _damageTaken = 0;
+                    }
+                }
             }
 
-            if (BattleStats.Shield > 0)
-            {
-                if (BattleStats.Shield < _damageTaken)
-                {
-                    _damageTaken -= BattleStats.Shield;
-                    BattleStats.Shield = 0;
-                }
-                else
-                {
-                    BattleStats.Shield -= _damageTaken;
-                    _damageTaken = 0;
-                }
-            }
-                
             BattleStats.HP -= _damageTaken;
             if (BattleStats.HP > total.HP) 
                 BattleStats.HP = total.HP;
-            
-            DefenceActionPerformed();
 
             UnitAttacked?.Invoke(this, new AttackEventArgs(aggressor, this, (int)damage));
             if (BattleStats.HP > 0) return;
             StartCoroutine(OnDestroyed());
         }
-        
-        /// <summary>
-        /// Method called after unit performed defence.
-        /// </summary>
-        protected void DefenceActionPerformed() { }
-        
-        /// <summary>
-        /// Method for calculating actual damage taken by the unit.
-        /// </summary>
-        /// <param name="aggressor">Unit that performed the attack</param>
-        /// <param name="damage">Amount of damage that the attack caused</param>
-        /// <param name="element">Element of the damage</param>
-        /// <returns>Amount of damage that the unit has taken</returns>        
-        protected int Defend(float damage, Element element)
-        {
-            return (int) BattleStats.GetDamageTaken(damage, element.Type);
-        }
 
+        /// <summary>
+        /// get the Damage Mitigation from Affinity
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public int DamageTaken(float damage, Element element)
         {
-            return Defend(damage, element);
+            return (int) BattleStats.GetDamageTaken(damage, element.Type);
         }
         
     #endregion
@@ -498,15 +440,7 @@ namespace Units
         {
             cell?.MarkAsHighlighted();
         }
-        
-        /// <summary>
-        /// Method marks unit to indicate user that he can't do anything more with it this turn.
-        /// </summary>
-        public void MarkAsFinished()
-        {
-            UnMark();
-        }
-        
+
         /// <summary>
         /// Method returns the unit to its base appearance
         /// </summary>
@@ -518,12 +452,21 @@ namespace Units
         /// <summary>
         /// Method to Show to the player what happened and how much damage was done
         /// </summary>
-        protected void OnHit(int damage, Element element)
+        private void OnHit(int damage, Element element)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(element.TextColour);
             if (damage == 0) return;
-            info.text = damage > 0 ? $"- <color=#{_hexColor}>{damage}</color> HP" : $"+ {-damage} HP";
-            shadow.text = damage > 0 ? $"- {damage} HP" : $"+ {-damage} HP";
+            if (damage > 0)
+            {
+                info.text = $"- <color=#{_hexColor}>{damage}</color> HP";
+                shadow.text = $"- {damage} HP";
+            }
+            else
+            {
+                info.text = $"+ {-damage} HP";
+                shadow.text = $"+ {-damage} HP";
+            }
+            
             anim.PlayQueued("TextFade");
         }
 
@@ -537,18 +480,7 @@ namespace Units
         {
             anim.PlayQueued("Hit");
         }
-        
-        /// <summary>
-        /// Gives visual indication that the unit is attacking.
-        /// </summary>
-        /// <param name="target">
-        /// Unit that is under attack.
-        /// </param>
-        public void MarkAsAttacking(Unit target)
-        {
-            anim.PlayQueued("Attack");
-        }
-        
+
         /// <summary>
         /// Gives visual indication that the unit is destroyed. It gets called right before the unit game object is
         /// destroyed.
@@ -569,7 +501,7 @@ namespace Units
 
             UnitState = new UnitStateNormal(this);
 
-            Inventory ??= new Inventory();
+            Inventory = new Inventory();
         }
 
         public void OnDestroy()
@@ -623,18 +555,12 @@ namespace Units
             isDying = true;
             Cell.FreeTheCell();
             MarkAsDestroyed();
-            yield return new WaitWhile(IsAnimPlaying);
+            yield return new WaitWhile(() => anim.isPlaying);
             UnitDestroyed?.Invoke(this, new DeathEventArgs(this));
             isDying = false;
             yield return new WaitForSeconds(0.1f);
             Destroy(gameObject);
         }
-
-        /// <summary>
-        /// return true if the Unit is playing any animation
-        /// </summary>
-        /// <returns></returns>
-        protected bool IsAnimPlaying() => anim.isPlaying;
 
         /// <summary>
         /// Method is called when unit is selected.

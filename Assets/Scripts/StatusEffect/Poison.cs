@@ -1,5 +1,4 @@
-﻿using System;
-using Units;
+﻿using Units;
 using UnityEngine;
 
 namespace StatusEffect
@@ -10,7 +9,7 @@ namespace StatusEffect
         [SerializeField] private int duration = 10;
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
-            _unit.DefendHandler(_unit, _buff.Power, Element);
+            _unit.DefendHandler(_unit, _buff.Value, Element);
         }
 
         public override void PassiveEffect(Buff _buff, Unit _unit)
@@ -21,12 +20,12 @@ namespace StatusEffect
         {
         }
 
-        public override float GetPower(Unit sender)
+        public override float GetBuffValue(Unit sender)
         {
             return sender.BattleStats.GetPower(Element.Type);
         }
 
-        public override int GetDuration(Unit sender)
+        public override int GetBuffDuration(Unit sender)
         {
             return duration;
         }
@@ -34,14 +33,14 @@ namespace StatusEffect
         public override string InfoEffect(Buff _buff)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"Poison Damage: <color=#{_hexColor}>{_buff.Power}</color> each time an Unit play their Turn \n Duration: {_buff.Duration} Turn";
+            return $"Poison Damage: <color=#{_hexColor}>{_buff.Value}</color> each time an Unit play their Turn \n Duration: {_buff.Duration} Turn";
         }
 
         public override string InfoOnUnit(Buff _buff, Unit _unit)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
             return
-                $"Poisoned: -<color=#{_hexColor}>{(int)_buff.Power}</color> HP / Unit's Turn\nDuration: last for {_buff.Duration} Turn";
+                $"Poisoned: -<color=#{_hexColor}>{(int)_buff.Value}</color> HP / Unit's Turn\nDuration: last for {_buff.Duration} Turn";
         }
 
         public override string InfoOnFloor(Buff _buff)

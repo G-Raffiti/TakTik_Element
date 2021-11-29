@@ -1,6 +1,6 @@
 ﻿using System;
 using Cells;
-using Grid;
+using StateMachine;
 using Units;
 using UnityEngine;
 
@@ -10,41 +10,41 @@ namespace StatusEffect
     public class Buff
     {
         public int Duration;
-        public float Power;
+        public float Value;
 
         [SerializeField] private StatusSO StatusEffect;
         public StatusSO Effect => StatusEffect;
         public Buff(Buff _buff)
         {
             Duration = _buff.Duration;
-            Power = _buff.Power;
+            Value = _buff.Value;
             StatusEffect = _buff.StatusEffect;
         }
 
-        public static Buff operator +(Buff a, Buff b)
+        /*public static Buff operator +(Buff a, Buff b)
         {
             if (a.Effect != b.Effect) return a;
             Buff ret = new Buff(a)
             {
                 Duration = a.Duration + b.Duration,
-                Power = a.Power + b.Power,
+                Value = a.Value + b.Value,
                 StatusEffect = a.StatusEffect,
             };
             return ret;
-        }
+        }*/
         
         public Buff (Unit sender, StatusSO _status)
         {
             StatusEffect = _status;
-            Duration = StatusEffect.GetDuration(sender);
-            Power = StatusEffect.GetPower(sender);
+            Duration = StatusEffect.GetBuffDuration(sender);
+            Value = StatusEffect.GetBuffValue(sender);
         }
         
         public Buff (Cell tile, StatusSO _status)
         {
             StatusEffect = _status;
             Duration = 1000;
-            Power = 10;
+            Value = 10;
         }
         
         /// <summary>
@@ -107,6 +107,13 @@ namespace StatusEffect
         public string InfoBuffOnCell()
         {
             return StatusEffect.InfoOnFloor(this);
+        }
+
+        public void AddBuff(Buff _buff)
+        {
+            Buff added = StatusEffect.AddBuff(this, _buff);
+            Value = added.Value;
+            Duration = added.Duration;
         }
     }
 }

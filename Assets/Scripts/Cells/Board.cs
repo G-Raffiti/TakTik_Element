@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using _Instances;
-using BattleOver;
+using EndConditions;
 using GridObjects;
 using UnityEditor;
 using UnityEngine;

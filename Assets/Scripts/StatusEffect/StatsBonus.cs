@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Stats;
 using Units;
 using UnityEngine;
@@ -7,7 +6,7 @@ using UnityEngine;
 
 namespace StatusEffect
 {
-    public enum EDependency{ None, Magic, Physic, Focus, Affinity }
+    public enum EDependency{ None, Power, Focus, Affinity }
     [CreateAssetMenu(fileName = "Status_StatsBonus_", menuName = "Scriptable Object/Status Effects/Stats Bonus")]
     public class StatsBonus : StatusSO
     {
@@ -15,9 +14,9 @@ namespace StatusEffect
         [SerializeField] private List<Affix> Malus;
         [SerializeField] private bool isDefinitive;
         [SerializeField] private int duration;
-        [SerializeField] private float powerPercent;
+        [SerializeField] private EDependency dependOn;
+        [SerializeField] private int fixValue;
         [SerializeField] private string description;
-
 
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
@@ -28,7 +27,7 @@ namespace StatusEffect
             BattleStats bonus = new BattleStats(0);
             Bonus.ForEach(affix => bonus += affix.affix.GenerateBS(affix.value));
             Malus.ForEach(affix => bonus -= affix.affix.GenerateBS(affix.value));
-            bonus = bonus + bonus * _buff.Power;
+            bonus = bonus + bonus * _buff.Value;
 
             _unit.BattleStats += bonus;
             if (_unit.BattleStats.Speed <= 0)
@@ -42,19 +41,36 @@ namespace StatusEffect
             BattleStats bonus = new BattleStats();
             Bonus.ForEach(affix => bonus += affix.affix.GenerateBS(affix.value));
             Malus.ForEach(affix => bonus -= affix.affix.GenerateBS(affix.value));
-            bonus = bonus + bonus * _buff.Power;
+            bonus = bonus + bonus * _buff.Value;
 
             _unit.BattleStats -= bonus;
         }
         
-        public override float GetPower(Unit sender)
+        public override float GetBuffValue(Unit sender)
         {
-            return sender.BattleStats.Affinity.GetAffinity(Element.Type) * powerPercent /100f;
+            int factor = 1;
+            switch (dependOn)
+            {
+                case EDependency.None:
+                    factor = fixValue;
+                    break;
+                case EDependency.Power:
+                    factor += sender.BattleStats.Power;
+                    break;
+                case EDependency.Focus:
+                    factor += sender.BattleStats.Focus;
+                    break;
+                case EDependency.Affinity:
+                    factor += sender.BattleStats.GetPower(Element.Type);
+                    break;
+            }
+
+            return factor;
         }
 
-        public override int GetDuration(Unit sender)
+        public override int GetBuffDuration(Unit sender)
         {
-            return duration;
+            return sender.BattleStats.GetFocus(Element.Type);
         }
 
         public override string InfoEffect(Buff _buff)
@@ -63,12 +79,12 @@ namespace StatusEffect
             if (Bonus.Count > 0)
             {
                 str += $"Stats Bonus:";
-                Bonus.ForEach(affix => str += affix.Value((int)(affix.value + affix.value * _buff.Power)));
+                Bonus.ForEach(affix => str += affix.Value((int)(affix.value + affix.value * _buff.Value)));
             }
             if (Malus.Count > 0)
             {
                 str += $"\nStats Malus:";
-                Malus.ForEach(affix => str += $"-{affix.Value((int)(affix.value + affix.value * _buff.Power))}");
+                Malus.ForEach(affix => str += $"-{affix.Value((int)(affix.value + affix.value * _buff.Value))}");
             }
             if (_buff.Duration != 0)
                 str += $"\n Duration: {_buff.Duration} Turn";

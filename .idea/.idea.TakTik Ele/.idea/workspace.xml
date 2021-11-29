@@ -14,7 +14,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127E81E1-CB34-41CC-97D2-6B1910DAAE77/df/323f48a6/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.5.7/Editor/Collaborate/UserInterface/CollaborateWindow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
@@ -22,46 +25,14 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Decks.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Decks_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropItem.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Camp.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/CampUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/DeckUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PlayingUnitsInfo_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecks.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Deck.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateSkillSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InfoGear.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Isometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DataBaseSkill.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/rawMonster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_ScriptableObject/Archetype.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/DataBaseMonster.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/TurnOrderPrefab.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Listeners/VoidListener.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/UnityVoidEvent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/BattleStateManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateBeginning.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/KeepBetweenScene.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleGenerator.cs" />
@@ -73,6 +44,38 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckMonoUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/DataBaseAffix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ForgeUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/CampUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Camp.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affinity.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Buff.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/BattleStats.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateUnitSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CSVFiles.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CSVFiles/rawMonster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckMonoHand_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopInventory_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleDeckMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Battle_AP_MP_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleTurnOrder_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/BattleInventory_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Pathfinding/Algorithms/AStarPathfinding.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
@@ -88,7 +91,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="ReSpellerSettingsId" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">

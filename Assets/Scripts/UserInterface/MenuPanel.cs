@@ -1,6 +1,4 @@
-﻿using System;
-using _EventSystem.CustomEvents;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace UserInterface

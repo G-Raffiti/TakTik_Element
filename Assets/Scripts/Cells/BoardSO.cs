@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleOver;
+using EndConditions;
 using UnityEditor;
 using UnityEngine;
 

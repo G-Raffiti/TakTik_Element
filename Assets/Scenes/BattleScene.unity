@@ -10146,6 +10146,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 12
     Power: 2
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0
@@ -13237,6 +13238,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 12
     Power: 2
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0
@@ -20677,6 +20679,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 12
     Power: 2
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0
@@ -25411,7 +25414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Deck: {fileID: 963500106}
-  onDrawDone: {fileID: 11400000, guid: 5df12d826f7fb3e4f8361bd46ddde90f, type: 2}
+  onDraw: {fileID: 11400000, guid: 5df12d826f7fb3e4f8361bd46ddde90f, type: 2}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
   onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
   onBattleStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}

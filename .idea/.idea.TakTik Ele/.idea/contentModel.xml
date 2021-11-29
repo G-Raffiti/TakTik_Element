@@ -44,6 +44,11 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="_CSVFiles" t="Include">
+            <e p="rawGear.cs" t="Include" />
+            <e p="rawMonster.cs" t="Include" />
+            <e p="rawSkill.cs" t="Include" />
+          </e>
           <e p="_DragAndDropSystem" t="Include">
             <e p="DragAndDropCell.cs" t="Include" />
             <e p="DragAndDropItem.cs" t="Include" />
@@ -95,6 +100,19 @@
             <e p="DataBase.cs" t="Include" />
             <e p="KeepBetweenScene.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
+            <e p="SceneKeeper.cs" t="Include" />
+          </e>
+          <e p="_Pathfinding" t="Include">
+            <e p="Algorithms" t="Include">
+              <e p="AStarPathfinding.cs" t="Include" />
+              <e p="DijkstraPathfinding.cs" t="Include" />
+              <e p="IPathfinding.cs" t="Include" />
+            </e>
+            <e p="DataStructs" t="Include">
+              <e p="HeapPriorityQueue.cs" t="Include" />
+              <e p="IGraphNode.cs" t="Include" />
+              <e p="IPriorityQueue.cs" t="Include" />
+            </e>
           </e>
           <e p="_SaveSystem" t="Include">
             <e p="Interface_ISavable.cs" t="Include" />
@@ -105,12 +123,6 @@
             <e p="Archetype.cs" t="Include" />
             <e p="Element.cs" t="Include" />
             <e p="Rarity.cs" t="Include" />
-          </e>
-          <e p="BattleOver" t="Include">
-            <e p="BossBattle.cs" t="Include" />
-            <e p="DeathBattle.cs" t="Include" />
-            <e p="EndConditionSO.cs" t="Include" />
-            <e p="LootBoxes.cs" t="Include" />
           </e>
           <e p="Cells" t="Include">
             <e p="Board.cs" t="Include" />
@@ -125,29 +137,25 @@
             <e p="Square.cs" t="Include" />
             <e p="TileIsometric.cs" t="Include" />
           </e>
-          <e p="Gears" t="Include">
+          <e p="DataBases" t="Include">
+            <e p="ColorSet.cs" t="Include" />
+            <e p="DataBaseAffix.cs" t="Include" />
             <e p="DataBaseGear.cs" t="Include" />
+            <e p="DataBaseMonster.cs" t="Include" />
+            <e p="DataBaseRelic.cs" t="Include" />
+            <e p="DataBaseSkill.cs" t="Include" />
+          </e>
+          <e p="EndConditions" t="Include">
+            <e p="BossBattle.cs" t="Include" />
+            <e p="DeathBattle.cs" t="Include" />
+            <e p="EndConditionSO.cs" t="Include" />
+            <e p="LootBoxes.cs" t="Include" />
+          </e>
+          <e p="Gears" t="Include">
             <e p="Gear.cs" t="Include" />
             <e p="GearSO.cs" t="Include" />
             <e p="InfoGear.cs" t="Include" />
             <e p="Inventory.cs" t="Include" />
-            <e p="InventoryUI.cs" t="Include" />
-            <e p="rawGear.cs" t="Include" />
-          </e>
-          <e p="Grid" t="Include">
-            <e p="BattleStateManager.cs" t="Include" />
-            <e p="GridStates" t="Include">
-              <e p="BattleState.cs" t="Include" />
-              <e p="BattleStateBeginning.cs" t="Include" />
-              <e p="BattleStateBlockInput.cs" t="Include" />
-              <e p="BattleStateSkillSelected.cs" t="Include" />
-              <e p="BattleStateUnitSelected.cs" t="Include" />
-            </e>
-            <e p="UnitGenerators" t="Include">
-              <e p="CustomUnitGenerator.cs" t="Include" />
-              <e p="IUnitGenerator.cs" t="Include" />
-              <e p="RandomUnitGenerator.cs" t="Include" />
-            </e>
           </e>
           <e p="GridObjects" t="Include">
             <e p="GridObject.cs" t="Include" />
@@ -156,52 +164,35 @@
             <e p="Stone.cs" t="Include" />
             <e p="Tree.cs" t="Include" />
           </e>
-          <e p="Gui" t="Include">
-            <e p="CameraController.cs" t="Include" />
-          </e>
-          <e p="Pathfinding" t="Include">
-            <e p="Algorithms" t="Include">
-              <e p="AStarPathfinding.cs" t="Include" />
-              <e p="DijkstraPathfinding.cs" t="Include" />
-              <e p="IPathfinding.cs" t="Include" />
-            </e>
-            <e p="DataStructs" t="Include">
-              <e p="HeapPriorityQueue.cs" t="Include" />
-              <e p="IGraphNode.cs" t="Include" />
-              <e p="IPriorityQueue.cs" t="Include" />
-            </e>
-          </e>
           <e p="Players" t="Include">
             <e p="AIPlayer.cs" t="Include" />
             <e p="HumanPlayer.cs" t="Include" />
             <e p="Player.cs" t="Include" />
+          </e>
+          <e p="Relics" t="Include">
+            <e p="Relic.cs" t="Include" />
+            <e p="RelicInfo.cs" t="Include" />
+            <e p="RelicSO.cs" t="Include" />
           </e>
           <e p="SceneManagement" t="Include">
             <e p="BattleFade.cs" t="Include" />
             <e p="ChangeScene.cs" t="Include" />
           </e>
           <e p="Shops" t="Include">
-            <e p="Camp.cs" t="Include" />
-            <e p="CampUI.cs" t="Include" />
-            <e p="DeckMonoCampUI.cs" t="Include" />
-            <e p="Forge.cs" t="Include" />
-            <e p="ForgeUI.cs" t="Include" />
+            <e p="ShopCampMono.cs" t="Include" />
+            <e p="ShopCampMono_UI.cs" t="Include" />
+            <e p="ShopDeckMono_UI.cs" t="Include" />
+            <e p="ShopForge.cs" t="Include" />
+            <e p="ShopForge_UI.cs" t="Include" />
+            <e p="ShopInventory_UI.cs" t="Include" />
           </e>
           <e p="Skills" t="Include">
             <e p="_Zone" t="Include">
               <e p="Zone.cs" t="Include" />
             </e>
             <e p="AllDecksMono.cs" t="Include" />
-            <e p="DataBaseRelic.cs" t="Include" />
-            <e p="DataBaseSkill.cs" t="Include" />
-            <e p="Deck.cs" t="Include" />
             <e p="DeckMono.cs" t="Include" />
             <e p="IEffect.cs" t="Include" />
-            <e p="rawSkill.cs" t="Include" />
-            <e p="Relic.cs" t="Include" />
-            <e p="RelicChoiceUI.cs" t="Include" />
-            <e p="RelicInfo.cs" t="Include" />
-            <e p="RelicSO.cs" t="Include" />
             <e p="ScriptableObject_Effect" t="Include">
               <e p="ApplyBuff.cs" t="Include" />
               <e p="Attack.cs" t="Include" />
@@ -232,13 +223,26 @@
             <e p="SkillInfo.cs" t="Include" />
             <e p="SkillSO.cs" t="Include" />
           </e>
+          <e p="StateMachine" t="Include">
+            <e p="BattleStateManager.cs" t="Include" />
+            <e p="GridStates" t="Include">
+              <e p="BattleState.cs" t="Include" />
+              <e p="BattleStateBeginning.cs" t="Include" />
+              <e p="BattleStateBlockInput.cs" t="Include" />
+              <e p="BattleStateSkillSelected.cs" t="Include" />
+              <e p="BattleStateUnitSelected.cs" t="Include" />
+            </e>
+            <e p="UnitGenerators" t="Include">
+              <e p="CustomUnitGenerator.cs" t="Include" />
+              <e p="IUnitGenerator.cs" t="Include" />
+              <e p="RandomUnitGenerator.cs" t="Include" />
+            </e>
+          </e>
           <e p="Stats" t="Include">
             <e p="Affinity.cs" t="Include" />
             <e p="Affix.cs" t="Include" />
             <e p="AffixSO.cs" t="Include" />
             <e p="BattleStats.cs" t="Include" />
-            <e p="DataBaseAffix.cs" t="Include" />
-            <e p="Power.cs" t="Include" />
             <e p="Range.cs" t="Include" />
           </e>
           <e p="StatusEffect" t="Include">
@@ -253,16 +257,13 @@
           <e p="Units" t="Include">
             <e p="BattleGenerator.cs" t="Include" />
             <e p="BattleHero.cs" t="Include" />
-            <e p="DataBaseMonster.cs" t="Include" />
             <e p="Hero.cs" t="Include" />
             <e p="IMovable.cs" t="Include" />
             <e p="Monster.cs" t="Include" />
             <e p="MonsterSO.cs" t="Include" />
-            <e p="rawMonster.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
             <e p="UnitStates" t="Include">
               <e p="UnitState.cs" t="Include" />
-              <e p="UnitStateMarkedAsFinished.cs" t="Include" />
               <e p="UnitStateMarkedAsFriendly.cs" t="Include" />
               <e p="UnitStateMarkedAsReachableEnemy.cs" t="Include" />
               <e p="UnitStateMarkedAsSelected.cs" t="Include" />
@@ -270,16 +271,18 @@
             </e>
           </e>
           <e p="UserInterface" t="Include">
+            <e p="BattleScene" t="Include">
+              <e p="Battle_AP_MP_UI.cs" t="Include" />
+              <e p="BattleDeckMono_UI.cs" t="Include" />
+              <e p="BattleInventory_UI.cs" t="Include" />
+              <e p="BattleRelicChoice_UI.cs" t="Include" />
+              <e p="BattleTurnOrder_UI.cs" t="Include" />
+              <e p="TurnOrderPrefab.cs" t="Include" />
+            </e>
             <e p="ButtonPanel.cs" t="Include" />
-            <e p="ColorSet.cs" t="Include" />
-            <e p="DeckMonoUI.cs" t="Include" />
-            <e p="Inventory_UI.cs" t="Include" />
+            <e p="CameraController.cs" t="Include" />
             <e p="MenuPanel.cs" t="Include" />
             <e p="PersonalInventory.cs" t="Include" />
-            <e p="PlayingUnitsInfo_UI.cs" t="Include" />
-            <e p="SceneKeeper.cs" t="Include" />
-            <e p="TurnOrderPrefab.cs" t="Include" />
-            <e p="TurnOrderUI.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

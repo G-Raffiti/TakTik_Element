@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BattleOver;
+using EndConditions;
 using UnityEngine;
 
 namespace Cells
