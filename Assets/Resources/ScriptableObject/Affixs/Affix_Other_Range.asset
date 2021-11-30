@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a534540fb4fa47de84ef2db78cf180a1, type: 3}
   m_Name: Affix_Other_Range
   m_EditorClassIdentifier: 
-  type: 9
+  type: 10
   color: {r: 1, g: 1, b: 1, a: 1}
   tier: 010000000200000003000000
+  symbol: <sprite name=Range>

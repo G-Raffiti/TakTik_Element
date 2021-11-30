@@ -501,7 +501,7 @@ namespace Units
 
             UnitState = new UnitStateNormal(this);
 
-            Inventory = new Inventory();
+            Inventory ??= new Inventory();
         }
 
         public void OnDestroy()

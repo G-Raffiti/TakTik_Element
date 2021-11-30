@@ -15,3 +15,4 @@ MonoBehaviour:
   type: 8
   color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   tier: 0100000002000000040000000600000008000000
+  symbol: <sprite name=Power>

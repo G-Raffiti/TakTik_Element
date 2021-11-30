@@ -51,8 +51,6 @@ namespace _Instances
             if (!craftingMaterial.ContainsKey(_affix) || craftingMaterial[_affix] < number)
                 return false;
             craftingMaterial[_affix] -= number;
-            if (craftingMaterial[_affix] == 0)
-                craftingMaterial.Remove(_affix);
             return true;
         }
     }

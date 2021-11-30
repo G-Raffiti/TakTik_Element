@@ -15,3 +15,4 @@ MonoBehaviour:
   type: 0
   color: {r: 1, g: 0, b: 0, a: 1}
   tier: 0a000000140000001e0000002800000032000000
+  symbol: <sprite name=HP>

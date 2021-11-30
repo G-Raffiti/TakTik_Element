@@ -15,3 +15,4 @@ MonoBehaviour:
   type: 3
   color: {r: 1, g: 0.9320468, b: 0, a: 1}
   tier: 020000000400000006000000080000000a000000
+  symbol: <sprite name=Speed>

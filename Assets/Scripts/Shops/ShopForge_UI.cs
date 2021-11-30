@@ -61,10 +61,7 @@ namespace Shops
             
             UpdateDisplay(new Void());
             
-            ActualiseDropdown(dropdownAffixNew0);
-            ActualiseDropdown(dropdownAffixNew1);
-            ActualiseDropdown(dropdownAffixNew2);
-            ActualiseDropdown(dropdownAffixUpgrade);
+            
         }
 
         private void ActualiseValueDropdown(TMP_Dropdown _value, TMP_Dropdown _affix)
@@ -138,7 +135,9 @@ namespace Shops
 
         private int CraftValue(EAffix _affix)
         {
-            return PlayerData.getInstance().CraftingMaterial[DataBase.Affix.Affixes[_affix]];
+            if(PlayerData.getInstance().CraftingMaterial.ContainsKey(DataBase.Affix.Affixes[_affix]))
+                return PlayerData.getInstance().CraftingMaterial[DataBase.Affix.Affixes[_affix]];
+            return 0;
         }
 
         public void UpgradeItemButton()
@@ -151,6 +150,16 @@ namespace Shops
             Validate.SetActive(true);
         }
 
+        public void OKButton()
+        {
+            StartCoroutine(ValidateDestroy());
+        }
+
+        public void NOButton()
+        {
+            Validate.SetActive(false);
+        }
+        
         public IEnumerator ValidateDestroy()
         {
             Validate.SetActive(false);
@@ -169,6 +178,11 @@ namespace Shops
                 $"<sprite name=Zone>{CraftValue(EAffix.Zone)}  | <sprite name=Range>{CraftValue(EAffix.Range)}\n<sprite name=Speed>{CraftValue(EAffix.Speed)}  | <sprite name=Focus>{CraftValue(EAffix.Focus)}";
             resourcesPower.text =
                 $"<sprite name=Fire>{CraftValue(EAffix.Fire)}  | <sprite name=Nature>{CraftValue(EAffix.Nature)}\n<sprite name=Water>{CraftValue(EAffix.Water)}  | <sprite name=Power>{CraftValue(EAffix.Power)}";
+            
+            ActualiseDropdown(dropdownAffixNew0);
+            ActualiseDropdown(dropdownAffixNew1);
+            ActualiseDropdown(dropdownAffixNew2);
+            ActualiseDropdown(dropdownAffixUpgrade);
         }
     }
 }

@@ -105,8 +105,8 @@ namespace Cells
             
             foreach (SavedCell _SavedCell in _data.Cells)
             {
-                
-                GameObject instance = PrefabUtility.InstantiatePrefab(DataBase.Cell.TilePrefab) as GameObject;
+
+                GameObject instance = GameObject.Instantiate(DataBase.Cell.TilePrefab);
                 instance.transform.SetParent(transform);
                 instance.transform.position = new Vector3(_SavedCell.position[0],_SavedCell.position[1],_SavedCell.position[2]);
                 TileIsometric _cell = instance.GetComponent<TileIsometric>();

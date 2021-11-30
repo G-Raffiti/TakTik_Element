@@ -25,7 +25,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/TurnOrderPrefab.cs" />
@@ -40,7 +39,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/BoardSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckMonoUI.cs" />
@@ -60,14 +58,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateUnitSelected.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/BattleStateManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CSVFiles.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CSVFiles/rawMonster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckMonoHand_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopInventory_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleDeckMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Battle_AP_MP_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleTurnOrder_UI.cs" />
@@ -76,6 +71,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/_Pathfinding/Algorithms/AStarPathfinding.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

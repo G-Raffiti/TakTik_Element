@@ -26,6 +26,7 @@ namespace Cells
         /// </summary>
         public void SaveBoard(List<SavedCell> _list, Sprite _background, Camera _camera)
         {
+#if UNITY_EDITOR
             cells = new List<SavedCell>();
             
             foreach (SavedCell _Cell in _list)
@@ -39,6 +40,7 @@ namespace Cells
             EditorUtility.SetDirty(this); 
             AssetDatabase.SaveAssets(); 
             AssetDatabase.Refresh();
+#endif
         }
     }
 

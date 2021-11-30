@@ -115,6 +115,8 @@ namespace Shops
 
             old.Add(new Affix(affix, affix.getValueOfTier(Math.Min(affix.Tier.Length, tier + 1))));
             gear.SetAffixes(old);
+            
+            onDiplayUptade.Raise();
         }
     }
 }
