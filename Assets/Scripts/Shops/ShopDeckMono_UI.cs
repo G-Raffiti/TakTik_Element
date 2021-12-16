@@ -10,7 +10,7 @@ using UserInterface;
 
 namespace Shops
 {
-    public class DeckMonoCampUI : MonoBehaviour
+    public class ShopDeckMono_UI : MonoBehaviour
     {
         [SerializeField] private DragAndDropCell prefabSlot;
 

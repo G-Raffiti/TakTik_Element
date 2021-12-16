@@ -25,7 +25,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/TurnOrderPrefab.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/Listeners/VoidListener.cs" />
@@ -47,7 +46,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/CampUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Camp.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affinity.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Buff.cs" />
@@ -76,6 +74,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/BoardSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
@@ -94,6 +94,14 @@
     <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../exe\TakTik Ele.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Program Perso\Unity Project\exe" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />

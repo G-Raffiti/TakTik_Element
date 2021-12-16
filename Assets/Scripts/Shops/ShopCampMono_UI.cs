@@ -48,7 +48,6 @@ namespace Shops
 
         public void DuplicateSkillButton()
         {
-
             if (SlotSkillDuplicate.GetInfoSkill() == null) return;
             SkillDuplicate = SlotSkillDuplicate.GetInfoSkill();
             onDuplicateSkill.Raise();

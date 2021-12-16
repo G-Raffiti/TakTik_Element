@@ -826,6 +826,12 @@
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Sysroot.Linux_x86_64">
+ <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+ <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -849,12 +855,6 @@
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Sysroot.Linux_x86_64">
- <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
- <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
  </Reference>
  <Reference Include="Unity.SysrootPackage.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
