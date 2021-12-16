@@ -140,7 +140,8 @@ namespace Players
                 skillUsed = false;
                 onSkillUsed.EventListeners -= SkillUsed;
 
-                if (monster.BattleStats.AP >= monster.monsterSkill.Cost)
+                if (monster.BattleStats.AP >= monster.monsterSkill.Cost || 
+                    (monster.monsterSkill.Cost == 0 && loop <= KeepBetweenScene.Stage))
                     best = Evaluate(monster, monster.monsterSkill.BaseSkill, stateManager);
                 else best = Evaluate(monster, DataBase.Skill.MonsterAttack, stateManager);
                 

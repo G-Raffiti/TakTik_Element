@@ -36,8 +36,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/KeepBetweenScene.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/RelicChoiceUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/BoardSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
@@ -71,11 +69,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/_Pathfinding/Algorithms/AStarPathfinding.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/BoardSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
