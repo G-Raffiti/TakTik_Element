@@ -156,5 +156,10 @@ namespace Skills
                       "hand:" + HandSkills.Count + " " +
                       "used:" + UsedSkills.Count);
         }
+
+        public void AddHandSkill(SkillSO _skill)
+        {
+            HandSkills.Add(_skill);
+        }
     }
 }

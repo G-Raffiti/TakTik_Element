@@ -145,6 +145,9 @@
             <e p="DataBaseRelic.cs" t="Include" />
             <e p="DataBaseSkill.cs" t="Include" />
           </e>
+          <e p="DevsButton" t="Include">
+            <e p="DevButtons.cs" t="Include" />
+          </e>
           <e p="EndConditions" t="Include">
             <e p="BossBattle.cs" t="Include" />
             <e p="DeathBattle.cs" t="Include" />
@@ -177,6 +180,15 @@
           <e p="SceneManagement" t="Include">
             <e p="BattleFade.cs" t="Include" />
             <e p="ChangeScene.cs" t="Include" />
+          </e>
+          <e p="ScreenResolutionManager" t="Include">
+            <e p="AspectUtility.cs" t="Include" />
+            <e p="CameraResolution.cs" t="Include" />
+            <e p="Example" t="Include">
+              <e p="ResolutionSelector.cs" t="Include" />
+              <e p="ScreenLogger.cs" t="Include" />
+            </e>
+            <e p="ResolutionManager.cs" t="Include" />
           </e>
           <e p="Shops" t="Include">
             <e p="ShopCampMono.cs" t="Include" />
