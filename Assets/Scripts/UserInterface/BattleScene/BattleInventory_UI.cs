@@ -20,6 +20,8 @@ namespace UserInterface.BattleScene
         private Inventory heroInventory;
         private Inventory monsterInventory;
 
+        private List<Unit> Queue = new List<Unit>();
+
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onUIEnable;
         [SerializeField] private VoidEvent onActionDone;
@@ -42,18 +44,21 @@ namespace UserInterface.BattleScene
         
         public void ShowOnKill(Unit _monster)
         {
-            onUIEnable.Raise();
-            
-            HeroSlots.ForEach(cell => cell.RemoveItem());
-            MonsterSlots.ForEach(cell => cell.RemoveItem());
-            
-            HeroName.text = BattleStateManager.instance.PlayingUnit.UnitName;
-            MonsterName.text = _monster.UnitName;
-            
-            monsterInventory = _monster.Inventory;
-            heroInventory = BattleStateManager.instance.PlayingUnit.Inventory;
+               if (!Queue.Contains(_monster))
+                    Queue.Add(_monster);
 
-            showGear();
+               if (Queue.Count == 1)
+                    onUIEnable.Raise();
+                
+               HeroSlots.ForEach(cell => cell.RemoveItem());
+               MonsterSlots.ForEach(cell => cell.RemoveItem());
+                
+               HeroName.text = BattleStateManager.instance.PlayingUnit.UnitName;
+               MonsterName.text = Queue[0].UnitName;
+                
+               monsterInventory = Queue[0].Inventory;
+               heroInventory = BattleStateManager.instance.PlayingUnit.Inventory; 
+               showGear();
         }
 
         private void showGear()
@@ -75,7 +80,7 @@ namespace UserInterface.BattleScene
             }
         }
         
-        public void CloseInventory()
+        public void CloseInventory(GameObject closeBtn)
         {
             if (monsterInventory != null)
             {
@@ -97,9 +102,18 @@ namespace UserInterface.BattleScene
             }
             
             BattleStateManager.instance.PlayingUnit.UpdateStats();
+
+            if (Queue.Count > 0)
+                Queue.Remove(Queue[0]);
             
+            if (Queue.Count > 0)
+            {
+                ShowOnKill(Queue[0]);
+                return;
+            }
+
             gameObject.SetActive(false);
-            
+            closeBtn.SetActive(false);
             onActionDone.Raise();
         }
     }

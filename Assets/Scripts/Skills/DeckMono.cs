@@ -13,9 +13,9 @@ namespace Skills
         [SerializeField] private BoolEvent onEndBattle;
         [SerializeField] public List<SkillSO> Skills = new List<SkillSO>();
 
-        private List<SkillSO> HandSkills = new List<SkillSO>();
-        private List<SkillSO> UsedSkills = new List<SkillSO>();
-        private List<SkillSO> ConsumedSkills = new List<SkillSO>();
+        public List<SkillSO> HandSkills = new List<SkillSO>();
+        public List<SkillSO> UsedSkills = new List<SkillSO>();
+        public List<SkillSO> ConsumedSkills = new List<SkillSO>();
         public List<RelicSO> Relics = new List<RelicSO>();
         public Relic Relic = new Relic();
 
@@ -59,8 +59,6 @@ namespace Skills
         /// </summary>
         public void Draw(int n)
         {
-            HandSkills = new List<SkillSO>();
-
             int maxRange = (Skills.Count < n) ? Skills.Count : n;
             int remainRange = n - maxRange;
             
@@ -70,8 +68,8 @@ namespace Skills
             if (remainRange > 0)
             {
                 ShuffleDeck();
-                HandSkills.AddRange(Skills.GetRange(0, remainRange));
-                Skills.RemoveRange(0, remainRange);
+                HandSkills.AddRange(Skills.GetRange(0, Math.Min(remainRange, Skills.Count)));
+                Skills.RemoveRange(0, Math.Min(remainRange, Skills.Count));
             }
         }
         

@@ -5600,7 +5600,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &378864358
 MonoBehaviour:
@@ -13440,20 +13440,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEndBattle: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   Skills:
-  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
-  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
-  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
-  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
-  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
-  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
-  - {fileID: 11400000, guid: bfd0dfd27be08114cba8a4cb14b69f65, type: 2}
-  - {fileID: 11400000, guid: 8698f857e0785a84fa09b3b5a3c8cf5e, type: 2}
-  - {fileID: 11400000, guid: d7acbddedcc963f4b998fce4a1686e05, type: 2}
-  - {fileID: 11400000, guid: 382335feb2daa614a9ac7fd406b3fbce, type: 2}
-  - {fileID: 11400000, guid: 382335feb2daa614a9ac7fd406b3fbce, type: 2}
+  - {fileID: 11400000, guid: 1f24c51c6380c5e4aabe6f0d39e731ca, type: 2}
+  - {fileID: 11400000, guid: 1f24c51c6380c5e4aabe6f0d39e731ca, type: 2}
+  - {fileID: 11400000, guid: 1f24c51c6380c5e4aabe6f0d39e731ca, type: 2}
+  - {fileID: 11400000, guid: 1f24c51c6380c5e4aabe6f0d39e731ca, type: 2}
+  HandSkills: []
+  UsedSkills: []
+  ConsumedSkills: []
   Relics: []
 --- !u!1 &966237255
 GameObject:
@@ -15702,24 +15695,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1188434643}
-        m_TargetAssemblyTypeName: Gears.InventoryUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: UserInterface.BattleScene.BattleInventory_UI, Assembly-CSharp
         m_MethodName: CloseInventory
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1130287620}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1130287620}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
