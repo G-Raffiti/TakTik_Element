@@ -131,7 +131,6 @@ namespace Cells
             mainCamera.gameObject.transform.position = new Vector3(_data.Camera.x, _data.Camera.y, -15f);
             mainCamera.orthographicSize = _data.Camera.size;
             background.transform.position = new Vector3(_data.Camera.x, _data.Camera.y, 0);
-            
 
             EndCondition = _data.EndCondition;
         }
