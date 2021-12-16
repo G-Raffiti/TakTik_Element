@@ -70,7 +70,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Battle_AP_MP_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleTurnOrder_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gears/BattleInventory_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Pathfinding/Algorithms/AStarPathfinding.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
@@ -85,6 +84,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/Resolution.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/CameraResolution.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
@@ -141,7 +141,7 @@
       <option name="presentableId" value="Default" />
       <updated>1633649099781</updated>
       <workItem from="1633649133169" duration="5345000" />
-      <workItem from="1639680652734" duration="6448000" />
+      <workItem from="1639680652734" duration="9328000" />
     </task>
     <servers />
   </component>

@@ -26,6 +26,7 @@ namespace UserInterface.BattleScene
 
         public void ShowOnKill(Unit _unit)
         {
+            Debug.Log("RELIC fnc START : ShowOnKill");
             Monster _monster = (Monster) _unit;
             
             onUIEnable.Raise();
@@ -38,26 +39,33 @@ namespace UserInterface.BattleScene
             monsterRelics.AddRange(_monster.Relics);
 
             showRelics();
+            
+            Debug.Log("RELIC fnc END : ShowOnKill");
         }
 
         private void showRelics()
         {
+            Debug.Log("RELIC fnc START : showRelics");
             for (int i = 0; i < monsterRelics.Count; i++)
             {
                 GameObject pref = Instantiate(prefabRelic, MonsterSlots[i].transform);
                 pref.GetComponent<RelicInfo>().CreateRelic(monsterRelics[i]);
                 pref.GetComponent<RelicInfo>().DisplayIcon();
             }
+            Debug.Log("RELIC fnc END : showRelics");
         }
         
         public void ApplyAndClose()
         {
+            Debug.Log("RELIC fnc START : ApplyAndClose");
             if (monsterRelics != null)
             {
+                Debug.Log("monsterRelics not NULL");
                 monsterRelics = new List<RelicSO>();
                 
                 foreach (DragAndDropCell _dropCell in MonsterSlots)
                 {
+                    Debug.Log("_dropCell");
                     if(_dropCell.GetInfoRelic() != null)
                         monsterRelics.Add(_dropCell.GetInfoRelic().Relic);
                 }
@@ -87,6 +95,8 @@ namespace UserInterface.BattleScene
             gameObject.SetActive(false);
             
             onActionDone.Raise();
+            
+            Debug.Log("RELIC fnc END : ApplyAndClose");
         }
     }
 }
