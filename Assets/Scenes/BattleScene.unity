@@ -456,8 +456,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: END Turn
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2510,8 +2510,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4240,7 +4240,7 @@ MonoBehaviour:
   m_text: 'Ici tu trouveras les points de mouvement et d''action restant du perso
     dont c''est le tour '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -5718,7 +5718,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hero Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -6890,8 +6890,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Battle !
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7025,7 +7025,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Monster Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -11696,7 +11696,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Close (X)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -13060,7 +13060,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Close (X)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -16453,8 +16453,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -16834,7 +16834,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hero Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -19785,7 +19785,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Monster Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -20482,8 +20482,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -21747,8 +21747,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Add Saitaman
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -22308,7 +22308,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ecdc6c598e786454b8b538957f52298f, type: 3}
   inventory:
     gears: []
-  relics: []
+  relics:
+  - {fileID: 11400000, guid: 8ce7f13348aad6241b38af973d42b71a, type: 2}
   onHPChanged: {fileID: 11400000, guid: 1a9e814f45fb789499d77b4140c357bb, type: 2}
   isPlaced: 0
   isDead: 0
@@ -23547,7 +23548,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Et ici c'est pour ouvrir ou fermer le tuto
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -26327,7 +26328,7 @@ MonoBehaviour:
   m_text: "ca c'est le boutton \nqui va te servir a tout \ncommencer a jouer\npasser
     ton tour \nfermer une fen\xEAtre\nc'est ici"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -26950,7 +26951,7 @@ MonoBehaviour:
     (plus
     la vitesse d''un personnage est grande plus il joue souvent)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
@@ -27177,7 +27178,7 @@ MonoBehaviour:
   m_text: "La tu va trouver les action que tu peux faire, toutes les capacites que
     tu as apprisent \nc'est ta main de carte pour ainsi dire"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
     type: 2}
   m_fontSharedMaterials: []
