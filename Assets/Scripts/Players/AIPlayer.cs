@@ -274,6 +274,7 @@ namespace Players
         {
             // Find the nearest Enemy
             List<Unit> enemies = new List<Unit>(stateManager.Units.Where(u => u.playerNumber != _unit.playerNumber));
+            if (enemies.Count == 0) return;
             enemies.Sort((u, u2) => u.Cell.GetDistance(_unit.Cell).CompareTo(u2.Cell.GetDistance(_unit.Cell)));
 
             List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);

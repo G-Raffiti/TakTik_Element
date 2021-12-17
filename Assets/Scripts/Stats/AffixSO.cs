@@ -79,7 +79,7 @@ namespace Stats
 
         public string TierRange(int lvl)
         {
-            return $"({tier[Math.Max(0, lvl - 1)]} - {tier[lvl]}) ";
+            return $"({tier[Math.Max(0, lvl - 1)]} - {tier[Math.Min(lvl, tier.Length - 1)]}) ";
         }
     }
 }

@@ -33,15 +33,15 @@ namespace UserInterface
             Hero = _hero;
             icon.sprite = Hero.UnitSprite;
 
-            onHPChanged = Hero.OnHPChanged;
-            onHPChanged.EventListeners += UpdateHP;
+            Hero.OnHPChanged.EventListeners += UpdateHP;
 
             UpdateStats();
         }
 
         private void OnDisable()
         {
-            onHPChanged.EventListeners -= UpdateHP;
+            Debug.Log(Hero);
+            //Hero.OnHPChanged.EventListeners -= UpdateHP;
         }
 
         private void UpdateHP(int ActualHP)
