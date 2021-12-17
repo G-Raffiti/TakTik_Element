@@ -6,23 +6,23 @@ namespace _Instances
     {
         [SerializeField] private int stage;
         private static GameObject instance;
-        public static int Stage = 0;
-        private const int BattlePerStage = 3;
-        public static int BattleBeforeBoss = BattlePerStage;
+        public static int Stage { get; private set; }
+        public const int BattlePerStage = 3;
         public static int BattleNumber = 0;
 
         public static void NextStage()
         {
             Stage += 1;
-            BattleBeforeBoss = BattlePerStage;
             BattleNumber = 0;
         }
 
-        public static void StartBattle()
+        public static void EndBattle()
         {
-            BattleBeforeBoss -= 1;
             BattleNumber += 1;
-            Debug.Log($"Stage = {Stage}, Battle number = {BattlePerStage - BattleBeforeBoss}");
+            Debug.Log($"Stage = {Stage}, Battle number = {BattleNumber}");
+            
+            if (BattleNumber >= BattlePerStage)
+                NextStage();
         }
         
         private void Start() 

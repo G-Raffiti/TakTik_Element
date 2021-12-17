@@ -15,6 +15,7 @@ namespace EndConditions
         public EConditionType Type => type;
 
         public abstract bool battleIsOver(BattleStateManager StateManager);
+
         public bool WinCondition { get; protected set; }
     }
 }

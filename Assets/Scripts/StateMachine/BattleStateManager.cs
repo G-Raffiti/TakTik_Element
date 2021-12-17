@@ -256,7 +256,6 @@ namespace StateMachine
             List<Hero> heroesPlaced = GameObject.Find("Player").GetComponentsInChildren<Hero>().Where(h => h.isPlaced).ToList();
             if (heroesPlaced.Count <= 0) return;
             
-            KeepBetweenScene.StartBattle();
             BattleState.OnStateExit();
             InitializeUnits();
             onBattleStarted.Raise();
