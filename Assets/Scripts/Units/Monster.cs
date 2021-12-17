@@ -143,7 +143,8 @@ namespace Units
         
         private void DestroyUnit(Unit unit)
         {
-            BattleStateManager.instance.Check();
+            if (BattleStateManager.instance.DeadThisTurn.Count == 0)
+                BattleStateManager.instance.Check();
             if (unit == this)
                 Destroy(this);
         }
