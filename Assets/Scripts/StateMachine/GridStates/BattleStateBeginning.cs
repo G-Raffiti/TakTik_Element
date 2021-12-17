@@ -141,6 +141,8 @@ namespace StateMachine.GridStates
                 if (actualHero.Cell != null) // Swap Cell
                 {
                     Cell actualCell = actualHero.Cell;
+
+                    if (actualCell == _cell) return;
                     
                     actualCell.FreeTheCell();
                     _cell.CurrentUnit.transform.position = actualCell.transform.position;

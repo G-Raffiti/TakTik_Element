@@ -44,7 +44,7 @@ namespace Gears
             {
                 if (DataBase.Affix.Affixes.Count <= nonAffixes.Count) break;
                 AffixSO affix = DataBase.Affix.GetRandomBut(nonAffixes);
-                int value = affix.getValue(Math.Min(lvl,affix.Tier.Length));
+                int value = affix.getValue(Math.Min(lvl,affix.Tier.Length-1));
                 Affixes.Add(new Affix(affix, value));
                 nonAffixes.Add(affix);
             }
