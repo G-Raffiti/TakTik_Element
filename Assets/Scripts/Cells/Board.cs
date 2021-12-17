@@ -30,10 +30,10 @@ namespace Cells
         /// <returns></returns>
         private static BoardSO randomize()
         {
-            if (KeepBetweenScene.Stage == 0 || KeepBetweenScene.Stage == 3 && KeepBetweenScene.BattleBeforeBoss == 0)
+            if (KeepBetweenScene.Stage == 0)
                 return DataBase.Board.LootBoxBoards[Random.Range(0, DataBase.Board.LootBoxBoards.Count)];
             
-            if (KeepBetweenScene.BattleBeforeBoss <= 0)
+            if (KeepBetweenScene.BattleNumber == KeepBetweenScene.BattlePerStage)
                 return DataBase.Board.BossBattleBoards[Random.Range(0, DataBase.Board.BossBattleBoards.Count)];
             
             return DataBase.Board.DeathBattleBoards[Random.Range(0, DataBase.Board.DeathBattleBoards.Count)];

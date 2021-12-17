@@ -31,6 +31,7 @@ namespace SceneManagement
 
         private void StartNewBattle(Void empty)
         {
+            KeepBetweenScene.EndBattle();
             SceneManager.LoadScene("BattleScene");
         }
 
@@ -50,12 +51,6 @@ namespace SceneManagement
 
         private void YouWin()
         {
-            if (KeepBetweenScene.Stage == 1 && KeepBetweenScene.BattleNumber == 0)
-            {
-                StartNewBattle(new Void());
-                return;
-            }
-
             GoToRandomShop();
         }
 

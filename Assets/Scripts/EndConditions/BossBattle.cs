@@ -22,11 +22,8 @@ namespace EndConditions
                 bosses.Add(_monster);
             }
 
-            WinCondition = playerHeroes.Count > 0;
+            WinCondition = (playerHeroes.Count > 0) && (bosses.Count == 0);
 
-            if (WinCondition)
-                KeepBetweenScene.Stage += 1;
-            
             return _totalPlayersAlive.Count == 1 || bosses.Count == 0;
         }
     }
