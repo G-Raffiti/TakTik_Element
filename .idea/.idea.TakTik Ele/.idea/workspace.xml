@@ -35,7 +35,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/DeckMonoUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/DataBaseAffix.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
@@ -83,9 +82,10 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleInventory_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/Relic.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

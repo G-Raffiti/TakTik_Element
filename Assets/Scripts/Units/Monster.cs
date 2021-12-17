@@ -100,7 +100,7 @@ namespace Units
             InitializeSprite();
         }
 
-        public override Relic Relic { get; }
+        public override Relic Relic => new Relic();
 
         public override void OnTurnEnd()
         {

@@ -15,8 +15,17 @@ namespace Relics
         public int Power { get; private set; }
         public int Cost { get; private set; }
         public List<StatusSO> StatusEffects { get; private set; }
-        
-        
+
+        public Relic()
+        {
+            RelicEffects = new List<RelicSO>();
+            Effects = new List<IEffect>();
+            Affect = EAffect.All;
+            Range = new Range();
+            Power = 0;
+            Cost = 0;
+            StatusEffects = new List<StatusSO>();
+        }
         public static Relic CreateRelic(List<RelicSO> relics)
         {
             Relic relic = new Relic();
