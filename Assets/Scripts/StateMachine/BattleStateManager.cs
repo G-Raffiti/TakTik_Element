@@ -340,13 +340,18 @@ namespace StateMachine
             
             StartTurn();
         }
-        private void StartTurn()
+
+        public void Check()
         {
             if (endCondition.battleIsOver(this))
             {
                 BattleState = new BattleStateBlockInput(this);
                 onBattleIsOver.Raise(endCondition.WinCondition);
             }
+        }
+        private void StartTurn()
+        {
+            Check();
             DeadThisTurn = new List<Unit>();
             
             BattleState = new BattleStateBlockInput(this);
@@ -496,6 +501,12 @@ namespace StateMachine
                 yield return null;
            
             Units.Remove((Unit) sender);
+
+            if (sender is BattleHero)
+            {
+                Check();
+            }
+
             if (sender is Monster _sender)
                 DeadThisTurn.Add(_sender);
             

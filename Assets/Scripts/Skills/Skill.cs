@@ -30,7 +30,7 @@ namespace Skills
         {
             Skill _skill = new Skill();
             _skill.Deck = deck;
-            Relic relic = deck.Relic;
+            Relic relic = user.Relic;
             _skill.Unit = user;
             _skill.Relic = relic;
             if (skillSO.Range.CanBeModified)

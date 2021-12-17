@@ -143,6 +143,7 @@ namespace Units
         
         private void DestroyUnit(Unit unit)
         {
+            BattleStateManager.instance.Check();
             if (unit == this)
                 Destroy(this);
         }
