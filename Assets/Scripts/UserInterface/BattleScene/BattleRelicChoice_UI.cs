@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _DragAndDropSystem;
 using _EventSystem.CustomEvents;
@@ -18,13 +19,16 @@ namespace UserInterface.BattleScene
         [SerializeField] private List<DragAndDropCell> HeroSlots;
         [SerializeField] private List<DragAndDropCell> MonsterSlots;
         private List<RelicSO> monsterRelics;
-        [SerializeField] private Hero hero1;
-        [SerializeField] private Hero hero2;
-        [SerializeField] private Hero hero3;
+        [SerializeField] private List<Hero> heroes;
 
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onUIEnable;
         [SerializeField] private VoidEvent onActionDone;
+
+        private void Awake()
+        {
+            heroes = GameObject.Find("Player").GetComponentsInChildren<Hero>().ToList();
+        }
 
         public void ShowOnKill(Unit _unit)
         {
@@ -76,17 +80,17 @@ namespace UserInterface.BattleScene
             {
                 if (i == 0 && HeroSlots[0].GetInfoRelic() != null)
                 {
-                    hero1.AddRelic(HeroSlots[0].GetInfoRelic().Relic);
+                    heroes[0].AddRelic(HeroSlots[0].GetInfoRelic().Relic);
                 }
 
                 if (i == 1 && HeroSlots[1].GetInfoRelic() != null)
                 {
-                    hero2.AddRelic(HeroSlots[1].GetInfoRelic().Relic);
+                    heroes[1].AddRelic(HeroSlots[1].GetInfoRelic().Relic);
                 }
                 
                 if (i == 2 && HeroSlots[2].GetInfoRelic() != null)
                 {
-                    hero3.AddRelic(HeroSlots[2].GetInfoRelic().Relic);
+                    heroes[2].AddRelic(HeroSlots[2].GetInfoRelic().Relic);
                 }
             }
 
