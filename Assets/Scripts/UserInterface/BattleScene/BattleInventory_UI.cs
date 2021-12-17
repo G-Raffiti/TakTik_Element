@@ -20,7 +20,7 @@ namespace UserInterface.BattleScene
         private Inventory heroInventory;
         private Inventory monsterInventory;
 
-        private List<Unit> Queue = new List<Unit>();
+        public List<Unit> Queue = new List<Unit>();
 
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onUIEnable;
@@ -57,7 +57,7 @@ namespace UserInterface.BattleScene
                MonsterName.text = Queue[0].UnitName;
                 
                monsterInventory = Queue[0].Inventory;
-               heroInventory = BattleStateManager.instance.PlayingUnit.Inventory; 
+               heroInventory = BattleStateManager.instance.PlayingUnit.Inventory;
                showGear();
         }
 
