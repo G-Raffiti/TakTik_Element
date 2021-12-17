@@ -21,7 +21,7 @@ namespace Units
         [SerializeField] private Sprite unitSprite;
         [SerializeField] private Sprite icon;
         [SerializeField] private Inventory inventory;
-        [SerializeField] private List<RelicSO> relics;
+        [SerializeField] private List<RelicSO> relics = new List<RelicSO>();
 
         [SerializeField] private IntEvent onHPChanged;
 
@@ -103,6 +103,10 @@ namespace Units
             inventory = new Inventory(_save.inventory);
         }
 
+        public void AddRelic(RelicSO _relic)
+        {
+            relics.Add(_relic);
+        }
     }
 
     [Serializable]
