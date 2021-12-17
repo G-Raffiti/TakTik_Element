@@ -5600,7 +5600,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &378864358
 MonoBehaviour:
@@ -8547,18 +8547,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 603211382}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &603211384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4573647505147648228, guid: 890b6f26a3b8fba4b92c7b26e2961197,
-    type: 3}
-  m_PrefabInstance: {fileID: 603211382}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc7ec619939c8e4a9c214065b21b37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &604705210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9308,12 +9296,13 @@ MonoBehaviour:
   MonsterName: {fileID: 540965412}
   prefabRelic: {fileID: 593454680961682872, guid: 29ec5303bc8915b4f817a6e2d40fdbb5,
     type: 3}
-  DecksSlots:
-  - {fileID: 603211384}
+  HeroSlots: []
   MonsterSlots:
   - {fileID: 232009453}
   - {fileID: 1221342984}
-  deck1: {fileID: 963500106}
+  hero1: {fileID: 0}
+  hero2: {fileID: 0}
+  hero3: {fileID: 0}
   onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
 --- !u!1 &667913048
@@ -10999,7 +10988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da14a864ee7d427990d94ebad6651e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBattleEnd: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   unitName: Paul
   battleStats:
     HP: 100
@@ -11026,6 +11014,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bb461a45ff3313340940f016c850570e, type: 3}
   inventory:
     gears: []
+  relics: []
   onHPChanged: {fileID: 11400000, guid: 895702de6d0f7db4a8769192e3ac37c9, type: 2}
   isPlaced: 0
   isDead: 0
@@ -14419,7 +14408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da14a864ee7d427990d94ebad6651e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBattleEnd: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   unitName: Elise
   battleStats:
     HP: 100
@@ -14446,6 +14434,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d11a05f31ed60404c85113f85643d968, type: 3}
   inventory:
     gears: []
+  relics: []
   onHPChanged: {fileID: 11400000, guid: dffd9ec78262ea94e96d2b301fa610e8, type: 2}
   isPlaced: 0
   isDead: 0
@@ -18553,6 +18542,7 @@ GameObject:
   - component: {fileID: 1345508510}
   - component: {fileID: 1345508509}
   - component: {fileID: 1345508508}
+  - component: {fileID: 1345508511}
   m_Layer: 5
   m_Name: EndTurnBtn
   m_TagString: Untagged
@@ -18674,6 +18664,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345508506}
   m_CullTransparentMesh: 1
+--- !u!114 &1345508511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345508506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfec2e3195444b89f09a4ae18067708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onBattleEnd: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
+  inventory: {fileID: 1188434643}
 --- !u!1001 &1345890199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22278,7 +22282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da14a864ee7d427990d94ebad6651e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onBattleEnd: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   unitName: Jean
   battleStats:
     HP: 100
@@ -22305,6 +22308,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ecdc6c598e786454b8b538957f52298f, type: 3}
   inventory:
     gears: []
+  relics: []
   onHPChanged: {fileID: 11400000, guid: 1a9e814f45fb789499d77b4140c357bb, type: 2}
   isPlaced: 0
   isDead: 0
