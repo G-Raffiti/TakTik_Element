@@ -20,11 +20,12 @@ namespace UserInterface.BattleScene
         private Inventory heroInventory;
         private Inventory monsterInventory;
 
-        private List<Unit> Queue = new List<Unit>();
+        private Unit monster;
 
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onUIEnable;
         [SerializeField] private VoidEvent onActionDone;
+        [SerializeField] private UnitEvent onInventoryClosed;
 
         public void OpenBox(GridObject lootBox)
         {
@@ -44,21 +45,19 @@ namespace UserInterface.BattleScene
         
         public void ShowOnKill(Unit _monster)
         {
-               if (!Queue.Contains(_monster))
-                    Queue.Add(_monster);
+            onUIEnable.Raise();
 
-               if (Queue.Count == 1)
-                    onUIEnable.Raise();
-                
-               HeroSlots.ForEach(cell => cell.RemoveItem());
-               MonsterSlots.ForEach(cell => cell.RemoveItem());
-                
-               HeroName.text = BattleStateManager.instance.PlayingUnit.UnitName;
-               MonsterName.text = Queue[0].UnitName;
-                
-               monsterInventory = Queue[0].Inventory;
-               heroInventory = BattleStateManager.instance.PlayingUnit.Inventory; 
-               showGear();
+            monster = _monster;
+            
+            HeroSlots.ForEach(cell => cell.RemoveItem());
+            MonsterSlots.ForEach(cell => cell.RemoveItem());
+            
+            HeroName.text = BattleStateManager.instance.PlayingUnit.UnitName;
+            MonsterName.text = _monster.UnitName;
+            
+            monsterInventory = _monster.Inventory;
+            heroInventory = BattleStateManager.instance.PlayingUnit.Inventory; 
+            showGear();
         }
 
         private void showGear()
@@ -103,18 +102,11 @@ namespace UserInterface.BattleScene
             
             BattleStateManager.instance.PlayingUnit.UpdateStats();
 
-            if (Queue.Count > 0)
-                Queue.Remove(Queue[0]);
-            
-            if (Queue.Count > 0)
-            {
-                ShowOnKill(Queue[0]);
-                return;
-            }
-
             gameObject.SetActive(false);
             closeBtn.SetActive(false);
             onActionDone.Raise();
+
+            onInventoryClosed.Raise(monster);
         }
     }
 }

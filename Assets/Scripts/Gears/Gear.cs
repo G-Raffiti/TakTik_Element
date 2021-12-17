@@ -12,6 +12,14 @@ namespace Gears
         public List<Affix> Affixes { get; private set; }
         public int Stage { get; private set; }
 
+        public Gear() {}
+        public Gear(Gear gear)
+        {
+            GearSO = gear.GearSO;
+            Affixes = gear.Affixes;
+            Stage = gear.Stage;
+        }
+
         public BattleStats GetStats()
         {
             BattleStats ret = new BattleStats(0);

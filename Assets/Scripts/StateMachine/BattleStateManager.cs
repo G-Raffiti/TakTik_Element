@@ -6,6 +6,7 @@ using _EventSystem.CustomEvents;
 using _Instances;
 using Cells;
 using EndConditions;
+using Gears;
 using GridObjects;
 using Players;
 using Skills;
@@ -42,6 +43,7 @@ namespace StateMachine
         private List<Player> Players { get; set; }
         public List<Cell> Cells { get; private set; }
         public List<Unit> Units { get; private set; }
+        public List<Unit> DeadThisTurn { get; private set; }
         public List<GridObject> GridObjects { get; private set; }
         public Unit PlayingUnit { get; private set; }
         
@@ -75,7 +77,7 @@ namespace StateMachine
         public int NextCorruptionTurn { get; private set; }
         private float TurnCount = 1;
         public int Turn => (int)TurnCount;
-        public bool GameStarted { get; private set; }
+        public bool GameStarted { get; set; }
 
 
         /// <summary>
@@ -84,6 +86,7 @@ namespace StateMachine
         //public Transform playersParent;
         private void Start()
         {
+            DeadThisTurn = new List<Unit>();
             onEndTurn.EventListeners += EndTurn;
             onGridObjectDestroyed.EventListeners += RemoveGridObject;
             onSkillUsed.EventListeners += SkillUsed;
@@ -339,6 +342,13 @@ namespace StateMachine
         }
         private void StartTurn()
         {
+            if (endCondition.battleIsOver(this))
+            {
+                BattleState = new BattleStateBlockInput(this);
+                onBattleIsOver.Raise(endCondition.WinCondition);
+            }
+            DeadThisTurn = new List<Unit>();
+            
             BattleState = new BattleStateBlockInput(this);
 
             PlayingUnit = Units[0];
@@ -486,17 +496,13 @@ namespace StateMachine
                 yield return null;
            
             Units.Remove((Unit) sender);
+            if (sender is Monster _sender)
+                DeadThisTurn.Add(_sender);
             
             if ((Unit) sender == PlayingUnit)
             {
                 PlayingUnit = null;
                 EndTurn();
-            }
-
-            if (endCondition.battleIsOver(this))
-            {
-                BattleState = new BattleStateBlockInput(this);
-                onBattleIsOver.Raise(endCondition.WinCondition);
             }
         }
 

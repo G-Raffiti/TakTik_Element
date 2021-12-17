@@ -11,6 +11,15 @@ namespace Gears
         public List<Gear> gears = new List<Gear>();
 
         public Inventory() {}
+
+        public Inventory(Unit _unit)
+        {
+            gears = new List<Gear>();
+            foreach (Gear _gear in _unit.Inventory.gears)
+            {
+                gears.Add(new Gear(_gear));
+            }
+        }
         public Inventory(SaveInventory _save)
         {
             gears = new List<Gear>(_save.gears);

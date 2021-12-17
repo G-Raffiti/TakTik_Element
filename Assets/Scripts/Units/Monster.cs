@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _Instances;
@@ -28,7 +29,10 @@ namespace Units
         [Header("Event Sender")]
         [SerializeField] private UnitEvent onDeathLoot;
         [SerializeField] private UnitEvent onDeathRelic;
-        [SerializeField] private VoidEvent onActionDone;
+        
+        [Header("Event Listener")]
+        [SerializeField] private UnitEvent onInventoryClosed;
+        
         public bool isPlaying;
 
         public Skill monsterSkill { get; private set; }
@@ -37,6 +41,18 @@ namespace Units
         public List<RelicSO> Relics { get; private set; }
         public EReward RewardType { get; private set; }
         public EMonster Type { get; private set; }
+
+        private void Start()
+        {
+            onInventoryClosed.EventListeners += DestroyUnit;
+        }
+
+        private void OnDisable()
+        {
+            onInventoryClosed.EventListeners += DestroyUnit;
+        }
+
+
 
         /// <summary>
         /// Method called at the Unit Instantiation, it's create the Stats and change the Sprite. 
@@ -84,6 +100,8 @@ namespace Units
             InitializeSprite();
         }
 
+        public override Relic Relic { get; }
+
         public override void OnTurnEnd()
         {
             base.OnTurnEnd();
@@ -113,24 +131,20 @@ namespace Units
             if (RewardType == EReward.Gear && BattleStateManager.instance.PlayingUnit is BattleHero)
             {
                 onDeathLoot.Raise(this);
-                yield return new WaitForSeconds(0.1f);
-                GameObject inventory = GameObject.Find("InventoryUI");
-                while (inventory.activeSelf)
-                    yield return null;
-                onActionDone.Raise();
             }
             if (RewardType == EReward.Relic || Type == EMonster.Boss)
             {
                 onDeathRelic.Raise(this);
-                yield return new WaitForSeconds(0.3f);
-                GameObject relicChoice = GameObject.Find("RelicChoiceUI");
-                while (relicChoice.activeSelf)
-                    yield return null;
-                onActionDone.Raise();
             }
             //TODO : Skill on death
 
             yield return base.OnDestroyed();
+        }
+        
+        private void DestroyUnit(Unit unit)
+        {
+            if (unit == this)
+                Destroy(this);
         }
     }
 }

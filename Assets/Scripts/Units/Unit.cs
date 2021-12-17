@@ -8,6 +8,7 @@ using _ScriptableObject;
 using Cells;
 using DataBases;
 using Gears;
+using Relics;
 using StateMachine;
 using Stats;
 using StatusEffect;
@@ -84,6 +85,7 @@ namespace Units
 
     #region Unit Stats
 
+        public abstract Relic Relic { get; }
         /// <summary>
         /// it represent the initiative of the unit, this point are used to take a round
         /// </summary>
@@ -667,4 +669,6 @@ namespace Units
             this.Unit = unit;
         }
     }
+    
+    
 }

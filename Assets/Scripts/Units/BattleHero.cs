@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using Gears;
+using Relics;
 using StateMachine;
 using Stats;
 using StatusEffect;
@@ -17,6 +18,7 @@ namespace Units
         private Hero hero;
 
         public Hero Hero => hero;
+        public override Relic Relic { get => hero.GetRelic(); } 
 
         public void Spawn(Hero _hero)
         {

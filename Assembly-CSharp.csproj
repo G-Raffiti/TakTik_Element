@@ -229,6 +229,7 @@
      <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ResolutionSelector.cs" />
      <Compile Include="Assets\Scripts\ScreenResolutionManager\CameraResolution.cs" />
      <Compile Include="Assets\Scripts\DevsButton\DevButtons.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\DeathWaiter.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

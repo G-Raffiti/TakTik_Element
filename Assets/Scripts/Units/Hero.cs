@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _Instances;
 using Gears;
+using Relics;
 using Stats;
 using UnityEngine;
 
@@ -13,13 +15,13 @@ namespace Units
     /// </summary>
     public class Hero : MonoBehaviour
     {
-        [SerializeField] private BoolEvent onBattleEnd;
         [SerializeField] private string unitName;
         [SerializeField] private BattleStats battleStats;
         [SerializeField] private GameObject prefab;
         [SerializeField] private Sprite unitSprite;
         [SerializeField] private Sprite icon;
         [SerializeField] private Inventory inventory;
+        [SerializeField] private List<RelicSO> relics;
 
         [SerializeField] private IntEvent onHPChanged;
 
@@ -74,6 +76,11 @@ namespace Units
             BattleStats total = BattleStats + Inventory.GearStats();
             int MaxHP = total.HP;
             ActualHP = Math.Min(MaxHP, ActualHP + (int) (MaxHP * percent));
+        }
+
+        public Relic GetRelic()
+        {
+            return Relic.CreateRelic(relics);
         }
 
         public object CaptureState()
