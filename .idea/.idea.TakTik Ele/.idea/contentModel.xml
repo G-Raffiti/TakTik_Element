@@ -289,6 +289,7 @@
               <e p="BattleInventory_UI.cs" t="Include" />
               <e p="BattleRelicChoice_UI.cs" t="Include" />
               <e p="BattleTurnOrder_UI.cs" t="Include" />
+              <e p="BtnEndTurn.cs" t="Include" />
               <e p="DeathWaiter.cs" t="Include" />
               <e p="TurnOrderPrefab.cs" t="Include" />
             </e>
