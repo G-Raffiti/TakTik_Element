@@ -2,7 +2,6 @@
 using _Instances;
 using EndConditions;
 using GridObjects;
-using UnityEditor;
 using UnityEngine;
 
 namespace Cells
@@ -28,12 +27,12 @@ namespace Cells
         /// return a Board Stage 1 = 1Loot, 3Fight, 1Boss, Stage 2 = 3Fight, 1Boss, Stage 3 = 1Loot, 2Fight, 1Boss.
         /// </summary>
         /// <returns></returns>
-        private static BoardSO randomize()
+        private static BoardSO randomize(EBattleState state)
         {
-            if (KeepBetweenScene.Stage == 0)
+            if (state == EBattleState.LOOT)
                 return DataBase.Board.LootBoxBoards[Random.Range(0, DataBase.Board.LootBoxBoards.Count)];
             
-            if (KeepBetweenScene.BattleNumber == KeepBetweenScene.BattlePerStage)
+            if (state == EBattleState.BOSS)
                 return DataBase.Board.BossBattleBoards[Random.Range(0, DataBase.Board.BossBattleBoards.Count)];
             
             return DataBase.Board.DeathBattleBoards[Random.Range(0, DataBase.Board.DeathBattleBoards.Count)];
@@ -80,9 +79,9 @@ namespace Cells
         /// <summary>
         /// method Called at the beginning of each Battle to choose and create the Board
         /// </summary>
-        public void LoadBoard()
+        public void LoadBoard(EBattleState state)
         {
-            LoadBoard(randomize());
+            LoadBoard(randomize(state));
         }
         
         /// <summary>

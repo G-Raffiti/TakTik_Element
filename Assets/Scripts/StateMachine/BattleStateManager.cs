@@ -215,7 +215,7 @@ namespace StateMachine
         {
             Board _board = GetComponent<Board>();
 
-            _board.LoadBoard();
+            _board.LoadBoard(KeepBetweenScene.currentState);
             endCondition = _board.EndCondition;
             
             Cells = new List<Cell>();
