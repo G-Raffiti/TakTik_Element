@@ -17,7 +17,7 @@ MonoBehaviour:
   full: {fileID: 0}
   basicBuff:
     Duration: 0
-    Power: 0
+    Value: 0
     StatusEffect: {fileID: 0}
-  tileType: Stone
+  tileType: 2
   isUnderground: 0

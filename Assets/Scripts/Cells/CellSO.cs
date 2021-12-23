@@ -3,6 +3,14 @@ using UnityEngine;
 
 namespace Cells
 {
+    public enum ECellType
+    {
+        Water,
+        Hole,
+        Dirt,
+        Grass,
+        Lava,
+    }
     [CreateAssetMenu(fileName = "CellType_", menuName = "Scriptable Object/new Cell")]
     public class CellSO : ScriptableObject
     {
@@ -11,7 +19,7 @@ namespace Cells
         [SerializeField] private Sprite full;
         [SerializeField] private Buff basicBuff = null;
         
-        [SerializeField] private string tileType;
+        [SerializeField] private ECellType tileType;
         [SerializeField] private bool isUnderground;
 
         public Buff BasicBuff => basicBuff;
@@ -19,7 +27,7 @@ namespace Cells
         public bool IsUnderground => isUnderground;
         public Sprite Background => background;
         public Sprite Element => element;
-        public string Type => tileType;
+        public ECellType Type => tileType;
 
         public void Spawn(TileIsometric tile)
         {

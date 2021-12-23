@@ -93,7 +93,6 @@ namespace Units
             else pathToDestination = path;
 
             movable.Cell.FreeTheCell();
-            destination.Take(movable);
 
             if (movable.MovementAnimationSpeed > 0)
             {
@@ -102,9 +101,11 @@ namespace Units
             }
             else
             {
-                movable.TeleportTo(movable.Cell.transform.position);
+                movable.TeleportTo(destination.transform.position);
             }
             
+            if (destination.GetCurrentIMovable() != movable)
+                destination.Take(movable);
             
             if (destination.IsUnderGround)
             {

@@ -21,17 +21,12 @@ namespace StatusEffect
             StatusEffect = _buff.StatusEffect;
         }
 
-        /*public static Buff operator +(Buff a, Buff b)
+        public static Buff operator +(Buff a, Buff b)
         {
             if (a.Effect != b.Effect) return a;
-            Buff ret = new Buff(a)
-            {
-                Duration = a.Duration + b.Duration,
-                Value = a.Value + b.Value,
-                StatusEffect = a.StatusEffect,
-            };
+            Buff ret = a.Effect.AddBuff(a, b);
             return ret;
-        }*/
+        }
         
         public Buff (Unit sender, StatusSO _status)
         {
@@ -43,10 +38,10 @@ namespace StatusEffect
         public Buff (Cell tile, StatusSO _status)
         {
             StatusEffect = _status;
-            Duration = 1000;
+            Duration = 0;
             Value = 10;
         }
-        
+
         /// <summary>
         /// Methode Called on the End of the Playing Unit's Turn
         /// </summary>
@@ -107,13 +102,6 @@ namespace StatusEffect
         public string InfoBuffOnCell()
         {
             return StatusEffect.InfoOnFloor(this);
-        }
-
-        public void AddBuff(Buff _buff)
-        {
-            Buff added = StatusEffect.AddBuff(this, _buff);
-            Value = added.Value;
-            Duration = added.Duration;
         }
     }
 }

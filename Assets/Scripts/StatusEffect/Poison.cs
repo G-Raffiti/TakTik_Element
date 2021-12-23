@@ -1,4 +1,5 @@
-﻿using Units;
+﻿using System;
+using Units;
 using UnityEngine;
 
 namespace StatusEffect
@@ -6,7 +7,6 @@ namespace StatusEffect
     [CreateAssetMenu(fileName = "Status_Poison", menuName = "Scriptable Object/Status Effects/Poisoned")]
     public class Poison : StatusSO
     {
-        [SerializeField] private int duration = 10;
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
             _unit.DefendHandler(_unit, _buff.Value, Element);
@@ -25,22 +25,34 @@ namespace StatusEffect
             return sender.BattleStats.GetPower(Element.Type);
         }
 
-        public override int GetBuffDuration(Unit sender)
+        public override Buff AddBuff(Buff a, Buff b)
         {
-            return duration;
+            if (a.Effect != b.Effect) return a;
+            Buff ret = new Buff(a);
+            ret.Value = Math.Max(a.Value, b.Value);
+            ret.Duration += b.Duration;
+            return ret;
+        }
+
+        public override void OnUnitTakeCell(Buff _buff, Unit _unit)
+        {
+            Buff apply = new Buff(_buff);
+            apply.Duration = 1;
+            apply.Value /= 2;
+            
+            _unit.ApplyBuff(apply);
         }
 
         public override string InfoEffect(Buff _buff)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"Poison Damage: <color=#{_hexColor}>{_buff.Value}</color> each time an Unit play their Turn \n Duration: {_buff.Duration} Turn";
+            return $"{Name}: -<color=#{_hexColor}>{_buff.Value}</color> <sprite name=HP> on every Unit's Turn \n Duration: {_buff.Duration} Turn";
         }
 
         public override string InfoOnUnit(Buff _buff, Unit _unit)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return
-                $"Poisoned: -<color=#{_hexColor}>{(int)_buff.Value}</color> HP / Unit's Turn\nDuration: last for {_buff.Duration} Turn";
+            return $"{Name}: -<color=#{_hexColor}>{_buff.Value}</color> <sprite name=HP> on every Unit's Turn \n Duration: {_buff.Duration} Turn";
         }
 
         public override string InfoOnFloor(Buff _buff)

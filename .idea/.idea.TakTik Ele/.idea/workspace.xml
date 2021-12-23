@@ -32,22 +32,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/AspectUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A3963A5-666E-4BE9-BAC6-94932D6FD3C7/ce/dc9cfc0e/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/DataBaseAffix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ForgeUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/CampUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/Camp.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affinity.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Buff.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/BattleStats.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridStates/BattleStateUnitSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/BattleStateManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CSVFiles.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CSVFiles/rawMonster.cs" />
@@ -60,18 +48,15 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/_Pathfinding/Algorithms/AStarPathfinding.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/AllDecksMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/BoardSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/Resolution.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/CameraResolution.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Devs Button/AddSkills.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/AddSkills.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/DevButtons.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
@@ -84,8 +69,24 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/Relic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/BattleStats.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Buff.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatusSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/CellSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Corruption.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Poison.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Burned.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Drowned.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

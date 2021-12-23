@@ -42,7 +42,7 @@ namespace Cells
             AutoSort();
             
             if(CellSO.BasicBuff.Effect != null)
-                Buffs.Add(CellSO.BasicBuff);
+                Buffs.Add(new Buff(CellSO.BasicBuff));
         }
 
         public void AutoSort()
@@ -74,7 +74,7 @@ namespace Cells
             {
                 if (Buffs[i].Effect == buff.Effect)
                 {
-                    Buffs[i].AddBuff(buff);
+                    Buffs[i] += buff;
                     applied = true;
                     break;
                 }
@@ -90,6 +90,7 @@ namespace Cells
         public override void OnEndTurn()
         {
             Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO).ToList().ForEach(b => b.Duration -= 1);
+            
             List<Buff> newList = new List<Buff>(Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO));
             newList.ForEach(b =>
             {
@@ -98,9 +99,9 @@ namespace Cells
                     Buffs.Remove(b);
                 }
             });
+            
             if (Buffs.Count <= 0)
                 effect.sprite = null;
-            
         }
 
         public override void FallIn()

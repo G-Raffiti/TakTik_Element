@@ -50,14 +50,15 @@ namespace Shops
         }
 
 
-        public void InitializeDisplay(int empty)
+        private void InitializeDisplay(int empty)
         {
             ClearDecks();
 
             DeckMono Deck = GameObject.FindObjectOfType<DeckMono>();
             Deck.UpdateDeck();
+            Deck.InitializeForCamp();
             
-            foreach (SkillSO _skillSO in Deck.Skills)
+            foreach (SkillSO _skillSO in Deck.DrawPile)
             {
                 GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, deckPlaceHolder);
                 _cell.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;

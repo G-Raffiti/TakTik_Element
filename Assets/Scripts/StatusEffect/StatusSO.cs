@@ -4,12 +4,22 @@ using UnityEngine;
 
 namespace StatusEffect
 {
+    public enum EBuff
+    {
+        Buff,
+        Debuff,
+    }
     public abstract class StatusSO : ScriptableObject
     {
+        [SerializeField] private EBuff type;
         [SerializeField] private bool betweenTurn;
         [SerializeField] private Element element;
         [SerializeField] private Sprite onFloorSprite;
-        [SerializeField] private new string name;
+        [SerializeField] private string buffName;
+        [SerializeField] protected int baseDuration;
+
+        public EBuff Type => type;
+
         public bool BetweenTurn => betweenTurn;
         public Element Element => element;
         public Sprite OnFloorSprite => onFloorSprite;
@@ -18,7 +28,19 @@ namespace StatusEffect
         public abstract void PassiveEffect(Buff _buff, Unit _unit);
         public abstract void EndPassiveEffect(Buff _buff, Unit _unit);
         public abstract float GetBuffValue(Unit sender);
-        public abstract int GetBuffDuration(Unit sender);
+        
+        /// <summary>
+        /// Method called when a Unit Step by a Cell affected by this Buff
+        /// </summary>
+        public virtual void OnUnitTakeCell(Buff _buff, Unit _unit)
+        {
+            ActiveEffect(_buff, _unit);
+        }
+        
+        public virtual int GetBuffDuration(Unit sender)
+        {
+            return baseDuration + sender.BattleStats.GetFocus();
+        }
         public abstract string InfoEffect(Buff _buff);
         public abstract string InfoOnUnit(Buff _buff, Unit _unit);
 

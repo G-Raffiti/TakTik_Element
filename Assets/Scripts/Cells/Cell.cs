@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Pathfinding.DataStructs;
 using GridObjects;
 using StatusEffect;
+using TMPro;
 using Units;
 using UnityEngine;
 
@@ -201,7 +202,8 @@ namespace Cells
         /// </summary>
         public void Take(IMovable _movable)
         {
-            _movable.Cell?.FreeTheCell();
+            if (_movable.Cell != null)
+                _movable.Cell.FreeTheCell();
             
             if (IsUnderGround)
             {
@@ -214,11 +216,10 @@ namespace Cells
                 CurrentUnit = _unit;
                 Buffs.ForEach(b =>
                 {
-                    b.OnStartTurn(CurrentUnit);
-                    b.OnEndTurn(CurrentUnit);
-                    b.Apply(CurrentUnit);
+                    b.Effect.OnUnitTakeCell(b, CurrentUnit);
                 });
             }
+            
             else if (_movable is GridObject _gridObject)
                 CurrentGridObject = _gridObject;
             

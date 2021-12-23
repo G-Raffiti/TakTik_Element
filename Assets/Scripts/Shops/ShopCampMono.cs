@@ -62,7 +62,7 @@ namespace Shops
 
         private void DuplicateSkill(SkillInfo a)
         {
-            a.skill.Deck.Skills.Add(a.skill.BaseSkill);
+            a.skill.Deck.DrawPile.Add(a.skill.BaseSkill);
         }
     }
 }

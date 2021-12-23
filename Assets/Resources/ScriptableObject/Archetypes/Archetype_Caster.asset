@@ -24,3 +24,4 @@ MonoBehaviour:
     NearToObject: 5
     CorruptedCell: -8
     DeBuffOnCell: -5
+    BuffOnCell: 12

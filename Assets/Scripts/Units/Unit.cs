@@ -144,7 +144,7 @@ namespace Units
                 if (buffs[i].Effect == _buff.Effect)
                 {
                     buffs[i].Undo(this);
-                    buffs[i].AddBuff(_buff);
+                    buffs[i]+=_buff;
                     buffs[i].Apply(this);
                     applied = true;
                     break;
@@ -201,6 +201,7 @@ namespace Units
             path.Reverse();
             foreach (Cell _cell in path)
             {
+                _cell.Take(this);
                 MarkAsMoving();
                 Vector3 _destinationPos = new Vector3(_cell.transform.localPosition.x, _cell.transform.localPosition.y,
                     transform.localPosition.z);
@@ -210,6 +211,7 @@ namespace Units
                         Time.deltaTime * movementAnimationSpeed);
                     yield return 0;
                 }
+                
             }
 
             IsMoving = false;

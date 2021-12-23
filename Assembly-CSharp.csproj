@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Learning.cs" />
      <Compile Include="Assets\Scripts\Stats\BattleStats.cs" />
      <Compile Include="Assets\Scripts\Skills\_Zone\Zone.cs" />
+     <Compile Include="Assets\Scripts\DevsButton\DevButtons.cs" />
      <Compile Include="Assets\Scripts\Units\MonsterSO.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillSO.cs" />
      <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\RandomUnitGenerator.cs" />
@@ -83,11 +84,13 @@
      <Compile Include="Assets\Scripts\Cells\DataBaseBoard.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\DijkstraPathfinding.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\ResolutionManager.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleTurnOrder_UI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
      <Compile Include="Assets\Scripts\Gears\Gear.cs" />
      <Compile Include="Assets\Scripts\EndConditions\BossBattle.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ScreenLogger.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\LifeSteel.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateSkillSelected.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopInventory_UI.cs" />
@@ -99,6 +102,7 @@
      <Compile Include="Assets\Scripts\_ScriptableObject\Rarity.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseMonster.cs" />
      <Compile Include="Assets\Scripts\Cells\Hexagon.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\AspectUtility.cs" />
      <Compile Include="Assets\Scripts\Units\Unit.cs" />
      <Compile Include="Assets\Scripts\Relics\RelicInfo.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityVoidEvent.cs" />
@@ -144,10 +148,12 @@
      <Compile Include="Assets\Scripts\StateMachine\BattleStateManager.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseAffix.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGridObjectEvent.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\CameraResolution.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopForge_UI.cs" />
      <Compile Include="Assets\Scripts\Units\BattleGenerator.cs" />
      <Compile Include="Assets\Scripts\GridObjects\LootBox.cs" />
      <Compile Include="Assets\Scripts\_CSVFiles\rawGear.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\DeathWaiter.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityIntEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\UnitEvent.cs" />
      <Compile Include="Assets\Scripts\Cells\BoardSO.cs" />
@@ -163,6 +169,7 @@
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Spell.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\FloatListener.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\AStarPathfinding.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\BtnEndTurn.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\SkillListener.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleInventory_UI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\GridObjectListener.cs" />
@@ -184,6 +191,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityBoolEvent.cs" />
      <Compile Include="Assets\Scripts\UserInterface\PersonalInventory.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavingLoading.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ResolutionSelector.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleState.cs" />
      <Compile Include="Assets\Resources\ToolTip\Scripts\Tooltip.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\SkillEffect.cs" />
@@ -223,14 +231,6 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\ScreenResolutionManager\ResolutionManager.cs" />
-     <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ScreenLogger.cs" />
-     <Compile Include="Assets\Scripts\ScreenResolutionManager\AspectUtility.cs" />
-     <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ResolutionSelector.cs" />
-     <Compile Include="Assets\Scripts\ScreenResolutionManager\CameraResolution.cs" />
-     <Compile Include="Assets\Scripts\DevsButton\DevButtons.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\BattleScene\DeathWaiter.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\BattleScene\BtnEndTurn.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -13,10 +13,8 @@ namespace StatusEffect
         [SerializeField] private List<Affix> Bonus;
         [SerializeField] private List<Affix> Malus;
         [SerializeField] private bool isDefinitive;
-        [SerializeField] private int duration;
         [SerializeField] private EDependency dependOn;
         [SerializeField] private int fixValue;
-        [SerializeField] private string description;
 
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
@@ -48,17 +46,11 @@ namespace StatusEffect
         
         public override float GetBuffValue(Unit sender)
         {
-            int factor = 1;
+            int factor = fixValue;
             switch (dependOn)
             {
-                case EDependency.None:
-                    factor = fixValue;
-                    break;
                 case EDependency.Power:
                     factor += sender.BattleStats.Power;
-                    break;
-                case EDependency.Focus:
-                    factor += sender.BattleStats.Focus;
                     break;
                 case EDependency.Affinity:
                     factor += sender.BattleStats.GetPower(Element.Type);
@@ -66,11 +58,6 @@ namespace StatusEffect
             }
 
             return factor;
-        }
-
-        public override int GetBuffDuration(Unit sender)
-        {
-            return sender.BattleStats.GetFocus(Element.Type);
         }
 
         public override string InfoEffect(Buff _buff)
@@ -100,6 +87,11 @@ namespace StatusEffect
         {
             string str = "When any Unit enter this Cell it will be Buffed: \n";
             return str + InfoEffect(_buff);
+        }
+
+        public override void OnUnitTakeCell(Buff _buff, Unit _unit)
+        {
+            _unit.ApplyBuff(_buff);
         }
     }
 }

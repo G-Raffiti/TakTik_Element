@@ -158,9 +158,9 @@ namespace Stats
             return (int) (Power + Affinity.GetAffinity(element));
         }
         
-        public int GetFocus(EElement element)
+        public int GetFocus()
         {
-            return (int) (Focus + Affinity.GetAffinity(element));
+            return Focus;
         }
     }
 }

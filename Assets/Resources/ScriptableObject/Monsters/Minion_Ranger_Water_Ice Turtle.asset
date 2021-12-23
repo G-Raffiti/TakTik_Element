@@ -19,6 +19,7 @@ MonoBehaviour:
     Shield: 15
     Speed: 9
     Power: 4
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0
@@ -27,7 +28,7 @@ MonoBehaviour:
     AP: 1
     Range:
       RangeType: 1
-      RangeValue: 2
+      RangeValue: 0
       ZoneType: 1
       Radius: 0
       NeedView: 1
@@ -38,6 +39,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 0
     Power: 0
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0

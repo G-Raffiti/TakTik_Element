@@ -5754,7 +5754,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &378864358
 MonoBehaviour:
@@ -9459,9 +9459,7 @@ MonoBehaviour:
   - {fileID: 232009453}
   - {fileID: 1221342984}
   - {fileID: 1767412813}
-  hero1: {fileID: 1580319016}
-  hero2: {fileID: 777419852}
-  hero3: {fileID: 1018405347}
+  heroes: []
   onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
 --- !u!1 &667913048
@@ -13720,19 +13718,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onEndBattle: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
-  Skills:
+  DrawPile:
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
   - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
-  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
-  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
-  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
-  - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
-  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   HandSkills: []
-  UsedSkills: []
+  DiscardPile: []
   ConsumedSkills: []
   Relics: []
 --- !u!1 &966237255

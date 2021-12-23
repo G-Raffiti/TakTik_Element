@@ -72,8 +72,8 @@ namespace Units
 
             _ret.Power = 0;
 
-            _ret.HP *= KeepBetweenScene.Stage;
-            _ret.Shield *= KeepBetweenScene.Stage;
+            _ret.HP *= (KeepBetweenScene.Stage + 1);
+            _ret.Shield *= (KeepBetweenScene.Stage + 1);
             
             return _ret;
         }

@@ -9,6 +9,7 @@ using Skills;
 using Skills._Zone;
 using StateMachine;
 using StateMachine.GridStates;
+using StatusEffect;
 using Units;
 using UnityEngine;
 using Void = _EventSystem.CustomEvents.Void;
@@ -36,6 +37,7 @@ namespace Players
             public int NearToObject;
             public int CorruptedCell;
             public int DeBuffOnCell;
+            public int BuffOnCell;
         }
         
         private Monster monster;
@@ -98,15 +100,11 @@ namespace Players
             
             yield return new WaitForSeconds(1);
 
-            Debug.Log("CanPlay ?" + canPlay);
-            Debug.Log("Target ?" + (best.Target != null));
-            
             int loop = 0;
             // Loop where the Unit Use all his AP.
             while (canPlay && best.Target != null)
             {
                 loop += 1;
-                Debug.Log(loop);
                 
                 // Move
                 if (best.Destination != monster.Cell)
@@ -117,38 +115,34 @@ namespace Players
                     monster.Move(best.Destination, path);
                 }
                 
-                Debug.Log("move start");
                 yield return new WaitUntil(() => !monster.IsMoving);
-                Debug.Log("move done");
                 yield return new WaitForSeconds(0.2f);
             
                 // Use Skill
                 onSkillUsed.EventListeners += SkillUsed;
                 skillInfo.UseSkill(best.Target);
                 
-                Debug.Log("skill send");
                 yield return new WaitUntil(() => skillUsed);
-                Debug.Log("skill used");
                 yield return new WaitForSeconds(0.2f);
                 
                 UnColor(stateManager);
                 
                 // Check Loop Conditions
                 canPlay = (int) monster.BattleStats.AP > 0;
+                if (monster.monsterSkill.Cost == 0)
+                    canPlay = monster.BattleStats.AP >= loop;
                 canMove = monster.BattleStats.MP > 0;
                 
                 skillUsed = false;
                 onSkillUsed.EventListeners -= SkillUsed;
 
-                if (monster.BattleStats.AP >= monster.monsterSkill.Cost || 
-                    (monster.monsterSkill.Cost == 0 && loop <= KeepBetweenScene.Stage))
+                if (monster.BattleStats.AP >= monster.monsterSkill.Cost)
                     best = Evaluate(monster, monster.monsterSkill.BaseSkill, stateManager);
                 else best = Evaluate(monster, DataBase.Skill.MonsterAttack, stateManager);
                 
                 //TODO : possibilité d'activé les couleur de des cells de l'IA via un menu Setting
                 //ColorTheFloor();
                 yield return new WaitForSeconds(1);
-                Debug.Log("end Loop");
             }
 
             // Move one Last Time at the best Place
@@ -159,9 +153,7 @@ namespace Players
                 path.Sort((_cell, _cell1) => _cell.GetDistance(monster.Cell).CompareTo(_cell1.GetDistance(monster.Cell)));
                 monster.Move(best.Destination, path);
 
-                Debug.Log("start second Move");
                 yield return new WaitUntil(() => !monster.IsMoving);
-                Debug.Log("second Move done");
             }
 
             
@@ -170,7 +162,6 @@ namespace Players
             monster.isPlaying = false;
             
             yield return new WaitForSeconds(1);
-            Debug.Log("end turn");
             
             onEndTurn.Raise();
         }
@@ -328,20 +319,33 @@ namespace Players
             // Evaluate Corruption
             foreach (Cell _cell in destinationsKeys)
             {
-                if (_cell.isCorrupted) destinations[_cell] += evaluationValues.CorruptedCell;
-                foreach (Cell c in _cell.GetNeighbours(stateManager.Cells))
+                if (_cell.isCorrupted)
                 {
-                    if (c.isCorrupted) destinations[_cell] += evaluationValues.CorruptedCell / 2;
+                    destinations[_cell] += evaluationValues.CorruptedCell;
+                    
+                    foreach (Cell neighbour in _cell.GetNeighbours(stateManager.Cells))
+                    {
+                        if(!neighbour.isCorrupted)
+                            destinations[neighbour] += evaluationValues.CorruptedCell / 2;
+                    }
                 }
             }
             
             // Evaluate Buffs on Floor
             foreach (Cell _cell in destinationsKeys)
             {
-                int buffs = _cell.Buffs.Count;
-                if (buffs <= 0) continue;
+                int debuffs = _cell.Buffs.Where(b => b.Effect.Type == EBuff.Debuff).ToList().Count;
+                int buffs = _cell.Buffs.Where(b => b.Effect.Type == EBuff.Buff).ToList().Count;
                 
-                destinations[_cell] += buffs * evaluationValues.DeBuffOnCell;
+                if (debuffs <= 0 && buffs <= 0) continue;
+                
+                destinations[_cell] += debuffs * evaluationValues.DeBuffOnCell;
+                destinations[_cell] += buffs * evaluationValues.BuffOnCell;
+                
+                foreach (Cell c in _cell.GetNeighbours(stateManager.Cells))
+                {
+                    destinations[c] += evaluationValues.DeBuffOnCell / 2;
+                }
             }
         }
 

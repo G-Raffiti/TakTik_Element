@@ -8,7 +8,7 @@ namespace StatusEffect
     {
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
-            _unit.DefendHandler(_unit, 1+(int)(0.1f * _unit.BattleStats.HP), Element);
+            _unit.DefendHandler(_unit, 1+(int)((_buff.Value / 100) * _unit.BattleStats.HP), Element);
         }
 
         public override void PassiveEffect(Buff _buff, Unit _unit)
@@ -29,16 +29,24 @@ namespace StatusEffect
             return 10 ;
         }
 
+        public override Buff AddBuff(Buff a, Buff b)
+        {
+            if (a.Effect != b.Effect) return a;
+            Buff ret = new Buff(a);
+            ret.Value += b.Value;
+            return ret;
+        }
+
         public override string InfoEffect(Buff _buff)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"Corruption Damage: <color=#{_hexColor}>{_buff.Value}</color>% of the Unit's HP at the End of the Unit Turn";
+            return $"Corruption Damage: -<color=#{_hexColor}>1 HP \n-{_buff.Value}%</color> of HP / Turn";
         }
 
         public override string InfoOnUnit(Buff _buff, Unit _unit)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"Corrupted: -<color=#{_hexColor}>10%</color> of HP / Turn \n Duration: last {_buff.Duration} Turn";
+            return $"Corrupted: -<color=#{_hexColor}>1 HP \n-{_buff.Value}%</color> of HP / Turn \n Duration: last {_buff.Duration} Turn";
         }
 
         public override string InfoOnFloor(Buff _buff)

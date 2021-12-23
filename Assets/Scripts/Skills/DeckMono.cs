@@ -11,10 +11,10 @@ namespace Skills
     public class DeckMono : MonoBehaviour
     {
         [SerializeField] private BoolEvent onEndBattle;
-        [SerializeField] public List<SkillSO> Skills = new List<SkillSO>();
+        [SerializeField] public List<SkillSO> DrawPile = new List<SkillSO>();
 
         public List<SkillSO> HandSkills = new List<SkillSO>();
-        public List<SkillSO> UsedSkills = new List<SkillSO>();
+        public List<SkillSO> DiscardPile = new List<SkillSO>();
         public List<SkillSO> ConsumedSkills = new List<SkillSO>();
         public List<RelicSO> Relics = new List<RelicSO>();
         public Relic Relic = new Relic();
@@ -39,7 +39,7 @@ namespace Skills
 
         public void ClearHandSkills()
         {
-            UsedSkills.AddRange(HandSkills);
+            DiscardPile.AddRange(HandSkills);
             HandSkills = new List<SkillSO>();
         }
 
@@ -48,10 +48,10 @@ namespace Skills
         /// </summary>
         public void ShuffleDeck()
         {
-            Skills.AddRange(UsedSkills);
-            UsedSkills = new List<SkillSO>();
+            DrawPile.AddRange(DiscardPile);
+            DiscardPile = new List<SkillSO>();
             
-            Skills.Shuffle();
+            DrawPile.Shuffle();
         }
 
         /// <summary>
@@ -59,17 +59,17 @@ namespace Skills
         /// </summary>
         public void Draw(int n)
         {
-            int maxRange = (Skills.Count < n) ? Skills.Count : n;
+            int maxRange = (DrawPile.Count < n) ? DrawPile.Count : n;
             int remainRange = n - maxRange;
             
-            HandSkills.AddRange(Skills.GetRange(0, maxRange));
-            Skills.RemoveRange(0, maxRange);
+            HandSkills.AddRange(DrawPile.GetRange(0, maxRange));
+            DrawPile.RemoveRange(0, maxRange);
 
             if (remainRange > 0)
             {
                 ShuffleDeck();
-                HandSkills.AddRange(Skills.GetRange(0, Math.Min(remainRange, Skills.Count)));
-                Skills.RemoveRange(0, Math.Min(remainRange, Skills.Count));
+                HandSkills.AddRange(DrawPile.GetRange(0, Math.Min(remainRange, DrawPile.Count)));
+                DrawPile.RemoveRange(0, Math.Min(remainRange, DrawPile.Count));
             }
         }
         
@@ -104,7 +104,7 @@ namespace Skills
             
             if (skill.BaseSkill.Consumable) 
                 ConsumedSkills.Add(skill.BaseSkill);
-            else UsedSkills.Add(skill.BaseSkill);
+            else DiscardPile.Add(skill.BaseSkill);
             
             HandSkills.Remove(skill.BaseSkill);
             
@@ -113,23 +113,33 @@ namespace Skills
 
         public void Initialize()
         {
-            Skills.AddRange(ConsumedSkills);
+            DrawPile.AddRange(ConsumedSkills);
             ConsumedSkills = new List<SkillSO>();
-            Skills.AddRange(UsedSkills);
-            UsedSkills = new List<SkillSO>();
-            Skills.AddRange(HandSkills);
+            DrawPile.AddRange(DiscardPile);
+            DiscardPile = new List<SkillSO>();
+            DrawPile.AddRange(HandSkills);
             HandSkills = new List<SkillSO>();
             ShuffleDeck();
             UpdateDeck();
         }
 
+        public void InitializeForCamp()
+        {
+            DrawPile.AddRange(ConsumedSkills);
+            ConsumedSkills = new List<SkillSO>();
+            DrawPile.AddRange(DiscardPile);
+            DiscardPile = new List<SkillSO>();
+            DrawPile.AddRange(HandSkills);
+            HandSkills = new List<SkillSO>();
+            DrawPile.Sort((s, s2) => String.Compare(s.Name, s2.Name, StringComparison.Ordinal));
+            DrawPile.Sort((s, s2) => s.Cost.CompareTo(s2.Cost));
+        }
+
         private void OnBattleEndRaised(bool item)
         {
             Initialize();
-            Skills.Sort((s, s2) => String.Compare(s.Name, s2.Name, StringComparison.Ordinal));
-            Skills.Sort((s, s2) => s.Cost.CompareTo(s2.Cost));
         }
-        
+
         public void LearnSkill(SkillSO _monsterSkill, Skill learning)
         {
             HandSkills.Remove(learning.BaseSkill);
@@ -145,8 +155,8 @@ namespace Skills
         /// <returns></returns>
         public bool RemoveSkill(SkillSO _Skill)
         {
-            if (!Skills.Contains(_Skill)) return false;
-            Skills.Remove(_Skill);
+            if (!DrawPile.Contains(_Skill)) return false;
+            DrawPile.Remove(_Skill);
             return true;
         }
 
