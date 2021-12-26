@@ -66,7 +66,6 @@ namespace Cells
         {
             if (_buff == null) return;
             Buff buff = new Buff(_buff);
-            buff.Duration *= BattleStateManager.instance.Units.Count;
             
             bool applied = false;
             
