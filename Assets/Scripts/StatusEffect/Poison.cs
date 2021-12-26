@@ -1,4 +1,5 @@
 ﻿using System;
+using Cells;
 using Units;
 using UnityEngine;
 
@@ -46,18 +47,21 @@ namespace StatusEffect
         public override string InfoEffect(Buff _buff)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"{Name}: -<color=#{_hexColor}>{_buff.Value}</color> <sprite name=HP> on every Unit's Turn \n Duration: {_buff.Duration} Turn";
+            return $"{Name}: -<color=#{_hexColor}>{_buff.Value}</color> <sprite name=HP> on every Unit's Turn \n<sprite name=Duration>: {_buff.Duration} Turn";
         }
 
         public override string InfoOnUnit(Buff _buff, Unit _unit)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"{Name}: -<color=#{_hexColor}>{_buff.Value}</color> <sprite name=HP> on every Unit's Turn \n Duration: {_buff.Duration} Turn";
+            return $"{Name}: -<color=#{_hexColor}>{_buff.Value}</color> <sprite name=HP> on every Unit's Turn \n<sprite name=Duration>: {_buff.Duration} Turn";
         }
 
-        public override string InfoOnFloor(Buff _buff)
+        public override string InfoOnFloor(Cell _cell, Buff _buff)
         {
-            return InfoEffect(_buff);
+            string str = $"{Name}: a new Stack of {Name} will be applied when Unit's pass By this Cell (-{_buff.Value / 2} <sprite name=HP> / 1 <sprite name=Duration>)";
+            if (_cell.CellSO.BasicBuff.Effect != this)
+                str += $"\n<sprite name=Duration>: {_buff.Duration} Turn";
+            return str;
         }
     }
 }

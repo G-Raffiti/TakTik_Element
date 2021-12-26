@@ -100,57 +100,32 @@ namespace UserInterface.BattleScene
 
         public override string GetInfoMain()
         {
-            string str = "";
-            str += ColouredName();
-            if (unit.playerNumber == 0)
-            {
-                str +=  "\nHero" + "\n";
-            }
-
-            else str +=  "\nMonster" + "\n";
-
-            return str;
+            return unit.GetInfoMain();
         }
 
         public override string GetInfoLeft()
         {
-            string str = "";
-            str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)unit.Total.AP}</color>    ";
-            str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.MP)}>{(int)unit.Total.MP}</color> \n";
-            str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.HP)}>{unit.BattleStats.HP} </color>/ {unit.Total.HP}    ";
-            str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{unit.BattleStats.Shield}</color> \n";
-            str += $"<sprite name=Fire> <color={colorSet.HexColor(EAffix.Fire)}>{unit.BattleStats.GetPower(EElement.Fire)}</color>  <sprite name=Water> <color={colorSet.HexColor(EAffix.Water)}>{unit.BattleStats.GetPower(EElement.Water)}</color>  <sprite name=Nature> <color={colorSet.HexColor(EAffix.Nature)}>{unit.BattleStats.GetPower(EElement.Nature)}</color>";
-
-            return str;
+            return unit.GetInfoLeft();
         }
 
         public override string GetInfoRight()
         {
-            string str = "";
-            str += unit.BattleStats.Range.ToString(unit)+ "\n";
-            str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{unit.BattleStats.Speed} </color> \n";
-            str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{unit.TurnPoint} </color> \n";
-            return str;
+            return unit.GetInfoRight();
         }
 
         public override string GetInfoDown()
         {
-            return unit.Buffs.Aggregate("", (_current, _buff) => _current + (_buff.InfoOnUnit(_buff, unit) + "\n"));
+            return unit.GetInfoDown();
         }
 
         public override string ColouredName()
         {
-            string hexColour;
-            if (unit.playerNumber == 0)
-                hexColour = colorSet.HexColor(EColor.ally);
-            else 
-                hexColour = colorSet.HexColor(EColor.enemy);
-            return $"<color={hexColour}>{unit.UnitName}</color>";
+            return unit.ColouredName();
         }
 
         public override Sprite GetIcon()
         {
-            return unit.UnitSprite;
+            return unit.GetIcon();
         }
 
         #endregion

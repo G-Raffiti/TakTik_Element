@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Cells;
 using Stats;
 using Units;
 using UnityEngine;
@@ -65,16 +66,16 @@ namespace StatusEffect
             string str = "";
             if (Bonus.Count > 0)
             {
-                str += $"Stats Bonus:";
+                str += $"Bonus: ";
                 Bonus.ForEach(affix => str += affix.Value((int)(affix.value + affix.value * _buff.Value)));
             }
             if (Malus.Count > 0)
             {
-                str += $"\nStats Malus:";
+                str += $"\nMalus: ";
                 Malus.ForEach(affix => str += $"-{affix.Value((int)(affix.value + affix.value * _buff.Value))}");
             }
             if (_buff.Duration != 0)
-                str += $"\n Duration: {_buff.Duration} Turn";
+                str += $"\n<sprite name=Duration>: {_buff.Duration} Turn";
             return str;
         }
 
@@ -83,7 +84,7 @@ namespace StatusEffect
             return InfoEffect(_buff);
         }
 
-        public override string InfoOnFloor(Buff _buff)
+        public override string InfoOnFloor(Cell _cell, Buff _buff)
         {
             string str = "When any Unit enter this Cell it will be Buffed: \n";
             return str + InfoEffect(_buff);

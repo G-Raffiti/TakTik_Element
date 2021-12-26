@@ -30,14 +30,14 @@ namespace StateMachine.GridStates
         {
             stateManager.Cells.ForEach(c => c.UnMark());
             
-            List<Cell> _freeCells = stateManager.Cells.FindAll(c => c.IsWalkable && c.Buffs.Count == 0);
+            List<Cell> _freeCells = stateManager.Cells.FindAll(c => c.IsWalkable && c.Buffs.Count == 0 && !c.IsSpawnPlace);
             
             List<Cell> _enemiesCells = new List<Cell>();
             while (_enemiesCells.Count < monsters.Count)
             {
                 int _cellIndex = Random.Range(0, _freeCells.Count);
-                    _enemiesCells.Add(_freeCells[_cellIndex]);
-                    _freeCells.Remove(_freeCells[_cellIndex]);
+                _enemiesCells.Add(_freeCells[_cellIndex]);
+                _freeCells.Remove(_freeCells[_cellIndex]);
             }
 
             for (int i = 0; i < monsters.Count; i++)

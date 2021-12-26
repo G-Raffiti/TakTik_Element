@@ -38,8 +38,15 @@ namespace _DragAndDropSystem
 			{
 				GameObject canvasObj = new GameObject(canvasName);
 				canvas = canvasObj.AddComponent<Canvas>();
-				canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+				canvas.renderMode = RenderMode.ScreenSpaceCamera;
+				canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 				canvas.sortingOrder = canvasSortOrder;
+				CanvasScaler canvasScaler = canvasObj.AddComponent<CanvasScaler>();
+				canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+				canvasScaler.referenceResolution = new Vector2(1920, 1080);
+				canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+				canvasScaler.matchWidthOrHeight = 0;
+				canvasScaler.referencePixelsPerUnit = 100;
 			}
 		}
 
@@ -62,6 +69,7 @@ namespace _DragAndDropSystem
 				Image iconImage = icon.AddComponent<Image>();
 				iconImage.raycastTarget = false;
 				iconImage.sprite = myImage.sprite;
+				
 				RectTransform iconRect = icon.GetComponent<RectTransform>();
 				// Set icon's dimensions
 				RectTransform myRect = GetComponent<RectTransform>();
@@ -69,6 +77,7 @@ namespace _DragAndDropSystem
 				iconRect.anchorMin = new Vector2(0.5f, 0.5f);
 				iconRect.anchorMax = new Vector2(0.5f, 0.5f);
 				iconRect.sizeDelta = new Vector2(myRect.rect.width, myRect.rect.height);
+				iconRect.localScale = Vector3.one;
 
 				if (OnItemDragStartEvent != null)
 				{
@@ -85,7 +94,9 @@ namespace _DragAndDropSystem
 		{
 			if (icon != null)
 			{
-				icon.transform.position = Input.mousePosition;                          // Item's icon follows to cursor in screen pixels
+				Vector3 screenPoint = Input.mousePosition;
+				screenPoint.z = canvas.planeDistance;                                          //distance of the plane from the camera
+				icon.transform.position = canvas.worldCamera.ScreenToWorldPoint(screenPoint);  // Item's icon follows to cursor in screen pixels
 			}
 		}
 

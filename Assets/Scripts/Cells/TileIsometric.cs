@@ -253,7 +253,7 @@ namespace Cells
             string str = "";
             foreach (Buff _buff in Buffs)
             {
-                str += $"{_buff.InfoBuffOnCell()}\n";
+                str += $"{_buff.InfoBuffOnCell(this)}\n";
             }
 
             return str;

@@ -34,7 +34,7 @@ MonoBehaviour:
   m_matchMaterialPreset: 1
   m_defaultSpriteAsset: {fileID: 11400000, guid: a6ebad1219a75604d801071a81ea24d9,
     type: 2}
-  m_defaultSpriteAssetPath: IconSpriteSheet
+  m_defaultSpriteAssetPath: Sprite/IconSpriteSheet
   m_enableEmojiSupport: 1
   m_MissingCharacterSpriteUnicode: 0
   m_defaultColorGradientPresetsPath: Color Gradient Presets/

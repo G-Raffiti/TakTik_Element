@@ -62,7 +62,7 @@ namespace StatusEffect
         public override string InfoEffect(Buff _buff)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"At the end of the Unit's turn if it stays on Water, it Loose {_buff.Value}% of your <sprite name=HP> \n the Unit have a bonus of {WaterBonus} <sprite name=Water> \n Duration : {_buff.Duration}";
+            return $"{Name}: -{_buff.Value}% of <sprite name=HP> if it End a Turn on <color=#{_hexColor}>Water</color> \n+{WaterBonus} of <sprite name=Water> \n<sprite name=Duration>: {_buff.Duration}";
         }
 
         public override string InfoOnUnit(Buff _buff, Unit _unit)
@@ -70,9 +70,13 @@ namespace StatusEffect
             return InfoEffect(_buff);
         }
 
-        public override string InfoOnFloor(Buff _buff)
+        public override string InfoOnFloor(Cell _cell, Buff _buff)
         {
-            return $"if any Unit Move in Water it become Drowned,\n if a Drowned Unit step on Water it Loose {_buff.Value}% of their <sprite name=HP> \n the Unit have a bonus of {WaterBonus} <sprite name=Water> \n {_buff.Duration}";
+            string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
+            string str = $"{Name}: if any Unit Move in Water it become {Name}\n if a {Name} Unit step on <color=#{_hexColor}>Water</color> it Loose {_buff.Value}% of <sprite name=HP> \nthe Unit have a bonus of {WaterBonus} <sprite name=Water>";
+            if (_cell.CellSO.BasicBuff.Effect != this)
+                str += $"\n<sprite name=Duration>: {_buff.Duration} Turn";
+            return str;
         }
     }
 }

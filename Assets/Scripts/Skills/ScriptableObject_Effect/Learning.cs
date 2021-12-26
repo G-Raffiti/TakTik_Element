@@ -23,12 +23,12 @@ namespace Skills.ScriptableObject_Effect
         
         public override string InfoEffect(SkillInfo _skillInfo)
         {
-            return $"Learn the Skill Used by the targeted Monster\nAdd it to this Deck";
+            return $"Learn the Monster's Skill\nAdd it to this Deck";
         }
         
         public override string InfoEffect()
         {
-            return $"Learn the Skill Used by the targeted Monster\nAdd it to this Deck";
+            return $"Learn the Monster's Skill\nAdd it to this Deck";
         }
     }
 }

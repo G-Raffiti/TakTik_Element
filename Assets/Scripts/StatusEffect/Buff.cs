@@ -99,9 +99,9 @@ namespace StatusEffect
         /// Info Given on CtRl holded while Hovering a Cell
         /// </summary>
         /// <returns></returns>
-        public string InfoBuffOnCell()
+        public string InfoBuffOnCell(Cell _cell)
         {
-            return StatusEffect.InfoOnFloor(this);
+            return StatusEffect.InfoOnFloor(_cell, this);
         }
     }
 }

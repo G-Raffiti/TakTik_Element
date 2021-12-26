@@ -61,12 +61,21 @@ namespace StateMachine.GridStates
         {
             base.OnCellSelected(cell);
             if (!EventSystem.current.IsPointerOverGameObject() &&
-                (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)))
+                cell.Buffs.Count > 0)
+                TooltipOn.Raise((TileIsometric) cell);
+            
+            if (!EventSystem.current.IsPointerOverGameObject() && 
+                Input.GetKey(KeyCode.LeftControl) || 
+                Input.GetKey(KeyCode.RightControl))
             {
-                if (cell.CurrentGridObject == null)
-                    TooltipOn.Raise((TileIsometric) cell);
-                else TooltipOn.Raise(cell.CurrentGridObject.GridObjectSO);
+                if (cell.CurrentGridObject != null)
+                    TooltipOn.Raise(cell.CurrentGridObject.GridObjectSO);
+                else if (cell.CurrentUnit != null)
+                    TooltipOn.Raise((cell.CurrentUnit));
+                else TooltipOn.Raise((TileIsometric) cell);
             }
+            
+            
 
             if (cell.CurrentUnit is Monster _monster)
             {

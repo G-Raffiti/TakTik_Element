@@ -84,7 +84,6 @@ namespace Skills
         
         public List<Skill> GetHandSkills(Unit unit)
         {
-            Debug.Log("Hand Size :" + HandSkills.Count);
             List<Skill> skills = new List<Skill>();
             
             foreach (SkillSO skill in HandSkills)

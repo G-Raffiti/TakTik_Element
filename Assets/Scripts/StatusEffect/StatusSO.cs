@@ -1,4 +1,5 @@
 ﻿using _ScriptableObject;
+using Cells;
 using Units;
 using UnityEngine;
 
@@ -19,7 +20,6 @@ namespace StatusEffect
         [SerializeField] protected int baseDuration;
 
         public EBuff Type => type;
-
         public bool BetweenTurn => betweenTurn;
         public Element Element => element;
         public Sprite OnFloorSprite => onFloorSprite;
@@ -54,8 +54,8 @@ namespace StatusEffect
             return ret;
         }
 
-        public string Name => $"<color=#{ColorUtility.ToHtmlStringRGB(Element.TextColour)}>{name}</color>";
+        public string Name => $"<color=#{ColorUtility.ToHtmlStringRGB(Element.TextColour)}>{buffName}</color>";
 
-        public abstract string InfoOnFloor(Buff _buff);
+        public abstract string InfoOnFloor(Cell _cell, Buff _buff);
     }
 }

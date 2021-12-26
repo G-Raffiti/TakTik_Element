@@ -43,7 +43,7 @@ namespace Skills.ScriptableObject_Effect
         public override string InfoEffect(SkillInfo _skillInfo)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(_skillInfo.skill.Element.TextColour);
-            return $"Damage: <color=#{_hexColor}>{_skillInfo.GetPower(_skillInfo.skill.Element.Type)}</color>";
+            return $"-<color=#{_hexColor}>{_skillInfo.GetPower(_skillInfo.skill.Element.Type)}</color> <sprite name=HP>";
         }
         public override string InfoEffect()
         {

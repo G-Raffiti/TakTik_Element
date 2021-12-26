@@ -369,7 +369,7 @@ namespace StateMachine
                 _gridObject.OnStartTurn();
             }
 
-            Debug.Log($"Player {PlayingUnit.playerNumber}: {PlayingUnit.UnitName} start Turn");
+            Debug.Log(PlayingUnit.playerNumber == 0 ? $"Player's Turn {PlayingUnit.ColouredName()}" : $"IA's Turn {PlayingUnit.ColouredName()}");
 
             PlayingUnit.TurnPoint -= TurnCost;
             foreach (Unit _unit in Units.Where(_unit => _unit != PlayingUnit))

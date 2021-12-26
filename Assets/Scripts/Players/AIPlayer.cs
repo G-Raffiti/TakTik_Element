@@ -130,6 +130,7 @@ namespace Players
                 // Check Loop Conditions
                 canPlay = (int) monster.BattleStats.AP > 0;
                 if (monster.monsterSkill.Cost == 0)
+                
                     canPlay = monster.BattleStats.AP >= loop;
                 canMove = monster.BattleStats.MP > 0;
                 
@@ -325,7 +326,7 @@ namespace Players
                     
                     foreach (Cell neighbour in _cell.GetNeighbours(stateManager.Cells))
                     {
-                        if(!neighbour.isCorrupted)
+                        if(destinationsKeys.Contains(neighbour) && !neighbour.isCorrupted)
                             destinations[neighbour] += evaluationValues.CorruptedCell / 2;
                     }
                 }
@@ -344,7 +345,8 @@ namespace Players
                 
                 foreach (Cell c in _cell.GetNeighbours(stateManager.Cells))
                 {
-                    destinations[c] += evaluationValues.DeBuffOnCell / 2;
+                    if (destinationsKeys.Contains(c))
+                        destinations[c] += evaluationValues.DeBuffOnCell / 2;
                 }
             }
         }

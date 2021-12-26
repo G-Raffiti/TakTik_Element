@@ -1,4 +1,5 @@
-﻿using Units;
+﻿using Cells;
+using Units;
 using UnityEngine;
 
 namespace StatusEffect
@@ -41,7 +42,7 @@ namespace StatusEffect
         public override string InfoEffect(Buff _buff)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"{Name}: -<color=#{_hexColor}>{_buff.Value}</color> <sprite name=HP> on this Unit's End Turn \n Duration: {_buff.Duration} Turn";
+            return $"{Name}: -<color=#{_hexColor}>{_buff.Value}</color> <sprite name=HP> on this Unit's End Turn \n<sprite name=Duration>: {_buff.Duration} Turn";
         }
 
         public override string InfoOnUnit(Buff _buff, Unit _unit)
@@ -49,10 +50,14 @@ namespace StatusEffect
             return InfoEffect(_buff);
         }
 
-        public override string InfoOnFloor(Buff _buff)
+        public override string InfoOnFloor(Cell _cell, Buff _buff)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(Element.TextColour);
-            return $"Burned: -<color=#{_hexColor}>{_buff.Value}</color> HP / Turn \n Duration: {_buff.Duration} Turn";
+            string str =
+                $"{Name}: -<color=#{_hexColor}>{(int) (_buff.Value / 2f)}</color> <sprite name=HP> when Unit's pass By this Cell";
+            if (_cell.CellSO.BasicBuff.Effect != this)
+                str += $"\n<sprite name=Duration>: {_buff.Duration} Turn";
+            return str;
         }
     }
 }

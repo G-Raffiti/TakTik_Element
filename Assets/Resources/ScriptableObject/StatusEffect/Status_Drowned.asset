@@ -17,7 +17,7 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
   onFloorSprite: {fileID: 4318182838925834494, guid: 657e1ca158bcc9c46a5fb7d2870dc833,
     type: 3}
-  buffName: 
+  buffName: Wet
   baseDuration: 1
   percent: 25
   WaterBonus: 5

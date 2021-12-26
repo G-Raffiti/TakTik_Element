@@ -22,19 +22,12 @@ MonoBehaviour:
   affect: 0
   range:
     RangeType: 6
-    RangeValue: 2
+    RangeValue: 0
     ZoneType: 0
     Radius: 0
     NeedView: 0
     NeedTarget: 0
-    SelfCast: 0
     CanBeModified: 0
-  power:
-    Basic: 0
-    Spell: 100
-    Skill: 100
-    Affinity:
-      Fire: 100
-      Nature: 100
-      Water: 100
+  power: 0
+  cost: 0
   statusEffects: []

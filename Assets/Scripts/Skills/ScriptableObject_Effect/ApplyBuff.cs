@@ -27,8 +27,7 @@ namespace Skills.ScriptableObject_Effect
         public override string InfoEffect(SkillInfo _skillInfo)
         {
             string str = "Apply ";
-            _skillInfo.skill.Buffs.ForEach(_buff => str += $"{_buff.Effect.Name}, ");
-            str += "to the targets";
+            _skillInfo.skill.Buffs.ForEach(_buff => str += $"{_buff.Effect.Name} ");
             return str;
         }
         

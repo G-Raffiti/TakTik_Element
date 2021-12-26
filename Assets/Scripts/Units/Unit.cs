@@ -9,6 +9,7 @@ using Cells;
 using DataBases;
 using Gears;
 using Relics;
+using Resources.ToolTip.Scripts;
 using StateMachine;
 using Stats;
 using StatusEffect;
@@ -22,7 +23,7 @@ namespace Units
     /// Base class for all units in the game.
     /// </summary>
     [ExecuteInEditMode]
-    public abstract class Unit : IMovable
+    public abstract class Unit : IMovable, IInfo
     {
         
         public string UnitName;
@@ -609,6 +610,67 @@ namespace Units
             
             buffs.ForEach(buff => buff.Apply(this));
         }
+        #region IInfo
+
+        public string GetInfoMain()
+        {
+            string str = "";
+            str += ColouredName();
+            if (playerNumber == 0)
+            {
+                str +=  "\nHero" + "\n";
+            }
+
+            else str +=  "\nMonster" + "\n";
+
+            return str;
+        }
+
+        public string GetInfoLeft()
+        {
+            string str = "";
+            str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)Total.AP}</color>    ";
+            str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.MP)}>{(int)Total.MP}</color> \n";
+            str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.HP)}>{BattleStats.HP} </color>/ {Total.HP}    ";
+            str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{BattleStats.Shield}</color> \n";
+            str += $"<sprite name=Fire> <color={colorSet.HexColor(EAffix.Fire)}>{BattleStats.GetPower(EElement.Fire)}</color>  <sprite name=Water> <color={colorSet.HexColor(EAffix.Water)}>{BattleStats.GetPower(EElement.Water)}</color>  <sprite name=Nature> <color={colorSet.HexColor(EAffix.Nature)}>{BattleStats.GetPower(EElement.Nature)}</color> \n";
+            str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{BattleStats.Speed} </color>  ";
+            str += $"<sprite name=Focus> <color={colorSet.HexColor(EAffix.Focus)}>{BattleStats.Focus} </color> \n";
+
+            return str;
+        }
+
+        public string GetInfoRight()
+        {
+            if (!Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt))
+                return "";
+            string str = "";
+            str += BattleStats.Range.ToString(this)+ "\n";
+            str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{TurnPoint} </color> \n";
+            return str;
+        }
+
+        public string GetInfoDown()
+        {
+            return Buffs.Aggregate("", (_current, _buff) => _current + (_buff.InfoOnUnit(_buff, this) + "\n"));
+        }
+
+        public string ColouredName()
+        {
+            string hexColour;
+            if (playerNumber == 0)
+                hexColour = colorSet.HexColor(EColor.ally);
+            else 
+                hexColour = colorSet.HexColor(EColor.enemy);
+            return $"<color={hexColour}>{UnitName}</color>";
+        }
+
+        public Sprite GetIcon()
+        {
+            return UnitSprite;
+        }
+
+        #endregion
     }
     public class AttackAction
     {

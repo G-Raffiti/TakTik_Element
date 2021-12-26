@@ -405,25 +405,30 @@ namespace Skills._Zone
 
         public static string ZoneToString(EZone type)
         {
+            string str = "<size=35>";
             switch (type)
             {
                 case EZone.Self:
-                    return "<sprite name=ZoneSelf>";
+                    str += "<sprite name=ZoneSelf>"; break;
                 case EZone.Basic:
-                    return "<sprite name=ZoneBasic>";
+                    str += "<sprite name=ZoneBasic>"; break;
                 case EZone.Contact:
-                    return "<sprite name=ZoneContact>";
+                    str += "<sprite name=ZoneContact>"; break;
                 case EZone.Line:
-                    return "<sprite name=ZoneLine>";
+                    str += "<sprite name=ZoneLine>"; break;
                 case EZone.Ranged:
-                    return "<sprite name=ZoneRanged>";
+                    str += "<sprite name=ZoneRanged>"; break;
                 case EZone.Square:
-                    return "<sprite name=ZoneSquare>";
+                    str += "<sprite name=ZoneSquare>"; break;
                 case EZone.Cross:
-                    return "<sprite name=ZoneCross>";
+                    str += "<sprite name=ZoneCross>"; break;
                 default:
-                    return type.ToString();
+                    str += type.ToString(); break;
             }
+
+            str += "</size>";
+
+            return str;
         }
 
         public static List<Unit> GetUnitsAffected(SkillInfo _skillInfo, Cell _targetCell)
