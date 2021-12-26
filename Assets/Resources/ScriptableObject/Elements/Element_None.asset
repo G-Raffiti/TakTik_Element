@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300fe35e28fd4797b8760b3c642816d3, type: 3}
   m_Name: Element_None
   m_EditorClassIdentifier: 
-  name: None
-  textColour: {r: 1, g: 1, b: 1, a: 1}
+  elementName: Neutral
+  textColour: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   type: 0

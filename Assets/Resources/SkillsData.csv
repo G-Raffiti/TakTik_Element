@@ -2,7 +2,7 @@ Skill,#,Name,Archetype,Element,Cost,Effect1,Effect2,Effect3,GridEffect,Status,Ra
 Skill,0,Strike,Warrior,None,1,Attack,,,,,Basic,1,Basic,0,True,False,All,True,5,False,Assassinskill_45
 Skill,1,Learning,,None,0,Learning,,,,,Basic,3,Self,0,True,True,OnlyEnemy,False,0,True,Update_05
 Skill,2,Guard,Warrior,None,1,Buff,,,,PhysicShield,Basic,0,Basic,0,True,False,All,True,5,False,Paladinskill_03
-Skill,3,Poison Cocktail,Ranger,Nature,1,FloorStatus,Buff,,,Poison,Basic,3,Basic,1,True,False,All,True,3,False,Assassinskill_46
+Skill,3,Poison Cocktail,Ranger,Nature,1,FloorStatus,,,,Poison,Basic,3,Basic,1,True,False,All,True,3,False,Assassinskill_46
 Skill,4,Tentacule,Warrior,Nature,1,Attack,,,Pull,,Cross,4,Basic,1,True,False,OnlyOthers,True,3,False,Shamanskill_33
 Skill,5,Leef Razor,Caster,Nature,1,Spell,,,,,Cross,3,Perpendicular,1,True,False,OnlyEnemy,True,4,False,healing
 Skill,6,Wave,Caster,Water,1,Spell,,,,,Contact,1,Cone,2,True,False,All,True,3,False,Shamanskill_12
@@ -21,7 +21,7 @@ Skill,18,Monster Attack,,None,1,Attack,Buff,,,,Basic,1,Basic,0,True,True,OnlyEne
 Skill,19,Shadow Stab,Warrior,Water,1,Attack,,,Teleport_to,,Ranged,3,Self,0,False,True,All,True,4,False,09_Melee_slash
 Skill,20,Encre,Ranger,Water,1,Attack,,,PushFix_3,,Basic,3,Line,1,True,False,All,True,5,False,Shamanskill_14
 Skill,21,Flash Arrow,Ranger,Fire,0,Attack,,,,,Ranged,5,Basic,0,True,True,OnlyEnemy,True,2,False,Paladinskill_20
-,,,,,,,,,,,,,,,,,,,,False,
+Skill,22,Punch,Warrior,None,1,Attack,,,PushFix_3,,Cross,2,Line,0,True,False,All,True,0,False,Warriorskill_48
 ,,,,,,,,,,,,,,,,,,,,False,
 ,,,,,,,,,,,,,,,,,,,,False,
 ,,,,,,,,,,,,,,,,,,,,False,

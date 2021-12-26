@@ -28,7 +28,7 @@ MonoBehaviour:
     AP: 3
     Range:
       RangeType: 1
-      RangeValue: 1
+      RangeValue: 2
       ZoneType: 1
       Radius: 1
       NeedView: 1

@@ -19,6 +19,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 9
     Power: 6
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0
@@ -38,6 +39,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 0
     Power: 0
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0

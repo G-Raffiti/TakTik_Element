@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36b6bf79595345fba0f9a3372c40b672, type: 3}
-  m_Name: Skill_OnePunch
+  m_Name: Cheat_Skill_OnePunch
   m_EditorClassIdentifier: 
   name: OnePunchMan
   element: {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}

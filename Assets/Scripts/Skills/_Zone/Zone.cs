@@ -422,6 +422,10 @@ namespace Skills._Zone
                     str += "<sprite name=ZoneSquare>"; break;
                 case EZone.Cross:
                     str += "<sprite name=ZoneCross>"; break;
+                case EZone.Perpendicular:
+                    str += "<sprite name=ZonePerpendicular>"; break;
+                case EZone.Cone:
+                    str += "<sprite name=ZoneCone>"; break;
                 default:
                     str += type.ToString(); break;
             }

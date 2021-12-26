@@ -35,11 +35,13 @@ namespace _CSVFiles
             SpecialEffect = UnityEngine.Resources.Load<SkillGridEffect>(
                 $"ScriptableObject/SkillEffects/GridEffect_{CSVGear["SpecialEffect"]}");
             NonAffix = new List<AffixSO>();
-            for (int i = 0; i < DataBase.Affix.Affixes.Count; i++)
+            for (int i = 0; i < 19; i++)
             {
                 if(CSVGear[$"Non{i}"].ToString() == String.Empty) continue;
                 Enum.TryParse(CSVGear[$"Non{i}"].ToString(), out EAffix nonAffix);
-                NonAffix.Add(DataBase.Affix.AllAffixes.Find(a => a.Type == nonAffix));
+                AffixSO toAdd = DataBase.Affix.AllAffixes.Find(a => a.Type == nonAffix);
+                if (!NonAffix.Contains(toAdd))
+                    NonAffix.Add(toAdd);
             }
         }
     }

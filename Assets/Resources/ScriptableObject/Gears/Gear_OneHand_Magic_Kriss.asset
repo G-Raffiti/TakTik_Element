@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f4674ba3abfa6d64690b2e8e23c8ee98, type: 3}
   gearName: Kriss
   mainStat:
-    affix: {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}
+    affix: {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
     value: 2
   specialEffect: {fileID: 0}
   nonAffixs:
