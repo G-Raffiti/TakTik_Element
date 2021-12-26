@@ -5043,8 +5043,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Shops.CampUI, Assembly-CSharp
+      - m_Target: {fileID: 1818944351}
+        m_TargetAssemblyTypeName: Shops.ShopCampMono_UI, Assembly-CSharp
         m_MethodName: HealButton
         m_Mode: 1
         m_Arguments:

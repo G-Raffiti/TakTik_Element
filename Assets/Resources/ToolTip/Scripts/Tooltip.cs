@@ -8,7 +8,6 @@ namespace Resources.ToolTip.Scripts
     public class Tooltip : MonoBehaviour
     {
         [SerializeField] private GameObject obj;
-        [SerializeField] private Camera uiCamera;
         [SerializeField] private Image icon;
         [SerializeField] private TMP_Text mainTxt;
         [SerializeField] private TMP_Text leftTxt;

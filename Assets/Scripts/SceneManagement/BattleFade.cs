@@ -12,6 +12,7 @@ namespace SceneManagement
     {
         [SerializeField] private ChangeScene SceneManager;
         [SerializeField] private List<String> ShopSceneNames;
+        private bool endTurn = false;
         
         [Header("Event Listener")]
         [SerializeField] private BoolEvent onBattleEnd;
@@ -33,10 +34,14 @@ namespace SceneManagement
         {
             KeepBetweenScene.EndBattle();
             SceneManager.LoadScene("BattleScene");
+            Debug.Log($"Battle: {KeepBetweenScene.BattleNumber} Stage: {KeepBetweenScene.Stage}");
         }
 
         private void OnBattleEnded(bool isWin)
         {
+            if (endTurn) return;
+            endTurn = true;
+            
             if (!isWin)
             {
                 YouLoose();
@@ -51,6 +56,12 @@ namespace SceneManagement
 
         private void YouWin()
         {
+            if (KeepBetweenScene.Stage == 0 && KeepBetweenScene.BattleNumber == 0)
+            {
+                StartNewBattle(new Void());
+                return;
+            }
+
             GoToRandomShop();
         }
 

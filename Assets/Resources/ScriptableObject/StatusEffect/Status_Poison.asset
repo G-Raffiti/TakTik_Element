@@ -17,4 +17,4 @@ MonoBehaviour:
   element: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
   onFloorSprite: {fileID: 21300000, guid: 01e89c2f18b0bb9429c4fe9282fa28c6, type: 3}
   buffName: Poison
-  baseDuration: 4
+  baseDuration: 3
