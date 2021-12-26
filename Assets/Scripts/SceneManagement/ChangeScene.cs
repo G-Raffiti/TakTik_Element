@@ -12,7 +12,6 @@ namespace SceneManagement
     {
         [SerializeField] private Image Fader;
         [SerializeField] private Animator anim;
-        private static readonly int Fade = Animator.StringToHash("Fade");
 
         private void Start()
         {
@@ -30,6 +29,7 @@ namespace SceneManagement
             yield return new WaitUntil(()=>Math.Abs(Fader.color.a - 1) < 0.08f);
             SceneManager.LoadScene(sceneName);
             anim.Play("SceneManager_Fade_1_to_0");
+            GetComponent<BattleFade>().BattleEnded = false;
         }
 
         public void Quit()

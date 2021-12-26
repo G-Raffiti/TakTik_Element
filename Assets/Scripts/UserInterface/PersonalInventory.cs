@@ -40,7 +40,6 @@ namespace UserInterface
 
         private void OnDisable()
         {
-            Debug.Log(Hero);
             //Hero.OnHPChanged.EventListeners -= UpdateHP;
         }
 

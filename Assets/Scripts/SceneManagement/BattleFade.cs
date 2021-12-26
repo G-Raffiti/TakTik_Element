@@ -12,7 +12,7 @@ namespace SceneManagement
     {
         [SerializeField] private ChangeScene SceneManager;
         [SerializeField] private List<String> ShopSceneNames;
-        private bool endTurn = false;
+        public bool BattleEnded = false;
         
         [Header("Event Listener")]
         [SerializeField] private BoolEvent onBattleEnd;
@@ -39,8 +39,8 @@ namespace SceneManagement
 
         private void OnBattleEnded(bool isWin)
         {
-            if (endTurn) return;
-            endTurn = true;
+            if (BattleEnded) return;
+            BattleEnded = true;
             
             if (!isWin)
             {
