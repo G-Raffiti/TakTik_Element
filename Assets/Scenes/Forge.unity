@@ -1670,8 +1670,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Craft
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1780,7 +1780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 258.975, y: -260}
+  m_AnchoredPosition: {x: 258.97498, y: -260}
   m_SizeDelta: {x: 350, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &377782324
@@ -4440,7 +4440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 258.975, y: -345}
+  m_AnchoredPosition: {x: 258.97498, y: -345}
   m_SizeDelta: {x: 350, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &877486929
@@ -4896,7 +4896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 258.975, y: -175}
+  m_AnchoredPosition: {x: 258.97498, y: -175}
   m_SizeDelta: {x: 350, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &957772474
@@ -9118,6 +9118,11 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6630618722890691889, guid: 9dc0a022149cd4241a009ef0980a4d03,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12.299988
+      objectReference: {fileID: 0}
     - target: {fileID: 6630618723434645860, guid: 9dc0a022149cd4241a009ef0980a4d03,
         type: 3}
       propertyPath: m_Name
@@ -10847,7 +10852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 0.5019608}
+  m_Color: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10893,6 +10898,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630618722890691889, guid: 9dc0a022149cd4241a009ef0980a4d03,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12.299988
       objectReference: {fileID: 0}
     - target: {fileID: 6630618723434645860, guid: 9dc0a022149cd4241a009ef0980a4d03,
         type: 3}
@@ -11523,6 +11533,11 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6630618722890691889, guid: 9dc0a022149cd4241a009ef0980a4d03,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12.299988
+      objectReference: {fileID: 0}
     - target: {fileID: 6630618723434645860, guid: 9dc0a022149cd4241a009ef0980a4d03,
         type: 3}
       propertyPath: m_Name
@@ -11879,7 +11894,7 @@ PrefabInstance:
     - target: {fileID: 6630618723434645861, guid: 9dc0a022149cd4241a009ef0980a4d03,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -22.275002
+      value: -22.275
       objectReference: {fileID: 0}
     - target: {fileID: 6630618723434645861, guid: 9dc0a022149cd4241a009ef0980a4d03,
         type: 3}
@@ -12653,7 +12668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 258.975, y: -100}
+  m_AnchoredPosition: {x: 258.97498, y: -100}
   m_SizeDelta: {x: 483.15, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127658048
@@ -12678,8 +12693,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Select the Affix you want to use
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

@@ -46,12 +46,11 @@ namespace _Instances
                 craftingMaterial[_affix] += number;
         }
 
-        public bool RemoveMaterial(AffixSO _affix, int number)
+        public void RemoveMaterial(AffixSO _affix, int number)
         {
-            if (!craftingMaterial.ContainsKey(_affix) || craftingMaterial[_affix] < number)
-                return false;
+            if (!craftingMaterial.ContainsKey(_affix))
+                return;
             craftingMaterial[_affix] -= number;
-            return true;
         }
     }
 }

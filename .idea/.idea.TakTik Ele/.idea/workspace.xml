@@ -36,9 +36,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/BoardSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/Resolution.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
@@ -70,7 +67,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Learning.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/FloorStatus.cs" />
@@ -82,11 +78,15 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/ApplyBuff.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawGear.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
       <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ChangeScene.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

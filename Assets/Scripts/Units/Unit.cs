@@ -332,7 +332,7 @@ namespace Units
         /// <param name="element">Element Type of the attack</param>
         public void DefendHandler(Unit aggressor, float damage, Element element)
         {
-            Debug.Log($"Damage : {aggressor.UnitName} did {damage} {element.Type} damage to {UnitName}");
+            Debug.Log($"Damage : {aggressor.ColouredName()} did {damage} {element.Name} damage to {ColouredName()}");
 
             int _damageTaken = 0;
             if (damage > 0)

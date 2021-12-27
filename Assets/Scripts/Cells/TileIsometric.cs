@@ -98,9 +98,10 @@ namespace Cells
                     Buffs.Remove(b);
                 }
             });
-            
+
             if (Buffs.Count <= 0)
                 effect.sprite = null;
+            else effect.sprite = Buffs[Buffs.Count - 1].Effect.OnFloorSprite;
         }
 
         public override void FallIn()

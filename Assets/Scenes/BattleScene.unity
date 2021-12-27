@@ -749,7 +749,7 @@ MonoBehaviour:
   SceneManager: {fileID: 63288372}
   ShopSceneNames:
   - Forge
-  - CampFire
+  BattleEnded: 0
   onBattleEnd: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   onQuitShop: {fileID: 11400000, guid: ded797e8a4bd436428e1971b8401499c, type: 2}
 --- !u!1 &75526696
@@ -5754,7 +5754,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &378864358
 MonoBehaviour:

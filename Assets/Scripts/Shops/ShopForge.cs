@@ -54,25 +54,28 @@ namespace Shops
 
         public void CraftNewItem(Void empty)
         {
-            Gear gear = new Gear();
             ShopForge_UI _shopForgeUI = GameObject.Find("ForgeUI/Left/Main").GetComponent<ShopForge_UI>();
-            if (_shopForgeUI.GetCraftStats() == null)
+            if (_shopForgeUI.GetCraftMaterial() == null)
                 return;
-
-            foreach (KeyValuePair<AffixSO,int> _pair in _shopForgeUI.GetCraftStats())
+            Dictionary<AffixSO, int> material = _shopForgeUI.GetCraftMaterial();
+            foreach (KeyValuePair<AffixSO,int> _pair in _shopForgeUI.GetCraftMaterial())
             {
+                if (_pair.Value < 1)
+                    material[_pair.Key] = 1;
                 if (!PlayerData.getInstance().CraftingMaterial.ContainsKey(_pair.Key))
                     return;
-                if (PlayerData.getInstance().CraftingMaterial[_pair.Key] < _pair.Value)
+                if (PlayerData.getInstance().CraftingMaterial[_pair.Key] < material[_pair.Key])
                     return;
             }
 
-            foreach (KeyValuePair<AffixSO, int> _pair in _shopForgeUI.GetCraftStats())
+            foreach (AffixSO _affixSO in material.Keys)
             {
-                PlayerData.getInstance().RemoveMaterial(_pair.Key, _pair.Value);
+                Debug.Log($"{_affixSO.Name} - {material[_affixSO]}");
+                PlayerData.getInstance().RemoveMaterial(_affixSO, material[_affixSO]);
             }
             
-            gear.CraftNewGear(_shopForgeUI.GetCraftStats());
+            Gear gear = new Gear();
+            gear.CraftNewGear(material);
             
             _shopForgeUI.ShowCraftedGear(gear);
             onDiplayUptade.Raise();
