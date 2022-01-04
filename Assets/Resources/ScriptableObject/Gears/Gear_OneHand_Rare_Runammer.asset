@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: cbb37904078b84144806a27695e601fa, type: 3}
   gearName: Runammer
   mainStat:
-    affix: {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
+    affix: {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}
     value: 3
   specialEffect: {fileID: 0}
   nonAffixs:

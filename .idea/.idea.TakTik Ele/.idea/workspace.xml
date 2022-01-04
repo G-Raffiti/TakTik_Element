@@ -36,20 +36,10 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/Resolution.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/CameraResolution.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Devs Button/AddSkills.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/AddSkills.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/DevButtons.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Gear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleInventory_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/Relic.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/BattleStats.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
@@ -71,22 +61,32 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/FloorStatus.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Healing.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Drowned.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropItem.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/ApplyBuff.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawGear.cs" />
       <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ChangeScene.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Gear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Inventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseAffix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

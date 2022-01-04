@@ -22,7 +22,6 @@ MonoBehaviour:
   specialEffect: {fileID: 0}
   nonAffixs:
   - {fileID: 11400000, guid: 8bd15678bdc020749a76dd3141210356, type: 2}
-  - {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
   - {fileID: 11400000, guid: c6da5e4f41c8e7b40bfa9b8de6e3d116, type: 2}
   - {fileID: 11400000, guid: 03645eb28cbebc749917757f29043bab, type: 2}
   - {fileID: 11400000, guid: 891c529fa4ec4b34780b94b7ace0a6ad, type: 2}

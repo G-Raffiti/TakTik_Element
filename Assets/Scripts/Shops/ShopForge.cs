@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _EventSystem.CustomEvents;
 using _Instances;
 using Gears;
@@ -11,6 +12,7 @@ namespace Shops
 {
     public class ShopForge : MonoBehaviour
     {
+        [SerializeField] private int craftPoint = 3;
         [Header("Listener")]
         [SerializeField] private ItemEvent onDestroyGear;
         [SerializeField] private VoidEvent onCraftGear;
@@ -19,8 +21,11 @@ namespace Shops
         [Header("Sender")]
         [SerializeField] private VoidEvent onDiplayUptade;
 
+        public int CraftPoint => craftPoint;
+
         private void Start()
         {
+            craftPoint = 3;
             onDestroyGear.EventListeners += DestroyItem;
             onCraftGear.EventListeners += CraftNewItem;
             onUpgradeGear.EventListeners += UpgradeItem;
@@ -54,6 +59,8 @@ namespace Shops
 
         public void CraftNewItem(Void empty)
         {
+            if (craftPoint < 1) return;
+            craftPoint--;
             ShopForge_UI _shopForgeUI = GameObject.Find("ForgeUI/Left/Main").GetComponent<ShopForge_UI>();
             if (_shopForgeUI.GetCraftMaterial() == null)
                 return;
@@ -70,7 +77,6 @@ namespace Shops
 
             foreach (AffixSO _affixSO in material.Keys)
             {
-                Debug.Log($"{_affixSO.Name} - {material[_affixSO]}");
                 PlayerData.getInstance().RemoveMaterial(_affixSO, material[_affixSO]);
             }
             
@@ -80,46 +86,42 @@ namespace Shops
             _shopForgeUI.ShowCraftedGear(gear);
             onDiplayUptade.Raise();
         }
-        
 
-        public void UpgradeItem(Gear gear)
+
+        private void UpgradeItem(Gear gear)
         {
+            if (craftPoint < 1) return;
             ShopForge_UI _shopForgeUI = GameObject.Find("ForgeUI/Left/Main").GetComponent<ShopForge_UI>();
-            Debug.Log("1 Forge founded :" + (_shopForgeUI != null));
-            UpgradeGear(gear, _shopForgeUI.GetUpgradeAffix());
+            if (!UpgradeGear(gear, _shopForgeUI.GetUpgradeAffix()))
+                return;
+            craftPoint--;
             onDiplayUptade.Raise();
         }
-        
-        public void UpgradeGear(Gear gear, AffixSO affix)
+
+        private bool UpgradeGear(Gear gear, AffixSO affix)
         {
-            Debug.Log($"2 Resources Contain {affix} :" + PlayerData.getInstance().CraftingMaterial.ContainsKey(affix));
             if (!PlayerData.getInstance().CraftingMaterial.ContainsKey(affix)) 
-                return;
+                return false;
             if (PlayerData.getInstance().CraftingMaterial[affix] < 1)
-                return;
+                return false;
             
             List<Affix> old = gear.Affixes;
-            string str = "3";
-            old.ForEach(a => str += a.ToString());
-            Debug.Log(str);
             
             int tier = 0;
             
-            foreach (Affix _gearAffix in gear.Affixes)
+            foreach (Affix _gearAffix in gear.Affixes.Where(_gearAffix => _gearAffix.affix == affix))
             {
-                if (_gearAffix.affix == affix)
-                {
-                    tier = _gearAffix.getTier();
-                    old.Remove(_gearAffix);
-                    PlayerData.getInstance().RemoveMaterial(affix, 1);
-                    break;
-                }
+                tier = _gearAffix.getTier();
+                if (tier == affix.Tier.Length - 1)
+                    return false;
+                old.Remove(_gearAffix);
+                PlayerData.getInstance().RemoveMaterial(affix, 1);
+                break;
             }
 
-            old.Add(new Affix(affix, affix.getValueOfTier(Math.Min(affix.Tier.Length, tier + 1))));
+            old.Add(new Affix(affix, affix.getValueOfTier(Math.Min(affix.Tier.Length - 1, tier + 1))));
             gear.SetAffixes(old);
-            
-            onDiplayUptade.Raise();
+            return true;
         }
     }
 }

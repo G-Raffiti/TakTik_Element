@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 11
   color: {r: 1, g: 1, b: 1, a: 1}
-  tier: 010000000200000003000000
+  rarity: 1
+  tier: 00000000010000000200000003000000
   symbol: <sprite name=Zone>

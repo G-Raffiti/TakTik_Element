@@ -16,7 +16,8 @@ namespace Shops
     public class ShopForge_UI : MonoBehaviour
     {
         [SerializeField] private GameObject prefabGear;
-        
+
+        [SerializeField] private TextMeshProUGUI CraftPoints;
         [SerializeField] private TMP_Dropdown dropdownValueNew0;
         [SerializeField] private TMP_Dropdown dropdownValueNew1;
         [SerializeField] private TMP_Dropdown dropdownValueNew2;
@@ -188,6 +189,7 @@ namespace Shops
             ActualiseValueDropdown(dropdownValueNew0, dropdownAffixNew0);
             ActualiseValueDropdown(dropdownValueNew1, dropdownAffixNew1);
             ActualiseValueDropdown(dropdownValueNew2, dropdownAffixNew2);
+            CraftPoints.text = $"Craft Points = {GameObject.FindObjectOfType<ShopForge>().CraftPoint}";
         }
     }
 }

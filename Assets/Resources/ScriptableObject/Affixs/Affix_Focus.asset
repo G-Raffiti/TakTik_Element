@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Affix_Focus
   m_EditorClassIdentifier: 
   type: 9
-  color: {r: 0.486094, g: 0, b: 1, a: 0}
-  tier: 0100000002000000040000000600000008000000
+  color: {r: 0.486094, g: 0, b: 1, a: 1}
+  rarity: 2
+  tier: 01000000020000000400000006000000080000000a0000000c0000000e000000
   symbol: <sprite name=Focus>

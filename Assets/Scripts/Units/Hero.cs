@@ -36,7 +36,9 @@ namespace Units
         public Sprite UnitSprite => unitSprite;
         public Sprite Icon => icon;
         public Inventory Inventory => inventory;
-        
+
+        public List<RelicSO> Relics => relics;
+
         public bool isPlaced = false;
         public bool isDead = false;
 

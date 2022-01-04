@@ -10,11 +10,16 @@ namespace Stats
     {
         [SerializeField] protected EAffix type;
         [SerializeField] private Color color;
+        /// <summary>
+        /// less is the rarity more rare is the affix
+        /// </summary>
+        [SerializeField] private int rarity;
         [SerializeField] private int[] tier = new int[4];
         [SerializeField] private string symbol;
 
 
         public EAffix Type => type;
+        public int Rarity => rarity;
         public Color Color => color;
         public int[] Tier => tier;
 
@@ -67,14 +72,18 @@ namespace Stats
                 
         }
         
-        public int getValue(int lvl)
+        public int getValue(int _stage)
         {
-            return Random.Range(tier[Math.Max(0, lvl - 1)], tier[lvl] + 1);
+            return getValueOfTier(_stage + 1);
         }
 
-        public float getValueOfTier(int _tier)
+        public int getValueOfTier(int _tier)
         {
-            return Random.Range(tier[Math.Max(0, _tier - 1)], tier[_tier] + 1);
+            int Min = tier[Math.Max(0, _tier - 1)];
+            int Max = tier[Math.Min(_tier, tier.Length -1)] + 1;
+            int value = Random.Range(Min, Max);
+            Debug.Log($"<color=green>Min = {Min}, Max = {Max}, Value = {value}</color>");
+            return value;
         }
 
         public string TierRange(int lvl)

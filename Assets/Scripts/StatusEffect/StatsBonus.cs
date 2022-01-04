@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cells;
 using Stats;
 using Units;
@@ -59,6 +60,19 @@ namespace StatusEffect
             }
 
             return factor;
+        }
+
+        public override Buff AddBuff(Buff a, Buff b)
+        {
+            if (a.Effect != b.Effect) return a;
+            Buff ret = new Buff(a);
+            if (isDefinitive)
+            {
+                return b;
+            }
+            ret.Value = Math.Max(a.Value, b.Value);
+            ret.Duration += b.Duration;
+            return ret;
         }
 
         public override string InfoEffect(Buff _buff)

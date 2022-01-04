@@ -749,6 +749,7 @@ MonoBehaviour:
   SceneManager: {fileID: 63288372}
   ShopSceneNames:
   - Forge
+  - CampFire
   BattleEnded: 0
   onBattleEnd: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   onQuitShop: {fileID: 11400000, guid: ded797e8a4bd436428e1971b8401499c, type: 2}
@@ -5754,7 +5755,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &378864358
 MonoBehaviour:
@@ -10332,6 +10333,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728625338}
   m_CullTransparentMesh: 1
+--- !u!1 &749114362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749114363}
+  - component: {fileID: 749114364}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749114363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749114362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749114364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749114362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 8ee0b83c81596e5449ee44e638f544ed, type: 2}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1001 &756348667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10776,7 +10825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da14a864ee7d427990d94ebad6651e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Paul
+  unitName: Kiki
   battleStats:
     HP: 100
     Shield: 0
@@ -10798,8 +10847,8 @@ MonoBehaviour:
       NeedTarget: 0
       CanBeModified: 0
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
-  unitSprite: {fileID: 21300000, guid: bb461a45ff3313340940f016c850570e, type: 3}
-  icon: {fileID: 21300000, guid: bb461a45ff3313340940f016c850570e, type: 3}
+  unitSprite: {fileID: 21300000, guid: cb4154e6cb9fe514d96f3bddf3a4522a, type: 3}
+  icon: {fileID: 21300000, guid: cb4154e6cb9fe514d96f3bddf3a4522a, type: 3}
   inventory:
     gears: []
   relics: []
@@ -12460,7 +12509,7 @@ Transform:
   m_GameObject: {fileID: 907250672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1897969299}
   m_RootOrder: 0
@@ -14198,7 +14247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da14a864ee7d427990d94ebad6651e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Elise
+  unitName: Claudius
   battleStats:
     HP: 100
     Shield: 0
@@ -14220,8 +14269,8 @@ MonoBehaviour:
       NeedTarget: 0
       CanBeModified: 0
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
-  unitSprite: {fileID: 21300000, guid: d11a05f31ed60404c85113f85643d968, type: 3}
-  icon: {fileID: 21300000, guid: d11a05f31ed60404c85113f85643d968, type: 3}
+  unitSprite: {fileID: 21300000, guid: 56362248075cac34e903f40a86db4f79, type: 3}
+  icon: {fileID: 21300000, guid: 56362248075cac34e903f40a86db4f79, type: 3}
   inventory:
     gears: []
   relics: []
@@ -22062,7 +22111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da14a864ee7d427990d94ebad6651e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Jean
+  unitName: Metal
   battleStats:
     HP: 100
     Shield: 0
@@ -22084,8 +22133,8 @@ MonoBehaviour:
       NeedTarget: 0
       CanBeModified: 0
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
-  unitSprite: {fileID: 21300000, guid: ecdc6c598e786454b8b538957f52298f, type: 3}
-  icon: {fileID: 21300000, guid: ecdc6c598e786454b8b538957f52298f, type: 3}
+  unitSprite: {fileID: 21300000, guid: bc7f45f96d90f8646bec07de809bc3db, type: 3}
+  icon: {fileID: 21300000, guid: bc7f45f96d90f8646bec07de809bc3db, type: 3}
   inventory:
     gears: []
   relics: []
@@ -28299,6 +28348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782066463285790181, guid: ee32c8e5ac323e64c8cf85315af37bd1,
+        type: 3}
+      propertyPath: m_RenderingPath
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 782066463285790202, guid: ee32c8e5ac323e64c8cf85315af37bd1,
         type: 3}

@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '- 70 HP'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -209,6 +209,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 0
     Power: 0
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0
@@ -275,8 +276,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3725990125870873374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 3480699985351151859}
   m_RootOrder: 0
@@ -321,7 +322,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: 21300000, guid: ecdc6c598e786454b8b538957f52298f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb4154e6cb9fe514d96f3bddf3a4522a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -500,8 +501,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '- 70 HP'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

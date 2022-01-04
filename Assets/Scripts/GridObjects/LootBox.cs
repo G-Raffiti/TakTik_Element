@@ -18,13 +18,13 @@ namespace GridObjects
             {
                 location.CurrentGridObject.Inventory = new Inventory();
                 Gear _gear = new Gear();
-                _gear.CreateGear(KeepBetweenScene.Stage);
+                _gear.CreateGear();
                 location.CurrentGridObject.Inventory.gears.Add(_gear);
                 
                 if (location.isCorrupted)
                 {
                     Gear gear2 = new Gear();
-                    gear2.CreateGear(KeepBetweenScene.Stage);
+                    gear2.CreateGear();
                     location.CurrentGridObject.Inventory.gears.Add(gear2);
                 }
             }

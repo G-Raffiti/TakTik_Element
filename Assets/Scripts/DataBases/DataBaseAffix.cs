@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Instances;
 using Stats;
 using UnityEngine;
 
@@ -42,9 +43,17 @@ namespace DataBases
 
         public AffixSO GetRandomBut(IEnumerable<AffixSO> _nonAffixes)
         {
-            List<AffixSO> aff = new List<AffixSO>();
-            aff.AddRange(affixes.Except(_nonAffixes));
-            return aff[Random.Range(0, aff.Count)];
+            List<AffixSO> aff = new List<AffixSO>(affixes.Except(_nonAffixes));
+            List<AffixSO> weigthedAffixes = new List<AffixSO>();
+            foreach (AffixSO _affix in aff)
+            {
+                for (int i = 0; i < _affix.Rarity + KeepBetweenScene.Stage; i++)
+                {
+                    weigthedAffixes.Add(_affix);
+                }
+            }
+
+            return weigthedAffixes[Random.Range(0, weigthedAffixes.Count)];
         }
     }
 }

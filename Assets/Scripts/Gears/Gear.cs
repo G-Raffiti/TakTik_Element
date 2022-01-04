@@ -31,12 +31,12 @@ namespace Gears
         /// <summary>
         /// called on Gear Random Creation
         /// </summary>
-        /// <param name="lvl"> the stage in the game (1 2 or 3)</param>
-        public void CreateGear(int lvl)
+        /// <param name="_stage"> the stage in the game (1 2 or 3)</param>
+        public void CreateGear()
         {
             GearSO = DataBase.Gear.GetRandom();
             Affixes = new List<Affix>();
-            Stage = lvl;
+            Stage = KeepBetweenScene.Stage;
 
             List<AffixSO> nonAffixes = new List<AffixSO>();
             nonAffixes.AddRange(GearSO.NonAffixs);
@@ -44,7 +44,7 @@ namespace Gears
             {
                 if (DataBase.Affix.Affixes.Count <= nonAffixes.Count) break;
                 AffixSO affix = DataBase.Affix.GetRandomBut(nonAffixes);
-                int value = affix.getValue(Math.Min(lvl,affix.Tier.Length-1));
+                int value = affix.getValue(Stage);
                 Affixes.Add(new Affix(affix, value));
                 nonAffixes.Add(affix);
             }

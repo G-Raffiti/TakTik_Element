@@ -2,6 +2,7 @@
 using _DragAndDropSystem;
 using _EventSystem.CustomEvents;
 using DataBases;
+using Relics;
 using Resources.ToolTip.Scripts;
 using Stats;
 using Units;
@@ -93,7 +94,13 @@ namespace UserInterface
         
         public override string GetInfoDown()
         {
-            return "";
+            string str = "";
+            foreach (RelicSO _heroRelic in Hero.Relics)
+            {
+                str += _heroRelic.Name + "\n";
+            }
+
+            return str; 
         }
 
         public override string ColouredName()

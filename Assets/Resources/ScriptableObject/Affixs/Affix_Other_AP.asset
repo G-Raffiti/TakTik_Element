@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   color: {r: 1, g: 0.6431373, b: 0, a: 1}
-  tier: 010000000200000003000000
+  rarity: 1
+  tier: 00000000010000000200000003000000
   symbol: <sprite name=AP>

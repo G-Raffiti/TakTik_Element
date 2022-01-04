@@ -32,12 +32,12 @@ namespace Stats
             int tier = 0;
             foreach (int _tier in affix.Tier)
             {
-                if (value >= _tier)
+                if (value > _tier)
                     tier += 1;
                 else break;
             }
 
-            return Math.Min(tier, affix.Tier.Length);
+            return Math.Min(tier, affix.Tier.Length - 1);
         }
     }
 }

@@ -20,5 +20,4 @@ MonoBehaviour:
     affix: {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
     value: 10
   specialEffect: {fileID: 0}
-  nonAffixs:
-  - {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
+  nonAffixs: []

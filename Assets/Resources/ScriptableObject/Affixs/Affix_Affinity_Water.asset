@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 6
   color: {r: 0, g: 0.30753082, b: 0.7921569, a: 1}
-  tier: 0200000004000000080000000e0000001a000000
+  rarity: 5
+  tier: 010000000200000004000000070000000b00000010000000160000001e000000
   symbol: <sprite name=Water>

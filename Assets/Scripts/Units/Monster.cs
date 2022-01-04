@@ -76,7 +76,7 @@ namespace Units
             buffs = new List<Buff>();
             
             Inventory = new Inventory();
-            Inventory.GenerateGearFor(monster, Stage);
+            Inventory.GenerateGearFor(monster);
 
             if (monster.Type == EMonster.Boss)
             {
