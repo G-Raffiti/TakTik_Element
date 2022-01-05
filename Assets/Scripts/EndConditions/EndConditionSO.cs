@@ -8,6 +8,7 @@ namespace EndConditions
         Death,
         LootBox,
         Boss,
+        Last,
     }
     public abstract class EndConditionSO : ScriptableObject
     {

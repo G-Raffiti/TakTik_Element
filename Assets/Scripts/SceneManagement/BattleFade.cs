@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _Instances;
+using EndConditions;
+using StateMachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Void = _EventSystem.CustomEvents.Void;
@@ -11,23 +13,29 @@ namespace SceneManagement
     public class BattleFade : MonoBehaviour
     {
         [SerializeField] private ChangeScene SceneManager;
-        [SerializeField] private List<String> ShopSceneNames;
-        public bool BattleEnded = false;
+        [SerializeField] private ShopChoice_UI shopChoiceUI;
+        [SerializeField] private GameObject nextBattle;
+        
+        [Header("Event Sender")] [SerializeField]
+        private VoidEvent onUIEnable;
         
         [Header("Event Listener")]
-        [SerializeField] private BoolEvent onBattleEnd;
+        [SerializeField] private BoolEvent onBattleIsOver;
         [SerializeField] private VoidEvent onQuitShop;
+        [SerializeField] private VoidEvent NextBattle;
         
         private void Start()
         {
-            onBattleEnd.EventListeners += OnBattleEnded;
+            onBattleIsOver.EventListeners += OnBattleEnded;
             onQuitShop.EventListeners += StartNewBattle;
+            NextBattle.EventListeners += StartNewBattle;
         }
 
         private void OnDestroy()
         {
-            onBattleEnd.EventListeners -= OnBattleEnded;
+            onBattleIsOver.EventListeners -= OnBattleEnded;
             onQuitShop.EventListeners -= StartNewBattle;
+            NextBattle.EventListeners -= StartNewBattle;
         }
 
         private void StartNewBattle(Void empty)
@@ -39,9 +47,7 @@ namespace SceneManagement
 
         private void OnBattleEnded(bool isWin)
         {
-            if (BattleEnded) return;
-            BattleEnded = true;
-            
+            onUIEnable.Raise();
             if (!isWin)
             {
                 YouLoose();
@@ -56,19 +62,23 @@ namespace SceneManagement
 
         private void YouWin()
         {
-            if (KeepBetweenScene.Stage == 0 && KeepBetweenScene.BattleNumber == 0)
+            switch (BattleStateManager.instance.endCondition.Type)
             {
-                StartNewBattle(new Void());
-                return;
+                case EConditionType.LootBox:
+                    nextBattle.SetActive(true);
+                    break;
+                case EConditionType.Last:
+                    SceneManager.LoadScene("ScoreScene");
+                    break;
+                default:
+                    shopChoiceUI.gameObject.SetActive(true);
+                    break;
             }
-
-            GoToRandomShop();
         }
 
-        private void GoToRandomShop()
+        public void GoToShop(string _shopName)
         {
-            SceneManager.LoadScene(ShopSceneNames[Random.Range(0, ShopSceneNames.Count)]);
+            SceneManager.LoadScene(_shopName);
         }
-
     }
 }

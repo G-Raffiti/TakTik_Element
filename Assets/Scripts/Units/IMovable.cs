@@ -92,8 +92,6 @@ namespace Units
             }
             else pathToDestination = path;
 
-            movable.Cell.FreeTheCell();
-
             if (movable.MovementAnimationSpeed > 0)
             {
                 pathToDestination.Reverse();

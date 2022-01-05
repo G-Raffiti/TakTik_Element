@@ -34,6 +34,9 @@
             </e>
           </e>
         </e>
+        <e p="PostProcessing" t="Include">
+          <e p="Blur.shader" t="Include" />
+        </e>
         <e p="Resources" t="Include">
           <e p="ToolTip" t="Include">
             <e p="Scripts" t="Include">
@@ -152,6 +155,7 @@
             <e p="BossBattle.cs" t="Include" />
             <e p="DeathBattle.cs" t="Include" />
             <e p="EndConditionSO.cs" t="Include" />
+            <e p="LastBattle.cs" t="Include" />
             <e p="LootBoxes.cs" t="Include" />
           </e>
           <e p="Gears" t="Include">
@@ -180,6 +184,7 @@
           <e p="SceneManagement" t="Include">
             <e p="BattleFade.cs" t="Include" />
             <e p="ChangeScene.cs" t="Include" />
+            <e p="ShopChoice_UI.cs" t="Include" />
           </e>
           <e p="ScreenResolutionManager" t="Include">
             <e p="AspectUtility.cs" t="Include" />

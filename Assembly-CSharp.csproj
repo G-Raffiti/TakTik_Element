@@ -106,6 +106,7 @@
      <Compile Include="Assets\Scripts\Units\Unit.cs" />
      <Compile Include="Assets\Scripts\Relics\RelicInfo.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityVoidEvent.cs" />
+     <Compile Include="Assets\Scripts\SceneManagement\ShopChoice_UI.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\Pull.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Attack.cs" />
      <Compile Include="Assets\Scripts\Skills\AllDecksMono.cs" />
@@ -218,6 +219,7 @@
      <Compile Include="Assets\Scripts\Stats\AffixSO.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\HeapPriorityQueue.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\TeleportTo.cs" />
+     <Compile Include="Assets\Scripts\EndConditions\LastBattle.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\ApplyBuff.cs" />
      <Compile Include="Assets\Scripts\Units\IMovable.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectZoneType.cs" />
@@ -244,6 +246,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\PostProcessing\Blur.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />

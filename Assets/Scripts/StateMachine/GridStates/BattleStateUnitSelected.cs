@@ -35,8 +35,7 @@ namespace StateMachine.GridStates
                 if (cell.CurrentGridObject.IsInteractable)
                 {
                     cell.CurrentGridObject.Interact(unit);
-                    if (StateManager.endCondition.battleIsOver(cellGrid)) return;
-                    StateManager.BattleState = new BattleStateUnitSelected(StateManager, unit);
+                    return;
                 }
             }
 
@@ -45,7 +44,6 @@ namespace StateMachine.GridStates
 
             List<Cell> _path = unit.FindPath(StateManager.Cells, cell);
             unit.Move(cell, _path);
-            StateManager.BattleState = new BattleStateUnitSelected(StateManager, unit);
         }
 
         public override void OnCellDeselected(Cell cell)

@@ -29,7 +29,6 @@ namespace SceneManagement
             yield return new WaitUntil(()=>Math.Abs(Fader.color.a - 1) < 0.08f);
             SceneManager.LoadScene(sceneName);
             anim.Play("SceneManager_Fade_1_to_0");
-            GetComponent<BattleFade>().BattleEnded = false;
         }
 
         public void Quit()

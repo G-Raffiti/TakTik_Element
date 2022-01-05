@@ -20,6 +20,13 @@ namespace Units
                     _ret.AddRange(GenerateMinions());
                     return _ret;
                 }
+                case EConditionType.Last:
+                {
+                    List<MonsterSO> _ret = new List<MonsterSO>();
+                    _ret.Add(DataBase.Monster.AllBosses[Random.Range(0, DataBase.Monster.AllBosses.Count)]);
+                    _ret.AddRange(GenerateMinions());
+                    return _ret;
+                }
                 default: return GenerateMinions();
             }
         }

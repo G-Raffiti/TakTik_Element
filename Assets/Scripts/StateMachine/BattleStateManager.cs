@@ -35,8 +35,15 @@ namespace StateMachine
                 if (battleState != null)
                     battleState.OnStateExit();
                 battleState = value;
+                testState();
                 battleState.OnStateEnter();
             }
+        }
+
+        [ContextMenu("state ?")]
+        public void testState()
+        {
+            Debug.Log(BattleState.GetType());
         }
 
         public EndConditionSO endCondition { get; private set; }
@@ -56,6 +63,7 @@ namespace StateMachine
         [SerializeField] private VoidEvent onMonsterPlay;
         [SerializeField] private VoidEvent onActionDone;
         [SerializeField] private SkillEvent onSkillSelected;
+        [SerializeField] private UnitEvent onUnitMoved;
         
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onBattleStarted;
@@ -95,8 +103,10 @@ namespace StateMachine
             onActionDone.EventListeners += ActionDone;
             onStartBattle.EventListeners += StartBattle;
             onSkillSelected.EventListeners += SkillSelected;
+            onUnitMoved.EventListeners += UnitMoved;
             Initialize();
         }
+
 
         private void OnDestroy()
         {
@@ -108,6 +118,7 @@ namespace StateMachine
             onActionDone.EventListeners -= ActionDone;
             onStartBattle.EventListeners -= StartBattle;
             onSkillSelected.EventListeners -= SkillSelected;
+            onUnitMoved.EventListeners -= UnitMoved;
         }
         
     #region Event Handler
@@ -253,10 +264,10 @@ namespace StateMachine
         /// </summary>
         private void StartBattle()
         {
+            BlockInputs();
             List<Hero> heroesPlaced = GameObject.Find("Player").GetComponentsInChildren<Hero>().Where(h => h.isPlaced).ToList();
             if (heroesPlaced.Count <= 0) return;
             
-            BattleState.OnStateExit();
             InitializeUnits();
             onBattleStarted.Raise();
             GameStarted = true;
@@ -298,14 +309,10 @@ namespace StateMachine
         /// </summary>
         private void EndTurn()
         {
+            BattleState = new BattleStateBlockInput(this);
             if (PlayingUnit != null && PlayingUnit is Monster {isPlaying: true}) return;
 
-            BattleState = new BattleStateBlockInput(this);
-            
-            if (endCondition.battleIsOver(this))
-            {
-                onBattleIsOver.Raise(endCondition.WinCondition);
-            }
+            if (Check()) return;
             
             Cells.ForEach(c => c.OnEndTurn());
             
@@ -339,21 +346,12 @@ namespace StateMachine
             
             StartTurn();
         }
-
-        public void Check()
-        {
-            if (endCondition.battleIsOver(this))
-            {
-                BattleState = new BattleStateBlockInput(this);
-                onBattleIsOver.Raise(endCondition.WinCondition);
-            }
-        }
+        
         private void StartTurn()
         {
-            Check();
-            DeadThisTurn = new List<Unit>();
-            
             BattleState = new BattleStateBlockInput(this);
+            if (Check()) return;
+            DeadThisTurn = new List<Unit>();
 
             PlayingUnit = Units[0];
             
@@ -428,6 +426,18 @@ namespace StateMachine
             BattleState = new BattleStateSkillSelected(this, skill);
         }
         
+        public bool Check()
+        {
+            if (endCondition.battleIsOver(this))
+            {
+                BattleState = new BattleStateBlockInput(this);
+                onBattleIsOver.Raise(endCondition.WinCondition);
+                return true;
+            }
+
+            return false;
+        }
+        
         /// <summary>
         /// Method Called after using a Skill or after that any Unit Fall in an UnderGround Tile.
         /// </summary>
@@ -451,6 +461,13 @@ namespace StateMachine
         private void BlockInputs()
         {
             BattleState = new BattleStateBlockInput(this);
+        }
+        
+        
+        private void UnitMoved(Unit unit)
+        {
+            if (unit == PlayingUnit)
+                BattleState = new BattleStateUnitSelected(this, PlayingUnit);
         }
 
         /// <summary>
