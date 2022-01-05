@@ -109,7 +109,7 @@
      <Compile Include="Assets\Scripts\SceneManagement\ShopChoice_UI.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\Pull.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Attack.cs" />
-     <Compile Include="Assets\Scripts\Skills\AllDecksMono.cs" />
+     <Compile Include="Assets\Scripts\Decks\AllDecksMono.cs" />
      <Compile Include="Assets\Scripts\UserInterface\ButtonPanel.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityCellEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\BoolListener.cs" />
@@ -145,7 +145,7 @@
      <Compile Include="Assets\Scripts\DataBases\DataBaseGear.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\IPathfinding.cs" />
      <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\CustomUnitGenerator.cs" />
-     <Compile Include="Assets\Scripts\Skills\DeckMono.cs" />
+     <Compile Include="Assets\Scripts\Decks\DeckMono.cs" />
      <Compile Include="Assets\Scripts\StateMachine\BattleStateManager.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseAffix.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGridObjectEvent.cs" />

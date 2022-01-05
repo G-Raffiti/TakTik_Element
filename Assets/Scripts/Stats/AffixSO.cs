@@ -82,7 +82,7 @@ namespace Stats
             int Min = tier[Math.Max(0, _tier - 1)];
             int Max = tier[Math.Min(_tier, tier.Length -1)] + 1;
             int value = Random.Range(Min, Max);
-            Debug.Log($"<color=green>Min = {Min}, Max = {Max}, Value = {value}</color>");
+            Debug.Log($"<color={ColorSet.HexColor(color)}>{Type}</color> <color=green>Min = {Min}, Max = {Max}, Value = {value}</color>");
             return value;
         }
 

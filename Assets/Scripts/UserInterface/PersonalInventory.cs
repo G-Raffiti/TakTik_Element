@@ -23,8 +23,6 @@ namespace UserInterface
         private BattleStats baseStats;
         private BattleStats total;
 
-        private IntEvent onHPChanged;
-        
         public Hero Hero { get; private set; }
 
         public List<DragAndDropCell> Slots => slots;
@@ -46,7 +44,8 @@ namespace UserInterface
 
         private void UpdateHP(int ActualHP)
         {
-            health.GetComponent<Image>().fillAmount = ActualHP / (float)total.HP;
+            if (health == null) return;
+            health.fillAmount = ActualHP / (float)total.HP;
             shield.fillAmount = total.Shield / (float) total.HP;
         }
 

@@ -9,6 +9,7 @@ using Skills;
 using TMPro;
 using Units;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UserInterface.BattleScene
 {
@@ -18,13 +19,26 @@ namespace UserInterface.BattleScene
         [SerializeField] private GameObject prefabRelic;
         [SerializeField] private List<DragAndDropCell> HeroSlots;
         [SerializeField] private List<DragAndDropCell> MonsterSlots;
+        [SerializeField] private List<PersonalInventory> HeroesIcons;
         private List<RelicSO> monsterRelics;
         [SerializeField] private List<Hero> heroes;
+        [SerializeField] private GameObject Blur;
 
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onUIEnable;
         [SerializeField] private VoidEvent onActionDone;
 
+        
+        private void OnEnable()
+        {
+            Blur.SetActive(true);
+        }
+
+        private void OnDisable()
+        {
+            Blur.SetActive(false);
+        }
+        
         private void Awake()
         {
             heroes = GameObject.Find("Player").GetComponentsInChildren<Hero>().ToList();
@@ -43,7 +57,13 @@ namespace UserInterface.BattleScene
             monsterRelics = new List<RelicSO>();
             monsterRelics.AddRange(_monster.Relics);
 
+            for (int i = 0; i < HeroesIcons.Count; i++)
+            {
+                HeroesIcons[i].Initialize(heroes[i]);
+            }
+            
             showRelics();
+
         }
 
         private void showRelics()

@@ -104,7 +104,7 @@ namespace Skills
             if (skill.BaseSkill.Consumable) 
                 ConsumedSkills.Add(skill.BaseSkill);
             else DiscardPile.Add(skill.BaseSkill);
-            
+
             HandSkills.Remove(skill.BaseSkill);
             
             return true;
@@ -141,7 +141,6 @@ namespace Skills
 
         public void LearnSkill(SkillSO _monsterSkill, Skill learning)
         {
-            HandSkills.Remove(learning.BaseSkill);
             List<SkillSO> _newList = new List<SkillSO> {_monsterSkill};
             _newList.AddRange(HandSkills);
             HandSkills = new List<SkillSO>(_newList);

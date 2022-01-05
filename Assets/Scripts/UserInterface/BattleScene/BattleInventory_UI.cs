@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _DragAndDropSystem;
 using _EventSystem.CustomEvents;
 using Gears;
@@ -17,6 +18,7 @@ namespace UserInterface.BattleScene
         [SerializeField] private GameObject prefabGear;
         [SerializeField] private List<DragAndDropCell> HeroSlots;
         [SerializeField] private List<DragAndDropCell> MonsterSlots;
+        [SerializeField] private GameObject Blur;
         private Inventory heroInventory;
         private Inventory monsterInventory;
 
@@ -26,6 +28,16 @@ namespace UserInterface.BattleScene
         [SerializeField] private VoidEvent onUIEnable;
         [SerializeField] private VoidEvent onActionDone;
         [SerializeField] private UnitEvent onInventoryClosed;
+
+        private void OnEnable()
+        {
+            Blur.SetActive(true);
+        }
+
+        private void OnDisable()
+        {
+            Blur.SetActive(false);
+        }
 
         public void OpenBox(GridObject lootBox)
         {

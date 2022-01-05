@@ -148,6 +148,10 @@
             <e p="DataBaseRelic.cs" t="Include" />
             <e p="DataBaseSkill.cs" t="Include" />
           </e>
+          <e p="Decks" t="Include">
+            <e p="AllDecksMono.cs" t="Include" />
+            <e p="DeckMono.cs" t="Include" />
+          </e>
           <e p="DevsButton" t="Include">
             <e p="DevButtons.cs" t="Include" />
           </e>
@@ -207,8 +211,6 @@
             <e p="_Zone" t="Include">
               <e p="Zone.cs" t="Include" />
             </e>
-            <e p="AllDecksMono.cs" t="Include" />
-            <e p="DeckMono.cs" t="Include" />
             <e p="IEffect.cs" t="Include" />
             <e p="ScriptableObject_Effect" t="Include">
               <e p="ApplyBuff.cs" t="Include" />
