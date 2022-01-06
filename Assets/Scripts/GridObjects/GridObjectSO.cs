@@ -17,7 +17,7 @@ namespace GridObjects
         [SerializeField] private Sprite image;
         [SerializeField] private new string name;
         
-        public Sprite Image => image;
+        public virtual Sprite Image => image;
         public bool Movable => movable;
         public EGridObject Type => type;
         public virtual string Name => name;

@@ -5687,7 +5687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataBase: {fileID: 248826379}
-  boardTest: {fileID: 11400000, guid: f4719c23ddba65b4ebb50557826838bb, type: 2}
+  boardTest: {fileID: 11400000, guid: 957b3cc16431ba14080540e000154504, type: 2}
   background: {fileID: 992101193}
   mainCamera: {fileID: 1383558288}
 --- !u!114 &497996691
@@ -19131,6 +19131,12 @@ PrefabInstance:
       propertyPath: cell
       value: 
       objectReference: {fileID: 1587917706}
+    - target: {fileID: 6071246735384473037, guid: b884904d45c69b54884ca6d210d373bd,
+        type: 3}
+      propertyPath: gridObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b884904d45c69b54884ca6d210d373bd, type: 3}
 --- !u!4 &1616402497 stripped
