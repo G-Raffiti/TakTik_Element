@@ -18,6 +18,7 @@ MonoBehaviour:
   basicBuff:
     Duration: 0
     Value: 0
+    onFloor: 0
     StatusEffect: {fileID: 0}
   tileType: 2
   isUnderground: 0

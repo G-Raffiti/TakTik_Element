@@ -1,13 +1,8 @@
-﻿using UnityEngine;
+﻿using EndConditions;
+using UnityEngine;
 
 namespace _Instances
 {
-    public enum EBattleState
-    {
-        LOOT,
-        FIGHT,
-        BOSS
-    }
     
     public class KeepBetweenScene : MonoBehaviour
     {
@@ -16,7 +11,7 @@ namespace _Instances
         public static int Stage { get; private set; }
         public const int BattlePerStage = 3;
         public static int BattleNumber = 0;
-        public static EBattleState currentState = EBattleState.LOOT;
+        public static EConditionType currentState = EConditionType.LootBox;
 
         public static void NextStage()
         {
@@ -26,13 +21,15 @@ namespace _Instances
 
         private static void UpdateCurrentState()
         {
+            if (Stage == 2 && BattleNumber == BattlePerStage)
+                currentState = EConditionType.Last;
             if (BattleNumber == BattlePerStage)
             {
-                currentState = EBattleState.BOSS;
+                currentState = EConditionType.Boss;
             }
             else
             {
-                currentState = EBattleState.FIGHT;
+                currentState = EConditionType.Death;
             }
         }
 

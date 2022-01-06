@@ -28,15 +28,19 @@ namespace Cells
         /// return a Board Stage 1 = 1Loot, 3Fight, 1Boss, Stage 2 = 3Fight, 1Boss, Stage 3 = 1Loot, 2Fight, 1Boss.
         /// </summary>
         /// <returns></returns>
-        private static BoardSO randomize(EBattleState state)
+        private static BoardSO randomize(EConditionType state)
         {
-            if (state == EBattleState.LOOT)
-                return DataBase.Board.LootBoxBoards[Random.Range(0, DataBase.Board.LootBoxBoards.Count)];
-            
-            if (state == EBattleState.BOSS)
-                return DataBase.Board.BossBattleBoards[Random.Range(0, DataBase.Board.BossBattleBoards.Count)];
-            
-            return DataBase.Board.DeathBattleBoards[Random.Range(0, DataBase.Board.DeathBattleBoards.Count)];
+            switch (state)
+            {
+                case EConditionType.LootBox:
+                    return DataBase.Board.LootBoxBoards[Random.Range(0, DataBase.Board.LootBoxBoards.Count)];
+                case EConditionType.Boss:
+                    return DataBase.Board.BossBattleBoards[Random.Range(0, DataBase.Board.BossBattleBoards.Count)];
+                case EConditionType.Last:
+                    return DataBase.Board.LastBattleBoards[Random.Range(0, DataBase.Board.LastBattleBoards.Count)];
+                default:
+                    return DataBase.Board.DeathBattleBoards[Random.Range(0, DataBase.Board.DeathBattleBoards.Count)];
+            }
         }
 
         /// <summary>
@@ -80,7 +84,7 @@ namespace Cells
         /// <summary>
         /// method Called at the beginning of each Battle to choose and create the Board
         /// </summary>
-        public void LoadBoard(EBattleState state)
+        public void LoadBoard(EConditionType state)
         {
             LoadBoard(randomize(state));
         }

@@ -36,9 +36,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseGear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Inventory.cs" />
@@ -84,9 +81,12 @@
       <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/KeepBetweenScene.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/DataBaseBoard.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/CellSO.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

@@ -19,7 +19,7 @@ namespace Shops
         private void Start()
         {
             //TODO : Relic that can modify the value of CampPoint
-            CampPoint = 1;
+            CampPoint = 2;
             
             onDuplicateSkill.EventListeners += DuplicateSkills;
             onForgetSkill.EventListeners += ForgetSkill;

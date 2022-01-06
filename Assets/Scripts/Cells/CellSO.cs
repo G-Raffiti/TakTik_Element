@@ -10,6 +10,7 @@ namespace Cells
         Dirt,
         Grass,
         Lava,
+        SpaceLeef,
     }
     [CreateAssetMenu(fileName = "CellType_", menuName = "Scriptable Object/new Cell")]
     public class CellSO : ScriptableObject
