@@ -342,6 +342,7 @@ MonoBehaviour:
   shield: {fileID: 4771591125095599820}
   colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
+  onSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
 --- !u!114 &7898602264605595359
 MonoBehaviour:
   m_ObjectHideFlags: 0

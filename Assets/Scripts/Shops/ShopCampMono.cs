@@ -40,7 +40,8 @@ namespace Shops
             if (CampPoint < 1) return;
             CampPoint -= 1;
             ShopCampMono_UI _shopCampMonoUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<ShopCampMono_UI>();
-            DuplicateSkill(_shopCampMonoUI.SkillDuplicate);
+            SkillInfo _duplicate = _shopCampMonoUI.SkillDuplicate;
+            _duplicate.skill.Deck.DrawPile.Add(_duplicate.skill.BaseSkill);
             onCampPointUsed.Raise(CampPoint);
         }
 
@@ -57,12 +58,10 @@ namespace Shops
 
         private void HealHeroes(Void empty)
         {
+            if (CampPoint < 1) return;
+            CampPoint -= 1;
             PlayerData.getInstance().Heroes.ForEach(h => h.HealHP(30));
-        }
-
-        private void DuplicateSkill(SkillInfo a)
-        {
-            a.skill.Deck.DrawPile.Add(a.skill.BaseSkill);
+            onCampPointUsed.Raise(CampPoint);
         }
     }
 }

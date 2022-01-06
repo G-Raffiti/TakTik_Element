@@ -75,10 +75,10 @@ namespace Resources.ToolTip.Scripts
             StringBuilder _right = new StringBuilder();
             StringBuilder _down = new StringBuilder();
 
-                _main.Append(_info.GetInfoMain());
-                _left.Append(_info.GetInfoLeft());
-                _right.Append(_info.GetInfoRight());
-                _down.Append(_info.GetInfoDown());
+            _main.Append(_info.GetInfoMain());
+            _left.Append(_info.GetInfoLeft());
+            _right.Append(_info.GetInfoRight());
+            _down.Append(_info.GetInfoDown());
 
 
             mainTxt.text = _main.ToString();

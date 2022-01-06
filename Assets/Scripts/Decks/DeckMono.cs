@@ -158,15 +158,6 @@ namespace Skills
             return true;
         }
 
-        public void PrintDebug()
-        {
-            /*
-            Debug.Log("pile:" + Skills.Count + " " +
-                      "hand:" + HandSkills.Count + " " +
-                      "used:" + UsedSkills.Count);
-            */
-        }
-
         public void AddHandSkill(SkillSO _skill)
         {
             HandSkills.Add(_skill);

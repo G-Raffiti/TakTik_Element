@@ -17,8 +17,11 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d4b59bcd6ec2efd4aa7c7be834a2ec5d, type: 3}
   gearName: Combat Armor
   mainStat:
-    affix: {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}
-    value: 10
+    affix: {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
+    value: 15
+    min: 10
+    max: 20
+    tier: 1
   specialEffect: {fileID: 0}
   nonAffixs:
   - {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}

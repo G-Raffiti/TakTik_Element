@@ -26,6 +26,7 @@ namespace Shops
         private void OnEnable()
         {
             onCampPointUsed.EventListeners += actualiseCampPoint;
+            actualiseCampPoint(FindObjectOfType<ShopCampMono>().CampPoint);
         }
 
         private void OnDisable()

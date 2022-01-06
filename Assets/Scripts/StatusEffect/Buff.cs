@@ -11,6 +11,7 @@ namespace StatusEffect
     {
         public int Duration;
         public float Value;
+        public bool onFloor;
 
         [SerializeField] private StatusSO StatusEffect;
         public StatusSO Effect => StatusEffect;

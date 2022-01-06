@@ -77,7 +77,7 @@ namespace Units
         {
             BattleStats total = BattleStats + Inventory.GearStats();
             int MaxHP = total.HP;
-            ActualHP = Math.Min(MaxHP, ActualHP + (int) (MaxHP * percent));
+            ActualHP = Math.Min(MaxHP, ActualHP + (int) (MaxHP * (percent / 100f)));
         }
 
         public Relic GetRelic()

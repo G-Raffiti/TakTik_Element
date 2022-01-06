@@ -52,6 +52,11 @@ namespace Shops
 
         private void InitializeDisplay(int empty)
         {
+            for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
+            {
+                portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
+            }
+            
             ClearDecks();
 
             DeckMono Deck = GameObject.FindObjectOfType<DeckMono>();

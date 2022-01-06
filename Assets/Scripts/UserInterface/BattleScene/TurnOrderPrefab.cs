@@ -21,7 +21,13 @@ namespace UserInterface.BattleScene
         [SerializeField] private Image shield;
         
         [SerializeField] private ColorSet colorSet;
+        
+        [Header("Event Listener")]
         [SerializeField] private UnitEvent onUnitStartTurn;
+        [SerializeField] private VoidEvent onSkillUsed;
+        
+        
+        
         private Dictionary<EColor, Color> colors = new Dictionary<EColor, Color>();
 
         private TileIsometric.CellState unitMark;
@@ -54,11 +60,13 @@ namespace UserInterface.BattleScene
             health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
             shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
             onUnitStartTurn.EventListeners += updateDisplay;
+            onSkillUsed.EventListeners += updateDisplay;
         }
 
         private void OnDestroy()
         {
             onUnitStartTurn.EventListeners -= updateDisplay;
+            onSkillUsed.EventListeners -= updateDisplay;
         }
 
         private void Unit_UnitDestroyed(object _sender, DeathEventArgs _e)
@@ -72,6 +80,12 @@ namespace UserInterface.BattleScene
             shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
         }
 
+        private void updateDisplay(Void empty)
+        {
+            health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
+            shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
+        }
+        
         private void updateDisplay(Unit _unit)
         {
             health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;

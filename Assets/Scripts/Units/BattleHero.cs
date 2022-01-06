@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _EventSystem.CustomEvents;
 using Gears;
 using Relics;
@@ -53,6 +54,17 @@ namespace Units
             base.OnMouseDown();
             if (!BattleStateManager.instance.GameStarted)
                 onHeroSelected.Raise(this);
+        }
+        
+        public override string GetInfoDown()
+        {
+            string str = Buffs.Aggregate("", (_current, _buff) => _current + (_buff.InfoOnUnit(_buff, this) + "\n"));
+            foreach (RelicSO _heroRelic in Hero.Relics)
+            {
+                str += _heroRelic.Name + "\n";
+            }
+
+            return str; 
         }
     }
 }

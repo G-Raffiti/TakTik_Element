@@ -18,7 +18,10 @@ MonoBehaviour:
   gearName: Golden Hands
   mainStat:
     affix: {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}
-    value: 3
+    value: 15
+    min: 10
+    max: 20
+    tier: 1
   specialEffect: {fileID: 0}
   nonAffixs:
   - {fileID: 11400000, guid: 8bd15678bdc020749a76dd3141210356, type: 2}

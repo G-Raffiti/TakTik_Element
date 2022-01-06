@@ -139,13 +139,15 @@ namespace Units
         public void ApplyBuff(Buff _buff)
         {
             bool applied = false;
+            Buff buff = new Buff(_buff);
+            buff.onFloor = false;
             
             for (int i = 0; i < buffs.Count; i++)
             {
-                if (buffs[i].Effect == _buff.Effect)
+                if (buffs[i].Effect == buff.Effect)
                 {
                     buffs[i].Undo(this);
-                    buffs[i]+=_buff;
+                    buffs[i] += buff;
                     buffs[i].Apply(this);
                     applied = true;
                     break;
@@ -154,9 +156,15 @@ namespace Units
 
             if (!applied)
             {
-                buffs.Add(_buff);
+                buffs.Add(buff);
                 _buff.Apply(this);
             }
+        }
+
+        public void RemoveBuff(StatusSO effect)
+        {
+            if (Buffs.Any(b => b.Effect == effect))
+                Buffs.Remove(Buffs.Find(b => b.Effect == effect));
         }
 
     #endregion
@@ -188,6 +196,16 @@ namespace Units
         public override void AutoSortOrder()
         {
             unitSprite.sortingOrder = 500 - (int)(transform.position.y/0.577f);
+        }
+
+        public override IEnumerator Fall(Cell _destination)
+        {
+            Inventory = new Inventory();
+            while (IsMoving)
+                yield return null;
+            _destination.FallIn();
+            if (isDying) yield break;
+            StartCoroutine(OnDestroyed());
         }
 
         /// <summary>
@@ -332,6 +350,12 @@ namespace Units
         /// <param name="element">Element Type of the attack</param>
         public void DefendHandler(Unit aggressor, float damage, Element element)
         {
+            if (isDying) return;
+            if (BattleStats.HP <= 0)
+            {
+                StartCoroutine(OnDestroyed());
+                return;
+            }
             Debug.Log($"Damage : {aggressor.ColouredName()} did {damage} {element.Name} damage to {ColouredName()}");
 
             int _damageTaken = 0;
@@ -366,6 +390,8 @@ namespace Units
 
             UnitAttacked?.Invoke(this, new AttackEventArgs(aggressor, this, (int)damage));
             if (BattleStats.HP > 0) return;
+            
+            if (isDying) return;
             StartCoroutine(OnDestroyed());
         }
 
@@ -650,7 +676,7 @@ namespace Units
             return str;
         }
 
-        public string GetInfoDown()
+        public virtual string GetInfoDown()
         {
             return Buffs.Aggregate("", (_current, _buff) => _current + (_buff.InfoOnUnit(_buff, this) + "\n"));
         }

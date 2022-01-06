@@ -13,6 +13,7 @@ namespace StatusEffect
         [SerializeField] private int WaterBonus;
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
+            if (_buff.onFloor) return;
             if (((TileIsometric) _unit.Cell).CellSO.Type == ECellType.Water)
             {
                 _unit.DefendHandler(_unit, Math.Min(_unit.BattleStats.HP * percent/100f , _unit.BattleStats.HP-1), Element);
@@ -43,7 +44,7 @@ namespace StatusEffect
         {
             if (_unit.Buffs.Any(b => b.Effect == this))
             {
-                ActiveEffect(_buff, _unit);
+                _unit.DefendHandler(_unit, Math.Min(_unit.BattleStats.HP * percent/100f , _unit.BattleStats.HP-1), Element);
                 return;
             }
             

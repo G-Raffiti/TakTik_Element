@@ -11,7 +11,7 @@ namespace DevsButton
 
         [SerializeField] private SkillSO OnePunchMan;
 
-        [SerializeField] private VoidEvent onDraw;
+        [SerializeField] private VoidEvent onReDraw;
 
         private static GameObject instance;
         private void Start()
@@ -26,7 +26,7 @@ namespace DevsButton
         public void OnClick()
         {
             deck.AddHandSkill(OnePunchMan);
-            onDraw.Raise();
+            onReDraw.Raise();
         }
 
     }

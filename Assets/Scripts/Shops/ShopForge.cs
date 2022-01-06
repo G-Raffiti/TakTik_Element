@@ -52,7 +52,7 @@ namespace Shops
             Dictionary<AffixSO, int> ret = new Dictionary<AffixSO, int>();
             foreach (Affix affix in _gear.Affixes)
             { 
-                ret.Add(affix.affix, affix.getTier());
+                ret.Add(affix.affix, affix.tier);
             }
             return ret;
         }
@@ -94,7 +94,10 @@ namespace Shops
             ShopForge_UI _shopForgeUI = GameObject.Find("ForgeUI/Left/Main").GetComponent<ShopForge_UI>();
             if (!UpgradeGear(gear, _shopForgeUI.GetUpgradeAffix()))
                 return;
+            
             craftPoint--;
+            PlayerData.getInstance().RemoveMaterial(_shopForgeUI.GetUpgradeAffix(), 1);
+            
             onDiplayUptade.Raise();
         }
 
@@ -111,15 +114,16 @@ namespace Shops
             
             foreach (Affix _gearAffix in gear.Affixes.Where(_gearAffix => _gearAffix.affix == affix))
             {
-                tier = _gearAffix.getTier();
+                tier = _gearAffix.tier;
                 if (tier == affix.Tier.Length - 1)
                     return false;
                 old.Remove(_gearAffix);
-                PlayerData.getInstance().RemoveMaterial(affix, 1);
                 break;
             }
 
-            old.Add(new Affix(affix, affix.getValueOfTier(Math.Min(affix.Tier.Length - 1, tier + 1))));
+            tier += 1;
+
+            old.Add(new Affix(affix, affix.getValueOfTier(tier), tier));
             gear.SetAffixes(old);
             return true;
         }

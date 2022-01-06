@@ -31,7 +31,7 @@ namespace _CSVFiles
             Enum.TryParse(CSVGear[$"Implicit"].ToString(), out EAffix mainStat);
             AffixSO affix = DataBase.Affix.AllAffixes.Find(a => a.Type == mainStat);
             float.TryParse(CSVGear["ImplicitValue"].ToString(), out float value);
-            MainStat = new Affix(affix, value);
+            MainStat = new Affix(affix, value, 1);
             SpecialEffect = UnityEngine.Resources.Load<SkillGridEffect>(
                 $"ScriptableObject/SkillEffects/GridEffect_{CSVGear["SpecialEffect"]}");
             NonAffix = new List<AffixSO>();

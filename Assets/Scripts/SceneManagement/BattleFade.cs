@@ -42,7 +42,8 @@ namespace SceneManagement
         {
             KeepBetweenScene.EndBattle();
             SceneManager.LoadScene("BattleScene");
-            Debug.Log($"Battle: {KeepBetweenScene.BattleNumber} Stage: {KeepBetweenScene.Stage}");
+            //Todo: Show this Log on screen (BattleStart)
+            //Debug.Log($"Battle: {KeepBetweenScene.BattleNumber} Stage: {KeepBetweenScene.Stage}");
         }
 
         private void OnBattleEnded(bool isWin)

@@ -20,6 +20,7 @@ namespace UserInterface.BattleScene
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onDraw;
+        [SerializeField] private VoidEvent onReDraw;
         [SerializeField] private VoidEvent onUnitEndTurn;
 
         private IEnumerator Start()
@@ -36,6 +37,7 @@ namespace UserInterface.BattleScene
             onUnitStartTurn.EventListeners += onUnitStartTurnRaised;
             onDraw.EventListeners += OnDrawRaised;
             onUnitEndTurn.EventListeners += onEndTurn;
+            onReDraw.EventListeners += DrawFast;
         }
 
         private void OnDisable()
@@ -43,6 +45,7 @@ namespace UserInterface.BattleScene
             onUnitStartTurn.EventListeners -= onUnitStartTurnRaised;
             onDraw.EventListeners -= OnDrawRaised;
             onUnitEndTurn.EventListeners -= onEndTurn;
+            onReDraw.EventListeners -= DrawFast;
         }
 
         public void onUnitStartTurnRaised(Unit item)
@@ -96,6 +99,26 @@ namespace UserInterface.BattleScene
             }
 
             drawRunning = false;
+        }
+
+        private void DrawFast(Void empty)
+        {
+            int childs = transform.childCount;
+            for (int i = childs - 1; i > -1; i--)
+            {
+                DestroyImmediate(transform.GetChild(i).gameObject);
+            }
+            
+            if (BattleStateManager.instance.PlayingUnit == null) return;
+            
+            Unit currentUnit = BattleStateManager.instance.PlayingUnit;
+            foreach (Skill skill in deck.GetHandSkills(currentUnit))
+            {
+                GameObject skillInfo = Instantiate(skillBtn, transform);
+                skillInfo.GetComponent<SkillInfo>().skill = skill;
+                skillInfo.GetComponent<SkillInfo>().Unit = currentUnit;
+                skillInfo.GetComponent<SkillInfo>().DisplayIcon();
+            }
         }
     }
 }

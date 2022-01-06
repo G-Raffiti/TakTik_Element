@@ -45,7 +45,13 @@ namespace Gears
                 if (DataBase.Affix.Affixes.Count <= nonAffixes.Count) break;
                 AffixSO affix = DataBase.Affix.GetRandomBut(nonAffixes);
                 int value = affix.getValue(Stage);
-                Affixes.Add(new Affix(affix, value));
+                if (value == 0)
+                {
+                    i--;
+                    nonAffixes.Add(affix);
+                    continue;
+                }
+                Affixes.Add(new Affix(affix, value, Stage + 1));
                 nonAffixes.Add(affix);
             }
         }
@@ -56,10 +62,10 @@ namespace Gears
             Affixes = new List<Affix>();
             Stage = KeepBetweenScene.Stage;
 
-            foreach (KeyValuePair<AffixSO,int> _pair in _gearStats)
+            foreach (AffixSO _affix in _gearStats.Keys)
             {
-                int value = _pair.Key.getValue(Math.Min(_pair.Key.Tier.Length, Math.Max(0, _pair.Value - 1)));
-                Affixes.Add(new Affix(_pair.Key, value));
+                int value = _affix.getValueOfTier(_gearStats[_affix]);
+                Affixes.Add(new Affix(_affix, value, _gearStats[_affix]));
             }
 
             return this;

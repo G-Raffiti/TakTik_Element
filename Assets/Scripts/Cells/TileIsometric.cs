@@ -6,6 +6,7 @@ using DataBases;
 using Resources.ToolTip.Scripts;
 using StateMachine;
 using StatusEffect;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace Cells
@@ -42,7 +43,7 @@ namespace Cells
             AutoSort();
             
             if(CellSO.BasicBuff.Effect != null)
-                Buffs.Add(new Buff(CellSO.BasicBuff));
+                AddBuff(new Buff(CellSO.BasicBuff));
         }
 
         public void AutoSort()
@@ -66,6 +67,7 @@ namespace Cells
         {
             if (_buff == null) return;
             Buff buff = new Buff(_buff);
+            buff.onFloor = true;
             
             bool applied = false;
             
@@ -88,6 +90,14 @@ namespace Cells
 
         public override void OnEndTurn()
         {
+            if (IsTaken && CurrentUnit != null)
+            {
+                foreach (Buff _buffBetweenTurn in Buffs.Where(b => b.Effect.BetweenTurn))
+                {
+                    _buffBetweenTurn.OnEndTurn(CurrentUnit);
+                }
+            }
+            
             Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO).ToList().ForEach(b => b.Duration -= 1);
             
             List<Buff> newList = new List<Buff>(Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO));

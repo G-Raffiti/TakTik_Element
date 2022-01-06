@@ -81,12 +81,12 @@ namespace StatusEffect
             if (Bonus.Count > 0)
             {
                 str += $"Bonus: ";
-                Bonus.ForEach(affix => str += affix.Value((int)(affix.value + affix.value * _buff.Value)));
+                Bonus.ForEach(affix => str += affix.ValueToString((int)(affix.value + affix.value * _buff.Value)));
             }
             if (Malus.Count > 0)
             {
                 str += $"\nMalus: ";
-                Malus.ForEach(affix => str += $"-{affix.Value((int)(affix.value + affix.value * _buff.Value))}");
+                Malus.ForEach(affix => str += $"-{affix.ValueToString((int)(affix.value + affix.value * _buff.Value))}");
             }
             if (_buff.Duration != 0)
                 str += $"\n<sprite name=Duration>: {_buff.Duration} Turn";

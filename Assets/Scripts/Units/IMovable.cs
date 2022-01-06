@@ -34,7 +34,7 @@ namespace Units
         /// <summary>
         /// Method is Called if Cell is Underground
         /// </summary>
-        public IEnumerator Fall(Cell _destination)
+        public virtual IEnumerator Fall(Cell _destination)
         {
             Inventory = new Inventory();
             while (IsMoving)

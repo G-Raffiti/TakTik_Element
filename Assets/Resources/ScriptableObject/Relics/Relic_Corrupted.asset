@@ -15,8 +15,7 @@ MonoBehaviour:
   name: Corrupted
   element: {fileID: 0}
   icon: {fileID: 21300000, guid: 2099ab4be2aa6d64ea7ce5f055ffb147, type: 3}
-  relicEffects:
-  - {fileID: 0}
+  relicEffects: []
   effect: {fileID: 11400000, guid: 552c6bb57926019498311e4241b699b7, type: 2}
   gridEffect: {fileID: 0}
   affect: 0

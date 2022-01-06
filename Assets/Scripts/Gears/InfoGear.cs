@@ -36,7 +36,7 @@ namespace Gears
         public override string GetInfoRight()
         {
             string ret = "\n(implicit)";
-            Gear.Affixes.ForEach(affix => ret += $"\n{affix.affix.TierRange(affix.getTier())}");
+            Gear.Affixes.ForEach(affix => ret += $"\n{affix.TierRangeToString()}");
             return ret;
         }
 

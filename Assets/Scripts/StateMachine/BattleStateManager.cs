@@ -35,7 +35,6 @@ namespace StateMachine
                 if (battleState != null)
                     battleState.OnStateExit();
                 battleState = value;
-                testState();
                 battleState.OnStateEnter();
             }
         }
@@ -315,12 +314,7 @@ namespace StateMachine
             if (Check()) return;
             
             Cells.ForEach(c => c.OnEndTurn());
-            
-            foreach (Cell _cell in Cells.Where(c => c.IsTaken && c.CurrentUnit != null && c.Buffs.Count > 0))
-            {
-                _cell.Buffs.ForEach(b => b.OnEndTurn(_cell.CurrentUnit));
-            }
-            
+
             if (PlayingUnit != null)
             {
                 PlayingUnit.OnTurnEnd();

@@ -44,6 +44,7 @@ namespace Relics
 
         public override string GetInfoRight()
         {
+            if (Relic.RelicEffects == null || Relic.RelicEffects.Count == 0) return "";
             string str = "";
             foreach (RelicEffect _effect in Relic.RelicEffects)
             {

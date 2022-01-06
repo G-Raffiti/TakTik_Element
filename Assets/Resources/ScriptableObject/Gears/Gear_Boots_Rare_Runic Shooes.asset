@@ -19,6 +19,9 @@ MonoBehaviour:
   mainStat:
     affix: {fileID: 11400000, guid: e01d331a5f498334eb8464e536eff088, type: 2}
     value: 3
+    min: 2
+    max: 4
+    tier: 1
   specialEffect: {fileID: 0}
   nonAffixs:
   - {fileID: 11400000, guid: e118832e899ce3544a8ec8027b77fc26, type: 2}

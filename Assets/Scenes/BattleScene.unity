@@ -5176,7 +5176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9144,9 +9144,9 @@ MonoBehaviour:
   - {fileID: 1221342984}
   - {fileID: 1767412813}
   HeroesIcons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1135144358}
+  - {fileID: 347094535}
+  - {fileID: 1793166533}
   heroes: []
   Blur: {fileID: 727137453}
   onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
@@ -14036,8 +14036,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f12b3a2c72837f4fa3f410de18541a4, type: 2}
   - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
-  - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
+  - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
   - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
   HandSkills: []
@@ -16722,7 +16722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -23177,7 +23177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck: {fileID: 963500106}
   OnePunchMan: {fileID: 11400000, guid: 1f24c51c6380c5e4aabe6f0d39e731ca, type: 2}
-  onDraw: {fileID: 11400000, guid: 5df12d826f7fb3e4f8361bd46ddde90f, type: 2}
+  onReDraw: {fileID: 11400000, guid: 6dd6da4102fae424db723608e449f385, type: 2}
 --- !u!1 &1526832112
 GameObject:
   m_ObjectHideFlags: 0
@@ -25581,6 +25581,7 @@ MonoBehaviour:
     type: 3}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
   onDraw: {fileID: 11400000, guid: 5df12d826f7fb3e4f8361bd46ddde90f, type: 2}
+  onReDraw: {fileID: 11400000, guid: 6dd6da4102fae424db723608e449f385, type: 2}
   onUnitEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
 --- !u!1 &1737196880
 GameObject:
@@ -30345,6 +30346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Deck: {fileID: 963500106}
   onDraw: {fileID: 11400000, guid: 5df12d826f7fb3e4f8361bd46ddde90f, type: 2}
+  onReDraw: {fileID: 11400000, guid: 6dd6da4102fae424db723608e449f385, type: 2}
+  OnUIDisable: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
   onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
   onBattleStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
