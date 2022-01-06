@@ -36,10 +36,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Healing.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/ApplyBuff.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" />
@@ -49,7 +45,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseAffix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/LastBattle.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/EndConditionSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ChangeScene.cs" />
@@ -63,7 +58,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropItem.cs" />
       <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/TurnOrderPrefab.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InfoGear.cs" />
@@ -75,18 +69,24 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Buff.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Drowned.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/DevButtons.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Decks/DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Decks/AllDecksMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/EndRun_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/LastBattle.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

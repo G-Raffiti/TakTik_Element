@@ -18,12 +18,14 @@ namespace Shops
 
         private void Start()
         {
+            //TODO : Relic that can modify the value of CampPoint
+            CampPoint = 1;
+            
             onDuplicateSkill.EventListeners += DuplicateSkills;
             onForgetSkill.EventListeners += ForgetSkill;
             onCampHeal.EventListeners += HealHeroes;
             
-            //TODO : Relic that can modify the value of CampPoint
-            CampPoint = 1;
+            onCampPointUsed.Raise(CampPoint);
         }
 
         private void OnDestroy()

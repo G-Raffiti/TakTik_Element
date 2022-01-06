@@ -15,6 +15,7 @@ namespace SceneManagement
         [SerializeField] private ChangeScene SceneManager;
         [SerializeField] private ShopChoice_UI shopChoiceUI;
         [SerializeField] private GameObject nextBattle;
+        [SerializeField] private EndRun_UI endRunUI;
         
         [Header("Event Sender")] [SerializeField]
         private VoidEvent onUIEnable;
@@ -49,14 +50,18 @@ namespace SceneManagement
         private void OnBattleEnded(bool isWin)
         {
             onUIEnable.Raise();
-            if (!isWin)
+
+            if (BattleStateManager.instance.endCondition.Type == EConditionType.Last || !isWin)
             {
-                YouLoose();
+                endRunUI.gameObject.SetActive(true);
+                endRunUI.Open(isWin);
+                return;
             }
-            else YouWin();
+            
+            YouWin();
         }
 
-        private void YouLoose()
+        public void GoToScoreScene()
         {
             SceneManager.LoadScene("ScoreScene");
         }
@@ -67,9 +72,6 @@ namespace SceneManagement
             {
                 case EConditionType.LootBox:
                     nextBattle.SetActive(true);
-                    break;
-                case EConditionType.Last:
-                    SceneManager.LoadScene("ScoreScene");
                     break;
                 default:
                     shopChoiceUI.gameObject.SetActive(true);

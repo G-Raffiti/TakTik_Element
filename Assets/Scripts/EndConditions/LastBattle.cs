@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace EndConditions
 {
-    [CreateAssetMenu(fileName = "EndCondition_BossBattle", menuName = "Scriptable Object/End Conditions/Boss Battle")]
+    [CreateAssetMenu(fileName = "EndCondition_LastBattle", menuName = "Scriptable Object/End Conditions/Last Battle")]
     public class LastBattle : EndConditionSO
     {
         public override bool battleIsOver(BattleStateManager StateManager)

@@ -34,7 +34,7 @@ namespace Cells
         private CellState state;
         public CellState State => state;
 
-        public void Start()
+        public override void Initialize()
         {
             isCorrupted = false;
             Buffs = new List<Buff>();

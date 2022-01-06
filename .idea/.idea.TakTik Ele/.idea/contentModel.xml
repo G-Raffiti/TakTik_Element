@@ -188,6 +188,7 @@
           <e p="SceneManagement" t="Include">
             <e p="BattleFade.cs" t="Include" />
             <e p="ChangeScene.cs" t="Include" />
+            <e p="EndRun_UI.cs" t="Include" />
             <e p="ShopChoice_UI.cs" t="Include" />
           </e>
           <e p="ScreenResolutionManager" t="Include">

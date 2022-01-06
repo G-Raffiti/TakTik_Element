@@ -14,8 +14,12 @@ namespace Cells
     /// </summary>
     public abstract class Cell : MonoBehaviour, IGraphNode, IEquatable<Cell>
     {
-        [SerializeField]
-        private Vector2 offsetCoord;
+        /// <summary>
+        /// Method Called after the Board is Loaded
+        /// </summary>
+        public abstract void Initialize();
+        
+        [SerializeField] private Vector2 offsetCoord;
         /// <summary>
         /// Position of the cell on the grid.
         /// </summary>

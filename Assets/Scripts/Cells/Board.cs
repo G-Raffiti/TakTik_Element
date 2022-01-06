@@ -3,6 +3,7 @@ using _Instances;
 using EndConditions;
 using GridObjects;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cells
 {
@@ -14,7 +15,7 @@ namespace Cells
         /// </summary>
         [SerializeField] private BoardSO boardTest;
         private List<SavedCell> SavedCells = new List<SavedCell>();
-        [SerializeField] private SpriteRenderer background;
+        [SerializeField] private Image background;
         [SerializeField] private Camera mainCamera;
         
         /// <summary>
@@ -114,6 +115,7 @@ namespace Cells
                     _cell.CellSO = _SavedCell.type;
                     _cell.OffsetCoord = new Vector2(_SavedCell.offsetCoord[0], _SavedCell.offsetCoord[1]);
                     _cell.IsSpawnPlace = _SavedCell.isSpawn;
+                    _cell.Initialize();
                 }
 
                 if (_SavedCell.gridObject == null) continue;
@@ -129,7 +131,6 @@ namespace Cells
 
             mainCamera.gameObject.transform.position = new Vector3(_data.Camera.x, _data.Camera.y, -15f);
             mainCamera.orthographicSize = _data.Camera.size;
-            background.transform.position = new Vector3(_data.Camera.x, _data.Camera.y, 0);
 
             EndCondition = _data.EndCondition;
         }

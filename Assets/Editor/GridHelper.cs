@@ -10,6 +10,7 @@ using StateMachine;
 using StateMachine.UnitGenerators;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UserInterface;
 
 namespace Editor
@@ -646,7 +647,7 @@ namespace Editor
             players = GameObject.Find("Players");
             objects = GameObject.Find("Objects");
             guiController = GameObject.Find("GUIController");
-            SpriteRenderer background = GameObject.Find("Background").GetComponent<SpriteRenderer>();
+            Image background = GameObject.Find("Environment/Canvas/Background").GetComponent<Image>();
 
             while (cellGrid.transform.childCount > 0)
             {
