@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _EventSystem.CustomEvents;
 using _Instances;
 using EndConditions;
@@ -16,6 +17,7 @@ namespace SceneManagement
         [SerializeField] private ShopChoice_UI shopChoiceUI;
         [SerializeField] private GameObject nextBattle;
         [SerializeField] private EndRun_UI endRunUI;
+        [SerializeField] private GameObject resurectionPool;
         
         [Header("Event Sender")] [SerializeField]
         private VoidEvent onUIEnable;
@@ -24,12 +26,14 @@ namespace SceneManagement
         [SerializeField] private BoolEvent onBattleIsOver;
         [SerializeField] private VoidEvent onQuitShop;
         [SerializeField] private VoidEvent NextBattle;
+        [SerializeField] private VoidEvent goToResurrection;
         
         private void Start()
         {
             onBattleIsOver.EventListeners += OnBattleEnded;
             onQuitShop.EventListeners += StartNewBattle;
             NextBattle.EventListeners += StartNewBattle;
+            goToResurrection.EventListeners += GoToResurrection;
         }
 
         private void OnDestroy()
@@ -37,6 +41,12 @@ namespace SceneManagement
             onBattleIsOver.EventListeners -= OnBattleEnded;
             onQuitShop.EventListeners -= StartNewBattle;
             NextBattle.EventListeners -= StartNewBattle;
+            goToResurrection.EventListeners -= GoToResurrection;
+        }
+
+        private void GoToResurrection(Void _obj)
+        {
+            SceneManager.LoadScene("Reborn");
         }
 
         private void StartNewBattle(Void empty)
@@ -68,6 +78,12 @@ namespace SceneManagement
 
         private void YouWin()
         {
+            if (PlayerData.getInstance().Heroes.Any(h => h.isDead) && PlayerData.getInstance().ResurrectionPoints > 0)
+            {
+                resurectionPool.SetActive(true);
+                return;
+            }
+                
             switch (BattleStateManager.instance.endCondition.Type)
             {
                 case EConditionType.LootBox:

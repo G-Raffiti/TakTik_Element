@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _ScriptableObject;
+using Decks;
 using Relics;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
@@ -74,7 +75,7 @@ namespace Skills
             }
             return _skill;
         }
-        
+
         #region Change Methode for Relics
 
             /// <summary>

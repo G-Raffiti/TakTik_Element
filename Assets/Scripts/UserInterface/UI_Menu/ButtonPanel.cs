@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UserInterface
+namespace UserInterface.UI_Menu
 {
     public class ButtonPanel : MonoBehaviour, IPointerClickHandler
     {

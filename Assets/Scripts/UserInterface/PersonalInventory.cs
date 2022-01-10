@@ -2,6 +2,7 @@
 using _DragAndDropSystem;
 using _EventSystem.CustomEvents;
 using DataBases;
+using Gears;
 using Relics;
 using Resources.ToolTip.Scripts;
 using Stats;
@@ -19,6 +20,7 @@ namespace UserInterface
         [SerializeField] private Image health;
         [SerializeField] private Image shield;
         [SerializeField] private List<DragAndDropCell> slots;
+        [SerializeField] private GameObject GearInfoPrefab;
         private BattleStats BattleStats;
         private BattleStats baseStats;
         private BattleStats total;
@@ -35,6 +37,16 @@ namespace UserInterface
             Hero.OnHPChanged.EventListeners += UpdateHP;
 
             UpdateStats();
+        }
+
+        public void FillInventory()
+        {
+            for (int i = 0; i < Hero.Inventory.gears.Count; i++)
+            {
+                GameObject gearObj = Instantiate(GearInfoPrefab, slots[i].transform);
+                gearObj.GetComponent<GearInfo>().Gear = Hero.Inventory.gears[i];
+                gearObj.GetComponent<GearInfo>().DisplayIcon();
+            }
         }
 
         private void OnDisable()

@@ -91,7 +91,7 @@ namespace Skills.ScriptableObject_GridEffect
             _path = _path.OrderBy(c => _targetedCell.GetDistance(c)).Reverse().ToList();
 
             // Move
-            int _distance = Movable.Move(target, destination, _path).Count;
+            int _distance = target.Move(destination, _path).Count;
             if(_distance != 0)
                 while (target.IsMoving) yield return null;
             

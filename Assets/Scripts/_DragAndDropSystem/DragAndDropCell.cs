@@ -261,7 +261,7 @@ namespace _DragAndDropSystem
 					break;
 				case ContainType.Gear:
 				{
-					item.GetComponent<InfoGear>().Gear = sourceCell.GetInfoGear().Gear;
+					item.GetComponent<GearInfo>().Gear = sourceCell.GetInfoGear().Gear;
 				}
 					break;
 				case ContainType.Relic:
@@ -375,9 +375,9 @@ namespace _DragAndDropSystem
 		/// <summary>
 		/// Get InfoGear from Cell
 		/// </summary>
-		public InfoGear GetInfoGear()
+		public GearInfo GetInfoGear()
 		{
-			return GetComponentInChildren<InfoGear>();
+			return GetComponentInChildren<GearInfo>();
 		}
 		
 		/// <summary>

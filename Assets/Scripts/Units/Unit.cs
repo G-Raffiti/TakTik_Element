@@ -171,11 +171,13 @@ namespace Units
 
     #region IMovable
 
-        public override void Move(Cell destinationCell, List<Cell> path)
+        public override List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
-            int cost = Movable.Move(this, destinationCell, path).Count;
+            List<Cell> _path = Movable.Move(this, destinationCell, path);
+            int cost = _path.Count;
             if (BattleStateManager.instance.PlayingUnit == this)
                 BattleStats.MP -= cost;
+            return _path;
         }
         /// <summary>
         /// Dictionary of all Cells and best Path to go to this Cells

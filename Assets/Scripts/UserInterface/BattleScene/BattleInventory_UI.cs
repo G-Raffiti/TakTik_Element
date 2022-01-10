@@ -79,15 +79,15 @@ namespace UserInterface.BattleScene
             for (int i = 0; i < heroInventory.gears.Count; i++)
             {
                 GameObject pref = Instantiate(prefabGear, HeroSlots[i].transform);
-                pref.GetComponent<InfoGear>().Gear = heroInventory.gears[i];
-                pref.GetComponent<InfoGear>().DisplayIcon();
+                pref.GetComponent<GearInfo>().Gear = heroInventory.gears[i];
+                pref.GetComponent<GearInfo>().DisplayIcon();
             }
             
             for (int i = 0; i < monsterInventory.gears.Count; i++)
             {
                 GameObject pref = Instantiate(prefabGear, MonsterSlots[i].transform);
-                pref.GetComponent<InfoGear>().Gear = monsterInventory.gears[i];
-                pref.GetComponent<InfoGear>().DisplayIcon();
+                pref.GetComponent<GearInfo>().Gear = monsterInventory.gears[i];
+                pref.GetComponent<GearInfo>().DisplayIcon();
             }
         }
         

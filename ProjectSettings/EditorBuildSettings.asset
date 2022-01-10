@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScoreScene.unity
     guid: 28248172cf2b988458ce701f950224a0
+  - enabled: 1
+    path: Assets/Scenes/Reborn.unity
+    guid: 6327b4d1a6b1065448123bc54be7417d
   m_configObjects: {}

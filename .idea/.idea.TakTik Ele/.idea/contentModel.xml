@@ -164,8 +164,8 @@
           </e>
           <e p="Gears" t="Include">
             <e p="Gear.cs" t="Include" />
+            <e p="GearInfo.cs" t="Include" />
             <e p="GearSO.cs" t="Include" />
-            <e p="InfoGear.cs" t="Include" />
             <e p="Inventory.cs" t="Include" />
           </e>
           <e p="GridObjects" t="Include">
@@ -207,6 +207,7 @@
             <e p="ShopForge.cs" t="Include" />
             <e p="ShopForge_UI.cs" t="Include" />
             <e p="ShopInventory_UI.cs" t="Include" />
+            <e p="ShopResurrection.cs" t="Include" />
           </e>
           <e p="Skills" t="Include">
             <e p="_Zone" t="Include">
@@ -299,12 +300,21 @@
               <e p="BattleTurnOrder_UI.cs" t="Include" />
               <e p="BtnEndTurn.cs" t="Include" />
               <e p="DeathWaiter.cs" t="Include" />
+              <e p="InfoUI" t="Include">
+                <e p="BattleInfoUI_DeckMono.cs" t="Include" />
+                <e p="BattleInfoUI_Inventory.cs" t="Include" />
+                <e p="BattleInfoUI_Relics.cs" t="Include" />
+              </e>
               <e p="TurnOrderPrefab.cs" t="Include" />
             </e>
-            <e p="ButtonPanel.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
-            <e p="MenuPanel.cs" t="Include" />
             <e p="PersonalInventory.cs" t="Include" />
+            <e p="UI_Menu" t="Include">
+              <e p="ButtonPanel.cs" t="Include" />
+              <e p="MenuPanel.cs" t="Include" />
+              <e p="MovingButtonPanel.cs" t="Include" />
+              <e p="MovingPanelMenu.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

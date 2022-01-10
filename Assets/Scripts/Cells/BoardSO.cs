@@ -31,7 +31,7 @@ namespace Cells
             
             foreach (SavedCell _Cell in _list)
             {
-                Cells.Add(_Cell);
+                cells.Add(_Cell);
             }
 
             background = _background;

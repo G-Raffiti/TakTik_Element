@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Gears
 {
-    public class InfoGear : InfoBehaviour
+    public class GearInfo : InfoBehaviour
     {
         public Gear Gear { get; set; }
 

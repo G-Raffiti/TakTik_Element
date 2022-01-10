@@ -172,7 +172,7 @@ MonoBehaviour:
     - 3
     - 6
     type: {fileID: 11400000, guid: 756e7026d5827164da43eed1dcdd2177, type: 2}
-    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
+    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
     isSpawn: 0
   - position:
     - 4
@@ -392,7 +392,7 @@ MonoBehaviour:
     - 8
     - 5
     type: {fileID: 11400000, guid: 756e7026d5827164da43eed1dcdd2177, type: 2}
-    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
+    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
     isSpawn: 0
   - position:
     - 10
@@ -602,7 +602,7 @@ MonoBehaviour:
     - 3
     - 9
     type: {fileID: 11400000, guid: 756e7026d5827164da43eed1dcdd2177, type: 2}
-    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
+    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
     isSpawn: 0
   - position:
     - 1
@@ -702,7 +702,7 @@ MonoBehaviour:
     - 7
     - 11
     type: {fileID: 11400000, guid: 756e7026d5827164da43eed1dcdd2177, type: 2}
-    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
+    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
     isSpawn: 0
   - position:
     - 3
@@ -832,7 +832,7 @@ MonoBehaviour:
     - 5
     - 3
     type: {fileID: 11400000, guid: 756e7026d5827164da43eed1dcdd2177, type: 2}
-    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
+    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
     isSpawn: 0
   - position:
     - 9
@@ -882,7 +882,7 @@ MonoBehaviour:
     - 10
     - 8
     type: {fileID: 11400000, guid: 756e7026d5827164da43eed1dcdd2177, type: 2}
-    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
+    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
     isSpawn: 0
   - position:
     - 9

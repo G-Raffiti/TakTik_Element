@@ -10,6 +10,7 @@ namespace _Instances
         private static PlayerData instance;
         private List<Hero> heroes;
         private Dictionary<AffixSO, int> craftingMaterial = new Dictionary<AffixSO, int>();
+        public int ResurrectionPoints;
         public List<Hero> Heroes => heroes;
 
         public Dictionary<AffixSO, int> CraftingMaterial => craftingMaterial;
@@ -24,9 +25,9 @@ namespace _Instances
         private PlayerData()
         {
             heroes = new List<Hero>();
-            if (GameObject.FindObjectOfType<KeepBetweenScene>() != null)
+            if (GameObject.Find("Player") != null)
             {
-                foreach (Transform _child in GameObject.FindObjectOfType<KeepBetweenScene>().transform)
+                foreach (Transform _child in GameObject.Find("Player").transform)
                 {
                     heroes.Add(_child.GetComponent<Hero>());
                 }
@@ -36,6 +37,8 @@ namespace _Instances
             {
                 craftingMaterial.Add(_affixSO, 0);
             }
+
+            ResurrectionPoints = 2;
         }
 
         public void AddMaterial(AffixSO _affix, int number)

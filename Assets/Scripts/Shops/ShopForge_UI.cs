@@ -118,8 +118,8 @@ namespace Shops
         public void ShowCraftedGear(Gear _gear)
         {
             GameObject pref = Instantiate(prefabGear, NewItemSlot.transform);
-            pref.GetComponent<InfoGear>().Gear = _gear;
-            pref.GetComponent<InfoGear>().DisplayIcon();
+            pref.GetComponent<GearInfo>().Gear = _gear;
+            pref.GetComponent<GearInfo>().DisplayIcon();
         }
 
         public Dictionary<AffixSO, int> GetCraftMaterial()

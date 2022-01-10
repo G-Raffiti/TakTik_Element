@@ -1,9 +1,10 @@
 ﻿using _EventSystem.CustomEvents;
+using Skills;
 using Units;
 using UnityEngine;
 using Void = _EventSystem.CustomEvents.Void;
 
-namespace Skills
+namespace Decks
 {
     public class AllDecksMono : MonoBehaviour
     {

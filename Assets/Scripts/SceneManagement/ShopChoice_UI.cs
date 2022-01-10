@@ -11,7 +11,6 @@ namespace SceneManagement
     {
         [SerializeField] private Button Btn1;
         [SerializeField] private Button Btn2;
-        [SerializeField] private BattleFade fade;
         [SerializeField] private List<string> Shops;
         [SerializeField] private List<Sprite> ShopIcons;
         [SerializeField] private int indexBtn1;
@@ -44,6 +43,7 @@ namespace SceneManagement
         /// </summary>
         private void SetButtons()
         {
+            BattleFade fade = FindObjectOfType<BattleFade>();
             Btn1.onClick.AddListener(() => fade.GoToShop(Shops[indexBtn1]));
             Btn1.onClick.AddListener(() => gameObject.SetActive(false));
             Btn2.onClick.AddListener(() => fade.GoToShop(Shops[indexBtn2]));

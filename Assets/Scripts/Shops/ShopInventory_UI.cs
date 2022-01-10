@@ -26,8 +26,8 @@ namespace Shops
                 for (int j = 0; j < Portraits[i].Hero.Inventory.gears.Count; j++)
                 {
                     GameObject pref = Instantiate(prefabGear, Portraits[i].Slots[j].transform);
-                    pref.GetComponent<InfoGear>().Gear = Portraits[i].Hero.Inventory.gears[j];
-                    pref.GetComponent<InfoGear>().DisplayIcon();
+                    pref.GetComponent<GearInfo>().Gear = Portraits[i].Hero.Inventory.gears[j];
+                    pref.GetComponent<GearInfo>().DisplayIcon();
                 }
             }
         }

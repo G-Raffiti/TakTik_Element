@@ -23,10 +23,10 @@ namespace GridObjects
 
         private bool isUsed = false;
 
-        public override void Move(Cell destinationCell, List<Cell> path)
+        public override List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
-            if (!GridObjectSO.Movable) return;
-            base.Move(destinationCell, path);
+            if (!GridObjectSO.Movable) return new List<Cell>();
+            return base.Move(destinationCell, path);
         }
 
         /// <summary>

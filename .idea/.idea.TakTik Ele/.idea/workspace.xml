@@ -36,26 +36,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Inventory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseAffix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/EndConditionSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ChangeScene.cs" />
-      <option value="$PROJECT_DIR$/Assets/PostProcessing/Blur.shader" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBlockInput.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/DeckMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleInventory_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropItem.cs" />
-      <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/TurnOrderPrefab.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/InfoGear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawGear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
@@ -65,8 +45,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Buff.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/Drowned.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/DevButtons.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Decks/DeckMono.cs" />
@@ -74,7 +52,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/EndRun_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/LastBattle.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
@@ -82,11 +59,34 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/KeepBetweenScene.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/DataBaseBoard.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/CellSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopResurection.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/BoardSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopResurrection.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Deck.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Relics.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Inventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Menu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/MovingButtonPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/MovingPanelMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/MenuPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MovingButtonPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
@@ -102,7 +102,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
+    <property name="settings.editor.selected.configurable" value="RiderCSharpLiveTemplatesSettingsId" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">

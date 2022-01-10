@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _Extension;
 using Relics;
+using Skills;
 using Units;
 using UnityEngine;
 
-namespace Skills
+namespace Decks
 {
     public class DeckMono : MonoBehaviour
     {

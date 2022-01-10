@@ -71,6 +71,10 @@ namespace Cells
             foreach (Transform _child in transform)
             {
                 Cell _Cell = _child.gameObject.GetComponent<Cell>();
+                if (_Cell.CellSO == null)
+                {
+                    Debug.LogWarning($"cell ({_Cell.OffsetCoord.x}/{_Cell.OffsetCoord.y}) missing CellSO");
+                }
                 if (_Cell != null)
                 {
                     SavedCells.Add(new SavedCell(_child.gameObject.GetComponent<TileIsometric>()));

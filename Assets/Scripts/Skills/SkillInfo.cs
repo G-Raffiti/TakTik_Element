@@ -41,7 +41,7 @@ namespace Skills
             if (Unit.BattleStats.AP < skill.Cost) return;
             if (skill.Effects.Any(_effect => !_effect.CanUse(_cell, this)))
                 return;
-            Debug.Log($"{Unit.UnitName} Use {ColouredName()}");
+            Debug.Log($"{Unit.ColouredName()} Use {ColouredName()}");
             if (skill.Effects.Find(_effect => _effect is Learning) != null)
             {
                 skill.Effects.Find(_effect => _effect is Learning).Use(_cell, this);

@@ -21,9 +21,9 @@ namespace Units
 
         public abstract string getName();
 
-        public virtual void Move(Cell destinationCell, List<Cell> path)
+        public virtual List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
-            Movable.Move(this, destinationCell, path);
+            return Movable.Move(this, destinationCell, path);
         }
         public abstract float MovementAnimationSpeed { get; }
         public bool IsMoving { get; set; }
