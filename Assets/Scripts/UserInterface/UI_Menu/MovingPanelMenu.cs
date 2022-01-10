@@ -16,7 +16,7 @@ namespace UserInterface.UI_Menu
 
         private void Start()
         {
-            minWidth = MovingPanel.GetComponent<RectTransform>().sizeDelta.x;
+            minWidth = MovingPanel.GetComponent<RectTransform>().sizeDelta.x +1;
         }
 
         public void ShowPanelBtn(int index)
@@ -35,6 +35,8 @@ namespace UserInterface.UI_Menu
             {
                 yield return Hide();
             }
+
+            Debug.Log("menu");
             Menu.Menu(index);
             yield return new WaitWhile(() =>
                 MovingPanel.GetComponent<RectTransform>().sizeDelta.x <= minWidth);
@@ -64,8 +66,6 @@ namespace UserInterface.UI_Menu
                 yield return 0;
             }
             Menu.Close();
-            yield return new WaitUntil(() =>
-                MovingPanel.GetComponent<RectTransform>().sizeDelta.x <= minWidth);
             isOnScreen = false;
         }
 

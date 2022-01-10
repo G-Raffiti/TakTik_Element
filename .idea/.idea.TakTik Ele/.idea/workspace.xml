@@ -36,7 +36,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawGear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gears/Gear.cs" />
@@ -87,6 +86,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/MenuPanel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MovingButtonPanel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MovingPanelMenu.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
