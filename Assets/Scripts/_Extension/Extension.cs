@@ -17,5 +17,10 @@ namespace _Extension
                 _list[randomIndex] = tempValue;
             }
         }
+        
+        public static int Max(this int _scoreDamage, int _damage)
+        {
+            return _scoreDamage < _damage ? _damage : _scoreDamage;
+        }
     }
 }

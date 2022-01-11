@@ -34,8 +34,6 @@ namespace UserInterface
             Hero = _hero;
             icon.sprite = Hero.UnitSprite;
 
-            Hero.OnHPChanged.EventListeners += UpdateHP;
-
             UpdateStats();
         }
 
@@ -47,11 +45,6 @@ namespace UserInterface
                 gearObj.GetComponent<GearInfo>().Gear = Hero.Inventory.gears[i];
                 gearObj.GetComponent<GearInfo>().DisplayIcon();
             }
-        }
-
-        private void OnDisable()
-        {
-            //Hero.OnHPChanged.EventListeners -= UpdateHP;
         }
 
         private void UpdateHP(int ActualHP)

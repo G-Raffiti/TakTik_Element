@@ -38,8 +38,8 @@ namespace Shops
         [SerializeField] private VoidEvent onDiplayUptade;
         
         [Header("Sender")] 
-        [SerializeField] private ItemEvent onUpgradeItem;
-        [SerializeField] private ItemEvent onDestroyItem;
+        [SerializeField] private GearEvent onUpgradeGear;
+        [SerializeField] private GearEvent onDestroyGear;
 
         private static Dictionary<int, AffixSO> getAffixFromDropDown = new Dictionary<int, AffixSO>();
 
@@ -146,7 +146,7 @@ namespace Shops
 
         public void UpgradeItemButton()
         {
-            onUpgradeItem.Raise(UpgradeItemSlot.GetInfoGear().Gear);
+            onUpgradeGear.Raise(UpgradeItemSlot.GetInfoGear().Gear);
         }
 
         public void DestroyItemButton()
@@ -167,7 +167,7 @@ namespace Shops
         public void ValidateDestroy()
         {
             Validate.SetActive(false);
-            onDestroyItem.Raise(DestroyItemSlot.GetInfoGear().Gear);
+            onDestroyGear.Raise(DestroyItemSlot.GetInfoGear().Gear);
             DestroyItemSlot.RemoveItem();
         }
         

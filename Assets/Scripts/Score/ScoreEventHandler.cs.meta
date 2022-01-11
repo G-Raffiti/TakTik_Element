@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 89264e79348440739faa8f5ddc904632
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - OnBattleStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
+  - OnCellWalked: {fileID: 11400000, guid: fcb513c05edf06b4885d680d2ee2862b, type: 2}
+  - OnDestroyGear: {fileID: 11400000, guid: f26d0ae330b585748a9b6c29b4b9e926, type: 2}
+  - OnCraftingMaterialAdded: {fileID: 11400000, guid: 5ceb741c678453c4cbde1c9045230013,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

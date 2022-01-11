@@ -237,13 +237,13 @@ namespace Units
 
             IsMoving = false;
             MarkBack(_state);
-            OnMoveFinished();
+            OnMoveFinished(path.Count);
         }
         
         /// <summary>
         /// Method called after movement animation has finished.
         /// </summary>
-        protected virtual void OnMoveFinished()
+        protected virtual void OnMoveFinished(int _cellWalked)
         {
             onUnitMoved.Raise(this);
         }
@@ -358,7 +358,6 @@ namespace Units
                 StartCoroutine(OnDestroyed());
                 return;
             }
-            Debug.Log($"Damage : {aggressor.ColouredName()} did {damage} {element.Name} damage to {ColouredName()}");
 
             int _damageTaken = 0;
             if (damage > 0)
@@ -366,6 +365,7 @@ namespace Units
             else _damageTaken = BattleStats.GetHealTaken(damage, element.Type);
 
             OnHit(_damageTaken, element);
+            Debug.Log($"Damage : {aggressor.ColouredName()} did {_damageTaken} {element.Name} damage to {ColouredName()}");
             
             if (_damageTaken > 0)
             {
@@ -390,7 +390,7 @@ namespace Units
             if (BattleStats.HP > total.HP) 
                 BattleStats.HP = total.HP;
 
-            UnitAttacked?.Invoke(this, new AttackEventArgs(aggressor, this, (int)damage));
+            UnitAttacked?.Invoke(this, new AttackEventArgs(aggressor, this, _damageTaken));
             if (BattleStats.HP > 0) return;
             
             if (isDying) return;
@@ -586,6 +586,7 @@ namespace Units
         public override IEnumerator OnDestroyed()
         {
             isDying = true;
+            BattleStats.HP = 0;
             Cell.FreeTheCell();
             MarkAsDestroyed();
             yield return new WaitWhile(() => anim.isPlaying);

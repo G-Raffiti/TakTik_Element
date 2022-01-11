@@ -147,9 +147,9 @@ namespace Skills
 
         #endregion
 
-        public int GetPower(EElement _elementType)
+        public int GetPower()
         {
-            return skill.Power + Unit.BattleStats.GetPower(_elementType);
+            return skill.Power;
         }
     }
 }

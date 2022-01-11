@@ -11,7 +11,7 @@ namespace Skills.ScriptableObject_Effect
     {
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            int _damage = _skillInfo.GetPower(_skillInfo.skill.Element.Type);
+            int _damage = _skillInfo.GetPower();
             
             foreach (Cell _cellAffected in Zone.GetZone(_skillInfo.skill.Range, _cell))
             {
@@ -28,7 +28,7 @@ namespace Skills.ScriptableObject_Effect
 
         public override Dictionary<Cell, int> DamageValue(Cell _cell, SkillInfo _skillInfo)
         {
-            int _damage = _skillInfo.GetPower(_skillInfo.skill.Element.Type);
+            int _damage = _skillInfo.GetPower();
             Dictionary<Cell, int> ret = new Dictionary<Cell, int>();
             foreach (Cell _cellInZone in Zone.GetZone(_skillInfo.skill.Range, _cell))
             {
@@ -43,7 +43,7 @@ namespace Skills.ScriptableObject_Effect
         public override string InfoEffect(SkillInfo _skillInfo)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(_skillInfo.skill.Element.TextColour);
-            return $"-<color=#{_hexColor}>{_skillInfo.GetPower(_skillInfo.skill.Element.Type)}</color> <sprite name=HP>";
+            return $"-<color=#{_hexColor}>{_skillInfo.GetPower()}</color> <sprite name=HP>";
         }
         public override string InfoEffect()
         {

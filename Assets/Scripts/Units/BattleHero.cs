@@ -16,6 +16,8 @@ namespace Units
     public class BattleHero : Unit
     {
         [SerializeField] private UnitEvent onHeroSelected;
+        [SerializeField] private IntEvent onCellWalked;
+        
         private Hero hero;
 
         public Hero Hero => hero;
@@ -65,6 +67,12 @@ namespace Units
             }
 
             return str; 
+        }
+
+        protected override void OnMoveFinished(int _cellWalked)
+        {
+            base.OnMoveFinished(_cellWalked);
+            onCellWalked.Raise(_cellWalked);
         }
     }
 }

@@ -2179,6 +2179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuBtns: {fileID: 1099123146}
   Panels: {fileID: 70050545}
+  showOnStart: 1
+  MovingMenu: {fileID: 0}
 --- !u!114 &469761250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,8 +2211,8 @@ MonoBehaviour:
   resourcesGrid: {fileID: 1665353082}
   resourcesPower: {fileID: 201419153}
   onDiplayUptade: {fileID: 11400000, guid: 50cd91f3a1abe2245ae818746e22a7cc, type: 2}
-  onUpgradeItem: {fileID: 11400000, guid: 4b7a921eba0607846b1c3e1adb8e7beb, type: 2}
-  onDestroyItem: {fileID: 11400000, guid: f26d0ae330b585748a9b6c29b4b9e926, type: 2}
+  onUpgradeGear: {fileID: 11400000, guid: 4b7a921eba0607846b1c3e1adb8e7beb, type: 2}
+  onDestroyGear: {fileID: 11400000, guid: f26d0ae330b585748a9b6c29b4b9e926, type: 2}
 --- !u!1001 &497869171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3800,6 +3802,7 @@ MonoBehaviour:
   - {fileID: 563733691}
   - {fileID: 377782326}
   - {fileID: 1160312298}
+  GearInfoPrefab: {fileID: 0}
 --- !u!1 &777650759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5660,6 +5663,7 @@ MonoBehaviour:
   - {fileID: 957772476}
   - {fileID: 508131404}
   - {fileID: 497869173}
+  GearInfoPrefab: {fileID: 0}
 --- !u!114 &1004797757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8921,6 +8925,7 @@ MonoBehaviour:
   - {fileID: 799288422}
   - {fileID: 1461431440}
   - {fileID: 325548889}
+  GearInfoPrefab: {fileID: 0}
 --- !u!114 &1576357572
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,9 +14,9 @@ namespace Shops
     {
         [SerializeField] private int craftPoint = 3;
         [Header("Listener")]
-        [SerializeField] private ItemEvent onDestroyGear;
+        [SerializeField] private GearEvent onDestroyGear;
         [SerializeField] private VoidEvent onCraftGear;
-        [SerializeField] private ItemEvent onUpgradeGear;
+        [SerializeField] private GearEvent onUpgradeGear;
         
         [Header("Sender")]
         [SerializeField] private VoidEvent onDiplayUptade;

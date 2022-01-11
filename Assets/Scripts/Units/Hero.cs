@@ -23,9 +23,6 @@ namespace Units
         [SerializeField] private Inventory inventory;
         [SerializeField] private List<RelicSO> relics = new List<RelicSO>();
 
-        [SerializeField] private IntEvent onHPChanged;
-
-        public IntEvent OnHPChanged => onHPChanged;
 
         private Unit unit;
 

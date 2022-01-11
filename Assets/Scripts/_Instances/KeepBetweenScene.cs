@@ -57,6 +57,12 @@ namespace _Instances
         {
             Stage = stage;
         }
+
+        public static void EndGame()
+        {
+            Stage = -1;
+            BattleNumber = -1;
+        }
     }
 
     

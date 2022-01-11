@@ -36,6 +36,9 @@ namespace Units
         
         public bool isPlaying;
 
+        public MonsterSO MonsterSO { get; private set; }
+
+
         public Skill monsterSkill { get; private set; }
 
         public Archetype Archetype { get; private set; }
@@ -62,6 +65,7 @@ namespace Units
         /// <param name="Stage"></param>
         public void Spawn(MonsterSO monster, int Stage)
         {
+            MonsterSO = monster;
             UnitName = monster.Name;
             unitSprite.sprite = monster.UnitSprite;
             RewardType = monster.RewardType;
@@ -77,9 +81,10 @@ namespace Units
             buffs = new List<Buff>();
             
             Inventory = new Inventory();
-            Inventory.GenerateGearFor(monster);
+            if(KeepBetweenScene.Stage >= 0) 
+                Inventory.GenerateGearFor(monster);
 
-            if (monster.Type == EMonster.Boss)
+            if (monster.Type == EMonster.Boss && KeepBetweenScene.Stage >= 0)
             {
                 Relics.Add(DataBase.Relic.GetRandom());
             }

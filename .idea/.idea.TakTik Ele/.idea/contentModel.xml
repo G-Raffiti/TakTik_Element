@@ -24,6 +24,22 @@
           <e p="GridHelper.cs" t="Include" />
           <e p="GridHelperUtils.cs" t="Include" />
         </e>
+        <e p="LeanTween" t="Include">
+          <e p="Editor" t="Include">
+            <e p="LeanTweenDocumentationEditor.cs" t="Include" />
+          </e>
+          <e p="Framework" t="Include">
+            <e p="LeanAudio.cs" t="Include" />
+            <e p="LeanSmooth.cs" t="Include" />
+            <e p="LeanTest.cs" t="Include" />
+            <e p="LeanTween.cs" t="Include" />
+            <e p="LeanTweenExt.cs" t="Include" />
+            <e p="LTDescr.cs" t="Include" />
+            <e p="LTDescrOptional.cs" t="Include" />
+            <e p="LTSeq.cs" t="Include" />
+          </e>
+          <e p="ReadMe.txt" t="Include" />
+        </e>
         <e p="Plugins" t="Include">
           <e p="MHLab" t="Include">
             <e p="AutoSaver" t="Include">
@@ -62,10 +78,10 @@
               <e p="BoolEvent.cs" t="Include" />
               <e p="CellEvent.cs" t="Include" />
               <e p="FloatEvent.cs" t="Include" />
+              <e p="GearEvent.cs" t="Include" />
               <e p="GridObjectEvent.cs" t="Include" />
               <e p="InfoEvent.cs" t="Include" />
               <e p="IntEvent.cs" t="Include" />
-              <e p="ItemEvent.cs" t="Include" />
               <e p="SkillEvent.cs" t="Include" />
               <e p="UnitEvent.cs" t="Include" />
               <e p="VoidEvent.cs" t="Include" />
@@ -190,6 +206,11 @@
             <e p="ChangeScene.cs" t="Include" />
             <e p="EndRun_UI.cs" t="Include" />
             <e p="ShopChoice_UI.cs" t="Include" />
+          </e>
+          <e p="Score" t="Include">
+            <e p="ScoreEventHandler.cs" t="Include" />
+            <e p="ScoreHolder.cs" t="Include" />
+            <e p="ScoreSceneUI.cs" t="Include" />
           </e>
           <e p="ScreenResolutionManager" t="Include">
             <e p="AspectUtility.cs" t="Include" />

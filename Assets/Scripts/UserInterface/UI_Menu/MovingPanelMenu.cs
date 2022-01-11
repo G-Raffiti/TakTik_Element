@@ -11,6 +11,7 @@ namespace UserInterface.UI_Menu
         [SerializeField] private Button CloseBtn;
         [SerializeField] private float movementAnimationSpeed;
         [SerializeField] private int offset;
+        private int actualPanel = -1;
         private bool isOnScreen;
         private float minWidth;
 
@@ -31,13 +32,13 @@ namespace UserInterface.UI_Menu
 
         private IEnumerator showPanel(int index)
         {
+            if (actualPanel == index) yield break;
             if (isOnScreen)
             {
                 yield return Hide();
             }
-
-            Debug.Log("menu");
             Menu.Menu(index);
+            actualPanel = index;
             yield return new WaitWhile(() =>
                 MovingPanel.GetComponent<RectTransform>().sizeDelta.x <= minWidth);
             float width = MovingPanel.GetComponent<RectTransform>().sizeDelta.x;

@@ -20,6 +20,7 @@ namespace UserInterface.BattleScene.InfoUI
         private void OnEnable()
         {
             deck = FindObjectOfType<DeckMono>();
+            if (BattleStateManager.instance.Units == null || BattleStateManager.instance.Units.Count == 0) return;
             Unit nextHero = BattleStateManager.instance.Units.Find(u => u.playerNumber == 0);
 
             SetPile(deck.DrawPile, nextHero, DrawPile);
