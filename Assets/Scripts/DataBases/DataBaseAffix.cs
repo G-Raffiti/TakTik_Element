@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Extension;
 using _Instances;
 using Stats;
 using UnityEngine;
@@ -53,7 +54,7 @@ namespace DataBases
                 }
             }
 
-            return weigthedAffixes[Random.Range(0, weigthedAffixes.Count)];
+            return weigthedAffixes.GetRandom();
         }
     }
 }

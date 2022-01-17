@@ -65,28 +65,32 @@
      <Compile Include="Assets\Resources\ToolTip\Scripts\InfoBehaviour.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\InfoListener.cs" />
      <Compile Include="Assets\Scripts\_Instances\PlayerData.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
      <Compile Include="Assets\Scripts\Units\Monster.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Learning.cs" />
      <Compile Include="Assets\Scripts\Stats\BattleStats.cs" />
      <Compile Include="Assets\Scripts\Skills\_Zone\Zone.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
      <Compile Include="Assets\Scripts\DevsButton\DevButtons.cs" />
      <Compile Include="Assets\Scripts\Units\MonsterSO.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillSO.cs" />
-     <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\RandomUnitGenerator.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
      <Compile Include="Assets\Scripts\Relics\Relic.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\RandomUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\_Instances\DataBase.cs" />
      <Compile Include="Assets\Scripts\Stats\Range.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopResurrection.cs" />
      <Compile Include="Assets\Scripts\_Instances\SceneKeeper.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Archetype.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectAffectChange.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectAffectChange.cs" />
      <Compile Include="Assets\Scripts\GridObjects\GridObject.cs" />
      <Compile Include="Assets\Scripts\Cells\CellSO.cs" />
      <Compile Include="Assets\Scripts\Cells\DataBaseBoard.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\DijkstraPathfinding.cs" />
      <Compile Include="Assets\Scripts\ScreenResolutionManager\ResolutionManager.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleTurnOrder_UI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
      <Compile Include="Assets\Scripts\Gears\Gear.cs" />
@@ -101,6 +105,7 @@
      <Compile Include="Assets\Scripts\Players\AIPlayer.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavableEntity.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleRelicChoice_UI.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Rarity.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseMonster.cs" />
      <Compile Include="Assets\Scripts\Cells\Hexagon.cs" />
@@ -139,7 +144,7 @@
      <Compile Include="Assets\Scripts\Stats\Affix.cs" />
      <Compile Include="Assets\Scripts\Stats\Affinity.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Tree.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectNeedView.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectNeedView.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Healing.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnitySkillEvent.cs" />
      <Compile Include="Assets\Scripts\Cells\Isometric.cs" />
@@ -161,6 +166,7 @@
      <Compile Include="Assets\Scripts\_CSVFiles\rawGear.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\DeathWaiter.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityIntEvent.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\UnitEvent.cs" />
      <Compile Include="Assets\Scripts\Cells\BoardSO.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateBlockInput.cs" />
@@ -170,7 +176,7 @@
      <Compile Include="Assets\Scripts\StatusEffect\Corruption.cs" />
      <Compile Include="Assets\Scripts\_Extension\Extension.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\StatusSO.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffect.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffect.cs" />
      <Compile Include="Assets\Scripts\Skills\IEffect.cs" />
      <Compile Include="Assets\Scripts\Score\ScoreHolder.cs" />
      <Compile Include="Assets\Scripts\_CSVFiles\rawMonster.cs" />
@@ -188,6 +194,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\ItemListener.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\IGraphNode.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateNormal.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
      <Compile Include="Assets\Scripts\Units\Hero.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_DeckMono.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\FloorStatus.cs" />
@@ -227,11 +234,12 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\Stats\AffixSO.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\HeapPriorityQueue.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\TeleportTo.cs" />
      <Compile Include="Assets\Scripts\EndConditions\LastBattle.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\ApplyBuff.cs" />
      <Compile Include="Assets\Scripts\Units\IMovable.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectZoneType.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectZoneType.cs" />
      <Compile Include="Assets\Scripts\DataBases\ColorSet.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\TurnOrderPrefab.cs" />
      <Compile Include="Assets\Scripts\_CSVFiles\rawSkill.cs" />
@@ -242,15 +250,8 @@
      <Compile Include="Assets\Scripts\SceneManagement\EndRun_UI.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
-     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
-     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
-     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
-     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
-     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
-     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
-     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectHealOnEndFight.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />
@@ -853,9 +854,6 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/Program Perso/Unity/2020.3.11f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
- </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
@@ -876,9 +874,6 @@
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Editor">
- <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>

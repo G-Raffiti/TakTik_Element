@@ -200,6 +200,15 @@
             <e p="Relic.cs" t="Include" />
             <e p="RelicInfo.cs" t="Include" />
             <e p="RelicSO.cs" t="Include" />
+            <e p="ScriptableObject_RelicEffect" t="Include">
+              <e p="RelicEffect.cs" t="Include" />
+              <e p="RelicEffectAffectChange.cs" t="Include" />
+              <e p="RelicEffectElementSwap.cs" t="Include" />
+              <e p="RelicEffectHealOnEndFight.cs" t="Include" />
+              <e p="RelicEffectNeedView.cs" t="Include" />
+              <e p="RelicEffectRangeType.cs" t="Include" />
+              <e p="RelicEffectZoneType.cs" t="Include" />
+            </e>
           </e>
           <e p="SceneManagement" t="Include">
             <e p="BattleFade.cs" t="Include" />
@@ -252,14 +261,6 @@
               <e p="PushFromImpact.cs" t="Include" />
               <e p="SkillGridEffect.cs" t="Include" />
               <e p="TeleportTo.cs" t="Include" />
-            </e>
-            <e p="ScriptableObject_RelicEffect" t="Include">
-              <e p="RelicEffect.cs" t="Include" />
-              <e p="RelicEffectAffectChange.cs" t="Include" />
-              <e p="RelicEffectElementSwap.cs" t="Include" />
-              <e p="RelicEffectNeedView.cs" t="Include" />
-              <e p="RelicEffectRangeType.cs" t="Include" />
-              <e p="RelicEffectZoneType.cs" t="Include" />
             </e>
             <e p="Skill.cs" t="Include" />
             <e p="SkillInfo.cs" t="Include" />

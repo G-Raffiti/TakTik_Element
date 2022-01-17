@@ -28,7 +28,6 @@ namespace UserInterface.BattleScene.InfoUI
                     slotObj.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Relic;
                     GameObject relicObj = Instantiate(RelicPrefab.gameObject, slotObj.transform);
                     relicObj.GetComponent<RelicInfo>().CreateRelic(_relic);
-                    slotObj.GetComponent<DragAndDropCell>().AddItem(relicObj.GetComponent<DragAndDropItem>());
                     relicObj.GetComponent<RelicInfo>().DisplayIcon();
                 }
             }

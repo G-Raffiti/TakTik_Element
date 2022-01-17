@@ -68,6 +68,7 @@ namespace UserInterface.UI_Menu
             }
             Menu.Close();
             isOnScreen = false;
+            actualPanel = -1;
         }
 
         private IEnumerator MoveCloseBtn(bool show)

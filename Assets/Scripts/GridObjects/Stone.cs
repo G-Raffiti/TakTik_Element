@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _Extension;
 using _Instances;
 using _Pathfinding.Algorithms;
 using _ScriptableObject;
@@ -16,6 +17,8 @@ namespace GridObjects
     public class Stone : GridObjectSO
     {
         [SerializeField] private int pushDistance;
+        [SerializeField] private List<Sprite> stonesSprites;
+        public override Sprite Image => stonesSprites.GetRandom();
 
         public override void Interact(Unit actor, Cell location)
         {

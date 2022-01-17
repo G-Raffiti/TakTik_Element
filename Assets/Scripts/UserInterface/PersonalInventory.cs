@@ -57,7 +57,7 @@ namespace UserInterface
         public void UpdateStats()
         {
             baseStats = Hero.BattleStats;
-            BattleStats = new BattleStats(baseStats + Hero.Inventory.GearStats());
+            BattleStats = new BattleStats(baseStats + Hero.Inventory.GearStats() + Hero.GetRelic().BattleStats);
             total = BattleStats;
             BattleStats.HP = Hero.ActualHP;
             

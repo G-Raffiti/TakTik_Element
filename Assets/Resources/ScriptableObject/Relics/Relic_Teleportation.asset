@@ -17,17 +17,31 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: fee033be2ab9c324e981ad5eb2b10ef0, type: 3}
   relicEffects:
   - {fileID: 11400000, guid: febd8a8bc65340449b37481452bce5c2, type: 2}
+  effectFactor: 0
   effect: {fileID: 0}
   gridEffect: {fileID: 11400000, guid: e6411559cfe59784282caccc88555a36, type: 2}
   affect: 0
-  range:
-    RangeType: 6
-    RangeValue: 0
-    ZoneType: 0
-    Radius: 0
-    NeedView: 0
-    NeedTarget: 0
-    CanBeModified: 0
-  power: 0
+  battleStats:
+    HP: 0
+    Shield: 0
+    Speed: 0
+    Power: 0
+    Focus: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 0
+    AP: 0
+    Range:
+      RangeType: 6
+      RangeValue: 0
+      ZoneType: 0
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      CanBeModified: 0
   cost: 0
   statusEffects: []
+  description: 'Effect : You will teleport where you Use any Skill\n\nBe Aware, it''s
+    not realy Stable !'

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Extension;
 using Gears;
 using UnityEditor;
 using UnityEngine;
@@ -25,7 +26,7 @@ namespace DataBases
                     weightedList.Add(_gear);
                 }
             }
-            return weightedList[Random.Range(0, weightedList.Count)];
+            return weightedList.GetRandom();
         }
 
         public void AddGear(GearSO newGear)

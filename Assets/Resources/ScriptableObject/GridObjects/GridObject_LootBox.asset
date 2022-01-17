@@ -17,3 +17,10 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 719010cfdcbe2844aa836a2bcd8e940c, type: 3}
   name: Loot Box
   OnLootBoxOpen: {fileID: 11400000, guid: d194e5a9adad9ce49a3a3863b0225101, type: 2}
+  lootBoxesSprites:
+  - {fileID: 21300000, guid: d3af33a669be0d54b8e00974c777c304, type: 3}
+  - {fileID: 21300000, guid: cd46ece4f676add4b9c8c66150907a2e, type: 3}
+  - {fileID: 21300000, guid: 6337d27ed326ef249aca04e39fc7649b, type: 3}
+  - {fileID: 21300000, guid: 8332e832508dc744fbfb99b415314c86, type: 3}
+  - {fileID: 21300000, guid: dead5e9d86638ee4fa5f1dc0450a3b18, type: 3}
+  - {fileID: 21300000, guid: 653c07016cbb7964286d04dd9468d986, type: 3}

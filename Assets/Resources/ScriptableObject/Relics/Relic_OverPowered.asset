@@ -17,17 +17,31 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 4d03e845b8a56634fb3f1258753c3d4c, type: 3}
   relicEffects:
   - {fileID: 11400000, guid: 5fc08dcccbc3c904b935aeb718896574, type: 2}
+  effectFactor: 0
   effect: {fileID: 0}
   gridEffect: {fileID: 0}
   affect: 0
-  range:
-    RangeType: 0
-    RangeValue: 0
-    ZoneType: 0
-    Radius: 0
-    NeedView: 0
-    NeedTarget: 0
-    CanBeModified: 0
-  power: 10
+  battleStats:
+    HP: 0
+    Shield: 0
+    Speed: 0
+    Power: 10
+    Focus: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 0
+    AP: 0
+    Range:
+      RangeType: 0
+      RangeValue: 0
+      ZoneType: 0
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      CanBeModified: 0
   cost: 1
   statusEffects: []
+  description: 'Effect : Cost of Skills +1 <sprite name=AP> and + 10<sprite name=Power>,\nAll
+    Skills Now Will affect All Units\n\nThe Power flows in your Hands !'

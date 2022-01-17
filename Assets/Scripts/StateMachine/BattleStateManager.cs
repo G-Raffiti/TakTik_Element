@@ -9,6 +9,8 @@ using EndConditions;
 using Gears;
 using GridObjects;
 using Players;
+using Relics;
+using Relics.ScriptableObject_RelicEffect;
 using Skills;
 using StateMachine.GridStates;
 using StateMachine.UnitGenerators;
@@ -63,6 +65,7 @@ namespace StateMachine
         [SerializeField] private VoidEvent onActionDone;
         [SerializeField] private SkillEvent onSkillSelected;
         [SerializeField] private UnitEvent onUnitMoved;
+        [SerializeField] private VoidEvent onBattleEndTrigger;
         
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onBattleStarted;
@@ -103,6 +106,7 @@ namespace StateMachine
             onStartBattle.EventListeners += StartBattle;
             onSkillSelected.EventListeners += SkillSelected;
             onUnitMoved.EventListeners += UnitMoved;
+            onBattleEndTrigger.EventListeners += UnitsEndBattle;
             Initialize();
         }
 
@@ -118,9 +122,11 @@ namespace StateMachine
             onStartBattle.EventListeners -= StartBattle;
             onSkillSelected.EventListeners -= SkillSelected;
             onUnitMoved.EventListeners -= UnitMoved;
+            onBattleEndTrigger.EventListeners -= UnitsEndBattle;
         }
-        
-    #region Event Handler
+
+
+        #region Event Handler
         private void BlockInputs(Void _obj)
         {
             BlockInputs();
@@ -176,6 +182,24 @@ namespace StateMachine
         private void TriggerOnUnitDestroyed(object sender, DeathEventArgs e)
         {
             StartCoroutine(UnitDestroyed(sender));
+        }
+        
+        /// <summary>
+        /// Trigger all Relic effect "On Battle End"
+        /// </summary>
+        private void UnitsEndBattle(Void _obj)
+        {
+            foreach (Unit hero in Units.Where(u => u.playerNumber == 0))
+            {
+                Hero _hero = ((BattleHero)hero).Hero;
+                foreach (RelicSO _relicSO in _hero.Relics)
+                {
+                    foreach (RelicEffect _effect in _relicSO.RelicEffects)
+                    {
+                        _effect.OnEndFight(_hero, _relicSO);
+                    }
+                }
+            }
         }
         
     #endregion

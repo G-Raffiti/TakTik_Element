@@ -54,6 +54,7 @@
   <ItemGroup>
      <Compile Include="Assets\Editor\GridGenerators\TriangularHexGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridHelper.cs" />
+     <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
      <Compile Include="Assets\Editor\CustomUnitGeneratorHelper.cs" />
      <Compile Include="Assets\Editor\GridGenerators\RectangularSquareGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridGenerators\ICellGridGenerator.cs" />
@@ -64,7 +65,6 @@
      <Compile Include="Assets\Editor\Data\CSVReader.cs" />
      <Compile Include="Assets\Editor\GridGenerators\EquilateralHexGridGenerator.cs" />
      <Compile Include="Assets\Editor\Data\SOGenerator.cs" />
-     <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Perso/Unity/2020.3.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -695,9 +695,6 @@
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
- </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
@@ -718,9 +715,6 @@
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Editor">
- <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>

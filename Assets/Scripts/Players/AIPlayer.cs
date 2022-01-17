@@ -130,7 +130,6 @@ namespace Players
                 // Check Loop Conditions
                 canPlay = (int) monster.BattleStats.AP > 0;
                 if (monster.monsterSkill.Cost == 0)
-                
                     canPlay = monster.BattleStats.AP >= loop;
                 canMove = monster.BattleStats.MP > 0;
                 

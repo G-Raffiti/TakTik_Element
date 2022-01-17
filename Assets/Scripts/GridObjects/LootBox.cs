@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using _EventSystem.CustomEvents;
+using _Extension;
 using _Instances;
 using Cells;
 using Gears;
@@ -12,6 +14,8 @@ namespace GridObjects
     public class LootBox : GridObjectSO
     {
         [SerializeField] private GridObjectEvent OnLootBoxOpen;
+        [SerializeField] private List<Sprite> lootBoxesSprites;
+        public override Sprite Image => lootBoxesSprites.GetRandom();
         public override void Interact(Unit actor, Cell location)
         {
             if (location.CurrentGridObject.Inventory.gears.Count == 0)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _DragAndDropSystem;
 using Decks;
 using Skills;
@@ -16,12 +17,19 @@ namespace UserInterface.BattleScene.InfoUI
         [SerializeField] private Transform DrawPile;
         [SerializeField] private Transform DiscardPile;
         [SerializeField] private Transform ConsumedPile;
+        private Unit nextHero;
 
         private void OnEnable()
         {
             deck = FindObjectOfType<DeckMono>();
-            if (BattleStateManager.instance.Units == null || BattleStateManager.instance.Units.Count == 0) return;
-            Unit nextHero = BattleStateManager.instance.Units.Find(u => u.playerNumber == 0);
+            if (BattleStateManager.instance.PlayingUnit == null) return;
+            if (BattleStateManager.instance.PlayingUnit.playerNumber == 0)
+                nextHero = BattleStateManager.instance.PlayingUnit;
+            else
+            {
+                List<Unit> heroList = BattleStateManager.instance.Units.Where(u => u.playerNumber == 0).ToList();
+                nextHero = heroList[0];
+            }
 
             SetPile(deck.DrawPile, nextHero, DrawPile);
             SetPile(deck.DiscardPile, nextHero, DiscardPile);

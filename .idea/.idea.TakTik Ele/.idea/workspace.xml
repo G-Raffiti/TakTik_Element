@@ -26,6 +26,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/ResolutionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.5.7/Editor/Collaborate/UserInterface/CollaborateWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127E81E1-CB34-41CC-97D2-6B1910DAAE77/25/6239b0bb/Random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/AspectUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
@@ -38,37 +39,7 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopCampMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/DataBaseBoard.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/CellSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopResurection.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/BoardSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopResurrection.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Deck.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ButtonPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Relics.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Inventory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Menu.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/MovingButtonPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/MovingPanelMenu.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/MenuPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MovingButtonPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Extension/Extension.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Score/test.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Attack.cs" />
@@ -76,19 +47,49 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Medicine.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Spell.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/EndRun_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreHolder.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/KeepBetweenScene.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreSceneUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreEventHandler.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MovingPanelMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/LeanTween/Editor/LeanTweenDocumentationEditor.cs" />
       <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LeanTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Extension/Extension.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseRelic.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseSkill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseAffix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatusSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreSceneUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Relics.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MovingPanelMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/Relic.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/RelicEffectRangeType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/RelicEffectZoneType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffect.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectAffectChange.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectElementSwap.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectHealOnEndFight.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectRangeType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectZoneType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
@@ -100,7 +101,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.5019425" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -126,10 +127,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5196">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="5196" />
+      <option name="pid" />
       <option name="selectedOptions">
         <list />
       </option>

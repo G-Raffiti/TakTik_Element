@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _Instances;
+using EndConditions;
 using Gears;
 using Relics;
 using Stats;
@@ -28,6 +29,7 @@ namespace Units
 
         public string UnitName => unitName;
         public BattleStats BattleStats => battleStats;
+        public BattleStats TotalStats => new BattleStats(battleStats + Inventory.GearStats() + GetRelic().BattleStats);
         public int ActualHP { get; private set; }
         public GameObject Prefab => prefab;
         public Sprite UnitSprite => unitSprite;
@@ -41,7 +43,7 @@ namespace Units
 
         public void Spawn(GameObject _pref)
         {
-            if (KeepBetweenScene.Stage == 0)
+            if (KeepBetweenScene.currentState == EConditionType.LootBox)
             {
                 ActualHP = BattleStats.HP;
             }
@@ -72,9 +74,12 @@ namespace Units
         
         public void HealHP(int percent)
         {
-            BattleStats total = BattleStats + Inventory.GearStats();
-            int MaxHP = total.HP;
-            ActualHP = Math.Min(MaxHP, ActualHP + (int) (MaxHP * (percent / 100f)));
+            ActualHP = Math.Min(TotalStats.HP, ActualHP + (int) (TotalStats.HP * (percent / 100f)));
+        }
+        
+        public void HealFixValueHP(int fixValue)
+        {
+            ActualHP = Math.Min(TotalStats.HP, ActualHP + fixValue);
         }
 
         public Relic GetRelic()

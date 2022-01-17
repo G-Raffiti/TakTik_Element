@@ -2,9 +2,9 @@
 using _ScriptableObject;
 using Decks;
 using Relics;
+using Relics.ScriptableObject_RelicEffect;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
-using Skills.ScriptableObject_RelicEffect;
 using Stats;
 using StatusEffect;
 using Units;
@@ -35,13 +35,13 @@ namespace Skills
             _skill.Unit = user;
             _skill.Relic = relic;
             if (skillSO.Range.CanBeModified)
-                _skill.Range = skillSO.Range + relic.Range + user.BattleStats.Range;
+                _skill.Range = skillSO.Range + user.BattleStats.Range;
             else
                 _skill.Range = skillSO.Range;
-            _skill.Power = skillSO.Power + relic.Power + user.BattleStats.Power;
+            _skill.Power = skillSO.Power + user.BattleStats.Power;
             _skill.Element = skillSO.Element;
             _skill.Affect = skillSO.Affect;
-            _skill.Cost = skillSO.Cost + relic.Cost;
+            _skill.Cost = skillSO.Cost;
             _skill.Type = skillSO.Type;
             _skill.Buffs = new List<Buff>();
             

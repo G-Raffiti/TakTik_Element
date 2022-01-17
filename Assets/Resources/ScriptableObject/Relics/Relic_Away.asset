@@ -30,3 +30,5 @@ MonoBehaviour:
   power: 0
   cost: 0
   statusEffects: []
+  description: 'Effect : Push All Unit 3 Cells Away.\n\nAre you afraid of proximity
+    ?'

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using _ScriptableObject;
+using Relics.ScriptableObject_RelicEffect;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
 using Skills.ScriptableObject_GridEffect;
-using Skills.ScriptableObject_RelicEffect;
 using Stats;
 using StatusEffect;
 using UnityEngine;
@@ -18,14 +18,16 @@ namespace Relics
         [SerializeField] private Sprite icon;
 
         [SerializeField] private List<RelicEffect> relicEffects;
+        [SerializeField] private float effectFactor;
         [SerializeField] private SkillEffect effect;
         [SerializeField] private SkillGridEffect gridEffect;
         [SerializeField] private EAffect affect;
-        
-        [SerializeField] private Range range;
-        [SerializeField] private int power;
+
+        [SerializeField] private BattleStats battleStats;
         [SerializeField] private int cost;
         [SerializeField] private List<StatusSO> statusEffects;
+
+        [SerializeField] private string description;
 
         public string Name => name;
         public Element Element => element;
@@ -34,9 +36,12 @@ namespace Relics
         public SkillEffect Effect => effect;
         public SkillGridEffect GridEffect => gridEffect;
         public EAffect Affect => affect;
-        public Range Range => range;
-        public int Power => power;
+        public float EffectFactor => effectFactor;
+        public BattleStats BattleStats => battleStats;
+
         public int Cost => cost;
         public List<StatusSO> StatusEffects => statusEffects;
+
+        public string Description => description;
     }
 }

@@ -33,8 +33,8 @@ namespace Units
             Inventory.gears.AddRange(_hero.Inventory.gears);
             
             baseStats = _hero.BattleStats;
-            BattleStats = new BattleStats(baseStats + Inventory.GearStats());
-            total = BattleStats;
+            BattleStats = new BattleStats(hero.TotalStats);
+            total = new BattleStats(BattleStats);
             BattleStats.HP = hero.ActualHP;
 
             unitSprite.sprite = _hero.UnitSprite;

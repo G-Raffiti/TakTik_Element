@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Extension;
 using Relics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,9 +12,7 @@ namespace DataBases
         [SerializeField] private List<RelicSO> allRelics;
         public List<RelicSO> AllRelics => allRelics;
 
-        public RelicSO GetRandom()
-        {
-            return AllRelics[Random.Range(0, AllRelics.Count)];
-        }
+        public RelicSO GetRandom() => AllRelics.GetRandom();
+        
     }
 }

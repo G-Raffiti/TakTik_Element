@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _Extension;
 using _ScriptableObject;
 using Skills;
 using Stats;
@@ -53,7 +54,7 @@ namespace DataBases
         {
             List<SkillSO> ret = allSkills.Where(s => s.Element == _monster.Element && s.Archetype == _monster.Archetype.Type)
                 .ToList();
-            return ret[Random.Range(0, ret.Count)];
+            return ret.GetRandom();
         }
     }
 }

@@ -17,6 +17,12 @@ namespace _Extension
                 _list[randomIndex] = tempValue;
             }
         }
+
+        public static T GetRandom<T>(this IList<T> _list)
+        {
+            int max = _list.Count;
+            return _list[Random.Range(0, max)];
+        }
         
         public static int Max(this int _scoreDamage, int _damage)
         {

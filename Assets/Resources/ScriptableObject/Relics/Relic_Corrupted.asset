@@ -31,3 +31,5 @@ MonoBehaviour:
   cost: 0
   statusEffects:
   - {fileID: 11400000, guid: a331d7623793a7f458530ea66cc3069e, type: 2}
+  description: 'Effect : Apply Corruption on the Floor\n\nYour Madness Become REALITY
+    !!'

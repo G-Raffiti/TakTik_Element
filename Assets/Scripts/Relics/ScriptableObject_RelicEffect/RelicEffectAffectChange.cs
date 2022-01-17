@@ -1,8 +1,8 @@
-﻿using Relics;
+﻿using Skills;
 using Skills._Zone;
 using UnityEngine;
 
-namespace Skills.ScriptableObject_RelicEffect
+namespace Relics.ScriptableObject_RelicEffect
 {
     [CreateAssetMenu(fileName = "Relic_Effect_Affect_", menuName = "Scriptable Object/Relics/Relic Effect Affect Change")]
     public class RelicEffectAffectChange : RelicEffect
@@ -10,11 +10,6 @@ namespace Skills.ScriptableObject_RelicEffect
         public override void ChangeSkill(Skill skill, RelicSO relic)
         {
             skill.ChangeAffect(relic.Affect);
-        }
-
-        public override string InfoEffect(RelicSO _relic)
-        {
-            return $"All Skills form this Action Pile now target {Zone.AffectToString(_relic.Affect)}";
         }
     }
 }

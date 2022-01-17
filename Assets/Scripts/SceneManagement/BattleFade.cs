@@ -19,8 +19,10 @@ namespace SceneManagement
         [SerializeField] private EndRun_UI endRunUI;
         [SerializeField] private GameObject resurectionPool;
         
-        [Header("Event Sender")] [SerializeField]
-        private VoidEvent onUIEnable;
+        
+        [Header("Event Sender")]
+        [SerializeField] private VoidEvent onBattleEndTrigger;
+        [SerializeField] private VoidEvent onUIEnable;
         
         [Header("Event Listener")]
         [SerializeField] private BoolEvent onBattleIsOver;
@@ -46,6 +48,7 @@ namespace SceneManagement
 
         private void GoToResurrection(Void _obj)
         {
+            onBattleEndTrigger.Raise();
             SceneManager.LoadScene("Reborn");
         }
 
@@ -97,6 +100,7 @@ namespace SceneManagement
 
         public void GoToShop(string _shopName)
         {
+            onBattleEndTrigger.Raise();
             SceneManager.LoadScene(_shopName);
         }
     }

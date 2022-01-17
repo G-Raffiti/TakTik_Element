@@ -1,5 +1,5 @@
-﻿using Resources.ToolTip.Scripts;
-using Skills.ScriptableObject_RelicEffect;
+﻿using Relics.ScriptableObject_RelicEffect;
+using Resources.ToolTip.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -37,25 +37,19 @@ namespace Relics
         public override string GetInfoLeft()
         {
             string str = "";
-            if (Relic.GridEffect != null) str += Relic.GridEffect.InfoEffect();
-            if (Relic.Effect != null) str += Relic.Effect.InfoEffect();
+            if (Relic.GridEffect != null) str += Relic.GridEffect.InfoEffect() + "\n";
+            if (Relic.Effect != null) str += Relic.Effect.InfoEffect() + "\n";
             return str;
         }
 
         public override string GetInfoRight()
         {
-            if (Relic.RelicEffects == null || Relic.RelicEffects.Count == 0) return "";
-            string str = "";
-            foreach (RelicEffect _effect in Relic.RelicEffects)
-            {
-                str += _effect.InfoEffect(Relic);
-            }
-            return str;
+            return "";
         }
 
         public override string GetInfoDown()
         {
-            return "";
+            return Relic.Description;
         }
 
         public override Sprite GetIcon()
