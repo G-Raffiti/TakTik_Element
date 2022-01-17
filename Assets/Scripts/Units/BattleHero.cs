@@ -36,11 +36,11 @@ namespace Units
             BattleStats = new BattleStats(hero.TotalStats);
             total = new BattleStats(BattleStats);
             BattleStats.HP = hero.ActualHP;
-
-            unitSprite.sprite = _hero.UnitSprite;
-
             buffs = new List<Buff>();
+
+            if (unitSprite == null) return;
             
+            unitSprite.sprite = _hero.UnitSprite;
             InitializeSprite();
         }
 

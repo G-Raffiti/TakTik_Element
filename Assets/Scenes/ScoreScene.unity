@@ -1193,6 +1193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 285180163}
   - component: {fileID: 285180162}
+  - component: {fileID: 285180164}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -1229,6 +1230,7 @@ MonoBehaviour:
     type: 3}
   RelicPrefab: {fileID: 8147867960554300943, guid: 29ec5303bc8915b4f817a6e2d40fdbb5,
     type: 3}
+  blanc: {fileID: 285180164}
   SkillPrefab: {fileID: 3882640058524459029, guid: 402200e682ce99848a7c88f79f99de7e,
     type: 3}
   DrawPile: {fileID: 1414312011}
@@ -1247,6 +1249,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &285180164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285180161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da14a864ee7d427990d94ebad6651e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Blanc
+  battleStats:
+    HP: 0
+    Shield: 0
+    Speed: 0
+    Power: 0
+    Focus: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 0
+    AP: 0
+    Range:
+      RangeType: 0
+      RangeValue: 0
+      ZoneType: 0
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      CanBeModified: 0
+  prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
+  unitSprite: {fileID: 0}
+  icon: {fileID: 0}
+  inventory:
+    gears: []
+  relics: []
+  isPlaced: 0
+  isDead: 0
 --- !u!1 &341289739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,7 +4371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 366, y: -176.66667}
+  m_AnchoredPosition: {x: 366, y: -176.66669}
   m_SizeDelta: {x: 712, y: 333.33334}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1256256868
@@ -6508,7 +6551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4, y: 0.2}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 27.5, y: -15.0000305}
+  m_AnchoredPosition: {x: 27.5, y: -15.000061}
   m_SizeDelta: {x: -145, y: -60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1714809847

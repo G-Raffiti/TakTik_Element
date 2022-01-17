@@ -1165,10 +1165,10 @@ RectTransform:
   m_Father: {fileID: 1910535657}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35, y: -81.666664}
-  m_SizeDelta: {x: 50, y: 143.33333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &82543795
 MonoBehaviour:
@@ -2576,10 +2576,10 @@ RectTransform:
   m_Father: {fileID: 1910535657}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35, y: -235}
-  m_SizeDelta: {x: 50, y: 143.33333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188139192
 MonoBehaviour:
@@ -5730,7 +5730,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &378864358
 MonoBehaviour:
@@ -22324,10 +22324,10 @@ RectTransform:
   m_Father: {fileID: 1910535657}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35, y: -388.3333}
-  m_SizeDelta: {x: 50, y: 143.33333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1626571219
 MonoBehaviour:
@@ -22920,6 +22920,8 @@ GameObject:
   - component: {fileID: 1662823848}
   - component: {fileID: 1662823847}
   - component: {fileID: 1662823851}
+  - component: {fileID: 1662823853}
+  - component: {fileID: 1662823852}
   m_Layer: 5
   m_Name: Deck
   m_TagString: Untagged
@@ -23046,6 +23048,97 @@ MonoBehaviour:
   DrawPile: {fileID: 866967757}
   DiscardPile: {fileID: 54532968}
   ConsumedPile: {fileID: 1070610155}
+  Hero: {fileID: 1662823852}
+  blancHero: {fileID: 1662823853}
+  deck: {fileID: 963500106}
+--- !u!114 &1662823852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662823845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b05817fa234f07bc00504ef2ec6190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell: {fileID: 0}
+  Inventory:
+    gears: []
+  UnitName: 
+  onUnitMoved: {fileID: 0}
+  TurnPoint: 0
+  BattleStats:
+    HP: 0
+    Shield: 0
+    Speed: 0
+    Power: 0
+    Focus: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 0
+    AP: 0
+    Range:
+      RangeType: 0
+      RangeValue: 0
+      ZoneType: 0
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      CanBeModified: 0
+  playerNumber: 0
+  movementAnimationSpeed: 0
+  colorSet: {fileID: 0}
+  unitSprite: {fileID: 0}
+  info: {fileID: 0}
+  shadow: {fileID: 0}
+  isDying: 0
+  onHeroSelected: {fileID: 0}
+  onCellWalked: {fileID: 0}
+--- !u!114 &1662823853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662823845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da14a864ee7d427990d94ebad6651e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: Blanc
+  battleStats:
+    HP: 0
+    Shield: 0
+    Speed: 0
+    Power: 0
+    Focus: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 0
+    AP: 0
+    Range:
+      RangeType: 0
+      RangeValue: 0
+      ZoneType: 0
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      CanBeModified: 0
+  prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
+  unitSprite: {fileID: 21300000, guid: b435100613af3a946b8966f722e63810, type: 3}
+  icon: {fileID: 21300000, guid: b435100613af3a946b8966f722e63810, type: 3}
+  inventory:
+    gears: []
+  relics: []
+  isPlaced: 0
+  isDead: 0
 --- !u!1001 &1677494769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23322,7 +23415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688487501
@@ -24572,7 +24665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winLoose: {fileID: 1574170547}
-  goToButton: {fileID: 0}
 --- !u!1 &1781577635
 GameObject:
   m_ObjectHideFlags: 0

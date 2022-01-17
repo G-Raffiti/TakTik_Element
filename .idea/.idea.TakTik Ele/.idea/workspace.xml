@@ -46,7 +46,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Healing.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Medicine.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Spell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/EndRun_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/PlayerData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreHolder.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/KeepBetweenScene.cs" />
@@ -63,9 +62,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseGear.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseAffix.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatusSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreSceneUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Relics.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MovingPanelMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/Relic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" />
@@ -73,11 +70,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/RelicEffectRangeType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_RelicEffect/RelicEffectZoneType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffect.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectAffectChange.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectElementSwap.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectHealOnEndFight.cs" />
@@ -90,6 +85,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreSceneUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/EndRun_UI.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

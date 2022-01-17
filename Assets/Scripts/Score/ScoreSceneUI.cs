@@ -22,6 +22,7 @@ namespace Score
         [SerializeField] private List<Transform> RelicHolder;
         [SerializeField] private DragAndDropCell SlotPrefab;
         [SerializeField] private RelicInfo RelicPrefab;
+        [SerializeField] private Hero blanc;
         private DeckMono deck;
         [SerializeField] private SkillInfo SkillPrefab;
         [SerializeField] private Transform DrawPile;
@@ -53,7 +54,9 @@ namespace Score
                     relicObj.GetComponent<RelicInfo>().DisplayIcon();
                 }
             }
-            deck = FindObjectOfType<DeckMono>();
+            
+            deck = GameObject.Find("DeckMono/Deck1").GetComponent<DeckMono>();
+            hero.Spawn(blanc);
 
             SetPile(deck.DrawPile, hero, DrawPile);
         }

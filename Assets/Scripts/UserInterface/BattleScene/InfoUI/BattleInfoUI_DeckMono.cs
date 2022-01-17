@@ -11,24 +11,31 @@ namespace UserInterface.BattleScene.InfoUI
 {
     public class BattleInfoUI_DeckMono : MonoBehaviour
     {
-        private DeckMono deck;
         [SerializeField] private DragAndDropCell SlotPrefab;
         [SerializeField] private SkillInfo SkillPrefab;
         [SerializeField] private Transform DrawPile;
         [SerializeField] private Transform DiscardPile;
         [SerializeField] private Transform ConsumedPile;
-        private Unit nextHero;
+        [SerializeField] private BattleHero Hero;
+        [SerializeField] private Hero blancHero;
+        [SerializeField] private DeckMono deck;
+
 
         private void OnEnable()
         {
-            deck = FindObjectOfType<DeckMono>();
+            Unit nextHero;
+            if (deck == null)
+            {
+                deck = GameObject.Find("DeckMono/Deck1").GetComponent<DeckMono>();
+            }
+            Debug.Log(BattleStateManager.instance.PlayingUnit != null ? BattleStateManager.instance.PlayingUnit.UnitName : "a pas trouvé");
             if (BattleStateManager.instance.PlayingUnit == null) return;
             if (BattleStateManager.instance.PlayingUnit.playerNumber == 0)
                 nextHero = BattleStateManager.instance.PlayingUnit;
             else
             {
-                List<Unit> heroList = BattleStateManager.instance.Units.Where(u => u.playerNumber == 0).ToList();
-                nextHero = heroList[0];
+                Hero.Spawn(blancHero);
+                nextHero = Hero;
             }
 
             SetPile(deck.DrawPile, nextHero, DrawPile);
