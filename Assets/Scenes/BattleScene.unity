@@ -7115,6 +7115,7 @@ MonoBehaviour:
   tooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   tooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
   onHeroSelected: {fileID: 11400000, guid: d9a5de72d85ce74488ad6e11b7345f14, type: 2}
+  AutoPass: 1
 --- !u!114 &497996690
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Cells;
 using Units;
 using UnityEngine;
@@ -80,13 +81,17 @@ namespace StateMachine.GridStates
             {
                 GameObject _pref = Object.Instantiate(heroes[i].Prefab, GameObject.Find("Units").transform);
                 heroes[i].Spawn(_pref);
-                _pref.transform.position = new Vector3(-2, 3-i);
+                _pref.transform.position = setupCells[i].transform.position;
                 _pref.GetComponent<Unit>().InitializeSprite();
                 prefabHeroes.Add(_pref.GetComponent<BattleHero>(), _pref);
+                setupCells[i].Take(_pref.GetComponent<Unit>());
+                heroes[i].isPlaced = true;
             }
 
             stateManager.OnHeroSelected.EventListeners += ChangeHero;
             sprite = GameObject.Find("Layer/Sprite");
+
+            ChangeHero(prefabHeroes.Keys.ToList()[0]);
         }
         
 

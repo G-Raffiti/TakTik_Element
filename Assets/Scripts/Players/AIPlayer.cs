@@ -74,6 +74,7 @@ namespace Players
 
             // Play
             onMonsterPlay.Raise();
+            Debug.LogWarning("Unit :" + stateManager.PlayingUnit.UnitName + "Skill :" + monster.monsterSkill.BaseSkill.Name + "start");
             Execute(stateManager);
         }
 
@@ -83,6 +84,12 @@ namespace Players
             StartCoroutine(Routine(_stateManager));
         }
 
+        private string TestPrint(DestinationTarget test)
+        {
+            string dest = test.Destination != null ? test.Destination.OffsetCoord.ToString() : "None";
+            string targ = test.Target != null ? test.Target.OffsetCoord.ToString() : "None";
+            return $"Destination: {dest}, Target: {targ}";
+        }
         private IEnumerator Routine(BattleStateManager stateManager)
         {
             monster.isPlaying = true;
@@ -90,6 +97,7 @@ namespace Players
             bool canPlay = monster.BattleStats.AP > 0;
             bool canMove = monster.BattleStats.MP > 0;
 
+            Debug.LogWarning("1rst Evaluation :");
             DestinationTarget best;
             if (monster.BattleStats.AP >= monster.monsterSkill.Cost)
                 best = Evaluate(monster, monster.monsterSkill.BaseSkill, stateManager);
@@ -105,6 +113,7 @@ namespace Players
             while (canPlay && best.Target != null)
             {
                 loop += 1;
+                Debug.LogWarning($"Loop Start\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}");
                 
                 // Move
                 if (best.Destination != monster.Cell)
@@ -114,8 +123,10 @@ namespace Players
                     path.Reverse();
                     monster.Move(best.Destination, path);
                 }
-                
+
+                Debug.LogWarning($"Loop number : {loop}\nMonster is Moving = {monster.IsMoving}");
                 yield return new WaitUntil(() => !monster.IsMoving);
+                Debug.LogWarning($"Loop number : {loop}\nMonster is Moving = {monster.IsMoving}");
                 yield return new WaitForSeconds(0.2f);
             
                 // Use Skill
@@ -123,14 +134,17 @@ namespace Players
                 skillInfo.UseSkill(best.Target);
                 
                 yield return new WaitUntil(() => skillUsed);
+                Debug.LogWarning($"Loop number : {loop}\nMonster used a Skill");
                 yield return new WaitForSeconds(0.2f);
                 
                 UnColor(stateManager);
                 
                 // Check Loop Conditions
+                Debug.LogWarning($"Check Condition\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}");
+                
                 canPlay = (int) monster.BattleStats.AP > 0;
                 if (monster.monsterSkill.Cost == 0)
-                    canPlay = monster.BattleStats.AP >= loop;
+                    canPlay = monster.BattleStats.AP <= loop;
                 canMove = monster.BattleStats.MP > 0;
                 
                 skillUsed = false;
@@ -143,6 +157,7 @@ namespace Players
                 //TODO : possibilité d'activé les couleur de des cells de l'IA via un menu Setting
                 //ColorTheFloor();
                 yield return new WaitForSeconds(1);
+                Debug.LogWarning($"Check Done\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}\nCan Play = {canPlay}, Can Move = {canMove}");
             }
 
             // Move one Last Time at the best Place

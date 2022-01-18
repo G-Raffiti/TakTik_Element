@@ -39,7 +39,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Score/test.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Attack.cs" />
@@ -55,7 +54,6 @@
       <option value="$PROJECT_DIR$/Assets/LeanTween/Editor/LeanTweenDocumentationEditor.cs" />
       <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LeanTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Extension/Extension.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseRelic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseSkill.cs" />
@@ -79,7 +77,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectRangeType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectZoneType.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
@@ -90,6 +87,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreSceneUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/EndRun_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

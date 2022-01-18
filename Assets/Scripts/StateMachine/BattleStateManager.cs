@@ -395,8 +395,17 @@ namespace StateMachine
 
             Players.Find(p => p.playerNumber == PlayingUnit.playerNumber).Play(this);
             onUnitStartTurn.Raise(PlayingUnit);
+            
+            // AI Test auto EndTurn !
+            if (AutoPass)
+            {
+                if (PlayingUnit.playerNumber == 0)
+                    EndTurn();
+            }
+            // End AI Test
         }
-
+        // AI Tester AutoEndTurn for Player
+        public bool AutoPass;
         private void SortByTurnPoints()
         {
             Units.Sort((u1, u2) => u1.TurnPoint.CompareTo(u2.TurnPoint));
