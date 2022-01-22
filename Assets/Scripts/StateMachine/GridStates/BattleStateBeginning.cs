@@ -67,7 +67,8 @@ namespace StateMachine.GridStates
                 while (setupCells.Count < 10)
                 {
                     int _cellIndex = Random.Range(0, _freeCells.Count);
-                    setupCells.Add(_freeCells[_cellIndex]);
+                    if (!setupCells.Contains(_freeCells[_cellIndex]))
+                        setupCells.Add(_freeCells[_cellIndex]);
                 }
             }
             else setupCells = _spawnCells;
@@ -90,8 +91,6 @@ namespace StateMachine.GridStates
 
             stateManager.OnHeroSelected.EventListeners += ChangeHero;
             sprite = GameObject.Find("Layer/Sprite");
-
-            ChangeHero(prefabHeroes.Keys.ToList()[0]);
         }
         
 

@@ -21,7 +21,7 @@ namespace _Instances
 
         private static void UpdateCurrentState()
         {
-            if (Stage == 2 && BattleNumber == BattlePerStage)
+            if (Stage == 0 && BattleNumber == BattlePerStage)
                 currentState = EConditionType.Last;
             if (BattleNumber == BattlePerStage)
             {

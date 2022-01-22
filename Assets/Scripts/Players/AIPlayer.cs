@@ -144,7 +144,7 @@ namespace Players
                 
                 canPlay = (int) monster.BattleStats.AP > 0;
                 if (monster.monsterSkill.Cost == 0)
-                    canPlay = monster.BattleStats.AP <= loop;
+                    canPlay = loop >= KeepBetweenScene.Stage + 1;
                 canMove = monster.BattleStats.MP > 0;
                 
                 skillUsed = false;

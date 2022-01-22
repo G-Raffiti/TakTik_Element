@@ -204,6 +204,7 @@
      <Compile Include="Assets\Scripts\Cells\SavedCell.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopDeckMono_UI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityFloatEvent.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectHealOnEndFight.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityBoolEvent.cs" />
      <Compile Include="Assets\Scripts\UserInterface\PersonalInventory.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavingLoading.cs" />
@@ -251,7 +252,6 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectHealOnEndFight.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />
