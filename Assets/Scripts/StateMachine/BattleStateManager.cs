@@ -57,7 +57,7 @@ namespace StateMachine
         [Header("Event Listener")]
         [SerializeField] private VoidEvent onStartBattle;
         [SerializeField] private VoidEvent onEndTurn;
-        [SerializeField] private CellEvent onGridObjectDestroyed;
+        [SerializeField] private GridObjectEvent onGridObjectDestroyed;
         [SerializeField] private VoidEvent onSkillUsed;
         [SerializeField] private VoidEvent onUIEnable;
         [SerializeField] private VoidEvent onMonsterPlay;
@@ -323,12 +323,14 @@ namespace StateMachine
                 _cell.GetComponent<Cell>().GetNeighbours(Cells);
             }
 
-            GridObjects = new List<GridObjects.GridObject>();
+            GridObjects = new List<GridObject>();
             foreach (Transform _transform in GameObject.Find("Objects").transform)
             {
-                GridObjects.Add(_transform.gameObject.GetComponent<GridObjects.GridObject>());
+                GridObjects.Add(_transform.gameObject.GetComponent<GridObject>());
             }
             GridObjects.ForEach(g => g.Initialize());
+            
+            Debug.Log(GridObjects.Count);
         }
 
         #endregion
@@ -440,7 +442,7 @@ namespace StateMachine
                 _unit.Cell.Buffs.ForEach(b => b.OnStartTurn(_unit));
             }
 
-            foreach (GridObjects.GridObject _gridObject in GridObjects)
+            foreach (GridObject _gridObject in GridObjects)
             {
                 _gridObject.OnStartTurn();
             }
@@ -586,13 +588,10 @@ namespace StateMachine
             _newCell.CellDehighlighted += OnCellUnselected;
         }
 
-        private void RemoveGridObject(Cell _toDestroy)
+        private void RemoveGridObject(GridObject _toDestroy)
         {
             BlockInputs();
-            if (_toDestroy.CurrentGridObject != null)
-            {
-                GridObjects.Remove(_toDestroy.CurrentGridObject);
-            }
+            GridObjects.Remove(_toDestroy);
         }
         
         /// <summary>

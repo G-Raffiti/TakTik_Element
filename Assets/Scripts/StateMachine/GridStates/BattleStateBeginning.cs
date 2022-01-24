@@ -91,7 +91,6 @@ namespace StateMachine.GridStates
                 heroes[i].isPlaced = true;
             }
             sprite = GameObject.Find("Layer/Sprite");
-            Debug.Log("VAR");
         }
         
 

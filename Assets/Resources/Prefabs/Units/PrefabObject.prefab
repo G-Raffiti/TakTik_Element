@@ -61,11 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1777d2fcc895423199fac877062c7e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 0}
   Inventory:
     gears: []
   gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
-  gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
+  gridObjectDestroyed: {fileID: 11400000, guid: 2cfedcb2c2c631d469ea0f9381ea3ff8,
     type: 2}
   spriteRenderer: {fileID: 8376176778367812429}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}

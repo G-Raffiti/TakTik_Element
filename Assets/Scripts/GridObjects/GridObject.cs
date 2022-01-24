@@ -12,9 +12,10 @@ namespace GridObjects
     public class GridObject : IMovable
     {
         [SerializeField] private GridObjectSO gridObject;
-        [SerializeField] private CellEvent gridObjectDestroyed;
+        [SerializeField] private GridObjectEvent gridObjectDestroyed;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private VoidEvent onActionDone;
+        private bool isDying;
         public GridObjectSO GridObjectSO
         {
             get => gridObject;
@@ -93,23 +94,14 @@ namespace GridObjects
 
         public override IEnumerator OnDestroyed()
         {
-            gridObjectDestroyed.Raise(Cell);
-            
-            while (IsMoving)
-            {
-                yield return null;
-            }
-
-            GetComponent<Animation>().Play("DestroyGridObject");
-
-            while (GetComponent<Animation>().isPlaying)
-            {
-                yield return null;
-            }
-            
+            gridObjectDestroyed.Raise(this);
+            Animation anim = GetComponent<Animation>();
+            isDying = true;
+            yield return new WaitWhile(() => anim.isPlaying);
             Cell.FreeTheCell();
+            isDying = false;
+            yield return new WaitForSeconds(0.1f);
             Destroy(gameObject);
-            
             onActionDone.Raise();
         }
 

@@ -349,7 +349,7 @@ namespace Units
             else _damageTaken = BattleStats.GetHealTaken(damage, element.Type);
 
             OnHit(_damageTaken, element);
-            Debug.Log($"Damage : {aggressor.ColouredName()} did {_damageTaken} {element.Name} damage to {ColouredName()}");
+            Debug.Log($"Damage : {aggressor.ColouredName()} did {_damageTaken} {element.Name} damage to {ColouredName()} on {Cell.OffsetCoord}");
             
             if (_damageTaken > 0)
             {
