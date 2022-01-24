@@ -20,6 +20,7 @@ namespace StateMachine.GridStates
 
         public BattleStateSkillSelected(BattleStateManager _stateManager, SkillInfo _skill) : base(_stateManager)
         {
+            State = EBattleState.Skill;
             StateManager = _stateManager;
             skill = _skill;
             currentUnit = BattleStateManager.instance.PlayingUnit;

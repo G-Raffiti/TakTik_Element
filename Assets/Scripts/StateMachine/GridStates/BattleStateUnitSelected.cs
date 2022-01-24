@@ -20,6 +20,7 @@ namespace StateMachine.GridStates
 
         public BattleStateUnitSelected(BattleStateManager _stateManager, Unit _unit) : base(_stateManager)
         {
+            State = EBattleState.Unit;
             unit = _unit;
             pathsInRange = new HashSet<Cell>();
             currentPath = new List<Cell>();
@@ -128,7 +129,7 @@ namespace StateMachine.GridStates
 
             if (unit.BattleStats.AP <= 0) return;
 
-            foreach (GridObject _object in BattleStateManager.instance.GridObjects)
+            foreach (GridObject _object in StateManager.GridObjects)
             {
                 if(_object.IsInteractable)
                     _object.Cell.MarkAsInteractable();

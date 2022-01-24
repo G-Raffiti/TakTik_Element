@@ -3,11 +3,13 @@ using Cells;
 
 namespace StateMachine.GridStates
 {
+    public enum EBattleState {Beginning, BlockInput, Skill, Unit}
     public abstract class BattleState
     {
         protected BattleStateManager StateManager;
         protected InfoEvent TooltipOn;
         protected VoidEvent TooltipOff;
+        public EBattleState State;
 
         protected BattleState(BattleStateManager _stateManager)
         {

@@ -7,6 +7,7 @@ namespace StateMachine.GridStates
     {
         public BattleStateBlockInput(BattleStateManager _stateManager) : base(_stateManager)
         {
+            State = EBattleState.BlockInput;
         }
         
         public override void OnStateEnter()
