@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
 using _EventSystem.CustomEvents;
+using StateMachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UserInterface.BattleScene
 {
@@ -8,8 +12,8 @@ namespace UserInterface.BattleScene
     {
         [Header("Event Listener")]
         [SerializeField] private BoolEvent onBattleEnd;
-        
         [SerializeField] private BattleInventory_UI inventory;
+        [SerializeField] private VoidEvent onEndTurn;
 
         private void OnEnable()
         {
@@ -21,14 +25,17 @@ namespace UserInterface.BattleScene
             onBattleEnd.EventListeners -= SetInactive;
         }
 
-        public void SetInactive(bool winCondition)
+        private void SetInactive(bool winCondition)
         {
-            gameObject.SetActive(false);
+            GetComponent<Button>().onClick.RemoveAllListeners();
         }
 
-        private void OnMouseDown()
+        public void OnPointerClick()
         {
-            if (!inventory.isActiveAndEnabled) return;
+            if (inventory.gameObject.activeSelf) return;
+            Debug.Log(BattleStateManager.instance.Monsters.Where(m => m.isDying).ToList().Count);
+            if (BattleStateManager.instance.Monsters.Where(m => m.isDying).ToList().Count > 0) return;
+            onEndTurn.Raise();
         }
     }
 }
