@@ -6,7 +6,6 @@ using _EventSystem.CustomEvents;
 using _Instances;
 using Cells;
 using EndConditions;
-using Gears;
 using GridObjects;
 using Players;
 using Relics;
@@ -75,11 +74,9 @@ namespace StateMachine
         [Header("Event Holder")]
         [SerializeField] private InfoEvent tooltipOn;
         [SerializeField] private VoidEvent tooltipOff;
-        [SerializeField] private UnitEvent onHeroSelected;
         
         public InfoEvent TooltipOn => tooltipOn;
         public VoidEvent TooltipOff => tooltipOff;
-        public UnitEvent OnHeroSelected => onHeroSelected;
 
 
         private const int TurnCost = 20;
@@ -88,6 +85,62 @@ namespace StateMachine
         private float TurnCount = 1;
         public int Turn => (int)TurnCount;
         public bool GameStarted { get; set; }
+
+        public Dictionary<IMovable, Cell> GetCell { get; private set; } = new Dictionary<IMovable, Cell>();
+
+        public List<Monster> Monsters
+        {
+            get
+            {
+                List<Monster> monsters = new List<Monster>();
+                foreach (Unit unit in Units.Where(u => u.playerNumber != 0)) 
+                {
+                    if (unit is Monster monster)
+                        monsters.Add(monster);
+                }
+
+                return monsters;
+            }
+        }
+
+        public void CheckCells()
+        {
+            foreach (Cell _cell in Cells)
+            {
+                _cell.FreeTheCell();
+            }
+
+            Dictionary<Cell, IMovable> getMovable = new Dictionary<Cell, IMovable>();
+
+
+            foreach (KeyValuePair<IMovable,Cell> _pair in GetCell)
+            {
+                if (getMovable.ContainsKey(_pair.Value))
+                {
+                    Debug.Log($"more than one Movable on Cell ({_pair.Value.OffsetCoord})");
+                    continue;
+                }
+
+                getMovable.Add(_pair.Value, _pair.Key);
+            }
+
+            Dictionary<IMovable, Cell> getCellCopy = new Dictionary<IMovable, Cell> (GetCell);
+
+            foreach (Cell _cell in getCellCopy.Values)
+            {
+                _cell.Take(getMovable[_cell]);
+            }
+
+            foreach (Unit _unit in Units)
+            {
+                _unit.transform.position = _unit.Cell.transform.position;
+            }
+
+            foreach (GridObject _gridObject in GridObjects)
+            {
+                _gridObject.transform.position = _gridObject.Cell.transform.position;
+            }
+        }
 
 
         /// <summary>
@@ -323,6 +376,12 @@ namespace StateMachine
             }
             Units.Reverse();
             PlayingUnit = Units[0];
+
+            foreach (Cell _cell in Cells.Where(c => c.GetCurrentIMovable() != null))
+            {
+                if (!GetCell.Keys.Contains(_cell.GetCurrentIMovable()))
+                    GetCell.Add(_cell.GetCurrentIMovable(), _cell);
+            }
         }
 
         #endregion
@@ -332,6 +391,7 @@ namespace StateMachine
         /// </summary>
         private void EndTurn()
         {
+            CheckCells();
             BattleState = new BattleStateBlockInput(this);
             if (PlayingUnit != null && PlayingUnit is Monster {isPlaying: true}) return;
 
@@ -544,6 +604,7 @@ namespace StateMachine
                 yield return null;
            
             Units.Remove((Unit) sender);
+            GetCell.Remove((Unit) sender);
 
             if (sender is BattleHero)
             {
@@ -557,6 +618,42 @@ namespace StateMachine
             {
                 PlayingUnit = null;
                 EndTurn();
+            }
+
+        }
+
+        /// <summary>
+        /// Method called every cell crossed by a Unit or a Grid Object to Actualise the Dictionnary.
+        /// </summary>
+        /// <param name="_movable"></param>
+        /// <param name="_cell"></param>
+        public void OnIMovableMoved(IMovable _movable, Cell _cell)
+        {
+            if (_cell == null && GetCell.Keys.Contains(_movable))
+            {
+                GetCell.Remove(_movable);
+                return;
+            }
+            if (!GetCell.Keys.Contains(_movable))
+                GetCell.Add(_movable, _cell);
+            GetCell[_movable] = _cell;
+
+            if (BattleState.State == EBattleState.Beginning) return;
+            
+            if (GetCell.Values.Distinct().Count() != GetCell.Count)
+            {
+                Debug.LogError("A cell is occupied by two entities");
+            }
+
+            if (GetCell.Values.Any(c => c == null))
+            {
+                foreach (KeyValuePair<IMovable,Cell> _keyValuePair in GetCell)
+                {
+                    if (_keyValuePair.Value == null)
+                    {
+                        StartCoroutine(_keyValuePair.Key.OnDestroyed());
+                    }
+                }
             }
         }
 

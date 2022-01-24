@@ -40,7 +40,6 @@ namespace StateMachine.UnitGenerators
                     GameObject _unit = Instantiate(unitPrefab);
                     _unit.transform.position = _cell.transform.position + new Vector3(0, 0, 0);
                     _unit.GetComponent<Unit>().playerNumber = _i;
-                    _unit.GetComponent<Unit>().Cell = _cell.GetComponent<Cell>();
                     _unit.GetComponent<Unit>().Initialize();
                     _unit.transform.parent = unitsParent;
                     _cell.GetComponent<Cell>().Take(_unit.GetComponent<Unit>());

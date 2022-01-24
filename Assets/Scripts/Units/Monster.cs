@@ -125,7 +125,7 @@ namespace Units
                 _cellInRange.MarkAsUnReachable();
             }
 
-            foreach (Cell _cell in Zone.CellsInView(skill.skill, cell))
+            foreach (Cell _cell in Zone.CellsInView(skill.skill, Cell))
             {
                 _cell.MarkAsInteractable();
             }

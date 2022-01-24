@@ -482,7 +482,6 @@ namespace Editor
                 newUnit.transform.parent = UnitsParent.transform;
                 newUnit.transform.localPosition -= offset;
                 newUnit.transform.rotation = selectedCell.transform.rotation;
-                newUnit.Cell = selectedCell;
 
                 Undo.RegisterCreatedObjectUndo(newUnit.gameObject, "Unit painting");
             }

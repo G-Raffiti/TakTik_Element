@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cells;
 using Gears;
+using StateMachine;
 using UnityEngine;
 
 namespace Units
@@ -12,11 +13,14 @@ namespace Units
         /// <summary>
         /// Cell that the unit is currently occupying.
         /// </summary>
-        [SerializeField] protected Cell cell;
         public Cell Cell
         {
-            get => cell;
-            set => cell = value;
+            get
+            {
+                if (BattleStateManager.instance.GetCell.Keys.Contains(this))
+                    return BattleStateManager.instance.GetCell[this];
+                return null;
+            }
         }
 
         public abstract string getName();
@@ -27,7 +31,26 @@ namespace Units
         }
         public abstract float MovementAnimationSpeed { get; }
         public bool IsMoving { get; set; }
-        public abstract IEnumerator MovementAnimation(List<Cell> _path);
+
+        public virtual IEnumerator MovementAnimation(List<Cell> path)
+        {
+            IsMoving = true;
+            path.Reverse();
+            foreach (Cell _cell in path)
+            {
+                _cell.Take(this);
+                Vector3 _destinationPos = new Vector3(_cell.transform.localPosition.x, _cell.transform.localPosition.y,
+                    transform.localPosition.z);
+                while (transform.localPosition != _destinationPos)
+                {
+                    transform.localPosition = Vector3.MoveTowards(transform.localPosition, _destinationPos,
+                        Time.deltaTime * MovementAnimationSpeed);
+                    yield return 0;
+                }
+            }
+
+            IsMoving = false;
+        }
 
         public abstract void AutoSortOrder();
         

@@ -58,18 +58,18 @@ namespace Units
 
         public virtual void OnMouseDown()
         {
-            if(cell != null)
-                cell.OnMouseDown();
+            if(Cell != null)
+                Cell.OnMouseDown();
         }
         protected virtual void OnMouseEnter()
         {
-            if(cell != null)
-                cell.OnMouseEnter();
+            if(Cell != null)
+                Cell.OnMouseEnter();
         }
         protected virtual void OnMouseExit()
         {
-            if(cell != null)
-                cell.OnMouseExit();
+            if(Cell != null)
+                Cell.OnMouseExit();
         }
 
     #endregion
@@ -217,25 +217,9 @@ namespace Units
         /// <returns></returns>
         public override IEnumerator MovementAnimation(List<Cell> path)
         {
-            IsMoving = true;
             TileIsometric.CellState _state = ((TileIsometric) Cell).State;
-            path.Reverse();
-            foreach (Cell _cell in path)
-            {
-                _cell.Take(this);
-                MarkAsMoving();
-                Vector3 _destinationPos = new Vector3(_cell.transform.localPosition.x, _cell.transform.localPosition.y,
-                    transform.localPosition.z);
-                while (transform.localPosition != _destinationPos)
-                {
-                    transform.localPosition = Vector3.MoveTowards(transform.localPosition, _destinationPos,
-                        Time.deltaTime * movementAnimationSpeed);
-                    yield return 0;
-                }
-                
-            }
-
-            IsMoving = false;
+            MarkAsMoving();
+            yield return base.MovementAnimation(path);
             MarkBack(_state);
             OnMoveFinished(path.Count);
         }
@@ -297,8 +281,8 @@ namespace Units
 
         public List<Cell> FindPath(List<Cell> cells, Cell destination)
         {
-            if (destination == cell)
-                return new List<Cell>() {cell};
+            if (destination == Cell)
+                return new List<Cell>() {Cell};
             if (cachedPaths != null && cachedPaths.ContainsKey(destination))
             {
                 return cachedPaths[destination];
@@ -455,7 +439,7 @@ namespace Units
         /// </summary>
         public void MarkAsFriendly()
         {
-            cell?.UnMark();
+            Cell?.UnMark();
         }
         
         /// <summary>
@@ -463,7 +447,7 @@ namespace Units
         /// </summary>
         public void MarkAsReachableEnemy()
         {
-            cell?.MarkAsReachable();
+            Cell?.MarkAsReachable();
         }
         
         /// <summary>
@@ -471,7 +455,7 @@ namespace Units
         /// </summary>
         public void MarkAsSelected()
         {
-            cell?.MarkAsHighlighted();
+            Cell?.MarkAsHighlighted();
         }
 
         /// <summary>
@@ -479,7 +463,7 @@ namespace Units
         /// </summary>
         public void UnMark()
         {
-            cell?.UnMark();
+            Cell?.UnMark();
         }
         
         /// <summary>

@@ -76,19 +76,19 @@ namespace GridObjects
 
         protected virtual void OnMouseDown()
         {
-            if(cell != null)
-                cell.OnMouseDown();
+            if(Cell != null)
+                Cell.OnMouseDown();
         }
         protected virtual void OnMouseEnter()
         {
-            if(cell != null)
-                cell.OnMouseEnter();
-            GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, cell);
+            if(Cell != null)
+                Cell.OnMouseEnter();
+            GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, Cell);
         }
         protected virtual void OnMouseExit()
         {
-            if(cell != null)
-                cell.OnMouseExit();
+            if(Cell != null)
+                Cell.OnMouseExit();
         }
 
         public override IEnumerator OnDestroyed()

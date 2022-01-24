@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Pathfinding.DataStructs;
 using GridObjects;
+using StateMachine;
 using StatusEffect;
 using TMPro;
 using Units;
@@ -227,7 +228,7 @@ namespace Cells
             else if (_movable is GridObject _gridObject)
                 CurrentGridObject = _gridObject;
             
-            _movable.Cell = this;
+            BattleStateManager.instance.OnIMovableMoved(_movable, this);
         }
         
         /// <summary>
