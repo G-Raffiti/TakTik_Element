@@ -12153,7 +12153,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 1383558288}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -18095,7 +18095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4a20ef114e4c5c9c28e3fa17bb3e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 2
+  stage: 0
 --- !u!114 &1284911199
 MonoBehaviour:
   m_ObjectHideFlags: 0

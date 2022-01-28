@@ -329,8 +329,6 @@ namespace StateMachine
                 GridObjects.Add(_transform.gameObject.GetComponent<GridObject>());
             }
             GridObjects.ForEach(g => g.Initialize());
-            
-            Debug.Log(GridObjects.Count);
         }
 
         #endregion
