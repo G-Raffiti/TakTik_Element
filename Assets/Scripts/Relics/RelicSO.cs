@@ -28,6 +28,7 @@ namespace Relics
         [SerializeField] private List<StatusSO> statusEffects;
 
         [SerializeField] private string description;
+        [SerializeField] private string flavour;
 
         public string Name => name;
         public Element Element => element;
@@ -43,5 +44,6 @@ namespace Relics
         public List<StatusSO> StatusEffects => statusEffects;
 
         public string Description => description;
+        public string Flavour => flavour;
     }
 }

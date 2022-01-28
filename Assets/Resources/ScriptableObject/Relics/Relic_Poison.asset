@@ -46,4 +46,5 @@ MonoBehaviour:
   statusEffects:
   - {fileID: 11400000, guid: 4e135b5498ecc1d4e9e09ca7844e0460, type: 2}
   description: 'Effect : Apply Poison with Skills, your Zone Effects are now <sprite
-    name=ZoneCross>\n\n...Vicious Agony... '
+    name=ZoneCross>'
+  flavour: ...Vicious Agony...

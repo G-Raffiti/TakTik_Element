@@ -44,4 +44,5 @@ MonoBehaviour:
   cost: 1
   statusEffects: []
   description: 'Effect : Cost of Skills +1 <sprite name=AP> and + 10<sprite name=Power>,\nAll
-    Skills Now Will affect All Units\n\nThe Power flows in your Hands !'
+    Skills Now Will affect All Units'
+  flavour: The Power flows in your Hands !

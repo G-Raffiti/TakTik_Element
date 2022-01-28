@@ -49,7 +49,7 @@ namespace Relics
 
         public override string GetInfoDown()
         {
-            return Relic.Description;
+            return $"{Relic.Description}\n\n{Relic.Flavour}";
         }
 
         public override Sprite GetIcon()

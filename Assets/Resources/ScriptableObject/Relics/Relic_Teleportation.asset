@@ -43,5 +43,5 @@ MonoBehaviour:
       CanBeModified: 0
   cost: 0
   statusEffects: []
-  description: 'Effect : You will teleport where you Use any Skill\n\nBe Aware, it''s
-    not realy Stable !'
+  description: 'Effect : You will teleport where you Use any Skill'
+  flavour: Be Aware, it's not realy Stable !

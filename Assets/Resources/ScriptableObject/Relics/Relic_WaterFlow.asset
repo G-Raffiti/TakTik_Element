@@ -17,18 +17,32 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: fc72a0c1ec01f8d42872d3533cde3459, type: 3}
   relicEffects:
   - {fileID: 11400000, guid: 3f5bc984e688c9a4aa06004142cb8229, type: 2}
+  effectFactor: 0
   effect: {fileID: 0}
   gridEffect: {fileID: 0}
   affect: 0
-  range:
-    RangeType: 0
-    RangeValue: 0
-    ZoneType: 0
-    Radius: 0
-    NeedView: 0
-    NeedTarget: 0
-    CanBeModified: 0
-  power: 0
+  battleStats:
+    HP: 0
+    Shield: 0
+    Speed: 0
+    Power: 0
+    Focus: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 0
+    AP: 0
+    Range:
+      RangeType: 0
+      RangeValue: 0
+      ZoneType: 0
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      CanBeModified: 0
   cost: 0
   statusEffects: []
-  description: 'Effect : Now yous skills are from the Water Element'
+  description: 'Effect : Now your skills deal effect as if there Element was <sprite
+    name=Water>'
+  flavour: 
