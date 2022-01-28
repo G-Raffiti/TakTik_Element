@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cells;
-using Grid;
 using GridObjects;
+using StateMachine;
 using Stats;
 using Units;
 using UnityEngine;
@@ -228,7 +228,7 @@ namespace Skills._Zone
         /// Get all the Cell on which you can use a skill
         /// </summary>
         /// <returns></returns>
-        public static List<Cell> CellsInRange(SkillInfo skill, Cell _startCell)
+        public static List<Cell> CellsInRange(Skill skill, Cell _startCell)
         {
             List<Cell> _inRange = new List<Cell>();
             
@@ -250,7 +250,7 @@ namespace Skills._Zone
         /// Get all the Cell on which you can use a skill if you need the view
         /// </summary>
         /// <returns></returns>
-        public static List<Cell> CellsInView(SkillInfo skill, Cell _startCell)
+        public static List<Cell> CellsInView(Skill skill, Cell _startCell)
         {
             List<Cell> _inRange = new List<Cell>();
 
@@ -315,7 +315,7 @@ namespace Skills._Zone
         public static Unit GetUnitAffected(Cell _cell, SkillInfo _skillInfo)
         {
             Unit _affected = null;
-            switch (_skillInfo.Affect)
+            switch (_skillInfo.skill.Affect)
             {
                 case EAffect.All :
                     if (_cell.IsTaken && _cell.CurrentUnit != null)
@@ -349,29 +349,29 @@ namespace Skills._Zone
         /// </summary>
         /// <param name="_cell">the cell that have to be tested</param>
         /// <returns></returns>
-        public static IMovable GetAffected(Cell _cell, SkillInfo _skillInfo)
+        public static IMovable GetAffected(Cell _cell, Skill skill)
         {
             IMovable _affected = null;
-            switch (_skillInfo.Affect)
+            switch (skill.Affect)
             {
                 case EAffect.All :
                     if (_cell.IsTaken)
                         _affected = _cell.GetCurrentIMovable();
                     break;
                 case EAffect.OnlyAlly:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == _skillInfo.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == skill.Unit.playerNumber)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyEnemy:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != _skillInfo.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != skill.Unit.playerNumber)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlySelf:
-                    if (_cell.IsTaken && _cell.CurrentUnit == _skillInfo.Unit)
+                    if (_cell.IsTaken && _cell.CurrentUnit == skill.Unit)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyOthers:
-                    if (_cell.IsTaken && _cell != _skillInfo.Unit.Cell)
+                    if (_cell.IsTaken && _cell != skill.Unit.Cell)
                     {
                         _affected = _cell.GetCurrentIMovable();
                     }
@@ -381,9 +381,9 @@ namespace Skills._Zone
             return _affected;
         }
 
-        public static GridObject GetObjectAffected(Cell _cell, SkillInfo _skillInfo)
+        public static GridObject GetObjectAffected(Cell _cell, Skill _skill)
         {
-            if (GetAffected(_cell, _skillInfo) != null && GetAffected(_cell, _skillInfo) is GridObject _gridObject)
+            if (GetAffected(_cell, _skill) != null && GetAffected(_cell, _skill) is GridObject _gridObject)
             {
                 return _gridObject;
             }
@@ -405,31 +405,40 @@ namespace Skills._Zone
 
         public static string ZoneToString(EZone type)
         {
+            string str = "<size=35>";
             switch (type)
             {
                 case EZone.Self:
-                    return "<sprite name=ZoneSelf>";
+                    str += "<sprite name=ZoneSelf>"; break;
                 case EZone.Basic:
-                    return "<sprite name=ZoneBasic>";
+                    str += "<sprite name=ZoneBasic>"; break;
                 case EZone.Contact:
-                    return "<sprite name=ZoneContact>";
+                    str += "<sprite name=ZoneContact>"; break;
                 case EZone.Line:
-                    return "<sprite name=ZoneLine>";
+                    str += "<sprite name=ZoneLine>"; break;
                 case EZone.Ranged:
-                    return "<sprite name=ZoneRanged>";
+                    str += "<sprite name=ZoneRanged>"; break;
                 case EZone.Square:
-                    return "<sprite name=ZoneSquare>";
+                    str += "<sprite name=ZoneSquare>"; break;
                 case EZone.Cross:
-                    return "<sprite name=ZoneCross>";
+                    str += "<sprite name=ZoneCross>"; break;
+                case EZone.Perpendicular:
+                    str += "<sprite name=ZonePerpendicular>"; break;
+                case EZone.Cone:
+                    str += "<sprite name=ZoneCone>"; break;
                 default:
-                    return type.ToString();
+                    str += type.ToString(); break;
             }
+
+            str += "</size>";
+
+            return str;
         }
 
         public static List<Unit> GetUnitsAffected(SkillInfo _skillInfo, Cell _targetCell)
         {
             List<Unit> ret = new List<Unit>();
-            foreach (Cell _cell in GetZone(_skillInfo.Range, _targetCell))
+            foreach (Cell _cell in GetZone(_skillInfo.skill.Range, _targetCell))
             {
                 if (GetUnitAffected(_cell, _skillInfo) != null)
                     ret.Add(GetUnitAffected(_cell, _skillInfo));

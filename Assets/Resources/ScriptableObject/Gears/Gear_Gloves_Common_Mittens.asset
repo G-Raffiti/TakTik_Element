@@ -17,8 +17,11 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 16e4b1509af908146aa9e820280bb581, type: 3}
   gearName: Mittens
   mainStat:
-    affix: {fileID: 11400000, guid: de10b57ee800f4344a3abc9fd7124ae7, type: 2}
+    affix: {fileID: 11400000, guid: 8bd15678bdc020749a76dd3141210356, type: 2}
     value: 1
+    min: 1
+    max: 2
+    tier: 1
   specialEffect: {fileID: 0}
   nonAffixs:
   - {fileID: 11400000, guid: b770573baff8d644c99b43a1b1a9fd47, type: 2}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cells;
 using Stats;
 using Units;
 using UnityEngine;
@@ -7,17 +8,15 @@ using UnityEngine;
 
 namespace StatusEffect
 {
-    public enum EDependency{ None, Magic, Physic, Focus, Affinity }
+    public enum EDependency{ None, Power, Focus, Affinity }
     [CreateAssetMenu(fileName = "Status_StatsBonus_", menuName = "Scriptable Object/Status Effects/Stats Bonus")]
     public class StatsBonus : StatusSO
     {
         [SerializeField] private List<Affix> Bonus;
         [SerializeField] private List<Affix> Malus;
         [SerializeField] private bool isDefinitive;
-        [SerializeField] private int duration;
-        [SerializeField] private float powerPercent;
-        [SerializeField] private string description;
-
+        [SerializeField] private EDependency dependOn;
+        [SerializeField] private int fixValue;
 
         public override void ActiveEffect(Buff _buff, Unit _unit)
         {
@@ -28,7 +27,7 @@ namespace StatusEffect
             BattleStats bonus = new BattleStats(0);
             Bonus.ForEach(affix => bonus += affix.affix.GenerateBS(affix.value));
             Malus.ForEach(affix => bonus -= affix.affix.GenerateBS(affix.value));
-            bonus *= _buff.Power;
+            bonus = bonus + bonus * _buff.Value;
 
             _unit.BattleStats += bonus;
             if (_unit.BattleStats.Speed <= 0)
@@ -42,19 +41,38 @@ namespace StatusEffect
             BattleStats bonus = new BattleStats();
             Bonus.ForEach(affix => bonus += affix.affix.GenerateBS(affix.value));
             Malus.ForEach(affix => bonus -= affix.affix.GenerateBS(affix.value));
-            bonus *= _buff.Power;
+            bonus = bonus + bonus * _buff.Value;
 
             _unit.BattleStats -= bonus;
         }
         
-        public override float GetPower(Unit sender)
+        public override float GetBuffValue(Unit sender)
         {
-            return sender.BattleStats.Affinity.GetAffinity(Element.Type) * powerPercent /100f;
+            int factor = fixValue;
+            switch (dependOn)
+            {
+                case EDependency.Power:
+                    factor += sender.BattleStats.Power;
+                    break;
+                case EDependency.Affinity:
+                    factor += sender.BattleStats.GetPower(Element.Type);
+                    break;
+            }
+
+            return factor;
         }
 
-        public override int GetDuration(Unit sender)
+        public override Buff AddBuff(Buff a, Buff b)
         {
-            return duration;
+            if (a.Effect != b.Effect) return a;
+            Buff ret = new Buff(a);
+            if (isDefinitive)
+            {
+                return b;
+            }
+            ret.Value = Math.Max(a.Value, b.Value);
+            ret.Duration += b.Duration;
+            return ret;
         }
 
         public override string InfoEffect(Buff _buff)
@@ -62,16 +80,16 @@ namespace StatusEffect
             string str = "";
             if (Bonus.Count > 0)
             {
-                str += $"Stats Bonus:";
-                Bonus.ForEach(affix => str += affix.Value((int)(affix.value * _buff.Power)));
+                str += $"Bonus: ";
+                Bonus.ForEach(affix => str += affix.ValueToString((int)(affix.value + affix.value * _buff.Value)));
             }
             if (Malus.Count > 0)
             {
-                str += $"\nStats Malus:";
-                Malus.ForEach(affix => str += $"-{affix.Value((int)(affix.value * _buff.Power))}");
+                str += $"\nMalus: ";
+                Malus.ForEach(affix => str += $"-{affix.ValueToString((int)(affix.value + affix.value * _buff.Value))}");
             }
             if (_buff.Duration != 0)
-                str += $"\n Duration: {_buff.Duration} Turn";
+                str += $"\n<sprite name=Duration>: {_buff.Duration} Turn";
             return str;
         }
 
@@ -80,10 +98,15 @@ namespace StatusEffect
             return InfoEffect(_buff);
         }
 
-        public override string InfoOnFloor(Buff _buff)
+        public override string InfoOnFloor(Cell _cell, Buff _buff)
         {
             string str = "When any Unit enter this Cell it will be Buffed: \n";
             return str + InfoEffect(_buff);
+        }
+
+        public override void OnUnitTakeCell(Buff _buff, Unit _unit)
+        {
+            _unit.ApplyBuff(_buff);
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using _Instances;
 using Cells;
 using Gears;
+using StateMachine;
 using UnityEngine;
 
 namespace Units
@@ -13,29 +13,51 @@ namespace Units
         /// <summary>
         /// Cell that the unit is currently occupying.
         /// </summary>
-        [SerializeField] protected Cell cell;
         public Cell Cell
         {
-            get => cell;
-            set => cell = value;
+            get
+            {
+                if (BattleStateManager.instance.GetCell.Keys.Contains(this))
+                    return BattleStateManager.instance.GetCell[this];
+                return null;
+            }
         }
 
         public abstract string getName();
 
-        public virtual void Move(Cell destinationCell, List<Cell> path)
+        public virtual List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
-            Movable.Move(this, destinationCell, path);
+            return Movable.Move(this, destinationCell, path);
         }
         public abstract float MovementAnimationSpeed { get; }
         public bool IsMoving { get; set; }
-        public abstract IEnumerator MovementAnimation(List<Cell> _path);
+
+        public virtual IEnumerator MovementAnimation(List<Cell> path)
+        {
+            IsMoving = true;
+            path.Reverse();
+            foreach (Cell _cell in path)
+            {
+                _cell.Take(this);
+                Vector3 _destinationPos = new Vector3(_cell.transform.localPosition.x, _cell.transform.localPosition.y,
+                    transform.localPosition.z);
+                while (transform.localPosition != _destinationPos)
+                {
+                    transform.localPosition = Vector3.MoveTowards(transform.localPosition, _destinationPos,
+                        Time.deltaTime * MovementAnimationSpeed);
+                    yield return 0;
+                }
+            }
+
+            IsMoving = false;
+        }
 
         public abstract void AutoSortOrder();
         
         /// <summary>
         /// Method is Called if Cell is Underground
         /// </summary>
-        public IEnumerator Fall(Cell _destination)
+        public virtual IEnumerator Fall(Cell _destination)
         {
             Inventory = new Inventory();
             while (IsMoving)
@@ -93,9 +115,6 @@ namespace Units
             }
             else pathToDestination = path;
 
-            movable.Cell.FreeTheCell();
-            destination.Take(movable);
-
             if (movable.MovementAnimationSpeed > 0)
             {
                 pathToDestination.Reverse();
@@ -103,9 +122,11 @@ namespace Units
             }
             else
             {
-                movable.TeleportTo(movable.Cell.transform.position);
+                movable.TeleportTo(destination.transform.position);
             }
             
+            if (destination.GetCurrentIMovable() != movable)
+                destination.Take(movable);
             
             if (destination.IsUnderGround)
             {

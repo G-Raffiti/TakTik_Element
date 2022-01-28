@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: DataBase_Relic
   m_EditorClassIdentifier: 
   allRelics:
+  - {fileID: 11400000, guid: d1bcc646868b46e4bb94a8cd09524075, type: 2}
+  - {fileID: 11400000, guid: c6fce878fb8433b4cb4aad0cb956abfa, type: 2}
   - {fileID: 11400000, guid: 8ce7f13348aad6241b38af973d42b71a, type: 2}
   - {fileID: 11400000, guid: f6775c6e8567d094db3a7d26423dbe8b, type: 2}
+  - {fileID: 11400000, guid: 9da6c1931d08a8541b4d6a599e788a13, type: 2}
+  - {fileID: 11400000, guid: a4fa9421dd9fd244797e1920e4a34a0d, type: 2}
+  - {fileID: 11400000, guid: 3696083b752ebd148a80bb92d781ddb4, type: 2}

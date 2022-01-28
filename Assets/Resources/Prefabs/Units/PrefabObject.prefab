@@ -61,11 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1777d2fcc895423199fac877062c7e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 0}
   Inventory:
     gears: []
   gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
-  gridObjectDestroyed: {fileID: 11400000, guid: 62bf43764fabca84d97b5f834c10ccb3,
+  gridObjectDestroyed: {fileID: 11400000, guid: 2cfedcb2c2c631d469ea0f9381ea3ff8,
     type: 2}
   spriteRenderer: {fileID: 8376176778367812429}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
@@ -96,8 +95,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6305285977476201785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.309, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 3480699985351151859}
   m_RootOrder: 0
@@ -142,7 +141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: 21300000, guid: 47bc2a01a18645f46aa43b1474971027, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d234c080c47eace45a49038b3ee6c176, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,7 +169,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4.5, y: 4.7070312}
     newSize: {x: 1, y: 1.4140625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -67,16 +67,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -93,10 +93,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 31
   m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -256,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.299992, y: -0.29052734}
+  m_AnchoredPosition: {x: -12.299988, y: -0.29052734}
   m_SizeDelta: {x: -35, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6630618722890691891
@@ -289,8 +289,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <sprite name=Affinity>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b2307916a94bb9342ac1880293c9b3cc, type: 2}
-  m_sharedMaterial: {fileID: -6125561971051934159, guid: b2307916a94bb9342ac1880293c9b3cc,
+  m_fontAsset: {fileID: 11400000, guid: d1a82506daecc7e41993eea7744bfcb6, type: 2}
+  m_sharedMaterial: {fileID: -4674372258848674324, guid: d1a82506daecc7e41993eea7744bfcb6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -686,27 +686,27 @@ MonoBehaviour:
     m_Options:
     - m_Text: <sprite name=Affinity>
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=HP>
+    - m_Text: <sprite name=HP> (5 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=Shield>
+    - m_Text: <sprite name=Shield> (5 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=AP>
+    - m_Text: <sprite name=AP> (3 max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=MP>
+    - m_Text: <sprite name=MP> (3 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=Zone>
+    - m_Text: <sprite name=Zone> (3 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=Range>
+    - m_Text: <sprite name=Range> (3 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=Speed>
+    - m_Text: <sprite name=Speed> (5 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=Fire>
+    - m_Text: <sprite name=Fire> (5 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=Nature>
+    - m_Text: <sprite name=Nature> (5 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=Water>
+    - m_Text: <sprite name=Water> (5 Max)
       m_Image: {fileID: 0}
-    - m_Text: <sprite name=Power>
+    - m_Text: <sprite name=Power> (5 Max)
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

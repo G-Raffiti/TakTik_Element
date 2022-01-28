@@ -1,6 +1,6 @@
 ﻿using System;
 using Cells;
-using Grid;
+using StateMachine;
 using Units;
 using UnityEngine;
 
@@ -10,43 +10,39 @@ namespace StatusEffect
     public class Buff
     {
         public int Duration;
-        public float Power;
+        public float Value;
+        public bool onFloor;
 
         [SerializeField] private StatusSO StatusEffect;
         public StatusSO Effect => StatusEffect;
         public Buff(Buff _buff)
         {
             Duration = _buff.Duration;
-            Power = _buff.Power;
+            Value = _buff.Value;
             StatusEffect = _buff.StatusEffect;
         }
 
         public static Buff operator +(Buff a, Buff b)
         {
             if (a.Effect != b.Effect) return a;
-            Buff ret = new Buff(a)
-            {
-                Duration = a.Duration + b.Duration,
-                Power = a.Power + b.Power,
-                StatusEffect = a.StatusEffect,
-            };
+            Buff ret = a.Effect.AddBuff(a, b);
             return ret;
         }
         
         public Buff (Unit sender, StatusSO _status)
         {
             StatusEffect = _status;
-            Duration = StatusEffect.GetDuration(sender);
-            Power = StatusEffect.GetPower(sender);
+            Duration = StatusEffect.GetBuffDuration(sender);
+            Value = StatusEffect.GetBuffValue(sender);
         }
         
         public Buff (Cell tile, StatusSO _status)
         {
             StatusEffect = _status;
-            Duration = 1000;
-            Power = 10;
+            Duration = 0;
+            Value = 10;
         }
-        
+
         /// <summary>
         /// Methode Called on the End of the Playing Unit's Turn
         /// </summary>
@@ -104,9 +100,9 @@ namespace StatusEffect
         /// Info Given on CtRl holded while Hovering a Cell
         /// </summary>
         /// <returns></returns>
-        public string InfoBuffOnCell()
+        public string InfoBuffOnCell(Cell _cell)
         {
-            return StatusEffect.InfoOnFloor(this);
+            return StatusEffect.InfoOnFloor(_cell, this);
         }
     }
 }

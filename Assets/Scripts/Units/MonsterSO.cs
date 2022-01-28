@@ -1,8 +1,8 @@
-﻿using System;
+﻿using _CSVFiles;
 using _Instances;
 using _ScriptableObject;
 using Cells;
-using Grid;
+using Relics;
 using Skills;
 using Stats;
 using UnityEngine;
@@ -63,15 +63,22 @@ namespace Units
         /// </summary>
         public BattleStats Stats()
         {
-            BattleStats random = BattleStats.Randomize(randomStats * Math.Max(KeepBetweenScene.Stage - 1, 0), randomStats * KeepBetweenScene.Stage);
-            random.Affinity = AffinityFromElement(element);
+            BattleStats _ret = new BattleStats(basicStats);
+            
+            _ret.Affinity = AffinityFromElement(element, _ret.Power);
+            
             if (RewardType == EReward.Skill)
-                random.AP += SkillRewardBonusAP;
+                _ret.AP += SkillRewardBonusAP;
 
-            return basicStats + random;
+            _ret.Power = 0;
+
+            _ret.HP *= (KeepBetweenScene.Stage + 1);
+            _ret.Shield *= (KeepBetweenScene.Stage + 1);
+            
+            return _ret;
         }
 
-        private Affinity AffinityFromElement(Element ele)
+        private Affinity AffinityFromElement(Element ele, int basePower)
         {
             float fire = 0;
             float nat = 0;
@@ -79,17 +86,17 @@ namespace Units
             switch (ele.Type)
             {
                 case EElement.Fire: 
-                    fire += GoodAffinity;
+                    fire += GoodAffinity + basePower;
                     nat += BadAffinity;
                     wat -= BadAffinity;
                     break;
                 case EElement.Nature:
-                    nat += GoodAffinity;
+                    nat += GoodAffinity + basePower;
                     wat += BadAffinity;
                     fire -= BadAffinity;
                     break;
                 case EElement.Water:
-                    wat += GoodAffinity;
+                    wat += GoodAffinity + basePower;
                     fire += BadAffinity;
                     nat -= BadAffinity;
                     break;

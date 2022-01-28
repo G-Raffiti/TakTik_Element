@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   movable: 0
-  image: {fileID: 21300000, guid: 96d7b26fac1bf0948a1bc0501ff5873f, type: 3}
+  image: {fileID: 21300000, guid: d234c080c47eace45a49038b3ee6c176, type: 3}
   name: Tree
+  trees:
+  - {fileID: 21300000, guid: d234c080c47eace45a49038b3ee6c176, type: 3}
+  - {fileID: 21300000, guid: 6fe6355f6dc253a4680703d9281b203d, type: 3}
+  - {fileID: 21300000, guid: 07d7aa86d193e484a9536c4f1e2c1967, type: 3}
+  - {fileID: 21300000, guid: 5e73dd97b457f0a41a1850313ccbb11b, type: 3}

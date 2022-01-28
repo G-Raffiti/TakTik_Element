@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a401c33d9264f43a72d975b1b82c37f, type: 3}
   m_Name: Status_Poison
   m_EditorClassIdentifier: 
+  type: 1
   betweenTurn: 1
   element: {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
   onFloorSprite: {fileID: 21300000, guid: 01e89c2f18b0bb9429c4fe9282fa28c6, type: 3}
-  name: Poison
-  damagePerSpeedPercent: 10
-  durationPerFocusPercent: 50
+  buffName: Poison
+  baseDuration: 3

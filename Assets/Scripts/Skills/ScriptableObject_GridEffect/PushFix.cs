@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Instances;
+using _Pathfinding.Algorithms;
 using _ScriptableObject;
 using Cells;
-using Grid;
-using Pathfinding.Algorithms;
 using Skills._Zone;
-using Stats;
+using StateMachine;
 using Units;
 using UnityEngine;
 
@@ -20,13 +19,13 @@ namespace Skills.ScriptableObject_GridEffect
         
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            List<Cell> _zone = Zone.GetZone(_skillInfo.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.Range, _cell);
 
             List<IMovable> affecteds = new List<IMovable>();
             foreach (Cell _cellAffected in _zone)
             {
-                if (Zone.GetAffected(_cellAffected, _skillInfo) != null)
-                    affecteds.Add(Zone.GetAffected(_cellAffected, _skillInfo));
+                if (Zone.GetAffected(_cellAffected, _skillInfo.skill) != null)
+                    affecteds.Add(Zone.GetAffected(_cellAffected, _skillInfo.skill));
             }
 
             if (affecteds.Count == 0) return;
@@ -92,7 +91,7 @@ namespace Skills.ScriptableObject_GridEffect
             _path = _path.OrderBy(c => _targetedCell.GetDistance(c)).Reverse().ToList();
 
             // Move
-            int _distance = Movable.Move(target, destination, _path).Count;
+            int _distance = target.Move(destination, _path).Count;
             if(_distance != 0)
                 while (target.IsMoving) yield return null;
             

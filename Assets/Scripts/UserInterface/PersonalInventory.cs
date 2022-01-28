@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using _DragAndDropSystem;
 using _EventSystem.CustomEvents;
+using DataBases;
+using Gears;
+using Relics;
 using Resources.ToolTip.Scripts;
 using Stats;
 using Units;
@@ -19,12 +20,11 @@ namespace UserInterface
         [SerializeField] private Image health;
         [SerializeField] private Image shield;
         [SerializeField] private List<DragAndDropCell> slots;
+        [SerializeField] private GameObject GearInfoPrefab;
         private BattleStats BattleStats;
         private BattleStats baseStats;
         private BattleStats total;
 
-        private IntEvent onHPChanged;
-        
         public Hero Hero { get; private set; }
 
         public List<DragAndDropCell> Slots => slots;
@@ -34,27 +34,30 @@ namespace UserInterface
             Hero = _hero;
             icon.sprite = Hero.UnitSprite;
 
-            onHPChanged = Hero.OnHPChanged;
-            onHPChanged.EventListeners += UpdateHP;
-
             UpdateStats();
         }
 
-        private void OnDisable()
+        public void FillInventory()
         {
-            onHPChanged.EventListeners -= UpdateHP;
+            for (int i = 0; i < Hero.Inventory.gears.Count; i++)
+            {
+                GameObject gearObj = Instantiate(GearInfoPrefab, slots[i].transform);
+                gearObj.GetComponent<GearInfo>().Gear = Hero.Inventory.gears[i];
+                gearObj.GetComponent<GearInfo>().DisplayIcon();
+            }
         }
 
         private void UpdateHP(int ActualHP)
         {
-            health.GetComponent<Image>().fillAmount = ActualHP / (float)total.HP;
+            if (health == null) return;
+            health.fillAmount = ActualHP / (float)total.HP;
             shield.fillAmount = total.Shield / (float) total.HP;
         }
 
         public void UpdateStats()
         {
             baseStats = Hero.BattleStats;
-            BattleStats = new BattleStats(baseStats + Hero.Inventory.GearStats());
+            BattleStats = new BattleStats(baseStats + Hero.Inventory.GearStats() + Hero.GetRelic().BattleStats);
             total = BattleStats;
             BattleStats.HP = Hero.ActualHP;
             
@@ -95,7 +98,13 @@ namespace UserInterface
         
         public override string GetInfoDown()
         {
-            return "";
+            string str = "";
+            foreach (RelicSO _heroRelic in Hero.Relics)
+            {
+                str += _heroRelic.Name + "\n";
+            }
+
+            return str; 
         }
 
         public override string ColouredName()

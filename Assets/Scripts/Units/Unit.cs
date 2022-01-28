@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
+using _Pathfinding.Algorithms;
 using _ScriptableObject;
 using Cells;
+using DataBases;
 using Gears;
-using Grid;
-using Grid.GridStates;
-using Pathfinding.Algorithms;
+using Relics;
 using Resources.ToolTip.Scripts;
+using StateMachine;
 using Stats;
 using StatusEffect;
 using TMPro;
 using Units.UnitStates;
 using UnityEngine;
-using UserInterface;
 
 namespace Units
 {
@@ -23,7 +23,7 @@ namespace Units
     /// Base class for all units in the game.
     /// </summary>
     [ExecuteInEditMode]
-    public abstract class Unit : IMovable
+    public abstract class Unit : IMovable, IInfo
     {
         
         public string UnitName;
@@ -58,18 +58,18 @@ namespace Units
 
         public virtual void OnMouseDown()
         {
-            if(cell != null)
-                cell.OnMouseDown();
+            if(Cell != null)
+                Cell.OnMouseDown();
         }
         protected virtual void OnMouseEnter()
         {
-            if(cell != null)
-                cell.OnMouseEnter();
+            if(Cell != null)
+                Cell.OnMouseEnter();
         }
         protected virtual void OnMouseExit()
         {
-            if(cell != null)
-                cell.OnMouseExit();
+            if(Cell != null)
+                Cell.OnMouseExit();
         }
 
     #endregion
@@ -86,6 +86,7 @@ namespace Units
 
     #region Unit Stats
 
+        public abstract Relic Relic { get; }
         /// <summary>
         /// it represent the initiative of the unit, this point are used to take a round
         /// </summary>
@@ -138,13 +139,15 @@ namespace Units
         public void ApplyBuff(Buff _buff)
         {
             bool applied = false;
+            Buff buff = new Buff(_buff);
+            buff.onFloor = false;
             
             for (int i = 0; i < buffs.Count; i++)
             {
-                if (buffs[i].Effect == _buff.Effect)
+                if (buffs[i].Effect == buff.Effect)
                 {
                     buffs[i].Undo(this);
-                    buffs[i] += _buff;
+                    buffs[i] += buff;
                     buffs[i].Apply(this);
                     applied = true;
                     break;
@@ -153,20 +156,28 @@ namespace Units
 
             if (!applied)
             {
-                buffs.Add(_buff);
+                buffs.Add(buff);
                 _buff.Apply(this);
             }
+        }
+
+        public void RemoveBuff(StatusSO effect)
+        {
+            if (Buffs.Any(b => b.Effect == effect))
+                Buffs.Remove(Buffs.Find(b => b.Effect == effect));
         }
 
     #endregion
 
     #region IMovable
 
-        public override void Move(Cell destinationCell, List<Cell> path)
+        public override List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
-            int cost = Movable.Move(this, destinationCell, path).Count;
+            List<Cell> _path = Movable.Move(this, destinationCell, path);
+            int cost = _path.Count;
             if (BattleStateManager.instance.PlayingUnit == this)
                 BattleStats.MP -= cost;
+            return _path;
         }
         /// <summary>
         /// Dictionary of all Cells and best Path to go to this Cells
@@ -181,12 +192,22 @@ namespace Units
         
         
         private static DijkstraPathfinding pathfinder = new DijkstraPathfinding();
-        private static Pathfinding.Algorithms.Pathfinding fallbackPathfinder = new AStarPathfinding();
+        private static Pathfinding fallbackPathfinder = new AStarPathfinding();
 
 
         public override void AutoSortOrder()
         {
             unitSprite.sortingOrder = 500 - (int)(transform.position.y/0.577f);
+        }
+
+        public override IEnumerator Fall(Cell _destination)
+        {
+            Inventory = new Inventory();
+            while (IsMoving)
+                yield return null;
+            _destination.FallIn();
+            if (isDying) yield break;
+            StartCoroutine(OnDestroyed());
         }
 
         /// <summary>
@@ -196,31 +217,17 @@ namespace Units
         /// <returns></returns>
         public override IEnumerator MovementAnimation(List<Cell> path)
         {
-            IsMoving = true;
             TileIsometric.CellState _state = ((TileIsometric) Cell).State;
-            path.Reverse();
-            foreach (Cell _cell in path)
-            {
-                MarkAsMoving();
-                Vector3 _destinationPos = new Vector3(_cell.transform.localPosition.x, _cell.transform.localPosition.y,
-                    transform.localPosition.z);
-                while (transform.localPosition != _destinationPos)
-                {
-                    transform.localPosition = Vector3.MoveTowards(transform.localPosition, _destinationPos,
-                        Time.deltaTime * movementAnimationSpeed);
-                    yield return 0;
-                }
-            }
-
-            IsMoving = false;
+            MarkAsMoving();
+            yield return base.MovementAnimation(path);
             MarkBack(_state);
-            OnMoveFinished();
+            OnMoveFinished(path.Count);
         }
         
         /// <summary>
         /// Method called after movement animation has finished.
         /// </summary>
-        protected virtual void OnMoveFinished()
+        protected virtual void OnMoveFinished(int _cellWalked)
         {
             onUnitMoved.Raise(this);
         }
@@ -274,8 +281,8 @@ namespace Units
 
         public List<Cell> FindPath(List<Cell> cells, Cell destination)
         {
-            if (destination == cell)
-                return new List<Cell>() {cell};
+            if (destination == Cell)
+                return new List<Cell>() {Cell};
             if (cachedPaths != null && cachedPaths.ContainsKey(destination))
             {
                 return cachedPaths[destination];
@@ -321,54 +328,7 @@ namespace Units
         #endregion
     
     #region Fight Attack / Defence
-        /// <summary>
-        /// Method indicates if it is possible to attack a unit from given cell.
-        /// </summary>
-        /// <param name="other">Unit to attack</param>
-        /// <param name="sourceCell">Cell to perform an attack from</param>
-        /// <returns>Boolean value whether unit can be attacked or not</returns>
-        public virtual bool IsUnitAttackable(Unit other, Cell sourceCell)
-        {
-            return sourceCell.GetDistance(other.Cell) <= BattleStats.Range.RangeValue
-                && other.playerNumber != playerNumber
-                && BattleStats.AP >= 1;
-        }
-
-        /// <summary>
-        /// Method performs an attack on given unit.
-        /// </summary>
-        public void AttackHandler(Unit _unitToAttack)
-        {
-            if (!IsUnitAttackable(_unitToAttack, Cell))
-            {
-                return;
-            }
-
-            AttackAction _attackAction = DealDamage(_unitToAttack);
-            MarkAsAttacking(_unitToAttack);
-            _unitToAttack.DefendHandler(this, _attackAction.Damage, Element.None());
-            AttackActionPerformed(_attackAction.ActionCost);
-        }
-        
-        /// <summary>
-        /// Method for calculating damage and action points cost of attacking given unit
-        /// </summary>
-        /// <returns></returns>
-        protected virtual AttackAction DealDamage(Unit _unitToAttack)
-        {
-            return new AttackAction(BattleStats.Power, 1f);
-        }
-        
-        /// <summary>
-        /// Method called after unit performed an attack.
-        /// </summary>
-        /// <param name="actionCost">Action point cost of performed attack</param>
-        protected virtual void AttackActionPerformed(float actionCost)
-        {
-            BattleStats.AP -= actionCost;
-        }
-
-        /// <summary>
+    /// <summary>
         /// Handler method for defending against an attack.
         /// </summary>
         /// <param name="aggressor">Unit that performed the attack</param>
@@ -376,61 +336,60 @@ namespace Units
         /// <param name="element">Element Type of the attack</param>
         public void DefendHandler(Unit aggressor, float damage, Element element)
         {
-            Debug.Log($"Damage : {aggressor.UnitName} did {damage} {element.Type} damage to {UnitName}");
-            int _damageTaken = Defend(damage, element);
+            if (isDying) return;
+            if (BattleStats.HP <= 0)
+            {
+                StartCoroutine(OnDestroyed());
+                return;
+            }
+
+            int _damageTaken = 0;
+            if (damage > 0)
+                _damageTaken = DamageTaken(damage, element);
+            else _damageTaken = BattleStats.GetHealTaken(damage, element.Type);
 
             OnHit(_damageTaken, element);
+            Debug.Log($"Damage : {aggressor.ColouredName()} did {_damageTaken} {element.Name} damage to {ColouredName()} on {Cell.OffsetCoord}");
             
             if (_damageTaken > 0)
             {
                 MarkAsDefending(aggressor);
+                
+                if (BattleStats.Shield > 0)
+                {
+                    if (BattleStats.Shield < _damageTaken)
+                    {
+                        _damageTaken -= BattleStats.Shield;
+                        BattleStats.Shield = 0;
+                    }
+                    else
+                    {
+                        BattleStats.Shield -= _damageTaken;
+                        _damageTaken = 0;
+                    }
+                }
             }
 
-            if (BattleStats.Shield > 0)
-            {
-                if (BattleStats.Shield < _damageTaken)
-                {
-                    _damageTaken -= BattleStats.Shield;
-                    BattleStats.Shield = 0;
-                }
-                else
-                {
-                    BattleStats.Shield -= _damageTaken;
-                    _damageTaken = 0;
-                }
-            }
-                
             BattleStats.HP -= _damageTaken;
             if (BattleStats.HP > total.HP) 
                 BattleStats.HP = total.HP;
-            
-            DefenceActionPerformed();
 
-            UnitAttacked?.Invoke(this, new AttackEventArgs(aggressor, this, (int)damage));
+            UnitAttacked?.Invoke(this, new AttackEventArgs(aggressor, this, _damageTaken));
             if (BattleStats.HP > 0) return;
+            
+            if (isDying) return;
             StartCoroutine(OnDestroyed());
         }
-        
-        /// <summary>
-        /// Method called after unit performed defence.
-        /// </summary>
-        protected void DefenceActionPerformed() { }
-        
-        /// <summary>
-        /// Method for calculating actual damage taken by the unit.
-        /// </summary>
-        /// <param name="aggressor">Unit that performed the attack</param>
-        /// <param name="damage">Amount of damage that the attack caused</param>
-        /// <param name="element">Element of the damage</param>
-        /// <returns>Amount of damage that the unit has taken</returns>        
-        protected int Defend(float damage, Element element)
-        {
-            return (int) BattleStats.GetDamageTaken(damage, element.Type);
-        }
 
+        /// <summary>
+        /// get the Damage Mitigation from Affinity
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public int DamageTaken(float damage, Element element)
         {
-            return Defend(damage, element);
+            return (int) BattleStats.GetDamageTaken(damage, element.Type);
         }
         
     #endregion
@@ -480,7 +439,7 @@ namespace Units
         /// </summary>
         public void MarkAsFriendly()
         {
-            cell?.UnMark();
+            Cell?.UnMark();
         }
         
         /// <summary>
@@ -488,7 +447,7 @@ namespace Units
         /// </summary>
         public void MarkAsReachableEnemy()
         {
-            cell?.MarkAsReachable();
+            Cell?.MarkAsReachable();
         }
         
         /// <summary>
@@ -496,34 +455,35 @@ namespace Units
         /// </summary>
         public void MarkAsSelected()
         {
-            cell?.MarkAsHighlighted();
+            Cell?.MarkAsHighlighted();
         }
-        
-        /// <summary>
-        /// Method marks unit to indicate user that he can't do anything more with it this turn.
-        /// </summary>
-        public void MarkAsFinished()
-        {
-            UnMark();
-        }
-        
+
         /// <summary>
         /// Method returns the unit to its base appearance
         /// </summary>
         public void UnMark()
         {
-            cell?.UnMark();
+            Cell?.UnMark();
         }
         
         /// <summary>
         /// Method to Show to the player what happened and how much damage was done
         /// </summary>
-        protected void OnHit(int damage, Element element)
+        private void OnHit(int damage, Element element)
         {
             string _hexColor = ColorUtility.ToHtmlStringRGB(element.TextColour);
             if (damage == 0) return;
-            info.text = damage > 0 ? $"- <color=#{_hexColor}>{damage}</color> HP" : $"+ {-damage} HP";
-            shadow.text = damage > 0 ? $"- {damage} HP" : $"+ {-damage} HP";
+            if (damage > 0)
+            {
+                info.text = $"- <color=#{_hexColor}>{damage}</color> HP";
+                shadow.text = $"- {damage} HP";
+            }
+            else
+            {
+                info.text = $"+ {-damage} HP";
+                shadow.text = $"+ {-damage} HP";
+            }
+            
             anim.PlayQueued("TextFade");
         }
 
@@ -537,18 +497,7 @@ namespace Units
         {
             anim.PlayQueued("Hit");
         }
-        
-        /// <summary>
-        /// Gives visual indication that the unit is attacking.
-        /// </summary>
-        /// <param name="target">
-        /// Unit that is under attack.
-        /// </param>
-        public void MarkAsAttacking(Unit target)
-        {
-            anim.PlayQueued("Attack");
-        }
-        
+
         /// <summary>
         /// Gives visual indication that the unit is destroyed. It gets called right before the unit game object is
         /// destroyed.
@@ -621,20 +570,15 @@ namespace Units
         public override IEnumerator OnDestroyed()
         {
             isDying = true;
+            BattleStats.HP = 0;
             Cell.FreeTheCell();
             MarkAsDestroyed();
-            yield return new WaitWhile(IsAnimPlaying);
+            yield return new WaitWhile(() => anim.isPlaying);
             UnitDestroyed?.Invoke(this, new DeathEventArgs(this));
             isDying = false;
             yield return new WaitForSeconds(0.1f);
             Destroy(gameObject);
         }
-
-        /// <summary>
-        /// return true if the Unit is playing any animation
-        /// </summary>
-        /// <returns></returns>
-        protected bool IsAnimPlaying() => anim.isPlaying;
 
         /// <summary>
         /// Method is called when unit is selected.
@@ -679,6 +623,67 @@ namespace Units
             
             buffs.ForEach(buff => buff.Apply(this));
         }
+        #region IInfo
+
+        public string GetInfoMain()
+        {
+            string str = "";
+            str += ColouredName();
+            if (playerNumber == 0)
+            {
+                str +=  "\nHero" + "\n";
+            }
+
+            else str +=  "\nMonster" + "\n";
+
+            return str;
+        }
+
+        public string GetInfoLeft()
+        {
+            string str = "";
+            str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)Total.AP}</color>    ";
+            str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.MP)}>{(int)Total.MP}</color> \n";
+            str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.HP)}>{BattleStats.HP} </color>/ {Total.HP}    ";
+            str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{BattleStats.Shield}</color> \n";
+            str += $"<sprite name=Fire> <color={colorSet.HexColor(EAffix.Fire)}>{BattleStats.GetPower(EElement.Fire)}</color>  <sprite name=Water> <color={colorSet.HexColor(EAffix.Water)}>{BattleStats.GetPower(EElement.Water)}</color>  <sprite name=Nature> <color={colorSet.HexColor(EAffix.Nature)}>{BattleStats.GetPower(EElement.Nature)}</color> \n";
+            str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{BattleStats.Speed} </color>  ";
+            str += $"<sprite name=Focus> <color={colorSet.HexColor(EAffix.Focus)}>{BattleStats.Focus} </color> \n";
+
+            return str;
+        }
+
+        public string GetInfoRight()
+        {
+            if (!Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt))
+                return "";
+            string str = "";
+            str += BattleStats.Range.ToString(this)+ "\n";
+            str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{TurnPoint} </color> \n";
+            return str;
+        }
+
+        public virtual string GetInfoDown()
+        {
+            return Buffs.Aggregate("", (_current, _buff) => _current + (_buff.InfoOnUnit(_buff, this) + "\n"));
+        }
+
+        public string ColouredName()
+        {
+            string hexColour;
+            if (playerNumber == 0)
+                hexColour = colorSet.HexColor(EColor.ally);
+            else 
+                hexColour = colorSet.HexColor(EColor.enemy);
+            return $"<color={hexColour}>{UnitName}</color>";
+        }
+
+        public Sprite GetIcon()
+        {
+            return UnitSprite;
+        }
+
+        #endregion
     }
     public class AttackAction
     {
@@ -741,4 +746,6 @@ namespace Units
             this.Unit = unit;
         }
     }
+    
+    
 }

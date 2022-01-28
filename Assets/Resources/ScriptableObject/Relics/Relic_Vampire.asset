@@ -26,14 +26,8 @@ MonoBehaviour:
     Radius: 0
     NeedView: 0
     NeedTarget: 0
-    SelfCast: 0
     CanBeModified: 0
-  power:
-    Basic: 0
-    Spell: 100
-    Skill: 100
-    Affinity:
-      Fire: 100
-      Nature: 100
-      Water: 100
+  power: 0
+  cost: 0
   statusEffects: []
+  description: 'Effect : All Direct Damage will give you some life back'

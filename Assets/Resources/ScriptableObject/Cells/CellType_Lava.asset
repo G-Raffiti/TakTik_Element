@@ -17,7 +17,7 @@ MonoBehaviour:
   full: {fileID: 0}
   basicBuff:
     Duration: 0
-    Power: 10
+    Value: 8
     StatusEffect: {fileID: 11400000, guid: 9f937a06a3887a84f95c41daeb3cfc2f, type: 2}
-  tileType: Lava
+  tileType: 4
   isUnderground: 0

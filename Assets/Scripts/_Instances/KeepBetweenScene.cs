@@ -1,25 +1,46 @@
-﻿using UnityEngine;
+﻿using EndConditions;
+using UnityEngine;
 
 namespace _Instances
 {
+    
     public class KeepBetweenScene : MonoBehaviour
     {
         [SerializeField] private int stage;
         private static GameObject instance;
-        public static int Stage = 0;
-        private const int BattlePerStage = 3;
-        public static int BattleBeforeBoss = BattlePerStage;
+        public static int Stage { get; private set; }
+        public const int BattlePerStage = 3;
+        public static int BattleNumber = 0;
+        public static EConditionType currentState = EConditionType.LootBox;
 
         public static void NextStage()
         {
             Stage += 1;
-            BattleBeforeBoss = BattlePerStage;
+            BattleNumber = 0;
         }
 
-        public static void StartBattle()
+        private static void UpdateCurrentState()
         {
-            BattleBeforeBoss -= 1;
-            Debug.Log($"Stage = {Stage}, Battle number = {BattlePerStage - BattleBeforeBoss}");
+            if (Stage == 0 && BattleNumber == BattlePerStage)
+                currentState = EConditionType.Last;
+            if (BattleNumber == BattlePerStage)
+            {
+                currentState = EConditionType.Boss;
+            }
+            else
+            {
+                currentState = EConditionType.Death;
+            }
+        }
+
+        public static void EndBattle()
+        {
+            BattleNumber += 1;
+            
+            if (BattleNumber > BattlePerStage)
+                NextStage();
+            
+            UpdateCurrentState();
         }
         
         private void Start() 
@@ -35,6 +56,12 @@ namespace _Instances
         public void setStage()
         {
             Stage = stage;
+        }
+
+        public static void EndGame()
+        {
+            Stage = -1;
+            BattleNumber = -1;
         }
     }
 

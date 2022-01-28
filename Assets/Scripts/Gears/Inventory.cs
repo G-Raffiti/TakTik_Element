@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Stats;
 using Units;
-using UnityEngine;
 
 namespace Gears
 {
@@ -12,23 +11,32 @@ namespace Gears
         public List<Gear> gears = new List<Gear>();
 
         public Inventory() {}
+
+        public Inventory(Unit _unit)
+        {
+            gears = new List<Gear>();
+            foreach (Gear _gear in _unit.Inventory.gears)
+            {
+                gears.Add(new Gear(_gear));
+            }
+        }
         public Inventory(SaveInventory _save)
         {
             gears = new List<Gear>(_save.gears);
         }
 
-        public void GenerateLootGear(int lvl)
+        public void GenerateLootGear()
         {
             Gear gear = new Gear();
-            gear.CreateGear(lvl);
+            gear.CreateGear();
             gears.Add(gear);
         }
         
-        public void GenerateGearFor(MonsterSO monster, int Stage)
+        public void GenerateGearFor(MonsterSO monster)
         {
             //TODO : create archetype of monster like Mage, Warrior, Rogue and add a List of Gear tha can't be used for each archetype then in CreateGear take random but the List (in MonsterSO do a EArchetype)
             Gear gear = new Gear();
-            gear.CreateGear(Stage);
+            gear.CreateGear();
             gears.Add(gear);
         }
 

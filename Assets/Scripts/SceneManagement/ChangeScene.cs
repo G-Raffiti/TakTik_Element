@@ -12,7 +12,6 @@ namespace SceneManagement
     {
         [SerializeField] private Image Fader;
         [SerializeField] private Animator anim;
-        private static readonly int Fade = Animator.StringToHash("Fade");
 
         private void Start()
         {

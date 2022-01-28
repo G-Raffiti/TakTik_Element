@@ -1,4 +1,5 @@
 ﻿using Cells;
+using Decks;
 using Skills._Zone;
 using Units;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Skills.ScriptableObject_Effect
         {
             if (Zone.GetUnitAffected(_cell, _skillInfo) is Monster _monster)
             {
-                _skillInfo.Deck.LearnSkill(_monster.Skill);
+                FindObjectOfType<AllDecksMono>().LearnSkill(_monster.monsterSkill.BaseSkill, _skillInfo.skill);
             }
         }
 
@@ -23,12 +24,12 @@ namespace Skills.ScriptableObject_Effect
         
         public override string InfoEffect(SkillInfo _skillInfo)
         {
-            return $"Learn the Skill Used by the targeted Monster\nAdd it to this Deck";
+            return $"Learn the Monster's Skill\nAdd it to this Deck";
         }
         
         public override string InfoEffect()
         {
-            return $"Learn the Skill Used by the targeted Monster\nAdd it to this Deck";
+            return $"Learn the Monster's Skill\nAdd it to this Deck";
         }
     }
 }

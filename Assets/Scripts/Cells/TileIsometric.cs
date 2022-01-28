@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _Instances;
-using Grid;
+using DataBases;
 using Resources.ToolTip.Scripts;
+using StateMachine;
 using StatusEffect;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using UserInterface;
 
 namespace Cells
 {
@@ -32,7 +34,7 @@ namespace Cells
         private CellState state;
         public CellState State => state;
 
-        public void Start()
+        public override void Initialize()
         {
             isCorrupted = false;
             Buffs = new List<Buff>();
@@ -41,7 +43,7 @@ namespace Cells
             AutoSort();
             
             if(CellSO.BasicBuff.Effect != null)
-                Buffs.Add(CellSO.BasicBuff);
+                AddBuff(new Buff(CellSO.BasicBuff));
         }
 
         public void AutoSort()
@@ -65,7 +67,7 @@ namespace Cells
         {
             if (_buff == null) return;
             Buff buff = new Buff(_buff);
-            buff.Duration *= BattleStateManager.instance.Units.Count;
+            buff.onFloor = true;
             
             bool applied = false;
             
@@ -88,7 +90,16 @@ namespace Cells
 
         public override void OnEndTurn()
         {
+            if (IsTaken && CurrentUnit != null)
+            {
+                foreach (Buff _buffBetweenTurn in Buffs.Where(b => b.Effect.BetweenTurn))
+                {
+                    _buffBetweenTurn.OnEndTurn(CurrentUnit);
+                }
+            }
+            
             Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO).ToList().ForEach(b => b.Duration -= 1);
+            
             List<Buff> newList = new List<Buff>(Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO));
             newList.ForEach(b =>
             {
@@ -97,9 +108,10 @@ namespace Cells
                     Buffs.Remove(b);
                 }
             });
+
             if (Buffs.Count <= 0)
                 effect.sprite = null;
-            
+            else effect.sprite = Buffs[Buffs.Count - 1].Effect.OnFloorSprite;
         }
 
         public override void FallIn()
@@ -160,11 +172,30 @@ namespace Cells
             MarkAs(state);
         }
 
+        public override void MarkAsEnemyCell()
+        {
+            state = new CellState(colorSet.SelectFrame, Colors[EColor.enemy],
+                Colors[EColor.enemy] * Colors[EColor.transparency]);
+            MarkAs(state);
+        }
+
         public override void MarkAsHighlighted()
         {
-            state = new CellState(colorSet.FullFrame, Colors[EColor.highlighted],
-                Colors[EColor.highlighted] * Colors[EColor.transparency]);
-            MarkAs(state);
+            try
+            {
+                state = new CellState(colorSet.FullFrame, Colors[EColor.highlighted],
+                    Colors[EColor.highlighted] * Colors[EColor.transparency]);
+                MarkAs(state);
+            }
+            catch (KeyNotFoundException e)
+            {
+                Debug.Log(e.StackTrace);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.StackTrace);
+            }
+            
         }
 
         public override void UnMark()
@@ -176,16 +207,23 @@ namespace Cells
 
         public override void MarkAsInteractable()
         {
-            state = new CellState(colorSet.SelectFrame, Colors[EColor.enemy],
-                Colors[EColor.enemy] * Colors[EColor.transparency]);
+            state = new CellState(colorSet.SelectFrame, Colors[EColor.usable],
+                Colors[EColor.usable] * Colors[EColor.transparency]);
             MarkAs(state);
         }
         
         public override void MarkAsValue(Gradient gradient, float value, int max)
         {
-            state = new CellState(null, Colors[EColor.unMark],
-                gradient.Evaluate(Mathf.Clamp((value / max), 0f, 1f)) * Colors[EColor.transparency]);
-            MarkAs(state);
+            try
+            {
+                state = new CellState(null, Colors[EColor.unMark],
+                gradient.Evaluate(Mathf.Clamp((value / Math.Max(0.01f,max)), 0f, 1f)) * Colors[EColor.transparency]);
+                MarkAs(state);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.StackTrace);
+            }
         }
 
     #endregion
@@ -225,7 +263,7 @@ namespace Cells
             string str = "";
             foreach (Buff _buff in Buffs)
             {
-                str += $"{_buff.InfoBuffOnCell()}\n";
+                str += $"{_buff.InfoBuffOnCell(this)}\n";
             }
 
             return str;

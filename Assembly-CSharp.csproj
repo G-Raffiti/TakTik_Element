@@ -27,7 +27,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2020_3_11;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2020_3_11;UNITY_2020_3;UNITY_2020;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;UNITY_POST_PROCESSING_STACK_V2;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn></NoWarn>
@@ -53,10 +53,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitState.cs" />
-     <Compile Include="Assets\Scripts\Grid\GridStates\BattleStateUnitSelected.cs" />
-     <Compile Include="Assets\Scripts\BattleOver\DeathBattle.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateUnitSelected.cs" />
+     <Compile Include="Assets\Scripts\EndConditions\DeathBattle.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\BattleFade.cs" />
-     <Compile Include="Assets\Scripts\BattleOver\EndConditionSO.cs" />
+     <Compile Include="Assets\Scripts\EndConditions\EndConditionSO.cs" />
      <Compile Include="Assets\Scripts\Cells\Board.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\BaseGameEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\CellListener.cs" />
@@ -65,167 +65,196 @@
      <Compile Include="Assets\Resources\ToolTip\Scripts\InfoBehaviour.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\InfoListener.cs" />
      <Compile Include="Assets\Scripts\_Instances\PlayerData.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
      <Compile Include="Assets\Scripts\Units\Monster.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Learning.cs" />
      <Compile Include="Assets\Scripts\Stats\BattleStats.cs" />
      <Compile Include="Assets\Scripts\Skills\_Zone\Zone.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
+     <Compile Include="Assets\Scripts\DevsButton\DevButtons.cs" />
      <Compile Include="Assets\Scripts\Units\MonsterSO.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillSO.cs" />
-     <Compile Include="Assets\Scripts\Grid\UnitGenerators\RandomUnitGenerator.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
+     <Compile Include="Assets\Scripts\Relics\Relic.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\RandomUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\_Instances\DataBase.cs" />
      <Compile Include="Assets\Scripts\Stats\Range.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\SceneKeeper.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopResurrection.cs" />
+     <Compile Include="Assets\Scripts\_Instances\SceneKeeper.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Archetype.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectAffectChange.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectAffectChange.cs" />
      <Compile Include="Assets\Scripts\GridObjects\GridObject.cs" />
      <Compile Include="Assets\Scripts\Cells\CellSO.cs" />
      <Compile Include="Assets\Scripts\Cells\DataBaseBoard.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
-     <Compile Include="Assets\Scripts\Pathfinding\Algorithms\DijkstraPathfinding.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
+     <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\DijkstraPathfinding.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\ResolutionManager.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\TurnOrderUI.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleTurnOrder_UI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
-     <Compile Include="Assets\Scripts\Skills\AllDecks.cs" />
      <Compile Include="Assets\Scripts\Gears\Gear.cs" />
-     <Compile Include="Assets\Scripts\BattleOver\BossBattle.cs" />
-     <Compile Include="Assets\Scripts\Stats\Power.cs" />
+     <Compile Include="Assets\Scripts\EndConditions\BossBattle.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ScreenLogger.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\LifeSteel.cs" />
-     <Compile Include="Assets\Scripts\Grid\GridStates\BattleStateSkillSelected.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\Inventory_UI.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateSkillSelected.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopInventory_UI.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleDeckMono_UI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityInfoEvent.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_Relics.cs" />
      <Compile Include="Assets\Scripts\Players\AIPlayer.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavableEntity.cs" />
-     <Compile Include="Assets\Scripts\Skills\RelicChoiceUI.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleRelicChoice_UI.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Rarity.cs" />
-     <Compile Include="Assets\Scripts\Units\DataBaseMonster.cs" />
-     <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsFinished.cs" />
+     <Compile Include="Assets\Scripts\DataBases\DataBaseMonster.cs" />
      <Compile Include="Assets\Scripts\Cells\Hexagon.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\AspectUtility.cs" />
      <Compile Include="Assets\Scripts\Units\Unit.cs" />
-     <Compile Include="Assets\Scripts\Skills\RelicInfo.cs" />
+     <Compile Include="Assets\Scripts\Relics\RelicInfo.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityVoidEvent.cs" />
+     <Compile Include="Assets\Scripts\SceneManagement\ShopChoice_UI.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\Pull.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Attack.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\ButtonPanel.cs" />
+     <Compile Include="Assets\Scripts\Decks\AllDecksMono.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\UI_Menu\ButtonPanel.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityCellEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\BoolListener.cs" />
      <Compile Include="Assets\Resources\ToolTip\Scripts\IInfo.cs" />
-     <Compile Include="Assets\Scripts\BattleOver\LootBoxes.cs" />
+     <Compile Include="Assets\Scripts\EndConditions\LootBoxes.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\SkillGridEffect.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\UI_Menu\MovingPanelMenu.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\IntListener.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Element.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\BaseGameEventListener.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsSelected.cs" />
-     <Compile Include="Assets\Scripts\Pathfinding\DataStructs\IPriorityQueue.cs" />
+     <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\IPriorityQueue.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityUnitEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\BoolEvent.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\Cost.cs" />
-     <Compile Include="Assets\Scripts\Skills\DataBaseSkill.cs" />
-     <Compile Include="Assets\Scripts\Grid\UnitGenerators\IUnitGenerator.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\UI_Menu\MovingButtonPanel.cs" />
+     <Compile Include="Assets\Scripts\DataBases\DataBaseSkill.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\IUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\Gears\GearSO.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_Inventory.cs" />
      <Compile Include="Assets\Scripts\Cells\TileIsometric.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Burned.cs" />
+     <Compile Include="Assets\Scripts\Skills\Skill.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsFriendly.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Poison.cs" />
      <Compile Include="Assets\Scripts\Stats\Affix.cs" />
      <Compile Include="Assets\Scripts\Stats\Affinity.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Tree.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectNeedView.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectNeedView.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Healing.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnitySkillEvent.cs" />
      <Compile Include="Assets\Scripts\Cells\Isometric.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\PushFix.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Medicine.cs" />
-     <Compile Include="Assets\Scripts\Gui\CameraController.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\CameraController.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\FloatEvent.cs" />
-     <Compile Include="Assets\Scripts\Gears\DataBaseGear.cs" />
-     <Compile Include="Assets\Scripts\Pathfinding\Algorithms\IPathfinding.cs" />
-     <Compile Include="Assets\Scripts\Grid\UnitGenerators\CustomUnitGenerator.cs" />
-     <Compile Include="Assets\Scripts\Grid\BattleStateManager.cs" />
-     <Compile Include="Assets\Scripts\Stats\DataBaseAffix.cs" />
+     <Compile Include="Assets\Scripts\DataBases\DataBaseGear.cs" />
+     <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\IPathfinding.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\CustomUnitGenerator.cs" />
+     <Compile Include="Assets\Scripts\Decks\DeckMono.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\BattleStateManager.cs" />
+     <Compile Include="Assets\Scripts\DataBases\DataBaseAffix.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGridObjectEvent.cs" />
-     <Compile Include="Assets\Scripts\Shops\ForgeUI.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\CameraResolution.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopForge_UI.cs" />
      <Compile Include="Assets\Scripts\Units\BattleGenerator.cs" />
      <Compile Include="Assets\Scripts\GridObjects\LootBox.cs" />
-     <Compile Include="Assets\Scripts\Gears\rawGear.cs" />
+     <Compile Include="Assets\Scripts\_CSVFiles\rawGear.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\DeathWaiter.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityIntEvent.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\UnitEvent.cs" />
      <Compile Include="Assets\Scripts\Cells\BoardSO.cs" />
-     <Compile Include="Assets\Scripts\Grid\GridStates\BattleStateBlockInput.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateBlockInput.cs" />
      <Compile Include="Assets\Scripts\_Instances\KeepBetweenScene.cs" />
+     <Compile Include="Assets\Scripts\Score\ScoreEventHandler.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityItemEvent.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Corruption.cs" />
      <Compile Include="Assets\Scripts\_Extension\Extension.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\StatusSO.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffect.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffect.cs" />
      <Compile Include="Assets\Scripts\Skills\IEffect.cs" />
-     <Compile Include="Assets\Scripts\Shops\CampUI.cs" />
-     <Compile Include="Assets\Scripts\Units\rawMonster.cs" />
+     <Compile Include="Assets\Scripts\Score\ScoreHolder.cs" />
+     <Compile Include="Assets\Scripts\_CSVFiles\rawMonster.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Spell.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\FloatListener.cs" />
-     <Compile Include="Assets\Scripts\Pathfinding\Algorithms\AStarPathfinding.cs" />
+     <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\AStarPathfinding.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\BtnEndTurn.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\SkillListener.cs" />
-     <Compile Include="Assets\Scripts\Gears\InventoryUI.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleInventory_UI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\GridObjectListener.cs" />
      <Compile Include="Assets\Scripts\Gears\Inventory.cs" />
      <Compile Include="Assets\Scripts\Cells\DataBaseCell.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\Interface_ISavable.cs" />
      <Compile Include="Assets\Scripts\GridObjects\GridObjectSO.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\ItemListener.cs" />
-     <Compile Include="Assets\Scripts\Pathfinding\DataStructs\IGraphNode.cs" />
+     <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\IGraphNode.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateNormal.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
      <Compile Include="Assets\Scripts\Units\Hero.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_DeckMono.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\FloorStatus.cs" />
-     <Compile Include="Assets\Scripts\Skills\RelicSO.cs" />
+     <Compile Include="Assets\Scripts\Relics\RelicSO.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\VoidEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\SkillEvent.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\DeckUI.cs" />
      <Compile Include="Assets\Scripts\Cells\SavedCell.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopDeckMono_UI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityFloatEvent.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectHealOnEndFight.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityBoolEvent.cs" />
      <Compile Include="Assets\Scripts\UserInterface\PersonalInventory.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavingLoading.cs" />
-     <Compile Include="Assets\Scripts\Grid\GridStates\BattleState.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ResolutionSelector.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleState.cs" />
      <Compile Include="Assets\Resources\ToolTip\Scripts\Tooltip.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\SkillEffect.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Buff.cs" />
      <Compile Include="Assets\Scripts\Cells\Square.cs" />
-     <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\ItemEvent.cs" />
+     <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GearEvent.cs" />
      <Compile Include="Assets\Scripts\Units\BattleHero.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\IntEvent.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\PlayingUnitsInfo_UI.cs" />
-     <Compile Include="Assets\Scripts\Gears\InfoGear.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\Battle_AP_MP_UI.cs" />
+     <Compile Include="Assets\Scripts\Gears\GearInfo.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\UnitListener.cs" />
-     <Compile Include="Assets\Scripts\Grid\GridStates\BattleStateBeginning.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillInfo.cs" />
+     <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateBeginning.cs" />
      <Compile Include="Assets\Scripts\Cells\Cell.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Drowned.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\MenuPanel.cs" />
-     <Compile Include="Assets\Scripts\Skills\SkillInfo.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopCampMono_UI.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\UI_Menu\MenuPanel.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\InfoEvent.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\ChangeScene.cs" />
      <Compile Include="Assets\Scripts\_DragAndDropSystem\DragAndDropItem.cs" />
+     <Compile Include="Assets\Scripts\Score\ScoreSceneUI.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\PushFromImpact.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\StatsBonus.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\Stats\AffixSO.cs" />
-     <Compile Include="Assets\Scripts\Pathfinding\DataStructs\HeapPriorityQueue.cs" />
-     <Compile Include="Assets\Scripts\Skills\Deck.cs" />
+     <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\HeapPriorityQueue.cs" />
+     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\TeleportTo.cs" />
+     <Compile Include="Assets\Scripts\EndConditions\LastBattle.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\ApplyBuff.cs" />
      <Compile Include="Assets\Scripts\Units\IMovable.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectZoneType.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\ColorSet.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\TurnOrderPrefab.cs" />
-     <Compile Include="Assets\Scripts\Skills\rawSkill.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectZoneType.cs" />
+     <Compile Include="Assets\Scripts\DataBases\ColorSet.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\TurnOrderPrefab.cs" />
+     <Compile Include="Assets\Scripts\_CSVFiles\rawSkill.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\VoidListener.cs" />
-     <Compile Include="Assets\Scripts\Shops\DeckUI.cs" />
-     <Compile Include="Assets\Scripts\Skills\DataBaseRelic.cs" />
+     <Compile Include="Assets\Scripts\DataBases\DataBaseRelic.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\CellEvent.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Stone.cs" />
-     <Compile Include="Assets\Scripts\Shops\Forge.cs" />
-     <Compile Include="Assets\Scripts\Shops\Camp.cs" />
-     <Compile Include="Assets\Scripts\Skills\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
+     <Compile Include="Assets\Scripts\SceneManagement\EndRun_UI.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
+     <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\LeanTween\ReadMe.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
@@ -237,6 +266,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\PostProcessing\Blur.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
@@ -827,6 +857,12 @@
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Sysroot.Linux_x86_64">
+ <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+ <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -850,6 +886,9 @@
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.SysrootPackage.Editor">
+ <HintPath>C:/Program Perso/Unity Project/TakTik Ele/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

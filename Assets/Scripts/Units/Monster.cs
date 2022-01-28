@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using _EventSystem.CustomEvents;
 using _Instances;
 using _ScriptableObject;
 using Cells;
+using Decks;
 using Gears;
-using Grid;
-using Players;
+using Relics;
 using Skills;
 using Skills._Zone;
+using StateMachine;
 using Stats;
 using StatusEffect;
 using UnityEngine;
@@ -19,26 +20,44 @@ namespace Units
     /// <summary>
     /// Sub-Class of Units that Link a Monster (Scriptable Object) to a Prefab
     /// </summary>
-    [RequireComponent(typeof(Deck))]
+    [RequireComponent(typeof(DeckMono))]
     public class Monster : Unit
     {
         [Header("Monster Special")]
-        [SerializeField] private Deck deck;
+        [SerializeField] private DeckMono deck;
         [SerializeField] private SkillInfo skill;
         
         [Header("Event Sender")]
         [SerializeField] private UnitEvent onDeathLoot;
         [SerializeField] private UnitEvent onDeathRelic;
-        [SerializeField] private VoidEvent onActionDone;
+        
+        [Header("Event Listener")]
+        [SerializeField] private UnitEvent onInventoryClosed;
+        
         public bool isPlaying;
 
-        public SkillSO Skill => skill.Skill;
+        public MonsterSO MonsterSO { get; private set; }
+
+
+        public Skill monsterSkill { get; private set; }
 
         public Archetype Archetype { get; private set; }
         public List<RelicSO> Relics { get; private set; }
         public EReward RewardType { get; private set; }
         public EMonster Type { get; private set; }
-        
+
+        private void Start()
+        {
+            onInventoryClosed.EventListeners += DestroyUnit;
+        }
+
+        private void OnDisable()
+        {
+            onInventoryClosed.EventListeners += DestroyUnit;
+        }
+
+
+
         /// <summary>
         /// Method called at the Unit Instantiation, it's create the Stats and change the Sprite. 
         /// </summary>
@@ -46,6 +65,7 @@ namespace Units
         /// <param name="Stage"></param>
         public void Spawn(MonsterSO monster, int Stage)
         {
+            MonsterSO = monster;
             UnitName = monster.Name;
             unitSprite.sprite = monster.UnitSprite;
             RewardType = monster.RewardType;
@@ -61,41 +81,37 @@ namespace Units
             buffs = new List<Buff>();
             
             Inventory = new Inventory();
-            if (RewardType == EReward.Gear)
-            {
-                Inventory.GenerateGearFor(monster, Stage);
-            }
+            if(KeepBetweenScene.Stage >= 0) 
+                Inventory.GenerateGearFor(monster);
 
-            if (monster.Type == EMonster.Boss)
+            if (monster.Type == EMonster.Boss && KeepBetweenScene.Stage >= 0)
             {
                 Relics.Add(DataBase.Relic.GetRandom());
             }
 
+            deck.Relics = new List<RelicSO>(Relics);
+            deck.UpdateDeck();
+
             baseStats = monster.Stats();
             BattleStats = new BattleStats(baseStats + Inventory.GearStats());
             total = BattleStats;
+            monsterSkill = Skill.CreateSkill(DataBase.Skill.GetSkillFor(monster), deck, this);
+
+            if (monsterSkill.Cost > total.AP)
+                total.AP = monsterSkill.Cost;
             
-            if (monster.Skill != null)
-                deck.InitializeForMonster(monster.Skill, Relics);
-            else
-            {
-                deck.InitializeForMonster(DataBase.Skill.GetSkillFor(monster), Relics);
-            }
-            
-            skill.UpdateSkill(0,this);
+            skill.skill = monsterSkill;
+            skill.Unit = this;
 
             InitializeSprite();
         }
 
-        public override bool IsUnitAttackable(Unit other, Cell sourceCell)
-        {
-            return Zone.GetRange(BattleStats.Range + DataBase.Skill.MonsterAttack.Range, cell).Contains(other.Cell);
-        }
+        public override Relic Relic => new Relic();
 
         public override void OnTurnEnd()
         {
             base.OnTurnEnd();
-            skill.UpdateSkill(0, this);
+            skill.skill = monsterSkill;
         }
 
         public void ShowRange()
@@ -104,12 +120,12 @@ namespace Units
             {           
                 _cell.UnMark();
             }
-            foreach (Cell _cellInRange in Zone.GetRange(skill.Range, Cell))
+            foreach (Cell _cellInRange in Zone.GetRange(skill.skill.Range, Cell))
             {
                 _cellInRange.MarkAsUnReachable();
             }
 
-            foreach (Cell _cell in Zone.CellsInView(skill, cell))
+            foreach (Cell _cell in Zone.CellsInView(skill.skill, Cell))
             {
                 _cell.MarkAsInteractable();
             }
@@ -121,24 +137,22 @@ namespace Units
             if (RewardType == EReward.Gear && BattleStateManager.instance.PlayingUnit is BattleHero)
             {
                 onDeathLoot.Raise(this);
-                yield return new WaitForSeconds(0.1f);
-                GameObject inventory = GameObject.Find("InventoryUI");
-                while (inventory.activeSelf)
-                    yield return null;
-                onActionDone.Raise();
             }
             if (RewardType == EReward.Relic || Type == EMonster.Boss)
             {
                 onDeathRelic.Raise(this);
-                yield return new WaitForSeconds(0.3f);
-                GameObject relicChoice = GameObject.Find("RelicChoiceUI");
-                while (relicChoice.activeSelf)
-                    yield return null;
-                onActionDone.Raise();
             }
             //TODO : Skill on death
 
             yield return base.OnDestroyed();
+        }
+        
+        private void DestroyUnit(Unit unit)
+        {
+            if (BattleStateManager.instance.DeadThisTurn.Count == 0)
+                BattleStateManager.instance.Check();
+            if (unit == this)
+                Destroy(this);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using _EventSystem.CustomEvents;
+using _Extension;
 using _Instances;
 using Cells;
 using Gears;
@@ -12,19 +14,21 @@ namespace GridObjects
     public class LootBox : GridObjectSO
     {
         [SerializeField] private GridObjectEvent OnLootBoxOpen;
+        [SerializeField] private List<Sprite> lootBoxesSprites;
+        public override Sprite Image => lootBoxesSprites.GetRandom();
         public override void Interact(Unit actor, Cell location)
         {
             if (location.CurrentGridObject.Inventory.gears.Count == 0)
             {
                 location.CurrentGridObject.Inventory = new Inventory();
                 Gear _gear = new Gear();
-                _gear.CreateGear(KeepBetweenScene.Stage);
+                _gear.CreateGear();
                 location.CurrentGridObject.Inventory.gears.Add(_gear);
                 
                 if (location.isCorrupted)
                 {
                     Gear gear2 = new Gear();
-                    gear2.CreateGear(KeepBetweenScene.Stage);
+                    gear2.CreateGear();
                     location.CurrentGridObject.Inventory.gears.Add(gear2);
                 }
             }
