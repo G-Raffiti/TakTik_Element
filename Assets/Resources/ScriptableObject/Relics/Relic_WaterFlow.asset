@@ -45,4 +45,4 @@ MonoBehaviour:
   statusEffects: []
   description: 'Effect : Now your skills deal effect as if there Element was <sprite
     name=Water>'
-  flavour: 
+  flavour: Water is Life (and death)

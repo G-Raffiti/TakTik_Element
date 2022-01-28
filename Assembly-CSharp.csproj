@@ -210,7 +210,7 @@
      <Compile Include="Assets\Scripts\_SaveSystem\SavingLoading.cs" />
      <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ResolutionSelector.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleState.cs" />
-     <Compile Include="Assets\Resources\ToolTip\Scripts\Tooltip.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\Tooltip.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\SkillEffect.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Buff.cs" />
      <Compile Include="Assets\Scripts\Cells\Square.cs" />

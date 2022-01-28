@@ -1,14 +1,23 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
+using _EventSystem.CustomEvents;
+using Resources.ToolTip.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Void = _EventSystem.CustomEvents.Void;
 
-namespace Resources.ToolTip.Scripts
+namespace UserInterface
 {
     public class Tooltip : MonoBehaviour
     {
+        [Header("Event Listener")] 
+        [SerializeField] private InfoEvent ToolTipOn;
+        [SerializeField] private VoidEvent ToolTipOff;
+        
+        [Header("References")]
         [SerializeField] private GameObject obj;
-        [SerializeField] private Image icon;
+        [SerializeField] private List<Image> icon;
         [SerializeField] private TMP_Text mainTxt;
         [SerializeField] private TMP_Text leftTxt;
         [SerializeField] private TMP_Text rightTxt;
@@ -27,9 +36,17 @@ namespace Resources.ToolTip.Scripts
 
         private void Start()
         {
+            ToolTipOn.EventListeners += DisplayInfo;
+            ToolTipOff.EventListeners += HideTooltip;
             offset = new Vector2(10, 10);
             padding = 5;
             HideTooltip();
+        }
+
+        private void OnDestroy()
+        {
+            ToolTipOn.EventListeners -= DisplayInfo;
+            ToolTipOff.EventListeners -= HideTooltip;
         }
 
         private void Update()
@@ -69,7 +86,6 @@ namespace Resources.ToolTip.Scripts
 
         public void DisplayInfo(IInfo _info)
         {
-
             StringBuilder _main = new StringBuilder();
             StringBuilder _left = new StringBuilder();
             StringBuilder _right = new StringBuilder();
@@ -86,12 +102,16 @@ namespace Resources.ToolTip.Scripts
             rightTxt.text = _right.ToString();
             downTxt.text = _down.ToString();
 
-            icon.sprite = _info.GetIcon();
+            icon.ForEach(i => i.sprite = _info.GetIcon());
 
             obj.SetActive(true);
             LayoutRebuilder.ForceRebuildLayoutImmediate(backgroundRectTransform);
         }
 
+        public void HideTooltip(Void empty)
+        {
+            obj.SetActive(false);
+        }
         public void HideTooltip()
         {
             obj.SetActive(false);

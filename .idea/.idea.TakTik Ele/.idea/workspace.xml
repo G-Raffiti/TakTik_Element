@@ -39,9 +39,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
@@ -90,6 +87,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Decks/AllDecksMono.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/ToolTipGear.cs" />
+      <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Tooltip.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
