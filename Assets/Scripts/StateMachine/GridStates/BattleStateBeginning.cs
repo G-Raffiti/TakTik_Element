@@ -171,7 +171,6 @@ namespace StateMachine.GridStates
             if (_cell.CurrentUnit != null)
             {
                 nextHero = (BattleHero) _cell.CurrentUnit;
-                nextHero.Hero.isPlaced = false;
             }
             
             // Set the position of the ActualHero on the Cell
