@@ -1,6 +1,6 @@
 ﻿using System;
+using DataBases;
 using UnityEngine;
-using UserInterface;
 using Random = UnityEngine.Random;
 
 namespace Stats
@@ -10,10 +10,16 @@ namespace Stats
     {
         [SerializeField] protected EAffix type;
         [SerializeField] private Color color;
+        /// <summary>
+        /// less is the rarity more rare is the affix
+        /// </summary>
+        [SerializeField] private int rarity;
         [SerializeField] private int[] tier = new int[4];
+        [SerializeField] private string symbol;
 
 
         public EAffix Type => type;
+        public int Rarity => rarity;
         public Color Color => color;
         public int[] Tier => tier;
 
@@ -45,6 +51,8 @@ namespace Stats
                     break;
                 case EAffix.Zone: ret.Range.Radius = (int) value;
                     break;
+                case EAffix.Focus: ret.Focus = (int) value;
+                    break;
                 default:
                     Debug.LogError("Error in Affix Type");
                     break;
@@ -56,56 +64,25 @@ namespace Stats
         
         public string Name => GetName();
 
-        public string Icon(EAffix _affix)
-        {
-            switch (_affix)
-            {
-                case EAffix.HP:
-                    return "<sprite name=HP>";
-                case EAffix.AP:
-                    return "<sprite name=AP>";
-                case EAffix.MP:
-                    return "<sprite name=MP>";
-                case EAffix.Speed:
-                    return "<sprite name=Speed>";
-                case EAffix.Shield:
-                    return "<sprite name=Shield>";
-                case EAffix.Fire:
-                    return "<sprite name=Fire>";
-                case EAffix.Water:
-                    return "<sprite name=Water>";
-                case EAffix.Nature:
-                    return "<sprite name=Nature>";
-                case EAffix.Power:
-                    return "<sprite name=Power>";
-                case EAffix.Range:
-                    return "<sprite name=Range>";
-                case EAffix.Zone:
-                    return "<sprite name=Zone>";
-                default:
-                    return "ERROR";
-            }
-        }
+        public string Icon => symbol;
 
         private string GetName()
         {
-            return $"<color={ColorSet.HexColor(color)}>{Type}</color> ({Icon(Type)})";
+            return $"<color={ColorSet.HexColor(color)}>{Type}</color> ({Icon})";
                 
         }
         
-        public int getValue(int lvl)
+        public int getValue(int _stage)
         {
-            return Random.Range(tier[Math.Max(0, lvl - 1)], tier[lvl] + 1);
+            return getValueOfTier(_stage + 1);
         }
 
-        public float getValueOfTier(int _tier)
+        public int getValueOfTier(int _tier)
         {
-            return Random.Range(tier[Math.Max(0, _tier - 1)], tier[_tier] + 1);
-        }
-
-        public string TierRange(int lvl)
-        {
-            return $"({tier[Math.Max(0, lvl - 1)]} - {tier[lvl]}) ";
+            int Min = tier[Math.Max(0, _tier - 1)];
+            int Max = tier[Math.Min(_tier, tier.Length -1)] + 1;
+            int value = Random.Range(Min, Max);
+            return value;
         }
     }
 }

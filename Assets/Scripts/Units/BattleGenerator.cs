@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using _Instances;
-using BattleOver;
+using EndConditions;
 using Random = UnityEngine.Random;
 
 namespace Units
@@ -20,13 +20,20 @@ namespace Units
                     _ret.AddRange(GenerateMinions());
                     return _ret;
                 }
+                case EConditionType.Last:
+                {
+                    List<MonsterSO> _ret = new List<MonsterSO>();
+                    _ret.Add(DataBase.Monster.AllBosses[Random.Range(0, DataBase.Monster.AllBosses.Count)]);
+                    _ret.AddRange(GenerateMinions());
+                    return _ret;
+                }
                 default: return GenerateMinions();
             }
         }
 
         private static List<MonsterSO> GenerateMinions()
         {
-            int _totalLvl = Random.Range(KeepBetweenScene.Stage, KeepBetweenScene.Stage * 2 + 3);
+            int _totalLvl = Random.Range(KeepBetweenScene.Stage + KeepBetweenScene.BattleNumber, KeepBetweenScene.Stage + KeepBetweenScene.BattleNumber * 2 + 1);
             List<MonsterSO> _ret = new List<MonsterSO>();
             int _actualLvl = 0;
             while (_actualLvl < _totalLvl)

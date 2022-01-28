@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Pathfinding.DataStructs;
 using GridObjects;
-using Pathfinding.DataStructs;
+using StateMachine;
 using StatusEffect;
+using TMPro;
 using Units;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Cells
 {
@@ -14,8 +15,12 @@ namespace Cells
     /// </summary>
     public abstract class Cell : MonoBehaviour, IGraphNode, IEquatable<Cell>
     {
-        [SerializeField]
-        private Vector2 offsetCoord;
+        /// <summary>
+        /// Method Called after the Board is Loaded
+        /// </summary>
+        public abstract void Initialize();
+        
+        [SerializeField] private Vector2 offsetCoord;
         /// <summary>
         /// Position of the cell on the grid.
         /// </summary>
@@ -137,6 +142,12 @@ namespace Cells
         /// </summary>
         public abstract void MarkAsValue(Gradient gradient, float value, int max);
 
+
+        /// <summary>
+        /// Method marks the Cell with the Enemies Color
+        /// </summary>
+        public abstract void MarkAsEnemyCell();
+
         public int GetDistance(IGraphNode other)
         {
             return GetDistance(other as Cell);
@@ -196,7 +207,8 @@ namespace Cells
         /// </summary>
         public void Take(IMovable _movable)
         {
-            _movable.Cell?.FreeTheCell();
+            if (_movable.Cell != null)
+                _movable.Cell.FreeTheCell();
             
             if (IsUnderGround)
             {
@@ -209,15 +221,14 @@ namespace Cells
                 CurrentUnit = _unit;
                 Buffs.ForEach(b =>
                 {
-                    b.OnStartTurn(CurrentUnit);
-                    b.OnEndTurn(CurrentUnit);
-                    b.Apply(CurrentUnit);
+                    b.Effect.OnUnitTakeCell(b, CurrentUnit);
                 });
             }
+            
             else if (_movable is GridObject _gridObject)
                 CurrentGridObject = _gridObject;
             
-            _movable.Cell = this;
+            BattleStateManager.instance.OnIMovableMoved(_movable, this);
         }
         
         /// <summary>
@@ -251,5 +262,6 @@ namespace Cells
         /// Method called to apply effects of Buffs to the Current Unit.
         /// </summary>
         public abstract void OnEndTurn();
+
     }
 }

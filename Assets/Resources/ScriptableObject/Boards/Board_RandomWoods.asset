@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f739f2b342984d4db9f4226aab1c48e8, type: 3}
   m_Name: Board_RandomWoods
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: 1c03f2f5bcd304e4289964abf2db60f9, type: 3}
+  background: {fileID: 21300000, guid: 2531f306076c30d4895e9ef39c35ef9c, type: 3}
   cells:
   - position:
     - 0
@@ -995,6 +995,7 @@ MonoBehaviour:
     gridObject: {fileID: 0}
     isSpawn: 0
   camera:
-    x: 6
-    y: 4.039
+    x: 5
+    y: 3.28
+    size: 6.12
   endCondition: {fileID: 11400000, guid: cc05955004d94f247badcedc5801bc01, type: 2}

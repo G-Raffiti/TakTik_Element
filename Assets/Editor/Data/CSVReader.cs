@@ -1,9 +1,5 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using UnityEditor;
-using UnityEngine;
 
 namespace Editor.Data
 {

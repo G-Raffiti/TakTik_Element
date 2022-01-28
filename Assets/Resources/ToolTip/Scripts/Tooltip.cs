@@ -8,7 +8,6 @@ namespace Resources.ToolTip.Scripts
     public class Tooltip : MonoBehaviour
     {
         [SerializeField] private GameObject obj;
-        [SerializeField] private Camera uiCamera;
         [SerializeField] private Image icon;
         [SerializeField] private TMP_Text mainTxt;
         [SerializeField] private TMP_Text leftTxt;
@@ -76,10 +75,10 @@ namespace Resources.ToolTip.Scripts
             StringBuilder _right = new StringBuilder();
             StringBuilder _down = new StringBuilder();
 
-                _main.Append(_info.GetInfoMain());
-                _left.Append(_info.GetInfoLeft());
-                _right.Append(_info.GetInfoRight());
-                _down.Append(_info.GetInfoDown());
+            _main.Append(_info.GetInfoMain());
+            _left.Append(_info.GetInfoLeft());
+            _right.Append(_info.GetInfoRight());
+            _down.Append(_info.GetInfoDown());
 
 
             mainTxt.text = _main.ToString();

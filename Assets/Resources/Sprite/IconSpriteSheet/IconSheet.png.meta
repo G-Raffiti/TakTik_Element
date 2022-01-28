@@ -19,118 +19,118 @@ TextureImporter:
     second: Direction
   - first:
       213: 5189895594162850017
-    second: ZoneSelf
+    second: IconSheet_5
   - first:
       213: 6125533129827454030
-    second: ZoneBasic
+    second: ZonePerpendicular
   - first:
       213: -4735702177497203188
-    second: ZoneContact
+    second: ZoneSelf
   - first:
       213: -2199010660018958039
-    second: ZoneLine
+    second: ZoneBasic
   - first:
       213: 2143921053122410539
-    second: ZoneCross
+    second: ZoneContact
   - first:
       213: 6600980279118368528
-    second: ZoneSquare
+    second: ZoneLine
   - first:
       213: -4377234821059566129
-    second: ZoneStar
+    second: ZoneCross
   - first:
       213: -555512977839398266
-    second: ZoneRanged
+    second: ZoneSquare
   - first:
       213: -1534666794635269733
-    second: ZoneLin
+    second: ZoneStar
   - first:
       213: 6041939498930117340
-    second: Cell
+    second: ZoneRanged
   - first:
       213: 2559641795510209015
-    second: HP
+    second: ZoneCone
   - first:
       213: 2083303402929909565
-    second: AP
+    second: Cell
   - first:
       213: 1691171236485598953
-    second: MP
+    second: HP
   - first:
       213: 471798507305556546
-    second: TP
+    second: AP
   - first:
       213: -3423523915659562612
-    second: Speed
+    second: MP
   - first:
       213: 6290505010227241238
-    second: Dext
+    second: TP
   - first:
       213: 5741803583742810439
-    second: Intel
+    second: Speed
   - first:
       213: 2088439131066545440
-    second: Str
+    second: Dext
   - first:
       213: 232150873447088180
-    second: Dodge
+    second: Intel
   - first:
       213: -2169701665137666330
-    second: Shield
+    second: Strength
   - first:
       213: -8704445861031847142
-    second: Fire
+    second: Dodge
   - first:
       213: 5100933664924272752
-    second: Nature
+    second: Shield
   - first:
       213: 4318182838925834494
-    second: Water
+    second: Fire
   - first:
       213: -5110383940922716173
-    second: Affinity
+    second: Nature
   - first:
       213: 5767261474912130180
-    second: Power
+    second: Water
   - first:
       213: -3442739876244863934
-    second: BasicPower
+    second: Affinity
   - first:
       213: -1332074616804940506
-    second: Skill
+    second: Power
   - first:
       213: -2603701149161815134
-    second: Spell
+    second: IconSheet_32
   - first:
       213: -5119920500355900490
-    second: Range
+    second: IconSheet_33
   - first:
       213: 4662878539807792844
-    second: Zone
+    second: IconSheet_34
   - first:
       213: 3757187234903106793
-    second: CantSelfTarget
+    second: Range
   - first:
       213: -3725191106133259585
-    second: NeedTarget
-  - first:
-      213: 4523609631395898344
-    second: DontNeedView
-  - first:
-      213: 6299600859965599196
     second: Focus
   - first:
+      213: 4523609631395898344
+    second: IconSheet_37
+  - first:
+      213: 6299600859965599196
+    second: IconSheet_41
+  - first:
       213: 854981534233145540
-    second: Zone
+    second: IconSheet_34
   - first:
       213: -7725449317841676190
-    second: CantSelfTarget
+    second: Range
   - first:
       213: -5300925065418376675
-    second: NeedTarget
+    second: Focus
   - first:
       213: 3894712251578012162
-    second: DontNeedView
+    second: IconSheet_37
   - first:
       213: -1012330078092146919
     second: IconSheet_43
@@ -151,7 +151,7 @@ TextureImporter:
     second: IconSheet_48
   - first:
       213: 2093654903040211528
-    second: Focus
+    second: IconSheet_41
   - first:
       213: 6720361777401449175
     second: IconSheet_50
@@ -304,7 +304,7 @@ TextureImporter:
     second: IconSheet_99
   - first:
       213: -4878945269940318002
-    second: ZoneSquare
+    second: ZoneLine
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -470,7 +470,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4601
+        y: 4608
         width: 512
         height: 512
       alignment: 6
@@ -571,6 +571,48 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: IconSheet_5
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 4608
+        width: 512
+        height: 512
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e8017fab86360840800000000000000
+      internalID: 5189895594162850017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZonePerpendicular
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 4608
+        width: 512
+        height: 512
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c80475de3420550800000000000000
+      internalID: 6125533129827454030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: ZoneSelf
       rect:
         serializedVersion: 2
@@ -585,8 +627,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e8017fab86360840800000000000000
-      internalID: 5189895594162850017
+      spriteID: c0e3c3cd5f7674eb0800000000000000
+      internalID: -4735702177497203188
       vertices: []
       indices: 
       edges: []
@@ -606,8 +648,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4c80475de3420550800000000000000
-      internalID: 6125533129827454030
+      spriteID: 921d540a47b8b71e0800000000000000
+      internalID: -2199010660018958039
       vertices: []
       indices: 
       edges: []
@@ -627,8 +669,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0e3c3cd5f7674eb0800000000000000
-      internalID: -4735702177497203188
+      spriteID: b28b7ddb6dcb0cd10800000000000000
+      internalID: 2143921053122410539
       vertices: []
       indices: 
       edges: []
@@ -648,8 +690,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 921d540a47b8b71e0800000000000000
-      internalID: -2199010660018958039
+      spriteID: 01f853227946b9b50800000000000000
+      internalID: 6600980279118368528
       vertices: []
       indices: 
       edges: []
@@ -669,8 +711,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b28b7ddb6dcb0cd10800000000000000
-      internalID: 2143921053122410539
+      spriteID: fc526403f10f043c0800000000000000
+      internalID: -4377234821059566129
       vertices: []
       indices: 
       edges: []
@@ -690,29 +732,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01f853227946b9b50800000000000000
-      internalID: 6600980279118368528
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ZoneStar
-      rect:
-        serializedVersion: 2
-        x: 3072
-        y: 4096
-        width: 512
-        height: 512
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc526403f10f043c0800000000000000
-      internalID: -4377234821059566129
+      spriteID: 68263cfc3eb6a48f0800000000000000
+      internalID: -555512977839398266
       vertices: []
       indices: 
       edges: []
@@ -732,18 +753,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68263cfc3eb6a48f0800000000000000
-      internalID: -555512977839398266
+      spriteID: cda912476f749d350800000000000000
+      internalID: 6041939498930117340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cell
+      name: ZoneCone
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 4089
+        x: 4096
+        y: 4096
         width: 512
         height: 512
       alignment: 6
@@ -753,8 +774,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cda912476f749d350800000000000000
-      internalID: 6041939498930117340
+      spriteID: 7f901a5c6aca58320800000000000000
+      internalID: 2559641795510209015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cell
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 4096
+        width: 512
+        height: 512
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3feffa386169ec10800000000000000
+      internalID: 2083303402929909565
       vertices: []
       indices: 
       edges: []
@@ -774,8 +816,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f901a5c6aca58320800000000000000
-      internalID: 2559641795510209015
+      spriteID: 9ee0515874f387710800000000000000
+      internalID: 1691171236485598953
       vertices: []
       indices: 
       edges: []
@@ -795,8 +837,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3feffa386169ec10800000000000000
-      internalID: 2083303402929909565
+      spriteID: 24ad1812e3a2c8600800000000000000
+      internalID: 471798507305556546
       vertices: []
       indices: 
       edges: []
@@ -805,7 +847,7 @@ TextureImporter:
       name: MP
       rect:
         serializedVersion: 2
-        x: 1031
+        x: 1024
         y: 3584
         width: 512
         height: 512
@@ -816,8 +858,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ee0515874f387710800000000000000
-      internalID: 1691171236485598953
+      spriteID: c81be0723233d70d0800000000000000
+      internalID: -3423523915659562612
       vertices: []
       indices: 
       edges: []
@@ -837,8 +879,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24ad1812e3a2c8600800000000000000
-      internalID: 471798507305556546
+      spriteID: 611e8607afc5c4750800000000000000
+      internalID: 6290505010227241238
       vertices: []
       indices: 
       edges: []
@@ -858,8 +900,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c81be0723233d70d0800000000000000
-      internalID: -3423523915659562612
+      spriteID: 7491e0320fbfeaf40800000000000000
+      internalID: 5741803583742810439
       vertices: []
       indices: 
       edges: []
@@ -879,8 +921,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 611e8607afc5c4750800000000000000
-      internalID: 6290505010227241238
+      spriteID: 0253f3e1350abfc10800000000000000
+      internalID: 2088439131066545440
       vertices: []
       indices: 
       edges: []
@@ -900,14 +942,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7491e0320fbfeaf40800000000000000
-      internalID: 5741803583742810439
+      spriteID: 4304c1a4df3c83300800000000000000
+      internalID: 232150873447088180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Str
+      name: Strength
       rect:
         serializedVersion: 2
         x: 3584
@@ -921,8 +963,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0253f3e1350abfc10800000000000000
-      internalID: 2088439131066545440
+      spriteID: 6e655e4c4dba3e1e0800000000000000
+      internalID: -2169701665137666330
       vertices: []
       indices: 
       edges: []
@@ -942,8 +984,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4304c1a4df3c83300800000000000000
-      internalID: 232150873447088180
+      spriteID: a1bd3968b98933780800000000000000
+      internalID: -8704445861031847142
       vertices: []
       indices: 
       edges: []
@@ -952,7 +994,7 @@ TextureImporter:
       name: Shield
       rect:
         serializedVersion: 2
-        x: 4601
+        x: 4608
         y: 3584
         width: 512
         height: 512
@@ -963,8 +1005,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e655e4c4dba3e1e0800000000000000
-      internalID: -2169701665137666330
+      spriteID: 07884a074282ac640800000000000000
+      internalID: 5100933664924272752
       vertices: []
       indices: 
       edges: []
@@ -984,8 +1026,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1bd3968b98933780800000000000000
-      internalID: -8704445861031847142
+      spriteID: ef8bc5dc9644deb30800000000000000
+      internalID: 4318182838925834494
       vertices: []
       indices: 
       edges: []
@@ -994,7 +1036,7 @@ TextureImporter:
       name: Nature
       rect:
         serializedVersion: 2
-        x: 519
+        x: 512
         y: 3072
         width: 512
         height: 512
@@ -1005,8 +1047,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07884a074282ac640800000000000000
-      internalID: 5100933664924272752
+      spriteID: 3ffc077b1e44419b0800000000000000
+      internalID: -5110383940922716173
       vertices: []
       indices: 
       edges: []
@@ -1026,8 +1068,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef8bc5dc9644deb30800000000000000
-      internalID: 4318182838925834494
+      spriteID: 484dee251cd690050800000000000000
+      internalID: 5767261474912130180
       vertices: []
       indices: 
       edges: []
@@ -1047,8 +1089,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ffc077b1e44419b0800000000000000
-      internalID: -5110383940922716173
+      spriteID: 2444a5ea25ee830d0800000000000000
+      internalID: -3442739876244863934
       vertices: []
       indices: 
       edges: []
@@ -1068,14 +1110,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 484dee251cd690050800000000000000
-      internalID: 5767261474912130180
+      spriteID: 625e6039135838de0800000000000000
+      internalID: -1332074616804940506
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasicPower
+      name: IconSheet_32
       rect:
         serializedVersion: 2
         x: 2560
@@ -1089,14 +1131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2444a5ea25ee830d0800000000000000
-      internalID: -3442739876244863934
+      spriteID: 2a30fee899bcddbd0800000000000000
+      internalID: -2603701149161815134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skill
+      name: IconSheet_33
       rect:
         serializedVersion: 2
         x: 3072
@@ -1110,14 +1152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 625e6039135838de0800000000000000
-      internalID: -1332074616804940506
+      spriteID: 6bbdb027e6362f8b0800000000000000
+      internalID: -5119920500355900490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spell
+      name: IconSheet_34
       rect:
         serializedVersion: 2
         x: 3584
@@ -1131,8 +1173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a30fee899bcddbd0800000000000000
-      internalID: -2603701149161815134
+      spriteID: cce1904b35fd5b040800000000000000
+      internalID: 4662878539807792844
       vertices: []
       indices: 
       edges: []
@@ -1152,8 +1194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bbdb027e6362f8b0800000000000000
-      internalID: -5119920500355900490
+      spriteID: 9e4280b32e5342430800000000000000
+      internalID: 3757187234903106793
       vertices: []
       indices: 
       edges: []
@@ -1173,14 +1215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cce1904b35fd5b040800000000000000
-      internalID: 4662878539807792844
+      spriteID: fba8b760d667d4cc0800000000000000
+      internalID: -3725191106133259585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CantSelfTarget
+      name: IconSheet_37
       rect:
         serializedVersion: 2
         x: 0
@@ -1194,8 +1236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e4280b32e5342430800000000000000
-      internalID: 3757187234903106793
+      spriteID: 8e363ed1ef617ce30800000000000000
+      internalID: 4523609631395898344
       vertices: []
       indices: 
       edges: []
@@ -1215,8 +1257,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fba8b760d667d4cc0800000000000000
-      internalID: -3725191106133259585
+      spriteID: cddaefcfa9dac6750800000000000000
+      internalID: 6299600859965599196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZoneStar
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 4096
+        width: 512
+        height: 512
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b996d296ea4c3bae0800000000000000
+      internalID: -1534666794635269733
       vertices: []
       indices: 
       edges: []
@@ -1236,8 +1299,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e363ed1ef617ce30800000000000000
-      internalID: 4523609631395898344
+      spriteID: 4c03c7dec218ddb00800000000000000
+      internalID: 854981534233145540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duration
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26853cfc6c0b9c490800000000000000
+      internalID: -7725449317841676190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IconSheet_41
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1af5ce0db45f66b0800000000000000
+      internalID: -5300925065418376675
       vertices: []
       indices: 
       edges: []
@@ -1257,8 +1362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cddaefcfa9dac6750800000000000000
-      internalID: 6299600859965599196
+      spriteID: 2025ba1682ccc0630800000000000000
+      internalID: 3894712251578012162
       vertices: []
       indices: 
       edges: []

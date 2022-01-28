@@ -4,13 +4,14 @@ using System.Linq;
 using System.Reflection;
 using Cells;
 using Editor.GridGenerators;
-using Grid;
-using Grid.UnitGenerators;
 using GridObjects;
-using Gui;
 using Players;
+using StateMachine;
+using StateMachine.UnitGenerators;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+using UserInterface;
 
 namespace Editor
 {
@@ -481,7 +482,6 @@ namespace Editor
                 newUnit.transform.parent = UnitsParent.transform;
                 newUnit.transform.localPosition -= offset;
                 newUnit.transform.rotation = selectedCell.transform.rotation;
-                newUnit.Cell = selectedCell;
 
                 Undo.RegisterCreatedObjectUndo(newUnit.gameObject, "Unit painting");
             }
@@ -646,7 +646,7 @@ namespace Editor
             players = GameObject.Find("Players");
             objects = GameObject.Find("Objects");
             guiController = GameObject.Find("GUIController");
-            SpriteRenderer background = GameObject.Find("Background").GetComponent<SpriteRenderer>();
+            Image background = GameObject.Find("Environment/Canvas/Background").GetComponent<Image>();
 
             while (cellGrid.transform.childCount > 0)
             {

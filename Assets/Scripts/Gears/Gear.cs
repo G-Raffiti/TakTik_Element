@@ -12,6 +12,14 @@ namespace Gears
         public List<Affix> Affixes { get; private set; }
         public int Stage { get; private set; }
 
+        public Gear() {}
+        public Gear(Gear gear)
+        {
+            GearSO = gear.GearSO;
+            Affixes = gear.Affixes;
+            Stage = gear.Stage;
+        }
+
         public BattleStats GetStats()
         {
             BattleStats ret = new BattleStats(0);
@@ -23,12 +31,12 @@ namespace Gears
         /// <summary>
         /// called on Gear Random Creation
         /// </summary>
-        /// <param name="lvl"> the stage in the game (1 2 or 3)</param>
-        public void CreateGear(int lvl)
+        /// <param name="_stage"> the stage in the game (1 2 or 3)</param>
+        public void CreateGear()
         {
             GearSO = DataBase.Gear.GetRandom();
             Affixes = new List<Affix>();
-            Stage = lvl;
+            Stage = KeepBetweenScene.Stage;
 
             List<AffixSO> nonAffixes = new List<AffixSO>();
             nonAffixes.AddRange(GearSO.NonAffixs);
@@ -36,8 +44,14 @@ namespace Gears
             {
                 if (DataBase.Affix.Affixes.Count <= nonAffixes.Count) break;
                 AffixSO affix = DataBase.Affix.GetRandomBut(nonAffixes);
-                int value = affix.getValue(Math.Min(lvl,affix.Tier.Length));
-                Affixes.Add(new Affix(affix, value));
+                int value = affix.getValue(Stage);
+                if (value == 0)
+                {
+                    i--;
+                    nonAffixes.Add(affix);
+                    continue;
+                }
+                Affixes.Add(new Affix(affix, value, Stage + 1));
                 nonAffixes.Add(affix);
             }
         }
@@ -48,10 +62,10 @@ namespace Gears
             Affixes = new List<Affix>();
             Stage = KeepBetweenScene.Stage;
 
-            foreach (KeyValuePair<AffixSO,int> _pair in _gearStats)
+            foreach (AffixSO _affix in _gearStats.Keys)
             {
-                int value = _pair.Key.getValue(Math.Min(_pair.Key.Tier.Length, Math.Max(0, _pair.Value - 1)));
-                Affixes.Add(new Affix(_pair.Key, value));
+                int value = _affix.getValueOfTier(_gearStats[_affix]);
+                Affixes.Add(new Affix(_affix, value, _gearStats[_affix]));
             }
 
             return this;

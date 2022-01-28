@@ -17,3 +17,8 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 9352d68ca4f8ac24a97851c5f19ee00d, type: 3}
   name: Stone
   pushDistance: 3
+  stonesSprites:
+  - {fileID: 21300000, guid: 14068d0e0d20b664e8a476d540f3b471, type: 3}
+  - {fileID: 21300000, guid: 5d4d97f70016e944e9c82215aebccf1d, type: 3}
+  - {fileID: 21300000, guid: 04806d5c18d440e4db198248ad35860e, type: 3}
+  - {fileID: 21300000, guid: 82f3eb9c97615a24f94ff92d1cc8a940, type: 3}

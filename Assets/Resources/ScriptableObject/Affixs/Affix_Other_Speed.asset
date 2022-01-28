@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   color: {r: 1, g: 0.9320468, b: 0, a: 1}
-  tier: 020000000400000006000000080000000a000000
+  rarity: 3
+  tier: 020000000400000006000000080000000a0000000c000000
+  symbol: <sprite name=Speed>

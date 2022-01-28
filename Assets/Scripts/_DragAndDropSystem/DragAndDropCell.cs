@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using _EventSystem.CustomEvents;
 using Gears;
+using Relics;
 using Skills;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -254,19 +255,18 @@ namespace _DragAndDropSystem
 			{
 				case ContainType.Skill:
 				{
-					item.GetComponent<SkillInfo>().Deck = sourceCell.GetInfoSkill().Deck;
-					item.GetComponent<SkillInfo>().UpdateSkill(sourceCell.GetInfoSkill().Skill, sourceCell.GetInfoSkill().Unit);
+					item.GetComponent<SkillInfo>().skill = sourceCell.GetInfoSkill().skill;
+					item.GetComponent<SkillInfo>().Unit = sourceCell.GetInfoSkill().Unit;
 				}
 					break;
 				case ContainType.Gear:
 				{
-					item.GetComponent<InfoGear>().Gear = sourceCell.GetInfoGear().Gear;
+					item.GetComponent<GearInfo>().Gear = sourceCell.GetInfoGear().Gear;
 				}
 					break;
 				case ContainType.Relic:
 				{
 					item.GetComponent<RelicInfo>().CreateRelic(sourceCell.GetInfoRelic().Relic);
-					item.GetComponent<RelicInfo>().SetDeck(sourceCell.GetInfoRelic().Deck);
 				}
 					break;
 			}
@@ -375,9 +375,9 @@ namespace _DragAndDropSystem
 		/// <summary>
 		/// Get InfoGear from Cell
 		/// </summary>
-		public InfoGear GetInfoGear()
+		public GearInfo GetInfoGear()
 		{
-			return GetComponentInChildren<InfoGear>();
+			return GetComponentInChildren<GearInfo>();
 		}
 		
 		/// <summary>

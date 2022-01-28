@@ -19,6 +19,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 12
     Power: 2
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0
@@ -38,6 +39,7 @@ MonoBehaviour:
     Shield: 0
     Speed: 0
     Power: 0
+    Focus: 0
     Affinity:
       Fire: 0
       Nature: 0
@@ -53,7 +55,7 @@ MonoBehaviour:
       NeedTarget: 0
       CanBeModified: 0
   prefab: {fileID: 1179847595273300741, guid: 89efd93c7d9c49c4b8310941e959cfba, type: 3}
-  unitSprite: {fileID: 21300000, guid: 3e41a5a99e77f6a4dac0139adf9a5d29, type: 3}
+  unitSprite: {fileID: 21300000, guid: 9101975b0761197439c0be1a79946a25, type: 3}
   level: 1
   relic: {fileID: 0}
   rewardType: 1

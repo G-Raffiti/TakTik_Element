@@ -1,7 +1,6 @@
 ﻿using System;
 using Skills._Zone;
 using Units;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Stats

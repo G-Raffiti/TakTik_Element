@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb306db600d9448dba5beee8f2487ca0, type: 3}
   m_Name: Status_PhysicShield
   m_EditorClassIdentifier: 
+  type: 0
   betweenTurn: 0
   element: {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}
   onFloorSprite: {fileID: 21300000, guid: a0aea082cadbcd346bed0ab86bdf0615, type: 3}
-  name: Defence
+  buffName: Protection
+  baseDuration: 0
   Bonus:
   - affix: {fileID: 11400000, guid: 4dc7ffa5bd3d5aa4888feaee1576915b, type: 2}
     value: 1
   Malus: []
   isDefinitive: 1
-  durationPerFocusPercent: 0
-  powerDependency: 2
-  powerPercent: 100
-  description: Add some <sprite name=Shield>
+  dependOn: 1
+  fixValue: 3

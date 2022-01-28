@@ -15,5 +15,9 @@ MonoBehaviour:
   background: {fileID: 21300000, guid: 94be392e8f93c5e4298d3de0b57702cc, type: 3}
   element: {fileID: 0}
   full: {fileID: 21300000, guid: 76f6ff0dffb4bd94da334fae3a863ef0, type: 3}
-  tileType: Hole
+  basicBuff:
+    Duration: 0
+    Value: 0
+    StatusEffect: {fileID: 0}
+  tileType: 1
   isUnderground: 1

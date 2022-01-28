@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BattleOver;
+using EndConditions;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,11 +26,12 @@ namespace Cells
         /// </summary>
         public void SaveBoard(List<SavedCell> _list, Sprite _background, Camera _camera)
         {
+#if UNITY_EDITOR
             cells = new List<SavedCell>();
             
             foreach (SavedCell _Cell in _list)
             {
-                Cells.Add(_Cell);
+                cells.Add(_Cell);
             }
 
             background = _background;
@@ -39,6 +40,7 @@ namespace Cells
             EditorUtility.SetDirty(this); 
             AssetDatabase.SaveAssets(); 
             AssetDatabase.Refresh();
+#endif
         }
     }
 
@@ -47,11 +49,13 @@ namespace Cells
     {
         public float x;
         public float y;
+        public float size;
 
         public CameraSaved(Camera _camera)
         {
             x = _camera.transform.position.x;
             y = _camera.transform.position.y;
+            size = _camera.orthographicSize;
         }
     }
 }

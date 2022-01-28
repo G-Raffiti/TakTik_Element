@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using Cells;
-using Grid;
+using StateMachine;
 using Units;
 using UnityEngine;
 
@@ -12,9 +12,10 @@ namespace GridObjects
     public class GridObject : IMovable
     {
         [SerializeField] private GridObjectSO gridObject;
-        [SerializeField] private CellEvent gridObjectDestroyed;
+        [SerializeField] private GridObjectEvent gridObjectDestroyed;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private VoidEvent onActionDone;
+        private bool isDying;
         public GridObjectSO GridObjectSO
         {
             get => gridObject;
@@ -23,10 +24,10 @@ namespace GridObjects
 
         private bool isUsed = false;
 
-        public override void Move(Cell destinationCell, List<Cell> path)
+        public override List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
-            if (!GridObjectSO.Movable) return;
-            base.Move(destinationCell, path);
+            if (!GridObjectSO.Movable) return new List<Cell>();
+            return base.Move(destinationCell, path);
         }
 
         /// <summary>
@@ -60,8 +61,6 @@ namespace GridObjects
         public bool IsInteractable =>
             gridObject.GetZoneOfInteraction(Cell).Contains(BattleStateManager.instance.PlayingUnit.Cell) && !isUsed;
 
-        public string Name { get; set; }
-
         public bool IsInteractableFrom(Cell _cell)
         {
             return GridObjectSO.GetZoneOfInteraction(Cell).Contains(_cell) && !isUsed;
@@ -78,40 +77,31 @@ namespace GridObjects
 
         protected virtual void OnMouseDown()
         {
-            if(cell != null)
-                cell.OnMouseDown();
+            if(Cell != null)
+                Cell.OnMouseDown();
         }
         protected virtual void OnMouseEnter()
         {
-            if(cell != null)
-                cell.OnMouseEnter();
-            GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, cell);
+            if(Cell != null)
+                Cell.OnMouseEnter();
+            GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, Cell);
         }
         protected virtual void OnMouseExit()
         {
-            if(cell != null)
-                cell.OnMouseExit();
+            if(Cell != null)
+                Cell.OnMouseExit();
         }
 
         public override IEnumerator OnDestroyed()
         {
-            gridObjectDestroyed.Raise(Cell);
-            
-            while (IsMoving)
-            {
-                yield return null;
-            }
-
-            GetComponent<Animation>().Play("DestroyGridObject");
-
-            while (GetComponent<Animation>().isPlaying)
-            {
-                yield return null;
-            }
-            
+            gridObjectDestroyed.Raise(this);
+            Animation anim = GetComponent<Animation>();
+            isDying = true;
+            yield return new WaitWhile(() => anim.isPlaying);
             Cell.FreeTheCell();
+            isDying = false;
+            yield return new WaitForSeconds(0.1f);
             Destroy(gameObject);
-            
             onActionDone.Raise();
         }
 

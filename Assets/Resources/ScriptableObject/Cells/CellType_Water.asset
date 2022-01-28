@@ -16,8 +16,8 @@ MonoBehaviour:
   element: {fileID: 0}
   full: {fileID: 0}
   basicBuff:
-    Duration: 0
-    Power: 0
+    Duration: 1
+    Value: 25
     StatusEffect: {fileID: 11400000, guid: 2a702aa4ea930f14a88740e7236970be, type: 2}
-  tileType: Water
+  tileType: 0
   isUnderground: 0

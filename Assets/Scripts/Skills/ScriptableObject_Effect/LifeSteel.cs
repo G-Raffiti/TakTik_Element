@@ -2,8 +2,6 @@
 using System.Linq;
 using _ScriptableObject;
 using Cells;
-using Skills._Zone;
-using Units;
 using UnityEngine;
 
 namespace Skills.ScriptableObject_Effect
@@ -26,7 +24,7 @@ namespace Skills.ScriptableObject_Effect
 
         public override string InfoEffect(SkillInfo _skillInfo)
         {
-            if (_skillInfo.Type != ESkill.Attack || _skillInfo.Type != ESkill.Spell) return "";
+            if (_skillInfo.skill.Type != ESkill.Attack || _skillInfo.skill.Type != ESkill.Spell) return "";
             return $"Heal yourself for {percent}% of your Damage";
         }
         public override string InfoEffect()
@@ -37,7 +35,7 @@ namespace Skills.ScriptableObject_Effect
         public override Dictionary<Cell, int> DamageValue(Cell _cell, SkillInfo _skillInfo)
         {
             int _damage = 0;
-            List<IEffect> otherEffects = _skillInfo.Deck.Effects.Where(_effect => !(_effect is LifeSteel)).ToList();
+            List<IEffect> otherEffects = _skillInfo.skill.Effects.Where(_effect => !(_effect is LifeSteel)).ToList();
 
             foreach (IEffect _effect in otherEffects)
             {

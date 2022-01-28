@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a64303ea82a4eeda8240f27a0e178ef, type: 3}
   m_Name: Status_Burn
   m_EditorClassIdentifier: 
+  type: 1
   betweenTurn: 0
   element: {fileID: 11400000, guid: 31871d38b63cd234996facaae7de5ccc, type: 2}
   onFloorSprite: {fileID: 21300000, guid: 4c56a42f0e188314f8ae503d60a2cc4a, type: 3}
-  name: Burn
-  duration: 2
+  buffName: Burning
+  baseDuration: 2

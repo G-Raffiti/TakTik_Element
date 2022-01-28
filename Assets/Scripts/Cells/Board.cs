@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using _Instances;
-using BattleOver;
+using EndConditions;
 using GridObjects;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cells
 {
@@ -15,7 +15,7 @@ namespace Cells
         /// </summary>
         [SerializeField] private BoardSO boardTest;
         private List<SavedCell> SavedCells = new List<SavedCell>();
-        [SerializeField] private SpriteRenderer background;
+        [SerializeField] private Image background;
         [SerializeField] private Camera mainCamera;
         
         /// <summary>
@@ -28,15 +28,19 @@ namespace Cells
         /// return a Board Stage 1 = 1Loot, 3Fight, 1Boss, Stage 2 = 3Fight, 1Boss, Stage 3 = 1Loot, 2Fight, 1Boss.
         /// </summary>
         /// <returns></returns>
-        private static BoardSO randomize()
+        private static BoardSO randomize(EConditionType state)
         {
-            if (KeepBetweenScene.Stage == 0 || KeepBetweenScene.Stage == 3 && KeepBetweenScene.BattleBeforeBoss == 0)
-                return DataBase.Board.LootBoxBoards[Random.Range(0, DataBase.Board.LootBoxBoards.Count)];
-            
-            if (KeepBetweenScene.BattleBeforeBoss <= 0)
-                return DataBase.Board.BossBattleBoards[Random.Range(0, DataBase.Board.BossBattleBoards.Count)];
-            
-            return DataBase.Board.DeathBattleBoards[Random.Range(0, DataBase.Board.DeathBattleBoards.Count)];
+            switch (state)
+            {
+                case EConditionType.LootBox:
+                    return DataBase.Board.LootBoxBoards[Random.Range(0, DataBase.Board.LootBoxBoards.Count)];
+                case EConditionType.Boss:
+                    return DataBase.Board.BossBattleBoards[Random.Range(0, DataBase.Board.BossBattleBoards.Count)];
+                case EConditionType.Last:
+                    return DataBase.Board.LastBattleBoards[Random.Range(0, DataBase.Board.LastBattleBoards.Count)];
+                default:
+                    return DataBase.Board.DeathBattleBoards[Random.Range(0, DataBase.Board.DeathBattleBoards.Count)];
+            }
         }
 
         /// <summary>
@@ -67,6 +71,10 @@ namespace Cells
             foreach (Transform _child in transform)
             {
                 Cell _Cell = _child.gameObject.GetComponent<Cell>();
+                if (_Cell.CellSO == null)
+                {
+                    Debug.LogWarning($"cell ({_Cell.OffsetCoord.x}/{_Cell.OffsetCoord.y}) missing CellSO");
+                }
                 if (_Cell != null)
                 {
                     SavedCells.Add(new SavedCell(_child.gameObject.GetComponent<TileIsometric>()));
@@ -80,9 +88,9 @@ namespace Cells
         /// <summary>
         /// method Called at the beginning of each Battle to choose and create the Board
         /// </summary>
-        public void LoadBoard()
+        public void LoadBoard(EConditionType state)
         {
-            LoadBoard(randomize());
+            LoadBoard(randomize(state));
         }
         
         /// <summary>
@@ -100,12 +108,13 @@ namespace Cells
                 DestroyImmediate(GameObject.Find("Objects").transform.GetChild(0).gameObject);
             }
 
+            dataBase.InstantiateDataBases();
             background.sprite = null;
             
             foreach (SavedCell _SavedCell in _data.Cells)
             {
-                
-                GameObject instance = PrefabUtility.InstantiatePrefab(DataBase.Cell.TilePrefab) as GameObject;
+
+                GameObject instance = GameObject.Instantiate(DataBase.Cell.TilePrefab);
                 instance.transform.SetParent(transform);
                 instance.transform.position = new Vector3(_SavedCell.position[0],_SavedCell.position[1],_SavedCell.position[2]);
                 TileIsometric _cell = instance.GetComponent<TileIsometric>();
@@ -114,6 +123,7 @@ namespace Cells
                     _cell.CellSO = _SavedCell.type;
                     _cell.OffsetCoord = new Vector2(_SavedCell.offsetCoord[0], _SavedCell.offsetCoord[1]);
                     _cell.IsSpawnPlace = _SavedCell.isSpawn;
+                    _cell.Initialize();
                 }
 
                 if (_SavedCell.gridObject == null) continue;
@@ -128,9 +138,7 @@ namespace Cells
             background.sprite = _data.Background;
 
             mainCamera.gameObject.transform.position = new Vector3(_data.Camera.x, _data.Camera.y, -15f);
-            mainCamera.orthographicSize = _data.Camera.x + 1;
-            background.transform.position = new Vector3(_data.Camera.x, _data.Camera.y, 0);
-            
+            mainCamera.orthographicSize = _data.Camera.size;
 
             EndCondition = _data.EndCondition;
         }
