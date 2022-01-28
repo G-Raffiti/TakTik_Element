@@ -11,12 +11,14 @@ namespace _ScriptableObject
         [SerializeField] private string elementName;
         [SerializeField] private Color textColour;
         [SerializeField] private EElement type;
+        [SerializeField] private Sprite icon;
 
         public string Name => ColorName();
         public Color TextColour => textColour;
         public EElement Type => type;
 
         public string ElementName => elementName;
+        public Sprite Icon => icon;
 
         public Element()
         {

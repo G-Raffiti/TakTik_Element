@@ -39,10 +39,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectHealOnEndFight.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectRangeType.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectZoneType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
@@ -59,7 +55,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/AspectUtility.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/ResolutionManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/UnitGenerators/CustomUnitGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
@@ -90,6 +85,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_ScriptableObject/Element.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/HandDeckMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Decks/AllDecksMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />

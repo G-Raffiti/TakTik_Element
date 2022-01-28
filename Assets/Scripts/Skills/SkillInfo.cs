@@ -8,6 +8,7 @@ using Skills._Zone;
 using Skills.ScriptableObject_Effect;
 using StateMachine;
 using Stats;
+using TMPro;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,7 +21,11 @@ namespace Skills
     /// </summary>
     public class SkillInfo : InfoBehaviour
     {
-        [SerializeField] private Image icon;
+        [SerializeField] private Image illustration;
+        [SerializeField] private Image elementIcon;
+        [SerializeField] private TextMeshProUGUI costText;
+        [SerializeField] private Image canUse;
+        [SerializeField] private bool isHandSkill;
         
         [Header("Event Sender")] 
         [SerializeField] private SkillEvent onSkillSelected;
@@ -63,8 +68,6 @@ namespace Skills
             }
 
             OnSkillUsed.Raise();
-            if(BattleStateManager.instance.PlayingUnit.playerNumber == 0)
-                DestroyImmediate(this.gameObject);
         }
         
         private static IEnumerator HighlightZone(List<Cell> zone)
@@ -133,6 +136,20 @@ namespace Skills
             return $"<color=#{_hexColor}>{skill.BaseSkill.Name}</color>";
         }
 
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            base.OnPointerEnter(eventData);
+            if (!isHandSkill) return;
+            LeanTween.Framework.LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1), 0.2f);
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            base.OnPointerExit(eventData);
+            if (!isHandSkill) return;
+            LeanTween.Framework.LeanTween.scale(this.gameObject, Vector3.one, 0.2f);
+        }
+
         public override void OnPointerClick(PointerEventData eventData)
         {
             if (Unit.BattleStats.AP >= skill.Cost)
@@ -141,8 +158,21 @@ namespace Skills
         
         public override void DisplayIcon()
         {
-            if (icon != null)
-                icon.sprite = GetIcon();
+            if (illustration != null)
+                illustration.sprite = GetIcon();
+            if (elementIcon != null)
+                elementIcon.sprite = skill.Element.Icon;
+            if (costText != null)
+                costText.text = $"{skill.Cost}";
+            CanUse();
+        }
+
+        public void CanUse()
+        {
+            if (canUse == null) return;
+
+            canUse.color = skill.Cost <= skill.Unit.BattleStats.AP ? Color.white : Color.grey;
+            illustration.color = skill.Cost <= skill.Unit.BattleStats.AP ? Color.white : new Color(1, 1, 1, 0.5f);
         }
 
         #endregion

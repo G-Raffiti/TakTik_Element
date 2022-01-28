@@ -99,7 +99,7 @@
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\LifeSteel.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateSkillSelected.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopInventory_UI.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleDeckMono_UI.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\HandDeckMono_UI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityInfoEvent.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_Relics.cs" />
      <Compile Include="Assets\Scripts\Players\AIPlayer.cs" />

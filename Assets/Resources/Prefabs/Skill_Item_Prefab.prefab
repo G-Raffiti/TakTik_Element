@@ -104,7 +104,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
   TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
-  icon: {fileID: 7325826300287324314}
+  illustration: {fileID: 7325826300287324314}
+  elementIcon: {fileID: 0}
+  costText: {fileID: 0}
+  canUse: {fileID: 0}
+  isHandSkill: 0
   onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
   OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   Unit: {fileID: 0}

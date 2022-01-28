@@ -11,10 +11,9 @@ namespace UserInterface.BattleScene
     /// <summary>
     /// Class that Update the Skills UI on Battle Scene
     /// </summary>
-    public class BattleDeckMono_UI : MonoBehaviour
+    public class HandDeckMono_UI : MonoBehaviour
     {
         private DeckMono deck;
-        private Unit unit;
 
         [SerializeField] private GameObject skillBtn;
 
@@ -23,6 +22,7 @@ namespace UserInterface.BattleScene
         [SerializeField] private VoidEvent onDraw;
         [SerializeField] private VoidEvent onReDraw;
         [SerializeField] private VoidEvent onUnitEndTurn;
+        [SerializeField] private VoidEvent onSkillUsed;
 
         private IEnumerator Start()
         {
@@ -39,6 +39,7 @@ namespace UserInterface.BattleScene
             onDraw.EventListeners += OnDrawRaised;
             onUnitEndTurn.EventListeners += onEndTurn;
             onReDraw.EventListeners += DrawFast;
+            onSkillUsed.EventListeners += DrawFast;
         }
 
         private void OnDisable()
@@ -47,17 +48,11 @@ namespace UserInterface.BattleScene
             onDraw.EventListeners -= OnDrawRaised;
             onUnitEndTurn.EventListeners -= onEndTurn;
             onReDraw.EventListeners -= DrawFast;
+            onSkillUsed.EventListeners -= DrawFast;
         }
 
         public void onUnitStartTurnRaised(Unit item)
         {
-            if (item.playerNumber != 0)
-            {
-                unit = BattleStateManager.instance.Units.Find(Unit => Unit.playerNumber == 0);
-            }
-            else unit = item;
-            
-            //StartCoroutine(DrawAnimation());
         }
 
         public void onEndTurn(Void _obj)

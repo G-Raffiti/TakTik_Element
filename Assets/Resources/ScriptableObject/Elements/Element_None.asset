@@ -15,3 +15,4 @@ MonoBehaviour:
   elementName: Neutral
   textColour: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   type: 0
+  icon: {fileID: -5119920500355900490, guid: 657e1ca158bcc9c46a5fb7d2870dc833, type: 3}

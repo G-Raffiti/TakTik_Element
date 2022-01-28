@@ -316,12 +316,12 @@
           <e p="UserInterface" t="Include">
             <e p="BattleScene" t="Include">
               <e p="Battle_AP_MP_UI.cs" t="Include" />
-              <e p="BattleDeckMono_UI.cs" t="Include" />
               <e p="BattleInventory_UI.cs" t="Include" />
               <e p="BattleRelicChoice_UI.cs" t="Include" />
               <e p="BattleTurnOrder_UI.cs" t="Include" />
               <e p="BtnEndTurn.cs" t="Include" />
               <e p="DeathWaiter.cs" t="Include" />
+              <e p="HandDeckMono_UI.cs" t="Include" />
               <e p="InfoUI" t="Include">
                 <e p="BattleInfoUI_DeckMono.cs" t="Include" />
                 <e p="BattleInfoUI_Inventory.cs" t="Include" />

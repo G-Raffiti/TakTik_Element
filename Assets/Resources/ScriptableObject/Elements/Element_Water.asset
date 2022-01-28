@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300fe35e28fd4797b8760b3c642816d3, type: 3}
   m_Name: Element_Water
   m_EditorClassIdentifier: 
-  name: Water
+  elementName: Water
   textColour: {r: 0, g: 0.4692124, b: 0.6698113, a: 1}
   type: 3
+  icon: {fileID: 5767261474912130180, guid: 657e1ca158bcc9c46a5fb7d2870dc833, type: 3}
