@@ -683,6 +683,11 @@ namespace Units
             return UnitSprite;
         }
 
+        public Color GetTeamColor()
+        {
+            return playerNumber == 0 ? colorSet.GetColors()[EColor.ally] : colorSet.GetColors()[EColor.enemy];
+        }
+
         #endregion
     }
     public class AttackAction

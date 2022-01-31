@@ -59,7 +59,7 @@ namespace Relics
 
         public override string ColouredName()
         {
-            return $"<size=35>{Relic.Name}";
+            return $"{Relic.Name}";
         }
 
         #endregion

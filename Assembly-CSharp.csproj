@@ -210,7 +210,7 @@
      <Compile Include="Assets\Scripts\_SaveSystem\SavingLoading.cs" />
      <Compile Include="Assets\Scripts\ScreenResolutionManager\Example\ResolutionSelector.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleState.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\Tooltip.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\Tooltip.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\SkillEffect.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Buff.cs" />
      <Compile Include="Assets\Scripts\Cells\Square.cs" />
@@ -252,6 +252,14 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\SkillTooltip.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\ToolTipManager.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\GearTooltip.cs" />
+     <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GearInfoEvent.cs" />
+     <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGearInfoEvent.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\UnitTooltip.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BuffInfo.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\Tooltip.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

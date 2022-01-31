@@ -29,6 +29,7 @@ namespace Skills
         [SerializeField] private bool consumable;
         [SerializeField] private int cost;
         [SerializeField] private EArchetype archetype;
+        [SerializeField] private MonsterSO monster;
 
         public string Name => name;
         public Element Element => element;
@@ -43,6 +44,7 @@ namespace Skills
         public bool Consumable => consumable;
         public int Cost => cost;
         public EArchetype Archetype => archetype;
+        public MonsterSO Monster => monster;
 
         public void SetDATA(rawSkill _rawSkill)
         {

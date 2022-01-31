@@ -78,6 +78,7 @@
               <e p="CellEvent.cs" t="Include" />
               <e p="FloatEvent.cs" t="Include" />
               <e p="GearEvent.cs" t="Include" />
+              <e p="GearInfoEvent.cs" t="Include" />
               <e p="GridObjectEvent.cs" t="Include" />
               <e p="InfoEvent.cs" t="Include" />
               <e p="IntEvent.cs" t="Include" />
@@ -102,6 +103,7 @@
               <e p="UnityBoolEvent.cs" t="Include" />
               <e p="UnityCellEvent.cs" t="Include" />
               <e p="UnityFloatEvent.cs" t="Include" />
+              <e p="UnityGearInfoEvent.cs" t="Include" />
               <e p="UnityGridObjectEvent.cs" t="Include" />
               <e p="UnityInfoEvent.cs" t="Include" />
               <e p="UnityIntEvent.cs" t="Include" />
@@ -328,9 +330,17 @@
               </e>
               <e p="TurnOrderPrefab.cs" t="Include" />
             </e>
+            <e p="BuffInfo.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
             <e p="PersonalInventory.cs" t="Include" />
             <e p="Tooltip.cs" t="Include" />
+            <e p="ToolTips" t="Include">
+              <e p="GearToolTip.cs" t="Include" />
+              <e p="SkillTooltip.cs" t="Include" />
+              <e p="Tooltip.cs" t="Include" />
+              <e p="ToolTipManager.cs" t="Include" />
+              <e p="UnitTooltip.cs" t="Include" />
+            </e>
             <e p="UI_Menu" t="Include">
               <e p="ButtonPanel.cs" t="Include" />
               <e p="MenuPanel.cs" t="Include" />
