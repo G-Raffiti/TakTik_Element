@@ -1,4 +1,5 @@
-﻿using DataBases;
+﻿using _EventSystem.CustomEvents;
+using DataBases;
 using Resources.ToolTip.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,21 +9,25 @@ namespace Gears
     public class GearInfo : InfoBehaviour
     {
         public Gear Gear { get; set; }
+        
+        [Header("Tooltip Events")] 
+        [SerializeField] private GearInfoEvent GearTooltip_ON;
+        [SerializeField] private VoidEvent GearTooltip_OFF;
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            TooltipOn.Raise(this);
+            GearTooltip_ON.Raise(this);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            TooltipOff.Raise();
+            GearTooltip_OFF.Raise();
         }
 
 
         public override string GetInfoMain()
         {
-            return $"<size=35>{ColouredName()}</size>";
+            return $"<size=36>{ColouredName()}</size>\n{Gear.GearSO.Rarity.Name} {Gear.GearSO.Type}";
         }
 
         public override string GetInfoLeft()
@@ -52,7 +57,7 @@ namespace Gears
 
         public override string ColouredName()
         {
-            return $"<color={ColorSet.HexColor(Gear.GearSO.Rarity.TextColour)}>{Gear.GearSO.Name}</color>\n{Gear.GearSO.Rarity.Name} {Gear.GearSO.Type}";
+            return $"<color={ColorSet.HexColor(Gear.GearSO.Rarity.TextColour)}>{Gear.GearSO.Name}</color>";
         }
     }
 }

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5171d988c509f0d4288f7dd375f93424, type: 3}
-  m_Name: Tooltip_IInfo_On
+  m_Script: {fileID: 11500000, guid: 92c6963ef5e9452680e0374f0203e476, type: 3}
+  m_Name: onSkillTooltip_ON
   m_EditorClassIdentifier: 

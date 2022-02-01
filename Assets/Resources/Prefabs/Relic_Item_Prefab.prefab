@@ -89,8 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667319d5c4f34af391023d3ca940be45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
-  TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
+  icon: {fileID: 593454680961682874}
+  InfoTooltip_ON: {fileID: 11400000, guid: 6c0f6a2d548f821469d39d3563d43ad3, type: 2}
+  InfoTooltip_OFF: {fileID: 11400000, guid: ac209bdd5ea07a6498456340975aef2e, type: 2}
 --- !u!114 &593454680961682876
 MonoBehaviour:
   m_ObjectHideFlags: 0

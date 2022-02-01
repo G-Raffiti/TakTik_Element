@@ -32,6 +32,7 @@ namespace _CSVFiles
         public int Power;
         public bool Consumable;
         public Sprite Icon;
+        public MonsterSO Monster;
 
         public rawSkill(bool no)
         {
@@ -55,6 +56,7 @@ namespace _CSVFiles
             Power = 0;
             Consumable = false;
             Icon = null;
+            Monster = null;
         }
 
         public rawSkill(Dictionary<string, object> CSVSkill)
@@ -87,6 +89,10 @@ namespace _CSVFiles
             bool.TryParse(CSVSkill["Consumable"].ToString(), out Consumable);
             Icon = UnityEngine.Resources.Load<Sprite>(
                 $"Sprite/2000_Icons/All_Skill/{CSVSkill["Icon"]}");
+            bool.TryParse(CSVSkill["BaseSkill"].ToString(), out bool basic);
+            if (!basic)
+                Monster = UnityEngine.Resources.Load<MonsterSO>(
+                $"ScriptableObject/Monsters/{CSVSkill["MonsterType"]}_{Archetype}_{Element.Type}_{CSVSkill["MonsterName"]}");
         }
 
     }

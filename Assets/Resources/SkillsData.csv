@@ -1,30 +1,30 @@
-Skill,#,Name,Archetype,Element,Cost,Effect1,Effect2,Effect3,GridEffect,Status,RangeType,RangeValue,ZoneType,Radius,NeedView,NeedTarget,Affect,CanBeModified,Power,Consumable,Icon
-Skill,0,Strike,Warrior,None,1,Attack,,,,,Basic,1,Basic,0,True,False,All,True,5,False,Assassinskill_45
-Skill,1,Learning,,None,0,Learning,,,,,Basic,3,Self,0,True,True,OnlyEnemy,False,0,True,Update_05
-Skill,2,Guard,Warrior,None,1,Buff,,,,PhysicShield,Basic,0,Basic,0,True,False,All,True,5,False,Paladinskill_03
-Skill,3,Poison Cocktail,Ranger,Nature,1,FloorStatus,,,,Poison,Basic,3,Basic,1,True,False,All,True,3,False,Assassinskill_46
-Skill,4,Tentacule,Warrior,Nature,1,Attack,,,Pull,,Cross,4,Basic,1,True,False,OnlyOthers,True,3,False,Shamanskill_33
-Skill,5,Leef Razor,Caster,Nature,1,Spell,,,,,Cross,3,Perpendicular,1,True,False,OnlyEnemy,True,4,False,healing
-Skill,6,Wave,Caster,Water,1,Spell,,,,,Contact,1,Cone,2,True,False,All,True,3,False,Shamanskill_12
-Skill,7,Wind Arrow,Ranger,Nature,1,Attack,,,,,Ranged,4,Self,0,False,False,All,True,6,False,Warriorskill_17
-Skill,8,Discharge Hit,Warrior,Fire,1,Attack,,,PushFix_3,,Cross,1,Perpendicular,0,True,False,OnlyOthers,True,5,False,Assassinskill_40
-Skill,9,Acrobatics,Ranger,None,1,Buff,,,,AddDodge,Basic,0,Basic,0,True,True,All,True,0,False,Archerskill_20
-Skill,10,Fire Ball,Caster,Fire,1,Spell,Buff,,,Burn,Ranged,4,Line,1,True,False,All,True,2,False,01_Fireball
-Skill,11,Meteora,Caster,Fire,2,Spell,,,PushImpact,,Cross,4,Basic,2,False,False,All,False,5,False,03_Fire_rain
-Skill,12,Smith Hammer,Warrior,Fire,1,Attack,,,,,Contact,0,Basic,1,False,False,OnlyOthers,True,4,False,Shamanskill_01
-Skill,13,Frost Sword,Warrior,Water,1,Attack,Buff,,,Drowned,Basic,2,Perpendicular,2,True,False,All,False,3,False,Warriorskill_20
-Skill,14,Cold Wind,Caster,Water,1,Buff,,,,FrostRage,Self,0,Basic,4,False,False,All,True,0,False,Warriorskill_37
-Skill,15,Basic Heal,Healer,Water,1,Healing,,,,,Basic,3,Self,0,True,False,OnlyAlly,False,4,True,13_Healing_spell_2
-Skill,16,Defensive Rune,Caster,None,1,FloorStatus,Buff,,,MagicShield,Basic,0,Basic,2,False,False,OnlyAlly,True,0,False,Shamanskill_22
-Skill,17,First Aid,Warrior,None,0,Medicine,,,,,Basic,0,Basic,0,True,False,All,True,5,False,Warriorskill_42
-Skill,18,Monster Attack,,None,1,Attack,Buff,,,,Basic,1,Basic,0,True,True,OnlyEnemy,True,3,False,Druidskill_24
-Skill,19,Shadow Stab,Warrior,Water,1,Attack,,,Teleport_to,,Ranged,3,Self,0,False,True,All,True,4,False,09_Melee_slash
-Skill,20,Encre,Ranger,Water,1,Attack,,,PushFix_3,,Basic,3,Line,1,True,False,All,True,5,False,Shamanskill_14
-Skill,21,Flash Arrow,Ranger,Fire,0,Attack,,,,,Ranged,5,Basic,0,True,True,OnlyEnemy,True,2,False,Paladinskill_20
-Skill,22,Punch,Warrior,None,1,Attack,,,PushFix_3,,Cross,2,Line,0,True,False,All,True,0,False,Warriorskill_48
-,,,,,,,,,,,,,,,,,,,,False,
-,,,,,,,,,,,,,,,,,,,,False,
-,,,,,,,,,,,,,,,,,,,,False,
-,,,,,,,,,,,,,,,,,,,,False,
-,,,,,,,,,,,,,,,,,,,,False,
-,,,,,,,,,,,,,,,,,,,,False,
+Skill,#,Name,Archetype,Element,Cost,Effect1,Effect2,Effect3,GridEffect,Status,RangeType,RangeValue,ZoneType,Radius,NeedView,NeedTarget,Affect,CanBeModified,Power,Consumable,Icon,BaseSkill,MonsterType,MonsterName
+Skill,0,Strike,Warrior,None,1,Attack,,,,,Basic,1,Basic,0,True,False,All,True,5,False,Assassinskill_45,True,,Temple Guard
+Skill,1,Learning,,None,0,Learning,,,,,Basic,3,Self,0,True,True,OnlyEnemy,False,0,True,Update_05,True,,
+Skill,2,Guard,Warrior,None,1,Buff,,,,PhysicShield,Basic,0,Basic,0,True,False,All,True,5,False,Paladinskill_03,True,,
+Skill,3,Poison Cocktail,Ranger,Nature,1,FloorStatus,,,,Poison,Basic,3,Basic,1,True,False,All,True,3,False,Assassinskill_46,False,Minion,Black Snake
+Skill,4,Tentacule,Warrior,Nature,1,Attack,,,Pull,,Cross,4,Basic,1,True,False,OnlyOthers,True,3,False,Shamanskill_33,False,Boss,Gargan Tree
+Skill,5,Leef Razor,Caster,Nature,1,Spell,,,,,Cross,3,Perpendicular,1,True,False,OnlyEnemy,True,4,False,healing,False,Minion,Forest Fairy Filia
+Skill,6,Wave,Caster,Water,1,Spell,,,,,Contact,1,Cone,2,True,False,All,True,3,False,Shamanskill_12,False,Minion,Elemental Titan Aquos
+Skill,7,Wind Arrow,Ranger,Nature,1,Attack,,,,,Ranged,4,Self,0,False,False,All,True,6,False,Warriorskill_17,False,Minion,Goblin Archer
+Skill,8,Discharge Hit,Warrior,Fire,1,Attack,,,PushFix_3,,Cross,1,Perpendicular,0,True,False,OnlyOthers,True,5,False,Assassinskill_40,False,Minion,
+Skill,9,Acrobatics,Ranger,None,1,Buff,,,,AddDodge,Basic,0,Basic,0,True,True,All,True,0,False,Archerskill_20,False,Minion,
+Skill,10,Fire Ball,Caster,Fire,1,Spell,Buff,,,Burn,Ranged,4,Line,1,True,False,All,True,2,False,01_Fireball,False,Minion,Fire Volcanic Maiden
+Skill,11,Meteora,Caster,Fire,2,Spell,,,PushImpact,,Cross,4,Basic,2,False,False,All,False,5,False,03_Fire_rain,False,Minion,Lava Shroom
+Skill,12,Smith Hammer,Warrior,Fire,1,Attack,,,,,Contact,0,Basic,1,False,False,OnlyOthers,True,4,False,Shamanskill_01,False,Minion,Temple Guard
+Skill,13,Frost Sword,Warrior,Water,1,Attack,Buff,,,Drowned,Basic,2,Perpendicular,2,True,False,All,False,3,False,Warriorskill_20,False,Minion,Water Fly
+Skill,14,Cold Wind,Caster,Water,1,Buff,,,,FrostRage,Self,0,Basic,4,False,False,All,True,0,False,Warriorskill_37,False,Minion,
+Skill,15,Basic Heal,Healer,Water,1,Healing,,,,,Basic,3,Self,0,True,False,OnlyAlly,False,4,True,13_Healing_spell_2,False,Minion,
+Skill,16,Defensive Rune,Caster,None,1,FloorStatus,Buff,,,MagicShield,Basic,0,Basic,2,False,False,OnlyAlly,True,0,False,Shamanskill_22,False,Minion,
+Skill,17,First Aid,Warrior,None,0,Medicine,,,,,Basic,0,Basic,0,True,False,All,True,5,False,Warriorskill_42,False,Minion,
+Skill,18,Monster Attack,,None,1,Attack,Buff,,,,Basic,1,Basic,0,True,True,OnlyEnemy,True,3,False,Druidskill_24,True,,
+Skill,19,Shadow Stab,Warrior,Water,1,Attack,,,Teleport_to,,Ranged,3,Self,0,False,True,All,True,4,False,09_Melee_slash,False,Minion,Water Drake
+Skill,20,Encre,Ranger,Water,1,Attack,,,PushFix_3,,Basic,3,Line,1,True,False,All,True,5,False,Shamanskill_14,False,Minion,Ice Turtle
+Skill,21,Flash Arrow,Ranger,Fire,0,Attack,,,,,Ranged,5,Basic,0,True,True,OnlyEnemy,True,2,False,Paladinskill_20,False,Minion,Egypt Chariot
+Skill,22,Punch,Warrior,None,1,Attack,,,PushFix_3,,Cross,2,Line,0,True,False,All,True,0,False,Warriorskill_48,True,,
+,23,Volcanic Eruption,Caster,Fire,1,Attack,FloorStatus,,,Burn,Ranged,4,Basic,1,True,False,All,True,0,False,Shamanskill_07,False,Boss,Ifrit
+,24,,,,,,,,,,,,,,,,,,,False,,,,
+,,,,,,,,,,,,,,,,,,,,False,,,,
+,,,,,,,,,,,,,,,,,,,,False,,,,
+,,,,,,,,,,,,,,,,,,,,False,,,,
+,,,,,,,,,,,,,,,,,,,,False,,,,

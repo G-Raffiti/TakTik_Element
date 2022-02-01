@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 3250177244620070831}
   - component: {fileID: 4299231901406394301}
   m_Layer: 5
-  m_Name: SkillInfo_Prefab
+  m_Name: HandSkill_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,8 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8013c3ca5c74d9b8a6f9fcb4ef385f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
-  TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
   illustration: {fileID: 3250177243187742947}
   elementIcon: {fileID: 1843551417675891235}
   costText: {fileID: 4099244485121540997}
@@ -251,6 +249,8 @@ MonoBehaviour:
   isHandSkill: 1
   onSkillSelected: {fileID: 11400000, guid: 1e6af08c0f62f5542b84ad67e95e79e2, type: 2}
   OnSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
+  SkillTooltip_ON: {fileID: 11400000, guid: 369bdd67d303df947b4d6783abcfba9e, type: 2}
+  SkillTooltip_OFF: {fileID: 11400000, guid: 17ce7c48f77806646b5c9f55355cca56, type: 2}
   Unit: {fileID: 0}
 --- !u!1 &3250177245163837572
 GameObject:

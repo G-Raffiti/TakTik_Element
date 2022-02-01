@@ -5,6 +5,7 @@ using Cells;
 using Relics;
 using Skills;
 using Stats;
+using UnityEditor;
 using UnityEngine;
 
 namespace Units
@@ -143,6 +144,16 @@ namespace Units
             type = _rawMonster.type;
             archetype = _rawMonster.archetype;
             prefab = UnityEngine.Resources.Load<GameObject>($"Prefabs/Units/PrefabMonster");
+        }
+
+        public void SetSkill(SkillSO _newSkill)
+        {
+#if (UNITY_EDITOR)
+            skill = _newSkill;
+            EditorUtility.SetDirty(this); 
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+#endif
         }
     }
 }

@@ -1,3 +1,19 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: c869dc9444c144cb933af02995e745be
-timeCreated: 1636522221
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
+  - icon: {instanceID: 0}
+  - health: {instanceID: 0}
+  - shield: {instanceID: 0}
+  - GearInfoPrefab: {fileID: 7325826300287324312, guid: cb5abc9bccb59d2449404b2d7e53fd16,
+      type: 3}
+  - InfoTooltip_ON: {fileID: 11400000, guid: 6c0f6a2d548f821469d39d3563d43ad3, type: 2}
+  - InfoTooltip_OFF: {fileID: 11400000, guid: ac209bdd5ea07a6498456340975aef2e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

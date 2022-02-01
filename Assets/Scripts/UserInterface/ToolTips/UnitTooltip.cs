@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using _DragAndDropSystem;
 using Gears;
 using Relics;
 using StatusEffect;
@@ -28,7 +27,7 @@ namespace UserInterface.ToolTips
         [Header("Prefabs")] 
         [SerializeField] private RelicInfo relicPref;
         [SerializeField] private GearInfo gearPref;
-        [SerializeField] private GameObject buffPref;
+        [SerializeField] private BuffInfo buffPref;
         
         protected override void ShowToolTip()
         {
@@ -39,7 +38,7 @@ namespace UserInterface.ToolTips
             shadowEffect.sprite = Unit.GetIcon();
             frame.color = Unit.GetTeamColor();
 
-            for(int i = 0; 1 < Unit.Inventory.gears.Count; i ++)
+            for(int i = 0; i < Unit.Inventory.gears.Count; i ++)
             {
                 GameObject pref = Instantiate(gearPref.gameObject, inventory[i].transform);
                 pref.GetComponent<GearInfo>().Gear = Unit.Inventory.gears[i];
@@ -55,8 +54,33 @@ namespace UserInterface.ToolTips
 
             foreach (Buff _buff in Unit.Buffs)
             {
-                
+                GameObject pref = Instantiate(buffPref.gameObject, buffsHolder);
+                pref.GetComponent<BuffInfo>().Unit = Unit;
+                pref.GetComponent<BuffInfo>().Buff = _buff;
+                pref.GetComponent<BuffInfo>().DisplayIcon();
             }
+        }
+
+        public override void HideTooltip()
+        {
+            while (relicHolder.childCount > 0)
+            {
+                DestroyImmediate(relicHolder.GetChild(0).gameObject);
+            }
+
+            while (buffsHolder.childCount > 0)
+            {
+                DestroyImmediate(buffsHolder.GetChild(0).gameObject);
+            }
+
+            foreach (Transform _transform in inventory)
+            {
+                while (_transform.childCount > 0)
+                {
+                    DestroyImmediate(_transform.GetChild(0).gameObject);
+                }
+            }
+            base.HideTooltip();
         }
     }
 }

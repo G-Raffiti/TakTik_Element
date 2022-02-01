@@ -37,11 +37,12 @@ namespace Units
         public Inventory Inventory => inventory;
 
         public List<RelicSO> Relics => relics;
+        public Unit Unit => unit;
 
         public bool isPlaced = false;
         public bool isDead = false;
 
-        public void Spawn(GameObject _pref)
+        public void Spawn(BattleHero _pref)
         {
             if (KeepBetweenScene.currentState == EConditionType.LootBox)
             {
@@ -52,7 +53,8 @@ namespace Units
             {
                 _hero.Spawn(this);
             }
-            unit = _pref.GetComponent<Unit>();
+            if (unit != null) return;
+            unit = _pref;
             unit.UnitAttacked += Unit_UnitAttacked;
             unit.UnitDestroyed += Unit_UnitDestroyed;
         }

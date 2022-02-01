@@ -58,11 +58,23 @@ namespace Skills
             }
 
             _skill.Effects = new List<IEffect>();
+
+            foreach (SkillEffect _effect in skillSO.Effects)
+            {
+                if (_effect.IsUnique && _skill.Effects.Contains(_effect))
+                    continue;
+                _skill.Effects.Add(_effect);
+            }
             
-            _skill.Effects.AddRange(skillSO.Effects);
             if(skillSO.GridEffect != null)
                 _skill.Effects.Add(skillSO.GridEffect);
-            _skill.Effects.AddRange(relic.Effects);
+            
+            foreach (IEffect _effect in relic.Effects)
+            {
+                if (_effect.IsUnique && _skill.Effects.Contains(_effect))
+                    continue;
+                _skill.Effects.Add(_effect);
+            }
 
             _skill.BaseSkill = skillSO;
             

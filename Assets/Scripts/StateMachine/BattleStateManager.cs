@@ -70,13 +70,6 @@ namespace StateMachine
         [SerializeField] private VoidEvent onBattleStarted;
         [SerializeField] private BoolEvent onBattleIsOver;
         [SerializeField] private UnitEvent onUnitStartTurn;
-        
-        [Header("Event Holder")]
-        [SerializeField] private InfoEvent tooltipOn;
-        [SerializeField] private VoidEvent tooltipOff;
-        
-        public InfoEvent TooltipOn => tooltipOn;
-        public VoidEvent TooltipOff => tooltipOff;
 
 
         private const int TurnCost = 20;

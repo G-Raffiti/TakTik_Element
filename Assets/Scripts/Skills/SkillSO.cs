@@ -77,6 +77,7 @@ namespace Skills
             if (_rawSkill.Status != null) statusEffects.Add(_rawSkill.Status);
 
             icon = _rawSkill.Icon;
+            monster = _rawSkill.Monster;
         }
     }
 }

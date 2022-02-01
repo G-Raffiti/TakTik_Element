@@ -25,6 +25,10 @@ namespace UserInterface.BattleScene
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onSkillUsed;
+
+        [Header("Tooltip Events")]
+        [SerializeField] private UnitEvent UnitTooltip_ON;
+        [SerializeField] private VoidEvent UnitTooltip_OFF;
         
         
         
@@ -94,15 +98,15 @@ namespace UserInterface.BattleScene
 
         public override void OnPointerEnter(PointerEventData _eventData)
         {
-            unitMark = ((TileIsometric)unit.Cell).State;
+            unitMark = new TileIsometric.CellState(((TileIsometric)unit.Cell).State);
             unit.MarkAsSelected();
-            TooltipOn.Raise(this);
+            UnitTooltip_ON.Raise(unit);
         }
 
         public override void OnPointerExit(PointerEventData _eventData)
         {
             unit.MarkBack(unitMark);
-            TooltipOff.Raise();
+            UnitTooltip_OFF.Raise();
         }
 
         public override void OnPointerClick(PointerEventData _eventData)

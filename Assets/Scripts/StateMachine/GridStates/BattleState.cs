@@ -14,8 +14,9 @@ namespace StateMachine.GridStates
         protected BattleState(BattleStateManager _stateManager)
         {
             StateManager = _stateManager;
-            TooltipOn = StateManager.TooltipOn;
-            TooltipOff = StateManager.TooltipOff;
+            //TooltipOn = StateManager.TooltipOn;
+            //TooltipOff = StateManager.TooltipOff;
+            //todo fix it
         }
 
         /// <summary>

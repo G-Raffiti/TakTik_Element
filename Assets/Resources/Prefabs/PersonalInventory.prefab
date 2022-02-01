@@ -317,8 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c869dc9444c144cb933af02995e745be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
-  TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
   colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
   icon: {fileID: 5753818307760219753}
   health: {fileID: 5753818308011248591}
@@ -329,6 +327,8 @@ MonoBehaviour:
   - {fileID: 0}
   GearInfoPrefab: {fileID: 7325826300287324312, guid: cb5abc9bccb59d2449404b2d7e53fd16,
     type: 3}
+  UnitTooltip_ON: {fileID: 11400000, guid: f59b7aea7b6263a4ab2a39c1cb1eeab7, type: 2}
+  UnitTooltip_OFF: {fileID: 11400000, guid: 7ff641e5f2d5d3945928abc6c28663e2, type: 2}
 --- !u!1 &5753818309418945960
 GameObject:
   m_ObjectHideFlags: 0

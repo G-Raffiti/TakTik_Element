@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: GridEffect_PushFix_3
   m_EditorClassIdentifier: 
   actionsOrder: 9
+  isUnique: 1
   type: 1
   Strength: 3

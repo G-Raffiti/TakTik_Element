@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GridEffect_PushImpact
   m_EditorClassIdentifier: 
   actionsOrder: 9
+  isUnique: 1
   type: 7

@@ -333,8 +333,8 @@
             <e p="BuffInfo.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
             <e p="PersonalInventory.cs" t="Include" />
-            <e p="Tooltip.cs" t="Include" />
             <e p="ToolTips" t="Include">
+              <e p="BasicTooltip.cs" t="Include" />
               <e p="GearToolTip.cs" t="Include" />
               <e p="SkillTooltip.cs" t="Include" />
               <e p="Tooltip.cs" t="Include" />

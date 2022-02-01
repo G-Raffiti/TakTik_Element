@@ -41,5 +41,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d2c0733f6c5645a4b9824df9f77ac34c, type: 2}
   - {fileID: 11400000, guid: 73bde5e28dac7ac43804ef27b6996b5a, type: 2}
   - {fileID: 11400000, guid: a3c84a2afef250e41bed4c2b9109747c, type: 2}
-  learning: {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
-  monsterAttack: {fileID: 11400000, guid: d4b5616310cd0c140a778cdbd2b0c009, type: 2}
+  learning: {fileID: 0}
+  monsterAttack: {fileID: 0}

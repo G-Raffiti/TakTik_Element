@@ -41,7 +41,7 @@ namespace Players
         }
         
         private Monster monster;
-        private static SkillInfo skillInfo;
+        private static SkillInfo AI_SkillInfo;
         private static Dictionary<Cell, int> destinations = new Dictionary<Cell, int>();
         private static Dictionary<Cell, Dictionary<Cell, int>> skillTargets = new Dictionary<Cell, Dictionary<Cell, int>>();
 
@@ -55,8 +55,6 @@ namespace Players
         [SerializeField] private VoidEvent onEndTurn;
         [SerializeField] private VoidEvent onMonsterPlay;
 
-        [SerializeField] private Gradient gradient;
-
 
         public override void Play(BattleStateManager stateManager)
         {
@@ -67,7 +65,7 @@ namespace Players
                 return;
             }
             monster = (Monster) stateManager.PlayingUnit;
-            skillInfo = monster.GetComponentInChildren<SkillInfo>();
+            AI_SkillInfo = monster.GetComponentInChildren<SkillInfo>();
             evaluationValues = monster.Archetype.Evaluations;
             
             monster.OnTurnStart();
@@ -98,14 +96,8 @@ namespace Players
             bool canMove = monster.BattleStats.MP > 0;
 
             Debug.LogWarning("1rst Evaluation :");
-            DestinationTarget best;
-            if (monster.BattleStats.AP >= monster.monsterSkill.Cost)
-                best = Evaluate(monster, monster.monsterSkill.BaseSkill, stateManager);
-            else best = Evaluate(monster, DataBase.Skill.MonsterAttack, stateManager);
-            
-            //TODO : possibilité d'activé les couleur de des cells de l'IA via un menu Setting
-            //ColorTheFloor();
-            
+            DestinationTarget best = Evaluate(monster, stateManager);
+
             yield return new WaitForSeconds(1);
 
             int loop = 0;
@@ -131,31 +123,25 @@ namespace Players
             
                 // Use Skill
                 onSkillUsed.EventListeners += SkillUsed;
-                skillInfo.UseSkill(best.Target);
+                AI_SkillInfo.UseSkill(best.Target);
                 
                 yield return new WaitUntil(() => skillUsed);
                 Debug.LogWarning($"Loop number : {loop}\nMonster used a Skill");
                 yield return new WaitForSeconds(0.2f);
-                
-                UnColor(stateManager);
                 
                 // Check Loop Conditions
                 Debug.LogWarning($"Check Condition\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}");
                 
                 canPlay = (int) monster.BattleStats.AP > 0;
                 if (monster.monsterSkill.Cost == 0)
-                    canPlay = loop >= KeepBetweenScene.Stage + 1;
+                    canPlay = loop <= KeepBetweenScene.Stage + 1;
                 canMove = monster.BattleStats.MP > 0;
                 
                 skillUsed = false;
                 onSkillUsed.EventListeners -= SkillUsed;
 
-                if (monster.BattleStats.AP >= monster.monsterSkill.Cost)
-                    best = Evaluate(monster, monster.monsterSkill.BaseSkill, stateManager);
-                else best = Evaluate(monster, DataBase.Skill.MonsterAttack, stateManager);
+                best = Evaluate(monster, stateManager);
                 
-                //TODO : possibilité d'activé les couleur de des cells de l'IA via un menu Setting
-                //ColorTheFloor();
                 yield return new WaitForSeconds(1);
                 Debug.LogWarning($"Check Done\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}\nCan Play = {canPlay}, Can Move = {canMove}");
             }
@@ -163,41 +149,24 @@ namespace Players
             // Move one Last Time at the best Place
             if (canMove && best.Destination != monster.Cell)
             {
+                Debug.LogWarning($"Last Move\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}\nCan Play = {canPlay}, Can Move = {canMove}");
                 // Move
                 List<Cell> path = monster.FindPath(stateManager.Cells, best.Destination);
                 path.Sort((_cell, _cell1) => _cell.GetDistance(monster.Cell).CompareTo(_cell1.GetDistance(monster.Cell)));
                 monster.Move(best.Destination, path);
 
                 yield return new WaitUntil(() => !monster.IsMoving);
+                Debug.LogWarning($"Last Move Done\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}\nCan Play = {canPlay}, Can Move = {canMove}");
             }
 
+            Debug.LogWarning($"Loop Out\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}\nCan Play = {canPlay}, Can Move = {canMove}\n End Turn");
             
             // End Turn
-            skillInfo.skill = monster.monsterSkill;
             monster.isPlaying = false;
             
             yield return new WaitForSeconds(1);
             
             onEndTurn.Raise();
-        }
-
-        private void ColorTheFloor()
-        {
-            // Color the Floor !!
-            int minValue = destinations.Values.Min();
-            int maxValue = destinations.Values.Max();
-            foreach (Cell _cell in destinations.Keys)
-            {
-                _cell.MarkAsValue(gradient, destinations[_cell] - minValue, maxValue - minValue);
-            }
-        }
-
-        private void UnColor(BattleStateManager stateManager)
-        {
-            foreach (Cell _cell in stateManager.Cells)
-            {
-                _cell.UnMark();
-            }
         }
 
         private void SkillUsed(Void empty)
@@ -207,7 +176,7 @@ namespace Players
 
         #region Evaluation
 
-        private static DestinationTarget Evaluate(Monster _monster, SkillSO _skill, BattleStateManager stateManager)
+        private static DestinationTarget Evaluate(Monster _monster, BattleStateManager stateManager)
         {
             // Reset Dictionaries
             destinations = new Dictionary<Cell, int>();
@@ -224,15 +193,15 @@ namespace Players
             }
             
             // Set the Skill to Evaluate
-            skillInfo.skill = Skill.CreateSkill(_skill, _monster.monsterSkill.Deck, _monster);
+            AI_SkillInfo.skill = _monster.monsterSkill;
             
             // If the MonsterSkill have Zone Get all TargetCell to evaluate
-            if (skillInfo.skill.Range.ZoneType != EZone.Self || skillInfo.skill.Range.Radius > 0)
+            if (AI_SkillInfo.skill.Range.ZoneType != EZone.Self || AI_SkillInfo.skill.Range.Radius > 0)
             {
                 foreach (Cell destination in destinations.Keys)
                 {
                     List<Cell> inRange = new List<Cell>();
-                    inRange.AddRange(skillInfo.skill.Range.NeedView ? Zone.CellsInView(skillInfo.skill, destination) : Zone.CellsInRange(skillInfo.skill, destination));
+                    inRange.AddRange(AI_SkillInfo.skill.Range.NeedView ? Zone.CellsInView(AI_SkillInfo.skill, destination) : Zone.CellsInRange(AI_SkillInfo.skill, destination));
                     foreach (Cell _cellInRange in inRange)
                     {
                         skillTargets[destination].Add(_cellInRange, 0);
@@ -244,26 +213,14 @@ namespace Players
             EvaluateCells(_monster, stateManager);
             
             // Evaluate the SkillUse Potential
-            if (skillInfo.skill.Range.ZoneType == EZone.Self || skillInfo.skill.Range.Radius < 1)
-                EvaluateDirectTarget(stateManager, skillInfo);
-            else EvaluateZoneTarget(skillInfo);
+            if (AI_SkillInfo.skill.Range.ZoneType == EZone.Self || AI_SkillInfo.skill.Range.Radius < 1)
+                EvaluateDirectTarget(stateManager, AI_SkillInfo);
+            else EvaluateZoneTarget(AI_SkillInfo);
             
             // Get the Best Move
             DestinationTarget Best = GetBestDestinationTarget(_monster);
-            
-            // If the Best Target is Null Evaluate with the Monster Basic Attack
-            if (Best.Target == null)
-            {
-                skillInfo.skill = Skill.CreateSkill(DataBase.Skill.MonsterAttack, skillInfo.skill.Deck, _monster);
-                if (skillInfo.skill.Range.ZoneType == EZone.Self || skillInfo.skill.Range.Radius < 1)
-                    EvaluateDirectTarget(stateManager, skillInfo);
-                else EvaluateZoneTarget(skillInfo);
-                
-                // Check Again for the Best Target
-                Best = GetBestDestinationTarget(_monster);
-            }
 
-            // If the Best Target is Still Null Evaluate the distance to the nearest enemy
+            // If the Best Target is Null Evaluate the distance to the nearest enemy
             if (Best.Target == null)
             {
                 EvaluateDistanceToAlly(_monster, stateManager);
@@ -428,7 +385,7 @@ namespace Players
                 destinationOfMaxValue = destinations.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
             
             Cell targetOfMaxValue = null;
-            if (skillInfo.skill.Range.ZoneType != EZone.Self || skillInfo.skill.Range.Radius > 0)
+            if (AI_SkillInfo.skill.Range.ZoneType != EZone.Self || AI_SkillInfo.skill.Range.Radius > 0)
             {
                 if (skillTargets[destinationOfMaxValue].Count != 0)
                 {
@@ -441,10 +398,10 @@ namespace Players
             else
             {
                 List<Unit> Targets = new List<Unit>();
-                foreach (Cell _cell in skillInfo.GetRangeFrom(destinationOfMaxValue))
+                foreach (Cell _cell in AI_SkillInfo.GetRangeFrom(destinationOfMaxValue))
                 {
-                    if(Zone.GetUnitAffected(_cell, skillInfo) != null && Zone.GetUnitAffected(_cell, skillInfo).playerNumber != _unit.playerNumber)
-                        Targets.Add(Zone.GetUnitAffected(_cell, skillInfo));
+                    if(Zone.GetUnitAffected(_cell, AI_SkillInfo) != null && Zone.GetUnitAffected(_cell, AI_SkillInfo).playerNumber != _unit.playerNumber)
+                        Targets.Add(Zone.GetUnitAffected(_cell, AI_SkillInfo));
                 }
 
                 Targets.Sort((u, u2) => (u.BattleStats.HP+u.BattleStats.Shield).CompareTo(u2.BattleStats.HP+u2.BattleStats.Shield));

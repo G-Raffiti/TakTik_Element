@@ -32,7 +32,13 @@ namespace UserInterface.ToolTips
             rangeTxt.text = Skill.GetInfoRight();
             buffsTxt.text = Skill.GetInfoDown();
             frame.color = Skill.skill.Element.TextColour;
-            shadowEffect.sprite = Skill.skill.BaseSkill.Monster != null ? Skill.skill.BaseSkill.Monster.UnitSprite : null;
+            if (Skill.skill.BaseSkill.Monster != null)
+            {
+                shadowEffect.color = new Color(0,0,0,0.8f);
+                shadowEffect.sprite = Skill.skill.BaseSkill.Monster.UnitSprite;
+                return;
+            }
+            shadowEffect.color = Color.clear;
         }
     }
 }

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GridEffect_Teleport_to
   m_EditorClassIdentifier: 
   actionsOrder: 0
+  isUnique: 1
   type: 4

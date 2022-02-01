@@ -83,7 +83,7 @@ namespace StateMachine.GridStates
             for (int i = 0; i < heroes.Count; i++)
             {
                 GameObject _pref = Object.Instantiate(heroes[i].Prefab, GameObject.Find("Units").transform);
-                heroes[i].Spawn(_pref);
+                heroes[i].Spawn(_pref.GetComponent<BattleHero>());
                 _pref.transform.position = setupCells[i].transform.position;
                 _pref.GetComponent<Unit>().InitializeSprite();
                 battleHeroes.Add(_pref.GetComponent<BattleHero>(), _pref);

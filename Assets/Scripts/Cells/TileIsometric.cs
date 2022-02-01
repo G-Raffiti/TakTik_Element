@@ -4,9 +4,7 @@ using System.Linq;
 using _Instances;
 using DataBases;
 using Resources.ToolTip.Scripts;
-using StateMachine;
 using StatusEffect;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace Cells
@@ -29,6 +27,8 @@ namespace Cells
         [SerializeField] private SpriteRenderer effect;
         [SerializeField] public SpriteRenderer background;        
         [SerializeField] private ColorSet colorSet;
+        [SerializeField] private Sprite selectFrame;
+        [SerializeField] private Sprite fullFrame;
         
         private Dictionary<EColor, Color> Colors = new Dictionary<EColor, Color>();
         private CellState state;
@@ -138,6 +138,14 @@ namespace Cells
                 HighlightColor = _highlightColor;
                 ElementColor = _frameColor;
             }
+
+            public CellState(CellState _state)
+            {
+                frame = _state.frame;
+                frameColor = _state.frameColor;
+                HighlightColor = _state.HighlightColor;
+                ElementColor = _state.frameColor;
+            }
         }
 
         public void MarkAs(CellState _state)
@@ -151,7 +159,7 @@ namespace Cells
         public override void MarkAsReachable()
         {
             
-            state = new CellState(colorSet.SelectFrame, Colors[EColor.reachable],
+            state = new CellState(selectFrame, Colors[EColor.reachable],
                 Colors[EColor.reachable] * Colors[EColor.transparency]);
             MarkAs(state);
             
@@ -167,14 +175,14 @@ namespace Cells
         public override void MarkAsPath()
         {
             
-            state = new CellState(colorSet.SelectFrame, Colors[EColor.path],
+            state = new CellState(selectFrame, Colors[EColor.path],
                 Colors[EColor.path] * Colors[EColor.transparency]);
             MarkAs(state);
         }
 
         public override void MarkAsEnemyCell()
         {
-            state = new CellState(colorSet.SelectFrame, Colors[EColor.enemy],
+            state = new CellState(selectFrame, Colors[EColor.enemy],
                 Colors[EColor.enemy] * Colors[EColor.transparency]);
             MarkAs(state);
         }
@@ -183,7 +191,7 @@ namespace Cells
         {
             try
             {
-                state = new CellState(colorSet.FullFrame, Colors[EColor.highlighted],
+                state = new CellState(fullFrame, Colors[EColor.highlighted],
                     Colors[EColor.highlighted] * Colors[EColor.transparency]);
                 MarkAs(state);
             }
@@ -207,7 +215,7 @@ namespace Cells
 
         public override void MarkAsInteractable()
         {
-            state = new CellState(colorSet.SelectFrame, Colors[EColor.usable],
+            state = new CellState(selectFrame, Colors[EColor.usable],
                 Colors[EColor.usable] * Colors[EColor.transparency]);
             MarkAs(state);
         }

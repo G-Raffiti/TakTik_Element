@@ -13,6 +13,10 @@ namespace Skills
         /// Time when this effect is Used (before or after the main Skill effect)
         /// </summary>
         [SerializeField] private EActionsOrder actionsOrder;
+        [SerializeField] private bool isUnique;
+
+        public bool IsUnique =>  isUnique;
+
         public EActionsOrder ActionsOrder => actionsOrder;
         
         /// <summary>

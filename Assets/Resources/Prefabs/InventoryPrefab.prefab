@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 6277332023977351769}
   - component: {fileID: 6277332023977351770}
   - component: {fileID: 6277332023977351772}
+  - component: {fileID: 1560995369185336655}
   m_Layer: 5
   m_Name: PersonalInventory
   m_TagString: Untagged
@@ -242,8 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c869dc9444c144cb933af02995e745be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
-  TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
   colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
   icon: {fileID: 6277332023729813234}
   health: {fileID: 6277332024877008014}
@@ -254,6 +253,54 @@ MonoBehaviour:
   - {fileID: 5952031206000930730}
   GearInfoPrefab: {fileID: 7325826300287324312, guid: cb5abc9bccb59d2449404b2d7e53fd16,
     type: 3}
+  UnitTooltip_ON: {fileID: 11400000, guid: f59b7aea7b6263a4ab2a39c1cb1eeab7, type: 2}
+  UnitTooltip_OFF: {fileID: 11400000, guid: 7ff641e5f2d5d3945928abc6c28663e2, type: 2}
+--- !u!114 &1560995369185336655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277332023977351773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b05817fa234f07bc00504ef2ec6190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inventory:
+    gears: []
+  UnitName: 
+  onUnitMoved: {fileID: 0}
+  TurnPoint: 0
+  BattleStats:
+    HP: 0
+    Shield: 0
+    Speed: 0
+    Power: 0
+    Focus: 0
+    Affinity:
+      Fire: 0
+      Nature: 0
+      Water: 0
+    MP: 0
+    AP: 0
+    Range:
+      RangeType: 0
+      RangeValue: 0
+      ZoneType: 0
+      Radius: 0
+      NeedView: 0
+      NeedTarget: 0
+      CanBeModified: 0
+  playerNumber: 0
+  movementAnimationSpeed: 0
+  colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
+  unitSprite: {fileID: 0}
+  info: {fileID: 0}
+  shadow: {fileID: 0}
+  isDying: 0
+  onHeroSelected: {fileID: 0}
+  onCellWalked: {fileID: 0}
 --- !u!1 &6277332024131806992
 GameObject:
   m_ObjectHideFlags: 0

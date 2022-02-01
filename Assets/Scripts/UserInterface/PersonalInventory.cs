@@ -24,6 +24,10 @@ namespace UserInterface
         private BattleStats BattleStats;
         private BattleStats baseStats;
         private BattleStats total;
+        
+        [Header("Tooltip Events")] 
+        [SerializeField] private UnitEvent UnitTooltip_ON;
+        [SerializeField] private VoidEvent UnitTooltip_OFF;
 
         public Hero Hero { get; private set; }
 
@@ -66,9 +70,14 @@ namespace UserInterface
         
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            TooltipOn.Raise(this);
+            UnitTooltip_ON.Raise(Hero.Unit);
         }
-        
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            UnitTooltip_OFF.Raise();
+        }
+
         public override string GetInfoMain()
         {
             return ColouredName();
@@ -89,9 +98,8 @@ namespace UserInterface
 
         public override string GetInfoRight()
         {
-            Unit u = null;
             string str = "";
-            str += BattleStats.Range.ToString(u)+ "\n";
+            str += BattleStats.Range.ToString()+ "\n";
             str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{BattleStats.Speed} </color> \n";
             return str;
         }

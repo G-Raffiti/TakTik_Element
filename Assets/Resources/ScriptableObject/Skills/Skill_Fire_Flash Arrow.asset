@@ -32,3 +32,4 @@ MonoBehaviour:
   consumable: 0
   cost: 0
   archetype: 3
+  monster: {fileID: 11400000, guid: b4dc78c0a26c23947a778dc89c83fa10, type: 2}

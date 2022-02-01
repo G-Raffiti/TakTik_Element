@@ -33,3 +33,4 @@ MonoBehaviour:
   consumable: 0
   cost: 1
   archetype: 2
+  monster: {fileID: 0}

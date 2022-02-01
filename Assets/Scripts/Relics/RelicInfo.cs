@@ -1,7 +1,9 @@
-﻿using Relics.ScriptableObject_RelicEffect;
+﻿using _EventSystem.CustomEvents;
+using Relics.ScriptableObject_RelicEffect;
 using Resources.ToolTip.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Relics
 {
@@ -11,6 +13,11 @@ namespace Relics
     public class RelicInfo: InfoBehaviour
     {
         public RelicSO Relic { get; private set; }
+        [SerializeField] private Image icon;
+        
+        [Header("Tooltip Events")] 
+        [SerializeField] private InfoEvent InfoTooltip_ON;
+        [SerializeField] private VoidEvent InfoTooltip_OFF;
 
         public void CreateRelic(RelicSO _relic)
         {
@@ -21,12 +28,12 @@ namespace Relics
         
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            TooltipOn.Raise(this);
+            InfoTooltip_ON.Raise(this);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            TooltipOff.Raise();
+            InfoTooltip_OFF.Raise();
         }
         
         public override string GetInfoMain()
@@ -60,6 +67,11 @@ namespace Relics
         public override string ColouredName()
         {
             return $"{Relic.Name}";
+        }
+
+        public override void DisplayIcon()
+        {
+            icon.sprite = GetIcon();
         }
 
         #endregion

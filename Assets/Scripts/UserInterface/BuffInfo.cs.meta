@@ -1,3 +1,16 @@
-﻿fileFormatVersion: 2
+fileFormatVersion: 2
 guid: 33850e4b0e6e4607b9f9d84889cbed6c
-timeCreated: 1643627238
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - icon: {instanceID: 0}
+  - Duration: {instanceID: 0}
+  - colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
+  - InfoTooltip_ON: {fileID: 11400000, guid: 6c0f6a2d548f821469d39d3563d43ad3, type: 2}
+  - InfoTooltip_OFF: {fileID: 11400000, guid: ac209bdd5ea07a6498456340975aef2e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

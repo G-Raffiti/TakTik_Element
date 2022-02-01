@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DataBases
 {
         
-    public enum EColor {none, unMark, highlighted, usable, reachable, path, transparency, enemy, ally, elementShadow, elementFull, TurnPoint}
+    public enum EColor {none, unMark, highlighted, usable, reachable, path, transparency, enemy, ally, elementShadow, elementFull, TurnPoint, Buff, Debuff}
     
     [CreateAssetMenu(fileName = "ColorSet_", menuName = "Scriptable Object/UI/Color Set")]
     public class ColorSet : ScriptableObject
@@ -21,10 +21,8 @@ namespace DataBases
         [SerializeField] private Color transparency;
         [SerializeField] private Color elementShadow;
         [SerializeField] private Color turnPoint;
-        [SerializeField] private Sprite selectFrame;
-        public Sprite SelectFrame => selectFrame;
-        [SerializeField] private Sprite fullFrame;
-        public Sprite FullFrame => fullFrame;
+        [SerializeField] private Color buff;
+        [SerializeField] private Color debuff;
 
 
         public Dictionary<EColor, Color> GetColors()
@@ -43,6 +41,8 @@ namespace DataBases
                 {EColor.elementShadow, elementShadow},
                 {EColor.elementFull, Color.white},
                 {EColor.TurnPoint, turnPoint},
+                {EColor.Buff, buff},
+                {EColor.Debuff, debuff},
             };
 
             return Colors;

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: GridEffect_Pull
   m_EditorClassIdentifier: 
   actionsOrder: 6
+  isUnique: 1
   type: 5
   Strength: 3

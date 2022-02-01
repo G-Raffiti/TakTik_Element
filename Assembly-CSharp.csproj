@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\DijkstraPathfinding.cs" />
      <Compile Include="Assets\Scripts\ScreenResolutionManager\ResolutionManager.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BuffInfo.cs" />
      <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleTurnOrder_UI.cs" />
@@ -122,6 +123,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\BoolListener.cs" />
      <Compile Include="Assets\Resources\ToolTip\Scripts\IInfo.cs" />
      <Compile Include="Assets\Scripts\EndConditions\LootBoxes.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\SkillTooltip.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\SkillGridEffect.cs" />
      <Compile Include="Assets\Scripts\UserInterface\UI_Menu\MovingPanelMenu.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\IntListener.cs" />
@@ -167,13 +169,16 @@
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\DeathWaiter.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityIntEvent.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\BasicTooltip.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\UnitEvent.cs" />
      <Compile Include="Assets\Scripts\Cells\BoardSO.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateBlockInput.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\TooltipManager.cs" />
      <Compile Include="Assets\Scripts\_Instances\KeepBetweenScene.cs" />
      <Compile Include="Assets\Scripts\Score\ScoreEventHandler.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityItemEvent.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Corruption.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\GearTooltip.cs" />
      <Compile Include="Assets\Scripts\_Extension\Extension.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\StatusSO.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffect.cs" />
@@ -187,6 +192,7 @@
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\SkillListener.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleInventory_UI.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\GridObjectListener.cs" />
+     <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGearInfoEvent.cs" />
      <Compile Include="Assets\Scripts\Gears\Inventory.cs" />
      <Compile Include="Assets\Scripts\Cells\DataBaseCell.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\Interface_ISavable.cs" />
@@ -202,7 +208,9 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\VoidEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\SkillEvent.cs" />
      <Compile Include="Assets\Scripts\Cells\SavedCell.cs" />
+     <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GearInfoEvent.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopDeckMono_UI.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\UnitTooltip.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityFloatEvent.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectHealOnEndFight.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityBoolEvent.cs" />
@@ -252,14 +260,6 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\ToolTips\SkillTooltip.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\ToolTips\ToolTipManager.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\ToolTips\GearTooltip.cs" />
-     <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GearInfoEvent.cs" />
-     <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGearInfoEvent.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\ToolTips\UnitTooltip.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\BuffInfo.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\Tooltip.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SkillEffect_FloorStatus
   m_EditorClassIdentifier: 
   actionsOrder: 9
+  isUnique: 1
   type: 108

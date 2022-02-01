@@ -21,6 +21,7 @@ namespace Skills
     /// </summary>
     public class SkillInfo : InfoBehaviour
     {
+        [Header("Unity References")]
         [SerializeField] private Image illustration;
         [SerializeField] private Image elementIcon;
         [SerializeField] private TextMeshProUGUI costText;
@@ -30,7 +31,12 @@ namespace Skills
         [Header("Event Sender")] 
         [SerializeField] private SkillEvent onSkillSelected;
         [SerializeField] private VoidEvent OnSkillUsed;
+        
+        [Header("Tooltip Events")] 
+        [SerializeField] private SkillEvent SkillTooltip_ON;
+        [SerializeField] private VoidEvent SkillTooltip_OFF;
 
+        [Header("Only if Needed")]
         public Unit Unit;
         public Skill skill;
 
@@ -138,14 +144,14 @@ namespace Skills
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            base.OnPointerEnter(eventData);
+            SkillTooltip_ON?.Raise(this);
             if (!isHandSkill) return;
             LeanTween.Framework.LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1), 0.2f);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            base.OnPointerExit(eventData);
+            SkillTooltip_OFF.Raise();
             if (!isHandSkill) return;
             LeanTween.Framework.LeanTween.scale(this.gameObject, Vector3.one, 0.2f);
         }

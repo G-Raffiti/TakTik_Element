@@ -61,4 +61,4 @@ MonoBehaviour:
   rewardType: 1
   type: 1
   archetype: {fileID: 11400000, guid: c88dfd4bbc46fd14691946ff2a5420b3, type: 2}
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: d96350c0fd6b18742ba200dd2d744fa6, type: 2}

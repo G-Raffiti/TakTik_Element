@@ -655,8 +655,6 @@ namespace Units
 
         public string GetInfoRight()
         {
-            if (!Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt))
-                return "";
             string str = "";
             str += BattleStats.Range.ToString(this)+ "\n";
             str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{TurnPoint} </color> \n";
@@ -690,31 +688,6 @@ namespace Units
 
         #endregion
     }
-    public class AttackAction
-    {
-        public readonly int Damage;
-        public readonly float ActionCost;
-
-        public AttackAction(int damage, float actionCost)
-        {
-            Damage = damage;
-            ActionCost = actionCost;
-        }
-    }
-
-    public class MovementEventArgs : EventArgs
-    {
-        public Cell OriginCell;
-        public Cell DestinationCell;
-        public List<Cell> Path;
-
-        public MovementEventArgs(Cell sourceCell, Cell destinationCell, List<Cell> path)
-        {
-            OriginCell = sourceCell;
-            DestinationCell = destinationCell;
-            Path = path;
-        }
-    }
 
     public class AttackEventArgs : EventArgs
     {
@@ -741,16 +714,4 @@ namespace Units
             deadUnit = _deadUnit;
         }
     }
-    
-    public class UnitCreatedEventArgs : EventArgs
-    {
-        public Transform Unit;
-
-        public UnitCreatedEventArgs(Transform unit)
-        {
-            this.Unit = unit;
-        }
-    }
-    
-    
 }

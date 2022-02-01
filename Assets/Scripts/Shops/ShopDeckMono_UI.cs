@@ -39,7 +39,7 @@ namespace Shops
                 portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
             }
 
-            PlayerData.getInstance().Heroes[0].Spawn(actualHero.gameObject);
+            PlayerData.getInstance().Heroes[0].Spawn(actualHero);
             
             InitializeDisplay(0);
         }
@@ -112,7 +112,7 @@ namespace Shops
         public void ChangeHero(int _index)
         {
             DeckMono Deck = GameObject.FindObjectOfType<DeckMono>();
-            PlayerData.getInstance().Heroes[_index].Spawn(actualHero.gameObject);
+            PlayerData.getInstance().Heroes[_index].Spawn(actualHero);
             foreach (SkillInfo _skill in allSkills)
             {
                 SkillSO s = _skill.skill.BaseSkill;

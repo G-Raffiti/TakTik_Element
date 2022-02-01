@@ -9,10 +9,6 @@ namespace Resources.ToolTip.Scripts
 {
     public abstract class InfoBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IInfo
     {
-        [SerializeField] protected InfoEvent TooltipOn = null;
-        [SerializeField] protected VoidEvent TooltipOff = null;
-        private bool gameStarted => BattleStateManager.instance.GameStarted;
-
         /// <summary>
         /// Method Called to generate the Sprite of Info Prefabs
         /// </summary>
@@ -65,17 +61,8 @@ namespace Resources.ToolTip.Scripts
         /// can be override to add a condition to not show
         /// </summary>
         /// <param name="eventData"></param>
-        public virtual void OnPointerEnter(PointerEventData eventData)
-        {
-            if (!gameStarted) return;
-            TooltipOn.Raise(this);
-        }
-
-        public virtual void OnPointerExit(PointerEventData eventData)
-        {
-            TooltipOff.Raise();
-        }
-
+        public abstract void OnPointerEnter(PointerEventData eventData);
+        public abstract void OnPointerExit(PointerEventData eventData);
         public virtual void OnPointerClick(PointerEventData eventData){}
     }
 }

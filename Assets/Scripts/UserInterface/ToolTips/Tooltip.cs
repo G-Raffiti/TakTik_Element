@@ -5,16 +5,14 @@ namespace UserInterface.ToolTips
 {
     public abstract class Tooltip : MonoBehaviour
     {
+        [SerializeField] private Canvas popupCanvas;
         [SerializeField] private GameObject obj;
         [SerializeField] private RectTransform backgroundRectTransform;
-
         private Vector3 offset;
         private float padding;
-        private Canvas popupCanvas;
 
         private void Awake()
         {
-            popupCanvas = gameObject.GetComponent<Canvas>();
             if (obj.activeSelf) { HideTooltip(); }
         }
 
@@ -64,6 +62,7 @@ namespace UserInterface.ToolTips
         {
             ShowToolTip();
             obj.SetActive(true);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(backgroundRectTransform);
             LayoutRebuilder.ForceRebuildLayoutImmediate(backgroundRectTransform);
         }
 

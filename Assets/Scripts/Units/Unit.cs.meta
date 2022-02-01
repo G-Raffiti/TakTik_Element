@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: 16c371683a573e24dbbe3ef7c7d181c5
-timeCreated: 1496435121
-licenseType: Store
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - onUnitMoved: {instanceID: 0}
+  - colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
+  - unitSprite: {instanceID: 0}
+  - info: {instanceID: 0}
+  - shadow: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -42,7 +42,9 @@ namespace DataBases
             EditorUtility.SetDirty(this); 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            #endif
+            if (newSkill.Monster != null)
+                newSkill.Monster.SetSkill(newSkill);
+#endif
         }
 
         public void ClearDataBase()

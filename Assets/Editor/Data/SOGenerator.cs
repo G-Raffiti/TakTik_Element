@@ -33,6 +33,10 @@ namespace Editor.Data
                 Debug.LogError("you need to select a valid CSV File");
                 return;
             }
+
+            bool warning = EditorUtility.DisplayDialog("You Need to Create the Monsters First !",
+                $"Did you allready create the Monsters ?", "Yes", "No");
+            if(!warning) return;
             
             bool clear = EditorUtility.DisplayDialog("Creation of the Skills as Scriptable Objects",
                 $"do you want to erase all Skills from the DataBase and replace them with the new Ones ? \n (this will not delete the Scriptable Objects)", "Yes", "No");

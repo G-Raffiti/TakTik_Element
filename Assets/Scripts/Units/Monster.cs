@@ -37,10 +37,7 @@ namespace Units
         public bool isPlaying;
 
         public MonsterSO MonsterSO { get; private set; }
-
-
         public Skill monsterSkill { get; private set; }
-
         public Archetype Archetype { get; private set; }
         public List<RelicSO> Relics { get; private set; }
         public EReward RewardType { get; private set; }
@@ -95,7 +92,9 @@ namespace Units
             baseStats = monster.Stats();
             BattleStats = new BattleStats(baseStats + Inventory.GearStats());
             total = BattleStats;
-            monsterSkill = Skill.CreateSkill(DataBase.Skill.GetSkillFor(monster), deck, this);
+            if (monster.Skill == null)
+                monsterSkill = Skill.CreateSkill(DataBase.Skill.GetSkillFor(monster), deck, this);
+            else monsterSkill = Skill.CreateSkill(monster.Skill, deck, this);
 
             if (monsterSkill.Cost > total.AP)
                 total.AP = monsterSkill.Cost;
