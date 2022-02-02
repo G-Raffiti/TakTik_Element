@@ -68,7 +68,7 @@ namespace GridObjects
             _path = _path.OrderBy(c => _targetedCell.GetDistance(c)).Reverse().ToList();
 
             // Move
-            int _distance = Units.Movable.Move(target, destination, _path).Count;
+            int _distance = Units.Movement.Move(target, destination, _path).Count;
             if(_distance != 0)
                 while (target.IsMoving) yield return null;
             

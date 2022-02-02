@@ -1,125 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f6cd4a7-5beb-4d98-9174-5921aa0ec532" name="Default Changelist" comment="" />
+    <list default="true" id="d8de8c55-d779-471a-a325-f9992edee85b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/ResolutionManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.5.7/Editor/Collaborate/UserInterface/CollaborateWindow.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127E81E1-CB34-41CC-97D2-6B1910DAAE77/25/6239b0bb/Random.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/AspectUtility.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A3963A5-666E-4BE9-BAC6-94932D6FD3C7/ce/dc9cfc0e/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/LeanTween/Editor/LeanTweenDocumentationEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127E81E1-CB34-41CC-97D2-6B1910DAAE77/df/323f48a6/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2C24F0C1-857D-4078-B6D4-53F88E061A29/65/57c4e238/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
->>>>>>> Stashed changes
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreSceneUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/EndRun_UI.cs" />
-=======
->>>>>>> Stashed changes
-      <option value="$PROJECT_DIR$/Assets/Editor/Logger/UnityFileDebugEditor.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/Example/ResolutionSelector.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/AspectUtility.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/ResolutionManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/UnitGenerators/CustomUnitGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LeanAudio.cs" />
-      <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LeanTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LeanTween.cs" />
-      <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LTDescr.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/EquilateralHexGridGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/HexagonalHexGridGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectangularHexGridGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectangularSquareGridGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectIsoGridGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/TriangularHexGridGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/KeepBetweenScene.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/UnitGenerators/RandomUnitGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBlockInput.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateSkillSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BtnEndTurn.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_ScriptableObject/Element.cs" />
-<<<<<<< Updated upstream
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleDeckMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/HandDeckMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Decks/AllDecksMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
-<<<<<<< Updated upstream
-      <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/ToolTipGear.cs" />
-      <option value="$PROJECT_DIR$/Assets/Resources/ToolTip/Scripts/Tooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/Tooltip.cs" />
-=======
-=======
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/SkillTooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/CustomEvents/GearInfoEvent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_EventSystem/UnityEvents/UnityGearInfoEvent.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/GearToolTip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/ToolTipManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/GearTooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/TooltipManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/Tooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/UnitTooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BuffInfo.cs" />
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateSkillSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/TurnOrderPrefab.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Movable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Movement.cs" />
     </changedPaths>
   </component>
-  <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="24Y3WXaGG2rz1oYsQKXtVFY8oWm" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -127,13 +30,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.5019425" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="RiderCSharpLiveTemplatesSettingsId" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
@@ -164,21 +63,6 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="3f6cd4a7-5beb-4d98-9174-5921aa0ec532" name="Default Changelist" comment="" />
-      <created>1633649099781</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1633649099781</updated>
-      <workItem from="1633649133169" duration="5345000" />
-      <workItem from="1639680652734" duration="6448000" />
-    </task>
-    <servers />
-  </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
-  <component name="VcsManagerConfiguration">
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
 </project>

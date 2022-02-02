@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1777d2fcc895423199fac877062c7e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementAnimationSpeed: 10
   Inventory:
     gears: []
   gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
@@ -68,7 +69,6 @@ MonoBehaviour:
     type: 2}
   spriteRenderer: {fileID: 8376176778367812429}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
-  moveAnimSpeed: 10
 --- !u!1 &6305285977476201785
 GameObject:
   m_ObjectHideFlags: 0

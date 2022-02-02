@@ -38,9 +38,9 @@ namespace Units
             BattleStats.HP = hero.ActualHP;
             buffs = new List<Buff>();
 
-            if (unitSprite == null) return;
+            if (unitSpriteRenderer == null) return;
             
-            unitSprite.sprite = _hero.UnitSprite;
+            unitSpriteRenderer.sprite = _hero.UnitSprite;
             InitializeSprite();
         }
 

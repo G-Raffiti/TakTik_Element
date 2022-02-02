@@ -61,7 +61,7 @@ namespace StateMachine.GridStates
             {
                 _cell.UnMark();
             }
-            currentUnit.OnUnitSelected();
+            //currentUnit.OnUnitSelected();
         }
         
         

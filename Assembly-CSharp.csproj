@@ -52,7 +52,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Units\UnitStates\UnitState.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateUnitSelected.cs" />
      <Compile Include="Assets\Scripts\EndConditions\DeathBattle.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\BattleFade.cs" />
@@ -90,7 +89,6 @@
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\DijkstraPathfinding.cs" />
      <Compile Include="Assets\Scripts\ScreenResolutionManager\ResolutionManager.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BuffInfo.cs" />
-     <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsReachableEnemy.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleTurnOrder_UI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
@@ -129,7 +127,6 @@
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\IntListener.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Element.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\BaseGameEventListener.cs" />
-     <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsSelected.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\IPriorityQueue.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityUnitEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\BoolEvent.cs" />
@@ -141,7 +138,6 @@
      <Compile Include="Assets\Scripts\Cells\TileIsometric.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Burned.cs" />
      <Compile Include="Assets\Scripts\Skills\Skill.cs" />
-     <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateMarkedAsFriendly.cs" />
      <Compile Include="Assets\Scripts\StatusEffect\Poison.cs" />
      <Compile Include="Assets\Scripts\Stats\Affix.cs" />
      <Compile Include="Assets\Scripts\Stats\Affinity.cs" />
@@ -199,7 +195,6 @@
      <Compile Include="Assets\Scripts\GridObjects\GridObjectSO.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\ItemListener.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\IGraphNode.cs" />
-     <Compile Include="Assets\Scripts\Units\UnitStates\UnitStateNormal.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
      <Compile Include="Assets\Scripts\Units\Hero.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_DeckMono.cs" />
@@ -260,6 +255,7 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
+     <Compile Include="Assets\Scripts\Units\Movement.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

@@ -64,7 +64,7 @@ namespace Units
         {
             MonsterSO = monster;
             UnitName = monster.Name;
-            unitSprite.sprite = monster.UnitSprite;
+            unitSpriteRenderer.sprite = monster.UnitSprite;
             RewardType = monster.RewardType;
             Type = monster.Type;
             Archetype = monster.Archetype;

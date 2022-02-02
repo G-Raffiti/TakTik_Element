@@ -198,10 +198,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b05817fa234f07bc00504ef2ec6190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 0}
+  movementAnimationSpeed: 10
   Inventory:
     gears: []
+  colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
+  unitSpriteRenderer: {fileID: 8294017069078302248}
+  info: {fileID: 1220656103392055339}
+  shadow: {fileID: 991324253262739922}
   UnitName: 
+  onUnitTooltip_ON: {fileID: 11400000, guid: f59b7aea7b6263a4ab2a39c1cb1eeab7, type: 2}
   onUnitMoved: {fileID: 11400000, guid: f00c2e11c76f95d4ab1c9582337fb7db, type: 2}
   TurnPoint: 0
   BattleStats:
@@ -225,12 +230,6 @@ MonoBehaviour:
       NeedTarget: 0
       CanBeModified: 0
   playerNumber: 0
-  movementAnimationSpeed: 10
-  colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
-  unitSprite: {fileID: 8294017069078302248}
-  info: {fileID: 1220656103392055339}
-  shadow: {fileID: 991324253262739922}
-  isDying: 0
   onHeroSelected: {fileID: 11400000, guid: d9a5de72d85ce74488ad6e11b7345f14, type: 2}
   onCellWalked: {fileID: 11400000, guid: fcb513c05edf06b4885d680d2ee2862b, type: 2}
 --- !u!111 &6800174335220356956

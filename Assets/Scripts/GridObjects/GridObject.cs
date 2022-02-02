@@ -16,6 +16,9 @@ namespace GridObjects
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private VoidEvent onActionDone;
         private bool isDying;
+
+        public bool IsDying => isDying;
+
         public GridObjectSO GridObjectSO
         {
             get => gridObject;
@@ -54,10 +57,9 @@ namespace GridObjects
             IsMoving = false;
         }
         
-        [SerializeField] private float moveAnimSpeed;
-
-        public override float MovementAnimationSpeed => moveAnimSpeed;
-
+        /// <summary>
+        /// Check if the unit is in range to activate the GridObject
+        /// </summary>
         public bool IsInteractable =>
             gridObject.GetZoneOfInteraction(Cell).Contains(BattleStateManager.instance.PlayingUnit.Cell) && !isUsed;
 
@@ -75,18 +77,18 @@ namespace GridObjects
             Cell.Take(this);
         }
 
-        protected virtual void OnMouseDown()
+        protected void OnMouseDown()
         {
             if(Cell != null)
                 Cell.OnMouseDown();
         }
-        protected virtual void OnMouseEnter()
+        protected void OnMouseEnter()
         {
             if(Cell != null)
                 Cell.OnMouseEnter();
             GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, Cell);
         }
-        protected virtual void OnMouseExit()
+        protected void OnMouseExit()
         {
             if(Cell != null)
                 Cell.OnMouseExit();
@@ -115,15 +117,8 @@ namespace GridObjects
         {
             isUsed = false;
         }
-        
-        public override void AutoSortOrder()
-        {
-            spriteRenderer.sortingOrder = 500 - (int)(transform.position.y/0.577f);
-        }
-        
-        public override string getName()
-        {
-            return GridObjectSO.Name;
-        }
+
+        public override SpriteRenderer MovableSprite => spriteRenderer;
+        public override string getName => GridObjectSO.Name;
     }
 }

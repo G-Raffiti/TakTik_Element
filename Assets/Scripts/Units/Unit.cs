@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
-using _Pathfinding.Algorithms;
 using _ScriptableObject;
 using Cells;
 using DataBases;
@@ -14,7 +13,6 @@ using StateMachine;
 using Stats;
 using StatusEffect;
 using TMPro;
-using Units.UnitStates;
 using UnityEngine;
 
 namespace Units
@@ -25,68 +23,37 @@ namespace Units
     [ExecuteInEditMode]
     public abstract class Unit : IMovable, IInfo
     {
+        ////////////////////// Unity References ////////////////////////////////////////////////////////////////////////
+        [Header("Unity References")]
+        [SerializeField] private ColorSet colorSet;
+        [SerializeField] protected SpriteRenderer unitSpriteRenderer;
+        [SerializeField] private TextMeshProUGUI info;
+        [SerializeField] private TextMeshProUGUI shadow;
+        public Sprite UnitSprite => unitSpriteRenderer.sprite;
+        public override SpriteRenderer MovableSprite => unitSpriteRenderer;
+        private Animation anim;
+        [HideInInspector] public string UnitName;
+        public override string getName => UnitName;
         
-        public string UnitName;
-        public override string getName()
-        {
-            return UnitName;
-        }
         
-    #region Event Handler
+        //////////////////// Events ////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
-        /// UnitSelected event is invoked when user clicks on unit that belongs to him. 
-        /// It requires a collider on the unit game object to work.
-        /// </summary>
-        public event EventHandler UnitSelected;
-        /// <summary>
-        /// UnitDeselected event is invoked when user click outside of currently selected unit's collider.
-        /// It requires a collider on the unit game object to work.
-        /// </summary>
-        public event EventHandler UnitDeselected;
-        /// <summary>
-        /// UnitAttacked event is invoked when the unit is attacked.
+        /// Event invoked when the Unit Take Damage or is Healed
         /// </summary>
         public event EventHandler<AttackEventArgs> UnitAttacked;
         /// <summary>
         /// UnitDestroyed event is invoked when unit's BattleStats.HP drop below 0.
         /// </summary>
         public event EventHandler<DeathEventArgs> UnitDestroyed;
-        /// <summary>
-        /// UnitMoved event is invoked when unit moves from one cell to another.
-        /// </summary>
+        
+        [Header("Events Sender")]
+        [SerializeField] private UnitEvent onUnitTooltip_ON;
         [SerializeField] private UnitEvent onUnitMoved;
-
-        public virtual void OnMouseDown()
-        {
-            if(Cell != null)
-                Cell.OnMouseDown();
-        }
-        protected virtual void OnMouseEnter()
-        {
-            if(Cell != null)
-                Cell.OnMouseEnter();
-        }
-        protected virtual void OnMouseExit()
-        {
-            if(Cell != null)
-                Cell.OnMouseExit();
-        }
-
-    #endregion
-
-    #region Unit State
-
-        public UnitState UnitState { get; set; }
-        public void SetState(UnitState state)
-        {
-            UnitState.MakeTransition(state);
-        }
-
-    #endregion
-
-    #region Unit Stats
-
+        
+        
+        /////////////////// Unit Stats /////////////////////////////////////////////////////////////////////////////////
         public abstract Relic Relic { get; }
+        
         /// <summary>
         /// it represent the initiative of the unit, this point are used to take a round
         /// </summary>
@@ -101,7 +68,7 @@ namespace Units
         /// The Stats of the Unit before any alteration. 
         /// </summary>
         protected BattleStats baseStats;
-        
+
         /// <summary>
         /// Contain all the Total Stats (max Life, max AP, MP etc...)
         /// </summary>
@@ -118,10 +85,6 @@ namespace Units
         /// </summary>
         public int playerNumber;
 
-    #endregion
-
-    #region Unit Buffs
-
         /// <summary>
         /// A list of buffs that are applied to the unit.
         /// </summary>
@@ -131,7 +94,43 @@ namespace Units
         /// A list of buffs that are applied to the unit.
         /// </summary>
         protected List<Buff> buffs = new List<Buff>();
+        public bool isDying { get; set; }
+
         
+        //////////////////// IMovable //////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Dictionary of all Cells and best Path to go to this Cells
+        /// </summary>
+        public Dictionary<Cell, List<Cell>> cachedPaths = null;
+        
+        
+        /////////////////// On Mouse Actions ///////////////////////////////////////////////////////////////////////////
+        public virtual void OnMouseDown()
+        {
+            if(Cell != null)
+                Cell.OnMouseDown();
+        }
+        protected virtual void OnMouseEnter()
+        {
+            if(Cell != null)
+                Cell.OnMouseEnter();
+        }
+        protected virtual void OnMouseExit()
+        {
+            if(Cell != null)
+                Cell.OnMouseExit();
+        }
+
+        private void OnMouseOver()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                onUnitTooltip_ON.Raise(this);
+            }
+        }
+
+        
+        //////////////////// Buffs /////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Public Method to Add a new Buff to the Unit
         /// </summary>
@@ -166,38 +165,16 @@ namespace Units
             if (Buffs.Any(b => b.Effect == effect))
                 Buffs.Remove(Buffs.Find(b => b.Effect == effect));
         }
-
-    #endregion
-
-    #region IMovable
-
+        
+        
+        /////////////////////// I Movable Overrides ////////////////////////////////////////////////////////////////////
         public override List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
-            List<Cell> _path = Movable.Move(this, destinationCell, path);
+            List<Cell> _path = Movement.Move(this, destinationCell, path);
             int cost = _path.Count;
             if (BattleStateManager.instance.PlayingUnit == this)
                 BattleStats.MP -= cost;
             return _path;
-        }
-        /// <summary>
-        /// Dictionary of all Cells and best Path to go to this Cells
-        /// </summary>
-        public Dictionary<Cell, List<Cell>> cachedPaths = null;
-
-        /// <summary>
-        /// Determines speed of movement animation.
-        /// </summary>
-        public float movementAnimationSpeed;
-        public override float MovementAnimationSpeed => movementAnimationSpeed;
-        
-        
-        private static DijkstraPathfinding pathfinder = new DijkstraPathfinding();
-        private static Pathfinding fallbackPathfinder = new AStarPathfinding();
-
-
-        public override void AutoSortOrder()
-        {
-            unitSprite.sortingOrder = 500 - (int)(transform.position.y/0.577f);
         }
 
         public override IEnumerator Fall(Cell _destination)
@@ -218,7 +195,6 @@ namespace Units
         public override IEnumerator MovementAnimation(List<Cell> path)
         {
             TileIsometric.CellState _state = ((TileIsometric) Cell).State;
-            MarkAsMoving();
             yield return base.MovementAnimation(path);
             MarkBack(_state);
             OnMoveFinished(path.Count);
@@ -235,14 +211,14 @@ namespace Units
         ///<summary>
         /// Method indicates if unit is capable of moving to cell given as parameter.
         /// </summary>
-        public virtual bool IsCellMovableTo(Cell _cell)
+        protected virtual bool IsCellMovableTo(Cell _cell)
         {
             return _cell.IsWalkable;
         }
         /// <summary>
         /// Method indicates if unit is capable of moving through cell given as parameter.
         /// </summary>
-        public virtual bool IsCellTraversable(Cell _cell)
+        protected virtual bool IsCellTraversable(Cell _cell)
         {
             return _cell.IsWalkable;
         }
@@ -293,7 +269,7 @@ namespace Units
             }
         }
         
-        public List<Cell> FindPathFrom(List<Cell> cells, Cell origine, Cell destination)
+        public List<Cell> FindPathFrom(List<Cell> cells, Cell origin, Cell destination)
         {
             if (cachedPaths != null && cachedPaths.ContainsKey(destination))
             {
@@ -301,14 +277,14 @@ namespace Units
             }
             else
             {
-                return fallbackPathfinder.FindPath(GetGraphEdges(cells), origine, destination);
+                return fallbackPathfinder.FindPath(GetGraphEdges(cells), origin, destination);
             }
         }
         
         /// <summary>
         /// Method returns graph representation of cell grid for pathfinding.
         /// </summary>
-        protected virtual Dictionary<Cell, Dictionary<Cell, float>> GetGraphEdges(List<Cell> cells)
+        private Dictionary<Cell, Dictionary<Cell, float>> GetGraphEdges(List<Cell> cells)
         {
             Dictionary<Cell, Dictionary<Cell, float>> _ret = new Dictionary<Cell, Dictionary<Cell, float>>();
             foreach (Cell _cell in cells)
@@ -324,11 +300,10 @@ namespace Units
             }
             return _ret;
         }
-
-        #endregion
-    
-    #region Fight Attack / Defence
-    /// <summary>
+        
+        
+        ///////////////////// Fight / Damage Handler / Defence /////////////////////////////////////////////////////////
+        /// <summary>
         /// Handler method for defending against an attack.
         /// </summary>
         /// <param name="aggressor">Unit that performed the attack</param>
@@ -392,27 +367,33 @@ namespace Units
             return (int) BattleStats.GetDamageTaken(damage, element.Type);
         }
         
-    #endregion
-
-    #region Mark as / Color Change
-
-        public ColorSet colorSet;
-        [Header("Unity Infos")]
-        [SerializeField] protected SpriteRenderer unitSprite;
-        [SerializeField] private TextMeshProUGUI info;
-        [SerializeField] private TextMeshProUGUI shadow;
-        private Animation anim;
-        public Sprite UnitSprite => unitSprite.sprite;
+        /// <summary>
+        /// Method is called when units HP drops below 1.
+        /// </summary>
+        public override IEnumerator OnDestroyed()
+        {
+            isDying = true;
+            BattleStats.HP = 0;
+            Cell.FreeTheCell();
+            MarkAsDestroyed();
+            yield return new WaitWhile(() => anim.isPlaying);
+            UnitDestroyed?.Invoke(this, new DeathEventArgs(this));
+            isDying = false;
+            yield return new WaitForSeconds(0.1f);
+            if (Cell != null)
+            {
+                Cell.FreeTheCell();
+            }
+            Destroy(gameObject);
+        }
         
-        private Dictionary<EColor, Color> Colors = new Dictionary<EColor, Color>();
-        public bool isDying = false;
 
+        ////////////////////// Mark As (Color Change and Cells UI interactions) ////////////////////////////////////////
         /// <summary>
         /// Called on Battle Setup to the Set Colors and animation to the Unit's sprite
         /// </summary>
         public void InitializeSprite()
         {
-            Colors = colorSet.GetColors();
             AutoSortOrder();
             UnMark();
             anim = gameObject.GetComponent<Animation>();
@@ -424,30 +405,6 @@ namespace Units
         public void MarkBack(TileIsometric.CellState state)
         {
             ((TileIsometric)Cell).MarkAs(state);
-        }
-        
-        /// <summary>
-        /// Method marks unit as Moving
-        /// </summary>
-        protected void MarkAsMoving()
-        {
-            AutoSortOrder();
-        }
-        
-        /// <summary>
-        /// Method marks unit as current players unit.
-        /// </summary>
-        public void MarkAsFriendly()
-        {
-            Cell?.UnMark();
-        }
-        
-        /// <summary>
-        /// Method mark units to indicate user that the unit is in range and can be attacked.
-        /// </summary>
-        public void MarkAsReachableEnemy()
-        {
-            Cell?.MarkAsReachable();
         }
         
         /// <summary>
@@ -495,7 +452,7 @@ namespace Units
         /// </param>
         public void MarkAsDefending(Unit aggressor)
         {
-            anim.PlayQueued("Hit");
+            anim.Play("Hit");
         }
 
         /// <summary>
@@ -506,9 +463,8 @@ namespace Units
         {
             anim.PlayQueued("Death");
         }
-
-    #endregion
-
+    
+        ////////////////////////// Initialisation & Start/End Turn Methods /////////////////////////////////////////////
         /// <summary>
         /// Method called after object instantiation to initialize fields etc. 
         /// </summary>
@@ -516,17 +472,7 @@ namespace Units
         {
             buffs = new List<Buff>();
 
-            UnitState = new UnitStateNormal(this);
-
             Inventory ??= new Inventory();
-        }
-
-        public void OnDestroy()
-        {
-            if (Cell != null)
-            {
-                Cell.FreeTheCell();
-            }
         }
 
         /// <summary>
@@ -536,8 +482,6 @@ namespace Units
         {
             BattleStats.MP = total.MP;
             BattleStats.AP = total.AP;
-
-            SetState(new UnitStateMarkedAsFriendly(this));
         }
         
         /// <summary>
@@ -560,50 +504,11 @@ namespace Units
             });
             
             Cell.Buffs.ForEach( b => b.OnEndTurn(this));
-            
-            SetState(new UnitStateNormal(this));
         }
         
-        /// <summary>
-        /// Method is called when units HP drops below 1.
-        /// </summary>
-        public override IEnumerator OnDestroyed()
-        {
-            isDying = true;
-            BattleStats.HP = 0;
-            Cell.FreeTheCell();
-            MarkAsDestroyed();
-            yield return new WaitWhile(() => anim.isPlaying);
-            UnitDestroyed?.Invoke(this, new DeathEventArgs(this));
-            isDying = false;
-            yield return new WaitForSeconds(0.1f);
-            Destroy(gameObject);
-        }
-
-        /// <summary>
-        /// Method is called when unit is selected.
-        /// </summary>
-        public void OnUnitSelected()
-        {
-            SetState(new UnitStateMarkedAsSelected(this));
-            if (UnitSelected != null)
-            {
-                UnitSelected.Invoke(this, new EventArgs());
-            }
-        }
         
-        /// <summary>
-        /// Method is called when unit is deselected.
-        /// </summary>
-        public void OnUnitDeselected()
-        {
-            SetState(new UnitStateMarkedAsFriendly(this));
-            if (UnitDeselected != null)
-            {
-                UnitDeselected.Invoke(this, new EventArgs());
-            }
-        }
-
+        
+        ///////////////////////////////// Stats Modifications //////////////////////////////////////////////////////////
         public virtual void UpdateStats()
         {
             buffs.ForEach(buff => buff.Undo(this));
@@ -623,8 +528,9 @@ namespace Units
             
             buffs.ForEach(buff => buff.Apply(this));
         }
-        #region IInfo
-
+        
+        
+        ////////////////////////////////// IInfo Overrides / Tooltip ///////////////////////////////////////////////////
         public string GetInfoMain()
         {
             string str = "";
@@ -685,8 +591,6 @@ namespace Units
         {
             return playerNumber == 0 ? colorSet.GetColors()[EColor.ally] : colorSet.GetColors()[EColor.enemy];
         }
-
-        #endregion
     }
 
     public class AttackEventArgs : EventArgs

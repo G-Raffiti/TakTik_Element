@@ -95,7 +95,7 @@ namespace Skills.ScriptableObject_GridEffect
             if(_distance != 0)
                 while (target.IsMoving) yield return null;
             
-            Debug.Log($"Push : {skill.Unit.UnitName} pushed {target.getName()} of {_distance} Cells");
+            Debug.Log($"Push : {skill.Unit.UnitName} pushed {target.getName} of {_distance} Cells");
             
             // If an Unit hit an other object, both take damage
             if (_distance >= strength) yield break;

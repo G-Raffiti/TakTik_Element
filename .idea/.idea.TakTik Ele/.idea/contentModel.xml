@@ -305,14 +305,8 @@
             <e p="IMovable.cs" t="Include" />
             <e p="Monster.cs" t="Include" />
             <e p="MonsterSO.cs" t="Include" />
+            <e p="Movement.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
-            <e p="UnitStates" t="Include">
-              <e p="UnitState.cs" t="Include" />
-              <e p="UnitStateMarkedAsFriendly.cs" t="Include" />
-              <e p="UnitStateMarkedAsReachableEnemy.cs" t="Include" />
-              <e p="UnitStateMarkedAsSelected.cs" t="Include" />
-              <e p="UnitStateNormal.cs" t="Include" />
-            </e>
           </e>
           <e p="UserInterface" t="Include">
             <e p="BattleScene" t="Include">

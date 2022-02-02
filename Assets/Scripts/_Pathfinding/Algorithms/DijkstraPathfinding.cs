@@ -7,7 +7,7 @@ namespace _Pathfinding.Algorithms
     /// <summary>
     /// Implementation of Dijkstra pathfinding algorithm.
     /// </summary>
-    class DijkstraPathfinding : Pathfinding
+    public class DijkstraPathfinding : Pathfinding
     {
         public Dictionary<Cell, List<Cell>> FindAllPaths(Dictionary<Cell, Dictionary<Cell, float>> edges, Cell originNode)
         {

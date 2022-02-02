@@ -199,9 +199,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a74e4170e643fb9716a36f169ace43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementAnimationSpeed: 10
   Inventory:
     gears: []
+  colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
+  unitSpriteRenderer: {fileID: 6268130855909224943}
+  info: {fileID: 845015662812641807}
+  shadow: {fileID: 4880537689874929003}
   UnitName: 
+  onUnitTooltip_ON: {fileID: 11400000, guid: f59b7aea7b6263a4ab2a39c1cb1eeab7, type: 2}
   onUnitMoved: {fileID: 11400000, guid: f00c2e11c76f95d4ab1c9582337fb7db, type: 2}
   TurnPoint: 0
   BattleStats:
@@ -225,12 +231,6 @@ MonoBehaviour:
       NeedTarget: 0
       CanBeModified: 0
   playerNumber: 1
-  movementAnimationSpeed: 10
-  colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
-  unitSprite: {fileID: 6268130855909224943}
-  info: {fileID: 845015662812641807}
-  shadow: {fileID: 4880537689874929003}
-  isDying: 0
   deck: {fileID: 8809875516459172498}
   skill: {fileID: 7113906381904510399}
   onDeathLoot: {fileID: 11400000, guid: efdfb0120a87c204eb44c4662e8a7485, type: 2}
