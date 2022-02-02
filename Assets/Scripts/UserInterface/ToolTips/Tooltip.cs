@@ -8,8 +8,11 @@ namespace UserInterface.ToolTips
         [SerializeField] private Canvas popupCanvas;
         [SerializeField] private GameObject obj;
         [SerializeField] private RectTransform backgroundRectTransform;
+        [SerializeField] private bool canLock;
+        private bool lockInPlace;
         private Vector3 offset;
         private float padding;
+        public bool LockInPlace => lockInPlace;
 
         private void Awake()
         {
@@ -25,12 +28,27 @@ namespace UserInterface.ToolTips
 
         private void Update()
         {
+            if (!obj.activeSelf) return; 
+            
+            if (Input.GetMouseButton(1) && canLock)
+            {
+                lockInPlace = true;
+            }
+
+            if (lockInPlace && Input.GetMouseButton(0))
+            {
+                lockInPlace = false;
+                HideTooltip();
+                return;
+            }
+            
+            if (lockInPlace) return;
+            
             FollowCursor();
         }
 
         private void FollowCursor()
         {
-            if (!obj.activeSelf) { return; }
 
             Vector3 _newPos = Input.mousePosition + offset;
             _newPos.z = 0f;

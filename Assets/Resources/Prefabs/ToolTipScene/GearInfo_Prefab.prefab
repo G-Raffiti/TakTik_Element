@@ -88,5 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4beafae967754014b74589297a96cada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TooltipOn: {fileID: 11400000, guid: 7a1b078ef7ba48f4980f4d6948e905c0, type: 2}
-  TooltipOff: {fileID: 11400000, guid: 9bc60c16865e9fc47a33bc4f07398c51, type: 2}
+  GearTooltip_ON: {fileID: 11400000, guid: 74db1ada6f1eaef44946c53cd4b969eb, type: 2}
+  GearTooltip_OFF: {fileID: 11400000, guid: 73d3b8a6ce76a1a458c5024f06cefe22, type: 2}
