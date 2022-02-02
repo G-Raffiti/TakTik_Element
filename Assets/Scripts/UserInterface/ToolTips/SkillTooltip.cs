@@ -1,4 +1,5 @@
 ﻿using Skills;
+using StatusEffect;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,9 +18,10 @@ namespace UserInterface.ToolTips
         [SerializeField] private Image illustration;
         [SerializeField] private TextMeshProUGUI effectTxt;
         [SerializeField] private TextMeshProUGUI rangeTxt;
-        [SerializeField] private TextMeshProUGUI buffsTxt;
         [SerializeField] private Image frame;
         [SerializeField] private Image shadowEffect;
+        [SerializeField] private Transform buffsHolder;
+        [SerializeField] private BuffInfo buffPref;
 
         protected override void ShowToolTip()
         {
@@ -30,7 +32,6 @@ namespace UserInterface.ToolTips
             illustration.sprite = Skill.GetIcon();
             effectTxt.text = Skill.GetInfoLeft();
             rangeTxt.text = Skill.GetInfoRight();
-            buffsTxt.text = Skill.GetInfoDown();
             frame.color = Skill.skill.Element.TextColour;
             if (Skill.skill.BaseSkill.Monster != null)
             {
@@ -39,6 +40,22 @@ namespace UserInterface.ToolTips
                 return;
             }
             shadowEffect.color = Color.clear;
+            foreach (Buff _buff in Skill.skill.Buffs)
+            {
+                GameObject _pref = Instantiate(buffPref.gameObject, buffsHolder);
+                _pref.GetComponent<BuffInfo>().Buff = _buff;
+                _pref.GetComponent<BuffInfo>().DisplayIcon();
+            }
+        }
+        
+        public override void HideTooltip()
+        {
+            while (buffsHolder.childCount > 0)
+            {
+                DestroyImmediate(buffsHolder.GetChild(0).gameObject);
+            }
+            
+            base.HideTooltip();
         }
     }
 }

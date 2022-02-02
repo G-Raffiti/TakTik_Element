@@ -133,7 +133,7 @@ TextureImporter:
     second: IconSheet_37
   - first:
       213: -1012330078092146919
-    second: IconSheet_43
+    second: Infinity
   - first:
       213: -7384544218152878403
     second: IconSheet_44
@@ -1364,6 +1364,27 @@ TextureImporter:
       bones: []
       spriteID: 2025ba1682ccc0630800000000000000
       internalID: 3894712251578012162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Infinity
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 2560
+        width: 512
+        height: 512
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917cfd3582b73f1f0800000000000000
+      internalID: -1012330078092146919
       vertices: []
       indices: 
       edges: []

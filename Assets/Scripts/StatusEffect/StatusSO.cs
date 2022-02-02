@@ -18,11 +18,14 @@ namespace StatusEffect
         [SerializeField] private Sprite onFloorSprite;
         [SerializeField] private string buffName;
         [SerializeField] protected int baseDuration;
+        [SerializeField] protected bool isDefinitive;
 
         public EBuff Type => type;
         public bool BetweenTurn => betweenTurn;
         public Element Element => element;
         public Sprite OnFloorSprite => onFloorSprite;
+        public string Name => $"<color=#{ColorUtility.ToHtmlStringRGB(Element.TextColour)}>{buffName}</color>";
+        public bool IsDefinitive => isDefinitive;
 
         public abstract void ActiveEffect(Buff _buff, Unit _unit);
         public abstract void PassiveEffect(Buff _buff, Unit _unit);
@@ -53,9 +56,6 @@ namespace StatusEffect
 
             return ret;
         }
-
-        public string Name => $"<color=#{ColorUtility.ToHtmlStringRGB(Element.TextColour)}>{buffName}</color>";
-
         public abstract string InfoOnFloor(Cell _cell, Buff _buff);
     }
 }

@@ -19,14 +19,12 @@ namespace UserInterface
         [Header("References Unity")]
         [SerializeField] private Image icon;
         [SerializeField] private TextMeshProUGUI Duration;
-        [SerializeField] private TextMeshProUGUI DurationShadow;
         [SerializeField] private List<Image> frame;
         [SerializeField] private ColorSet colorSet;
         
         [Header("Tooltip Events")] 
         [SerializeField] private InfoEvent InfoTooltip_ON;
         [SerializeField] private VoidEvent InfoTooltip_OFF;
-
 
         public override string GetInfoMain()
         {
@@ -35,7 +33,9 @@ namespace UserInterface
 
         public override string GetInfoLeft()
         {
-            return Buff.InfoOnUnit(Buff, Unit);
+            if (Unit != null)
+                return Buff.InfoOnUnit(Buff, Unit);
+            return Buff.InfoBuff();
         }
 
         public override string GetInfoRight()
@@ -75,8 +75,9 @@ namespace UserInterface
             frame.ForEach(i => i.color = Buff.Effect.Type == EBuff.Buff
                 ? colorSet.GetColors()[EColor.Buff]
                 : colorSet.GetColors()[EColor.Debuff]);
-            DurationShadow.text = $"{Buff.Duration}";
-            Duration.text = $"{Buff.Duration}";
+            Duration.text = Buff.Effect.IsDefinitive 
+                ? $"<sprite name=Infinity>" 
+                : $"{Buff.Duration}";
         }
     }
 }

@@ -14,7 +14,6 @@ namespace StatusEffect
     {
         [SerializeField] private List<Affix> Bonus;
         [SerializeField] private List<Affix> Malus;
-        [SerializeField] private bool isDefinitive;
         [SerializeField] private EDependency dependOn;
         [SerializeField] private int fixValue;
 
