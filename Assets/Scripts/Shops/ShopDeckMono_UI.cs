@@ -21,7 +21,8 @@ namespace Shops
         [SerializeField] private Transform deckPlaceHolder;
         [SerializeField] private Transform relicPlaceHolder;
         [SerializeField] private List<PersonalInventory> portraits;
-        [SerializeField] private BattleHero actualHero;
+        [SerializeField] private List<BattleHero> BattlesHeroes;
+        private BattleHero actualHero;
         private List<SkillInfo> allSkills { get; set; }
 
         [Header("Event Listener")] 
@@ -36,10 +37,11 @@ namespace Shops
 
             for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
             {
+                PlayerData.getInstance().Heroes[i].Spawn(BattlesHeroes[i]);
                 portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
             }
 
-            PlayerData.getInstance().Heroes[0].Spawn(actualHero);
+            actualHero = BattlesHeroes[0];
             
             InitializeDisplay(0);
         }
@@ -53,11 +55,6 @@ namespace Shops
 
         private void InitializeDisplay(int empty)
         {
-            for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
-            {
-                portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
-            }
-            
             ClearDecks();
 
             DeckMono Deck = GameObject.FindObjectOfType<DeckMono>();
@@ -109,10 +106,10 @@ namespace Shops
             allSkills = new List<SkillInfo>();
         }
 
-        public void ChangeHero(int _index)
+        private void ChangeHero(int _index)
         {
             DeckMono Deck = GameObject.FindObjectOfType<DeckMono>();
-            PlayerData.getInstance().Heroes[_index].Spawn(actualHero);
+            actualHero = BattlesHeroes[_index];
             foreach (SkillInfo _skill in allSkills)
             {
                 SkillSO s = _skill.skill.BaseSkill;

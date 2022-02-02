@@ -57,6 +57,7 @@ namespace Units
         /// <summary>
         /// it represent the initiative of the unit, this point are used to take a round
         /// </summary>
+        [Header("Unit's Stats")]
         public int TurnPoint;
         
         /// <summary>

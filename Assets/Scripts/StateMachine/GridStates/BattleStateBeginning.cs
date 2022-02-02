@@ -156,8 +156,9 @@ namespace StateMachine.GridStates
             // Check if something happens
             if (!setupCells.Contains(_cell))
             {
-                if (actualHero.Cell != null)
-                    actualHero = null;
+                if (actualHero != null)
+                    if (actualHero.Cell != null)
+                        actualHero = null;
                 CheckCells();
                 return;
             }

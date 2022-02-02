@@ -3,6 +3,7 @@ using _DragAndDropSystem;
 using _EventSystem.CustomEvents;
 using _Instances;
 using Gears;
+using Units;
 using UnityEngine;
 using UserInterface;
 using Void = _EventSystem.CustomEvents.Void;
@@ -13,14 +14,15 @@ namespace Shops
     {
         [SerializeField] private List<PersonalInventory> Portraits;
         [SerializeField] private GameObject prefabGear;
+        [SerializeField] private List<BattleHero> battleHeroes;
 
         [SerializeField] private VoidEvent onItemMoved;
 
         private void Start()
         {
-            onItemMoved.EventListeners += UpdateInventories;
             for (int i = 0; i < Portraits.Count; i++)
             {
+                PlayerData.getInstance().Heroes[i].Spawn(battleHeroes[i]);
                 Portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
 
                 for (int j = 0; j < Portraits[i].Hero.Inventory.gears.Count; j++)
@@ -30,6 +32,7 @@ namespace Shops
                     pref.GetComponent<GearInfo>().DisplayIcon();
                 }
             }
+            onItemMoved.EventListeners += UpdateInventories;
         }
 
         private void OnDestroy()

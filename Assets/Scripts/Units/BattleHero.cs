@@ -15,6 +15,7 @@ namespace Units
     /// </summary>
     public class BattleHero : Unit
     {
+        [Header("Battle Hero Events Sender")]
         [SerializeField] private UnitEvent onHeroSelected;
         [SerializeField] private IntEvent onCellWalked;
         

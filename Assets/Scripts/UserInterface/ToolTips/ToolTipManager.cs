@@ -1,4 +1,5 @@
-﻿using _EventSystem.CustomEvents;
+﻿using System.Collections.Generic;
+using _EventSystem.CustomEvents;
 using Gears;
 using Resources.ToolTip.Scripts;
 using Skills;
@@ -13,6 +14,7 @@ namespace UserInterface.ToolTips
         [SerializeField] private GearTooltip gearTooltip;
         [SerializeField] private UnitTooltip unitTooltip;
         [SerializeField] private BasicTooltip basicTooltip;
+        [SerializeField] private List<Canvas> tooltipsCanvas;
 
         [Header("Event Listener")] 
         [SerializeField] private SkillEvent onSkillTooltip_ON;
@@ -75,6 +77,10 @@ namespace UserInterface.ToolTips
         // Add Listener to the Events
         private void Start()
         {
+            foreach (Canvas _canvas in tooltipsCanvas)
+            {
+                _canvas.gameObject.SetActive(true);
+            }
             onSkillTooltip_ON.EventListeners += EventTrigger_SkillTooltip_ON;
             onSkillTooltip_OFF.EventListeners += EventTrigger_SkillTooltip_OFF;
             onGearTooltip_ON.EventListeners += EventTrigger_GearTooltip_ON;
