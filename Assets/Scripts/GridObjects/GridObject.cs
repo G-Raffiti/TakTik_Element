@@ -3,71 +3,89 @@ using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using Cells;
 using StateMachine;
+using StateMachine.GridStates;
 using Units;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace GridObjects
 {
     [RequireComponent(typeof(Animation))]
     public class GridObject : IMovable
     {
+        [Header("Unity References")]
         [SerializeField] private GridObjectSO gridObject;
-        [SerializeField] private GridObjectEvent gridObjectDestroyed;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        
+        [Header("Event Sender")]
         [SerializeField] private VoidEvent onActionDone;
-        private bool isDying;
-
-        public bool IsDying => isDying;
-
+        [SerializeField] private GridObjectEvent gridObjectDestroyed;
+        [SerializeField] private InfoEvent onInfoTooltip_ON;
+        [SerializeField] private VoidEvent onInfoTooltip_OFF;
+        
+        private bool isDying = false;
+        private bool isUsed = false;
         public GridObjectSO GridObjectSO
         {
             get => gridObject;
             set => gridObject = value;
         }
-
-        private bool isUsed = false;
-
+        public bool IsDying => isDying;
+        public override SpriteRenderer MovableSprite => spriteRenderer;
+        public override string getName => GridObjectSO.Name;
+        
+        
+        //////////////////// IMovable //////////////////////////////////////////////////////////////////////////////////
         public override List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
             if (!GridObjectSO.Movable) return new List<Cell>();
             return base.Move(destinationCell, path);
         }
-
-        /// <summary>
-        /// Coroutine that play the Movement Animation on the Grid
-        /// </summary>
-        /// <param name="path">List of Cells that have to be crossed</param>
-        /// <returns></returns>
-        public override IEnumerator MovementAnimation(List<Cell> path)
-        {
-            IsMoving = true;
-            path.Reverse();
-            foreach (Cell _cell in path)
-            {
-                Vector3 _destinationPos = new Vector3(_cell.transform.localPosition.x, _cell.transform.localPosition.y,
-                    transform.localPosition.z);
-                while (transform.localPosition != _destinationPos)
-                {
-                    transform.localPosition = Vector3.MoveTowards(transform.localPosition, _destinationPos,
-                        Time.deltaTime * MovementAnimationSpeed);
-                    yield return 0;
-                }
-            }
-
-            IsMoving = false;
-        }
+ 
         
+        //////////////////// Grid Object Interactions //////////////////////////////////////////////////////////////////
         /// <summary>
         /// Check if the unit is in range to activate the GridObject
         /// </summary>
         public bool IsInteractable =>
             gridObject.GetZoneOfInteraction(Cell).Contains(BattleStateManager.instance.PlayingUnit.Cell) && !isUsed;
 
+        /// <summary>
+        /// Check from a Given Cell
+        /// </summary>
         public bool IsInteractableFrom(Cell _cell)
         {
             return GridObjectSO.GetZoneOfInteraction(Cell).Contains(_cell) && !isUsed;
         }
+        
+        /// <summary>
+        /// Method that Call the the Action in the GridObjectSO
+        /// </summary>
+        /// <param name="_unit"></param>
+        public void Interact(Unit _unit)
+        {
+            gridObject.Interact(_unit, Cell);
+            isUsed = true;
+        }
 
+
+        /////////////////// On Mouse Actions ///////////////////////////////////////////////////////////////////////////
+        public void OnPointerEnter()
+        {
+            if (BattleStateManager.instance.BattleState.State == EBattleState.Unit)
+                GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, Cell);
+            //if (!EventSystem.current.IsPointerOverGameObject())
+            onInfoTooltip_ON.Raise(gridObject);
+        }
+
+        public void OnPointerExit()
+        {
+            //if (!EventSystem.current.IsPointerOverGameObject())
+            onInfoTooltip_OFF.Raise();
+        }
+        
+
+        /////////////////// Initialisation & On Destroy ////////////////////////////////////////////////////////////////
         public void Initialize()
         {
             spriteRenderer.sprite = gridObject.Image;
@@ -76,24 +94,7 @@ namespace GridObjects
             AutoSortOrder();
             Cell.Take(this);
         }
-
-        protected void OnMouseDown()
-        {
-            if(Cell != null)
-                Cell.OnMouseDown();
-        }
-        protected void OnMouseEnter()
-        {
-            if(Cell != null)
-                Cell.OnMouseEnter();
-            GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, Cell);
-        }
-        protected void OnMouseExit()
-        {
-            if(Cell != null)
-                Cell.OnMouseExit();
-        }
-
+        
         public override IEnumerator OnDestroyed()
         {
             gridObjectDestroyed.Raise(this);
@@ -106,19 +107,15 @@ namespace GridObjects
             Destroy(gameObject);
             onActionDone.Raise();
         }
-
-        public void Interact(Unit _unit)
-        {
-            gridObject.Interact(_unit, Cell);
-            isUsed = true;
-        }
-
+        
+         
+        //////////////////// Start Turn ////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Called By State Manager on Every Units Turn
+        /// </summary>
         public void OnStartTurn()
         {
             isUsed = false;
         }
-
-        public override SpriteRenderer MovableSprite => spriteRenderer;
-        public override string getName => GridObjectSO.Name;
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using _ScriptableObject;
+using Buffs;
 using Relics.ScriptableObject_RelicEffect;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
 using Skills.ScriptableObject_GridEffect;
 using Stats;
-using StatusEffect;
 using UnityEngine;
 
 namespace Relics

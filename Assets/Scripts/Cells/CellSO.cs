@@ -1,4 +1,4 @@
-﻿using StatusEffect;
+﻿using Buffs;
 using UnityEngine;
 
 namespace Cells

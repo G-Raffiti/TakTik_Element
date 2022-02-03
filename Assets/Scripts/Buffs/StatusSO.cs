@@ -3,7 +3,7 @@ using Cells;
 using Units;
 using UnityEngine;
 
-namespace StatusEffect
+namespace Buffs
 {
     public enum EBuff
     {

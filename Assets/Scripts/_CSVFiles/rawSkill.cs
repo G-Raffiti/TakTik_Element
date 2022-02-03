@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using _ScriptableObject;
+using Buffs;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
 using Skills.ScriptableObject_GridEffect;
-using StatusEffect;
 using Units;
 using UnityEngine;
 

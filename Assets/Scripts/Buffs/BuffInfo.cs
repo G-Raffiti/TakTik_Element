@@ -2,14 +2,13 @@
 using _EventSystem.CustomEvents;
 using DataBases;
 using Resources.ToolTip.Scripts;
-using StatusEffect;
 using TMPro;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UserInterface
+namespace Buffs
 {
     public class BuffInfo : InfoBehaviour
     {

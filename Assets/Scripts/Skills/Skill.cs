@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using _ScriptableObject;
+using Buffs;
 using Decks;
 using Relics;
 using Relics.ScriptableObject_RelicEffect;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
 using Stats;
-using StatusEffect;
 using Units;
 
 namespace Skills

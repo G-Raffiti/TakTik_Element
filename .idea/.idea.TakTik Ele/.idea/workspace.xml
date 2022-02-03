@@ -12,25 +12,31 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/Tooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateSkillSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/TurnOrderPrefab.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Movable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Movement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/TooltipManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopInventory_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/SkillTooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BuffInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatusSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BuffInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Buffs/BuffInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Buffs/Buff.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/Tooltip.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="24Y3WXaGG2rz1oYsQKXtVFY8oWm" />

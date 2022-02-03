@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
 using _Instances;
+using Buffs;
 using Cells;
 using EndConditions;
 using GridObjects;
@@ -13,7 +14,6 @@ using Relics.ScriptableObject_RelicEffect;
 using Skills;
 using StateMachine.GridStates;
 using StateMachine.UnitGenerators;
-using StatusEffect;
 using Units;
 using UnityEngine;
 using Void = _EventSystem.CustomEvents.Void;
@@ -96,7 +96,7 @@ namespace StateMachine
             }
         }
 
-        public void CheckCells()
+        private void CheckCells()
         {
             foreach (Cell _cell in Cells)
             {
@@ -134,12 +134,7 @@ namespace StateMachine
                 _gridObject.transform.position = _gridObject.Cell.transform.position;
             }
         }
-
-
-        /// <summary>
-        /// GameObject that holds player objects.
-        /// </summary>
-        //public Transform playersParent;
+        
         private void Start()
         {
             DeadThisTurn = new List<Unit>();
@@ -392,9 +387,16 @@ namespace StateMachine
             
             Cells.ForEach(c => c.OnEndTurn());
 
-            if (PlayingUnit != null)
+            
+
+            foreach (Unit _unit in Units)
             {
-                PlayingUnit.OnTurnEnd();
+                if (PlayingUnit != null && _unit == PlayingUnit)
+                {
+                    PlayingUnit.EndTurn();
+                    continue;
+                }
+                _unit.OnTurnEnds();
             }
             
             SortByTurnPoints();
@@ -429,8 +431,7 @@ namespace StateMachine
             TurnCount += 1f / Units.Count;
             foreach (Unit _unit in Units)
             {
-                _unit.Buffs.ForEach(b => b.OnStartTurn(_unit));
-                _unit.Cell.Buffs.ForEach(b => b.OnStartTurn(_unit));
+                _unit.OnTurnStarts();
             }
 
             foreach (GridObject _gridObject in GridObjects)
@@ -448,17 +449,8 @@ namespace StateMachine
 
             Players.Find(p => p.playerNumber == PlayingUnit.playerNumber).Play(this);
             onUnitStartTurn.Raise(PlayingUnit);
-            
-            // AI Test auto EndTurn !
-            if (AutoPass)
-            {
-                if (PlayingUnit.playerNumber == 0)
-                    EndTurn();
-            }
-            // End AI Test
+
         }
-        // AI Tester AutoEndTurn for Player
-        public bool AutoPass;
         private void SortByTurnPoints()
         {
             Units.Sort((u1, u2) => u1.TurnPoint.CompareTo(u2.TurnPoint));

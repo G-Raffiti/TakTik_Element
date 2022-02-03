@@ -4,7 +4,7 @@ using Cells;
 using Units;
 using UnityEngine;
 
-namespace StatusEffect
+namespace Buffs
 {
     [CreateAssetMenu(fileName = "Status_Drowned", menuName = "Scriptable Object/Status Effects/Drowned")]
     public class Drowned : StatusSO

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using Buffs;
 using Skills;
 using Skills._Zone;
 using Stats;
-using StatusEffect;
 
 namespace Relics
 {

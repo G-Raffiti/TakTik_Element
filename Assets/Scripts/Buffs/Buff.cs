@@ -4,7 +4,7 @@ using StateMachine;
 using Units;
 using UnityEngine;
 
-namespace StatusEffect
+namespace Buffs
 {
     [Serializable]
     public class Buff
@@ -48,20 +48,25 @@ namespace StatusEffect
         /// </summary>
         public void OnEndTurn(Unit _unit)
         {
-            if (_unit != BattleStateManager.instance.PlayingUnit) return;
-            if (!StatusEffect.BetweenTurn) 
+            if (_unit == null)
+            {
+                Duration -= 1;
+                return;
+            }
+            
+            if (StatusEffect.BetweenTurn)
+            {
                 StatusEffect.ActiveEffect(this, _unit);
+                Duration -= 1;
+            }
+
+            else if (_unit == BattleStateManager.instance.PlayingUnit)
+            {
+                StatusEffect.ActiveEffect(this, _unit);
+                Duration -= 1;
+            }
         }
 
-        /// <summary>
-        /// Methode Called on the Start of any Unit's Turn
-        /// </summary>
-        public void OnStartTurn(Unit _unit)
-        {
-            if (StatusEffect.BetweenTurn)
-                StatusEffect.ActiveEffect(this, _unit);
-        }
-        
         /// <summary>
         /// Add all the Stats Bonus or Malus from the Buff to the affected Unit
         /// </summary>

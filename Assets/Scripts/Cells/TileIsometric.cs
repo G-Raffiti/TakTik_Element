@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Instances;
+using Buffs;
 using DataBases;
 using Resources.ToolTip.Scripts;
-using StatusEffect;
 using UnityEngine;
 
 namespace Cells
@@ -90,28 +90,22 @@ namespace Cells
 
         public override void OnEndTurn()
         {
-            if (IsTaken && CurrentUnit != null)
+            Buffs.ForEach(b =>
             {
-                foreach (Buff _buffBetweenTurn in Buffs.Where(b => b.Effect.BetweenTurn))
-                {
-                    _buffBetweenTurn.OnEndTurn(CurrentUnit);
-                }
-            }
-            
-            Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO).ToList().ForEach(b => b.Duration -= 1);
-            
-            List<Buff> newList = new List<Buff>(Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO));
-            newList.ForEach(b =>
-            {
-                if (b.Duration <= 0)
-                {
-                    Buffs.Remove(b);
-                }
+                b.OnEndTurn(CurrentUnit);
             });
 
-            if (Buffs.Count <= 0)
-                effect.sprite = null;
-            else effect.sprite = Buffs[Buffs.Count - 1].Effect.OnFloorSprite;
+            List<Buff> newList = new List<Buff>(Buffs.Where(b => b.Effect != CellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO));
+
+            foreach (Buff _buff in newList.Where(_buff => _buff.Duration <= 0))
+            {
+                if (CurrentUnit != null) _buff.Undo(CurrentUnit);
+                Buffs.Remove(_buff);
+            }
+
+            effect.sprite = Buffs.Count <= 0 
+                ? null 
+                : Buffs[Buffs.Count - 1].Effect.OnFloorSprite;
         }
 
         public override void FallIn()

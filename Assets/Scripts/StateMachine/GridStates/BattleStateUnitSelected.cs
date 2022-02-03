@@ -106,7 +106,6 @@ namespace StateMachine.GridStates
 
         public override void OnStateEnter()
         {
-            //unit.OnUnitSelected();
             unitCell = unit.Cell;
 
             MarkCellsBack();
@@ -147,7 +146,6 @@ namespace StateMachine.GridStates
         }
         public override void OnStateExit()
         {
-            //unit.OnUnitDeselected();
             foreach (Cell _cell in StateManager.Cells)
             {
                 _cell.UnMark();

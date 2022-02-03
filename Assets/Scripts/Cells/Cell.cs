@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Pathfinding.DataStructs;
+using Buffs;
 using GridObjects;
 using StateMachine;
-using StatusEffect;
 using TMPro;
 using Units;
 using UnityEngine;
@@ -83,18 +83,37 @@ namespace Cells
         /// </summary>
         public event EventHandler CellDehighlighted;
 
-        protected internal virtual void OnMouseEnter()
+        public virtual void OnMouseEnter()
         {
             CellHighlighted?.Invoke(this, new EventArgs());
-        }
-        protected internal virtual void OnMouseExit()
-        {
-            CellDehighlighted?.Invoke(this, new EventArgs());
+            if (CurrentGridObject != null)
+            {
+                CurrentGridObject.OnPointerEnter();
+            }
         }
 
-        internal void OnMouseDown()
+        public virtual void OnMouseExit()
+        {
+            CellDehighlighted?.Invoke(this, new EventArgs());
+            if (CurrentGridObject != null)
+            {
+                CurrentGridObject.OnPointerExit();
+            }
+        }
+
+        public virtual void OnMouseDown()
         {
             CellClicked?.Invoke(this, new EventArgs());
+            if(CurrentUnit != null)
+                CurrentUnit.OnLeftClick();
+        }
+        private void OnMouseOver()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                if(CurrentUnit != null)
+                    CurrentUnit.OnRightClick();
+            }
         }
 
         /// <summary>

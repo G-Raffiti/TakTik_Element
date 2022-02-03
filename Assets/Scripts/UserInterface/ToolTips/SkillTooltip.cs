@@ -1,5 +1,5 @@
-﻿using Skills;
-using StatusEffect;
+﻿using Buffs;
+using Skills;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

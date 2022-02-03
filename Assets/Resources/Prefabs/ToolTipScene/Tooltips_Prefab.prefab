@@ -274,10 +274,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -662,10 +662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -762,10 +762,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1937,6 +1937,7 @@ MonoBehaviour:
   obj: {fileID: 7533005381902924640}
   backgroundRectTransform: {fileID: 7533005381902924641}
   canLock: 0
+  LockPosition: {x: 0, y: 0}
   icon: {fileID: 7533005383043318275}
   main: {fileID: 7533005382428007341}
   left: {fileID: 7533005381566220541}
@@ -2334,6 +2335,7 @@ MonoBehaviour:
   obj: {fileID: 7533005381314612333}
   backgroundRectTransform: {fileID: 7533005381314612334}
   canLock: 1
+  LockPosition: {x: -170, y: -335}
   Skill: {fileID: 0}
   Name: {fileID: 7533005381164518224}
   elementIcon: {fileID: 7533005381927844617}
@@ -3044,10 +3046,10 @@ RectTransform:
   m_Father: {fileID: 1851271182149223914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 340, y: 410.31}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -170, y: -350}
+  m_SizeDelta: {x: 340, y: 565.03}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &7533005381314612328
 CanvasRenderer:
@@ -3727,7 +3729,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 30000
   m_TargetDisplay: 0
@@ -4788,6 +4790,7 @@ MonoBehaviour:
   obj: {fileID: 7533005381386039357}
   backgroundRectTransform: {fileID: 7533005381386039358}
   canLock: 0
+  LockPosition: {x: 0, y: 0}
   Gear: {fileID: 0}
   main: {fileID: 7533005382337375827}
   statsLeft: {fileID: 7533005382175640556}
@@ -5797,10 +5800,10 @@ RectTransform:
   m_Father: {fileID: 7533005381425038292}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 406.41}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 10, y: -200}
+  m_SizeDelta: {x: 400, y: 406.41003}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &7533005381925227549
 CanvasRenderer:
@@ -6711,8 +6714,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 170, y: -205.155}
-  m_SizeDelta: {x: 320, y: 390.31}
+  m_AnchoredPosition: {x: 170, y: -282.515}
+  m_SizeDelta: {x: 320, y: 545.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7533005382271164498
 CanvasRenderer:
@@ -7697,7 +7700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160, y: -379.31}
+  m_AnchoredPosition: {x: 160, y: -456.66998}
   m_SizeDelta: {x: 310, y: 166.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7533005382481617729
@@ -7900,6 +7903,7 @@ MonoBehaviour:
   obj: {fileID: 7533005381925227520}
   backgroundRectTransform: {fileID: 7533005381925227521}
   canLock: 1
+  LockPosition: {x: -950, y: -200}
   Unit: {fileID: 0}
   nameTxt: {fileID: 7533005381263488510}
   unitSprite: {fileID: 7533005382279160126}

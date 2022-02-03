@@ -144,6 +144,18 @@
             <e p="Element.cs" t="Include" />
             <e p="Rarity.cs" t="Include" />
           </e>
+          <e p="Buffs" t="Include">
+            <e p="Buff.cs" t="Include" />
+            <e p="BuffInfo.cs" t="Include" />
+            <e p="StatusEffects" t="Include">
+              <e p="Burned.cs" t="Include" />
+              <e p="Corruption.cs" t="Include" />
+              <e p="Drowned.cs" t="Include" />
+              <e p="Poison.cs" t="Include" />
+              <e p="StatsBonus.cs" t="Include" />
+            </e>
+            <e p="StatusSO.cs" t="Include" />
+          </e>
           <e p="Cells" t="Include">
             <e p="Board.cs" t="Include" />
             <e p="BoardSO.cs" t="Include" />
@@ -289,15 +301,6 @@
             <e p="BattleStats.cs" t="Include" />
             <e p="Range.cs" t="Include" />
           </e>
-          <e p="StatusEffect" t="Include">
-            <e p="Buff.cs" t="Include" />
-            <e p="Burned.cs" t="Include" />
-            <e p="Corruption.cs" t="Include" />
-            <e p="Drowned.cs" t="Include" />
-            <e p="Poison.cs" t="Include" />
-            <e p="StatsBonus.cs" t="Include" />
-            <e p="StatusSO.cs" t="Include" />
-          </e>
           <e p="Units" t="Include">
             <e p="BattleGenerator.cs" t="Include" />
             <e p="BattleHero.cs" t="Include" />
@@ -324,7 +327,6 @@
               </e>
               <e p="TurnOrderPrefab.cs" t="Include" />
             </e>
-            <e p="BuffInfo.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
             <e p="PersonalInventory.cs" t="Include" />
             <e p="ToolTips" t="Include">

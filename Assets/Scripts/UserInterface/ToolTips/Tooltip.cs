@@ -9,6 +9,7 @@ namespace UserInterface.ToolTips
         [SerializeField] private GameObject obj;
         [SerializeField] private RectTransform backgroundRectTransform;
         [SerializeField] private bool canLock;
+        [SerializeField] private Vector2 LockPosition;
         private bool lockInPlace;
         private Vector3 offset;
         private float padding;
@@ -33,6 +34,7 @@ namespace UserInterface.ToolTips
             if (Input.GetMouseButton(1) && canLock)
             {
                 lockInPlace = true;
+                obj.transform.localPosition = new Vector3(LockPosition.x, LockPosition.y);
             }
 
             if (lockInPlace && Input.GetMouseButton(0))
@@ -49,7 +51,6 @@ namespace UserInterface.ToolTips
 
         private void FollowCursor()
         {
-
             Vector3 _newPos = Input.mousePosition + offset;
             _newPos.z = 0f;
             float _rightEdgeToScreenEdgeDistance = Screen.width - (_newPos.x + backgroundRectTransform.rect.width * popupCanvas.scaleFactor) - padding;

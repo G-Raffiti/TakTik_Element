@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
 using _ScriptableObject;
+using Buffs;
 using Cells;
 using DataBases;
 using Gears;
@@ -11,7 +12,6 @@ using Relics;
 using Resources.ToolTip.Scripts;
 using StateMachine;
 using Stats;
-using StatusEffect;
 using TMPro;
 using UnityEngine;
 
@@ -106,7 +106,9 @@ namespace Units
         
         
         /////////////////// On Mouse Actions ///////////////////////////////////////////////////////////////////////////
-        public virtual void OnMouseDown()
+        // J'ai retiré le Collider des Units pour n'utiliser que celui des Cells (c'est plus clair je pense)
+        /*
+         public virtual void OnMouseDown()
         {
             if(Cell != null)
                 Cell.OnMouseDown();
@@ -121,16 +123,16 @@ namespace Units
             if(Cell != null)
                 Cell.OnMouseExit();
         }
-
-        private void OnMouseOver()
+        */
+        public virtual void OnLeftClick()
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                onUnitTooltip_ON.Raise(this);
-            }
+        }
+        public virtual void OnRightClick()
+        {
+            onUnitTooltip_ON.Raise(this);
         }
 
-        
+
         //////////////////// Buffs /////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Public Method to Add a new Buff to the Unit
@@ -477,23 +479,29 @@ namespace Units
         }
 
         /// <summary>
-        /// Method is called at the start of each turn.
+        /// Method is called at the start of THIS unit's Turn
         /// </summary>
-        public virtual void OnTurnStart()
+        public virtual void StartTurn()
         {
             BattleStats.MP = total.MP;
             BattleStats.AP = total.AP;
         }
         
         /// <summary>
-        /// Method is called at the end of each turn.
+        /// Method is called at the End of THIS unit's Turn
         /// </summary>
-        public virtual void OnTurnEnd()
+        public virtual void EndTurn()
         {
             cachedPaths = null;
+        }
+        
+        /// <summary>
+        /// Method Called at the End of ANY OTHER unit's Turn
+        /// </summary>
+        public void OnTurnEnds()
+        {
             buffs.ForEach(b =>
             {
-                b.Duration -= 1;
                 b.OnEndTurn(this);
             });
             
@@ -503,8 +511,13 @@ namespace Units
                 _buff.Undo(this);
                 buffs.Remove(_buff);
             });
-            
-            Cell.Buffs.ForEach( b => b.OnEndTurn(this));
+        }
+
+        /// <summary>
+        /// Method Called at the Start of EVERY unit's Turn
+        /// </summary>
+        public void OnTurnStarts()
+        {
         }
         
         

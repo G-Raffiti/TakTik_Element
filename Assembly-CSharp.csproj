@@ -54,6 +54,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateUnitSelected.cs" />
      <Compile Include="Assets\Scripts\EndConditions\DeathBattle.cs" />
+     <Compile Include="Assets\Scripts\Units\Movement.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\BattleFade.cs" />
      <Compile Include="Assets\Scripts\EndConditions\EndConditionSO.cs" />
      <Compile Include="Assets\Scripts\Cells\Board.cs" />
@@ -88,7 +89,7 @@
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\DijkstraPathfinding.cs" />
      <Compile Include="Assets\Scripts\ScreenResolutionManager\ResolutionManager.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\BuffInfo.cs" />
+     <Compile Include="Assets\Scripts\Buffs\BuffInfo.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleTurnOrder_UI.cs" />
      <Compile Include="Assets\Scripts\Players\Player.cs" />
@@ -136,9 +137,9 @@
      <Compile Include="Assets\Scripts\Gears\GearSO.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_Inventory.cs" />
      <Compile Include="Assets\Scripts\Cells\TileIsometric.cs" />
-     <Compile Include="Assets\Scripts\StatusEffect\Burned.cs" />
+     <Compile Include="Assets\Scripts\Buffs\StatusEffects\Burned.cs" />
      <Compile Include="Assets\Scripts\Skills\Skill.cs" />
-     <Compile Include="Assets\Scripts\StatusEffect\Poison.cs" />
+     <Compile Include="Assets\Scripts\Buffs\StatusEffects\Poison.cs" />
      <Compile Include="Assets\Scripts\Stats\Affix.cs" />
      <Compile Include="Assets\Scripts\Stats\Affinity.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Tree.cs" />
@@ -173,10 +174,10 @@
      <Compile Include="Assets\Scripts\_Instances\KeepBetweenScene.cs" />
      <Compile Include="Assets\Scripts\Score\ScoreEventHandler.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityItemEvent.cs" />
-     <Compile Include="Assets\Scripts\StatusEffect\Corruption.cs" />
+     <Compile Include="Assets\Scripts\Buffs\StatusEffects\Corruption.cs" />
      <Compile Include="Assets\Scripts\UserInterface\ToolTips\GearTooltip.cs" />
      <Compile Include="Assets\Scripts\_Extension\Extension.cs" />
-     <Compile Include="Assets\Scripts\StatusEffect\StatusSO.cs" />
+     <Compile Include="Assets\Scripts\Buffs\StatusSO.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffect.cs" />
      <Compile Include="Assets\Scripts\Skills\IEffect.cs" />
      <Compile Include="Assets\Scripts\Score\ScoreHolder.cs" />
@@ -215,7 +216,7 @@
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleState.cs" />
      <Compile Include="Assets\Scripts\UserInterface\ToolTips\Tooltip.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\SkillEffect.cs" />
-     <Compile Include="Assets\Scripts\StatusEffect\Buff.cs" />
+     <Compile Include="Assets\Scripts\Buffs\Buff.cs" />
      <Compile Include="Assets\Scripts\Cells\Square.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GearEvent.cs" />
      <Compile Include="Assets\Scripts\Units\BattleHero.cs" />
@@ -226,7 +227,7 @@
      <Compile Include="Assets\Scripts\Skills\SkillInfo.cs" />
      <Compile Include="Assets\Scripts\StateMachine\GridStates\BattleStateBeginning.cs" />
      <Compile Include="Assets\Scripts\Cells\Cell.cs" />
-     <Compile Include="Assets\Scripts\StatusEffect\Drowned.cs" />
+     <Compile Include="Assets\Scripts\Buffs\StatusEffects\Drowned.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono_UI.cs" />
      <Compile Include="Assets\Scripts\UserInterface\UI_Menu\MenuPanel.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\InfoEvent.cs" />
@@ -234,7 +235,7 @@
      <Compile Include="Assets\Scripts\_DragAndDropSystem\DragAndDropItem.cs" />
      <Compile Include="Assets\Scripts\Score\ScoreSceneUI.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\PushFromImpact.cs" />
-     <Compile Include="Assets\Scripts\StatusEffect\StatsBonus.cs" />
+     <Compile Include="Assets\Scripts\Buffs\StatusEffects\StatsBonus.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\GridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\Stats\AffixSO.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\HeapPriorityQueue.cs" />
@@ -255,7 +256,6 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\Units\Movement.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

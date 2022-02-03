@@ -5,8 +5,7 @@ using Stats;
 using Units;
 using UnityEngine;
 
-
-namespace StatusEffect
+namespace Buffs
 {
     public enum EDependency{ None, Power, Focus, Affinity }
     [CreateAssetMenu(fileName = "Status_StatsBonus_", menuName = "Scriptable Object/Status Effects/Stats Bonus")]

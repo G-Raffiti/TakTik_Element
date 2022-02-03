@@ -3,7 +3,7 @@ using Cells;
 using Units;
 using UnityEngine;
 
-namespace StatusEffect
+namespace Buffs
 {
     [CreateAssetMenu(fileName = "Status_Corruption", menuName = "Scriptable Object/Status Effects/Corruption")]
     public class Corruption : StatusSO

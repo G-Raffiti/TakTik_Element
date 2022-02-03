@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
+using Buffs;
 using Gears;
 using Relics;
 using StateMachine;
+using StateMachine.GridStates;
 using Stats;
-using StatusEffect;
 using UnityEngine;
 
 namespace Units
@@ -52,10 +53,10 @@ namespace Units
             hero.UpdateHP();
         }
 
-        public override void OnMouseDown()
+        public override void OnLeftClick()
         {
-            base.OnMouseDown();
-            if (!BattleStateManager.instance.GameStarted)
+            base.OnLeftClick();
+            if (BattleStateManager.instance.BattleState.State == EBattleState.Beginning)
                 onHeroSelected.Raise(this);
         }
         

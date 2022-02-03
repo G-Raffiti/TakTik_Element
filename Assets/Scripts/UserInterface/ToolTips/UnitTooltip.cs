@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Buffs;
 using Gears;
 using Relics;
-using StatusEffect;
 using TMPro;
 using Units;
 using UnityEngine;

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
 using _Instances;
+using Buffs;
 using Cells;
 using Skills;
 using Skills._Zone;
 using StateMachine;
 using StateMachine.GridStates;
-using StatusEffect;
 using Units;
 using UnityEngine;
 using Void = _EventSystem.CustomEvents.Void;
@@ -68,7 +68,7 @@ namespace Players
             AI_SkillInfo = monster.GetComponentInChildren<SkillInfo>();
             evaluationValues = monster.Archetype.Evaluations;
             
-            monster.OnTurnStart();
+            monster.StartTurn();
 
             // Play
             onMonsterPlay.Raise();

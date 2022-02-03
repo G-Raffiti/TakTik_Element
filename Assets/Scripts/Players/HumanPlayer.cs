@@ -10,7 +10,7 @@ namespace Players
     {
         public override void Play(BattleStateManager _cellGrid)
         {
-            _cellGrid.PlayingUnit.OnTurnStart();
+            _cellGrid.PlayingUnit.StartTurn();
             _cellGrid.BattleState = new BattleStateUnitSelected(_cellGrid, _cellGrid.PlayingUnit);
         }
     }

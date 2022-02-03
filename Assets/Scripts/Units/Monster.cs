@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using _Instances;
 using _ScriptableObject;
+using Buffs;
 using Cells;
 using Decks;
 using Gears;
@@ -12,7 +13,6 @@ using Skills;
 using Skills._Zone;
 using StateMachine;
 using Stats;
-using StatusEffect;
 using UnityEngine;
 
 namespace Units
@@ -30,6 +30,7 @@ namespace Units
         [Header("Event Sender")]
         [SerializeField] private UnitEvent onDeathLoot;
         [SerializeField] private UnitEvent onDeathRelic;
+        [SerializeField] private SkillEvent onSkillTooltip_ON;
         
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onInventoryClosed;
@@ -53,6 +54,11 @@ namespace Units
             onInventoryClosed.EventListeners += DestroyUnit;
         }
 
+        public override void OnRightClick()
+        {
+            base.OnRightClick();
+            onSkillTooltip_ON.Raise(skill);
+        }
 
 
         /// <summary>
@@ -107,9 +113,9 @@ namespace Units
 
         public override Relic Relic => new Relic();
 
-        public override void OnTurnEnd()
+        public override void EndTurn()
         {
-            base.OnTurnEnd();
+            base.EndTurn();
             skill.skill = monsterSkill;
         }
 

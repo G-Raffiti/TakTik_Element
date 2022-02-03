@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using StatusEffect;
+using Buffs;
 using UnityEngine;
 
 namespace Cells
