@@ -14,6 +14,7 @@ using StateMachine;
 using Stats;
 using TMPro;
 using UnityEngine;
+using UserInterface;
 
 namespace Units
 {
@@ -28,10 +29,10 @@ namespace Units
         [SerializeField] private ColorSet colorSet;
         [SerializeField] protected SpriteRenderer unitSpriteRenderer;
         [SerializeField] private TextMeshProUGUI info;
-        [SerializeField] private TextMeshProUGUI shadow;
         public Sprite UnitSprite => unitSpriteRenderer.sprite;
         public override SpriteRenderer MovableSprite => unitSpriteRenderer;
         private Animation anim;
+        private LifeBar lifeBar;
         [HideInInspector] public string UnitName;
         public override string getName => UnitName;
         
@@ -106,24 +107,15 @@ namespace Units
         
         
         /////////////////// On Mouse Actions ///////////////////////////////////////////////////////////////////////////
-        // J'ai retiré le Collider des Units pour n'utiliser que celui des Cells (c'est plus clair je pense)
-        /*
-         public virtual void OnMouseDown()
+        public virtual void OnPointerEnter()
         {
-            if(Cell != null)
-                Cell.OnMouseDown();
+            lifeBar.Show();
         }
-        protected virtual void OnMouseEnter()
+
+        public virtual void OnPointerExit()
         {
-            if(Cell != null)
-                Cell.OnMouseEnter();
+            lifeBar.Hide();
         }
-        protected virtual void OnMouseExit()
-        {
-            if(Cell != null)
-                Cell.OnMouseExit();
-        }
-        */
         public virtual void OnLeftClick()
         {
         }
@@ -197,6 +189,7 @@ namespace Units
         /// <returns></returns>
         public override IEnumerator MovementAnimation(List<Cell> path)
         {
+            lifeBar.HideForced();
             TileIsometric.CellState _state = ((TileIsometric) Cell).State;
             yield return base.MovementAnimation(path);
             MarkBack(_state);
@@ -303,6 +296,12 @@ namespace Units
             }
             return _ret;
         }
+
+        public override void AutoSortOrder()
+        {
+            base.AutoSortOrder();
+            lifeBar.AutoSortOrder();
+        }
         
         
         ///////////////////// Fight / Damage Handler / Defence /////////////////////////////////////////////////////////
@@ -397,9 +396,11 @@ namespace Units
         /// </summary>
         public void InitializeSprite()
         {
-            AutoSortOrder();
-            UnMark();
             anim = gameObject.GetComponent<Animation>();
+            lifeBar = GetComponent<LifeBar>();
+            AutoSortOrder();
+            lifeBar.Initialize();
+            UnMark();
         }
 
         /// <summary>
@@ -436,12 +437,10 @@ namespace Units
             if (damage > 0)
             {
                 info.text = $"- <color=#{_hexColor}>{damage}</color> HP";
-                shadow.text = $"- {damage} HP";
             }
             else
             {
                 info.text = $"+ {-damage} HP";
-                shadow.text = $"+ {-damage} HP";
             }
             
             anim.PlayQueued("TextFade");

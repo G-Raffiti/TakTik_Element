@@ -256,6 +256,10 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\LifeBar.cs" />
+     <Compile Include="Assets\Scripts\UISetupState\UI_Manager.cs" />
+     <Compile Include="Assets\Scripts\UISetupState\GameOptions.cs" />
+     <Compile Include="Assets\Scripts\_SaveSystem\SerializationSurrogate\SaveVector3.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

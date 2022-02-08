@@ -78,5 +78,12 @@ namespace Buffs
                 ? $"<sprite name=Infinity>" 
                 : $"{Buff.Duration}";
         }
+
+        public BuffInfo Initialize(Buff _buff, Unit _unit)
+        {
+            Buff = _buff;
+            Unit = _unit;
+            return this;
+        }
     }
 }

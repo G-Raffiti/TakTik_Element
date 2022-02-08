@@ -121,7 +121,7 @@ namespace StateMachine
 
             foreach (Cell _cell in getCellCopy.Values)
             {
-                _cell.Take(getMovable[_cell]);
+                _cell.ForceTake(getMovable[_cell]);
             }
 
             foreach (Unit _unit in Units)
@@ -394,7 +394,6 @@ namespace StateMachine
                 if (PlayingUnit != null && _unit == PlayingUnit)
                 {
                     PlayingUnit.EndTurn();
-                    continue;
                 }
                 _unit.OnTurnEnds();
             }

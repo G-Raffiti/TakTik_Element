@@ -65,7 +65,7 @@ namespace Units
             IsMoving = false;
         }
 
-        public void AutoSortOrder()
+        public virtual void AutoSortOrder()
         {
             MovableSprite.sortingOrder = 500 - (int)(transform.position.y/0.577f);
         }

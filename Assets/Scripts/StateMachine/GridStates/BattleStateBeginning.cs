@@ -204,9 +204,6 @@ namespace StateMachine.GridStates
             {
                 _setupCell.MarkAsReachable();
             }
-
-            if (actualHero != null)
-                actualHero.MarkAsSelected();
         }
     }
 }

@@ -138,6 +138,9 @@
             <e p="Interface_ISavable.cs" t="Include" />
             <e p="SavableEntity.cs" t="Include" />
             <e p="SavingLoading.cs" t="Include" />
+            <e p="SerializationSurrogate" t="Include">
+              <e p="SaveVector3.cs" t="Include" />
+            </e>
           </e>
           <e p="_ScriptableObject" t="Include">
             <e p="Archetype.cs" t="Include" />
@@ -301,6 +304,10 @@
             <e p="BattleStats.cs" t="Include" />
             <e p="Range.cs" t="Include" />
           </e>
+          <e p="UISetupState" t="Include">
+            <e p="GameOptions.cs" t="Include" />
+            <e p="UI_Manager.cs" t="Include" />
+          </e>
           <e p="Units" t="Include">
             <e p="BattleGenerator.cs" t="Include" />
             <e p="BattleHero.cs" t="Include" />
@@ -328,6 +335,7 @@
               <e p="TurnOrderPrefab.cs" t="Include" />
             </e>
             <e p="CameraController.cs" t="Include" />
+            <e p="LifeBar.cs" t="Include" />
             <e p="PersonalInventory.cs" t="Include" />
             <e p="ToolTips" t="Include">
               <e p="BasicTooltip.cs" t="Include" />

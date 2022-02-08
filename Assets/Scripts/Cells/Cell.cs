@@ -90,6 +90,8 @@ namespace Cells
             {
                 CurrentGridObject.OnPointerEnter();
             }
+            if (CurrentUnit != null)
+                CurrentUnit.OnPointerEnter();
         }
 
         public virtual void OnMouseExit()
@@ -99,6 +101,8 @@ namespace Cells
             {
                 CurrentGridObject.OnPointerExit();
             }
+            if (CurrentUnit != null)
+                CurrentUnit.OnPointerExit();
         }
 
         public virtual void OnMouseDown()
@@ -251,6 +255,31 @@ namespace Cells
         }
         
         /// <summary>
+        /// Method Called on Check to be sure IMovable are on the Good Cells.
+        /// </summary>
+        public void ForceTake(IMovable _movable)
+        {
+            if (_movable.Cell != null)
+                _movable.Cell.FreeTheCell();
+            
+            if (IsUnderGround)
+            {
+                _movable.StartCoroutine(_movable.Fall(this));
+                return;
+            }
+
+            if (_movable is Unit _unit)
+            {
+                CurrentUnit = _unit;
+            }
+            
+            else if (_movable is GridObject _gridObject)
+                CurrentGridObject = _gridObject;
+            
+            BattleStateManager.instance.OnIMovableMoved(_movable, this);
+        }
+        
+        /// <summary>
         /// Methode Called to Add a Buff to the Cell
         /// </summary>
         public abstract void AddBuff(Buff _buff);
@@ -282,5 +311,6 @@ namespace Cells
         /// </summary>
         public abstract void OnEndTurn();
 
+        
     }
 }
