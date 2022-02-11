@@ -25,6 +25,7 @@ namespace Skills
         [SerializeField] private Image illustration;
         [SerializeField] private Image elementIcon;
         [SerializeField] private TextMeshProUGUI costText;
+        [SerializeField] private Image colorFrame;
         [SerializeField] private Image canUse;
         [SerializeField] private bool isHandSkill;
         
@@ -170,12 +171,15 @@ namespace Skills
                 elementIcon.sprite = skill.Element.Icon;
             if (costText != null)
                 costText.text = $"{skill.Cost}";
+            if (colorFrame != null)
+                colorFrame.color = skill.Element.TextColour;
             CanUse();
         }
 
         public void CanUse()
         {
             if (canUse == null) return;
+            if (!isHandSkill) return;
 
             canUse.color = skill.Cost <= skill.Unit.BattleStats.AP ? Color.white : Color.grey;
             illustration.color = skill.Cost <= skill.Unit.BattleStats.AP ? Color.white : new Color(1, 1, 1, 0.5f);

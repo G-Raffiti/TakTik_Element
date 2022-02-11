@@ -30,7 +30,7 @@ namespace Skills.ScriptableObject_GridEffect
 
             if (affecteds.Count == 0) return;
             
-            DataBase.RunCoroutine(Push(affecteds, _skillInfo.Unit.Cell, _skillInfo, Strength));
+            Utility.RunCoroutine(Push(affecteds, _skillInfo.Unit.Cell, _skillInfo, Strength));
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Skills.ScriptableObject_GridEffect
             targets.Reverse();
             foreach (IMovable target in targets)
             {
-                DataBase.RunCoroutine(Push(_from, skill, target, strength));
+                Utility.RunCoroutine(Push(_from, skill, target, strength));
                 while (target.IsMoving)
                 {
                     yield return null;

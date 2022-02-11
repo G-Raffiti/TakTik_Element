@@ -25,7 +25,7 @@ namespace Skills.ScriptableObject_GridEffect
             foreach (Cell _cellAffected in _zone)
             {
                 IMovable _Affected = Zone.GetAffected(_cellAffected, _skillInfo.skill);
-                DataBase.RunCoroutine(PullTo(_skillInfo, _Affected, Strength));
+                Utility.RunCoroutine(PullTo(_skillInfo, _Affected, Strength));
             }
         }
 

@@ -19,7 +19,7 @@ namespace UserInterface
         [SerializeField] private Image icon;
         [SerializeField] private Image health;
         [SerializeField] private Image shield;
-        [SerializeField] private List<DragAndDropCell> slots;
+        [SerializeField] private List<SlotDragAndDrop> slots;
         [SerializeField] private GameObject GearInfoPrefab;
         private BattleStats BattleStats;
         private BattleStats baseStats;
@@ -31,7 +31,7 @@ namespace UserInterface
 
         public Hero Hero { get; private set; }
 
-        public List<DragAndDropCell> Slots => slots;
+        public List<SlotDragAndDrop> Slots => slots;
 
         public void Initialize(Hero _hero)
         {

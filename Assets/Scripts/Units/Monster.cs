@@ -35,6 +35,10 @@ namespace Units
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onInventoryClosed;
         
+        [Header("Tooltip Event for MONSTER")]
+        [SerializeField] private UnitEvent onMonsterTooltip_ON;
+        public override UnitEvent onTooltip_ON => onMonsterTooltip_ON;
+        
         public bool isPlaying;
 
         public MonsterSO MonsterSO { get; private set; }
@@ -117,6 +121,11 @@ namespace Units
         {
             base.EndTurn();
             skill.skill = monsterSkill;
+        }
+
+        public override string GetInfoMain()
+        {
+            return $"{ColouredName()} {MonsterSO.Archetype.Type}";
         }
 
         public void ShowRange()

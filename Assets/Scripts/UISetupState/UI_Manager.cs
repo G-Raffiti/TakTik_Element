@@ -9,10 +9,12 @@ namespace UISetupState
     public class UI_Manager : ScriptableObject, ISaveable
     {
         public static bool ActiveLifeBar;
+        public static bool CompleteStats;
 
         private void OnEnable()
         {
             ActiveLifeBar = false;
+            CompleteStats = false;
         }
 
         public void MenuActiveLifeBar(bool isActive)
@@ -20,14 +22,22 @@ namespace UISetupState
             ActiveLifeBar = isActive;
         }
         
+        public void MenuActiveCompleteStats(bool isActive)
+        {
+            CompleteStats = isActive;
+        }
+        
         [Serializable]
         private class SaveUI_Option
         {
             public bool LifeBarActive;
+            public bool saveCompleteStats;
 
             public SaveUI_Option()
             {
                 LifeBarActive = ActiveLifeBar;
+                saveCompleteStats = CompleteStats;
+
             }
         }
         
@@ -40,6 +50,7 @@ namespace UISetupState
         {
             SaveUI_Option save = (SaveUI_Option) _state;
             ActiveLifeBar = save.LifeBarActive;
+            CompleteStats = save.saveCompleteStats;
         }
     }
 }

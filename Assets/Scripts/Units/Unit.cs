@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _EventSystem.CustomEvents;
+using _Extension;
+using _Instances;
 using _ScriptableObject;
 using Buffs;
 using Cells;
@@ -97,6 +99,9 @@ namespace Units
         /// </summary>
         protected List<Buff> buffs = new List<Buff>();
         public bool isDying { get; set; }
+        public EElement Main { get; private set; }
+        public EElement Weakness { get; private set; }
+        public EElement Resist { get; private set; }
 
         
         //////////////////// IMovable //////////////////////////////////////////////////////////////////////////////////
@@ -121,7 +126,7 @@ namespace Units
         }
         public virtual void OnRightClick()
         {
-            onUnitTooltip_ON.Raise(this);
+            onTooltip_ON.Raise(this);
         }
 
 
@@ -163,6 +168,7 @@ namespace Units
         
         
         /////////////////////// I Movable Overrides ////////////////////////////////////////////////////////////////////
+        #region IMovable
         public override List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
             List<Cell> _path = Movement.Move(this, destinationCell, path);
@@ -302,9 +308,19 @@ namespace Units
             base.AutoSortOrder();
             lifeBar.AutoSortOrder();
         }
-        
-        
+        #endregion
+
         ///////////////////// Fight / Damage Handler / Defence /////////////////////////////////////////////////////////
+        # region Fight & Damage Handler
+
+        public float DamageModifier(Element dmgElement)
+        {
+            if (dmgElement.Type == EElement.None) return 1;
+            if (dmgElement.Type == Main) return 1;
+            if (dmgElement.Type == Resist) return 0.75f;
+            return 1.5f;
+        }
+        
         /// <summary>
         /// Handler method for defending against an attack.
         /// </summary>
@@ -366,7 +382,7 @@ namespace Units
         /// <returns></returns>
         public int DamageTaken(float damage, Element element)
         {
-            return (int) BattleStats.GetDamageTaken(damage, element.Type);
+            return (int) (damage * DamageModifier(element));
         }
         
         /// <summary>
@@ -388,9 +404,10 @@ namespace Units
             }
             Destroy(gameObject);
         }
-        
+        #endregion
 
         ////////////////////// Mark As (Color Change and Cells UI interactions) ////////////////////////////////////////
+        # region UI & Mark As
         /// <summary>
         /// Called on Battle Setup to the Set Colors and animation to the Unit's sprite
         /// </summary>
@@ -465,8 +482,10 @@ namespace Units
         {
             anim.PlayQueued("Death");
         }
+        #endregion
     
         ////////////////////////// Initialisation & Start/End Turn Methods /////////////////////////////////////////////
+        # region Start / End Turn
         /// <summary>
         /// Method called after object instantiation to initialize fields etc. 
         /// </summary>
@@ -518,10 +537,10 @@ namespace Units
         public void OnTurnStarts()
         {
         }
-        
-        
-        
+        #endregion
+
         ///////////////////////////////// Stats Modifications //////////////////////////////////////////////////////////
+        # region Stats
         public virtual void UpdateStats()
         {
             buffs.ForEach(buff => buff.Undo(this));
@@ -540,23 +559,47 @@ namespace Units
             total = new BattleStats(newTotal);
             
             buffs.ForEach(buff => buff.Apply(this));
+            MainElement();
         }
         
+        /// <summary>
+        /// Method to set the Main element and Weakness and Resistance
+        /// </summary>
+        /// <returns></returns>
+        public void MainElement()
+        {
+            Dictionary<EElement, float> Elements = new Dictionary<EElement, float>()
+            {
+                {EElement.Fire, BattleStats.Affinity.Fire},
+                {EElement.Water, BattleStats.Affinity.Water},
+                {EElement.Nature, BattleStats.Affinity.Nature},
+            };
+            Main = Elements.GetKeyOfMaxValue();
+
+            switch (Main)
+            {
+                case EElement.Fire: 
+                    Resist = EElement.Nature;
+                    Weakness = EElement.Water;
+                    break;
+                case EElement.Nature:
+                    Resist = EElement.Water;
+                    Weakness = EElement.Fire;
+                    break;
+                case EElement.Water:
+                    Resist = EElement.Fire;
+                    Weakness = EElement.Nature;
+                    break;
+                case EElement.None:
+                    Resist = EElement.None;
+                    Weakness = EElement.None;
+                    break;
+            }
+        }
+        #endregion
         
         ////////////////////////////////// IInfo Overrides / Tooltip ///////////////////////////////////////////////////
-        public string GetInfoMain()
-        {
-            string str = "";
-            str += ColouredName();
-            if (playerNumber == 0)
-            {
-                str +=  "\nHero" + "\n";
-            }
-
-            else str +=  "\nMonster" + "\n";
-
-            return str;
-        }
+        public abstract string GetInfoMain();
 
         public string GetInfoLeft()
         {
@@ -574,15 +617,17 @@ namespace Units
 
         public string GetInfoRight()
         {
-            string str = "";
-            str += BattleStats.Range.ToString(this)+ "\n";
-            str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{TurnPoint} </color> \n";
-            return str;
+            return BattleStats.Range.toStringForUnit();
         }
 
-        public virtual string GetInfoDown()
+        public string GetInfoDown()
         {
-            return Buffs.Aggregate("", (_current, _buff) => _current + (_buff.InfoOnUnit(_buff, this) + "\n"));
+            return $"Element:{DataBase.Element.Elements[Main].Name} {DataBase.Element.Elements[Main].Symbol}";
+        }
+
+        public string GetElements()
+        {
+            return $"Weakness:{DataBase.Element.Elements[Weakness].Name} {DataBase.Element.Elements[Weakness].Symbol} Resistance:{DataBase.Element.Elements[Resist].Name} {DataBase.Element.Elements[Resist].Symbol}";
         }
 
         public string ColouredName()
@@ -604,6 +649,8 @@ namespace Units
         {
             return playerNumber == 0 ? colorSet.GetColors()[EColor.ally] : colorSet.GetColors()[EColor.enemy];
         }
+
+        public abstract UnitEvent onTooltip_ON { get; }
     }
 
     public class AttackEventArgs : EventArgs

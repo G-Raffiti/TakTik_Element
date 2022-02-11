@@ -9,7 +9,8 @@ namespace UserInterface.ToolTips
     {
         [HideInInspector]
         public GearInfo Gear;
-        
+
+        [SerializeField] private TextMeshProUGUI nameTxt;
         [SerializeField] private TextMeshProUGUI main;
         [SerializeField] private TextMeshProUGUI statsLeft;
         [SerializeField] private TextMeshProUGUI statsRight;
@@ -20,6 +21,7 @@ namespace UserInterface.ToolTips
         
         protected override void ShowToolTip()
         {
+            nameTxt.text = Gear.Gear.GearSO.Name;
             main.text = Gear.GetInfoMain();
             statsLeft.text = Gear.GetInfoLeft();
             statsRight.text = Gear.GetInfoRight();

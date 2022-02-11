@@ -9,8 +9,8 @@ namespace Shops
     public class ShopCampMono_UI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI txtCampPoint;
-        [SerializeField] private DragAndDropCell SlotSkillDuplicate;
-        [SerializeField] private DragAndDropCell SlotForgetSkill;
+        [SerializeField] private SlotDragAndDrop SlotSkillDuplicate;
+        [SerializeField] private SlotDragAndDrop SlotForgetSkill;
         
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onDuplicateSkill;

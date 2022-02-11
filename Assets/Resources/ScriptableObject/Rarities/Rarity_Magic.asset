@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4aab2a177042c19296cd31ef755653, type: 3}
   m_Name: Rarity_Magic
   m_EditorClassIdentifier: 
-  name: Magic
+  rarityName: Magic
   textColour: {r: 0, g: 0.44152218, b: 0.6698113, a: 1}
   affixes: 2

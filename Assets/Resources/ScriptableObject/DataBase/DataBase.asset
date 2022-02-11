@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d63473be1a34a6daea7f1ff380b8fde, type: 3}
+  m_Name: DataBase
+  m_EditorClassIdentifier: 
+  dataMonster: {fileID: 11400000, guid: 53403b5a43ec5264eafe7bc5bc133b2c, type: 2}
+  dataRelic: {fileID: 11400000, guid: 752ad615ab9b5aa4f98e395b86b9a03d, type: 2}
+  dataCell: {fileID: 11400000, guid: 6618fa75710ab1945afb66352ddc218a, type: 2}
+  dataAffix: {fileID: 11400000, guid: d9ef650a6c0f1c04c80747dfd4191bff, type: 2}
+  dataGear: {fileID: 11400000, guid: 6937c1d0721de3d47858025bdf82934a, type: 2}
+  dataBoard: {fileID: 11400000, guid: 7730595d4cff3174fa438d368dfac543, type: 2}
+  dataSkill: {fileID: 11400000, guid: 469fda6c7120af548a592fe61b4e0af8, type: 2}
+  dataElement: {fileID: 11400000, guid: 36a73d7605f71964ea63cc76a1409498, type: 2}

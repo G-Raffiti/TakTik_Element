@@ -9,39 +9,61 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SubMeshUI.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateSkillSelected.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Movable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Movement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/TooltipManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopInventory_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/SkillTooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatsBonus.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StatusEffect/StatusSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BuffInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Buffs/Buff.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/Tooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/TurnOrderPrefab.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Buffs/BuffInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UISetupState/GameOptions.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_SaveSystem/SerrialisationSurrogate/SaveVector3.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_SaveSystem/SerializationSurrogate/SaveVector3.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UISetupState/UI_Manager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LifeBar.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/CameraMovement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Extension/Extension.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseElement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_ScriptableObject/Element.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Range.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UISetupState/GameOptions.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UISetupState/UI_Manager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DataBases/DataBaseSkill.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/Pull.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFromImpact.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/DataBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/Utility.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateSkillSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/GearTooltip.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_ScriptableObject/Rarity.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopOracleStatue.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/ItemDragAndDrop.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/GearInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/test.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/UnitTooltip.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/TooltipManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/TurnOrderPrefab.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/MonsterTooltip.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/HeroTooltip.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/Tooltip.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/SkillTooltip.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="24Y3WXaGG2rz1oYsQKXtVFY8oWm" />

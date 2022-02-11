@@ -16,8 +16,8 @@ namespace UserInterface.BattleScene
         [SerializeField] private TextMeshProUGUI HeroName;
         [SerializeField] private TextMeshProUGUI MonsterName;
         [SerializeField] private GameObject prefabGear;
-        [SerializeField] private List<DragAndDropCell> HeroSlots;
-        [SerializeField] private List<DragAndDropCell> MonsterSlots;
+        [SerializeField] private List<SlotDragAndDrop> HeroSlots;
+        [SerializeField] private List<SlotDragAndDrop> MonsterSlots;
         [SerializeField] private GameObject Blur;
         private Inventory heroInventory;
         private Inventory monsterInventory;
@@ -97,7 +97,7 @@ namespace UserInterface.BattleScene
             {
                 monsterInventory.gears = new List<Gear>();
                 
-                foreach (DragAndDropCell _dropCell in MonsterSlots)
+                foreach (SlotDragAndDrop _dropCell in MonsterSlots)
                 {
                     if(_dropCell.GetInfoGear() != null)
                         monsterInventory.gears.Add(_dropCell.GetInfoGear().Gear);
@@ -106,7 +106,7 @@ namespace UserInterface.BattleScene
                 
             heroInventory.gears = new List<Gear>();
             
-            foreach (DragAndDropCell _dropCell in HeroSlots)
+            foreach (SlotDragAndDrop _dropCell in HeroSlots)
             {
                 if(_dropCell.GetInfoGear() != null)
                     heroInventory.gears.Add(_dropCell.GetInfoGear().Gear);

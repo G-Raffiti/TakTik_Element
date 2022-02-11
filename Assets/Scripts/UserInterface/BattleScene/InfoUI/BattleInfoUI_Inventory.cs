@@ -18,9 +18,9 @@ namespace UserInterface.BattleScene.InfoUI
                 inventoryObj.GetComponentInChildren<PersonalInventory>().FillInventory();
             }
 
-            foreach (DragAndDropCell slot in inventoryPrefab.GetComponentsInChildren<DragAndDropCell>())
+            foreach (SlotDragAndDrop slot in inventoryPrefab.GetComponentsInChildren<SlotDragAndDrop>())
             {
-                slot.cellType = DragAndDropCell.CellType.DropOnly;
+                slot.cellType = SlotDragAndDrop.CellType.DropOnly;
             }
         }
 

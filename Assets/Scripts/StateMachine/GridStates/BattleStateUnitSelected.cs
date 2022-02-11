@@ -50,8 +50,6 @@ namespace StateMachine.GridStates
         public override void OnCellDeselected(Cell cell)
         {
             base.OnCellDeselected(cell);
-            if (!EventSystem.current.IsPointerOverGameObject())
-                TooltipOff.Raise();
             
             MarkCellsBack();
         }
@@ -59,20 +57,6 @@ namespace StateMachine.GridStates
         public override void OnCellSelected(Cell cell)
         {
             base.OnCellSelected(cell);
-            if (!EventSystem.current.IsPointerOverGameObject() &&
-                cell.Buffs.Count > 0)
-                TooltipOn.Raise((TileIsometric) cell);
-            
-            if (!EventSystem.current.IsPointerOverGameObject() && 
-                Input.GetKey(KeyCode.LeftControl) || 
-                Input.GetKey(KeyCode.RightControl))
-            {
-                if (cell.CurrentGridObject != null)
-                    TooltipOn.Raise(cell.CurrentGridObject.GridObjectSO);
-                else if (cell.CurrentUnit != null)
-                    TooltipOn.Raise((cell.CurrentUnit));
-                else TooltipOn.Raise((TileIsometric) cell);
-            }
             
             
 

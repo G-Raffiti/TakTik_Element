@@ -46,7 +46,7 @@ namespace Shops
             {
                 Portraits[i].Hero.Inventory.gears = new List<Gear>();
             
-                foreach (DragAndDropCell _dropCell in Portraits[i].Slots)
+                foreach (SlotDragAndDrop _dropCell in Portraits[i].Slots)
                 {
                     if(_dropCell.GetInfoGear() != null)
                         Portraits[i].Hero.Inventory.gears.Add(_dropCell.GetInfoGear().Gear);

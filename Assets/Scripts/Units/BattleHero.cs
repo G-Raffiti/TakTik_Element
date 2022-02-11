@@ -19,6 +19,10 @@ namespace Units
         [Header("Battle Hero Events Sender")]
         [SerializeField] private UnitEvent onHeroSelected;
         [SerializeField] private IntEvent onCellWalked;
+
+        [Header("Tooltip Event for HERO")]
+        [SerializeField] private UnitEvent onHeroTooltip_ON;
+        public override UnitEvent onTooltip_ON => onHeroTooltip_ON;
         
         private Hero hero;
 
@@ -53,22 +57,16 @@ namespace Units
             hero.UpdateHP();
         }
 
+        public override string GetInfoMain()
+        {
+            return $"{ColouredName()}";
+        }
+
         public override void OnLeftClick()
         {
             base.OnLeftClick();
             if (BattleStateManager.instance.BattleState.State == EBattleState.Beginning)
                 onHeroSelected.Raise(this);
-        }
-        
-        public override string GetInfoDown()
-        {
-            string str = Buffs.Aggregate("", (_current, _buff) => _current + (_buff.InfoOnUnit(_buff, this) + "\n"));
-            foreach (RelicSO _heroRelic in Hero.Relics)
-            {
-                str += _heroRelic.Name + "\n";
-            }
-
-            return str; 
         }
 
         protected override void OnMoveFinished(int _cellWalked)

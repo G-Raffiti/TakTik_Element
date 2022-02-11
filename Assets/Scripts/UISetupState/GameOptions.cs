@@ -15,5 +15,10 @@ namespace UISetupState
                 _bar.Activate(isActive);
             }
         }
+
+        public void isCompleteSats(bool isActive)
+        {
+            Manager.MenuActiveCompleteStats(isActive);
+        }
     }
 }

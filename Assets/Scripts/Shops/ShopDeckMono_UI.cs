@@ -13,10 +13,10 @@ namespace Shops
 {
     public class ShopDeckMono_UI : MonoBehaviour
     {
-        [SerializeField] private DragAndDropCell prefabSlot;
+        [SerializeField] private SlotDragAndDrop prefabSlot;
 
-        [SerializeField] private DragAndDropItem prefabSkill;
-        [SerializeField] private DragAndDropItem prefabRelic;
+        [SerializeField] private ItemDragAndDrop prefabSkill;
+        [SerializeField] private ItemDragAndDrop prefabRelic;
 
         [SerializeField] private Transform deckPlaceHolder;
         [SerializeField] private Transform relicPlaceHolder;
@@ -64,9 +64,9 @@ namespace Shops
             foreach (SkillSO _skillSO in Deck.DrawPile)
             {
                 GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, deckPlaceHolder);
-                _cell.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;
-                _cell.GetComponent<DragAndDropCell>().unlimitedSource = true;
-                _cell.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Skill;
+                _cell.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DragOnly;
+                _cell.GetComponent<SlotDragAndDrop>().unlimitedSource = true;
+                _cell.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Skill;
 
                 GameObject pref = GameObject.Instantiate(prefabSkill.gameObject, _cell.transform);
                 pref.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, Deck, actualHero);
@@ -79,9 +79,9 @@ namespace Shops
             foreach (RelicSO _relicSO in Deck.Relics)
             {
                 GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, relicPlaceHolder);
-                _cell.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DragOnly;
-                _cell.GetComponent<DragAndDropCell>().unlimitedSource = true;
-                _cell.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Relic;
+                _cell.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DragOnly;
+                _cell.GetComponent<SlotDragAndDrop>().unlimitedSource = true;
+                _cell.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Relic;
 
                 GameObject pref = GameObject.Instantiate(prefabRelic.gameObject, _cell.transform);
                 pref.GetComponent<RelicInfo>().CreateRelic(_relicSO);

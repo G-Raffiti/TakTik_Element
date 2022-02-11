@@ -477,6 +477,7 @@ MonoBehaviour:
   playerNumber: 0
   onHeroSelected: {fileID: 11400000, guid: d9a5de72d85ce74488ad6e11b7345f14, type: 2}
   onCellWalked: {fileID: 11400000, guid: fcb513c05edf06b4885d680d2ee2862b, type: 2}
+  onHeroTooltip_ON: {fileID: 11400000, guid: cacd8bbb920a5bf448ef17aaa0153fc8, type: 2}
 --- !u!111 &6800174335220356956
 Animation:
   m_ObjectHideFlags: 0

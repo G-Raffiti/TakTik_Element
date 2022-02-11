@@ -11,7 +11,7 @@ namespace UserInterface.BattleScene.InfoUI
 {
     public class BattleInfoUI_DeckMono : MonoBehaviour
     {
-        [SerializeField] private DragAndDropCell SlotPrefab;
+        [SerializeField] private SlotDragAndDrop SlotPrefab;
         [SerializeField] private SkillInfo SkillPrefab;
         [SerializeField] private Transform DrawPile;
         [SerializeField] private Transform DiscardPile;
@@ -49,8 +49,8 @@ namespace UserInterface.BattleScene.InfoUI
             {
                 GameObject SlotsObj = Instantiate(SlotPrefab.gameObject, holder);
                 GameObject SkillObj = Instantiate(SkillPrefab.gameObject, SlotsObj.transform);
-                SlotsObj.GetComponent<DragAndDropCell>().containType = DragAndDropCell.ContainType.Skill;
-                SlotsObj.GetComponent<DragAndDropCell>().cellType = DragAndDropCell.CellType.DropOnly;
+                SlotsObj.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Skill;
+                SlotsObj.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DropOnly;
                 
                 SkillObj.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, deck, user);
                 SkillObj.GetComponent<SkillInfo>().Unit = user;

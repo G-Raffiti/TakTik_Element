@@ -5,14 +5,14 @@ namespace UserInterface.ToolTips
 {
     public abstract class Tooltip : MonoBehaviour
     {
-        [SerializeField] private Canvas popupCanvas;
+        [SerializeField] protected Canvas popupCanvas;
         [SerializeField] private GameObject obj;
-        [SerializeField] private RectTransform backgroundRectTransform;
+        [SerializeField] protected RectTransform backgroundRectTransform;
         [SerializeField] private bool canLock;
-        [SerializeField] private Vector2 LockPosition;
-        private bool lockInPlace;
-        private Vector3 offset;
-        private float padding;
+        [SerializeField] protected Vector2 lockPosition;
+        protected bool lockInPlace;
+        [SerializeField] protected Vector3 offset;
+        public Vector2 padding { get; set; }
         public bool LockInPlace => lockInPlace;
 
         private void Awake()
@@ -22,8 +22,6 @@ namespace UserInterface.ToolTips
 
         private void Start()
         {
-            offset = new Vector2(10, 10);
-            padding = 5;
             HideTooltip();
         }
 
@@ -34,7 +32,6 @@ namespace UserInterface.ToolTips
             if (Input.GetMouseButton(1) && canLock)
             {
                 lockInPlace = true;
-                obj.transform.localPosition = new Vector3(LockPosition.x, LockPosition.y);
             }
 
             if (lockInPlace && Input.GetMouseButton(0))
@@ -43,39 +40,35 @@ namespace UserInterface.ToolTips
                 HideTooltip();
                 return;
             }
+
+            if (lockInPlace)
+            {
+                backgroundRectTransform.transform.position = LockPosition();
+                return;
+            }
             
-            if (lockInPlace) return;
-            
-            FollowCursor();
+            backgroundRectTransform.transform.position = Position();
         }
 
-        private void FollowCursor()
+        protected virtual Vector3 Position()
         {
             Vector3 _newPos = Input.mousePosition + offset;
             _newPos.z = 0f;
-            float _rightEdgeToScreenEdgeDistance = Screen.width - (_newPos.x + backgroundRectTransform.rect.width * popupCanvas.scaleFactor) - padding;
+            float _rightEdgeToScreenEdgeDistance = Screen.width - (_newPos.x + backgroundRectTransform.rect.width * popupCanvas.scaleFactor) - padding.x;
             if (_rightEdgeToScreenEdgeDistance < 0)
             {
                 _newPos.x = Input.mousePosition.x - backgroundRectTransform.rect.width * popupCanvas.scaleFactor - offset.x;
             }
 
-            #region if the Tooltip place is not on the Left of the mouse 
-            /*
-        float leftEdgeToScreenEdgeDistance = 0 - (newPos.x - backgroundRectTransform.rect.width * popupCanvas.scaleFactor) + padding;
-        if (leftEdgeToScreenEdgeDistance > 0)
-        {
-            newPos.x += leftEdgeToScreenEdgeDistance;
-        }
-        */
-            #endregion
-
-            float _topEdgeToScreenEdgeDistance = Screen.height - (_newPos.y + backgroundRectTransform.rect.height * popupCanvas.scaleFactor) - padding;
+            float _topEdgeToScreenEdgeDistance = Screen.height - (_newPos.y + backgroundRectTransform.rect.height * popupCanvas.scaleFactor) - padding.y;
             if (_topEdgeToScreenEdgeDistance < 0)
             {
                 _newPos.y += _topEdgeToScreenEdgeDistance;
             }
-            backgroundRectTransform.transform.position = _newPos;
+            return _newPos;
         }
+
+        protected virtual Vector3 LockPosition() => Position();
 
         public void DisplayInfo()
         {

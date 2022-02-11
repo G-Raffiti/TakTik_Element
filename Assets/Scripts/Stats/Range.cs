@@ -140,12 +140,10 @@ namespace Stats
             if (!CanBeModified) str += "\n<size=25>Range Can't be modified\n";
             return str;
         }
-        
-        public string ToString(Unit unit)
+
+        public string toStringForUnit()
         {
-            string str = $"Range: {RangeValue} {Zone.ZoneToString(RangeType)}\n";
-            str += $"Zone: {Radius} {Zone.ZoneToString(ZoneType)}\n";
-            return str;
+            return $"<sprite name=Range>Range <color=orange>{RangeValue}</color> {Zone.ZoneToString(RangeType)}\n<sprite name=Zone>Zone <color=orange>{Radius}</color> {Zone.ZoneToString(ZoneType)}";
         }
     }
 }

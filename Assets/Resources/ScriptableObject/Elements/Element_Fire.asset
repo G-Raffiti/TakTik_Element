@@ -15,4 +15,5 @@ MonoBehaviour:
   elementName: Fire
   textColour: {r: 0.7924528, g: 0.15588138, b: 0, a: 1}
   type: 1
-  icon: {fileID: 4318182838925834494, guid: 657e1ca158bcc9c46a5fb7d2870dc833, type: 3}
+  icon: {fileID: 21300000, guid: d4d0b3652f233e340bb4d95b4f8f1651, type: 3}
+  symbol: <sprite name=Fire>

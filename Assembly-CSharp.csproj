@@ -56,12 +56,13 @@
      <Compile Include="Assets\Scripts\EndConditions\DeathBattle.cs" />
      <Compile Include="Assets\Scripts\Units\Movement.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\BattleFade.cs" />
+     <Compile Include="Assets\Scripts\DataBases\DataBaseElement.cs" />
      <Compile Include="Assets\Scripts\EndConditions\EndConditionSO.cs" />
      <Compile Include="Assets\Scripts\Cells\Board.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\BaseGameEvent.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\CellListener.cs" />
      <Compile Include="Assets\Scripts\Players\HumanPlayer.cs" />
-     <Compile Include="Assets\Scripts\_DragAndDropSystem\DragAndDropCell.cs" />
+     <Compile Include="Assets\Scripts\_DragAndDropSystem\SlotDragAndDrop.cs" />
      <Compile Include="Assets\Resources\ToolTip\Scripts\InfoBehaviour.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\InfoListener.cs" />
      <Compile Include="Assets\Scripts\_Instances\PlayerData.cs" />
@@ -82,9 +83,12 @@
      <Compile Include="Assets\Scripts\Shops\ShopResurrection.cs" />
      <Compile Include="Assets\Scripts\_Instances\SceneKeeper.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Archetype.cs" />
+     <Compile Include="Assets\Scripts\UISetupState\UI_Manager.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\LifeBar.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectAffectChange.cs" />
      <Compile Include="Assets\Scripts\GridObjects\GridObject.cs" />
      <Compile Include="Assets\Scripts\Cells\CellSO.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\MonsterTooltip.cs" />
      <Compile Include="Assets\Scripts\Cells\DataBaseBoard.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectRangeType.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\DijkstraPathfinding.cs" />
@@ -104,6 +108,7 @@
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_Relics.cs" />
      <Compile Include="Assets\Scripts\Players\AIPlayer.cs" />
      <Compile Include="Assets\Scripts\_SaveSystem\SavableEntity.cs" />
+     <Compile Include="Assets\Scripts\UISetupState\GameOptions.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\BattleRelicChoice_UI.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
      <Compile Include="Assets\Scripts\_ScriptableObject\Rarity.cs" />
@@ -156,6 +161,7 @@
      <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\CustomUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\Decks\DeckMono.cs" />
      <Compile Include="Assets\Scripts\StateMachine\BattleStateManager.cs" />
+     <Compile Include="Assets\Scripts\_Instances\Utility.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseAffix.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGridObjectEvent.cs" />
      <Compile Include="Assets\Scripts\ScreenResolutionManager\CameraResolution.cs" />
@@ -181,6 +187,7 @@
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffect.cs" />
      <Compile Include="Assets\Scripts\Skills\IEffect.cs" />
      <Compile Include="Assets\Scripts\Score\ScoreHolder.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\HeroTooltip.cs" />
      <Compile Include="Assets\Scripts\_CSVFiles\rawMonster.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\Spell.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\FloatListener.cs" />
@@ -196,6 +203,7 @@
      <Compile Include="Assets\Scripts\GridObjects\GridObjectSO.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\Listeners\ItemListener.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\IGraphNode.cs" />
+     <Compile Include="Assets\Scripts\ScreenResolutionManager\CameraMovement.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
      <Compile Include="Assets\Scripts\Units\Hero.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_DeckMono.cs" />
@@ -232,7 +240,7 @@
      <Compile Include="Assets\Scripts\UserInterface\UI_Menu\MenuPanel.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\InfoEvent.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\ChangeScene.cs" />
-     <Compile Include="Assets\Scripts\_DragAndDropSystem\DragAndDropItem.cs" />
+     <Compile Include="Assets\Scripts\_DragAndDropSystem\ItemDragAndDrop.cs" />
      <Compile Include="Assets\Scripts\Score\ScoreSceneUI.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\PushFromImpact.cs" />
      <Compile Include="Assets\Scripts\Buffs\StatusEffects\StatsBonus.cs" />
@@ -241,6 +249,7 @@
      <Compile Include="Assets\Scripts\_Pathfinding\DataStructs\HeapPriorityQueue.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_GridEffect\TeleportTo.cs" />
+     <Compile Include="Assets\Scripts\_SaveSystem\SerializationSurrogate\SaveVector3.cs" />
      <Compile Include="Assets\Scripts\EndConditions\LastBattle.cs" />
      <Compile Include="Assets\Scripts\Skills\ScriptableObject_Effect\ApplyBuff.cs" />
      <Compile Include="Assets\Scripts\Units\IMovable.cs" />
@@ -256,10 +265,8 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\LifeBar.cs" />
-     <Compile Include="Assets\Scripts\UISetupState\UI_Manager.cs" />
-     <Compile Include="Assets\Scripts\UISetupState\GameOptions.cs" />
-     <Compile Include="Assets\Scripts\_SaveSystem\SerializationSurrogate\SaveVector3.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopOracleStatue.cs" />
+     <Compile Include="Assets\Scripts\DevsButton\test.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

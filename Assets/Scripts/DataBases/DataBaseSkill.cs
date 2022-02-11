@@ -23,17 +23,7 @@ namespace DataBases
             return AllSkills[Random.Range(0, AllSkills.Count)];
         }
 
-        public Element GetElement(EElement type)
-        {
-            return elements.Find(ele => ele.Type == type);
-        }
 
-        [SerializeField] private SkillSO learning;
-        [SerializeField] private SkillSO monsterAttack;
-        public SkillSO Learning => learning;
-        public SkillSO MonsterAttack => monsterAttack;
-
-        
         public void AddSkill(SkillSO newSkill)
         {
             if (AllSkills.Contains(newSkill)) return;

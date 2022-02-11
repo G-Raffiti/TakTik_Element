@@ -17,8 +17,8 @@ namespace UserInterface.BattleScene
     {
         [SerializeField] private TextMeshProUGUI MonsterName;
         [SerializeField] private GameObject prefabRelic;
-        [SerializeField] private List<DragAndDropCell> HeroSlots;
-        [SerializeField] private List<DragAndDropCell> MonsterSlots;
+        [SerializeField] private List<SlotDragAndDrop> HeroSlots;
+        [SerializeField] private List<SlotDragAndDrop> MonsterSlots;
         [SerializeField] private List<PersonalInventory> HeroesIcons;
         private List<RelicSO> monsterRelics;
         [SerializeField] private List<Hero> heroes;
@@ -75,7 +75,7 @@ namespace UserInterface.BattleScene
                 pref.GetComponent<RelicInfo>().DisplayIcon();
             }
 
-            foreach (DragAndDropCell cell in MonsterSlots.Where(m => m.GetInfoRelic() == null))
+            foreach (SlotDragAndDrop cell in MonsterSlots.Where(m => m.GetInfoRelic() == null))
             {
                 GameObject pref = Instantiate(prefabRelic, cell.transform);
                 pref.GetComponent<RelicInfo>().CreateRelic(DataBase.Relic.GetRandom());
@@ -89,7 +89,7 @@ namespace UserInterface.BattleScene
             {
                 monsterRelics = new List<RelicSO>();
                 
-                foreach (DragAndDropCell _dropCell in MonsterSlots)
+                foreach (SlotDragAndDrop _dropCell in MonsterSlots)
                 {
                     if(_dropCell.GetInfoRelic() != null)
                         monsterRelics.Add(_dropCell.GetInfoRelic().Relic);

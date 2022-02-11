@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace _Extension
@@ -27,6 +28,50 @@ namespace _Extension
         public static int Max(this int _scoreDamage, int _damage)
         {
             return _scoreDamage < _damage ? _damage : _scoreDamage;
+        }
+
+        public static T GetKeyOfMaxValue<T>(this IDictionary<T, int> _dictionary)
+        {
+            T max = _dictionary.First().Key;
+            foreach (KeyValuePair<T, int> pair in _dictionary)
+            {
+                if (pair.Value > _dictionary[max]) max = pair.Key;
+            }
+
+            return max;
+        }
+        
+        public static T GetKeyOfMaxValue<T>(this IDictionary<T, float> _dictionary)
+        {
+            T max = _dictionary.First().Key;
+            foreach (KeyValuePair<T, float> pair in _dictionary)
+            {
+                if (pair.Value > _dictionary[max]) max = pair.Key;
+            }
+
+            return max;
+        }
+        
+        public static T GetKeyOfMinValue<T>(this IDictionary<T, int> _dictionary)
+        {
+            T max = _dictionary.First().Key;
+            foreach (KeyValuePair<T, int> pair in _dictionary)
+            {
+                if (pair.Value < _dictionary[max]) max = pair.Key;
+            }
+
+            return max;
+        }
+        
+        public static T GetKeyOfMinValue<T>(this IDictionary<T, float> _dictionary)
+        {
+            T max = _dictionary.First().Key;
+            foreach (KeyValuePair<T, float> pair in _dictionary)
+            {
+                if (pair.Value < _dictionary[max]) max = pair.Key;
+            }
+
+            return max;
         }
     }
 }

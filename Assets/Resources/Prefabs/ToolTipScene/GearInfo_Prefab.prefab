@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6523860408074563487}
   - component: {fileID: 6523860408074563480}
   - component: {fileID: 6523860408074563485}
+  - component: {fileID: 794535480036378900}
   m_Layer: 5
   m_Name: GearInfo_Prefab
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: -10}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6523860408074563487
 CanvasRenderer:
@@ -90,3 +91,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GearTooltip_ON: {fileID: 11400000, guid: 74db1ada6f1eaef44946c53cd4b969eb, type: 2}
   GearTooltip_OFF: {fileID: 11400000, guid: 73d3b8a6ce76a1a458c5024f06cefe22, type: 2}
+--- !u!114 &794535480036378900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6523860408074563482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7133badc078d8a242b39ad4f0e5f4380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1

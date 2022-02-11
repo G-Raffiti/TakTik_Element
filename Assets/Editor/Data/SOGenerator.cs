@@ -131,13 +131,8 @@ namespace Editor.Data
         
         private static void InstantiateDataBase()
         {
-            if (GameObject.Find("DataBaseAndSaveSystem") == null)
-            {
-                GameObject DataBaseAndSaveSystem = new GameObject();
-                GameObject instance = GameObject.Instantiate(DataBaseAndSaveSystem);
-                instance.AddComponent<DataBase>();
-            }
-            GameObject.Find("DataBaseAndSaveSystem").GetComponent<DataBase>().InstantiateDataBases();
+            DataBase data = ScriptableObject.CreateInstance<DataBase>();
+            data.InstantiateDataBases();
         }
 
         private static void PerformGenerationSkill(List<Dictionary<string, object>> csvData)

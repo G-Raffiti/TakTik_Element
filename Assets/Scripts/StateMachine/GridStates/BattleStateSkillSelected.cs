@@ -76,13 +76,6 @@ namespace StateMachine.GridStates
 
         public override void OnCellSelected(Cell cell)
         {
-            if (!EventSystem.current.IsPointerOverGameObject() &&
-                (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)))
-            {
-                if (cell.CurrentGridObject == null)
-                    TooltipOn.Raise((TileIsometric)cell);
-                else TooltipOn.Raise(cell.CurrentGridObject.GridObjectSO);
-            }
             if (usable.Contains(cell))
             {
                 foreach (Cell _cellInRadius in skill.GetZoneOfEffect(cell))
@@ -98,8 +91,6 @@ namespace StateMachine.GridStates
 
         public override void OnCellDeselected(Cell cell)
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-                TooltipOff.Raise();
             IEnumerable<Cell> _cellsNotInRange = StateManager.Cells.Except(usable);
             
             foreach (Cell _cell in _cellsNotInRange)

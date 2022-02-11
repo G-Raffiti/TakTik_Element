@@ -405,7 +405,7 @@ namespace Skills._Zone
 
         public static string ZoneToString(EZone type)
         {
-            string str = "<size=35>";
+            string str = "";
             switch (type)
             {
                 case EZone.Self:
@@ -429,8 +429,6 @@ namespace Skills._Zone
                 default:
                     str += type.ToString(); break;
             }
-
-            str += "</size>";
 
             return str;
         }

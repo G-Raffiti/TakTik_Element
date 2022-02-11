@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _EventSystem.CustomEvents;
 using _Instances;
 using EndConditions;
 using GridObjects;
@@ -9,6 +10,7 @@ namespace Cells
 {
     public class Board : MonoBehaviour
     {
+        [SerializeField] private VoidEvent onBoardLoaded;
         [SerializeField] private DataBase dataBase;
         /// <summary>
         /// BoardSO to Save or to test
@@ -108,7 +110,7 @@ namespace Cells
                 DestroyImmediate(GameObject.Find("Objects").transform.GetChild(0).gameObject);
             }
 
-            dataBase.InstantiateDataBases();
+            //dataBase.InstantiateDataBases();
             background.sprite = null;
             
             foreach (SavedCell _SavedCell in _data.Cells)
@@ -141,6 +143,9 @@ namespace Cells
             mainCamera.orthographicSize = _data.Camera.size;
 
             EndCondition = _data.EndCondition;
+
+            Debug.Log("board Loaded");
+            onBoardLoaded.Raise();
         }
         
         /// <summary>

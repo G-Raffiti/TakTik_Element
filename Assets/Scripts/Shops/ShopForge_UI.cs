@@ -25,9 +25,9 @@ namespace Shops
         [SerializeField] private TMP_Dropdown dropdownAffixNew1;
         [SerializeField] private TMP_Dropdown dropdownAffixNew2;
         [SerializeField] private TMP_Dropdown dropdownAffixUpgrade;
-        [SerializeField] private DragAndDropCell NewItemSlot;
-        [SerializeField] private DragAndDropCell UpgradeItemSlot;
-        [SerializeField] private DragAndDropCell DestroyItemSlot;
+        [SerializeField] private SlotDragAndDrop NewItemSlot;
+        [SerializeField] private SlotDragAndDrop UpgradeItemSlot;
+        [SerializeField] private SlotDragAndDrop DestroyItemSlot;
         [SerializeField] private GameObject Validate;
         
         [SerializeField] private TextMeshProUGUI resourcesMain;

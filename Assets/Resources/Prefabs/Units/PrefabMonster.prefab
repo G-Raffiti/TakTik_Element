@@ -254,6 +254,8 @@ MonoBehaviour:
   onDeathRelic: {fileID: 11400000, guid: e1b6e3df89647e240baa05ca6e70a64a, type: 2}
   onSkillTooltip_ON: {fileID: 11400000, guid: 369bdd67d303df947b4d6783abcfba9e, type: 2}
   onInventoryClosed: {fileID: 11400000, guid: b69d6a4d0177cc8438ddc4f5c60b8cdc, type: 2}
+  onMonsterTooltip_ON: {fileID: 11400000, guid: 78a0fdce76341da4ea5c1f2a11390718,
+    type: 2}
   isPlaying: 0
 --- !u!111 &5516700394536520283
 Animation:
@@ -376,6 +378,7 @@ MonoBehaviour:
   illustration: {fileID: 0}
   elementIcon: {fileID: 0}
   costText: {fileID: 0}
+  colorFrame: {fileID: 0}
   canUse: {fileID: 0}
   isHandSkill: 0
   onSkillSelected: {fileID: 0}

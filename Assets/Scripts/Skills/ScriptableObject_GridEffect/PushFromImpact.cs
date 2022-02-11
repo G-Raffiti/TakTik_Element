@@ -24,7 +24,7 @@ namespace Skills.ScriptableObject_GridEffect
 
             if (affecteds.Count == 0) return;
             
-            DataBase.RunCoroutine(PushFix.Push(affecteds, _cell, _skillInfo, (int)Math.Max(1, _skillInfo.Unit.BattleStats.GetPower(_skillInfo.skill.Element.Type)/5f)));
+            Utility.RunCoroutine(PushFix.Push(affecteds, _cell, _skillInfo, (int)Math.Max(1, _skillInfo.Unit.BattleStats.GetPower(_skillInfo.skill.Element.Type)/5f)));
         }
 
         public override string InfoEffect(SkillInfo _skillInfo)

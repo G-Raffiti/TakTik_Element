@@ -35,7 +35,7 @@ namespace GridObjects
             
             OnLootBoxOpen.Raise(location.CurrentGridObject);
             
-            DataBase.RunCoroutine(DestroyAfterUse(location.CurrentGridObject));
+            Utility.RunCoroutine(DestroyAfterUse(location.CurrentGridObject));
         }
 
         public IEnumerator DestroyAfterUse(GridObject lootBox)
@@ -46,7 +46,7 @@ namespace GridObjects
                 yield return null;
             if (lootBox.Inventory.gears.Count == 0)
             {
-                DataBase.RunCoroutine(lootBox.OnDestroyed());
+                Utility.RunCoroutine(lootBox.OnDestroyed());
             }
         }
     }

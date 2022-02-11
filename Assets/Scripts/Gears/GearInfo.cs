@@ -16,6 +16,7 @@ namespace Gears
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
+            Debug.Log($"{Gear.GearSO.Rarity.Name}\n{Gear.GearSO.Type}");
             GearTooltip_ON.Raise(this);
         }
 
@@ -27,7 +28,7 @@ namespace Gears
 
         public override string GetInfoMain()
         {
-            return $"<size=36>{ColouredName()}</size>\n{Gear.GearSO.Rarity.Name} {Gear.GearSO.Type}";
+            return $"{Gear.GearSO.Rarity.Name}\n{Gear.GearSO.Type}";
         }
 
         public override string GetInfoLeft()

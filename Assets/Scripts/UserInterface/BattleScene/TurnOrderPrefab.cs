@@ -98,19 +98,24 @@ namespace UserInterface.BattleScene
 
         public override void OnPointerEnter(PointerEventData _eventData)
         {
-            unitMark = new TileIsometric.CellState(((TileIsometric)unit.Cell).State);
-            unit.MarkAsSelected();
+            cellGrid.BattleState.OnCellSelected(unit.Cell);
             UnitTooltip_ON.Raise(unit);
         }
 
         public override void OnPointerExit(PointerEventData _eventData)
         {
-            unit.MarkBack(unitMark);
+            cellGrid.BattleState.OnCellDeselected(unit.Cell);
             UnitTooltip_OFF.Raise();
         }
 
         public override void OnPointerClick(PointerEventData _eventData)
         {
+            if (_eventData.button == PointerEventData.InputButton.Right)
+            {
+                unit.onTooltip_ON.Raise(unit);
+                return;
+            }
+
             cellGrid.BattleState.OnCellClicked(unit.Cell);
         }
 

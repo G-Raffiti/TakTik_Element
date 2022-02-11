@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace _Instances
 {
-    public class DataBase : MonoBehaviour
+    [CreateAssetMenu(fileName = "DataBase", menuName = "Scriptable Object/DataBase/Data Base")]
+    public class DataBase : ScriptableObject
     {
         public static DataBase Instance;
         public static DataBaseMonster Monster;
@@ -15,6 +16,7 @@ namespace _Instances
         public static DataBaseGear Gear;
         public static DataBaseBoard Board;
         public static DataBaseSkill Skill;
+        public static DataBaseElement Element;
 
         [SerializeField] private DataBaseMonster dataMonster;
         [SerializeField] private DataBaseRelic dataRelic;
@@ -23,19 +25,13 @@ namespace _Instances
         [SerializeField] private DataBaseGear dataGear;
         [SerializeField] private DataBaseBoard dataBoard;
         [SerializeField] private DataBaseSkill dataSkill;
+        [SerializeField] private DataBaseElement dataElement;
 
-        public void Start()
+        public void OnEnable()
         {
-            DontDestroyOnLoad(gameObject.transform);
-            if (Instance == null)
-                Instance = this;
-            else
-                Destroy(gameObject);
-
             InstantiateDataBases();
         }
 
-        [ContextMenu("instantiate")]
         public void InstantiateDataBases()
         {
             Monster = dataMonster;
@@ -45,11 +41,7 @@ namespace _Instances
             Gear = dataGear;
             Board = dataBoard;
             Skill = dataSkill;
-        }
-
-        public static void RunCoroutine(IEnumerator coroutine)
-        {
-            Instance.StartCoroutine(coroutine);
+            Element = dataElement;
         }
     }
 }

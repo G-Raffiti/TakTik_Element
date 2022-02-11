@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4aab2a177042c19296cd31ef755653, type: 3}
   m_Name: Rarity_Rare
   m_EditorClassIdentifier: 
-  name: Rare
+  rarityName: Rare
   textColour: {r: 1, g: 0.92036945, b: 0, a: 1}
   affixes: 3
