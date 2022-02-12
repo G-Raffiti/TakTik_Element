@@ -144,7 +144,6 @@ namespace Cells
 
             EndCondition = _data.EndCondition;
 
-            Debug.Log("board Loaded");
             onBoardLoaded.Raise();
         }
         

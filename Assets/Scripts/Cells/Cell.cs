@@ -7,6 +7,7 @@ using StateMachine;
 using TMPro;
 using Units;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Cells
 {
@@ -86,6 +87,7 @@ namespace Cells
         public virtual void OnMouseEnter()
         {
             CellHighlighted?.Invoke(this, new EventArgs());
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (CurrentGridObject != null)
             {
                 CurrentGridObject.OnPointerEnter();
@@ -108,11 +110,13 @@ namespace Cells
         public virtual void OnMouseDown()
         {
             CellClicked?.Invoke(this, new EventArgs());
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if(CurrentUnit != null)
                 CurrentUnit.OnLeftClick();
         }
         private void OnMouseOver()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (Input.GetMouseButtonDown(1))
             {
                 if(CurrentUnit != null)

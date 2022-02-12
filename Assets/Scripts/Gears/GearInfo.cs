@@ -16,7 +16,6 @@ namespace Gears
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log($"{Gear.GearSO.Rarity.Name}\n{Gear.GearSO.Type}");
             GearTooltip_ON.Raise(this);
         }
 

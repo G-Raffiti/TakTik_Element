@@ -145,6 +145,7 @@ namespace Skills
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
+            Debug.Log("this is a skill");
             SkillTooltip_ON?.Raise(this);
             if (!isHandSkill) return;
             LeanTween.Framework.LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1), 0.2f);

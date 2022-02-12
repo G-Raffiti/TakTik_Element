@@ -48,8 +48,6 @@ namespace ScreenResolutionManager
             maxY -= 2;
             minX += 4;
             minY += 2;
-            
-            Debug.Log($"max: {maxX} - {maxY}, min: {minX} - {minY}");
         }
  
         void Update()

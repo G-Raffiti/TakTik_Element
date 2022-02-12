@@ -15,9 +15,17 @@ namespace UserInterface.ToolTips
         [SerializeField] private TextMeshProUGUI down;
         [SerializeField] private LayoutElement Layout;
         [SerializeField] private int widthMax;
+        private CanvasGroup canvasGroup;
+
+        public void Awake()
+        {
+            canvasGroup = backgroundRectTransform.GetComponent<CanvasGroup>();
+        }
         
         protected override void ShowToolTip()
         {
+            LeanTween.Framework.LeanTween.alphaCanvas(canvasGroup, 0, 0);
+            LeanTween.Framework.LeanTween.alphaCanvas(canvasGroup, 1, 0.1f).delay = 0.4f;
             Layout.enabled = false;
             icon.sprite = Info.GetIcon();
             main.text = Info.GetInfoMain();
@@ -27,6 +35,12 @@ namespace UserInterface.ToolTips
             
             if (left.preferredWidth + right.preferredWidth > widthMax)
                 Layout.enabled = true;
+        }
+
+        public override void HideTooltip()
+        {
+            LeanTween.Framework.LeanTween.alphaCanvas(canvasGroup, 0, 0.1f);
+            base.HideTooltip();
         }
     }
 }

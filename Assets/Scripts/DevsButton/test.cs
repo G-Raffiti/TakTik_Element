@@ -8,26 +8,22 @@ namespace DevsButton
 {
     public class test :MonoBehaviour
     {
-        
-        private void Start()
-        {
-            StartCoroutine(ticktac());
-        }
 
-        private IEnumerator ticktac()
+        private void Update()
         {
-            yield return new WaitForSecondsRealtime(1f);
-            if (EventSystem.current.IsPointerOverGameObject())
-                Debug.Log("hit");
-            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            List<RaycastResult> results = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-            foreach (RaycastResult _result in results)
+            if (Input.GetMouseButtonUp(0))
             {
-                Debug.Log(_result.gameObject + _result.gameObject.transform.parent.name);
+                if (EventSystem.current.IsPointerOverGameObject())
+                    Debug.Log("hit");
+                PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+                eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+                foreach (RaycastResult _result in results)
+                {
+                    Debug.Log(_result.gameObject + _result.gameObject.transform.parent.name);
+                }
             }
-            yield return ticktac();
         }
     }
 }

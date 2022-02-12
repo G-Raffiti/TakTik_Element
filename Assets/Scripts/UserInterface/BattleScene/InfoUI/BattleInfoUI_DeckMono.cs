@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _DragAndDropSystem;
+using _Extension;
 using Decks;
 using Skills;
 using StateMachine;
@@ -11,7 +13,6 @@ namespace UserInterface.BattleScene.InfoUI
 {
     public class BattleInfoUI_DeckMono : MonoBehaviour
     {
-        [SerializeField] private SlotDragAndDrop SlotPrefab;
         [SerializeField] private SkillInfo SkillPrefab;
         [SerializeField] private Transform DrawPile;
         [SerializeField] private Transform DiscardPile;
@@ -45,12 +46,13 @@ namespace UserInterface.BattleScene.InfoUI
 
         private void SetPile(List<SkillSO> Pile, Unit user, Transform holder)
         {
-            foreach (SkillSO _skillSO in Pile)
+            List<SkillSO> _copie = new List<SkillSO>();
+            _copie.AddRange(Pile);
+            _copie.Sort((s, s1) => s.Cost.CompareTo(s1.Cost));
+            _copie.Sort((s, s1) => String.Compare(s.Name, s1.Name, StringComparison.Ordinal));
+            foreach (SkillSO _skillSO in _copie)
             {
-                GameObject SlotsObj = Instantiate(SlotPrefab.gameObject, holder);
-                GameObject SkillObj = Instantiate(SkillPrefab.gameObject, SlotsObj.transform);
-                SlotsObj.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Skill;
-                SlotsObj.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DropOnly;
+                GameObject SkillObj = Instantiate(SkillPrefab.gameObject, holder);
                 
                 SkillObj.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, deck, user);
                 SkillObj.GetComponent<SkillInfo>().Unit = user;
@@ -68,10 +70,24 @@ namespace UserInterface.BattleScene.InfoUI
 
         private void EmptyPile(Transform Pile)
         {
-            while (Pile.childCount > 2)
+            int i = 0;
+            //Array to hold all child obj
+            GameObject[] allChildren = new GameObject[Pile.childCount - 2];
+
+            //Find all child obj and store to that array
+            foreach (Transform child in Pile)
             {
-                DestroyImmediate(Pile.GetChild(1).gameObject);
+                if (child.GetComponent<SkillInfo>() == null) continue;
+                allChildren[i] = child.gameObject;
+                i += 1;
             }
+
+            //Now destroy them
+            foreach (GameObject child in allChildren)
+            {
+                DestroyImmediate(child.gameObject);
+            }
+            
         }
     }
 }

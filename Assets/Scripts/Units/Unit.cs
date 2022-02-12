@@ -16,6 +16,7 @@ using StateMachine;
 using Stats;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UserInterface;
 
 namespace Units
@@ -114,6 +115,7 @@ namespace Units
         /////////////////// On Mouse Actions ///////////////////////////////////////////////////////////////////////////
         public virtual void OnPointerEnter()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             lifeBar.Show();
         }
 
