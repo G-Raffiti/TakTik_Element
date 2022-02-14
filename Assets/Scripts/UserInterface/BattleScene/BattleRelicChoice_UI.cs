@@ -7,6 +7,7 @@ using _Instances;
 using Relics;
 using Skills;
 using TMPro;
+using TMPro.SpriteAssetUtilities;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,12 +17,11 @@ namespace UserInterface.BattleScene
     public class BattleRelicChoice_UI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI MonsterName;
+        [SerializeField] private Image monsterSprite;
         [SerializeField] private GameObject prefabRelic;
-        [SerializeField] private List<SlotDragAndDrop> HeroSlots;
         [SerializeField] private List<SlotDragAndDrop> MonsterSlots;
-        [SerializeField] private List<PersonalInventory> HeroesIcons;
+        [SerializeField] private List<HeroRelicSlot> heroRelicSlots;
         private List<RelicSO> monsterRelics;
-        [SerializeField] private List<Hero> heroes;
         [SerializeField] private GameObject Blur;
 
         [Header("Event Sender")]
@@ -31,6 +31,7 @@ namespace UserInterface.BattleScene
         
         private void OnEnable()
         {
+            onUIEnable.Raise();
             Blur.SetActive(true);
         }
 
@@ -38,30 +39,22 @@ namespace UserInterface.BattleScene
         {
             Blur.SetActive(false);
         }
-        
-        private void Awake()
-        {
-            heroes = GameObject.Find("Player").GetComponentsInChildren<Hero>().ToList();
-        }
 
         public void ShowOnKill(Unit _unit)
         {
             Monster _monster = (Monster) _unit;
+            for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
+            {
+                heroRelicSlots[i].Initialize(PlayerData.getInstance().Heroes[i]);
+            }
             
-            onUIEnable.Raise();
-            
-            HeroSlots.ForEach(cell => cell.RemoveItem());
             MonsterSlots.ForEach(cell => cell.RemoveItem());
             MonsterName.text = _monster.UnitName;
+            monsterSprite.sprite = _monster.UnitSprite;
 
             monsterRelics = new List<RelicSO>();
             monsterRelics.AddRange(_monster.Relics);
 
-            for (int i = 0; i < HeroesIcons.Count; i++)
-            {
-                HeroesIcons[i].Initialize(heroes[i]);
-            }
-            
             showRelics();
 
         }
@@ -73,13 +66,17 @@ namespace UserInterface.BattleScene
                 GameObject pref = Instantiate(prefabRelic, MonsterSlots[i].transform);
                 pref.GetComponent<RelicInfo>().CreateRelic(monsterRelics[i]);
                 pref.GetComponent<RelicInfo>().DisplayIcon();
+                MonsterSlots[i].UpdateMyItem();
+                MonsterSlots[i].UpdateBackgroundState();
             }
 
-            foreach (SlotDragAndDrop cell in MonsterSlots.Where(m => m.GetInfoRelic() == null))
+            foreach (SlotDragAndDrop _slot in MonsterSlots.Where(m => m.GetInfoRelic() == null))
             {
-                GameObject pref = Instantiate(prefabRelic, cell.transform);
+                GameObject pref = Instantiate(prefabRelic, _slot.transform);
                 pref.GetComponent<RelicInfo>().CreateRelic(DataBase.Relic.GetRandom());
                 pref.GetComponent<RelicInfo>().DisplayIcon();
+                _slot.UpdateMyItem();
+                _slot.UpdateBackgroundState();
             }
         }
         
@@ -89,34 +86,20 @@ namespace UserInterface.BattleScene
             {
                 monsterRelics = new List<RelicSO>();
                 
-                foreach (SlotDragAndDrop _dropCell in MonsterSlots)
+                foreach (SlotDragAndDrop _slot in MonsterSlots)
                 {
-                    if(_dropCell.GetInfoRelic() != null)
-                        monsterRelics.Add(_dropCell.GetInfoRelic().Relic);
+                    if(_slot.GetInfoRelic() != null)
+                        monsterRelics.Add(_slot.GetInfoRelic().Relic);
                 }
             }
 
-            for (int i = 0; i < HeroSlots.Count; i++)
+            foreach (HeroRelicSlot _heroRelicSlot in heroRelicSlots)
             {
-                if (i == 0 && HeroSlots[0].GetInfoRelic() != null)
-                {
-                    heroes[0].AddRelic(HeroSlots[0].GetInfoRelic().Relic);
-                }
-
-                if (i == 1 && HeroSlots[1].GetInfoRelic() != null)
-                {
-                    heroes[1].AddRelic(HeroSlots[1].GetInfoRelic().Relic);
-                }
-                
-                if (i == 2 && HeroSlots[2].GetInfoRelic() != null)
-                {
-                    heroes[2].AddRelic(HeroSlots[2].GetInfoRelic().Relic);
-                }
+                _heroRelicSlot.ApplyAndClose();
             }
-
-            gameObject.SetActive(false);
             
             onActionDone.Raise();
+            gameObject.SetActive(false);
         }
     }
 }

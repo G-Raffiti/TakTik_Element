@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Extension
 {
@@ -72,6 +74,14 @@ namespace _Extension
             }
 
             return max;
+        }
+
+        public static void Clear(this Transform _transform)
+        {
+            while (_transform.childCount > 0)
+            {
+                GameObject.DestroyImmediate(_transform.GetChild(0).gameObject);
+            }
         }
     }
 }

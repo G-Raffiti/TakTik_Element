@@ -15,7 +15,6 @@ namespace UserInterface.ToolTips
 
         protected override void ShowToolTip()
         {
-            lockInPlace = true;
             for (int i = 0; i < Unit.Inventory.gears.Count; i++)
             {
                 GameObject pref = Instantiate(gearPref.gameObject, inventory[i].transform);

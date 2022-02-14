@@ -48,6 +48,8 @@ namespace UserInterface
                 GameObject gearObj = Instantiate(GearInfoPrefab, slots[i].transform);
                 gearObj.GetComponent<GearInfo>().Gear = Hero.Inventory.gears[i];
                 gearObj.GetComponent<GearInfo>().DisplayIcon();
+                slots[i].UpdateMyItem();
+                slots[i].UpdateBackgroundState();
             }
         }
 

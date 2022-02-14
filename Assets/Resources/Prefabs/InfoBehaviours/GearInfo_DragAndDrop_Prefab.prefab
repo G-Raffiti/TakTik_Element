@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6523860408074563485}
   - component: {fileID: 794535480036378900}
   m_Layer: 5
-  m_Name: GearInfo_Prefab
+  m_Name: GearInfo_DragAndDrop_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,6 @@
 ﻿using System;
 using _EventSystem.CustomEvents;
+using _Instances;
 using Decks;
 using Skills;
 using UnityEngine;
@@ -14,18 +15,12 @@ namespace DevsButton
 
         [SerializeField] private VoidEvent onReDraw;
 
-        private static GameObject instance;
-        private void Start()
-        {
-            DontDestroyOnLoad(gameObject.transform);
-            if (instance == null)
-                instance = gameObject;
-            else
-                Destroy(gameObject);
-        }
-
         public void OnClick()
         {
+            if (deck == null)
+            {
+                deck = GameObject.Find("DeckMono/Deck1").GetComponent<DeckMono>();
+            }
             deck.AddHandSkill(OnePunchMan);
             onReDraw.Raise();
         }

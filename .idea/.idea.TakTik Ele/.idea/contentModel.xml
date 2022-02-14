@@ -332,6 +332,7 @@
               <e p="BtnEndTurn.cs" t="Include" />
               <e p="DeathWaiter.cs" t="Include" />
               <e p="HandDeckMono_UI.cs" t="Include" />
+              <e p="HeroRelicSlot.cs" t="Include" />
               <e p="InfoUI" t="Include">
                 <e p="BattleInfoUI_DeckMono.cs" t="Include" />
                 <e p="BattleInfoUI_Inventory.cs" t="Include" />

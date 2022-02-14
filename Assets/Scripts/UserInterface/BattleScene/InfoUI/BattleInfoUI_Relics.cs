@@ -9,7 +9,6 @@ namespace UserInterface.BattleScene.InfoUI
     public class BattleInfoUI_Relics : MonoBehaviour
     {
         [SerializeField] private PersonalInventory PortraitPrefab;
-        [SerializeField] private SlotDragAndDrop SlotPrefab;
         [SerializeField] private GameObject HolderPrefab;
         [SerializeField] private RelicInfo RelicPrefab;
 
@@ -23,10 +22,7 @@ namespace UserInterface.BattleScene.InfoUI
                 portrait.GetComponent<PersonalInventory>().Initialize(hero);
                 foreach (RelicSO _relic in hero.Relics)
                 {
-                    GameObject slotObj = Instantiate(SlotPrefab.gameObject, holder.transform);
-                    slotObj.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DropOnly;
-                    slotObj.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Relic;
-                    GameObject relicObj = Instantiate(RelicPrefab.gameObject, slotObj.transform);
+                    GameObject relicObj = Instantiate(RelicPrefab.gameObject, holder.transform);
                     relicObj.GetComponent<RelicInfo>().CreateRelic(_relic);
                     relicObj.GetComponent<RelicInfo>().DisplayIcon();
                 }

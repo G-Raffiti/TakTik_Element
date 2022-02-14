@@ -17,7 +17,6 @@ namespace UserInterface.ToolTips
 
         protected override void ShowToolTip()
         {
-            lockInPlace = true;
             Skill.skill = ((Monster) Unit).monsterSkill;
             Skill.Unit = Unit;
             Skill.DisplayIcon();
@@ -43,13 +42,11 @@ namespace UserInterface.ToolTips
 
         protected override Vector3 LockPosition()
         {
-            Debug.LogWarning(new Vector3(lockPosition.x, 540-backgroundRectTransform.rect.height / 2));
             return new Vector3(lockPosition.x, 540-backgroundRectTransform.rect.height / 2);
         }
         
         protected override Vector3 Position()
         {
-            Debug.LogWarning(new Vector3(lockPosition.x, 540-backgroundRectTransform.rect.height / 2));
             return new Vector3(lockPosition.x, 540-backgroundRectTransform.rect.height / 2);
         }
     }

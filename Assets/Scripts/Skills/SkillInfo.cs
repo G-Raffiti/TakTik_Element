@@ -145,7 +145,6 @@ namespace Skills
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log("this is a skill");
             SkillTooltip_ON?.Raise(this);
             if (!isHandSkill) return;
             LeanTween.Framework.LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1), 0.2f);
@@ -153,15 +152,16 @@ namespace Skills
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            SkillTooltip_OFF.Raise();
+            SkillTooltip_OFF?.Raise();
             if (!isHandSkill) return;
             LeanTween.Framework.LeanTween.scale(this.gameObject, Vector3.one, 0.2f);
         }
 
         public override void OnPointerClick(PointerEventData eventData)
         {
+            if (!isHandSkill) return;
             if (Unit.BattleStats.AP >= skill.Cost)
-                onSkillSelected?.Raise(this);
+                onSkillSelected.Raise(this);
         }
         
         public override void DisplayIcon()

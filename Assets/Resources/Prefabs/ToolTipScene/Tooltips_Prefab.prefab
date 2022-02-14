@@ -347,10 +347,10 @@ RectTransform:
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: 90, y: 750.8616}
-  m_Pivot: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: -5}
+  m_SizeDelta: {x: 0, y: 90}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &8890232035916001502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,12 +388,12 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 7
+  m_ChildAlignment: 3
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 90, y: 90}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 1
+  m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!1 &773236387486230426
 GameObject:
@@ -9022,7 +9022,7 @@ PrefabInstance:
     - target: {fileID: 4322713453843807350, guid: 67413a7f11417d946bc51c08ab24346f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -705.8616
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 4322713453843807350, guid: 67413a7f11417d946bc51c08ab24346f,
         type: 3}

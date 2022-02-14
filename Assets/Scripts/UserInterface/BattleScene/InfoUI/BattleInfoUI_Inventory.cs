@@ -1,4 +1,5 @@
 ﻿using _DragAndDropSystem;
+using _Extension;
 using _Instances;
 using Units;
 using UnityEngine;
@@ -26,9 +27,22 @@ namespace UserInterface.BattleScene.InfoUI
 
         private void OnDisable()
         {
-            while (transform.childCount > 0)
+            int i = 0;
+            //Array to hold all child obj
+            GameObject[] allChildren = new GameObject[transform.childCount - 1];
+
+            //Find all child obj and store to that array
+            foreach (Transform child in transform)
             {
-                DestroyImmediate(transform.GetChild(0).gameObject);
+                if (child.GetComponentInChildren<PersonalInventory>() == null) continue;
+                allChildren[i] = child.gameObject;
+                i += 1;
+            }
+
+            //Now destroy them
+            foreach (GameObject child in allChildren)
+            {
+                DestroyImmediate(child.gameObject);
             }
         }
     }

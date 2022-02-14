@@ -75,6 +75,7 @@ namespace UserInterface.ToolTips
         private void EventTrigger_HeroTooltip_ON(Unit _unit)
         {
             heroTooltip.HideTooltip();
+            monsterTooltip.HideTooltip();
             heroTooltip.Unit = _unit;
             heroTooltip.DisplayInfo();
         }
@@ -86,6 +87,7 @@ namespace UserInterface.ToolTips
         private void EventTrigger_MonsterTooltip_ON(Unit _unit)
         {
             monsterTooltip.HideTooltip();
+            heroTooltip.HideTooltip();
             monsterTooltip.Unit = _unit;
             monsterTooltip.DisplayInfo();
         }

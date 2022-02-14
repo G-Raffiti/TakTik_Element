@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _DragAndDropSystem;
 using _EventSystem.CustomEvents;
+using _Extension;
 using _Instances;
 using Decks;
 using Relics;
@@ -16,10 +17,8 @@ namespace Shops
         [SerializeField] private SlotDragAndDrop prefabSlot;
 
         [SerializeField] private ItemDragAndDrop prefabSkill;
-        [SerializeField] private ItemDragAndDrop prefabRelic;
 
         [SerializeField] private Transform deckPlaceHolder;
-        [SerializeField] private Transform relicPlaceHolder;
         [SerializeField] private List<PersonalInventory> portraits;
         [SerializeField] private List<BattleHero> BattlesHeroes;
         private BattleHero actualHero;
@@ -75,33 +74,12 @@ namespace Shops
 
                 allSkills.Add(pref.GetComponent<SkillInfo>());
             }
-
-            foreach (RelicSO _relicSO in Deck.Relics)
-            {
-                GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, relicPlaceHolder);
-                _cell.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DragOnly;
-                _cell.GetComponent<SlotDragAndDrop>().unlimitedSource = true;
-                _cell.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Relic;
-
-                GameObject pref = GameObject.Instantiate(prefabRelic.gameObject, _cell.transform);
-                pref.GetComponent<RelicInfo>().CreateRelic(_relicSO);
-                pref.GetComponent<RelicInfo>().DisplayIcon();
-            }
         }
 
         private void ClearDecks()
         {
             
-            while (deckPlaceHolder.childCount > 0)
-            {
-                GameObject.DestroyImmediate(deckPlaceHolder.GetChild(0).gameObject);
-            }
-
-            while (relicPlaceHolder.childCount > 0)
-            {
-                GameObject.DestroyImmediate(relicPlaceHolder.GetChild(0).gameObject);
-            }
-            
+            deckPlaceHolder.Clear();
 
             allSkills = new List<SkillInfo>();
         }

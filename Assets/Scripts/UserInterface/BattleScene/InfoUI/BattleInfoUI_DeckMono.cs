@@ -48,8 +48,8 @@ namespace UserInterface.BattleScene.InfoUI
         {
             List<SkillSO> _copie = new List<SkillSO>();
             _copie.AddRange(Pile);
-            _copie.Sort((s, s1) => s.Cost.CompareTo(s1.Cost));
             _copie.Sort((s, s1) => String.Compare(s.Name, s1.Name, StringComparison.Ordinal));
+            _copie.Sort((s, s1) => s.Cost.CompareTo(s1.Cost));
             foreach (SkillSO _skillSO in _copie)
             {
                 GameObject SkillObj = Instantiate(SkillPrefab.gameObject, holder);

@@ -78,6 +78,7 @@
      <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
      <Compile Include="Assets\Scripts\Relics\Relic.cs" />
      <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\RandomUnitGenerator.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\BattleScene\HeroRelicSlot.cs" />
      <Compile Include="Assets\Scripts\_Instances\DataBase.cs" />
      <Compile Include="Assets\Scripts\Stats\Range.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopResurrection.cs" />
@@ -139,6 +140,7 @@
      <Compile Include="Assets\Scripts\UserInterface\UI_Menu\MovingButtonPanel.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseSkill.cs" />
      <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\IUnitGenerator.cs" />
+     <Compile Include="Assets\Scripts\Shops\ShopOracleStatue.cs" />
      <Compile Include="Assets\Scripts\Gears\GearSO.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_Inventory.cs" />
      <Compile Include="Assets\Scripts\Cells\TileIsometric.cs" />
@@ -146,6 +148,7 @@
      <Compile Include="Assets\Scripts\Skills\Skill.cs" />
      <Compile Include="Assets\Scripts\Buffs\StatusEffects\Poison.cs" />
      <Compile Include="Assets\Scripts\Stats\Affix.cs" />
+     <Compile Include="Assets\Scripts\DevsButton\test.cs" />
      <Compile Include="Assets\Scripts\Stats\Affinity.cs" />
      <Compile Include="Assets\Scripts\GridObjects\Tree.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectNeedView.cs" />
@@ -265,8 +268,6 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\Shops\ShopOracleStatue.cs" />
-     <Compile Include="Assets\Scripts\DevsButton\test.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />
