@@ -73,8 +73,8 @@ namespace Units
 
             _ret.Power = 0;
 
-            _ret.HP *= (KeepBetweenScene.Stage + 1);
-            _ret.Shield *= (KeepBetweenScene.Stage + 1);
+            _ret.HP *= (BattleStage.Stage + 1);
+            _ret.Shield *= (BattleStage.Stage + 1);
             
             return _ret;
         }
@@ -127,9 +127,9 @@ namespace Units
             Monster _monster = _pref.GetComponent<Monster>();
             if (_monster != null)
             {
-                _monster.Spawn(this, KeepBetweenScene.Stage);
+                _monster.Spawn(this, BattleStage.Stage);
             }
-            _cell.Take(_monster);
+            _cell.ForceTake(_monster);
         }
 
         public void SetDATA(rawMonster _rawMonster)

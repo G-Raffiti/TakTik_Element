@@ -36,7 +36,7 @@ namespace Gears
         {
             GearSO = DataBase.Gear.GetRandom();
             Affixes = new List<Affix>();
-            Stage = KeepBetweenScene.Stage;
+            Stage = BattleStage.Stage;
 
             List<AffixSO> nonAffixes = new List<AffixSO>();
             nonAffixes.AddRange(GearSO.NonAffixs);
@@ -60,7 +60,7 @@ namespace Gears
         {
             GearSO = DataBase.Gear.GetRandom();
             Affixes = new List<Affix>();
-            Stage = KeepBetweenScene.Stage;
+            Stage = BattleStage.Stage;
 
             foreach (AffixSO _affix in _gearStats.Keys)
             {

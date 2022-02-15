@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LeanTween.Framework
+namespace _LeanTween.Framework
 {
 	public class LeanAudioStream {
 

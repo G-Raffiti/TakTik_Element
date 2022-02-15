@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LeanTween.Framework
+namespace _LeanTween.Framework
 {
 	/**
 * Internal Representation of a Sequence<br>

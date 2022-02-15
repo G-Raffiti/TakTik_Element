@@ -55,7 +55,7 @@ namespace Units
             }
 
             if (destination.GetCurrentIMovable() != movable)
-                destination.Take(movable);
+                destination.ForceTake(movable);
 
             if (destination.IsUnderGround)
             {

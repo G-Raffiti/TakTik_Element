@@ -4,13 +4,13 @@ using UnityEngine;
 namespace _Instances
 {
     
-    public class KeepBetweenScene : MonoBehaviour
+    public class BattleStage : MonoBehaviour
     {
         [SerializeField] private int stage;
         private static GameObject instance;
         public static int Stage { get; private set; }
         public const int BattlePerStage = 3;
-        public static int BattleNumber = 0;
+        public static int BattleNumber = -1;
         public static EConditionType currentState = EConditionType.LootBox;
 
         public static void NextStage()
@@ -21,16 +21,17 @@ namespace _Instances
 
         private static void UpdateCurrentState()
         {
+
             if (Stage == 0 && BattleNumber == BattlePerStage)
+            {
                 currentState = EConditionType.Last;
+                return;
+            }
+            
             if (BattleNumber == BattlePerStage)
-            {
                 currentState = EConditionType.Boss;
-            }
             else
-            {
                 currentState = EConditionType.Death;
-            }
         }
 
         public static void EndBattle()

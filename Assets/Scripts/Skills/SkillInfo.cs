@@ -6,13 +6,12 @@ using Cells;
 using Resources.ToolTip.Scripts;
 using Skills._Zone;
 using Skills.ScriptableObject_Effect;
-using StateMachine;
-using Stats;
 using TMPro;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using _LeanTween.Framework;
 
 namespace Skills
 {
@@ -147,14 +146,14 @@ namespace Skills
         {
             SkillTooltip_ON?.Raise(this);
             if (!isHandSkill) return;
-            LeanTween.Framework.LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1), 0.2f);
+            LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1), 0.2f);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
             SkillTooltip_OFF?.Raise();
             if (!isHandSkill) return;
-            LeanTween.Framework.LeanTween.scale(this.gameObject, Vector3.one, 0.2f);
+            LeanTween.scale(this.gameObject, Vector3.one, 0.2f);
         }
 
         public override void OnPointerClick(PointerEventData eventData)

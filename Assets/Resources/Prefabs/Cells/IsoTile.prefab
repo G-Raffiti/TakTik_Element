@@ -593,7 +593,7 @@ MonoBehaviour:
   offsetCoord: {x: 0, y: 0}
   MovementCost: 1
   IsSpawnPlace: 0
-  cellSO: {fileID: 0}
+  cellSO: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
   frame: {fileID: 9107420184341837877}
   fade: {fileID: 4707319213409403001}
   element: {fileID: 2874267303805952608}

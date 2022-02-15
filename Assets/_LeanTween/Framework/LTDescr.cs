@@ -3,7 +3,7 @@
 using System;
 using UnityEngine;
 
-namespace LeanTween.Framework
+namespace _LeanTween.Framework
 {
 	/**
 * Internal Representation of a Tween<br>

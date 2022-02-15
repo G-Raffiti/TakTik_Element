@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace LeanTween.Framework
+namespace _LeanTween.Framework
 {
 	public class LeanTester : MonoBehaviour {
 		public float timeout = 15f;

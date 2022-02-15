@@ -54,10 +54,10 @@ namespace SceneManagement
 
         private void StartNewBattle(Void empty)
         {
-            KeepBetweenScene.EndBattle();
+            BattleStage.EndBattle();
             SceneManager.LoadScene("BattleScene");
             //Todo: Show this Log on screen (BattleStart)
-            //Debug.Log($"Battle: {KeepBetweenScene.BattleNumber} Stage: {KeepBetweenScene.Stage}");
+            Debug.Log($"Battle: {BattleStage.BattleNumber} Stage: {BattleStage.Stage}");
         }
 
         private void OnBattleEnded(bool isWin)

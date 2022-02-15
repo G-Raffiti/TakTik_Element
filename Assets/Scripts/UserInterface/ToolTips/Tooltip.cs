@@ -25,7 +25,7 @@ namespace UserInterface.ToolTips
             HideTooltip();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (!obj.activeSelf) return; 
             

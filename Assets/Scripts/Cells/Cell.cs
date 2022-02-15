@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using _Pathfinding.DataStructs;
 using Buffs;
 using GridObjects;
@@ -7,6 +8,8 @@ using StateMachine;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using Scene = UnityEditor.SearchService.Scene;
 
 namespace Cells
 {
@@ -265,12 +268,6 @@ namespace Cells
         {
             if (_movable.Cell != null)
                 _movable.Cell.FreeTheCell();
-            
-            if (IsUnderGround)
-            {
-                _movable.StartCoroutine(_movable.Fall(this));
-                return;
-            }
 
             if (_movable is Unit _unit)
             {
@@ -280,6 +277,14 @@ namespace Cells
             else if (_movable is GridObject _gridObject)
                 CurrentGridObject = _gridObject;
             
+            if (SceneManager.GetActiveScene () != SceneManager.GetSceneByName("BattleScene")) return;
+
+            if (IsUnderGround)
+            {
+                _movable.StartCoroutine(_movable.Fall(this));
+                return;
+            }
+
             BattleStateManager.instance.OnIMovableMoved(_movable, this);
         }
         

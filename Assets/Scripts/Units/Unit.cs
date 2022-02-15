@@ -5,6 +5,7 @@ using System.Linq;
 using _EventSystem.CustomEvents;
 using _Extension;
 using _Instances;
+using _LeanTween.Framework;
 using _ScriptableObject;
 using Buffs;
 using Cells;
@@ -34,7 +35,6 @@ namespace Units
         [SerializeField] private TextMeshProUGUI info;
         public abstract Sprite UnitSprite { get; }
         public override SpriteRenderer MovableSprite => unitSpriteRenderer;
-        private Animation anim;
         private LifeBar lifeBar;
         [HideInInspector] public string UnitName;
         public override string getName => UnitName;
@@ -315,6 +315,8 @@ namespace Units
         ///////////////////// Fight / Damage Handler / Defence /////////////////////////////////////////////////////////
         # region Fight & Damage Handler
 
+        private List<string> DamageReccorded = new List<string>();
+
         public float DamageModifier(Element dmgElement)
         {
             if (dmgElement.Type == EElement.None) return 1;
@@ -343,27 +345,28 @@ namespace Units
                 _damageTaken = DamageTaken(damage, element);
             else _damageTaken = BattleStats.GetHealTaken(damage, element.Type);
 
-            OnHit(_damageTaken, element);
             Debug.Log($"Damage : {aggressor.ColouredName()} did {_damageTaken} {element.Name} damage to {ColouredName()} on {Cell.OffsetCoord}");
-            
+
+            int ShieldDamage = 0;
             if (_damageTaken > 0)
             {
-                MarkAsDefending(aggressor);
-                
                 if (BattleStats.Shield > 0)
                 {
                     if (BattleStats.Shield < _damageTaken)
                     {
+                        ShieldDamage = BattleStats.Shield;
                         _damageTaken -= BattleStats.Shield;
                         BattleStats.Shield = 0;
                     }
                     else
                     {
+                        ShieldDamage = _damageTaken;
                         BattleStats.Shield -= _damageTaken;
                         _damageTaken = 0;
                     }
                 }
             }
+            RecordHit(_damageTaken, ShieldDamage, element);
 
             BattleStats.HP -= _damageTaken;
             if (BattleStats.HP > total.HP) 
@@ -393,10 +396,11 @@ namespace Units
         public override IEnumerator OnDestroyed()
         {
             isDying = true;
+            UnitAttacked?.Invoke(this, new AttackEventArgs(this, this, BattleStats.HP));
             BattleStats.HP = 0;
             Cell.FreeTheCell();
             MarkAsDestroyed();
-            yield return new WaitWhile(() => anim.isPlaying);
+            yield return new WaitUntil(() => LeanTween.tweensRunning <= 0);
             UnitDestroyed?.Invoke(this, new DeathEventArgs(this));
             isDying = false;
             yield return new WaitForSeconds(0.1f);
@@ -410,16 +414,40 @@ namespace Units
 
         ////////////////////// Mark As (Color Change and Cells UI interactions) ////////////////////////////////////////
         # region UI & Mark As
+
+        private void Update()
+        {
+            if (isPlaying) return;
+            if (DamageReccorded.Count > 0)
+            {
+                StartCoroutine(MarkAsTakingDamage());
+            }
+        }
+
+        private bool isPlaying;
+        private IEnumerator MarkAsTakingDamage()
+        {
+            isPlaying = true;
+            info.text = DamageReccorded[0];
+            LeanTween.alphaCanvas(info.GetComponent<CanvasGroup>(), 1, 0.3f);
+            LeanTween.moveLocal(info.gameObject, new Vector3(0, 50), 1);
+            LeanTween.alphaCanvas(info.GetComponent<CanvasGroup>(), 0, 0.1f).setDelay(0.9f);
+            LeanTween.moveLocal(info.gameObject, Vector3.zero, 0).setDelay(1f);
+            DamageReccorded.RemoveAt(0);
+            yield return new WaitUntil(() => LeanTween.tweensRunning <= 0);
+            isPlaying = false;
+        }
+        
         /// <summary>
-        /// Called on Battle Setup to the Set Colors and animation to the Unit's sprite
+        /// Called on Battle Setup to the Set Colors to the Unit's sprite
         /// </summary>
         public void InitializeSprite()
         {
-            anim = gameObject.GetComponent<Animation>();
             lifeBar = GetComponent<LifeBar>();
             AutoSortOrder();
             lifeBar.Initialize();
             UnMark();
+            info.text = "";
         }
 
         /// <summary>
@@ -449,20 +477,24 @@ namespace Units
         /// <summary>
         /// Method to Show to the player what happened and how much damage was done
         /// </summary>
-        private void OnHit(int damage, Element element)
+        private void RecordHit(int HPDamage, int ShieldDamage, Element element)
         {
+            if (HPDamage == 0 && ShieldDamage == 0) return;
             string _hexColor = ColorUtility.ToHtmlStringRGB(element.TextColour);
-            if (damage == 0) return;
-            if (damage > 0)
-            {
-                info.text = $"- <color=#{_hexColor}>{damage}</color> HP";
-            }
+            string ret = "";
+            if (HPDamage == 0){}
+            else if (HPDamage > 0)
+                ret += $"  - <color=#{_hexColor}>{HPDamage}</color> <sprite name=HP>";
             else
-            {
-                info.text = $"+ {-damage} HP";
-            }
+                ret += $"  + {-HPDamage} <sprite name=HP>";
             
-            anim.PlayQueued("TextFade");
+            if (ShieldDamage == 0) {}
+            else if (ShieldDamage > 0)
+                ret += $"  - <color=#{_hexColor}>{ShieldDamage}</color> <sprite name=Shield>";
+            else
+                ret += $"  + {-ShieldDamage} <sprite name=Shield>";
+
+            DamageReccorded.Add(ret);
         }
 
         /// <summary>
@@ -473,7 +505,6 @@ namespace Units
         /// </param>
         public void MarkAsDefending(Unit aggressor)
         {
-            anim.Play("Hit");
         }
 
         /// <summary>
@@ -482,7 +513,7 @@ namespace Units
         /// </summary>
         public void MarkAsDestroyed()
         {
-            anim.PlayQueued("Death");
+            LeanTween.alpha(gameObject, 0, 1f);
         }
         #endregion
     

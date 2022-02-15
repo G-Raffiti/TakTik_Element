@@ -146,7 +146,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LeanTween.Framework
+namespace _LeanTween.Framework
 {
     public enum TweenAction{
         MOVE_X,

@@ -44,20 +44,15 @@ namespace Score
 
         private void CountBosses(Void _obj)
         {
-            List<Monster> monsters = new List<Monster>();
+            Debug.Log("check");
+            List<Monster> monsters = BattleStateManager.instance.Units.Where(_unit => _unit.playerNumber != 0).Cast<Monster>().ToList();
 
-            foreach (Unit _unit in BattleStateManager.instance.Units)
-            {
-                if (_unit.playerNumber != 0)
-                {
-                    monsters.Add((Monster) _unit);
-                }
-            }
-            
             foreach (Monster boss in monsters.Where(m => m.Type == EMonster.Boss))
             {
                 ScoreHolder.AddBoss(boss.MonsterSO);
             }
+
+            Debug.Log(ScoreHolder.Bosses.Count);
         }
 
         private void OnGearDestroyed(Gear _gear)

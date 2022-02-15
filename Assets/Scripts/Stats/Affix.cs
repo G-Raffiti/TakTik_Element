@@ -19,7 +19,7 @@ namespace Stats
             value = _value;
             tier = _tier;
             min = affix.Tier[Math.Max(0, _tier - 1)];
-            max = affix.Tier[Math.Max(1, _tier)];
+            max = affix.Tier[Math.Max(1, Math.Min(_tier, affix.Tier.Length -1))];
         }
 
         public override string ToString()

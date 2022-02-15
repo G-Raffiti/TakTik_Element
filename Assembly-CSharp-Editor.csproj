@@ -54,7 +54,7 @@
   <ItemGroup>
      <Compile Include="Assets\Editor\GridGenerators\TriangularHexGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridHelper.cs" />
-     <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
+     <Compile Include="Assets\_LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
      <Compile Include="Assets\Editor\CustomUnitGeneratorHelper.cs" />
      <Compile Include="Assets\Editor\GridGenerators\RectangularSquareGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridGenerators\ICellGridGenerator.cs" />

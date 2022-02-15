@@ -1,5 +1,6 @@
 ﻿using System;
 using _EventSystem.CustomEvents;
+using _LeanTween.Framework;
 using Buffs;
 using StateMachine;
 using TMPro;
@@ -98,9 +99,9 @@ namespace UserInterface
         public void Hide()
         {
             AutoSortOrder();
-            LeanTween.Framework.LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
+            LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
             if (!UI_Manager.ActiveLifeBar)
-                LeanTween.Framework.LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 0, 0.1f);
+                LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 0, 0.1f);
         }
 
         public void Activate(bool isActive)
@@ -108,13 +109,13 @@ namespace UserInterface
             if (isActive)
             {
                 Display(new Void());
-                LeanTween.Framework.LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 1, 0.1f);
-                LeanTween.Framework.LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
+                LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 1, 0.1f);
+                LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
             }
             else
             {
-                LeanTween.Framework.LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
-                LeanTween.Framework.LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 0, 0.1f);
+                LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
+                LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 0, 0.1f);
             }
             
             AutoSortOrder();
@@ -123,15 +124,15 @@ namespace UserInterface
         public void Show()
         {
             Display(new Void());
-            LeanTween.Framework.LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 1, 0.1f);
-            LeanTween.Framework.LeanTween.scale(canvas.gameObject, Vector3.one * 0.012f, 0.2f);
+            LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 1, 0.1f);
+            LeanTween.scale(canvas.gameObject, Vector3.one * 0.012f, 0.2f);
             canvas.sortingOrder = 1000;
         }
 
         public void HideForced()
         {
-            LeanTween.Framework.LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
-            LeanTween.Framework.LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 0, 0.1f);
+            LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
+            LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 0, 0.1f);
             AutoSortOrder();
         }
     }

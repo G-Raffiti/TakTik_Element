@@ -31,7 +31,7 @@ namespace Score
         
         private void Start()
         {
-            KeepBetweenScene.EndGame();
+            BattleStage.EndGame();
             isWin = PlayerData.getInstance().IsVictory;
             title.text = isWin ? "Victory !" : "Game Over !";
             for (int i = 0; i < ScoreHolder.Bosses.Count; i++)

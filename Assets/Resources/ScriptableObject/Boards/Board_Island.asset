@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f739f2b342984d4db9f4226aab1c48e8, type: 3}
   m_Name: Board_Island
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: bea8affbbfdb6314d87dc7870bc07d7f, type: 3}
+  background: {fileID: 21300000, guid: 79d7efe6d242d664eb7db47f7324f0e8, type: 3}
   cells:
   - position:
     - 0
@@ -115,6 +115,16 @@ MonoBehaviour:
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
+    - 0
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 10
+    - 19
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
     - 2
     - 0
     - 0
@@ -141,7 +151,7 @@ MonoBehaviour:
     offsetCoord:
     - 3
     - 10
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -151,7 +161,7 @@ MonoBehaviour:
     offsetCoord:
     - 4
     - 11
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -161,7 +171,7 @@ MonoBehaviour:
     offsetCoord:
     - 5
     - 12
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -171,7 +181,7 @@ MonoBehaviour:
     offsetCoord:
     - 6
     - 13
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -181,7 +191,7 @@ MonoBehaviour:
     offsetCoord:
     - 7
     - 14
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -191,7 +201,7 @@ MonoBehaviour:
     offsetCoord:
     - 8
     - 15
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -201,7 +211,7 @@ MonoBehaviour:
     offsetCoord:
     - 9
     - 16
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 2825041786cedb34599cefae29701ca3, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -211,6 +221,16 @@ MonoBehaviour:
     offsetCoord:
     - 10
     - 17
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 2
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 11
+    - 18
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
@@ -231,7 +251,7 @@ MonoBehaviour:
     offsetCoord:
     - 3
     - 8
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -241,7 +261,7 @@ MonoBehaviour:
     offsetCoord:
     - 4
     - 9
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -251,7 +271,7 @@ MonoBehaviour:
     offsetCoord:
     - 5
     - 10
-    type: {fileID: 11400000, guid: 2825041786cedb34599cefae29701ca3, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -271,7 +291,7 @@ MonoBehaviour:
     offsetCoord:
     - 7
     - 12
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -281,7 +301,7 @@ MonoBehaviour:
     offsetCoord:
     - 8
     - 13
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -291,8 +311,8 @@ MonoBehaviour:
     offsetCoord:
     - 9
     - 14
-    type: {fileID: 0}
-    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
     isSpawn: 0
   - position:
     - 4
@@ -301,7 +321,7 @@ MonoBehaviour:
     offsetCoord:
     - 10
     - 15
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -311,6 +331,16 @@ MonoBehaviour:
     offsetCoord:
     - 11
     - 16
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 4
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 12
+    - 17
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
@@ -331,7 +361,7 @@ MonoBehaviour:
     offsetCoord:
     - 4
     - 7
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -341,7 +371,7 @@ MonoBehaviour:
     offsetCoord:
     - 5
     - 8
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -351,7 +381,7 @@ MonoBehaviour:
     offsetCoord:
     - 6
     - 9
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -360,518 +390,568 @@ MonoBehaviour:
     - 0
     offsetCoord:
     - 7
-    - 10
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 6
-    - 5.7700005
-    - 0
-    offsetCoord:
-    - 8
-    - 11
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 6
-    - 6.9240003
-    - 0
-    offsetCoord:
-    - 9
-    - 12
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 6
-    - 8.078
-    - 0
-    offsetCoord:
-    - 10
-    - 13
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 6
-    - 9.232
-    - 0
-    offsetCoord:
-    - 11
-    - 14
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 6
-    - 10.386001
-    - 0
-    offsetCoord:
-    - 12
-    - 15
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 0
-    - 0
-    offsetCoord:
-    - 4
-    - 5
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 1.154
-    - 0
-    offsetCoord:
-    - 5
-    - 6
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 2.308
-    - 0
-    offsetCoord:
-    - 6
-    - 7
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 3.4620001
-    - 0
-    offsetCoord:
-    - 7
-    - 8
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 4.616
-    - 0
-    offsetCoord:
-    - 8
-    - 9
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 5.7700005
-    - 0
-    offsetCoord:
-    - 9
-    - 10
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 6.9240003
-    - 0
-    offsetCoord:
-    - 10
-    - 11
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 8.078
-    - 0
-    offsetCoord:
-    - 11
-    - 12
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 9.232
-    - 0
-    offsetCoord:
-    - 12
-    - 13
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 8
-    - 10.386001
-    - 0
-    offsetCoord:
-    - 13
-    - 14
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 0
-    - 0
-    offsetCoord:
-    - 5
-    - 4
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 1.154
-    - 0
-    offsetCoord:
-    - 6
-    - 5
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 2.308
-    - 0
-    offsetCoord:
-    - 7
-    - 6
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 3.4620001
-    - 0
-    offsetCoord:
-    - 8
-    - 7
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 4.616
-    - 0
-    offsetCoord:
-    - 9
-    - 8
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 5.7700005
-    - 0
-    offsetCoord:
-    - 10
-    - 9
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 6.9240003
-    - 0
-    offsetCoord:
-    - 11
-    - 10
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 8.078
-    - 0
-    offsetCoord:
-    - 12
-    - 11
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 9.232
-    - 0
-    offsetCoord:
-    - 13
-    - 12
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 10
-    - 10.386001
-    - 0
-    offsetCoord:
-    - 14
-    - 13
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 0
-    - 0
-    offsetCoord:
-    - 6
-    - 3
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 1.154
-    - 0
-    offsetCoord:
-    - 7
-    - 4
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 2.308
-    - 0
-    offsetCoord:
-    - 8
-    - 5
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 3.4620001
-    - 0
-    offsetCoord:
-    - 9
-    - 6
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 4.616
-    - 0
-    offsetCoord:
-    - 10
-    - 7
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 5.7700005
-    - 0
-    offsetCoord:
-    - 11
-    - 8
-    type: {fileID: 0}
-    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
-    isSpawn: 0
-  - position:
-    - 12
-    - 6.9240003
-    - 0
-    offsetCoord:
-    - 12
-    - 9
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 8.078
-    - 0
-    offsetCoord:
-    - 13
-    - 10
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 9.232
-    - 0
-    offsetCoord:
-    - 14
-    - 11
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 12
-    - 10.386001
-    - 0
-    offsetCoord:
-    - 15
-    - 12
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 14
-    - 0
-    - 0
-    offsetCoord:
-    - 7
-    - 2
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 14
-    - 1.154
-    - 0
-    offsetCoord:
-    - 8
-    - 3
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 14
-    - 2.308
-    - 0
-    offsetCoord:
-    - 9
-    - 4
-    type: {fileID: 0}
-    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
-    isSpawn: 0
-  - position:
-    - 14
-    - 3.4620001
-    - 0
-    offsetCoord:
-    - 10
-    - 5
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 14
-    - 4.616
-    - 0
-    offsetCoord:
-    - 11
-    - 6
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 14
-    - 5.7700005
-    - 0
-    offsetCoord:
-    - 12
-    - 7
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 14
-    - 6.9240003
-    - 0
-    offsetCoord:
-    - 13
-    - 8
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 14
-    - 8.078
-    - 0
-    offsetCoord:
-    - 14
-    - 9
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 14
-    - 9.232
-    - 0
-    offsetCoord:
-    - 15
     - 10
     type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
-    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
+    gridObject: {fileID: 0}
     isSpawn: 0
   - position:
+    - 6
+    - 5.7700005
+    - 0
+    offsetCoord:
+    - 8
+    - 11
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
+    isSpawn: 0
+  - position:
+    - 6
+    - 6.9240003
+    - 0
+    offsetCoord:
+    - 9
+    - 12
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 6
+    - 8.078
+    - 0
+    offsetCoord:
+    - 10
+    - 13
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 6
+    - 9.232
+    - 0
+    offsetCoord:
+    - 11
     - 14
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 6
     - 10.386001
     - 0
     offsetCoord:
+    - 12
+    - 15
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 6
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 13
     - 16
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 0
+    - 0
+    offsetCoord:
+    - 4
+    - 5
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 1.154
+    - 0
+    offsetCoord:
+    - 5
+    - 6
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 2.308
+    - 0
+    offsetCoord:
+    - 6
+    - 7
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 3.4620001
+    - 0
+    offsetCoord:
+    - 7
+    - 8
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 4.616
+    - 0
+    offsetCoord:
+    - 8
+    - 9
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 5.7700005
+    - 0
+    offsetCoord:
+    - 9
+    - 10
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 6.9240003
+    - 0
+    offsetCoord:
+    - 10
+    - 11
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 8.078
+    - 0
+    offsetCoord:
+    - 11
+    - 12
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 9.232
+    - 0
+    offsetCoord:
+    - 12
+    - 13
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 10.386001
+    - 0
+    offsetCoord:
+    - 13
+    - 14
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 8
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 14
+    - 15
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 0
+    - 0
+    offsetCoord:
+    - 5
+    - 4
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 1.154
+    - 0
+    offsetCoord:
+    - 6
+    - 5
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
+    isSpawn: 0
+  - position:
+    - 10
+    - 2.308
+    - 0
+    offsetCoord:
+    - 7
+    - 6
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 3.4620001
+    - 0
+    offsetCoord:
+    - 8
+    - 7
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 4.616
+    - 0
+    offsetCoord:
+    - 9
+    - 8
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 5.7700005
+    - 0
+    offsetCoord:
+    - 10
+    - 9
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 6.9240003
+    - 0
+    offsetCoord:
+    - 11
+    - 10
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 8.078
+    - 0
+    offsetCoord:
+    - 12
     - 11
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
-    - 16
-    - 0
-    - 0
-    offsetCoord:
-    - 8
-    - 1
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 16
-    - 1.154
-    - 0
-    offsetCoord:
-    - 9
-    - 2
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
-    isSpawn: 0
-  - position:
-    - 16
-    - 2.308
-    - 0
-    offsetCoord:
     - 10
+    - 9.232
+    - 0
+    offsetCoord:
+    - 13
+    - 12
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 10.386001
+    - 0
+    offsetCoord:
+    - 14
+    - 13
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 10
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 15
+    - 14
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 12
+    - 0
+    - 0
+    offsetCoord:
+    - 6
     - 3
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
-    - 16
-    - 3.4620001
+    - 12
+    - 1.154
     - 0
     offsetCoord:
-    - 11
+    - 7
     - 4
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
-    - 16
+    - 12
+    - 2.308
+    - 0
+    offsetCoord:
+    - 8
+    - 5
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 12
+    - 3.4620001
+    - 0
+    offsetCoord:
+    - 9
+    - 6
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 12
     - 4.616
     - 0
     offsetCoord:
+    - 10
+    - 7
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
     - 12
+    - 5.7700005
+    - 0
+    offsetCoord:
+    - 11
+    - 8
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 12
+    - 6.9240003
+    - 0
+    offsetCoord:
+    - 12
+    - 9
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 12
+    - 8.078
+    - 0
+    offsetCoord:
+    - 13
+    - 10
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 12
+    - 9.232
+    - 0
+    offsetCoord:
+    - 14
+    - 11
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 12
+    - 10.386001
+    - 0
+    offsetCoord:
+    - 15
+    - 12
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 12
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 16
+    - 13
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 0
+    - 0
+    offsetCoord:
+    - 7
+    - 2
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 1.154
+    - 0
+    offsetCoord:
+    - 8
+    - 3
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 2.308
+    - 0
+    offsetCoord:
+    - 9
+    - 4
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 3.4620001
+    - 0
+    offsetCoord:
+    - 10
     - 5
     type: {fileID: 11400000, guid: 2825041786cedb34599cefae29701ca3, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
+    - 14
+    - 4.616
+    - 0
+    offsetCoord:
+    - 11
+    - 6
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 5.7700005
+    - 0
+    offsetCoord:
+    - 12
+    - 7
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 6.9240003
+    - 0
+    offsetCoord:
+    - 13
+    - 8
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 8.078
+    - 0
+    offsetCoord:
+    - 14
+    - 9
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 9.232
+    - 0
+    offsetCoord:
+    - 15
+    - 10
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 10.386001
+    - 0
+    offsetCoord:
+    - 16
+    - 11
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 14
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 17
+    - 12
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 16
+    - 0
+    - 0
+    offsetCoord:
+    - 8
+    - 1
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 16
+    - 1.154
+    - 0
+    offsetCoord:
+    - 9
+    - 2
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 16
+    - 2.308
+    - 0
+    offsetCoord:
+    - 10
+    - 3
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 16
+    - 3.4620001
+    - 0
+    offsetCoord:
+    - 11
+    - 4
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 16
+    - 4.616
+    - 0
+    offsetCoord:
+    - 12
+    - 5
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
     - 16
     - 5.7700005
     - 0
     offsetCoord:
     - 13
     - 6
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -881,7 +961,7 @@ MonoBehaviour:
     offsetCoord:
     - 14
     - 7
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -891,7 +971,7 @@ MonoBehaviour:
     offsetCoord:
     - 15
     - 8
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -911,6 +991,16 @@ MonoBehaviour:
     offsetCoord:
     - 17
     - 10
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 16
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 18
+    - 11
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
@@ -1015,6 +1105,16 @@ MonoBehaviour:
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
+    - 18
+    - 11.540001
+    - 0
+    offsetCoord:
+    - 19
+    - 10
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
     - 1
     - 0.577
     - 0
@@ -1022,7 +1122,7 @@ MonoBehaviour:
     - 1
     - 9
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
+    gridObject: {fileID: 11400000, guid: 96e9f23377e0b3e45b1798472d02bcb6, type: 2}
     isSpawn: 0
   - position:
     - 1
@@ -1061,8 +1161,8 @@ MonoBehaviour:
     offsetCoord:
     - 5
     - 13
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
     isSpawn: 0
   - position:
     - 1
@@ -1071,7 +1171,7 @@ MonoBehaviour:
     offsetCoord:
     - 6
     - 14
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1081,7 +1181,7 @@ MonoBehaviour:
     offsetCoord:
     - 7
     - 15
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1091,7 +1191,7 @@ MonoBehaviour:
     offsetCoord:
     - 8
     - 16
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1101,6 +1201,16 @@ MonoBehaviour:
     offsetCoord:
     - 9
     - 17
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 1
+    - 10.963
+    - 0
+    offsetCoord:
+    - 10
+    - 18
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
@@ -1121,7 +1231,7 @@ MonoBehaviour:
     offsetCoord:
     - 3
     - 9
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 2825041786cedb34599cefae29701ca3, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1131,7 +1241,7 @@ MonoBehaviour:
     offsetCoord:
     - 4
     - 10
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1141,7 +1251,7 @@ MonoBehaviour:
     offsetCoord:
     - 5
     - 11
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1151,7 +1261,7 @@ MonoBehaviour:
     offsetCoord:
     - 6
     - 12
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1161,7 +1271,7 @@ MonoBehaviour:
     offsetCoord:
     - 7
     - 13
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1171,8 +1281,8 @@ MonoBehaviour:
     offsetCoord:
     - 8
     - 14
-    type: {fileID: 0}
-    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
     isSpawn: 0
   - position:
     - 3
@@ -1181,7 +1291,7 @@ MonoBehaviour:
     offsetCoord:
     - 9
     - 15
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1191,6 +1301,16 @@ MonoBehaviour:
     offsetCoord:
     - 10
     - 16
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 3
+    - 10.963
+    - 0
+    offsetCoord:
+    - 11
+    - 17
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
@@ -1211,7 +1331,7 @@ MonoBehaviour:
     offsetCoord:
     - 4
     - 8
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1221,7 +1341,7 @@ MonoBehaviour:
     offsetCoord:
     - 5
     - 9
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1231,7 +1351,7 @@ MonoBehaviour:
     offsetCoord:
     - 6
     - 10
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1241,7 +1361,7 @@ MonoBehaviour:
     offsetCoord:
     - 7
     - 11
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1251,7 +1371,7 @@ MonoBehaviour:
     offsetCoord:
     - 8
     - 12
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1261,7 +1381,7 @@ MonoBehaviour:
     offsetCoord:
     - 9
     - 13
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1271,7 +1391,7 @@ MonoBehaviour:
     offsetCoord:
     - 10
     - 14
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1281,7 +1401,17 @@ MonoBehaviour:
     offsetCoord:
     - 11
     - 15
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 5
+    - 10.963
+    - 0
+    offsetCoord:
+    - 12
+    - 16
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1301,7 +1431,7 @@ MonoBehaviour:
     offsetCoord:
     - 5
     - 7
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1311,7 +1441,7 @@ MonoBehaviour:
     offsetCoord:
     - 6
     - 8
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1321,7 +1451,7 @@ MonoBehaviour:
     offsetCoord:
     - 7
     - 9
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1351,7 +1481,7 @@ MonoBehaviour:
     offsetCoord:
     - 10
     - 12
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1361,7 +1491,7 @@ MonoBehaviour:
     offsetCoord:
     - 11
     - 13
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1371,7 +1501,17 @@ MonoBehaviour:
     offsetCoord:
     - 12
     - 14
-    type: {fileID: 11400000, guid: 2825041786cedb34599cefae29701ca3, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 7
+    - 10.963
+    - 0
+    offsetCoord:
+    - 13
+    - 15
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1391,7 +1531,7 @@ MonoBehaviour:
     offsetCoord:
     - 6
     - 6
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1401,7 +1541,7 @@ MonoBehaviour:
     offsetCoord:
     - 7
     - 7
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1411,7 +1551,7 @@ MonoBehaviour:
     offsetCoord:
     - 8
     - 8
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1441,7 +1581,7 @@ MonoBehaviour:
     offsetCoord:
     - 11
     - 11
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1451,8 +1591,8 @@ MonoBehaviour:
     offsetCoord:
     - 12
     - 12
-    type: {fileID: 0}
-    gridObject: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
     isSpawn: 0
   - position:
     - 9
@@ -1461,8 +1601,18 @@ MonoBehaviour:
     offsetCoord:
     - 13
     - 13
-    type: {fileID: 0}
-    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 9
+    - 10.963
+    - 0
+    offsetCoord:
+    - 14
+    - 14
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
     isSpawn: 0
   - position:
     - 11
@@ -1481,7 +1631,7 @@ MonoBehaviour:
     offsetCoord:
     - 7
     - 5
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1491,7 +1641,7 @@ MonoBehaviour:
     offsetCoord:
     - 8
     - 6
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1501,7 +1651,7 @@ MonoBehaviour:
     offsetCoord:
     - 9
     - 7
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1511,7 +1661,7 @@ MonoBehaviour:
     offsetCoord:
     - 10
     - 8
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1521,7 +1671,7 @@ MonoBehaviour:
     offsetCoord:
     - 11
     - 9
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1531,7 +1681,7 @@ MonoBehaviour:
     offsetCoord:
     - 12
     - 10
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1541,7 +1691,7 @@ MonoBehaviour:
     offsetCoord:
     - 13
     - 11
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1551,7 +1701,17 @@ MonoBehaviour:
     offsetCoord:
     - 14
     - 12
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 11
+    - 10.963
+    - 0
+    offsetCoord:
+    - 15
+    - 13
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1571,8 +1731,8 @@ MonoBehaviour:
     offsetCoord:
     - 8
     - 4
-    type: {fileID: 0}
-    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
     isSpawn: 0
   - position:
     - 13
@@ -1581,7 +1741,7 @@ MonoBehaviour:
     offsetCoord:
     - 9
     - 5
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1591,7 +1751,7 @@ MonoBehaviour:
     offsetCoord:
     - 10
     - 6
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1601,7 +1761,7 @@ MonoBehaviour:
     offsetCoord:
     - 11
     - 7
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1611,7 +1771,7 @@ MonoBehaviour:
     offsetCoord:
     - 12
     - 8
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1621,7 +1781,7 @@ MonoBehaviour:
     offsetCoord:
     - 13
     - 9
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1631,7 +1791,7 @@ MonoBehaviour:
     offsetCoord:
     - 14
     - 10
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1641,6 +1801,16 @@ MonoBehaviour:
     offsetCoord:
     - 15
     - 11
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 13
+    - 10.963
+    - 0
+    offsetCoord:
+    - 16
+    - 12
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
@@ -1661,7 +1831,7 @@ MonoBehaviour:
     offsetCoord:
     - 9
     - 3
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1671,7 +1841,7 @@ MonoBehaviour:
     offsetCoord:
     - 10
     - 4
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1681,7 +1851,7 @@ MonoBehaviour:
     offsetCoord:
     - 11
     - 5
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1691,7 +1861,7 @@ MonoBehaviour:
     offsetCoord:
     - 12
     - 6
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1701,7 +1871,7 @@ MonoBehaviour:
     offsetCoord:
     - 13
     - 7
-    type: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1711,8 +1881,8 @@ MonoBehaviour:
     offsetCoord:
     - 14
     - 8
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
-    gridObject: {fileID: 0}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
+    gridObject: {fileID: 11400000, guid: c47491d0d4f07234295899a6aac00eb7, type: 2}
     isSpawn: 0
   - position:
     - 15
@@ -1722,7 +1892,7 @@ MonoBehaviour:
     - 15
     - 9
     type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
-    gridObject: {fileID: 11400000, guid: 77ce566aadaffaa4c9127c5b43a47892, type: 2}
+    gridObject: {fileID: 0}
     isSpawn: 0
   - position:
     - 15
@@ -1731,6 +1901,16 @@ MonoBehaviour:
     offsetCoord:
     - 16
     - 10
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 15
+    - 10.963
+    - 0
+    offsetCoord:
+    - 17
+    - 11
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
@@ -1781,7 +1961,7 @@ MonoBehaviour:
     offsetCoord:
     - 13
     - 5
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1791,7 +1971,7 @@ MonoBehaviour:
     offsetCoord:
     - 14
     - 6
-    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    type: {fileID: 11400000, guid: 69c1ffee3d63331419b1f93ea447c6cd, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   - position:
@@ -1821,11 +2001,21 @@ MonoBehaviour:
     offsetCoord:
     - 17
     - 9
+    type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
+    gridObject: {fileID: 0}
+    isSpawn: 0
+  - position:
+    - 17
+    - 10.963
+    - 0
+    offsetCoord:
+    - 18
+    - 10
     type: {fileID: 11400000, guid: d47f576bb43c1e641ba275bec5fa9e8e, type: 2}
     gridObject: {fileID: 0}
     isSpawn: 0
   camera:
-    x: 8
-    y: 4.1
-    size: 7.5
+    x: 9
+    y: 5.7700005
+    size: 8.75
   endCondition: {fileID: 11400000, guid: 8876dbbe8df8b2046ab7957736e3cf26, type: 2}

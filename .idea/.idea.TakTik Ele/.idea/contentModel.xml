@@ -6,6 +6,22 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="_LeanTween" t="Include">
+          <e p="Editor" t="Include">
+            <e p="LeanTweenDocumentationEditor.cs" t="Include" />
+          </e>
+          <e p="Framework" t="Include">
+            <e p="LeanAudio.cs" t="Include" />
+            <e p="LeanSmooth.cs" t="Include" />
+            <e p="LeanTest.cs" t="Include" />
+            <e p="LeanTween.cs" t="Include" />
+            <e p="LeanTweenExt.cs" t="Include" />
+            <e p="LTDescr.cs" t="Include" />
+            <e p="LTDescrOptional.cs" t="Include" />
+            <e p="LTSeq.cs" t="Include" />
+          </e>
+          <e p="ReadMe.txt" t="Include" />
+        </e>
         <e p="Editor" t="Include">
           <e p="CustomUnitGeneratorHelper.cs" t="Include" />
           <e p="Data" t="Include">
@@ -23,22 +39,6 @@
           </e>
           <e p="GridHelper.cs" t="Include" />
           <e p="GridHelperUtils.cs" t="Include" />
-        </e>
-        <e p="LeanTween" t="Include">
-          <e p="Editor" t="Include">
-            <e p="LeanTweenDocumentationEditor.cs" t="Include" />
-          </e>
-          <e p="Framework" t="Include">
-            <e p="LeanAudio.cs" t="Include" />
-            <e p="LeanSmooth.cs" t="Include" />
-            <e p="LeanTest.cs" t="Include" />
-            <e p="LeanTween.cs" t="Include" />
-            <e p="LeanTweenExt.cs" t="Include" />
-            <e p="LTDescr.cs" t="Include" />
-            <e p="LTDescrOptional.cs" t="Include" />
-            <e p="LTSeq.cs" t="Include" />
-          </e>
-          <e p="ReadMe.txt" t="Include" />
         </e>
         <e p="Plugins" t="Include">
           <e p="MHLab" t="Include">
@@ -117,8 +117,8 @@
             <e p="Extension.cs" t="Include" />
           </e>
           <e p="_Instances" t="Include">
+            <e p="BattleStage.cs" t="Include" />
             <e p="DataBase.cs" t="Include" />
-            <e p="KeepBetweenScene.cs" t="Include" />
             <e p="PlayerData.cs" t="Include" />
             <e p="SceneKeeper.cs" t="Include" />
             <e p="Utility.cs" t="Include" />

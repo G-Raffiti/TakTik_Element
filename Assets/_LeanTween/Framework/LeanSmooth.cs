@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LeanTween.Framework
+namespace _LeanTween.Framework
 {
     /**
 * Use these smooth methods to move one value towards another<br /><br />

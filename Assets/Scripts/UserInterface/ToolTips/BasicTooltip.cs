@@ -1,6 +1,8 @@
-﻿using Resources.ToolTip.Scripts;
+﻿using _LeanTween.Framework;
+using Resources.ToolTip.Scripts;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 namespace UserInterface.ToolTips
@@ -21,11 +23,18 @@ namespace UserInterface.ToolTips
         {
             canvasGroup = backgroundRectTransform.GetComponent<CanvasGroup>();
         }
-        
+
+        protected override void Update()
+        {
+            base.Update();
+            if (Input.GetMouseButtonDown(0))
+                HideTooltip();
+        }
+
         protected override void ShowToolTip()
         {
-            LeanTween.Framework.LeanTween.alphaCanvas(canvasGroup, 0, 0);
-            LeanTween.Framework.LeanTween.alphaCanvas(canvasGroup, 1, 0.1f).delay = 0.4f;
+            LeanTween.alphaCanvas(canvasGroup, 0, 0);
+            LeanTween.alphaCanvas(canvasGroup, 1, 0.1f).delay = 0.4f;
             Layout.enabled = false;
             icon.sprite = Info.GetIcon();
             main.text = Info.GetInfoMain();
@@ -39,7 +48,7 @@ namespace UserInterface.ToolTips
 
         public override void HideTooltip()
         {
-            LeanTween.Framework.LeanTween.alphaCanvas(canvasGroup, 0, 0.1f);
+            LeanTween.alphaCanvas(canvasGroup, 0, 0.1f);
             base.HideTooltip();
         }
     }

@@ -160,7 +160,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1179847595273300742}
   - component: {fileID: -66962559587150305}
-  - component: {fileID: 5516700394536520283}
   - component: {fileID: 8809875516459172498}
   - component: {fileID: 1120390194297953821}
   - component: {fileID: 7657559053990507141}
@@ -240,25 +239,6 @@ MonoBehaviour:
   onMonsterTooltip_ON: {fileID: 11400000, guid: 78a0fdce76341da4ea5c1f2a11390718,
     type: 2}
   isPlaying: 0
---- !u!111 &5516700394536520283
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179847595273300741}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0440c7e6043c40d448fd5ec98818eafa, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 0440c7e6043c40d448fd5ec98818eafa, type: 2}
-  - {fileID: 7400000, guid: 697542b34a94b844aba04fdf5d290283, type: 2}
-  - {fileID: 7400000, guid: 3c39517fafab1254cba42b0b8e5a71c3, type: 2}
-  - {fileID: 7400000, guid: e6c7b8a7d78b4dc4c954feb2b1127afc, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &8809875516459172498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1289,7 +1269,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 201.2817, y: 61.1078}
+  m_SizeDelta: {x: 350, y: 61.1078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2704147889906720372
 CanvasRenderer:
@@ -1329,8 +1309,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

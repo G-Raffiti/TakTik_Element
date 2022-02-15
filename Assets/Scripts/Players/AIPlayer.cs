@@ -134,7 +134,7 @@ namespace Players
                 
                 canPlay = (int) monster.BattleStats.AP > 0;
                 if (monster.monsterSkill.Cost == 0)
-                    canPlay = loop <= KeepBetweenScene.Stage + 1;
+                    canPlay = loop <= BattleStage.Stage + 1;
                 canMove = monster.BattleStats.MP > 0;
                 
                 skillUsed = false;
@@ -200,8 +200,10 @@ namespace Players
             {
                 foreach (Cell destination in destinations.Keys)
                 {
-                    List<Cell> inRange = new List<Cell>();
-                    inRange.AddRange(AI_SkillInfo.skill.Range.NeedView ? Zone.CellsInView(AI_SkillInfo.skill, destination) : Zone.CellsInRange(AI_SkillInfo.skill, destination));
+                    List<Cell> inRange = 
+                        AI_SkillInfo.skill.Range.NeedView ? 
+                            Zone.CellsInView(AI_SkillInfo.skill, destination) : 
+                            Zone.CellsInRange(AI_SkillInfo.skill, destination);
                     foreach (Cell _cellInRange in inRange)
                     {
                         skillTargets[destination].Add(_cellInRange, 0);
@@ -264,14 +266,16 @@ namespace Players
         
         private static void EvaluateCells(Unit _unit, BattleStateManager stateManager)
         {
+            
+            List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);
+            /*
             // Evaluate Distance from playing Unit
             int MP = (int)_unit.BattleStats.MP * evaluationValues.MPCost;
-            List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);
             foreach (Cell _cell in destinationsKeys)
             {
                 int Point = MP - _unit.FindPath(stateManager.Cells, _cell).Count * evaluationValues.MPCost;
                 destinations[_cell] += Point;
-            }
+            }*/
             
             // Evaluate Neighbours
             foreach (Cell _cell in destinationsKeys)

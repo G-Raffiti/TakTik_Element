@@ -89,10 +89,10 @@ namespace Units
             buffs = new List<Buff>();
             
             Inventory = new Inventory();
-            if(KeepBetweenScene.Stage >= 0) 
+            if(BattleStage.Stage >= 0) 
                 Inventory.GenerateGearFor(monster);
 
-            if (monster.Type == EMonster.Boss && KeepBetweenScene.Stage >= 0)
+            if (monster.Type == EMonster.Boss && BattleStage.Stage >= 0)
             {
                 Relics.Add(DataBase.Relic.GetRandom());
             }

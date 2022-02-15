@@ -66,8 +66,9 @@ namespace UserInterface
             BattleStats = new BattleStats(baseStats + Hero.Inventory.GearStats() + Hero.GetRelic().BattleStats);
             total = BattleStats;
             BattleStats.HP = Hero.ActualHP;
-            
             UpdateHP(Hero.ActualHP);
+            
+            icon.color = Hero.isDead ? Color.black : Color.white;
         }
         
         public override void OnPointerEnter(PointerEventData eventData)

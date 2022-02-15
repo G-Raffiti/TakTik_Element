@@ -44,7 +44,7 @@ namespace Units
 
         public void Spawn(BattleHero _pref)
         {
-            if (KeepBetweenScene.currentState == EConditionType.LootBox)
+            if (BattleStage.currentState == EConditionType.LootBox)
             {
                 ActualHP = BattleStats.HP;
             }

@@ -48,7 +48,7 @@ namespace DataBases
             List<AffixSO> weigthedAffixes = new List<AffixSO>();
             foreach (AffixSO _affix in aff)
             {
-                for (int i = 0; i < _affix.Rarity + KeepBetweenScene.Stage; i++)
+                for (int i = 0; i < _affix.Rarity + BattleStage.Stage; i++)
                 {
                     weigthedAffixes.Add(_affix);
                 }

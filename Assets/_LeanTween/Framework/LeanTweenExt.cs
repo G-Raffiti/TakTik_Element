@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LeanTween.Framework
+namespace _LeanTween.Framework
 {
     public static class LeanTweenExt
     {

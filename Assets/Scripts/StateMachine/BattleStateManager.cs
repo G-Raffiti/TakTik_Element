@@ -50,7 +50,7 @@ namespace StateMachine
         private List<Player> Players { get; set; }
         public List<Cell> Cells { get; private set; }
         public List<Unit> Units { get; private set; }
-        public List<Unit> DeadThisTurn { get; private set; }
+        public List<Monster> DeadThisTurn { get; private set; }
         public List<GridObject> GridObjects { get; private set; }
         public Unit PlayingUnit { get; private set; }
         
@@ -137,7 +137,7 @@ namespace StateMachine
         
         private void Start()
         {
-            DeadThisTurn = new List<Unit>();
+            DeadThisTurn = new List<Monster>();
             onEndTurn.EventListeners += EndTurn;
             onGridObjectDestroyed.EventListeners += RemoveGridObject;
             onSkillUsed.EventListeners += SkillUsed;
@@ -290,7 +290,7 @@ namespace StateMachine
         {
             Board _board = GetComponent<Board>();
 
-            _board.LoadBoard(KeepBetweenScene.currentState);
+            _board.LoadBoard(BattleStage.currentState);
             endCondition = _board.EndCondition;
             
             Cells = new List<Cell>();
@@ -423,7 +423,7 @@ namespace StateMachine
         {
             BattleState = new BattleStateBlockInput(this);
             if (Check()) return;
-            DeadThisTurn = new List<Unit>();
+            DeadThisTurn = new List<Monster>();
 
             PlayingUnit = Units[0];
             
