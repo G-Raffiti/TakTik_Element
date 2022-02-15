@@ -60,11 +60,13 @@ namespace Buffs
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
+            if (Input.GetMouseButton(0)) return;
             InfoTooltip_ON.Raise(this);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
+            if (Input.GetMouseButton(0)) return;
             InfoTooltip_OFF.Raise();
         }
 

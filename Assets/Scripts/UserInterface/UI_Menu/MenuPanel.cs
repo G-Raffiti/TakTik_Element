@@ -10,6 +10,8 @@ namespace UserInterface.UI_Menu
         [SerializeField] private bool showOnStart = true;
         [SerializeField] private MovingPanelMenu MovingMenu;
 
+        [Header("the alpha Value of the actif Menu Button")]
+        [SerializeField] private float aValue = 1;
         private void Awake()
         {
             Close();
@@ -57,7 +59,7 @@ namespace UserInterface.UI_Menu
             Panels.GetChild(index).gameObject.SetActive(true);
             
             Color _a = MenuBtns.GetChild(index).GetComponent<Image>().color;
-            _a.a = 1f;
+            _a.a = aValue;
             MenuBtns.GetChild(index).GetComponent<Image>().color = _a;
         }
 

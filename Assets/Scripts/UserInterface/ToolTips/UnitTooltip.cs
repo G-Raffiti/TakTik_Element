@@ -39,7 +39,7 @@ namespace UserInterface.ToolTips
         [SerializeField] private TextMeshProUGUI OtherElementTxt;
         [SerializeField] private TextMeshProUGUI RangeTxt;
         [SerializeField] protected GameObject StatsBlock;
-        [SerializeField] private Image frame;
+        [SerializeField] private List<Image> frames;
         [SerializeField] private Transform buffsHolder;
         
         [Header("Prefabs")] 
@@ -68,7 +68,7 @@ namespace UserInterface.ToolTips
             MainElementTxt.text = Unit.GetInfoDown();
             OtherElementTxt.text = Unit.GetElements();
             RangeTxt.text = Unit.GetInfoRight();
-            frame.color = Unit.GetTeamColor();
+            frames.ForEach(i => i.color = Unit.GetTeamColor());
 
             foreach (Buff _buff in Unit.Buffs)
             {

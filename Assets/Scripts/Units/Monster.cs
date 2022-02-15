@@ -47,6 +47,7 @@ namespace Units
         public List<RelicSO> Relics { get; private set; }
         public EReward RewardType { get; private set; }
         public EMonster Type { get; private set; }
+        public override Sprite UnitSprite => MonsterSO.UnitSprite;
 
         private void Start()
         {
@@ -112,6 +113,7 @@ namespace Units
             skill.skill = monsterSkill;
             skill.Unit = this;
 
+            MainElement();
             InitializeSprite();
         }
 

@@ -91,7 +91,7 @@ namespace Shops
         private void UpgradeItem(Gear gear)
         {
             if (craftPoint < 1) return;
-            ShopForge_UI _shopForgeUI = GameObject.Find("ForgeUI/Left/Main").GetComponent<ShopForge_UI>();
+            ShopForge_UI _shopForgeUI = GameObject.Find("ForgeUI/BackGround/Back/Left/Main").GetComponent<ShopForge_UI>();
             if (!UpgradeGear(gear, _shopForgeUI.GetUpgradeAffix()))
                 return;
             

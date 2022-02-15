@@ -600,8 +600,8 @@ MonoBehaviour:
   effect: {fileID: 1060866333}
   background: {fileID: 7412556575108438808}
   colorSet: {fileID: 11400000, guid: 516f612e36b85984bb1b656822900e07, type: 2}
-  selectFrame: {fileID: 21300000, guid: 590692c5feca05046b42c05845f03fc2, type: 3}
-  fullFrame: {fileID: 21300000, guid: fc58044cf7f70e44ca67242cd9089c17, type: 3}
+  selectFrame: {fileID: 21300000, guid: 84d883dba73b4934e9c4a03f117748b0, type: 3}
+  fullFrame: {fileID: 21300000, guid: 2f34781571a81c8439bd423a36ff3c79, type: 3}
 --- !u!1 &8848793011421424567
 GameObject:
   m_ObjectHideFlags: 0

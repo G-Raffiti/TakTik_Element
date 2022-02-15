@@ -85,8 +85,8 @@ namespace Cells
 
         public virtual void OnMouseEnter()
         {
-            CellHighlighted?.Invoke(this, new EventArgs());
             if (EventSystem.current.IsPointerOverGameObject()) return;
+            CellHighlighted?.Invoke(this, new EventArgs());
             if (CurrentGridObject != null)
             {
                 CurrentGridObject.OnPointerEnter();
@@ -97,6 +97,7 @@ namespace Cells
 
         public virtual void OnMouseExit()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             CellDehighlighted?.Invoke(this, new EventArgs());
             if (CurrentGridObject != null)
             {
@@ -108,8 +109,8 @@ namespace Cells
 
         public virtual void OnMouseDown()
         {
-            CellClicked?.Invoke(this, new EventArgs());
             if (EventSystem.current.IsPointerOverGameObject()) return;
+            CellClicked?.Invoke(this, new EventArgs());
             if(CurrentUnit != null)
                 CurrentUnit.OnLeftClick();
         }

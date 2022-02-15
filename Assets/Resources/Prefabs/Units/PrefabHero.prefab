@@ -406,7 +406,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3480699985351151859}
   - component: {fileID: 2531194331963924000}
-  - component: {fileID: 6800174335220356956}
   - component: {fileID: 4819711851217345791}
   m_Layer: 0
   m_Name: PrefabHero
@@ -478,25 +477,6 @@ MonoBehaviour:
   onHeroSelected: {fileID: 11400000, guid: d9a5de72d85ce74488ad6e11b7345f14, type: 2}
   onCellWalked: {fileID: 11400000, guid: fcb513c05edf06b4885d680d2ee2862b, type: 2}
   onHeroTooltip_ON: {fileID: 11400000, guid: cacd8bbb920a5bf448ef17aaa0153fc8, type: 2}
---- !u!111 &6800174335220356956
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3480699985351151856}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0440c7e6043c40d448fd5ec98818eafa, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 0440c7e6043c40d448fd5ec98818eafa, type: 2}
-  - {fileID: 7400000, guid: 697542b34a94b844aba04fdf5d290283, type: 2}
-  - {fileID: 7400000, guid: 3c39517fafab1254cba42b0b8e5a71c3, type: 2}
-  - {fileID: 7400000, guid: e6c7b8a7d78b4dc4c954feb2b1127afc, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &4819711851217345791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,7 +1250,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 318767103
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3

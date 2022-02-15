@@ -98,12 +98,14 @@ namespace UserInterface.BattleScene
 
         public override void OnPointerEnter(PointerEventData _eventData)
         {
+            if (Input.GetMouseButton(0)) return;
             cellGrid.BattleState.OnCellSelected(unit.Cell);
             UnitTooltip_ON.Raise(unit);
         }
 
         public override void OnPointerExit(PointerEventData _eventData)
         {
+            if (Input.GetMouseButton(0)) return;
             cellGrid.BattleState.OnCellDeselected(unit.Cell);
             UnitTooltip_OFF.Raise();
         }

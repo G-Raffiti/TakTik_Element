@@ -16,11 +16,13 @@ namespace Gears
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
+            if (Input.GetMouseButton(0)) return;
             GearTooltip_ON.Raise(this);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
+            if (Input.GetMouseButton(0)) return;
             GearTooltip_OFF.Raise();
         }
 

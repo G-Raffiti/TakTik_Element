@@ -264,7 +264,9 @@ MonoBehaviour:
   OtherElementTxt: {fileID: 5671157893420352255}
   RangeTxt: {fileID: 7499018170569931237}
   StatsBlock: {fileID: 5070249436316533499}
-  frame: {fileID: 1404947235673666275}
+  frames:
+  - {fileID: 1404947235673666275}
+  - {fileID: 4732722672022343925}
   buffsHolder: {fileID: 5325391106275421640}
   relicPref: {fileID: 174935148893832189, guid: 2fd12fca52fb3c64ca902a94564d6e75,
     type: 3}
@@ -2383,7 +2385,9 @@ MonoBehaviour:
   OtherElementTxt: {fileID: 7914018369086076271}
   RangeTxt: {fileID: 5436373079401336437}
   StatsBlock: {fileID: 7295014699374359915}
-  frame: {fileID: 3467593426756519283}
+  frames:
+  - {fileID: 3467593426756519283}
+  - {fileID: 5838575507875177685}
   buffsHolder: {fileID: 7676292341222709848}
   relicPref: {fileID: 174935148893832189, guid: 2fd12fca52fb3c64ca902a94564d6e75,
     type: 3}
@@ -6825,7 +6829,8 @@ MonoBehaviour:
   OtherElementTxt: {fileID: 7939385476559614974}
   RangeTxt: {fileID: 5227412818856708324}
   StatsBlock: {fileID: 7406022216431154170}
-  frame: {fileID: 3739462243205301218}
+  frames:
+  - {fileID: 3739462243205301218}
   buffsHolder: {fileID: 7601456007064067273}
   relicPref: {fileID: 174935148893832189, guid: 2fd12fca52fb3c64ca902a94564d6e75,
     type: 3}

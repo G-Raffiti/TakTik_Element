@@ -17,6 +17,8 @@ namespace UserInterface.ToolTips
 
         protected override void ShowToolTip()
         {
+            base.ShowToolTip();
+            StatsBlock.SetActive(true);
             Skill.skill = ((Monster) Unit).monsterSkill;
             Skill.Unit = Unit;
             Skill.DisplayIcon();
@@ -28,8 +30,6 @@ namespace UserInterface.ToolTips
             RelicHolder.gameObject.SetActive(true);
             RelicHolder.CreateRelic(Unit.Relic.RelicEffects[0]);
             RelicHolder.DisplayIcon();
-            base.ShowToolTip();
-            StatsBlock.SetActive(true);
         }
 
         public override void HideTooltip()

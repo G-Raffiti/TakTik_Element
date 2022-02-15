@@ -29,7 +29,6 @@ namespace UserInterface.BattleScene.InfoUI
             {
                 deck = GameObject.Find("DeckMono/Deck1").GetComponent<DeckMono>();
             }
-            Debug.Log(BattleStateManager.instance.PlayingUnit != null ? BattleStateManager.instance.PlayingUnit.UnitName : "a pas trouvé");
             if (BattleStateManager.instance.PlayingUnit == null) return;
             if (BattleStateManager.instance.PlayingUnit.playerNumber == 0)
                 nextHero = BattleStateManager.instance.PlayingUnit;

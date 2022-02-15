@@ -24,13 +24,7 @@ namespace Shops
             {
                 PlayerData.getInstance().Heroes[i].Spawn(battleHeroes[i]);
                 Portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
-
-                for (int j = 0; j < Portraits[i].Hero.Inventory.gears.Count; j++)
-                {
-                    GameObject pref = Instantiate(prefabGear, Portraits[i].Slots[j].transform);
-                    pref.GetComponent<GearInfo>().Gear = Portraits[i].Hero.Inventory.gears[j];
-                    pref.GetComponent<GearInfo>().DisplayIcon();
-                }
+                Portraits[i].FillInventory();
             }
             onItemMoved.EventListeners += UpdateInventories;
         }

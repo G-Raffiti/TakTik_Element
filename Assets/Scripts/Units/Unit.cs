@@ -32,7 +32,7 @@ namespace Units
         [SerializeField] private ColorSet colorSet;
         [SerializeField] protected SpriteRenderer unitSpriteRenderer;
         [SerializeField] private TextMeshProUGUI info;
-        public Sprite UnitSprite => unitSpriteRenderer.sprite;
+        public abstract Sprite UnitSprite { get; }
         public override SpriteRenderer MovableSprite => unitSpriteRenderer;
         private Animation anim;
         private LifeBar lifeBar;

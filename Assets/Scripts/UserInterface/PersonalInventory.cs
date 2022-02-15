@@ -72,12 +72,14 @@ namespace UserInterface
         
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            UnitTooltip_ON.Raise(Hero.Unit);
+            if (Input.GetMouseButton(0)) return;
+            UnitTooltip_ON?.Raise(Hero.Unit);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            UnitTooltip_OFF.Raise();
+            if (Input.GetMouseButton(0)) return;
+            UnitTooltip_OFF?.Raise();
         }
 
         public override string GetInfoMain()

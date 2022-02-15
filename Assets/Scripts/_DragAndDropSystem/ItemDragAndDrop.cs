@@ -11,6 +11,8 @@ namespace _DragAndDropSystem
 	[RequireComponent(typeof(InfoBehaviour))]
 	public class ItemDragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 	{
+		[Header("If this is not filled, it will drag the Background of the Object")]
+		[SerializeField] private Image DraggedImage;
 		public static bool dragDisabled = false;										// Drag start global disable
 
 		public static ItemDragAndDrop _draggedItem;                                      // Item that is dragged now
@@ -68,7 +70,7 @@ namespace _DragAndDropSystem
 				myImage.raycastTarget = false;                                        	// Disable icon's raycast for correct drop handling
 				Image iconImage = icon.AddComponent<Image>();
 				iconImage.raycastTarget = false;
-				iconImage.sprite = myImage.sprite;
+				iconImage.sprite = DraggedImage == null ? myImage.sprite : DraggedImage.sprite;
 				
 				RectTransform iconRect = icon.GetComponent<RectTransform>();
 				// Set icon's dimensions

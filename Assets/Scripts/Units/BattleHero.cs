@@ -27,7 +27,8 @@ namespace Units
         private Hero hero;
 
         public Hero Hero => hero;
-        public override Relic Relic { get => hero.GetRelic(); } 
+        public override Relic Relic { get => hero.GetRelic(); }
+        public override Sprite UnitSprite => hero.UnitSprite;
 
         public void Spawn(Hero _hero)
         {
@@ -47,6 +48,8 @@ namespace Units
             if (unitSpriteRenderer == null) return;
             
             unitSpriteRenderer.sprite = _hero.UnitSprite;
+            
+            MainElement();
             InitializeSprite();
         }
 

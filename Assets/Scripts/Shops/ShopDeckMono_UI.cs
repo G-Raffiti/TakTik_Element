@@ -62,15 +62,18 @@ namespace Shops
             
             foreach (SkillSO _skillSO in Deck.DrawPile)
             {
-                GameObject _cell = GameObject.Instantiate(prefabSlot.gameObject, deckPlaceHolder);
-                _cell.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DragOnly;
-                _cell.GetComponent<SlotDragAndDrop>().unlimitedSource = true;
-                _cell.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Skill;
+                GameObject _slot = GameObject.Instantiate(prefabSlot.gameObject, deckPlaceHolder);
+                _slot.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DragOnly;
+                _slot.GetComponent<SlotDragAndDrop>().unlimitedSource = true;
+                _slot.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Skill;
 
-                GameObject pref = GameObject.Instantiate(prefabSkill.gameObject, _cell.transform);
+                GameObject pref = GameObject.Instantiate(prefabSkill.gameObject, _slot.transform);
                 pref.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, Deck, actualHero);
                 pref.GetComponent<SkillInfo>().Unit = actualHero;
                 pref.GetComponent<SkillInfo>().DisplayIcon();
+                
+                _slot.GetComponent<SlotDragAndDrop>().UpdateMyItem();
+                _slot.GetComponent<SlotDragAndDrop>().UpdateBackgroundState();
 
                 allSkills.Add(pref.GetComponent<SkillInfo>());
             }

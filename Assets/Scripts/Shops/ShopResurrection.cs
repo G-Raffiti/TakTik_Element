@@ -22,16 +22,16 @@ namespace Shops
         private void UpdateDisplay()
         {
             pointsTxt.text = $"You have {PlayerData.getInstance().ResurrectionPoints}";
-        }
-
-        private void Start()
-        {
-            UpdateDisplay();
-            heroes = PlayerData.getInstance().Heroes;
             for (int i = 0; i < HeroSelector.Count; i++)
             {
                 HeroSelector[i].GetComponentInChildren<PersonalInventory>().Initialize(heroes[i]);
             }
+        }
+
+        private void Start()
+        {
+            heroes = PlayerData.getInstance().Heroes;
+            UpdateDisplay();
             ChangeActualHero(0);
         }
 

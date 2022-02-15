@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6485299458298848126}
   - component: {fileID: 7043998650860609327}
   - component: {fileID: 3989384667002426122}
+  - component: {fileID: 2555263479521235247}
   m_Layer: 5
   m_Name: SlotGear_Prefab
   m_TagString: Untagged
@@ -98,6 +99,32 @@ MonoBehaviour:
   full: {r: 1, g: 1, b: 1, a: 1}
   unlimitedSource: 0
   containType: 1
+--- !u!114 &2555263479521235247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3380844006971019800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 11
+    m_Right: 11
+    m_Top: 11
+    m_Bottom: 11
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &5971104180092944610
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +136,7 @@ GameObject:
   - component: {fileID: 7422736814902096815}
   - component: {fileID: 759199136634514687}
   - component: {fileID: 2931021997255926912}
+  - component: {fileID: 6830484095954621166}
   m_Layer: 5
   m_Name: frame
   m_TagString: Untagged
@@ -173,6 +201,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6830484095954621166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971104180092944610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &7102184177307986453
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +232,7 @@ GameObject:
   - component: {fileID: 5756892764849072072}
   - component: {fileID: 9079126558638806179}
   - component: {fileID: 6930250139576429481}
+  - component: {fileID: 3980607521851702708}
   m_Layer: 5
   m_Name: rarity
   m_TagString: Untagged
@@ -208,7 +257,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -16, y: -16}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9079126558638806179
 CanvasRenderer:
@@ -248,3 +297,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3980607521851702708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7102184177307986453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
