@@ -8,10 +8,16 @@ namespace Players
     /// </summary>
     public abstract class Player : MonoBehaviour
     {
-        public int playerNumber;
+        public EPlayerType playerType;
         /// <summary>
         /// Method is called every turn. Allows player to interact with his units.
         /// </summary>         
         public abstract void Play(BattleStateManager _cellGrid);
+    }
+
+    public enum EPlayerType
+    {
+        HUMAN,
+        AI
     }
 }

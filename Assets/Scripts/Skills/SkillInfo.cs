@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using _LeanTween.Framework;
+using Players;
 
 namespace Skills
 {
@@ -47,7 +48,7 @@ namespace Skills
         /// <returns></returns>
         public void UseSkill(Cell _cell)
         {
-            if (skill.Unit.playerNumber == 0)
+            if (skill.Unit.playerType == EPlayerType.HUMAN)
                 if (!skill.Deck.UseSkill(skill)) return;
             if (Unit.BattleStats.AP < skill.Cost) return;
             if (skill.Effects.Any(_effect => !_effect.CanUse(_cell, this)))

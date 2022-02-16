@@ -75,7 +75,6 @@
      <Compile Include="Assets\Scripts\Skills\SkillSO.cs" />
      <Compile Include="Assets\_LeanTween\Framework\LeanTweenExt.cs" />
      <Compile Include="Assets\Scripts\Relics\Relic.cs" />
-     <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\RandomUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\_Instances\DataBase.cs" />
      <Compile Include="Assets\Scripts\Stats\Range.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopResurrection.cs" />
@@ -130,7 +129,6 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\BoolEvent.cs" />
      <Compile Include="Assets\Scripts\UserInterface\UI_Menu\MovingButtonPanel.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseSkill.cs" />
-     <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\IUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\Gears\GearSO.cs" />
      <Compile Include="Assets\Scripts\UserInterface\BattleScene\InfoUI\BattleInfoUI_Inventory.cs" />
      <Compile Include="Assets\Scripts\Cells\TileIsometric.cs" />
@@ -150,7 +148,6 @@
      <Compile Include="Assets\Scripts\_EventSystem\CustomEvents\FloatEvent.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseGear.cs" />
      <Compile Include="Assets\Scripts\_Pathfinding\Algorithms\IPathfinding.cs" />
-     <Compile Include="Assets\Scripts\StateMachine\UnitGenerators\CustomUnitGenerator.cs" />
      <Compile Include="Assets\Scripts\Decks\DeckMono.cs" />
      <Compile Include="Assets\Scripts\StateMachine\BattleStateManager.cs" />
      <Compile Include="Assets\Scripts\DataBases\DataBaseAffix.cs" />
@@ -247,7 +244,7 @@
      <Compile Include="Assets\Scripts\Shops\ShopForge.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopCampMono.cs" />
      <Compile Include="Assets\Scripts\Relics\ScriptableObject_RelicEffect\RelicEffectElementSwap.cs" />
-     <Compile Include="Assets\Scripts\UserInterface\ToolTips\ToolTipManager.cs" />
+     <Compile Include="Assets\Scripts\UserInterface\ToolTips\TooltipManager.cs" />
      <Compile Include="Assets\Scripts\_EventSystem\UnityEvents\UnityGearInfoEvent.cs" />
      <Compile Include="Assets\Scripts\Shops\ShopOracleStatue.cs" />
      <Compile Include="Assets\Scripts\Units\Movement.cs" />

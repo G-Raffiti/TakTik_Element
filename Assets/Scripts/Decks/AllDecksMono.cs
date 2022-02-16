@@ -1,4 +1,5 @@
 ﻿using _EventSystem.CustomEvents;
+using Players;
 using Skills;
 using Units;
 using UnityEngine;
@@ -63,7 +64,7 @@ namespace Decks
 
         private void OnUnitStartTurn(Unit item)
         {
-            if (item.playerNumber != 0) return;
+            if (item.playerType != EPlayerType.HUMAN) return;
             Deck.DrawNewHand();
             onDraw.Raise();
         }

@@ -11,6 +11,7 @@ using Buffs;
 using Cells;
 using DataBases;
 using Gears;
+using Players;
 using Relics;
 using Resources.ToolTip.Scripts;
 using StateMachine;
@@ -23,12 +24,13 @@ using UserInterface;
 namespace Units
 {
     /// <summary>
-    /// Base class for all units in the game.
+    /// class <c>Unit</c> represents all units in the game.
     /// </summary>
     [ExecuteInEditMode]
     public abstract class Unit : IMovable, IInfo
     {
         ////////////////////// Unity References ////////////////////////////////////////////////////////////////////////
+        
         [Header("Unity References")]
         [SerializeField] private ColorSet colorSet;
         [SerializeField] protected SpriteRenderer unitSpriteRenderer;
@@ -88,7 +90,7 @@ namespace Units
         /// Indicates the player that the unit belongs to. 
         /// Should correspoond with PlayerNumber variable on Player script.
         /// </summary>
-        public int playerNumber;
+        public EPlayerType playerType;
 
         /// <summary>
         /// A list of buffs that are applied to the unit.
@@ -666,7 +668,7 @@ namespace Units
         public string ColouredName()
         {
             string hexColour;
-            if (playerNumber == 0)
+            if (playerType == EPlayerType.HUMAN)
                 hexColour = colorSet.HexColor(EColor.ally);
             else 
                 hexColour = colorSet.HexColor(EColor.enemy);
@@ -680,7 +682,7 @@ namespace Units
 
         public Color GetTeamColor()
         {
-            return playerNumber == 0 ? colorSet.GetColors()[EColor.ally] : colorSet.GetColors()[EColor.enemy];
+            return playerType == EPlayerType.HUMAN ? colorSet.GetColors()[EColor.ally] : colorSet.GetColors()[EColor.enemy];
         }
 
         public abstract UnitEvent onTooltip_ON { get; }

@@ -322,11 +322,11 @@ namespace Skills._Zone
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyAlly:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == _skillInfo.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType == _skillInfo.Unit.playerType)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyEnemy:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != _skillInfo.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType != _skillInfo.Unit.playerType)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlySelf:
@@ -359,11 +359,11 @@ namespace Skills._Zone
                         _affected = _cell.GetCurrentIMovable();
                     break;
                 case EAffect.OnlyAlly:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber == skill.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType == skill.Unit.playerType)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyEnemy:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerNumber != skill.Unit.playerNumber)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType != skill.Unit.playerType)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlySelf:

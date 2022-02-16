@@ -3,6 +3,7 @@ using System.Linq;
 using _EventSystem.CustomEvents;
 using Cells;
 using DataBases;
+using Players;
 using Resources.ToolTip.Scripts;
 using StateMachine;
 using Stats;
@@ -47,12 +48,12 @@ namespace UserInterface.BattleScene
             unit.UnitAttacked += Unit_UnitAttacked;
             unit.UnitDestroyed += Unit_UnitDestroyed;
             Color _teamColor;
-            switch (unit.playerNumber)
+            switch (unit.playerType)
             {
-                case 0:
+                case EPlayerType.HUMAN:
                     _teamColor = colors[EColor.ally];
                     break;
-                case 1:
+                case EPlayerType.AI:
                     _teamColor = colors[EColor.enemy];
                     break;
                 default:

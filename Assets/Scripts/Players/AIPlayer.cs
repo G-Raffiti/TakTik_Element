@@ -59,7 +59,7 @@ namespace Players
         public override void Play(BattleStateManager stateManager)
         {
             // Check if it is the turn of IA Player
-            if (stateManager.PlayingUnit.playerNumber == 0)
+            if (stateManager.PlayingUnit.playerType == EPlayerType.HUMAN)
             {
                 stateManager.BattleState = new BattleStateUnitSelected(stateManager, stateManager.PlayingUnit);
                 return;
@@ -238,7 +238,7 @@ namespace Players
         private static void EvaluateDistanceToEnemy(Unit _unit, BattleStateManager stateManager)
         {
             // Find the nearest Enemy
-            List<Unit> enemies = new List<Unit>(stateManager.Units.Where(u => u.playerNumber != _unit.playerNumber));
+            List<Unit> enemies = new List<Unit>(stateManager.Units.Where(u => u.playerType != _unit.playerType));
             if (enemies.Count == 0) return;
             enemies.Sort((u, u2) => u.Cell.GetDistance(_unit.Cell).CompareTo(u2.Cell.GetDistance(_unit.Cell)));
 
@@ -253,7 +253,7 @@ namespace Players
         private static void EvaluateDistanceToAlly(Unit _unit, BattleStateManager stateManager)
         {
             // Find the nearest Ally
-            List<Unit> allies = new List<Unit>(stateManager.Units.Where(u => u.playerNumber == _unit.playerNumber));
+            List<Unit> allies = new List<Unit>(stateManager.Units.Where(u => u.playerType == _unit.playerType));
             allies.Sort((u, u2) => u.Cell.GetDistance(_unit.Cell).CompareTo(u2.Cell.GetDistance(_unit.Cell)));
 
             List<Cell> destinationsKeys = new List<Cell>(destinations.Keys);
@@ -285,8 +285,8 @@ namespace Players
                 {
                     if (c.CurrentGridObject != null) Neighbours += evaluationValues.NearToObject;
                     if (c.CurrentUnit == null) continue;
-                    if (c.CurrentUnit.playerNumber != _unit.playerNumber) Neighbours += evaluationValues.NearToEnemy;
-                    if (c.CurrentUnit.playerNumber == _unit.playerNumber) Neighbours += evaluationValues.NearToAlly;
+                    if (c.CurrentUnit.playerType != _unit.playerType) Neighbours += evaluationValues.NearToEnemy;
+                    if (c.CurrentUnit.playerType == _unit.playerType) Neighbours += evaluationValues.NearToAlly;
                 }
                 
                 destinations[_cell] += Neighbours;
@@ -328,7 +328,7 @@ namespace Players
 
         private static void EvaluateDirectTarget(BattleStateManager stateManager, SkillInfo skill)
         {
-            List<Unit> Enemies = stateManager.Units.Where(u => u.playerNumber != skill.Unit.playerNumber).ToList();
+            List<Unit> Enemies = stateManager.Units.Where(u => u.playerType != skill.Unit.playerType).ToList();
             List<Unit> Allies = stateManager.Units.Except(Enemies).ToList();
             foreach (Unit _unit in stateManager.Units)
             {
@@ -365,7 +365,7 @@ namespace Players
                     {
                         foreach (Unit _unit in affected)
                         {
-                            if (_unit.playerNumber == skill.Unit.playerNumber)
+                            if (_unit.playerType == skill.Unit.playerType)
                                 skillTargets[destination][_cellInRange] += evaluationValues.ZoneTargetAlly;
                             else
                                 skillTargets[destination][_cellInRange] += evaluationValues.ZoneTargetEnemy;
@@ -404,7 +404,7 @@ namespace Players
                 List<Unit> Targets = new List<Unit>();
                 foreach (Cell _cell in AI_SkillInfo.GetRangeFrom(destinationOfMaxValue))
                 {
-                    if(Zone.GetUnitAffected(_cell, AI_SkillInfo) != null && Zone.GetUnitAffected(_cell, AI_SkillInfo).playerNumber != _unit.playerNumber)
+                    if(Zone.GetUnitAffected(_cell, AI_SkillInfo) != null && Zone.GetUnitAffected(_cell, AI_SkillInfo).playerType != _unit.playerType)
                         Targets.Add(Zone.GetUnitAffected(_cell, AI_SkillInfo));
                 }
 

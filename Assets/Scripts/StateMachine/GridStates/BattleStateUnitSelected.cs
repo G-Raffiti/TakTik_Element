@@ -120,7 +120,7 @@ namespace StateMachine.GridStates
 
             foreach (Unit _currentUnit in StateManager.Units)
             {
-                if (_currentUnit.playerNumber.Equals(unit.playerNumber))
+                if (_currentUnit.playerType.Equals(unit.playerType))
                     continue;
 
                 _currentUnit.Cell.MarkAsEnemyCell();

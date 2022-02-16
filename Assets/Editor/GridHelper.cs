@@ -7,7 +7,6 @@ using Editor.GridGenerators;
 using GridObjects;
 using Players;
 using StateMachine;
-using StateMachine.UnitGenerators;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -585,7 +584,6 @@ namespace Editor
             {
                 GameObject player = new GameObject(string.Format("Player_{0}", players.transform.childCount));
                 player.AddComponent<HumanPlayer>();
-                player.GetComponent<Player>().playerNumber = players.transform.childCount;
                 player.transform.parent = players.transform;
             }
 
@@ -593,7 +591,6 @@ namespace Editor
             {
                 GameObject aiPlayer = new GameObject(string.Format("AI_Player_{0}", players.transform.childCount));
                 aiPlayer.AddComponent<AIPlayer>();
-                aiPlayer.GetComponent<Player>().playerNumber = players.transform.childCount;
                 aiPlayer.transform.parent = players.transform;
             }
 
@@ -602,10 +599,6 @@ namespace Editor
             BattleStateManager cellGridScript = cellGrid.AddComponent<BattleStateManager>();
             ICellGridGenerator generator = (ICellGridGenerator)Activator.CreateInstance(selectedGenerator);
             generator.CellsParent = cellGrid.transform;
-
-            CustomUnitGenerator unitGenerator = cellGrid.AddComponent<CustomUnitGenerator>();
-            unitGenerator.unitsParent = objects.transform;
-            unitGenerator.cellsParent = cellGrid.transform;
 
             foreach (string fieldName in parameterValues.Keys)
             {
@@ -666,10 +659,6 @@ namespace Editor
 
             ICellGridGenerator generator = (ICellGridGenerator)Activator.CreateInstance(selectedGenerator);
             generator.CellsParent = cellGrid.transform;
-
-            CustomUnitGenerator unitGenerator = cellGrid.GetComponent<CustomUnitGenerator>();
-            unitGenerator.unitsParent = objects.transform;
-            unitGenerator.cellsParent = cellGrid.transform;
 
             foreach (string fieldName in parameterValues.Keys)
             {

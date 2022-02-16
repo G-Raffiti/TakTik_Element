@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _Instances;
+using Players;
 using StateMachine;
 using Units;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace EndConditions
     {
         public override bool battleIsOver(BattleStateManager StateManager)
         {
-            List<Unit> playerHeroes = StateManager.Units.Where(unit => unit.playerNumber == 0).ToList();
+            List<Unit> playerHeroes = StateManager.Units.Where(unit => unit.playerType == EPlayerType.HUMAN).ToList();
             WinCondition = playerHeroes.Count > 0;
             
             return StateManager.GridObjects.Count == 0 || StateManager.Turn >= 3 || playerHeroes.Count == 0;

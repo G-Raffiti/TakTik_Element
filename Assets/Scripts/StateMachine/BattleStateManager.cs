@@ -13,7 +13,6 @@ using Relics;
 using Relics.ScriptableObject_RelicEffect;
 using Skills;
 using StateMachine.GridStates;
-using StateMachine.UnitGenerators;
 using Units;
 using UnityEngine;
 using Void = _EventSystem.CustomEvents.Void;
@@ -69,7 +68,7 @@ namespace StateMachine
             get
             {
                 List<Monster> monsters = new List<Monster>();
-                foreach (Unit unit in Units.Where(u => u.playerNumber != 0)) 
+                foreach (Unit unit in Units.Where(u => u.playerType != EPlayerType.HUMAN)) 
                 {
                     if (unit is Monster monster)
                         monsters.Add(monster);
@@ -254,7 +253,7 @@ namespace StateMachine
         private void UnitsEndBattle(Void _obj)
         {
             //TODO: A mettre dans Unit -> catch event battleisover
-            foreach (Unit hero in Units.Where(u => u.playerNumber == 0))
+            foreach (Unit hero in Units.Where(u => u.playerType == EPlayerType.HUMAN))
             {
                 Hero _hero = ((BattleHero)hero).Hero;
                 foreach (RelicSO _relicSO in _hero.Relics)
@@ -356,19 +355,12 @@ namespace StateMachine
         /// </summary>
         private void InitializeUnits()
         {
-            Units = new List<Unit>();
-            IUnitGenerator _unitGenerator = GetComponent<IUnitGenerator>();
-            if (_unitGenerator != null)
+            Units = GameObject.Find("Units").GetComponentsInChildren<Unit>().ToList();
+            foreach (Unit unit in Units)
             {
-                List<Unit> _units = _unitGenerator.SpawnUnits(Cells);
-                foreach (Unit _unit in _units)
-                {
-                    AddUnit(_unit.GetComponent<Transform>());
-                }
+                unit.UnitDestroyed += TriggerOnUnitDestroyed;
             }
-            else
-                Debug.LogError("No IUnitGenerator script attached to cell grid");
-            
+
             Units.Sort((u1, u2) => u1.BattleStats.Speed.CompareTo(u2.BattleStats.Speed));
 
             for (int i = 0; i < Units.Count; i++)
@@ -453,7 +445,7 @@ namespace StateMachine
                 _gridObject.OnStartTurn();
             }
 
-            Debug.Log(PlayingUnit.playerNumber == 0 ? $"Player's Turn {PlayingUnit.ColouredName()}" : $"IA's Turn {PlayingUnit.ColouredName()}");
+            Debug.Log(PlayingUnit.playerType == EPlayerType.HUMAN ? $"Player's Turn {PlayingUnit.ColouredName()}" : $"IA's Turn {PlayingUnit.ColouredName()}");
 
             // TODO: mettre dans Unit
             PlayingUnit.TurnPoint -= TurnCost;
@@ -462,7 +454,7 @@ namespace StateMachine
                 _unit.TurnPoint += _unit.BattleStats.Speed;
             }
 
-            Players.Find(p => p.playerNumber == PlayingUnit.playerNumber).Play(this);
+            Players.Find(p => p.playerType == PlayingUnit.playerType).Play(this);
             onUnitStartTurn.Raise(PlayingUnit);
         }
         
@@ -512,7 +504,7 @@ namespace StateMachine
             }
 
             // This Method Work only during the Player Turn
-            if (PlayingUnit.playerNumber != 0) return;
+            if (PlayingUnit.playerType != EPlayerType.HUMAN) return;
             SetStateUnitSelected(PlayingUnit);
         }
         

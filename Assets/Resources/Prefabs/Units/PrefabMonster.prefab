@@ -229,7 +229,7 @@ MonoBehaviour:
       NeedView: 0
       NeedTarget: 0
       CanBeModified: 0
-  playerNumber: 1
+  playerType: 1
   deck: {fileID: 8809875516459172498}
   skill: {fileID: 7657559053990507141}
   onDeathLoot: {fileID: 11400000, guid: efdfb0120a87c204eb44c4662e8a7485, type: 2}

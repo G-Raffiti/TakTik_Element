@@ -2,6 +2,7 @@
 using System.Linq;
 using _EventSystem.CustomEvents;
 using Gears;
+using Players;
 using StateMachine;
 using Units;
 using UnityEngine;
@@ -45,7 +46,7 @@ namespace Score
         private void CountBosses(Void _obj)
         {
             Debug.Log("check");
-            List<Monster> monsters = BattleStateManager.instance.Units.Where(_unit => _unit.playerNumber != 0).Cast<Monster>().ToList();
+            List<Monster> monsters = BattleStateManager.instance.Units.Where(_unit => _unit.playerType != EPlayerType.HUMAN).Cast<Monster>().ToList();
 
             foreach (Monster boss in monsters.Where(m => m.Type == EMonster.Boss))
             {

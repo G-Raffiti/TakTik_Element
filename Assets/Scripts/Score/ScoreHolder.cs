@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Extension;
+using Players;
 using Units;
 
 namespace Score
@@ -26,12 +27,12 @@ namespace Score
         {
             AttackEventArgs e = (AttackEventArgs) _e;
             if (e.Defender == e.Attacker) return;
-            if (e.Attacker.playerNumber == 0)
+            if (e.Attacker.playerType == EPlayerType.HUMAN)
             {
                 DamageDealtTotal += e.Damage;
                 DamageDealtBiggest = DamageDealtBiggest.Max(e.Damage);
             }
-            if (e.Defender.playerNumber == 0)
+            if (e.Defender.playerType == EPlayerType.HUMAN)
             {
                 DamageTakenTotal += e.Damage;
                 DamageTakenBiggest = DamageTakenBiggest.Max(e.Damage);

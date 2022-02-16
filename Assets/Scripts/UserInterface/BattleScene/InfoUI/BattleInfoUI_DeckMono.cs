@@ -4,6 +4,7 @@ using System.Linq;
 using _DragAndDropSystem;
 using _Extension;
 using Decks;
+using Players;
 using Skills;
 using StateMachine;
 using Units;
@@ -30,7 +31,7 @@ namespace UserInterface.BattleScene.InfoUI
                 deck = GameObject.Find("DeckMono/Deck1").GetComponent<DeckMono>();
             }
             if (BattleStateManager.instance.PlayingUnit == null) return;
-            if (BattleStateManager.instance.PlayingUnit.playerNumber == 0)
+            if (BattleStateManager.instance.PlayingUnit.playerType == EPlayerType.HUMAN)
                 nextHero = BattleStateManager.instance.PlayingUnit;
             else
             {
