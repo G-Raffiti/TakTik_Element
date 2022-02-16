@@ -46,7 +46,7 @@ namespace Cells
                 AddBuff(new Buff(CellSO.BasicBuff));
         }
 
-        public void AutoSort()
+        private void AutoSort()
         {
             int position = (int) (transform.position.y / (GetCellDimensions().y/2f));
             frame.sortingOrder = 300 - position;

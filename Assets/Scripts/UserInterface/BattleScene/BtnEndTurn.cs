@@ -33,7 +33,6 @@ namespace UserInterface.BattleScene
         public void OnPointerClick()
         {
             if (inventory.gameObject.activeSelf) return;
-            if (BattleStateManager.instance.Monsters.Where(m => m.isDying).ToList().Count > 0) return;
             onEndTurn.Raise();
         }
     }

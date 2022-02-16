@@ -20,11 +20,26 @@ using Void = _EventSystem.CustomEvents.Void;
 
 namespace StateMachine
 {
+    /// <summary>
+    /// class <c>BattleStateManager</c> handle the state pattern of the battle scene.
+    /// Singleton 
+    /// </summary>
     [RequireComponent(typeof(Board))]
     public class BattleStateManager : MonoBehaviour
     {
+        ////////////////////// VARIABLES ///////////////////////////////////////////////////////////////////////////////
+        
+        /// <summary>
+        /// <c>instance</c> is the reference to the singleton object
+        /// </summary>
         public static BattleStateManager instance;
-        private BattleState battleState;                                //The grid delegates some of its behaviours to cellGridState object.
+        /// <summary>
+        /// Instance variable <c>battleState</c>. Define the actual <c>BattleState</c>.
+        /// The grid delegates some of its behaviours to <c>BattleStateManager</c> object.
+        /// </summary>
+        private BattleState battleState;
+        /// <value>Property <c>BattleState</c> give access to <c>battleState</c>
+        /// and manage the state transition.</value>
         public BattleState BattleState
         {
             get
@@ -39,48 +54,16 @@ namespace StateMachine
                 battleState.OnStateEnter();
             }
         }
-
-        [ContextMenu("state ?")]
-        public void testState()
-        {
-            Debug.Log(BattleState.GetType());
-        }
-
+        
+        /// <value>Property <c>endCondition</c> define the end condition type of the board.</value>
         public EndConditionSO endCondition { get; private set; }
+        /// <value>Property <c>Players</c> list of all <c>Player</c>.</value>
         private List<Player> Players { get; set; }
+        /// <value>Property <c>Cells</c> list of all <c>Cell</c>.</value>
         public List<Cell> Cells { get; private set; }
+        /// <value>Property <c>Units</c> list of all <c>Unit</c> still alive in the battle.</value>
         public List<Unit> Units { get; private set; }
-        public List<Monster> DeadThisTurn { get; private set; }
-        public List<GridObject> GridObjects { get; private set; }
-        public Unit PlayingUnit { get; private set; }
-        
-        [Header("Event Listener")]
-        [SerializeField] private VoidEvent onStartBattle;
-        [SerializeField] private VoidEvent onEndTurn;
-        [SerializeField] private GridObjectEvent onGridObjectDestroyed;
-        [SerializeField] private VoidEvent onSkillUsed;
-        [SerializeField] private VoidEvent onUIEnable;
-        [SerializeField] private VoidEvent onMonsterPlay;
-        [SerializeField] private VoidEvent onActionDone;
-        [SerializeField] private SkillEvent onSkillSelected;
-        [SerializeField] private UnitEvent onUnitMoved;
-        [SerializeField] private VoidEvent onBattleEndTrigger;
-        
-        [Header("Event Sender")]
-        [SerializeField] private VoidEvent onBattleStarted;
-        [SerializeField] private BoolEvent onBattleIsOver;
-        [SerializeField] private UnitEvent onUnitStartTurn;
-
-
-        private const int TurnCost = 20;
-        private const int CorruptionTurn = 3;
-        public int NextCorruptionTurn { get; private set; }
-        private float TurnCount = 1;
-        public int Turn => (int)TurnCount;
-        public bool GameStarted { get; set; }
-
-        public Dictionary<IMovable, Cell> GetCell { get; private set; } = new Dictionary<IMovable, Cell>();
-
+        /// <value> Property <c>Monsters</c> list of all enemies <c>Unit</c> still alive in the battle. </value>
         public List<Monster> Monsters
         {
             get
@@ -95,45 +78,57 @@ namespace StateMachine
                 return monsters;
             }
         }
+        /// <value>Property <c>DeadThisTurn</c> list of all <c>Monster</c> dead during this turn.</value>
+        public List<Monster> DeadThisTurn { get; private set; }
+        /// <value>Property <c>GridObjects</c> list of all <c>GridObject</c> present in the scene.</value>
+        public List<GridObject> GridObjects { get; private set; }
+        /// <summary>
+        /// Instance variable <c>PlayingUnit</c> is the <c>Unit</c> which is currently playing.
+        /// </summary>
+        public Unit PlayingUnit { get; private set; }
 
-        private void CheckCells()
-        {
-            foreach (Cell _cell in Cells)
-            {
-                _cell.FreeTheCell();
-            }
 
-            Dictionary<Cell, IMovable> getMovable = new Dictionary<Cell, IMovable>();
+        ////////////////////// EVENTS //////////////////////////////////////////////////////////////////////////////////
+        
+        [Header("Event Listener")]
+        [SerializeField] private VoidEvent onStartBattle;
+        [SerializeField] private VoidEvent onEndTurn;
+        [SerializeField] private GridObjectEvent onGridObjectDestroyed;
+        [SerializeField] private VoidEvent onSkillUsed;
+        [SerializeField] private VoidEvent onUIEnable;
+        [SerializeField] private VoidEvent onMonsterPlay;
+        [SerializeField] private VoidEvent onActionDone;
+        [SerializeField] private SkillEvent onSkillSelected;
+        [SerializeField] private UnitEvent onUnitMoved;
+        [SerializeField] private VoidEvent onBattleEndTrigger;
 
+        [Header("Event Sender")]
+        [SerializeField] private VoidEvent onBattleStarted;
+        [SerializeField] private BoolEvent onBattleIsOver;
+        [SerializeField] private UnitEvent onUnitStartTurn;
 
-            foreach (KeyValuePair<IMovable,Cell> _pair in GetCell)
-            {
-                if (getMovable.ContainsKey(_pair.Value))
-                {
-                    Debug.Log($"more than one Movable on Cell ({_pair.Value.OffsetCoord})");
-                    continue;
-                }
+        /// <summary> Constant variable <c>TurnCost</c> is the point's amount subtracted to the
+        /// <c>PlayingUnit</c>'s turn points. </summary>
+        private const int TurnCost = 20;
 
-                getMovable.Add(_pair.Value, _pair.Key);
-            }
+        /// <summary> Constant variable <c>CorruptionTurn</c> represents the number of turn before corruption
+        /// started. </summary>
+        private const int CorruptionTurn = 3;
 
-            Dictionary<IMovable, Cell> getCellCopy = new Dictionary<IMovable, Cell> (GetCell);
+        /// <value> Property <c>NextCorruptionTurn</c> represents the number of turn before next corruption. </value>
+        public int NextCorruptionTurn { get; private set; }
 
-            foreach (Cell _cell in getCellCopy.Values)
-            {
-                _cell.ForceTake(getMovable[_cell]);
-            }
+        /// <summary> Instance variable <c>TurnCount</c> represents the turn counter. </summary>
+        private float TurnCount = 1;
 
-            foreach (Unit _unit in Units)
-            {
-                _unit.transform.position = _unit.Cell.transform.position;
-            }
+        /// <value> Property <c>Turn</c> represents the number of actual turn. </value>
+        public int Turn => (int)TurnCount;
 
-            foreach (GridObject _gridObject in GridObjects)
-            {
-                _gridObject.transform.position = _gridObject.Cell.transform.position;
-            }
-        }
+        /// <summary> Instance variable <c>ObjectCells</c> store cells for each movable objects. </summary>
+        public Dictionary<IMovable, Cell> ObjectCells { get; private set; } = new Dictionary<IMovable, Cell>();
+
+        
+        ////////////////////// METHODS /////////////////////////////////////////////////////////////////////////////////
         
         private void Start()
         {
@@ -141,41 +136,69 @@ namespace StateMachine
             onEndTurn.EventListeners += EndTurn;
             onGridObjectDestroyed.EventListeners += RemoveGridObject;
             onSkillUsed.EventListeners += SkillUsed;
-            onUIEnable.EventListeners += BlockInputs;
-            onMonsterPlay.EventListeners += BlockInputs;
+            onUIEnable.EventListeners += SetStateBlockInputs;
+            onMonsterPlay.EventListeners += SetStateBlockInputs;
             onActionDone.EventListeners += ActionDone;
             onStartBattle.EventListeners += StartBattle;
-            onSkillSelected.EventListeners += SkillSelected;
+            onSkillSelected.EventListeners += SetStateSkillSelected;
             onUnitMoved.EventListeners += UnitMoved;
             onBattleEndTrigger.EventListeners += UnitsEndBattle;
             Initialize();
         }
-
-
+        
         private void OnDestroy()
         {
             onEndTurn.EventListeners -= EndTurn;
             onGridObjectDestroyed.EventListeners -= RemoveGridObject;
             onSkillUsed.EventListeners -= SkillUsed;
-            onUIEnable.EventListeners -= BlockInputs;
-            onMonsterPlay.EventListeners -= BlockInputs;
+            onUIEnable.EventListeners -= SetStateBlockInputs;
+            onMonsterPlay.EventListeners -= SetStateBlockInputs;
             onActionDone.EventListeners -= ActionDone;
             onStartBattle.EventListeners -= StartBattle;
-            onSkillSelected.EventListeners -= SkillSelected;
+            onSkillSelected.EventListeners -= SetStateSkillSelected;
             onUnitMoved.EventListeners -= UnitMoved;
             onBattleEndTrigger.EventListeners -= UnitsEndBattle;
         }
-
+        
+        #region StateManager
+        
+        /// <summary>
+        /// Method <c>SetStateSkillSelected</c> transition to skill selected state.
+        /// </summary>
+        /// <param name="skill">the selected skill</param>
+        private void SetStateSkillSelected(SkillInfo skill)
+        {
+            BattleState = new BattleStateSkillSelected(this, skill);
+        }
+        
+        /// <summary>
+        /// Method <c>SetStateBlockInputs</c> transition to block input state.
+        /// </summary>
+        private void SetStateBlockInputs()
+        {
+            BattleState = new BattleStateBlockInput(this);
+        }
+        
+        /// <summary>
+        /// Method <c>SetStateUnitSelected</c> transition to unit selected state.
+        /// </summary>
+        /// <param name="unit">the selected unit</param>
+        private void SetStateUnitSelected(Unit unit)
+        {
+            BattleState = new BattleStateUnitSelected(this, unit);
+        }
+        
+        #endregion
 
         #region Event Handler
-        private void BlockInputs(Void _obj)
+        private void SetStateBlockInputs(Void _obj)
         {
-            BlockInputs();
+            SetStateBlockInputs();
         }
 
         private void SkillUsed(Void _obj)
         {
-            SkillUsed();
+            CheckPlayingUnitAlive();
         }
         
         private void EndTurn(Void item)
@@ -185,7 +208,7 @@ namespace StateMachine
 
         private void ActionDone(Void _obj)
         {
-            ActionDone();
+            CheckPlayingUnitAlive();
         }
         
         private void StartBattle(Void _obj)
@@ -230,6 +253,7 @@ namespace StateMachine
         /// </summary>
         private void UnitsEndBattle(Void _obj)
         {
+            //TODO: A mettre dans Unit -> catch event battleisover
             foreach (Unit hero in Units.Where(u => u.playerNumber == 0))
             {
                 Hero _hero = ((BattleHero)hero).Hero;
@@ -244,22 +268,35 @@ namespace StateMachine
         }
         
     #endregion
-
-    #region Initialisation
+    
+        #region Initialisation
 
         
         /// <summary>
-        /// Method Called in Start to Setup the scene
+        /// method <c>Initialize</c> setup the scene.
         /// </summary>
         private void Initialize()
         {
-            Transform playersParent = GameObject.Find("Players").transform;
-            
             BattleState = new BattleStateBlockInput(this);
             if (!Equals(instance, this))
             {
                 instance = this;
             }
+
+            InitializePlayers();
+            InitializeCells();
+            InitializeGridObjects();
+            
+            NextCorruptionTurn = CorruptionTurn;
+            BattleState = new BattleStateBeginning(this, BattleGenerator.GenerateEnemies(endCondition.Type));
+        }
+
+        /// <summary>
+        /// method <c>InitializePlayers</c> retrieve all players in the scene.
+        /// </summary>
+        private void InitializePlayers()
+        {
+            Transform playersParent = GameObject.Find("Players").transform;
             
             Players = new List<Player>();
             for (int _i = 0; _i < playersParent.childCount; _i++)
@@ -270,21 +307,10 @@ namespace StateMachine
                 else
                     Debug.LogError("Invalid object in Players Parent game object");
             }
-
-            InitializeCells();
-            
-            NextCorruptionTurn = CorruptionTurn;
-            StartCoroutine(BattleBeginning());
         }
-        private IEnumerator BattleBeginning()
-        {
-            //TODO : Trouver solution pour ne pas attendre un temps fix
-            yield return new WaitForSeconds(0.2f);
-            BattleState = new BattleStateBeginning(this, BattleGenerator.GenerateEnemies(endCondition.Type));
-        }
-
+        
         /// <summary>
-        /// Method Called to register all Cells to Events and create Lists of Cells and GridObjects
+        /// Method <c>InitializeCells</c> register all Cells to Events and create Lists of Cells and GridObjects
         /// </summary>
         private void InitializeCells()
         {
@@ -310,7 +336,13 @@ namespace StateMachine
                 _cell.CellDehighlighted += OnCellUnselected;
                 _cell.GetComponent<Cell>().GetNeighbours(Cells);
             }
-
+        }
+        
+        /// <summary>
+        /// method <c>InitializeGridObjects</c> retrieve all gridobjects in the scene.
+        /// </summary>
+        private void InitializeGridObjects()
+        {
             GridObjects = new List<GridObject>();
             foreach (Transform _transform in GameObject.Find("Objects").transform)
             {
@@ -319,25 +351,6 @@ namespace StateMachine
             GridObjects.ForEach(g => g.Initialize());
         }
 
-        #endregion
-
-    #region Battle Start
-
-        /// <summary>
-        /// Method is called once, at the beggining of the game.
-        /// </summary>
-        private void StartBattle()
-        {
-            BlockInputs();
-            List<Hero> heroesPlaced = GameObject.Find("Player").GetComponentsInChildren<Hero>().Where(h => h.isPlaced).ToList();
-            if (heroesPlaced.Count <= 0) return;
-            
-            InitializeUnits();
-            onBattleStarted.Raise();
-            GameStarted = true;
-            StartTurn();
-        }
-        
         /// <summary>
         /// Method Called to Snap Units to their Cells and register all Units.
         /// </summary>
@@ -367,27 +380,38 @@ namespace StateMachine
 
             foreach (Cell _cell in Cells.Where(c => c.GetCurrentIMovable() != null))
             {
-                if (!GetCell.Keys.Contains(_cell.GetCurrentIMovable()))
-                    GetCell.Add(_cell.GetCurrentIMovable(), _cell);
+                if (!ObjectCells.Keys.Contains(_cell.GetCurrentIMovable()))
+                    ObjectCells.Add(_cell.GetCurrentIMovable(), _cell);
             }
         }
-
+        
         #endregion
+        
+
+        /// <summary>
+        /// Method is called once, at the beginning of the game.
+        /// </summary>
+        private void StartBattle()
+        {
+            SetStateBlockInputs();
+            InitializeUnits();
+            onBattleStarted.Raise();
+            StartTurn();
+        }
 
         /// <summary>
         /// Method makes turn transitions. It is called by player at the end of his turn.
         /// </summary>
         private void EndTurn()
         {
-            CheckCells();
-            BattleState = new BattleStateBlockInput(this);
+            if (instance.Monsters.Where(m => m.isDying).ToList().Count > 0) return;
             if (PlayingUnit != null && PlayingUnit is Monster {isPlaying: true}) return;
+            
+            BattleState = new BattleStateBlockInput(this);
 
             if (Check()) return;
             
             Cells.ForEach(c => c.OnEndTurn());
-
-            
 
             foreach (Unit _unit in Units)
             {
@@ -399,19 +423,6 @@ namespace StateMachine
             }
             
             SortByTurnPoints();
-            foreach (Unit _unit in Units)
-            {
-                if (_unit.transform.position == _unit.Cell.transform.position) continue;
-                Cell _closestCell = Cells.OrderBy(h => Math.Abs((h.transform.position - _unit.transform.position).magnitude)).First();
-                List<Cell> _path = _unit.FindPathFrom(Cells,_closestCell, _unit.Cell);
-                _unit.transform.position = _closestCell.transform.position;
-                _unit.Move(_unit.Cell, _path);
-            }
-
-            foreach (Unit _unit in Units.Where(_unit => _unit.transform.position != _unit.Cell.transform.position))
-            {
-                _unit.transform.position = _unit.Cell.transform.position;
-            }
 
             if (Turn >= NextCorruptionTurn)
                 Corruption();
@@ -419,6 +430,10 @@ namespace StateMachine
             StartTurn();
         }
         
+        /// <summary>
+        /// method <c>StartTurn</c> manage the start turn.
+        /// Defines the playing Unit and start it's turn.
+        /// </summary>
         private void StartTurn()
         {
             BattleState = new BattleStateBlockInput(this);
@@ -440,6 +455,7 @@ namespace StateMachine
 
             Debug.Log(PlayingUnit.playerNumber == 0 ? $"Player's Turn {PlayingUnit.ColouredName()}" : $"IA's Turn {PlayingUnit.ColouredName()}");
 
+            // TODO: mettre dans Unit
             PlayingUnit.TurnPoint -= TurnCost;
             foreach (Unit _unit in Units.Where(_unit => _unit != PlayingUnit))
             {
@@ -448,18 +464,22 @@ namespace StateMachine
 
             Players.Find(p => p.playerNumber == PlayingUnit.playerNumber).Play(this);
             onUnitStartTurn.Raise(PlayingUnit);
-
         }
+        
         private void SortByTurnPoints()
         {
             Units.Sort((u1, u2) => u1.TurnPoint.CompareTo(u2.TurnPoint));
             Units.Reverse();
         }
         
+        /// <summary>
+        /// method <c>Corruption</c> update the corruption and corrupt the cells.
+        /// </summary>
         private void Corruption()
         {
             NextCorruptionTurn += 1;
-
+            
+            //TODO: la cellule gère sa propre corruption (send corruption event a toute les cellules)
             if (NextCorruptionTurn <= CorruptionTurn + 1)
             {
                 Cells.Where(c => c.Neighbours.Count < 4).ToList().ForEach(CorruptCell);
@@ -469,6 +489,10 @@ namespace StateMachine
             Cells.Where(_cell => _cell.Neighbours.Any(_neighbourTile => _neighbourTile.isCorrupted)).ToList().ForEach(CorruptCell);
         }
 
+        /// <summary>
+        /// method <c>CorruptCell</c> corrupt the given cell.
+        /// </summary>
+        /// <param name="_cell">the cell to corrupt</param>
         private void CorruptCell(Cell _cell)
         {
             _cell.AddBuff(new Buff(_cell, DataBase.Cell.CorruptionSO));
@@ -476,9 +500,9 @@ namespace StateMachine
         }
             
         /// <summary>
-        /// Method Called to set the State to the last State.
+        /// Method <c>CheckPlayingUnitAlive</c> End turn if the playing unit is dead.
         /// </summary>
-        private void ActionDone()
+        private void CheckPlayingUnitAlive()
         {
             // Verification if the Playing Unit is still alive
             if (PlayingUnit != Units[0])
@@ -489,14 +513,13 @@ namespace StateMachine
 
             // This Method Work only during the Player Turn
             if (PlayingUnit.playerNumber != 0) return;
-            BattleState = new BattleStateUnitSelected(this, PlayingUnit);
-        }
-
-        private void SkillSelected(SkillInfo skill)
-        {
-            BattleState = new BattleStateSkillSelected(this, skill);
+            SetStateUnitSelected(PlayingUnit);
         }
         
+        /// <summary>
+        /// method <c>Check</c> verifies the end condition.
+        /// </summary>
+        /// <returns>true if the end condition is satisfied, false otherwise</returns>
         public bool Check()
         {
             if (endCondition.battleIsOver(this))
@@ -508,71 +531,24 @@ namespace StateMachine
 
             return false;
         }
-        
-        /// <summary>
-        /// Method Called after using a Skill or after that any Unit Fall in an UnderGround Tile.
-        /// </summary>
-        private void SkillUsed()
-        {
-            // Verification if the Playing Unit is still alive
-            if (PlayingUnit != Units[0])
-            {
-                EndTurn();
-                return;
-            }
-
-            // This Method Work only during the Player Turn
-            if (PlayingUnit.playerNumber != 0) return;
-            BattleState = new BattleStateUnitSelected(this, PlayingUnit);
-        }
 
         /// <summary>
-        /// Method Called to Save Block Inputs (Used when UI is enabled or while AI play)
+        /// method <c>UnitMoved</c> called each time a unit finish a move.
         /// </summary>
-        private void BlockInputs()
-        {
-            BattleState = new BattleStateBlockInput(this);
-        }
-        
-        
+        /// <param name="unit">the moved unit</param>
         private void UnitMoved(Unit unit)
         {
             if (unit == PlayingUnit)
-                BattleState = new BattleStateUnitSelected(this, PlayingUnit);
+                SetStateUnitSelected(PlayingUnit);
         }
 
         /// <summary>
-        /// Add a Cell to the Grid
+        /// method <c>RemoveGridObject</c> remove the given object from the list of grid objects.
         /// </summary>
-        /// <param name="_newCell"></param>
-        /// <param name="_toDestroy"></param>
-        public void AddCell(Cell _newCell, Cell _toDestroy)
-        {
-            if (_toDestroy.IsTaken)
-            {
-                if (_toDestroy.CurrentGridObject != null)
-                {
-                    GridObjects.Remove(_toDestroy.CurrentGridObject);
-                }
-
-                if (_toDestroy.CurrentUnit != null)
-                {
-                    Cell destination = _toDestroy.Neighbours.Where(c => !c.IsTaken).ToList()[0];
-                    if (destination != null)
-                        _toDestroy.CurrentUnit.Move(destination, new List<Cell>() {destination});
-                    else StartCoroutine(_toDestroy.CurrentUnit.OnDestroyed());
-                }
-            }
-            Cells.Add(_newCell);
-            Cells.Remove(_toDestroy);
-            _newCell.CellClicked += OnCellClicked;
-            _newCell.CellHighlighted += OnCellSelected;
-            _newCell.CellDehighlighted += OnCellUnselected;
-        }
-
+        /// <param name="_toDestroy">the object to destroy</param>
         private void RemoveGridObject(GridObject _toDestroy)
         {
-            BlockInputs();
+            SetStateBlockInputs();
             GridObjects.Remove(_toDestroy);
         }
         
@@ -585,7 +561,7 @@ namespace StateMachine
                 yield return null;
            
             Units.Remove((Unit) sender);
-            GetCell.Remove((Unit) sender);
+            ObjectCells.Remove((Unit) sender);
 
             if (sender is BattleHero)
             {
@@ -600,35 +576,34 @@ namespace StateMachine
                 PlayingUnit = null;
                 EndTurn();
             }
-
         }
 
         /// <summary>
         /// Method called every cell crossed by a Unit or a Grid Object to Actualise the Dictionnary.
         /// </summary>
-        /// <param name="_movable"></param>
-        /// <param name="_cell"></param>
+        /// <param name="_movable">the object to move</param>
+        /// <param name="_cell">the destination cell</param>
         public void OnIMovableMoved(IMovable _movable, Cell _cell)
         {
-            if (_cell == null && GetCell.Keys.Contains(_movable))
+            if (_cell == null && ObjectCells.Keys.Contains(_movable))
             {
-                GetCell.Remove(_movable);
+                ObjectCells.Remove(_movable);
                 return;
             }
-            if (!GetCell.Keys.Contains(_movable))
-                GetCell.Add(_movable, _cell);
-            GetCell[_movable] = _cell;
+            if (!ObjectCells.Keys.Contains(_movable))
+                ObjectCells.Add(_movable, _cell);
+            ObjectCells[_movable] = _cell;
 
             if (BattleState.State == EBattleState.Beginning) return;
             
-            if (GetCell.Values.Distinct().Count() != GetCell.Count)
+            if (ObjectCells.Values.Distinct().Count() != ObjectCells.Count)
             {
                 Debug.LogError("A cell is occupied by two entities");
             }
 
-            if (GetCell.Values.Any(c => c == null))
+            if (ObjectCells.Values.Any(c => c == null))
             {
-                foreach (KeyValuePair<IMovable,Cell> _keyValuePair in GetCell)
+                foreach (KeyValuePair<IMovable,Cell> _keyValuePair in ObjectCells)
                 {
                     if (_keyValuePair.Value == null)
                     {

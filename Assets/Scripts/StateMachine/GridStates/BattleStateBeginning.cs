@@ -15,7 +15,6 @@ namespace StateMachine.GridStates
         private List<MonsterSO> monsters;
         private Dictionary<BattleHero, GameObject> battleHeroes;
         private GameObject sprite;
-        private Vector3 outOfScreen = new Vector3(-100, -100, -100);
 
         private BattleHero actualHero { get; set; }
         
@@ -124,7 +123,7 @@ namespace StateMachine.GridStates
         private void CheckCells()
         {
             // Check if 2 Heroes are on the same Cell
-            List<IMovable> heroesOnSameCell = StateManager.GetCell
+            List<IMovable> heroesOnSameCell = StateManager.ObjectCells
                 .GroupBy(z => z.Value)
                 .Where(z => z.Count() > 1)
                 .SelectMany(z => z)

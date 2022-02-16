@@ -29,8 +29,8 @@ namespace Units
         {
             get
             {
-                if (BattleStateManager.instance.GetCell.Keys.Contains(this))
-                    return BattleStateManager.instance.GetCell[this];
+                if (BattleStateManager.instance.ObjectCells.Keys.Contains(this))
+                    return BattleStateManager.instance.ObjectCells[this];
                 return null;
             }
         }

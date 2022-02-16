@@ -7,23 +7,23 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTween.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanSmooth.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTweenExt.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTDescrOptional.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTSeq.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SubMeshUI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanAudio.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTDescr.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/CameraMovement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/test.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/HeroRelicSlot.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleInventory_UI.cs" />
@@ -32,7 +32,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Relics.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/DevButtons.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/HeroTooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/TooltipManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/ItemDragAndDrop.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
@@ -60,10 +59,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Movement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/Tooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/BasicTooltip.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/DeathWaiter.cs" />
@@ -72,6 +69,12 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/BattleStage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/TooltipManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BtnEndTurn.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="24Y3WXaGG2rz1oYsQKXtVFY8oWm" />
@@ -85,6 +88,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
@@ -99,6 +103,7 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -108,6 +113,7 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -115,6 +121,17 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d8de8c55-d779-471a-a325-f9992edee85b" name="Default Changelist" comment="" />
+      <created>1645008383616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645008383616</updated>
+      <workItem from="1645008504632" duration="12542000" />
+    </task>
+    <servers />
+  </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
 </project>
