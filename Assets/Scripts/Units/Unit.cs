@@ -419,17 +419,17 @@ namespace Units
 
         private void Update()
         {
-            if (isPlaying) return;
+            if (isPlayingAnim) return;
             if (DamageReccorded.Count > 0)
             {
                 StartCoroutine(MarkAsTakingDamage());
             }
         }
 
-        private bool isPlaying;
+        private bool isPlayingAnim;
         private IEnumerator MarkAsTakingDamage()
         {
-            isPlaying = true;
+            isPlayingAnim = true;
             info.text = DamageReccorded[0];
             LeanTween.alphaCanvas(info.GetComponent<CanvasGroup>(), 1, 0.3f);
             LeanTween.moveLocal(info.gameObject, new Vector3(0, 50), 1);
@@ -437,7 +437,7 @@ namespace Units
             LeanTween.moveLocal(info.gameObject, Vector3.zero, 0).setDelay(1f);
             DamageReccorded.RemoveAt(0);
             yield return new WaitUntil(() => LeanTween.tweensRunning <= 0);
-            isPlaying = false;
+            isPlayingAnim = false;
         }
         
         /// <summary>

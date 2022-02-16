@@ -379,7 +379,6 @@ namespace StateMachine
         
         #endregion
         
-
         /// <summary>
         /// Method is called once, at the beginning of the game.
         /// </summary>
