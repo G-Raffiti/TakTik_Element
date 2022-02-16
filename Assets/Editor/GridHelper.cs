@@ -42,7 +42,7 @@ namespace Editor
         Dictionary<string, object> parameterValues;
 
         BoolWrapper tileEditModeOn = new BoolWrapper(false);
-        [SerializeField] private CellSO tilePrefab;
+        [SerializeField] private CellSO cellType;
         int tilePaintingRadius = 1;
         int lastPaintedHash = -1;
 
@@ -274,7 +274,7 @@ namespace Editor
             }
             tilePaintingRadius = EditorGUILayout.IntSlider(new GUIContent("Brush radius"), tilePaintingRadius, 1, 4);
             EditorGUI.BeginChangeCheck();
-            tilePrefab = (CellSO)EditorGUILayout.ObjectField("Tile prefab", tilePrefab, typeof(CellSO), true, new GUILayoutOption[0]);
+            cellType = (CellSO)EditorGUILayout.ObjectField("Tile prefab", cellType, typeof(CellSO), true, new GUILayoutOption[0]);
             if (EditorGUI.EndChangeCheck())
             {
                 lastPaintedHash = -1;
@@ -432,7 +432,7 @@ namespace Editor
                 HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
             }
 
-            if (tileEditModeOn.value && tilePrefab != null)
+            if (tileEditModeOn.value && cellType != null)
             {
                 PaintTiles();
             }
@@ -517,8 +517,8 @@ namespace Editor
                     List<Cell> cellsInRange = cells.Where(c => c.GetDistance(selectedCell) <= tilePaintingRadius - 1).ToList();
                     foreach (Cell c in cellsInRange)
                     {
-                        c.CellSO = tilePrefab;
-                        tilePrefab.Spawn(c as TileIsometric);
+                        c.SetCellSO(cellType);
+                        cellType.Spawn(c as TileIsometric);
                     }
                     Undo.CollapseUndoOperations(group);
                     Undo.IncrementCurrentGroup();
@@ -727,11 +727,11 @@ namespace Editor
                         lastPaintedHash = -1;
                         if (PrefabUtility.GetPrefabInstanceStatus(Selection.activeGameObject) == PrefabInstanceStatus.Connected)
                         {
-                            tilePrefab = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject).GetComponent<Cell>().CellSO;
+                            cellType = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject).GetComponent<Cell>().CellSO;
                         }
                         else
                         {
-                            tilePrefab = Selection.activeGameObject.GetComponent<Cell>().CellSO;
+                            cellType = Selection.activeGameObject.GetComponent<Cell>().CellSO;
                         }
                         Repaint();
                     }

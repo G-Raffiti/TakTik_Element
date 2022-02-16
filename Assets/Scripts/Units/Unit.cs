@@ -200,7 +200,7 @@ namespace Units
         public override IEnumerator MovementAnimation(List<Cell> path)
         {
             lifeBar.HideForced();
-            TileIsometric.CellState _state = ((TileIsometric) Cell).State;
+            CellState _state = Cell.State;
             yield return base.MovementAnimation(path);
             MarkBack(_state);
             OnMoveFinished(path.Count);
@@ -455,7 +455,7 @@ namespace Units
         /// <summary>
         /// Method to set to the Marking
         /// </summary>
-        public void MarkBack(TileIsometric.CellState state)
+        public void MarkBack(CellState state)
         {
             ((TileIsometric)Cell).MarkAs(state);
         }

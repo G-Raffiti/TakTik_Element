@@ -122,7 +122,7 @@ namespace Cells
                 TileIsometric _cell = instance.GetComponent<TileIsometric>();
                 if (_cell != null)
                 {
-                    _cell.CellSO = _SavedCell.type;
+                    _cell.SetCellSO(_SavedCell.type);
                     _cell.OffsetCoord = new Vector2(_SavedCell.offsetCoord[0], _SavedCell.offsetCoord[1]);
                     _cell.IsSpawnPlace = _SavedCell.isSpawn;
                     _cell.Initialize();
