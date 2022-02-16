@@ -30,7 +30,7 @@ namespace Cells
         public Sprite Element => element;
         public ECellType Type => tileType;
 
-        public void Spawn(TileIsometric tile)
+        public void Spawn(Cell tile)
         {
             tile.IsUnderGround = isUnderground;
             tile.background.sprite = background;

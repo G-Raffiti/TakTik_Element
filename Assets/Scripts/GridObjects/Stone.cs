@@ -85,7 +85,7 @@ namespace GridObjects
             }
         }
 
-        private Dictionary<Cell, TileIsometric.CellState> savedMark;
+        private Dictionary<Cell, CellState> savedMark;
         public override void ShowAction(Unit actor, Cell location)
         {
             base.ShowAction(actor, location);

@@ -20,13 +20,13 @@ namespace Editor.GridGenerators
         {
             List<Cell> ret = new List<Cell>();
 
-            if (IsoPrefab.GetComponent<Isometric>() == null)
+            if (IsoPrefab.GetComponent<Cell>() == null)
             {
                 Debug.LogError("Invalid iso cell prefab provided");
                 return null;
             }
 
-            Vector3 isoSize = IsoPrefab.GetComponent<Isometric>().GetCellDimensions();
+            Vector3 isoSize = IsoPrefab.GetComponent<Cell>().GetCellDimensions();
             
             for (int i = 0; i < Width; i++)
             {

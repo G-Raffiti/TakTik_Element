@@ -35,7 +35,7 @@ namespace UserInterface.BattleScene
         
         private Dictionary<EColor, Color> colors = new Dictionary<EColor, Color>();
 
-        private TileIsometric.CellState unitMark;
+        private CellState unitMark;
         
         private Unit unit;
         private BattleStateManager cellGrid;

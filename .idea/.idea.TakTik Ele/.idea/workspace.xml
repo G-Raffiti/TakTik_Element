@@ -20,11 +20,37 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/08/f26161a3/IList`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTween.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanSmooth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTweenExt.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTDescrOptional.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTSeq.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/26BACF2A-B3E7-4E5B-9AB6-134973DBE886/3f/250959fa/ICollection`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SubMeshUI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/UnityFileDebug/Lib/Logger/Editor/UnityFileDebugEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanAudio.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTDescr.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
+<<<<<<< Updated upstream
+=======
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleInventory_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Extension/Extension.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Inventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Relics.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/DevButtons.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/HeroTooltip.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/ItemDragAndDrop.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/MonsterTooltip.cs" />
+>>>>>>> Stashed changes
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/UnitTooltip.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MenuPanel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Buffs/BuffInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gears/GearInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicInfo.cs" />
@@ -49,11 +75,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/DeathWaiter.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/BattleStage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/TooltipManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BtnEndTurn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
+<<<<<<< Updated upstream
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/Player.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
@@ -72,10 +98,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/DeathBattle.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/LastBattle.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/LootBoxes.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
-      <option value="$PROJECT_DIR$/Assets/UnityFileDebug/Lib/Logger/Editor/UnityFileDebugEditor.cs" />
-      <option value="$PROJECT_DIR$/Assets/Plugins/MHLab/AutoSaver/Editor/AutoSaver.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
+=======
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Isometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
+>>>>>>> Stashed changes
     </changedPaths>
   </component>
   <component name="ProjectId" id="24Y3WXaGG2rz1oYsQKXtVFY8oWm" />
@@ -104,7 +133,6 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -114,7 +142,6 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -129,7 +156,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1645008383616</updated>
-      <workItem from="1645008504632" duration="20595000" />
+      <workItem from="1645008504632" duration="16645000" />
     </task>
     <servers />
   </component>

@@ -31335,7 +31335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00215630aa1c4da8883c252b4af5207a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 1
+  playerType: 0
   onSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
   onMonsterPlay: {fileID: 11400000, guid: be98f1bbe9430bf4c880c6b0a81474e3, type: 2}
