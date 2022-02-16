@@ -34,15 +34,13 @@ namespace Units
                 return null;
             }
         }
-
         public abstract string getName { get; }
-
+        public bool IsMoving { get; set; }
+        
         public virtual List<Cell> Move(Cell destinationCell, List<Cell> path)
         {
             return Movement.Move(this, destinationCell, path);
         }
-
-        public bool IsMoving { get; set; }
 
         public virtual IEnumerator MovementAnimation(List<Cell> path)
         {

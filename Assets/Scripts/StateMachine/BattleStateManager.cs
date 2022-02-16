@@ -445,7 +445,7 @@ namespace StateMachine
                 _gridObject.OnStartTurn();
             }
 
-            Debug.Log(PlayingUnit.playerType == EPlayerType.HUMAN ? $"Player's Turn {PlayingUnit.ColouredName()}" : $"IA's Turn {PlayingUnit.ColouredName()}");
+            Debug.Log(PlayingUnit.playerType == EPlayerType.HUMAN ? $"Player's Turn {PlayingUnit.ColouredName()}" : $"IA's Turn {PlayingUnit.ColouredName()}", DLogType.Error);
 
             // TODO: mettre dans Unit
             PlayingUnit.TurnPoint -= TurnCost;

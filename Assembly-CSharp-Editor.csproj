@@ -64,6 +64,9 @@
      <Compile Include="Assets\Editor\Data\CSVReader.cs" />
      <Compile Include="Assets\Editor\GridGenerators\EquilateralHexGridGenerator.cs" />
      <Compile Include="Assets\Editor\Data\SOGenerator.cs" />
+     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Editor\OpenInFileBrowser.cs" />
+     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Editor\UnityFileDebugEditor.cs" />
+     <Compile Include="Assets\UnityFileDebug\Lib\Editor\PackageAsset.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

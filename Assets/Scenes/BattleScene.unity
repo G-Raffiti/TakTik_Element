@@ -6851,7 +6851,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 600, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &378864358
@@ -8554,7 +8554,6 @@ GameObject:
   - component: {fileID: 497996692}
   - component: {fileID: 497996689}
   - component: {fileID: 497996690}
-  - component: {fileID: 497996691}
   m_Layer: 0
   m_Name: CellGrid
   m_TagString: Untagged
@@ -8605,20 +8604,6 @@ MonoBehaviour:
   boardTest: {fileID: 11400000, guid: f4719c23ddba65b4ebb50557826838bb, type: 2}
   background: {fileID: 992101193}
   mainCamera: {fileID: 1383558288}
---- !u!114 &497996691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497996688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce63d6dae8dcb0a4ca46356a5f81df3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitsParent: {fileID: 132653974}
-  cellsParent: {fileID: 497996692}
 --- !u!4 &497996692
 Transform:
   m_ObjectHideFlags: 0
@@ -19279,6 +19264,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1034437818}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1046888752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 172182, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_Name
+      value: Unity File Debug
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 476332, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434696, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: fileName
+      value: TakTikEle
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434696, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: fileType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11434696, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
+      propertyPath: filePathFull
+      value: C:/Users/Bprog/AppData/LocalLow/DefaultCompany/TakTik Ele\TakTikEle.2022.02.16.18.01.49.csv
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 481d68ab1d1643c468af0c48a20a93c3, type: 3}
 --- !u!1 &1050095181
 GameObject:
   m_ObjectHideFlags: 0
@@ -31325,7 +31379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688487501
