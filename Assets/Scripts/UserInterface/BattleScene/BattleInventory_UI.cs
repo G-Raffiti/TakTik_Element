@@ -129,7 +129,7 @@ namespace UserInterface.BattleScene
             closeBtn.SetActive(false);
             onActionDone.Raise();
 
-            onInventoryClosed.Raise(monster);
+            BattleStateManager.instance.DeadThisTurn.Remove(BattleStateManager.instance.DeadThisTurn[0]);
         }
     }
 }

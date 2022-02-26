@@ -1069,7 +1069,7 @@ PrefabInstance:
     - target: {fileID: 6763287268482965059, guid: 10b88cdbb225bb7409d413e3f44e3c17,
         type: 3}
       propertyPath: lockPosition.x
-      value: 600
+      value: 670
       objectReference: {fileID: 0}
     - target: {fileID: 7533005381830193870, guid: 10b88cdbb225bb7409d413e3f44e3c17,
         type: 3}

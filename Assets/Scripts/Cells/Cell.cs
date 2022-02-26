@@ -319,14 +319,15 @@ namespace Cells
 
         public virtual void OnMouseExit()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
-            CellDehighlighted?.Invoke(this, new EventArgs());
+            
             if (CurrentGridObject != null)
             {
                 CurrentGridObject.OnPointerExit();
             }
             if (CurrentUnit != null)
                 CurrentUnit.OnPointerExit();
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            CellDehighlighted?.Invoke(this, new EventArgs());
         }
 
         public virtual void OnMouseDown()
@@ -338,7 +339,11 @@ namespace Cells
         }
         private void OnMouseOver()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                OnMouseExit();
+                return;
+            }
             if (Input.GetMouseButtonDown(1))
             {
                 if(CurrentUnit != null)

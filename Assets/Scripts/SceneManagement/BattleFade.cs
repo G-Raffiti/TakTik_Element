@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Linq;
 using _EventSystem.CustomEvents;
 using _Instances;
 using EndConditions;
 using StateMachine;
 using UnityEngine;
-using Random = UnityEngine.Random;
 using Void = _EventSystem.CustomEvents.Void;
 
 namespace SceneManagement
 {
     public class BattleFade : MonoBehaviour
     {
+        [Header("UI Elements in BattleScene")]
         [SerializeField] private ChangeScene SceneManager;
         [SerializeField] private ShopChoice_UI shopChoiceUI;
         [SerializeField] private GameObject nextBattle;
         [SerializeField] private EndRun_UI endRunUI;
         [SerializeField] private GameObject resurectionPool;
-        
         
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onBattleEndTrigger;
@@ -32,7 +30,7 @@ namespace SceneManagement
         
         private void Start()
         {
-            onBattleIsOver.EventListeners += OnBattleEnded;
+            onBattleIsOver.EventListeners += BattleIsOver_Catch;
             onQuitShop.EventListeners += StartNewBattle;
             NextBattle.EventListeners += StartNewBattle;
             goToResurrection.EventListeners += GoToResurrection;
@@ -40,7 +38,7 @@ namespace SceneManagement
 
         private void OnDestroy()
         {
-            onBattleIsOver.EventListeners -= OnBattleEnded;
+            onBattleIsOver.EventListeners -= BattleIsOver_Catch;
             onQuitShop.EventListeners -= StartNewBattle;
             NextBattle.EventListeners -= StartNewBattle;
             goToResurrection.EventListeners -= GoToResurrection;
@@ -60,15 +58,21 @@ namespace SceneManagement
             Debug.Log($"Battle: {BattleStage.BattleNumber} Stage: {BattleStage.Stage}");
         }
 
-        private void OnBattleEnded(bool isWin)
+        private void BattleIsOver_Catch(bool isWin)
         {
+            StartCoroutine(BattleEnds(isWin));
+        }
+
+        private IEnumerator BattleEnds(bool isWin)
+        {
+            yield return new WaitWhile(() => BattleStateManager.instance.DeadThisTurn.Count > 0);
             onUIEnable.Raise();
 
             if (BattleStateManager.instance.endCondition.Type == EConditionType.Last || !isWin)
             {
                 endRunUI.gameObject.SetActive(true);
                 endRunUI.Open(isWin);
-                return;
+                yield break;
             }
             
             YouWin();

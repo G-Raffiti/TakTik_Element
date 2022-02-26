@@ -36,13 +36,10 @@ namespace Units
         [SerializeField] private Element element;
 
         [SerializeField] private BattleStats basicStats;
-        [SerializeField] private BattleStats randomStats;
 
         [SerializeField] private GameObject prefab;
         [SerializeField] private Sprite unitSprite;
 
-        [SerializeField] private int level;
-        
         [SerializeField] private RelicSO relic;
         [SerializeField] private EReward rewardType;
         [SerializeField] private EMonster type;
@@ -111,7 +108,7 @@ namespace Units
         }
 
         public string Name => unitName;
-        public int Level => level;
+        public int Level => Type == EMonster.Minion ? 1 : 3;
         public Sprite UnitSprite => unitSprite;
         public Element Element => element;
         public Archetype Archetype => archetype;
@@ -138,7 +135,6 @@ namespace Units
             element = _rawMonster.element;
             basicStats = _rawMonster.basicStats;
             unitSprite = _rawMonster.unitSprite;
-            level = _rawMonster.level;
             relic = _rawMonster.relic;
             rewardType = _rawMonster.rewardType;
             type = _rawMonster.type;

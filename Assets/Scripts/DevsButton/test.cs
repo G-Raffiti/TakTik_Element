@@ -8,7 +8,11 @@ namespace DevsButton
 {
     public class test :MonoBehaviour
     {
-
+        void Start()
+        {
+            Debug.Log(Application.persistentDataPath);
+        }
+    
         private void Update()
         {
             if (Input.GetMouseButtonUp(0))

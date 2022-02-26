@@ -560,7 +560,12 @@ namespace StateMachine
             }
 
             if (sender is Monster _sender)
-                DeadThisTurn.Add(_sender);
+            {
+                if (_sender.Inventory.gears.Count > 0 
+                    || _sender.Type == EMonster.Boss)
+                    DeadThisTurn.Add(_sender);
+            }
+                
             
             if ((Unit) sender == PlayingUnit)
             {
@@ -589,7 +594,7 @@ namespace StateMachine
             
             if (ObjectCells.Values.Distinct().Count() != ObjectCells.Count)
             {
-                Debug.LogError("A cell is occupied by two entities");
+                CheckCells();
             }
 
             if (ObjectCells.Values.Any(c => c == null))
@@ -601,6 +606,65 @@ namespace StateMachine
                         StartCoroutine(_keyValuePair.Key.OnDestroyed());
                     }
                 }
+            }
+        }
+        
+        /// <summary>
+        /// method <c>CheckCells</c> move any object or Unit sharing a Cell to the nearest Cell 
+        /// </summary>
+        private void CheckCells()
+        {
+            foreach (Cell _cell in Cells)
+            {
+                _cell.FreeTheCell();
+            }
+            Dictionary<Cell, IMovable> getMovable = new Dictionary<Cell, IMovable>();
+            foreach (KeyValuePair<IMovable,Cell> _pair in ObjectCells)
+            {
+                if (getMovable.ContainsKey(_pair.Value))
+                {
+                    Debug.Log($"more than one Movable on Cell ({_pair.Value.OffsetCoord})");
+                    List<IMovable> objSharingCell = ObjectCells
+                        .GroupBy(z => z.Value)
+                        .Where(z => z.Count() > 1)
+                        .SelectMany(z => z)
+                        .Select(z => z.Key)
+                        .ToList();
+
+                    SnapToNearestCell(objSharingCell);
+                    
+                    continue;
+                }
+                getMovable.Add(_pair.Value, _pair.Key);
+            }
+            Dictionary<IMovable, Cell> getCellCopy = new Dictionary<IMovable, Cell> (ObjectCells);
+            foreach (Cell _cell in getCellCopy.Values)
+            {
+                _cell.ForceTake(getMovable[_cell]);
+            }
+            foreach (Unit _unit in Units)
+            {
+                _unit.transform.position = _unit.Cell.transform.position;
+            }
+        
+            foreach (GridObject _gridObject in GridObjects)
+            {
+                _gridObject.transform.position = _gridObject.Cell.transform.position;
+            }
+        }
+
+        /// <summary>
+        /// method <c>SnapToNearestCell</c> find an empty cell near the shared cell and move one of the object there.
+        /// </summary>
+        private void SnapToNearestCell(List<IMovable> objSharingCell)
+        {
+            Cell shared = ObjectCells[objSharingCell[0]];
+            for (int i = 1 ; i < objSharingCell.Count ; i ++)
+            {
+                List<Cell> destinations = new List<Cell>(shared.Neighbours.Where(c => c.IsWalkable));
+                if (destinations.Count == 0)
+                    destinations.AddRange(shared.Neighbours[0].Neighbours.Where(c => c.IsWalkable));
+                destinations[0].ForceTake(objSharingCell[i]);
             }
         }
 

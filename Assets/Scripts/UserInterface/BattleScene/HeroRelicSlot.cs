@@ -18,13 +18,11 @@ namespace UserInterface.BattleScene
 
         [SerializeField] private RelicInfo relicPrefab;
 
-        private void OnEnable()
-        {
-            relicsHolder.Clear();
-        }
-
         public void Initialize(Hero _hero)
         {
+            relicsHolder.Clear();
+            relicSlot.RemoveItem();
+            
             hero = _hero;
             heroNameTxt.text = hero.UnitName;
             heroPortrait.sprite = hero.UnitSprite;
@@ -43,6 +41,7 @@ namespace UserInterface.BattleScene
             {
                 hero.AddRelic(relicSlot.GetInfoRelic().Relic);
             }
+            
         }
 
         private void OnDisable()

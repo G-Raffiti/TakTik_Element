@@ -53,5 +53,18 @@ namespace Score
         {
             CraftingMaterialCollected += number;
         }
+
+        public static int GameScore()
+        {
+            int score = CellWalked * 3
+                        + Bosses.Count * 100
+                        + DamageDealtTotal
+                        + DamageDealtBiggest * 10
+                        - DamageTakenTotal / 2
+                        - DamageTakenBiggest * 5
+                        + GearSalvaged * 7
+                        + CraftingMaterialCollected * 2;
+            return score;
+        }
     }
 }

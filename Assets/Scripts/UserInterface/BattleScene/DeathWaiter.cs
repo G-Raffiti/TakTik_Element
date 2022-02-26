@@ -33,8 +33,6 @@ namespace UserInterface.BattleScene
             CloseInventoryBtn.SetActive(true);
             Inventory.gameObject.SetActive(true);
             Inventory.ShowOnKill(BattleStateManager.instance.DeadThisTurn[0]);
-            
-            BattleStateManager.instance.DeadThisTurn.Remove(BattleStateManager.instance.DeadThisTurn[0]);
         }
     }
 }
