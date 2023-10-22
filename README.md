@@ -1,5 +1,5 @@
 # TakTik-Ele
-RogueLike Turn-Based Grid-Based Tactic-RPG Game
+[Note d'Intention](https://github.com/G-Raffiti/TakTik-Ele/blob/main/220119%20-%20TakTik%20Element%20-%20Note%20d'Intention.pdf)
 
 # TakTik Element, Mais Quesaco ? 
 Taktik Element c’est un jeu vidéo PC en devenir qui mêle des mécaniques de Deck-Building
