@@ -37,6 +37,8 @@ principalement c’est de dire à vos personnages où se déplacer sur un échiq
 les compétences misent à votre disposition. 
 Les personnages auront à leur disposition des Points d’Action 
 et des Points de Mouvement qui se rechargeront à chaque début de tour.
+<br>
+<img alt="Menus" src="/ScreenShots/menus.png" width="640" height="360" />
 
 # Des Statistiques comme dans un RPG ! 
 Dans TakTik Element, tout se joue autour des éléments (avec un principe de Chi-Fu-Mi) 
@@ -58,6 +60,8 @@ Ces Reliques s’obtiendrons lorsque vous battrez les bosses intermédiaires des
 Act 1 et 2 ou en passant par les statues de l’oracle entre deux combats. 
 Vous ferez aussi un choix avant chaque partie pour personnaliser vos héros parmi les 
 Reliques de bases.
+<br>
+<img alt="Shop" src="/ScreenShots/shop.png" width="640" height="360" />
 
 # L’environnement qui joue aussi son rôle 
 Dans TakTik Element, vous ne jouez pas sur un échiquier vide mais sur un bout de terrain 
@@ -130,3 +134,5 @@ compétence d’un Deck à un autre ou d’améliorer une carte comme on le fera
 Une autre idée qui serait un aboutissement de ce jeu serait de proposer à chaque joueur, 
 une fois une partie finie de sauvegarder son équipe dans l’état actuel (après avoir vaincu le 
 Boss Final) et de pouvoir la mesurer à une autre équipe d’un autre joueur. 
+<br>
+<img alt="fight" src="/ScreenShots/Fight.png" width="640" height="360" />
