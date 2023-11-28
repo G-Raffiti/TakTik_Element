@@ -27,7 +27,6 @@ namespace Shops
             }
 
             ShowRelics();
-
         }
 
         private void ShowRelics()

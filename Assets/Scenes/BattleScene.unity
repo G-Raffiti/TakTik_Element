@@ -937,11 +937,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d753c3298745b3921ed545786ff2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PortraitPrefab: {fileID: 5753818308420008423, guid: a20741c43a0e66845b19c31ec56b73e4,
+  portraitPrefab: {fileID: 5753818308420008423, guid: a20741c43a0e66845b19c31ec56b73e4,
     type: 3}
-  HolderPrefab: {fileID: 787284083879291689, guid: eef4703a1624a6b41aa84f7c52858277,
+  holderPrefab: {fileID: 787284083879291689, guid: eef4703a1624a6b41aa84f7c52858277,
     type: 3}
-  RelicPrefab: {fileID: 174935148893832189, guid: 2fd12fca52fb3c64ca902a94564d6e75,
+  relicPrefab: {fileID: 174935148893832189, guid: 2fd12fca52fb3c64ca902a94564d6e75,
     type: 3}
 --- !u!1001 &46331686
 PrefabInstance:
@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cabac2b91a29f2342b56c695229f2deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fader: {fileID: 63288370}
+  fader: {fileID: 63288370}
   anim: {fileID: 63288373}
 --- !u!95 &63288373
 Animator:
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd93d74ead734c029c9944a420fffeb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneManager: {fileID: 63288372}
+  sceneManager: {fileID: 63288372}
   shopChoiceUI: {fileID: 397990711}
   nextBattle: {fileID: 1366855527}
   endRunUI: {fileID: 1781293270}
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
   onBattleIsOver: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
   onQuitShop: {fileID: 11400000, guid: ded797e8a4bd436428e1971b8401499c, type: 2}
-  NextBattle: {fileID: 11400000, guid: cce50a42b906bbc4f87d9538377c65be, type: 2}
+  onNextBattle: {fileID: 11400000, guid: cce50a42b906bbc4f87d9538377c65be, type: 2}
   goToResurrection: {fileID: 11400000, guid: 9b19b610f5b07e24cb73773741c5bfcb, type: 2}
 --- !u!1001 &64657939
 PrefabInstance:
@@ -6815,8 +6815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a109e1f9f3a61143bdb4cbd59b4db13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
-  _UnityEventResponse:
+  gameEvent: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
+  unityEventResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 362799869}
@@ -7009,7 +7009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabUnitIcon: {fileID: 2357642254451993300, guid: 4e27d990c2b54494c8b39aa86062ba71,
     type: 3}
-  Turn: {fileID: 1161789940}
+  turn: {fileID: 1161789940}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
   onGameStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
 --- !u!114 &378864359
@@ -7694,13 +7694,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fefc909c334da6a9407ef6aca195bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Btn1: {fileID: 1194697137}
-  Btn2: {fileID: 556725599}
-  Shops:
+  btn1: {fileID: 1194697137}
+  btn2: {fileID: 556725599}
+  shops:
   - CampFire
   - Forge
   - Oracle
-  ShopIcons:
+  shopIcons:
   - {fileID: 21300000, guid: ddfa1202c0ce8a541954c15e0fcd1014, type: 3}
   - {fileID: 21300000, guid: 79a952db1a99f474eb6bf3dca1d8f3b8, type: 3}
   - {fileID: 21300000, guid: 4bf41dcae4efb2748bf070951299fe71, type: 3}
@@ -12399,9 +12399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7426a14967f6494193fe2fb8f6bbfe8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovingPanel: {fileID: 632613063}
-  Menu: {fileID: 632613070}
-  CloseBtn: {fileID: 200068092}
+  movingPanel: {fileID: 632613063}
+  menu: {fileID: 632613070}
+  closeBtn: {fileID: 200068092}
   movementAnimationSpeed: 900
   offset: 0
 --- !u!114 &632613070
@@ -12416,10 +12416,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b320f830f077420684e22090b213ccf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuBtns: {fileID: 1910535657}
-  Panels: {fileID: 1688487500}
+  menuBtns: {fileID: 1910535657}
+  panels: {fileID: 1688487500}
   showOnStart: 0
-  MovingMenu: {fileID: 632613069}
+  movingMenu: {fileID: 632613069}
   aValue: 1
 --- !u!1 &641880174
 GameObject:
@@ -12932,11 +12932,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab72ef3843994d79a2dfe2cd25227a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterName: {fileID: 540965412}
+  monsterName: {fileID: 540965412}
   monsterSprite: {fileID: 1193701305}
   prefabRelic: {fileID: 593454680961682872, guid: 29ec5303bc8915b4f817a6e2d40fdbb5,
     type: 3}
-  MonsterSlots:
+  monsterSlots:
   - {fileID: 437220155}
   - {fileID: 1620293710}
   - {fileID: 759950293}
@@ -12944,7 +12944,7 @@ MonoBehaviour:
   - {fileID: 2843115990821876952}
   - {fileID: 1146705588}
   - {fileID: 595447065}
-  Blur: {fileID: 727137453}
+  blur: {fileID: 727137453}
   onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
 --- !u!1 &683446848
@@ -14669,25 +14669,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Kiki
   battleStats:
-    HP: 100
-    Shield: 0
-    Speed: 12
-    Power: 2
-    Focus: 0
-    Affinity:
-      Fire: 0
-      Nature: 0
-      Water: 0
-    MP: 3
-    AP: 2
+    hp: 100
+    shield: 0
+    speed: 12
+    power: 2
+    focus: 0
+    affinity:
+      fire: 0
+      nature: 0
+      water: 0
+    mp: 3
+    ap: 2
     gridRange:
-      RangeType: 1
-      RangeValue: 0
-      ZoneType: 1
-      Radius: 0
-      NeedView: 0
-      NeedTarget: 0
-      CanBeModified: 0
+      rangeType: 1
+      rangeValue: 0
+      zoneType: 1
+      radius: 0
+      needView: 0
+      needTarget: 0
+      canBeModified: 0
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
   unitSprite: {fileID: 21300000, guid: cb4154e6cb9fe514d96f3bddf3a4522a, type: 3}
   icon: {fileID: 21300000, guid: cb4154e6cb9fe514d96f3bddf3a4522a, type: 3}
@@ -18633,7 +18633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onEndBattle: {fileID: 11400000, guid: 79c145184a2653e4595a21b7b53ca987, type: 2}
-  DrawPile:
+  drawPile:
   - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
   - {fileID: 11400000, guid: 53f29a37b59d19648ab29eb2923bd88d, type: 2}
   - {fileID: 11400000, guid: faae597fc1cf2cc4ab30cda31e47b1e3, type: 2}
@@ -18646,10 +18646,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
   - {fileID: 11400000, guid: 2781df823607a3341b90f95c3cb97b46, type: 2}
-  HandSkills: []
-  DiscardPile: []
-  ConsumedSkills: []
-  Relics: []
+  handSkills: []
+  discardPile: []
+  consumedSkills: []
+  relics: []
 --- !u!1 &966237255
 GameObject:
   m_ObjectHideFlags: 0
@@ -19746,25 +19746,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Claudius
   battleStats:
-    HP: 100
-    Shield: 0
-    Speed: 12
-    Power: 2
-    Focus: 0
-    Affinity:
-      Fire: 0
-      Nature: 0
-      Water: 0
-    MP: 3
-    AP: 2
+    hp: 100
+    shield: 0
+    speed: 12
+    power: 2
+    focus: 0
+    affinity:
+      fire: 0
+      nature: 0
+      water: 0
+    mp: 3
+    ap: 2
     gridRange:
-      RangeType: 1
-      RangeValue: 0
-      ZoneType: 1
-      Radius: 0
-      NeedView: 0
-      NeedTarget: 0
-      CanBeModified: 0
+      rangeType: 1
+      rangeValue: 0
+      zoneType: 1
+      radius: 0
+      needView: 0
+      needTarget: 0
+      canBeModified: 0
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
   unitSprite: {fileID: 21300000, guid: 56362248075cac34e903f40a86db4f79, type: 3}
   icon: {fileID: 21300000, guid: 56362248075cac34e903f40a86db4f79, type: 3}
@@ -22169,8 +22169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1da6c8a5c44164adcc61fd39504e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AP: {fileID: 173061870}
-  MP: {fileID: 1462002320}
+  ap: {fileID: 173061870}
+  mp: {fileID: 1462002320}
   onStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
   onSkillUsed: {fileID: 11400000, guid: 52c1a59b61a9b3346925fc8e080a73fb, type: 2}
   onUnitMoved: {fileID: 11400000, guid: f00c2e11c76f95d4ab1c9582337fb7db, type: 2}
@@ -23825,20 +23825,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751d2346ef05466683144fcd45a0cd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeroName: {fileID: 1191591796}
+  heroName: {fileID: 1191591796}
   heroSprite: {fileID: 1797855765}
-  MonsterName: {fileID: 1432734335}
+  monsterName: {fileID: 1432734335}
   monsterSprite: {fileID: 547823522}
   prefabGear: {fileID: 6523860408074563482, guid: c53c0af06bb067e4cb95b6167db29030,
     type: 3}
-  HeroSlots:
+  heroSlots:
   - {fileID: 1984124105}
   - {fileID: 1442861727}
   - {fileID: 384468983}
-  MonsterSlots:
+  monsterSlots:
   - {fileID: 956821749}
   - {fileID: 163447242}
-  Blur: {fileID: 727137453}
+  blur: {fileID: 727137453}
   onUIEnable: {fileID: 11400000, guid: c1b068b66a3384b418087f5a332ec47f, type: 2}
   onActionDone: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
   onInventoryClosed: {fileID: 11400000, guid: b69d6a4d0177cc8438ddc4f5c60b8cdc, type: 2}
@@ -25143,10 +25143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89264e79348440739faa8f5ddc904632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnBattleStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
-  OnCellWalked: {fileID: 11400000, guid: fcb513c05edf06b4885d680d2ee2862b, type: 2}
-  OnDestroyGear: {fileID: 11400000, guid: f26d0ae330b585748a9b6c29b4b9e926, type: 2}
-  OnCraftingMaterialAdded: {fileID: 11400000, guid: 5ceb741c678453c4cbde1c9045230013,
+  onBattleStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
+  onCellWalked: {fileID: 11400000, guid: fcb513c05edf06b4885d680d2ee2862b, type: 2}
+  onDestroyGear: {fileID: 11400000, guid: f26d0ae330b585748a9b6c29b4b9e926, type: 2}
+  onCraftingMaterialAdded: {fileID: 11400000, guid: 5ceb741c678453c4cbde1c9045230013,
     type: 2}
 --- !u!1 &1285134385
 GameObject:
@@ -28246,8 +28246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a0fa7cbb564fc5b6b5f1269b98beff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GameEvent: {fileID: 11400000, guid: d194e5a9adad9ce49a3a3863b0225101, type: 2}
-  _UnityEventResponse:
+  gameEvent: {fileID: 11400000, guid: d194e5a9adad9ce49a3a3863b0225101, type: 2}
+  unityEventResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1188434641}
@@ -28298,10 +28298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22ee814b9734b229747c40c0a78da38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inventory: {fileID: 1188434643}
-  Relic: {fileID: 667132211}
-  CloseInventoryBtn: {fileID: 1130287620}
-  CloseRelicBtn: {fileID: 1662339562}
+  inventory: {fileID: 1188434643}
+  relic: {fileID: 667132211}
+  closeInventoryBtn: {fileID: 1130287620}
+  closeRelicBtn: {fileID: 1662339562}
 --- !u!1001 &1455650351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29478,7 +29478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1526780301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29575,7 +29575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck: {fileID: 963500106}
-  OnePunchMan: {fileID: 11400000, guid: 1f24c51c6380c5e4aabe6f0d39e731ca, type: 2}
+  onePunchMan: {fileID: 11400000, guid: 1f24c51c6380c5e4aabe6f0d39e731ca, type: 2}
   onReDraw: {fileID: 11400000, guid: 6dd6da4102fae424db723608e449f385, type: 2}
 --- !u!1 &1526832112
 GameObject:
@@ -30866,25 +30866,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Metal
   battleStats:
-    HP: 100
-    Shield: 0
-    Speed: 12
-    Power: 2
-    Focus: 0
-    Affinity:
-      Fire: 0
-      Nature: 0
-      Water: 0
-    MP: 3
-    AP: 2
+    hp: 100
+    shield: 0
+    speed: 12
+    power: 2
+    focus: 0
+    affinity:
+      fire: 0
+      nature: 0
+      water: 0
+    mp: 3
+    ap: 2
     gridRange:
-      RangeType: 1
-      RangeValue: 0
-      ZoneType: 1
-      Radius: 0
-      NeedView: 0
-      NeedTarget: 0
-      CanBeModified: 0
+      rangeType: 1
+      rangeValue: 0
+      zoneType: 1
+      radius: 0
+      needView: 0
+      needTarget: 0
+      canBeModified: 0
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
   unitSprite: {fileID: 21300000, guid: bc7f45f96d90f8646bec07de809bc3db, type: 3}
   icon: {fileID: 21300000, guid: bc7f45f96d90f8646bec07de809bc3db, type: 3}
@@ -32078,12 +32078,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fc988f45f2416d89f1fef9789c8668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillPrefab: {fileID: 790863748010223534, guid: 637b3eac384757449b4ace39927c1467,
+  skillPrefab: {fileID: 790863748010223534, guid: 637b3eac384757449b4ace39927c1467,
     type: 3}
-  DrawPile: {fileID: 866967757}
-  DiscardPile: {fileID: 54532968}
-  ConsumedPile: {fileID: 1070610155}
-  Hero: {fileID: 1662823852}
+  drawPile: {fileID: 866967757}
+  discardPile: {fileID: 54532968}
+  consumedPile: {fileID: 1070610155}
+  hero: {fileID: 1662823852}
   blancHero: {fileID: 1662823853}
   deck: {fileID: 963500106}
 --- !u!114 &1662823852
@@ -32099,39 +32099,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementAnimationSpeed: 0
-  Inventory:
+  inventory:
     gears: []
   colorSet: {fileID: 0}
   unitSpriteRenderer: {fileID: 0}
   info: {fileID: 0}
-  UnitName: 
-  onUnitTooltip_ON: {fileID: 0}
+  unitName: 
+  onUnitTooltipOn: {fileID: 0}
   onUnitMoved: {fileID: 0}
-  TurnPoint: 0
-  BattleStats:
-    HP: 0
-    Shield: 0
-    Speed: 0
-    Power: 0
-    Focus: 0
-    Affinity:
-      Fire: 0
-      Nature: 0
-      Water: 0
-    MP: 0
-    AP: 0
+  turnPoint: 0
+  battleStats:
+    hp: 0
+    shield: 0
+    speed: 0
+    power: 0
+    focus: 0
+    affinity:
+      fire: 0
+      nature: 0
+      water: 0
+    mp: 0
+    ap: 0
     gridRange:
-      RangeType: 0
-      RangeValue: 0
-      ZoneType: 0
-      Radius: 0
-      NeedView: 0
-      NeedTarget: 0
-      CanBeModified: 0
+      rangeType: 0
+      rangeValue: 0
+      zoneType: 0
+      radius: 0
+      needView: 0
+      needTarget: 0
+      canBeModified: 0
   playerType: 0
   onHeroSelected: {fileID: 0}
   onCellWalked: {fileID: 0}
-  onHeroTooltip_ON: {fileID: 0}
+  onHeroTooltipOn: {fileID: 0}
 --- !u!114 &1662823853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32146,25 +32146,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Blanc
   battleStats:
-    HP: 0
-    Shield: 0
-    Speed: 0
-    Power: 0
-    Focus: 0
-    Affinity:
-      Fire: 0
-      Nature: 0
-      Water: 0
-    MP: 0
-    AP: 0
+    hp: 0
+    shield: 0
+    speed: 0
+    power: 0
+    focus: 0
+    affinity:
+      fire: 0
+      nature: 0
+      water: 0
+    mp: 0
+    ap: 0
     gridRange:
-      RangeType: 0
-      RangeValue: 0
-      ZoneType: 0
-      Radius: 0
-      NeedView: 0
-      NeedTarget: 0
-      CanBeModified: 0
+      rangeType: 0
+      rangeValue: 0
+      zoneType: 0
+      radius: 0
+      needView: 0
+      needTarget: 0
+      canBeModified: 0
   prefab: {fileID: 3480699985351151856, guid: 44d175d01ca3a494c80452149d29f019, type: 3}
   unitSprite: {fileID: 21300000, guid: b435100613af3a946b8966f722e63810, type: 3}
   icon: {fileID: 21300000, guid: b435100613af3a946b8966f722e63810, type: 3}
@@ -39747,7 +39747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dfcb70dfb3449498763a51429c464c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Manager: {fileID: 11400000, guid: 8a0531b6ce5b24c4f902fd4eac7f66e3, type: 2}
+  manager: {fileID: 11400000, guid: 8a0531b6ce5b24c4f902fd4eac7f66e3, type: 2}
 --- !u!1 &2072077900
 GameObject:
   m_ObjectHideFlags: 0
@@ -41239,10 +41239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de91a9e8146402fb6436d6ed1a05f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Deck: {fileID: 963500106}
+  deck: {fileID: 963500106}
   onDraw: {fileID: 11400000, guid: 5df12d826f7fb3e4f8361bd46ddde90f, type: 2}
   onReDraw: {fileID: 11400000, guid: 6dd6da4102fae424db723608e449f385, type: 2}
-  OnUIDisable: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
+  onUIDisable: {fileID: 11400000, guid: 664a718155e705a44bd7b717f11d901c, type: 2}
   onUnitStartTurn: {fileID: 11400000, guid: 51ca89af1b3d8794c8ace06ac7b08235, type: 2}
   onEndTurn: {fileID: 11400000, guid: fbaba62aa2c21c84ebffb40f3518b987, type: 2}
   onBattleStart: {fileID: 11400000, guid: 716505a8965ec7b4291374cfa58b2e20, type: 2}
@@ -41332,6 +41332,11 @@ PrefabInstance:
     - target: {fileID: 782066463285790181, guid: ee32c8e5ac323e64c8cf85315af37bd1,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782066463285790183, guid: ee32c8e5ac323e64c8cf85315af37bd1,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 782066463285790202, guid: ee32c8e5ac323e64c8cf85315af37bd1,
