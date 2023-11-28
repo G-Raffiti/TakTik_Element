@@ -50,19 +50,19 @@ namespace Skills._Zone
         /// <param name="range">skill Range</param>
         /// <param name="cell">Targeted Cell</param>
         /// <returns></returns>
-        public static List<Cell> GetZone(GridRange range, Cell cell)
+        public static List<Cell> GetZone(GridRange _range, Cell _cell)
         {
-            switch (range.ZoneType)
+            switch (_range.zoneType)
             {
-                case EZone.Self: return new List<Cell>(1) {cell};
-                case EZone.Basic: return Basic(cell, range.Radius);
-                case EZone.Contact: return Contact(cell);
-                case EZone.Cross: return Cross(cell, range.Radius);
-                case EZone.Ranged: return Ranged(cell, range.Radius);
-                case EZone.Line: return GetLine(cell, range.Radius);
-                case EZone.Cone: return GetCone(cell, range.Radius);
-                case EZone.Perpendicular: return GetPerpendicular(cell, range.Radius);
-                default: return new List<Cell>(1) {cell};
+                case EZone.Self: return new List<Cell>(1) {_cell};
+                case EZone.Basic: return Basic(_cell, _range.radius);
+                case EZone.Contact: return Contact(_cell);
+                case EZone.Cross: return Cross(_cell, _range.radius);
+                case EZone.Ranged: return Ranged(_cell, _range.radius);
+                case EZone.Line: return GetLine(_cell, _range.radius);
+                case EZone.Cone: return GetCone(_cell, _range.radius);
+                case EZone.Perpendicular: return GetPerpendicular(_cell, _range.radius);
+                default: return new List<Cell>(1) {_cell};
             }
         }
         
@@ -72,43 +72,43 @@ namespace Skills._Zone
         /// <param name="range">skill Range</param>
         /// <param name="cell">unit's Cell who play the skill</param>
         /// <returns></returns>
-        public static List<Cell> GetRange(GridRange range, Cell cell)
+        public static List<Cell> GetRange(GridRange _range, Cell _cell)
         {
-            switch (range.RangeType)
+            switch (_range.rangeType)
             {
-                case EZone.Self: return new List<Cell>() {cell};
-                case EZone.Basic: return Basic(cell, range.RangeValue);
-                case EZone.Contact: return Contact(cell);
-                case EZone.Cross: return Cross(cell, range.RangeValue);
-                case EZone.Ranged: return Ranged(cell, range.RangeValue);
-                default: return new List<Cell>() {cell};
+                case EZone.Self: return new List<Cell>() {_cell};
+                case EZone.Basic: return Basic(_cell, _range.rangeValue);
+                case EZone.Contact: return Contact(_cell);
+                case EZone.Cross: return Cross(_cell, _range.rangeValue);
+                case EZone.Ranged: return Ranged(_cell, _range.rangeValue);
+                default: return new List<Cell>() {_cell};
             }
         }
 
         
         #region Zone Type
 
-        private static List<Cell> Basic(Cell cell, int radius)
+        private static List<Cell> Basic(Cell _cell, int _radius)
         {
             List<Cell> _ret = new List<Cell>();
-            _ret.AddRange(BattleStateManager.instance.Cells.Where(_instanceCell => cell.GetDistance(_instanceCell) <= radius));
+            _ret.AddRange(BattleStateManager.instance.Cells.Where(_instanceCell => _cell.GetDistance(_instanceCell) <= _radius));
 
             return _ret;
         }
 
-        private static List<Cell> Contact(Cell cell)
+        private static List<Cell> Contact(Cell _cell)
         {
-            return cell.Neighbours;
+            return _cell.Neighbours;
         }
 
-        private static List<Cell> Cross(Cell cell, int radius)
+        private static List<Cell> Cross(Cell _cell, int _radius)
         {
             List<Cell> _ret = new List<Cell>();
             foreach (Vector2 _direction in Directions)
             {
-                for (int i = 0; i < radius + 1; i++)
+                for (int _i = 0; _i < _radius + 1; _i++)
                 {
-                    Cell _cellInRange = BattleStateManager.instance.Cells.Find(c => c.OffsetCoord == cell.OffsetCoord + _direction * i);
+                    Cell _cellInRange = BattleStateManager.instance.Cells.Find(_c => _c.OffsetCoord == _cell.OffsetCoord + _direction * _i);
                     if (_cellInRange == null) continue;
                     _ret.Add(_cellInRange);
                 }
@@ -117,50 +117,50 @@ namespace Skills._Zone
             return _ret;
         }
 
-        private static List<Cell> Ranged(Cell cell, int radius)
+        private static List<Cell> Ranged(Cell _cell, int _radius)
         {
-            return new List<Cell>(BattleStateManager.instance.Cells.Where(c => c.GetDistance(cell) <= radius).ToList()).Where(_cell => _cell.GetDistance(cell) > 2).ToList();
+            return new List<Cell>(BattleStateManager.instance.Cells.Where(_c => _c.GetDistance(_cell) <= _radius).ToList()).Where(_c2 => _cell.GetDistance(_c2) > 2).ToList();
         }
 
-        public static Vector2 Direction(Cell start, Cell destination)
+        public static Vector2 Direction(Cell _start, Cell _destination)
         {
-            Vector2 direction = start.OffsetCoord - destination.OffsetCoord;
-            if (direction.x == 0 && direction.y == 0) 
+            Vector2 _direction = _start.OffsetCoord - _destination.OffsetCoord;
+            if (_direction.x == 0 && _direction.y == 0) 
                 return zero;
-            if (Math.Abs(direction.x) > Math.Abs(direction.y))
-                return direction.x < 0 ? right : left;
-            return direction.y < 0 ? up : down;
+            if (Math.Abs(_direction.x) > Math.Abs(_direction.y))
+                return _direction.x < 0 ? right : left;
+            return _direction.y < 0 ? up : down;
         }
 
-        public static Vector2 RectDirection(Vector2 direction)
+        public static Vector2 RectDirection(Vector2 _direction)
         {
-            if(direction == up) return right;
-            if(direction == right) return down;
-            if (direction == down) return left;
-            if (direction == left) return up;
+            if(_direction == up) return right;
+            if(_direction == right) return down;
+            if (_direction == down) return left;
+            if (_direction == left) return up;
             return zero;
         }
         
-        private static Vector2 GetDirection(Cell targetCell)
+        private static Vector2 GetDirection(Cell _targetCell)
         {
-            Vector3 direction = BattleStateManager.instance.PlayingUnit.Cell.OffsetCoord - targetCell.OffsetCoord;
-            if (Math.Abs(Math.Abs(direction.x) - Math.Abs(direction.y)) < 0.01f)
+            Vector3 _direction = BattleStateManager.instance.PlayingUnit.Cell.OffsetCoord - _targetCell.OffsetCoord;
+            if (Math.Abs(Math.Abs(_direction.x) - Math.Abs(_direction.y)) < 0.01f)
             {
-                direction = BattleStateManager.instance.PlayingUnit.Cell.transform
+                _direction = BattleStateManager.instance.PlayingUnit.Cell.transform
                     .position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
-            if (Math.Abs(direction.x) > Math.Abs(direction.y))
-                return direction.x < 0 ? right : left;
-            return direction.y < 0 ? up : down;
+            if (Math.Abs(_direction.x) > Math.Abs(_direction.y))
+                return _direction.x < 0 ? right : left;
+            return _direction.y < 0 ? up : down;
         }
 
-        private static List<Cell> GetLine(Cell cell, int radius)
+        private static List<Cell> GetLine(Cell _cell, int _radius)
         {
-            Vector2 direction = GetDirection(cell);
+            Vector2 _direction = GetDirection(_cell);
             List<Cell> _ret = new List<Cell>();
-            for (int i = 0; i < radius + 1; i++)
+            for (int _i = 0; _i < _radius + 1; _i++)
             {
-                Cell _cellInRange = BattleStateManager.instance.Cells.Find(c => c.OffsetCoord == cell.OffsetCoord + direction * i);
+                Cell _cellInRange = BattleStateManager.instance.Cells.Find(_c => _c.OffsetCoord == _cell.OffsetCoord + _direction * _i);
                 if (_cellInRange == null) continue;
                 if (!_ret.Contains(_cellInRange))
                     _ret.Add(_cellInRange);
@@ -169,31 +169,31 @@ namespace Skills._Zone
             return _ret;
         }
 
-        private static List<Cell> GetCone(Cell cell, int radius)
+        private static List<Cell> GetCone(Cell _cell, int _radius)
         {
             List<Cell> _ret = new List<Cell>() { };
-            Vector2 direction = GetDirection(cell);
+            Vector2 _direction = GetDirection(_cell);
 
-            List<Cell> _baseLine = new List<Cell>() {cell};
-            for (int i = 0; i < radius + 1; i++)
+            List<Cell> _baseLine = new List<Cell>() {_cell};
+            for (int _i = 0; _i < _radius + 1; _i++)
             {
-                if (BattleStateManager.instance.Cells.Find(c =>
-                    c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * i) != null)
-                    _baseLine.Add(BattleStateManager.instance.Cells.Find(c =>
-                        c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * i));
-                if (BattleStateManager.instance.Cells.Find(c =>
-                    c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * -i) != null)
-                    _baseLine.Add(BattleStateManager.instance.Cells.Find(c =>
-                        c.OffsetCoord == cell.OffsetCoord + direction * i + RectDirection(direction) * -i));
+                if (BattleStateManager.instance.Cells.Find(_c =>
+                    _c.OffsetCoord == _cell.OffsetCoord + _direction * _i + RectDirection(_direction) * _i) != null)
+                    _baseLine.Add(BattleStateManager.instance.Cells.Find(_c =>
+                        _c.OffsetCoord == _cell.OffsetCoord + _direction * _i + RectDirection(_direction) * _i));
+                if (BattleStateManager.instance.Cells.Find(_c =>
+                    _c.OffsetCoord == _cell.OffsetCoord + _direction * _i + RectDirection(_direction) * -_i) != null)
+                    _baseLine.Add(BattleStateManager.instance.Cells.Find(_c =>
+                        _c.OffsetCoord == _cell.OffsetCoord + _direction * _i + RectDirection(_direction) * -_i));
             }
 
-            foreach (Cell baseCell in _baseLine)
+            foreach (Cell _baseCell in _baseLine)
             {
-                for (int i = 0; i < radius + 1 - (baseCell.GetDistance(cell)) / 2; i++)
+                for (int _i = 0; _i < _radius + 1 - (_baseCell.GetDistance(_cell)) / 2; _i++)
                 {
                     Cell _cellInRange =
-                        BattleStateManager.instance.Cells.Find(c =>
-                            c.OffsetCoord == baseCell.OffsetCoord + direction * i);
+                        BattleStateManager.instance.Cells.Find(_c =>
+                            _c.OffsetCoord == _baseCell.OffsetCoord + _direction * _i);
                     if (_cellInRange == null) continue;
                     if (!_ret.Contains(_cellInRange))
                         _ret.Add(_cellInRange);
@@ -203,22 +203,22 @@ namespace Skills._Zone
             return _ret;
         }
 
-        private static List<Cell> GetPerpendicular(Cell cell, int radius)
+        private static List<Cell> GetPerpendicular(Cell _cell, int _radius)
         {
             List<Cell> _ret = new List<Cell>();
             List<Cell> _line = new List<Cell>();
-            if (Math.Abs(GetDirection(cell).y) > 0)
+            if (Math.Abs(GetDirection(_cell).y) > 0)
             {
                 _line = new List<Cell>(
-                    BattleStateManager.instance.Cells.Where(c => c.OffsetCoord.y == cell.OffsetCoord.y));
+                    BattleStateManager.instance.Cells.Where(_c => _c.OffsetCoord.y == _cell.OffsetCoord.y));
             }
-            else if (Math.Abs(GetDirection(cell).x) > 0)
+            else if (Math.Abs(GetDirection(_cell).x) > 0)
             {
                 _line = new List<Cell>(
-                    BattleStateManager.instance.Cells.Where(c => c.OffsetCoord.x == cell.OffsetCoord.x));
+                    BattleStateManager.instance.Cells.Where(_c => _c.OffsetCoord.x == _cell.OffsetCoord.x));
             }
 
-            _ret = new List<Cell>(_line.Where(c => c.GetDistance(cell) <= radius));
+            _ret = new List<Cell>(_line.Where(_c => _c.GetDistance(_cell) <= _radius));
 
             return _ret;
         }
@@ -229,16 +229,16 @@ namespace Skills._Zone
         /// Get all the Cell on which you can use a skill
         /// </summary>
         /// <returns></returns>
-        public static List<Cell> CellsInRange(Skill skill, Cell _startCell)
+        public static List<Cell> CellsInRange(Skill _skill, Cell _startCell)
         {
             List<Cell> _inRange = new List<Cell>();
             
-            foreach (Cell _cell in GetRange(skill.GridRange, _startCell))
+            foreach (Cell _cell in GetRange(_skill.GridRange, _startCell))
             {
-                if (!skill.GridRange.NeedTarget && !_inRange.Contains(_cell))
+                if (!_skill.GridRange.needTarget && !_inRange.Contains(_cell))
                     _inRange.Add(_cell);
                 
-                else if (GetAffected(_cell, skill) != null && !_inRange.Contains(_cell))
+                else if (GetAffected(_cell, _skill) != null && !_inRange.Contains(_cell))
                 {
                     _inRange.Add(_cell);
                 }
@@ -251,16 +251,16 @@ namespace Skills._Zone
         /// Get all the Cell on which you can use a skill if you need the view
         /// </summary>
         /// <returns></returns>
-        public static List<Cell> CellsInView(Skill skill, Cell _startCell)
+        public static List<Cell> CellsInView(Skill _skill, Cell _startCell)
         {
             List<Cell> _inRange = new List<Cell>();
 
-            foreach (Cell _cell in FieldOfView(_startCell, GetRange(skill.GridRange, _startCell)))
+            foreach (Cell _cell in FieldOfView(_startCell, GetRange(_skill.GridRange, _startCell)))
             {
-                if (!skill.GridRange.NeedTarget)
+                if (!_skill.GridRange.needTarget)
                     _inRange.Add(_cell);
                 
-                else if (GetAffected(_cell, skill) != null)
+                else if (GetAffected(_cell, _skill) != null)
                 {
                     _inRange.Add(_cell);
                 }
@@ -323,19 +323,19 @@ namespace Skills._Zone
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyAlly:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType == _skillInfo.Unit.playerType)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType == _skillInfo.unit.playerType)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyEnemy:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType != _skillInfo.Unit.playerType)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType != _skillInfo.unit.playerType)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlySelf:
-                    if (_cell.IsTaken && _cell.CurrentUnit == _skillInfo.Unit)
+                    if (_cell.IsTaken && _cell.CurrentUnit == _skillInfo.unit)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyOthers:
-                    if (_cell.IsTaken && _cell != _skillInfo.Unit.Cell)
+                    if (_cell.IsTaken && _cell != _skillInfo.unit.Cell)
                     {
                         _affected = _cell.CurrentUnit;
                     }
@@ -351,29 +351,29 @@ namespace Skills._Zone
         /// <param name="_cell">the cell that have to be tested</param>
         /// <returns></returns>
         [CanBeNull]
-        public static IMovable GetAffected(Cell _cell, Skill skill)
+        public static Movable GetAffected(Cell _cell, Skill _skill)
         {
-            IMovable _affected = null;
-            switch (skill.Affect)
+            Movable _affected = null;
+            switch (_skill.Affect)
             {
                 case EAffect.All :
                     if (_cell.IsTaken)
                         _affected = _cell.GetCurrentIMovable();
                     break;
                 case EAffect.OnlyAlly:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType == skill.Unit.playerType)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType == _skill.Unit.playerType)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyEnemy:
-                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType != skill.Unit.playerType)
+                    if (_cell.IsTaken && _cell.CurrentUnit != null && _cell.CurrentUnit.playerType != _skill.Unit.playerType)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlySelf:
-                    if (_cell.IsTaken && _cell.CurrentUnit == skill.Unit)
+                    if (_cell.IsTaken && _cell.CurrentUnit == _skill.Unit)
                         _affected = _cell.CurrentUnit;
                     break;
                 case EAffect.OnlyOthers:
-                    if (_cell.IsTaken && _cell != skill.Unit.Cell)
+                    if (_cell.IsTaken && _cell != _skill.Unit.Cell)
                     {
                         _affected = _cell.GetCurrentIMovable();
                     }
@@ -392,59 +392,59 @@ namespace Skills._Zone
             return null;
         }
         
-        public static string AffectToString(EAffect affect)
+        public static string AffectToString(EAffect _affect)
         {
-            switch (affect)
+            switch (_affect)
             {
                 case EAffect.All: return "All Units";
                 case EAffect.OnlyAlly: return "Only Ally";
                 case EAffect.OnlyEnemy: return "Only Enemy";
                 case EAffect.OnlySelf: return "Only You";
                 case EAffect.OnlyOthers: return "Only Others";
-                default: return affect.ToString();
+                default: return _affect.ToString();
             }
         }
 
-        public static string ZoneToString(EZone type)
+        public static string ZoneToString(EZone _type)
         {
-            string str = "";
-            switch (type)
+            string _str = "";
+            switch (_type)
             {
                 case EZone.Self:
-                    str += "<sprite name=ZoneSelf>"; break;
+                    _str += "<sprite name=ZoneSelf>"; break;
                 case EZone.Basic:
-                    str += "<sprite name=ZoneBasic>"; break;
+                    _str += "<sprite name=ZoneBasic>"; break;
                 case EZone.Contact:
-                    str += "<sprite name=ZoneContact>"; break;
+                    _str += "<sprite name=ZoneContact>"; break;
                 case EZone.Line:
-                    str += "<sprite name=ZoneLine>"; break;
+                    _str += "<sprite name=ZoneLine>"; break;
                 case EZone.Ranged:
-                    str += "<sprite name=ZoneRanged>"; break;
+                    _str += "<sprite name=ZoneRanged>"; break;
                 case EZone.Square:
-                    str += "<sprite name=ZoneSquare>"; break;
+                    _str += "<sprite name=ZoneSquare>"; break;
                 case EZone.Cross:
-                    str += "<sprite name=ZoneCross>"; break;
+                    _str += "<sprite name=ZoneCross>"; break;
                 case EZone.Perpendicular:
-                    str += "<sprite name=ZonePerpendicular>"; break;
+                    _str += "<sprite name=ZonePerpendicular>"; break;
                 case EZone.Cone:
-                    str += "<sprite name=ZoneCone>"; break;
+                    _str += "<sprite name=ZoneCone>"; break;
                 default:
-                    str += type.ToString(); break;
+                    _str += _type.ToString(); break;
             }
 
-            return str;
+            return _str;
         }
 
         public static List<Unit> GetUnitsAffected(SkillInfo _skillInfo, Cell _targetCell)
         {
-            List<Unit> ret = new List<Unit>();
+            List<Unit> _ret = new List<Unit>();
             foreach (Cell _cell in GetZone(_skillInfo.skill.GridRange, _targetCell))
             {
                 if (GetUnitAffected(_cell, _skillInfo) != null)
-                    ret.Add(GetUnitAffected(_cell, _skillInfo));
+                    _ret.Add(GetUnitAffected(_cell, _skillInfo));
             }
 
-            return ret;
+            return _ret;
         }
     }
 }

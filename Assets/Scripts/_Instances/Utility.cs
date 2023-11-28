@@ -6,12 +6,12 @@ namespace _Instances
 {
     public class Utility : MonoBehaviour
     {
-        private static Utility Instance;
+        private static Utility _instance;
         [SerializeField] private DataBase dataBase;
 
         private void Awake()
         {
-            Instance = this;
+            _instance = this;
             dataBase.InstantiateDataBases();
         }
 
@@ -20,9 +20,9 @@ namespace _Instances
             dataBase.InstantiateDataBases();
         }
 
-        public static void RunCoroutine(IEnumerator coroutine)
+        public static void RunCoroutine(IEnumerator _coroutine)
         {
-            Instance.StartCoroutine(coroutine);
+            _instance.StartCoroutine(_coroutine);
         }
     }
 }

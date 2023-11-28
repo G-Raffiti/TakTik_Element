@@ -37,9 +37,9 @@ namespace StateMachine.GridStates
                 _cell.UnMark();
             }
             
-            usable.AddRange(skill.skill.GridRange.NeedView ? Zone.CellsInView(skill.skill, skill.Unit.Cell) : Zone.CellsInRange(skill.skill, skill.Unit.Cell));
+            usable.AddRange(skill.skill.GridRange.needView ? Zone.CellsInView(skill.skill, skill.unit.Cell) : Zone.CellsInRange(skill.skill, skill.unit.Cell));
 
-            if (skill.skill.GridRange.NeedTarget || skill.skill.GridRange.NeedView)
+            if (skill.skill.GridRange.needTarget || skill.skill.GridRange.needView)
             {
                 inRange.AddRange(Zone.GetRange(skill.skill.GridRange, currentUnit.Cell));
                 foreach (Cell _cell in inRange)
@@ -74,22 +74,22 @@ namespace StateMachine.GridStates
             else StateManager.BattleState = new BattleStateUnitSelected(StateManager, currentUnit);
         }
 
-        public override void OnCellSelected(Cell cell)
+        public override void OnCellSelected(Cell _targetCell)
         {
-            if (usable.Contains(cell))
+            if (usable.Contains(_targetCell))
             {
-                foreach (Cell _cellInRadius in skill.GetZoneOfEffect(cell))
+                foreach (Cell _cellInRadius in skill.GetZoneOfEffect(_targetCell))
                 {
                     _cellInRadius.MarkAsPath();
                 }
             }
             else
             {
-                base.OnCellSelected(cell);
+                base.OnCellSelected(_targetCell);
             }
         }
 
-        public override void OnCellDeselected(Cell cell)
+        public override void OnCellDeselected(Cell _targetCell)
         {
             IEnumerable<Cell> _cellsNotInRange = StateManager.Cells.Except(usable);
             

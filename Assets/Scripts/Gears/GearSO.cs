@@ -19,7 +19,7 @@ namespace Gears
     }
     
     [CreateAssetMenu(fileName = "Gear_", menuName = "Scriptable Object/New Gear")]
-    public class GearSO : ScriptableObject
+    public class GearSo : ScriptableObject
     {
         [SerializeField] private Rarity rarity;
         public Rarity Rarity => rarity;
@@ -37,13 +37,13 @@ namespace Gears
         /// <summary>
         /// Affixes that can't be generate on this type of Item
         /// </summary>
-        [SerializeField] private List<AffixSO> nonAffixs;
+        [SerializeField] private List<AffixSo> nonAffixs;
         /// <summary>
         /// Affixes that can't be generate on this type of Item
         /// </summary>
-        public List<AffixSO> NonAffixs => nonAffixs;
+        public List<AffixSo> NonAffixs => nonAffixs;
 
-        public void SetDATA(RawGear _rawGear)
+        public void SetData(RawGear _rawGear)
         {
             rarity = _rawGear.Rarity;
             type = _rawGear.Type;
@@ -51,7 +51,7 @@ namespace Gears
             gearName = _rawGear.Name;
             mainStat = _rawGear.MainStat;
             specialEffect = _rawGear.SpecialEffect;
-            nonAffixs = new List<AffixSO>(_rawGear.NonAffix);
+            nonAffixs = new List<AffixSo>(_rawGear.NonAffix);
         }
     }
 }

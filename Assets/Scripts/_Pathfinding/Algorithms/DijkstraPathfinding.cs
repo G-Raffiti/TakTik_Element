@@ -9,23 +9,23 @@ namespace _Pathfinding.Algorithms
     /// </summary>
     public class DijkstraPathfinding : Pathfinding
     {
-        public Dictionary<Cell, List<Cell>> FindAllPaths(Dictionary<Cell, Dictionary<Cell, float>> edges, Cell originNode)
+        public Dictionary<Cell, List<Cell>> FindAllPaths(Dictionary<Cell, Dictionary<Cell, float>> _edges, Cell _originNode)
         {
             IPriorityQueue<Cell> _frontier = new HeapPriorityQueue<Cell>();
-            _frontier.Enqueue(originNode, 0);
+            _frontier.Enqueue(_originNode, 0);
 
             Dictionary<Cell, Cell> _cameFrom = new Dictionary<Cell, Cell>();
-            _cameFrom.Add(originNode, default(Cell));
+            _cameFrom.Add(_originNode, default(Cell));
             Dictionary<Cell, float> _costSoFar = new Dictionary<Cell, float>();
-            _costSoFar.Add(originNode, 0);
+            _costSoFar.Add(_originNode, 0);
 
             while (_frontier.Count != 0)
             {
                 Cell _current = _frontier.Dequeue();
-                List<Cell> _neighbours = GetNeigbours(edges, _current);
+                List<Cell> _neighbours = GetNeigbours(_edges, _current);
                 foreach (Cell _neighbour in _neighbours)
                 {
-                    float _newCost = _costSoFar[_current] + edges[_current][_neighbour];
+                    float _newCost = _costSoFar[_current] + _edges[_current][_neighbour];
                     if (!_costSoFar.ContainsKey(_neighbour) || _newCost < _costSoFar[_neighbour])
                     {
                         _costSoFar[_neighbour] = _newCost;
@@ -40,7 +40,7 @@ namespace _Pathfinding.Algorithms
             {
                 List<Cell> _path = new List<Cell>();
                 Cell _current = _destination;
-                while (!_current.Equals(originNode))
+                while (!_current.Equals(_originNode))
                 {
                     _path.Add(_current);
                     _current = _cameFrom[_current];
@@ -49,23 +49,23 @@ namespace _Pathfinding.Algorithms
             }
             return _paths;
         }
-        public override List<T> FindPath<T>(Dictionary<T, Dictionary<T, float>> edges, T originNode, T destinationNode)
+        public override List<T> FindPath<T>(Dictionary<T, Dictionary<T, float>> _edges, T _originNode, T _destinationNode)
         {
             IPriorityQueue<T> _frontier = new HeapPriorityQueue<T>();
-            _frontier.Enqueue(originNode, 0);
+            _frontier.Enqueue(_originNode, 0);
 
             Dictionary<T, T> _cameFrom = new Dictionary<T, T>();
-            _cameFrom.Add(originNode, default(T));
+            _cameFrom.Add(_originNode, default(T));
             Dictionary<T, float> _costSoFar = new Dictionary<T, float>();
-            _costSoFar.Add(originNode, 0);
+            _costSoFar.Add(_originNode, 0);
 
             while (_frontier.Count != 0)
             {
                 T _current = _frontier.Dequeue();
-                List<T> _neighbours = GetNeigbours(edges, _current);
+                List<T> _neighbours = GetNeigbours(_edges, _current);
                 foreach (T _neighbour in _neighbours)
                 {
-                    float _newCost = _costSoFar[_current] + edges[_current][_neighbour];
+                    float _newCost = _costSoFar[_current] + _edges[_current][_neighbour];
                     if (!_costSoFar.ContainsKey(_neighbour) || _newCost < _costSoFar[_neighbour])
                     {
                         _costSoFar[_neighbour] = _newCost;
@@ -73,16 +73,16 @@ namespace _Pathfinding.Algorithms
                         _frontier.Enqueue(_neighbour, _newCost);
                     }
                 }
-                if (_current.Equals(destinationNode)) break;
+                if (_current.Equals(_destinationNode)) break;
             }
             List<T> _path = new List<T>();
-            if (!_cameFrom.ContainsKey(destinationNode))
+            if (!_cameFrom.ContainsKey(_destinationNode))
                 return _path;
 
-            _path.Add(destinationNode);
-            T _temp = destinationNode;
+            _path.Add(_destinationNode);
+            T _temp = _destinationNode;
 
-            while (!_cameFrom[_temp].Equals(originNode))
+            while (!_cameFrom[_temp].Equals(_originNode))
             {
                 T _currentPathElement = _cameFrom[_temp];
                 _path.Add(_currentPathElement);

@@ -15,7 +15,7 @@ namespace Gears
         public Inventory(Unit _unit)
         {
             gears = new List<Gear>();
-            foreach (Gear _gear in _unit.Inventory.gears)
+            foreach (Gear _gear in _unit.inventory.gears)
             {
                 gears.Add(new Gear(_gear));
             }
@@ -27,24 +27,24 @@ namespace Gears
 
         public void GenerateLootGear()
         {
-            Gear gear = new Gear();
-            gear.CreateGear();
-            gears.Add(gear);
+            Gear _gear = new Gear();
+            _gear.CreateGear();
+            gears.Add(_gear);
         }
         
-        public void GenerateGearFor(MonsterSO monster)
+        public void GenerateGearFor(MonsterSo _monster)
         {
             //TODO : create archetype of monster like Mage, Warrior, Rogue and add a List of Gear tha can't be used for each archetype then in CreateGear take random but the List (in MonsterSO do a EArchetype)
-            Gear gear = new Gear();
-            gear.CreateGear();
-            gears.Add(gear);
+            Gear _gear = new Gear();
+            _gear.CreateGear();
+            gears.Add(_gear);
         }
 
         public BattleStats GearStats()
         {
-            BattleStats ret = new BattleStats(0);
-            gears.ForEach(gear => ret += gear.GetStats());
-            return ret;
+            BattleStats _ret = new BattleStats(0);
+            gears.ForEach(_gear => _ret += _gear.GetStats());
+            return _ret;
         }
     }
 

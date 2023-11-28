@@ -7,7 +7,7 @@ namespace _Instances
     public class BattleStage : MonoBehaviour
     {
         [SerializeField] private int stage;
-        private static GameObject instance;
+        private static GameObject _instance;
         public static int Stage { get; private set; }
         public const int BattlePerStage = 3;
         public static int BattleNumber = -1;
@@ -47,14 +47,14 @@ namespace _Instances
         private void Start() 
         {
             DontDestroyOnLoad(gameObject.transform);
-            if (instance == null)
-                instance = gameObject;
+            if (_instance == null)
+                _instance = gameObject;
             else
                 Destroy(gameObject);
         }
         
         [ContextMenu("set stage")]
-        public void setStage()
+        public void SetStage()
         {
             Stage = stage;
         }

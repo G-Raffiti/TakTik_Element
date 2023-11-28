@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ScreenResolutionManager.Example
 {
@@ -13,68 +14,86 @@ namespace ScreenResolutionManager.Example
             BottomRight
         }
 
-        public bool IsPersistent = true;
-        public bool ShowInEditor = true;
+        [FormerlySerializedAs("IsPersistent")]
+        public bool isPersistent = true;
+        [FormerlySerializedAs("ShowInEditor")]
+        public bool showInEditor = true;
 
+        [FormerlySerializedAs("Height")]
         [Tooltip("Height of the log area as a percentage of the screen height")]
         [Range(0.3f, 1.0f)]
-        public float Height = 0.5f;
+        public float height = 0.5f;
 
+        [FormerlySerializedAs("Width")]
         [Tooltip("Width of the log area as a percentage of the screen width")]
         [Range(0.3f, 1.0f)]
-        public float Width = 0.5f;
+        public float width = 0.5f;
 
-        public int Margin = 20;
+        [FormerlySerializedAs("Margin")]
+        public int margin = 20;
 
-        public LogAnchor AnchorPosition = LogAnchor.BottomLeft;
+        [FormerlySerializedAs("AnchorPosition")]
+        public LogAnchor anchorPosition = LogAnchor.BottomLeft;
 
-        public int FontSize = 14;
+        [FormerlySerializedAs("FontSize")]
+        public int fontSize = 14;
 
+        [FormerlySerializedAs("BackgroundOpacity")]
         [Range(0f, 01f)]
-        public float BackgroundOpacity = 0.5f;
-        public Color BackgroundColor = Color.black;
+        public float backgroundOpacity = 0.5f;
+        [FormerlySerializedAs("BackgroundColor")]
+        public Color backgroundColor = Color.black;
 
-        public bool LogMessages = true;
-        public bool LogWarnings = true;
-        public bool LogErrors = true;
+        [FormerlySerializedAs("LogMessages")]
+        public bool logMessages = true;
+        [FormerlySerializedAs("LogWarnings")]
+        public bool logWarnings = true;
+        [FormerlySerializedAs("LogErrors")]
+        public bool logErrors = true;
 
-        public Color MessageColor = Color.white;
-        public Color WarningColor = Color.yellow;
-        public Color ErrorColor = new Color(1, 0.5f, 0.5f);
+        [FormerlySerializedAs("MessageColor")]
+        public Color messageColor = Color.white;
+        [FormerlySerializedAs("WarningColor")]
+        public Color warningColor = Color.yellow;
+        [FormerlySerializedAs("ErrorColor")]
+        public Color errorColor = new Color(1, 0.5f, 0.5f);
 
-        public bool StackTraceMessages = false;
-        public bool StackTraceWarnings = false;
-        public bool StackTraceErrors = true;
+        [FormerlySerializedAs("StackTraceMessages")]
+        public bool stackTraceMessages = false;
+        [FormerlySerializedAs("StackTraceWarnings")]
+        public bool stackTraceWarnings = false;
+        [FormerlySerializedAs("StackTraceErrors")]
+        public bool stackTraceErrors = true;
 
-        static Queue<LogMessage> queue = new Queue<LogMessage>();
+        static Queue<LogMessage> _queue = new Queue<LogMessage>();
 
         GUIStyle styleContainer, styleText;
         int padding = 5;
 
         public void Awake()
         {
-            Texture2D back = new Texture2D(1, 1);
-            BackgroundColor.a = BackgroundOpacity;
-            back.SetPixel(0, 0, BackgroundColor);
-            back.Apply();
+            Texture2D _back = new Texture2D(1, 1);
+            backgroundColor.a = backgroundOpacity;
+            _back.SetPixel(0, 0, backgroundColor);
+            _back.Apply();
 
             styleContainer = new GUIStyle();
-            styleContainer.normal.background = back;
+            styleContainer.normal.background = _back;
             styleContainer.wordWrap = true;
             styleContainer.padding = new RectOffset(padding, padding, padding, padding);
 
             styleText = new GUIStyle();
-            styleText.fontSize = FontSize;
+            styleText.fontSize = fontSize;
 
-            if (IsPersistent)
+            if (isPersistent)
                 DontDestroyOnLoad(this);
         }
 
         void OnEnable()
         {
-            if (!ShowInEditor && Application.isEditor) return;
+            if (!showInEditor && Application.isEditor) return;
 
-            queue = new Queue<LogMessage>();
+            _queue = new Queue<LogMessage>();
 
 #if UNITY_4_5 || UNITY_4_6
         Application.RegisterLogCallback(HandleLog);
@@ -85,7 +104,7 @@ namespace ScreenResolutionManager.Example
 
         void OnDisable()
         {
-            if (!ShowInEditor && Application.isEditor) return;
+            if (!showInEditor && Application.isEditor) return;
 
 #if UNITY_4_5 || UNITY_4_6
         Application.RegisterLogCallback(null);
@@ -96,94 +115,94 @@ namespace ScreenResolutionManager.Example
 
         void Update()
         {
-            if (!ShowInEditor && Application.isEditor) return;
+            if (!showInEditor && Application.isEditor) return;
 
-            while (queue.Count > ((Screen.height - 2 * Margin) * Height - 2 * padding) / styleText.lineHeight)
-                queue.Dequeue();
+            while (_queue.Count > ((Screen.height - 2 * margin) * height - 2 * padding) / styleText.lineHeight)
+                _queue.Dequeue();
         }
 
         void OnGUI()
         {
-            if (!ShowInEditor && Application.isEditor) return;
+            if (!showInEditor && Application.isEditor) return;
 
-            float w = (Screen.width - 2 * Margin) * Width;
-            float h = (Screen.height - 2 * Margin) * Height;
-            float x = 1, y = 1;
+            float _w = (Screen.width - 2 * margin) * width;
+            float _h = (Screen.height - 2 * margin) * height;
+            float _x = 1, _y = 1;
 
-            switch (AnchorPosition)
+            switch (anchorPosition)
             {
                 case LogAnchor.BottomLeft:
-                    x = Margin;
-                    y = Margin + (Screen.height - 2 * Margin) * (1 - Height);
+                    _x = margin;
+                    _y = margin + (Screen.height - 2 * margin) * (1 - height);
                     break;
 
                 case LogAnchor.BottomRight:
-                    x = Margin + (Screen.width - 2 * Margin) * (1 - Width);
-                    y = Margin + (Screen.height - 2 * Margin) * (1 - Height);
+                    _x = margin + (Screen.width - 2 * margin) * (1 - width);
+                    _y = margin + (Screen.height - 2 * margin) * (1 - height);
                     break;
 
                 case LogAnchor.TopLeft:
-                    x = Margin;
-                    y = Margin;
+                    _x = margin;
+                    _y = margin;
                     break;
 
                 case LogAnchor.TopRight:
-                    x = Margin + (Screen.width - 2 * Margin) * (1 - Width);
-                    y = Margin;
+                    _x = margin + (Screen.width - 2 * margin) * (1 - width);
+                    _y = margin;
                     break;
             }
 
-            GUILayout.BeginArea(new Rect(x, y, w, h), styleContainer);
+            GUILayout.BeginArea(new Rect(_x, _y, _w, _h), styleContainer);
 
-            foreach (LogMessage m in queue)
+            foreach (LogMessage _m in _queue)
             {
-                switch (m.Type)
+                switch (_m.Type)
                 {
                     case LogType.Warning:
-                        styleText.normal.textColor = WarningColor;
+                        styleText.normal.textColor = warningColor;
                         break;
 
                     case LogType.Log:
-                        styleText.normal.textColor = MessageColor;
+                        styleText.normal.textColor = messageColor;
                         break;
 
                     case LogType.Assert:
                     case LogType.Exception:
                     case LogType.Error:
-                        styleText.normal.textColor = ErrorColor;
+                        styleText.normal.textColor = errorColor;
                         break;
 
                     default:
-                        styleText.normal.textColor = MessageColor;
+                        styleText.normal.textColor = messageColor;
                         break;
                 }
 
-                GUILayout.Label(m.Message, styleText);
+                GUILayout.Label(_m.Message, styleText);
             }
 
             GUILayout.EndArea();
         }
 
-        void HandleLog(string message, string stackTrace, LogType type)
+        void HandleLog(string _message, string _stackTrace, LogType _type)
         {
-            if (type == LogType.Assert && !LogErrors) return;
-            if (type == LogType.Error && !LogErrors) return;
-            if (type == LogType.Exception && !LogErrors) return;
-            if (type == LogType.Log && !LogMessages) return;
-            if (type == LogType.Warning && !LogWarnings) return;
+            if (_type == LogType.Assert && !logErrors) return;
+            if (_type == LogType.Error && !logErrors) return;
+            if (_type == LogType.Exception && !logErrors) return;
+            if (_type == LogType.Log && !logMessages) return;
+            if (_type == LogType.Warning && !logWarnings) return;
 
-            queue.Enqueue(new LogMessage(message, type));
+            _queue.Enqueue(new LogMessage(_message, _type));
 
-            if (type == LogType.Assert && !StackTraceErrors) return;
-            if (type == LogType.Error && !StackTraceErrors) return;
-            if (type == LogType.Exception && !StackTraceErrors) return;
-            if (type == LogType.Log && !StackTraceMessages) return;
-            if (type == LogType.Warning && !StackTraceWarnings) return;
+            if (_type == LogType.Assert && !stackTraceErrors) return;
+            if (_type == LogType.Error && !stackTraceErrors) return;
+            if (_type == LogType.Exception && !stackTraceErrors) return;
+            if (_type == LogType.Log && !stackTraceMessages) return;
+            if (_type == LogType.Warning && !stackTraceWarnings) return;
 
-            string[] trace = stackTrace.Split(new char[] { '\n' });
+            string[] _trace = _stackTrace.Split(new char[] { '\n' });
 
-            foreach (string t in trace)
-                if (t.Length != 0) queue.Enqueue(new LogMessage("  " + t, type));
+            foreach (string _t in _trace)
+                if (_t.Length != 0) _queue.Enqueue(new LogMessage("  " + _t, _type));
         }
     }
 
@@ -192,10 +211,10 @@ namespace ScreenResolutionManager.Example
         public string Message;
         public LogType Type;
 
-        public LogMessage(string msg, LogType type)
+        public LogMessage(string _msg, LogType _type)
         {
-            Message = msg;
-            Type = type;
+            Message = _msg;
+            Type = _type;
         }
     }
 }

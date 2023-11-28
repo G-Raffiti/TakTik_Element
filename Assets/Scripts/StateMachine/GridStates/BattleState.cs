@@ -21,29 +21,29 @@ namespace StateMachine.GridStates
         /// Method is called when mouse exits cell's collider.
         /// </summary>
         /// <param name="cell">Cell that was deselected.</param>
-        public virtual void OnCellDeselected(Cell cell)
+        public virtual void OnCellDeselected(Cell _targetCell)
         {
-            if(cell == null) return;
-            cell.UnMark();
+            if(_targetCell == null) return;
+            _targetCell.UnMark();
         }
 
         /// <summary>
         /// Method is called when mouse enters cell's collider.
         /// </summary>
         /// <param name="cell">Cell that was selected.</param>
-        public virtual void OnCellSelected(Cell cell)
+        public virtual void OnCellSelected(Cell _targetCell)
         {
-            if(cell == null) return;
-            cell.MarkAsHighlighted();
+            if(_targetCell == null) return;
+            _targetCell.MarkAsHighlighted();
         }
 
         /// <summary>
         /// Method is called when a cell is clicked.
         /// </summary>
         /// <param name="cell">Cell that was clicked.</param>
-        public virtual void OnCellClicked(Cell cell)
+        public virtual void OnCellClicked(Cell _cell)
         {
-            if(cell == null) return;
+            if(_cell == null) return;
         }
 
         /// <summary>

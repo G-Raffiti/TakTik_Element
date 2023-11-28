@@ -10,21 +10,21 @@ namespace _Extension
     {
         public static void Shuffle<T>(this IList<T> _list)
         {
-            int count = _list.Count;
-            int last = count - 1;
-            for (int i = 0; i < last; i++)
+            int _count = _list.Count;
+            int _last = _count - 1;
+            for (int _i = 0; _i < _last; _i++)
             {
-                int randomIndex = Random.Range(i, count);
-                T tempValue = _list[i];
-                _list[i] = _list[randomIndex];
-                _list[randomIndex] = tempValue;
+                int _randomIndex = Random.Range(_i, _count);
+                T _tempValue = _list[_i];
+                _list[_i] = _list[_randomIndex];
+                _list[_randomIndex] = _tempValue;
             }
         }
 
         public static T GetRandom<T>(this IList<T> _list)
         {
-            int max = _list.Count;
-            return _list[Random.Range(0, max)];
+            int _max = _list.Count;
+            return _list[Random.Range(0, _max)];
         }
         
         public static int Max(this int _scoreDamage, int _damage)
@@ -34,46 +34,46 @@ namespace _Extension
 
         public static T GetKeyOfMaxValue<T>(this IDictionary<T, int> _dictionary)
         {
-            T max = _dictionary.First().Key;
-            foreach (KeyValuePair<T, int> pair in _dictionary)
+            T _max = _dictionary.First().Key;
+            foreach (KeyValuePair<T, int> _pair in _dictionary)
             {
-                if (pair.Value > _dictionary[max]) max = pair.Key;
+                if (_pair.Value > _dictionary[_max]) _max = _pair.Key;
             }
 
-            return max;
+            return _max;
         }
         
         public static T GetKeyOfMaxValue<T>(this IDictionary<T, float> _dictionary)
         {
-            T max = _dictionary.First().Key;
-            foreach (KeyValuePair<T, float> pair in _dictionary)
+            T _max = _dictionary.First().Key;
+            foreach (KeyValuePair<T, float> _pair in _dictionary)
             {
-                if (pair.Value > _dictionary[max]) max = pair.Key;
+                if (_pair.Value > _dictionary[_max]) _max = _pair.Key;
             }
 
-            return max;
+            return _max;
         }
         
         public static T GetKeyOfMinValue<T>(this IDictionary<T, int> _dictionary)
         {
-            T max = _dictionary.First().Key;
-            foreach (KeyValuePair<T, int> pair in _dictionary)
+            T _max = _dictionary.First().Key;
+            foreach (KeyValuePair<T, int> _pair in _dictionary)
             {
-                if (pair.Value < _dictionary[max]) max = pair.Key;
+                if (_pair.Value < _dictionary[_max]) _max = _pair.Key;
             }
 
-            return max;
+            return _max;
         }
         
         public static T GetKeyOfMinValue<T>(this IDictionary<T, float> _dictionary)
         {
-            T max = _dictionary.First().Key;
-            foreach (KeyValuePair<T, float> pair in _dictionary)
+            T _max = _dictionary.First().Key;
+            foreach (KeyValuePair<T, float> _pair in _dictionary)
             {
-                if (pair.Value < _dictionary[max]) max = pair.Key;
+                if (_pair.Value < _dictionary[_max]) _max = _pair.Key;
             }
 
-            return max;
+            return _max;
         }
 
         public static void Clear(this Transform _transform)

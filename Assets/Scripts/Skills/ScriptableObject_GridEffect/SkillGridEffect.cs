@@ -16,7 +16,7 @@ namespace Skills.ScriptableObject_GridEffect
         PushImpact,
     }
     
-    public abstract class SkillGridEffect : IEffect
+    public abstract class SkillGridEffect : Effect
     {
         [SerializeField] private EGridEffect type;
         public EGridEffect Type => type;
@@ -24,9 +24,9 @@ namespace Skills.ScriptableObject_GridEffect
 
         public override Dictionary<Cell, int> DamageValue(Cell _cell, SkillInfo _skillInfo)
         {
-            Dictionary<Cell, int> ret = new Dictionary<Cell, int>();
+            Dictionary<Cell, int> _ret = new Dictionary<Cell, int>();
 
-            return ret;
+            return _ret;
         }
     }
     

@@ -1,14 +1,16 @@
 ﻿using Gears;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.ToolTips
 {
     public class GearTooltip : Tooltip
     {
+        [FormerlySerializedAs("Gear")]
         [HideInInspector]
-        public GearInfo Gear;
+        public GearInfo gear;
 
         [SerializeField] private TextMeshProUGUI nameTxt;
         [SerializeField] private TextMeshProUGUI main;
@@ -21,14 +23,14 @@ namespace UserInterface.ToolTips
         
         protected override void ShowToolTip()
         {
-            nameTxt.text = Gear.Gear.GearSO.Name;
-            main.text = Gear.GetInfoMain();
-            statsLeft.text = Gear.GetInfoLeft();
-            statsRight.text = Gear.GetInfoRight();
-            icon.sprite = Gear.GetIcon();
-            shadowEffect.sprite = Gear.GetIcon();
-            frame.color = Gear.Gear.GearSO.Rarity.TextColour;
-            rarity.color = Gear.Gear.GearSO.Rarity.TextColour;
+            nameTxt.text = gear.Gear.GearSo.Name;
+            main.text = gear.GetInfoMain();
+            statsLeft.text = gear.GetInfoLeft();
+            statsRight.text = gear.GetInfoRight();
+            icon.sprite = gear.GetIcon();
+            shadowEffect.sprite = gear.GetIcon();
+            frame.color = gear.Gear.GearSo.Rarity.TextColour;
+            rarity.color = gear.Gear.GearSo.Rarity.TextColour;
         }
     }
 }

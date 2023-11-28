@@ -14,39 +14,39 @@ namespace DataBases
     [CreateAssetMenu(fileName = "DataBase_Skill", menuName = "Scriptable Object/DataBase/Skill")]
     public class DataBaseSkill : ScriptableObject
     {
-        [SerializeField] private List<SkillSO> allSkills;
+        [SerializeField] private List<SkillSo> allSkills;
         [SerializeField] private List<Element> elements;
-        public List<SkillSO> AllSkills => allSkills;
+        public List<SkillSo> AllSkills => allSkills;
 
-        public SkillSO GetRandom()
+        public SkillSo GetRandom()
         {
             return AllSkills[Random.Range(0, AllSkills.Count)];
         }
 
 
-        public void AddSkill(SkillSO newSkill)
+        public void AddSkill(SkillSo _newSkill)
         {
-            if (AllSkills.Contains(newSkill)) return;
+            if (AllSkills.Contains(_newSkill)) return;
             #if (UNITY_EDITOR)
-            allSkills.Add(newSkill);
+            allSkills.Add(_newSkill);
             EditorUtility.SetDirty(this); 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            if (newSkill.Monster != null)
-                newSkill.Monster.SetSkill(newSkill);
+            if (_newSkill.Monster != null)
+                _newSkill.Monster.SetSkill(_newSkill);
 #endif
         }
 
         public void ClearDataBase()
         {
-            allSkills = new List<SkillSO>();
+            allSkills = new List<SkillSo>();
         }
 
-        public SkillSO GetSkillFor(MonsterSO _monster)
+        public SkillSo GetSkillFor(MonsterSo _monster)
         {
-            List<SkillSO> ret = allSkills.Where(s => s.Element == _monster.Element && s.Archetype == _monster.Archetype.Type)
+            List<SkillSo> _ret = allSkills.Where(_s => _s.Element == _monster.Element && _s.Archetype == _monster.Archetype.Type)
                 .ToList();
-            return ret.GetRandom();
+            return _ret.GetRandom();
         }
     }
 }

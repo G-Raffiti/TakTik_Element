@@ -7,50 +7,50 @@ namespace Editor
 {
     public class GridHelperUtils
     {
-        public static bool CheckMissingParameters(Dictionary<string, object> parameterValues)
+        public static bool CheckMissingParameters(Dictionary<string, object> _parameterValues)
         {
-            List<string> missingParams = new List<string>();
-            foreach (KeyValuePair<string, object> entry in parameterValues)
+            List<string> _missingParams = new List<string>();
+            foreach (KeyValuePair<string, object> _entry in _parameterValues)
             {
-                if (entry.Value == null)
+                if (_entry.Value == null)
                 {
-                    missingParams.Add(entry.Key);
+                    _missingParams.Add(_entry.Key);
                 }
             }
 
-            if (missingParams.Count != 0)
+            if (_missingParams.Count != 0)
             {
-                string dialogTitle = string.Format("Parameter{0} missing", missingParams.Count > 1 ? "s" : "");
+                string _dialogTitle = string.Format("Parameter{0} missing", _missingParams.Count > 1 ? "s" : "");
 
-                StringBuilder dialogMessage = new StringBuilder();
-                dialogMessage.AppendFormat("Please fill in the missing parameter{0} first:\n", missingParams.Count > 1 ? "s" : "");
+                StringBuilder _dialogMessage = new StringBuilder();
+                _dialogMessage.AppendFormat("Please fill in the missing parameter{0} first:\n", _missingParams.Count > 1 ? "s" : "");
 
-                foreach (string missingParam in missingParams)
+                foreach (string _missingParam in _missingParams)
                 {
-                    dialogMessage.AppendLine(string.Format("   -{0}", missingParam));
+                    _dialogMessage.AppendLine(string.Format("   -{0}", _missingParam));
                 }
 
-                string dialogOK = "Ok";
-                EditorUtility.DisplayDialog(dialogTitle, dialogMessage.ToString(), dialogOK);
+                string _dialogOk = "Ok";
+                EditorUtility.DisplayDialog(_dialogTitle, _dialogMessage.ToString(), _dialogOk);
                 return true;
             }
             return false;
         }
         public static void ClearScene()
         {
-            GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-            List<GameObject> toDestroy = new List<GameObject>();
+            GameObject[] _objects = GameObject.FindObjectsOfType<GameObject>();
+            List<GameObject> _toDestroy = new List<GameObject>();
 
-            foreach (GameObject obj in objects)
+            foreach (GameObject _obj in _objects)
             {
-                bool isChild = obj.transform.parent != null;
+                bool _isChild = _obj.transform.parent != null;
 
-                if (isChild)
+                if (_isChild)
                     continue;
 
-                toDestroy.Add(obj);
+                _toDestroy.Add(_obj);
             }
-            toDestroy.ForEach(o => GameObject.DestroyImmediate(o));
+            _toDestroy.ForEach(_o => GameObject.DestroyImmediate(_o));
         }
     }
 }

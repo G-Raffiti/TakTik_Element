@@ -4,39 +4,43 @@ using Relics;
 using Skills;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UserInterface.ToolTips
 {
     public class MonsterTooltip : UnitTooltip
     {
+        [FormerlySerializedAs("GearSlot")]
         [Header("Monster Infos")]
-        [SerializeField] private SlotDragAndDrop GearSlot;
-        [SerializeField] private SkillInfo Skill;
-        [SerializeField] private RelicInfo RelicHolder;
+        [SerializeField] private SlotDragAndDrop gearSlot;
+        [FormerlySerializedAs("Skill")]
+        [SerializeField] private SkillInfo skill;
+        [FormerlySerializedAs("RelicHolder")]
+        [SerializeField] private RelicInfo relicHolder;
 
 
         protected override void ShowToolTip()
         {
             base.ShowToolTip();
-            StatsBlock.SetActive(true);
-            Skill.skill = ((Monster) Unit).monsterSkill;
-            Skill.Unit = Unit;
-            Skill.DisplayIcon();
-            GameObject _gear = Instantiate(gearPref.gameObject, GearSlot.transform);
-            _gear.GetComponent<GearInfo>().Gear = Unit.Inventory.gears[0];
+            statsBlock.SetActive(true);
+            skill.skill = ((Monster) unit).MonsterSkill;
+            skill.unit = unit;
+            skill.DisplayIcon();
+            GameObject _gear = Instantiate(gearPref.gameObject, gearSlot.transform);
+            _gear.GetComponent<GearInfo>().Gear = unit.inventory.gears[0];
             _gear.GetComponent<GearInfo>().DisplayIcon();
-            GearSlot.UpdateBackgroundState();
-            if (Unit.Relic.RelicEffects.Count <= 0) return;
-            RelicHolder.gameObject.SetActive(true);
-            RelicHolder.CreateRelic(Unit.Relic.RelicEffects[0]);
-            RelicHolder.DisplayIcon();
+            gearSlot.UpdateBackgroundState();
+            if (unit.Relic.RelicEffects.Count <= 0) return;
+            relicHolder.gameObject.SetActive(true);
+            relicHolder.CreateRelic(unit.Relic.RelicEffects[0]);
+            relicHolder.DisplayIcon();
         }
 
         public override void HideTooltip()
         {
-            RelicHolder.gameObject.SetActive(false);
-            if (GearSlot.GetItem() != null)
-                DestroyImmediate(GearSlot.GetItem().gameObject);
+            relicHolder.gameObject.SetActive(false);
+            if (gearSlot.GetItem() != null)
+                DestroyImmediate(gearSlot.GetItem().gameObject);
             base.HideTooltip();
         }
 

@@ -5,17 +5,19 @@ using _Instances;
 using EndConditions;
 using StateMachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Void = _EventSystem.CustomEvents.Void;
 
 namespace SceneManagement
 {
     public class BattleFade : MonoBehaviour
     {
+        [FormerlySerializedAs("SceneManager")]
         [Header("UI Elements in BattleScene")]
-        [SerializeField] private ChangeScene SceneManager;
-        [SerializeField] private ShopChoice_UI shopChoiceUI;
+        [SerializeField] private ChangeScene sceneManager;
+        [SerializeField] private ShopChoiceUI shopChoiceUI;
         [SerializeField] private GameObject nextBattle;
-        [SerializeField] private EndRun_UI endRunUI;
+        [SerializeField] private EndRunUI endRunUI;
         [SerializeField] private GameObject resurectionPool;
         
         [Header("Event Sender")]
@@ -25,14 +27,16 @@ namespace SceneManagement
         [Header("Event Listener")]
         [SerializeField] private BoolEvent onBattleIsOver;
         [SerializeField] private VoidEvent onQuitShop;
-        [SerializeField] private VoidEvent NextBattle;
+        [FormerlySerializedAs("nextBattle")]
+        [FormerlySerializedAs("NextBattle")]
+        [SerializeField] private VoidEvent onNextBattle;
         [SerializeField] private VoidEvent goToResurrection;
         
         private void Start()
         {
             onBattleIsOver.EventListeners += BattleIsOver_Catch;
             onQuitShop.EventListeners += StartNewBattle;
-            NextBattle.EventListeners += StartNewBattle;
+            onNextBattle.EventListeners += StartNewBattle;
             goToResurrection.EventListeners += GoToResurrection;
         }
 
@@ -40,38 +44,38 @@ namespace SceneManagement
         {
             onBattleIsOver.EventListeners -= BattleIsOver_Catch;
             onQuitShop.EventListeners -= StartNewBattle;
-            NextBattle.EventListeners -= StartNewBattle;
+            onNextBattle.EventListeners -= StartNewBattle;
             goToResurrection.EventListeners -= GoToResurrection;
         }
 
         private void GoToResurrection(Void _obj)
         {
             onBattleEndTrigger.Raise();
-            SceneManager.LoadScene("Reborn");
+            sceneManager.LoadScene("Reborn");
         }
 
-        private void StartNewBattle(Void empty)
+        private void StartNewBattle(Void _empty)
         {
             BattleStage.EndBattle();
-            SceneManager.LoadScene("BattleScene");
+            sceneManager.LoadScene("BattleScene");
             //Todo: Show this Log on screen (BattleStart)
             Debug.Log($"Battle: {BattleStage.BattleNumber} Stage: {BattleStage.Stage}");
         }
 
-        private void BattleIsOver_Catch(bool isWin)
+        private void BattleIsOver_Catch(bool _isWin)
         {
-            StartCoroutine(BattleEnds(isWin));
+            StartCoroutine(BattleEnds(_isWin));
         }
 
-        private IEnumerator BattleEnds(bool isWin)
+        private IEnumerator BattleEnds(bool _isWin)
         {
             yield return new WaitWhile(() => BattleStateManager.instance.DeadThisTurn.Count > 0);
             onUIEnable.Raise();
 
-            if (BattleStateManager.instance.endCondition.Type == EConditionType.Last || !isWin)
+            if (BattleStateManager.instance.EndCondition.Type == EConditionType.Last || !_isWin)
             {
                 endRunUI.gameObject.SetActive(true);
-                endRunUI.Open(isWin);
+                endRunUI.Open(_isWin);
                 yield break;
             }
             
@@ -80,18 +84,18 @@ namespace SceneManagement
 
         public void GoToScoreScene()
         {
-            SceneManager.LoadScene("ScoreScene");
+            sceneManager.LoadScene("ScoreScene");
         }
 
         private void YouWin()
         {
-            if (PlayerData.getInstance().Heroes.Any(h => h.isDead) && PlayerData.getInstance().ResurrectionPoints > 0)
+            if (PlayerData.GetInstance().Heroes.Any(_h => _h.isDead) && PlayerData.GetInstance().ResurrectionPoints > 0)
             {
                 resurectionPool.SetActive(true);
                 return;
             }
                 
-            switch (BattleStateManager.instance.endCondition.Type)
+            switch (BattleStateManager.instance.EndCondition.Type)
             {
                 case EConditionType.LootBox:
                     nextBattle.SetActive(true);
@@ -105,7 +109,7 @@ namespace SceneManagement
         public void GoToShop(string _shopName)
         {
             onBattleEndTrigger.Raise();
-            SceneManager.LoadScene(_shopName);
+            sceneManager.LoadScene(_shopName);
         }
     }
 }

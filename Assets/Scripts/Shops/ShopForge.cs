@@ -40,91 +40,91 @@ namespace Shops
 
         public void DestroyItem(Gear _gear)
         {
-            foreach (KeyValuePair<AffixSO,int> _pair in materialFromGear(_gear))
+            foreach (KeyValuePair<AffixSo,int> _pair in MaterialFromGear(_gear))
             {
-                PlayerData.getInstance().AddMaterial(_pair.Key, _pair.Value);
+                PlayerData.GetInstance().AddMaterial(_pair.Key, _pair.Value);
             }
             onDiplayUptade.Raise();
         }
 
-        public Dictionary<AffixSO, int> materialFromGear(Gear _gear)
+        public Dictionary<AffixSo, int> MaterialFromGear(Gear _gear)
         {
-            Dictionary<AffixSO, int> ret = new Dictionary<AffixSO, int>();
-            foreach (Affix affix in _gear.Affixes)
+            Dictionary<AffixSo, int> _ret = new Dictionary<AffixSo, int>();
+            foreach (Affix _affix in _gear.Affixes)
             { 
-                ret.Add(affix.affix, affix.tier);
+                _ret.Add(_affix.affix, _affix.tier);
             }
-            return ret;
+            return _ret;
         }
 
-        public void CraftNewItem(Void empty)
+        public void CraftNewItem(Void _empty)
         {
             if (craftPoint < 1) return;
             craftPoint--;
-            ShopForge_UI _shopForgeUI = GameObject.Find("ForgeUI/Left/Main").GetComponent<ShopForge_UI>();
+            ShopForgeUI _shopForgeUI = GameObject.Find("ForgeUI/Left/Main").GetComponent<ShopForgeUI>();
             if (_shopForgeUI.GetCraftMaterial() == null)
                 return;
-            Dictionary<AffixSO, int> material = _shopForgeUI.GetCraftMaterial();
-            foreach (KeyValuePair<AffixSO,int> _pair in _shopForgeUI.GetCraftMaterial())
+            Dictionary<AffixSo, int> _material = _shopForgeUI.GetCraftMaterial();
+            foreach (KeyValuePair<AffixSo,int> _pair in _shopForgeUI.GetCraftMaterial())
             {
                 if (_pair.Value < 1)
-                    material[_pair.Key] = 1;
-                if (!PlayerData.getInstance().CraftingMaterial.ContainsKey(_pair.Key))
+                    _material[_pair.Key] = 1;
+                if (!PlayerData.GetInstance().CraftingMaterial.ContainsKey(_pair.Key))
                     return;
-                if (PlayerData.getInstance().CraftingMaterial[_pair.Key] < material[_pair.Key])
+                if (PlayerData.GetInstance().CraftingMaterial[_pair.Key] < _material[_pair.Key])
                     return;
             }
 
-            foreach (AffixSO _affixSO in material.Keys)
+            foreach (AffixSo _affixSo in _material.Keys)
             {
-                PlayerData.getInstance().RemoveMaterial(_affixSO, material[_affixSO]);
+                PlayerData.GetInstance().RemoveMaterial(_affixSo, _material[_affixSo]);
             }
             
-            Gear gear = new Gear();
-            gear.CraftNewGear(material);
+            Gear _gear = new Gear();
+            _gear.CraftNewGear(_material);
             
-            _shopForgeUI.ShowCraftedGear(gear);
+            _shopForgeUI.ShowCraftedGear(_gear);
             onDiplayUptade.Raise();
         }
 
 
-        private void UpgradeItem(Gear gear)
+        private void UpgradeItem(Gear _gear)
         {
             if (craftPoint < 1) return;
-            ShopForge_UI _shopForgeUI = GameObject.Find("ForgeUI/BackGround/Back/Left/Main").GetComponent<ShopForge_UI>();
-            if (!UpgradeGear(gear, _shopForgeUI.GetUpgradeAffix()))
+            ShopForgeUI _shopForgeUI = GameObject.Find("ForgeUI/BackGround/Back/Left/Main").GetComponent<ShopForgeUI>();
+            if (!UpgradeGear(_gear, _shopForgeUI.GetUpgradeAffix()))
                 return;
             
             craftPoint--;
-            PlayerData.getInstance().RemoveMaterial(_shopForgeUI.GetUpgradeAffix(), 1);
+            PlayerData.GetInstance().RemoveMaterial(_shopForgeUI.GetUpgradeAffix(), 1);
             
             onDiplayUptade.Raise();
         }
 
-        private bool UpgradeGear(Gear gear, AffixSO affix)
+        private bool UpgradeGear(Gear _gear, AffixSo _affix)
         {
-            if (!PlayerData.getInstance().CraftingMaterial.ContainsKey(affix)) 
+            if (!PlayerData.GetInstance().CraftingMaterial.ContainsKey(_affix)) 
                 return false;
-            if (PlayerData.getInstance().CraftingMaterial[affix] < 1)
+            if (PlayerData.GetInstance().CraftingMaterial[_affix] < 1)
                 return false;
             
-            List<Affix> old = gear.Affixes;
+            List<Affix> _old = _gear.Affixes;
             
-            int tier = 0;
+            int _tier = 0;
             
-            foreach (Affix _gearAffix in gear.Affixes.Where(_gearAffix => _gearAffix.affix == affix))
+            foreach (Affix _gearAffix in _gear.Affixes.Where(_gearAffix => _gearAffix.affix == _affix))
             {
-                tier = _gearAffix.tier;
-                if (tier == affix.Tier.Length - 1)
+                _tier = _gearAffix.tier;
+                if (_tier == _affix.Tier.Length - 1)
                     return false;
-                old.Remove(_gearAffix);
+                _old.Remove(_gearAffix);
                 break;
             }
 
-            tier += 1;
+            _tier += 1;
 
-            old.Add(new Affix(affix, affix.getValueOfTier(tier), tier));
-            gear.SetAffixes(old);
+            _old.Add(new Affix(_affix, _affix.GetValueOfTier(_tier), _tier));
+            _gear.SetAffixes(_old);
             return true;
         }
     }

@@ -5,49 +5,42 @@ using _SaveSystem;
 using Score;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Menu
 {
     public class StartMenu : MonoBehaviour
     {
-        [SerializeField] private SavingLoading SaveSystem;
+        [FormerlySerializedAs("SaveSystem")]
+        [SerializeField] private SavingLoading saveSystem;
         [SerializeField] private VoidEvent startNewGame;
         [SerializeField] private IntEvent startGame;
-        [SerializeField] private CanvasGroup Menu;
+        [FormerlySerializedAs("Menu")]
+        [SerializeField] private CanvasGroup menu;
 
-        public void LoadGame(int saveNumber)
+        public void LoadGame(int _saveNumber)
         {
-            SaveSystem.Load(saveNumber);
-            if (PersistentData.Instance.SaveNumber != saveNumber)
+            saveSystem.Load(_saveNumber);
+            if (PersistentData.Instance.saveNumber != _saveNumber)
             {
-                PersistentData.Instance.SaveNumber = saveNumber;
+                PersistentData.Instance.saveNumber = _saveNumber;
                 startNewGame.Raise();
                 return;
             }
-            startGame.Raise(saveNumber);
+            startGame.Raise(_saveNumber);
         }
 
         private void Start()
         {
-            LeanTween.alphaCanvas(Menu, 1, 2f).setDelay(1f);
+            LeanTween.alphaCanvas(menu, 1, 2f).setDelay(1f);
         }
 
         class ButtonCustom : Button
         {
-            public override void OnPointerClick(PointerEventData eventData)
+            public override void OnPointerClick(PointerEventData _eventData)
             {
-                base.OnPointerClick(eventData);
-            }
-
-            public void OnPointerEnter(PointerEventData eventData)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void OnPointerExit(PointerEventData eventData)
-            {
-                throw new NotImplementedException();
+                base.OnPointerClick(_eventData);
             }
         }
     }

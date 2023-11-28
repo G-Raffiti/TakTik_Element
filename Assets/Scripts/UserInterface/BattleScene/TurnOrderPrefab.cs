@@ -10,6 +10,7 @@ using Stats;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.BattleScene
@@ -27,9 +28,11 @@ namespace UserInterface.BattleScene
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onSkillUsed;
 
+        [FormerlySerializedAs("UnitTooltip_ON")]
         [Header("Tooltip Events")]
-        [SerializeField] private UnitEvent UnitTooltip_ON;
-        [SerializeField] private VoidEvent UnitTooltip_OFF;
+        [SerializeField] private UnitEvent unitTooltipOn;
+        [FormerlySerializedAs("UnitTooltip_OFF")]
+        [SerializeField] private VoidEvent unitTooltipOff;
         
         
         
@@ -50,11 +53,11 @@ namespace UserInterface.BattleScene
             Color _teamColor;
             switch (unit.playerType)
             {
-                case EPlayerType.HUMAN:
-                    _teamColor = colors[EColor.ally];
+                case EPlayerType.Human:
+                    _teamColor = colors[EColor.Ally];
                     break;
                 case EPlayerType.AI:
-                    _teamColor = colors[EColor.enemy];
+                    _teamColor = colors[EColor.Enemy];
                     break;
                 default:
                     _teamColor = Color.white;
@@ -62,16 +65,16 @@ namespace UserInterface.BattleScene
             }
             team.color = _teamColor;
             icon.sprite = unit.UnitSprite;
-            health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
-            shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
-            onUnitStartTurn.EventListeners += updateDisplay;
-            onSkillUsed.EventListeners += updateDisplay;
+            health.fillAmount = unit.battleStats.hp / (float)unit.Total.hp;
+            shield.fillAmount = unit.battleStats.shield / (float)unit.Total.hp;
+            onUnitStartTurn.EventListeners += UpdateDisplay;
+            onSkillUsed.EventListeners += UpdateDisplay;
         }
 
         private void OnDestroy()
         {
-            onUnitStartTurn.EventListeners -= updateDisplay;
-            onSkillUsed.EventListeners -= updateDisplay;
+            onUnitStartTurn.EventListeners -= UpdateDisplay;
+            onSkillUsed.EventListeners -= UpdateDisplay;
         }
 
         private void Unit_UnitDestroyed(object _sender, DeathEventArgs _e)
@@ -81,41 +84,41 @@ namespace UserInterface.BattleScene
 
         private void Unit_UnitAttacked(object _sender, AttackEventArgs _e)
         {
-            health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
-            shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
+            health.fillAmount = unit.battleStats.hp / (float)unit.Total.hp;
+            shield.fillAmount = unit.battleStats.shield / (float)unit.Total.hp;
         }
 
-        private void updateDisplay(Void empty)
+        private void UpdateDisplay(Void _empty)
         {
-            health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
-            shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
+            health.fillAmount = unit.battleStats.hp / (float)unit.Total.hp;
+            shield.fillAmount = unit.battleStats.shield / (float)unit.Total.hp;
         }
         
-        private void updateDisplay(Unit _unit)
+        private void UpdateDisplay(Unit _unit)
         {
-            health.fillAmount = unit.BattleStats.HP / (float)unit.Total.HP;
-            shield.fillAmount = unit.BattleStats.Shield / (float)unit.Total.HP;
+            health.fillAmount = unit.battleStats.hp / (float)unit.Total.hp;
+            shield.fillAmount = unit.battleStats.shield / (float)unit.Total.hp;
         }
 
         public override void OnPointerEnter(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
             cellGrid.BattleState.OnCellSelected(unit.Cell);
-            UnitTooltip_ON.Raise(unit);
+            unitTooltipOn.Raise(unit);
         }
 
         public override void OnPointerExit(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
             cellGrid.BattleState.OnCellDeselected(unit.Cell);
-            UnitTooltip_OFF.Raise();
+            unitTooltipOff.Raise();
         }
 
         public override void OnPointerClick(PointerEventData _eventData)
         {
             if (_eventData.button == PointerEventData.InputButton.Right)
             {
-                unit.onTooltip_ON.Raise(unit);
+                unit.OnTooltipOn.Raise(unit);
                 return;
             }
 

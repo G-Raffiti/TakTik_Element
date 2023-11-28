@@ -16,8 +16,8 @@ namespace Resources.ToolTip.Scripts
         {
             if (gameObject.GetComponent<Image>() != null)
             {
-                Image ui = gameObject.GetComponent<Image>();
-                ui.sprite = GetIcon();
+                Image _ui = gameObject.GetComponent<Image>();
+                _ui.sprite = GetIcon();
             }
         }
         
@@ -61,8 +61,8 @@ namespace Resources.ToolTip.Scripts
         /// can be override to add a condition to not show
         /// </summary>
         /// <param name="eventData"></param>
-        public abstract void OnPointerEnter(PointerEventData eventData);
-        public abstract void OnPointerExit(PointerEventData eventData);
-        public virtual void OnPointerClick(PointerEventData eventData){}
+        public abstract void OnPointerEnter(PointerEventData _eventData);
+        public abstract void OnPointerExit(PointerEventData _eventData);
+        public virtual void OnPointerClick(PointerEventData _eventData){}
     }
 }

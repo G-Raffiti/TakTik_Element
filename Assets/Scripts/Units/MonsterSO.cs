@@ -30,7 +30,7 @@ namespace Units
     }
     
     [CreateAssetMenu(fileName = "Monster_", menuName = "Scriptable Object/New Monster")]
-    public class MonsterSO : ScriptableObject
+    public class MonsterSo : ScriptableObject
     {
         [SerializeField] private string unitName;
         [SerializeField] private Element element;
@@ -40,20 +40,20 @@ namespace Units
         [SerializeField] private GameObject prefab;
         [SerializeField] private Sprite unitSprite;
 
-        [SerializeField] private RelicSO relic;
+        [SerializeField] private RelicSo relic;
         [SerializeField] private EReward rewardType;
         [SerializeField] private EMonster type;
         [SerializeField] private Archetype archetype;
-        [SerializeField] private SkillSO skill;
+        [SerializeField] private SkillSo skill;
         
-        public SkillSO Skill => skill;
-        public RelicSO Relic => relic;
+        public SkillSo Skill => skill;
+        public RelicSo Relic => relic;
         public EReward RewardType => rewardType;
         public EMonster Type => type;
 
-        private const float GoodAffinity = 3;
-        private const float BadAffinity = 5;
-        private const int SkillRewardBonusAP = 1;
+        private const float GOOD_AFFINITY = 3;
+        private const float BAD_AFFINITY = 5;
+        private const int SKILL_REWARD_BONUS_AP = 1;
 
         /// <summary>
         /// create Stats between adding the basic Stats to a Randomize Stats influenced by the Current Stage of the game;
@@ -63,40 +63,40 @@ namespace Units
         {
             BattleStats _ret = new BattleStats(basicStats);
             
-            _ret.Affinity = AffinityFromElement(element, _ret.Power);
+            _ret.affinity = AffinityFromElement(element, _ret.power);
             
             if (RewardType == EReward.Skill)
-                _ret.AP += SkillRewardBonusAP;
+                _ret.ap += SKILL_REWARD_BONUS_AP;
 
-            _ret.Power = 0;
+            _ret.power = 0;
 
-            _ret.HP *= (BattleStage.Stage + 1);
-            _ret.Shield *= (BattleStage.Stage + 1);
+            _ret.hp *= (BattleStage.Stage + 1);
+            _ret.shield *= (BattleStage.Stage + 1);
             
             return _ret;
         }
 
-        private Affinity AffinityFromElement(Element ele, int basePower)
+        private Affinity AffinityFromElement(Element _ele, int _basePower)
         {
-            float fire = 0;
-            float nat = 0;
-            float wat = 0;
-            switch (ele.Type)
+            float _fire = 0;
+            float _nat = 0;
+            float _wat = 0;
+            switch (_ele.Type)
             {
                 case EElement.Fire: 
-                    fire += GoodAffinity + basePower;
-                    nat += BadAffinity;
-                    wat -= BadAffinity;
+                    _fire += GOOD_AFFINITY + _basePower;
+                    _nat += BAD_AFFINITY;
+                    _wat -= BAD_AFFINITY;
                     break;
                 case EElement.Nature:
-                    nat += GoodAffinity + basePower;
-                    wat += BadAffinity;
-                    fire -= BadAffinity;
+                    _nat += GOOD_AFFINITY + _basePower;
+                    _wat += BAD_AFFINITY;
+                    _fire -= BAD_AFFINITY;
                     break;
                 case EElement.Water:
-                    wat += GoodAffinity + basePower;
-                    fire += BadAffinity;
-                    nat -= BadAffinity;
+                    _wat += GOOD_AFFINITY + _basePower;
+                    _fire += BAD_AFFINITY;
+                    _nat -= BAD_AFFINITY;
                     break;
                 case EElement.None:
                     break;
@@ -104,7 +104,7 @@ namespace Units
                     break;
             }
 
-            return new Affinity(fire, nat, wat);
+            return new Affinity(_fire, _nat, _wat);
         }
 
         public string Name => unitName;
@@ -129,20 +129,20 @@ namespace Units
             _cell.ForceTake(_monster);
         }
 
-        public void SetDATA(rawMonster _rawMonster)
+        public void SetData(RawMonster _rawMonster)
         {
-            unitName = _rawMonster.unitName;
-            element = _rawMonster.element;
-            basicStats = _rawMonster.basicStats;
-            unitSprite = _rawMonster.unitSprite;
-            relic = _rawMonster.relic;
-            rewardType = _rawMonster.rewardType;
-            type = _rawMonster.type;
-            archetype = _rawMonster.archetype;
+            unitName = _rawMonster.UnitName;
+            element = _rawMonster.Element;
+            basicStats = _rawMonster.BasicStats;
+            unitSprite = _rawMonster.UnitSprite;
+            relic = _rawMonster.Relic;
+            rewardType = _rawMonster.RewardType;
+            type = _rawMonster.Type;
+            archetype = _rawMonster.Archetype;
             prefab = UnityEngine.Resources.Load<GameObject>($"Prefabs/Units/PrefabMonster");
         }
 
-        public void SetSkill(SkillSO _newSkill)
+        public void SetSkill(SkillSo _newSkill)
         {
 #if (UNITY_EDITOR)
             skill = _newSkill;

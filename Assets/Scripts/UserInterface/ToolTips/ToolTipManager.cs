@@ -5,6 +5,7 @@ using Resources.ToolTip.Scripts;
 using Skills;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UserInterface.ToolTips
 {
@@ -18,32 +19,45 @@ namespace UserInterface.ToolTips
         [SerializeField] private MonsterTooltip monsterTooltip;
         [SerializeField] private List<Canvas> tooltipsCanvas;
 
+        [FormerlySerializedAs("ScenePadding")]
         [Header("TO CHANGE IN EVERY SCENE")]
         [Tooltip("Refer to the margin to the edge of the screen where the Tooltips should have")]
-        [SerializeField] private Vector2 ScenePadding;
+        [SerializeField] private Vector2 scenePadding;
 
+        [FormerlySerializedAs("onSkillTooltip_ON")]
         [Header("Event Listener")] 
-        [SerializeField] private SkillEvent onSkillTooltip_ON;
-        [SerializeField] private VoidEvent onSkillTooltip_OFF;
-        [SerializeField] private GearInfoEvent onGearTooltip_ON;
-        [SerializeField] private VoidEvent onGearTooltip_OFF;
-        [SerializeField] private UnitEvent onUnitTooltip_ON;
-        [SerializeField] private VoidEvent onUnitTooltip_OFF;
-        [SerializeField] private InfoEvent onTooltip_ON;
-        [SerializeField] private VoidEvent onTooltip_OFF;
-        [SerializeField] private UnitEvent onHeroTooltip_ON;
-        [SerializeField] private VoidEvent onHeroTooltip_OFF;
-        [SerializeField] private UnitEvent onMonsterTooltip_ON;
-        [SerializeField] private VoidEvent onMonsterTooltip_OFF;
+        [SerializeField] private SkillEvent onSkillTooltipOn;
+        [FormerlySerializedAs("onSkillTooltip_OFF")]
+        [SerializeField] private VoidEvent onSkillTooltipOff;
+        [FormerlySerializedAs("onGearTooltip_ON")]
+        [SerializeField] private GearInfoEvent onGearTooltipOn;
+        [FormerlySerializedAs("onGearTooltip_OFF")]
+        [SerializeField] private VoidEvent onGearTooltipOff;
+        [FormerlySerializedAs("onUnitTooltip_ON")]
+        [SerializeField] private UnitEvent onUnitTooltipOn;
+        [FormerlySerializedAs("onUnitTooltip_OFF")]
+        [SerializeField] private VoidEvent onUnitTooltipOff;
+        [FormerlySerializedAs("onTooltip_ON")]
+        [SerializeField] private InfoEvent onTooltipOn;
+        [FormerlySerializedAs("onTooltip_OFF")]
+        [SerializeField] private VoidEvent onTooltipOff;
+        [FormerlySerializedAs("onHeroTooltip_ON")]
+        [SerializeField] private UnitEvent onHeroTooltipOn;
+        [FormerlySerializedAs("onHeroTooltip_OFF")]
+        [SerializeField] private VoidEvent onHeroTooltipOff;
+        [FormerlySerializedAs("onMonsterTooltip_ON")]
+        [SerializeField] private UnitEvent onMonsterTooltipOn;
+        [FormerlySerializedAs("onMonsterTooltip_OFF")]
+        [SerializeField] private VoidEvent onMonsterTooltipOff;
         
         // Event Handler
         private void EventTrigger_SkillTooltip_ON(SkillInfo _skill)
         {
             skillTooltip.HideTooltip();
-            skillTooltip.Skill = _skill;
+            skillTooltip.skill = _skill;
             skillTooltip.DisplayInfo();
         }
-        private void EventTrigger_SkillTooltip_OFF(Void empty)
+        private void EventTrigger_SkillTooltip_OFF(Void _empty)
         {
             if (skillTooltip.LockInPlace) return;
             skillTooltip.HideTooltip();
@@ -52,10 +66,10 @@ namespace UserInterface.ToolTips
         private void EventTrigger_GearTooltip_ON(GearInfo _gear)
         {
             if (gearTooltip.LockInPlace) return;
-            gearTooltip.Gear = _gear;
+            gearTooltip.gear = _gear;
             gearTooltip.DisplayInfo();
         }
-        private void EventTrigger_GearTooltip_OFF(Void empty)
+        private void EventTrigger_GearTooltip_OFF(Void _empty)
         {
             if (gearTooltip.LockInPlace) return;
             gearTooltip.HideTooltip();
@@ -63,10 +77,10 @@ namespace UserInterface.ToolTips
         private void EventTrigger_UnitTooltip_ON(Unit _unit)
         {
             if (unitTooltip.LockInPlace) return;
-            unitTooltip.Unit = _unit;
+            unitTooltip.unit = _unit;
             unitTooltip.DisplayInfo();
         }
-        private void EventTrigger_UnitTooltip_OFF(Void empty)
+        private void EventTrigger_UnitTooltip_OFF(Void _empty)
         {
             if (unitTooltip.LockInPlace) return;
             unitTooltip.HideTooltip();
@@ -76,10 +90,10 @@ namespace UserInterface.ToolTips
         {
             heroTooltip.HideTooltip();
             monsterTooltip.HideTooltip();
-            heroTooltip.Unit = _unit;
+            heroTooltip.unit = _unit;
             heroTooltip.DisplayInfo();
         }
-        private void EventTrigger_HeroTooltip_OFF(Void empty)
+        private void EventTrigger_HeroTooltip_OFF(Void _empty)
         {
             if (heroTooltip.LockInPlace) return;
             heroTooltip.HideTooltip();
@@ -88,10 +102,10 @@ namespace UserInterface.ToolTips
         {
             monsterTooltip.HideTooltip();
             heroTooltip.HideTooltip();
-            monsterTooltip.Unit = _unit;
+            monsterTooltip.unit = _unit;
             monsterTooltip.DisplayInfo();
         }
-        private void EventTrigger_MonsterTooltip_OFF(Void empty)
+        private void EventTrigger_MonsterTooltip_OFF(Void _empty)
         {
             if (monsterTooltip.LockInPlace) return;
             monsterTooltip.HideTooltip();
@@ -102,7 +116,7 @@ namespace UserInterface.ToolTips
             basicTooltip.Info = _info;
             basicTooltip.DisplayInfo();
         }
-        private void EventTrigger_Tooltip_OFF(Void empty)
+        private void EventTrigger_Tooltip_OFF(Void _empty)
         {
             if (basicTooltip.LockInPlace) return;
             basicTooltip.HideTooltip();
@@ -116,52 +130,52 @@ namespace UserInterface.ToolTips
                 _canvas.gameObject.SetActive(true);
             }
             
-            skillTooltip.padding = ScenePadding;
-            gearTooltip.padding = ScenePadding;
-            unitTooltip.padding = ScenePadding;
-            basicTooltip.padding = new Vector2(10,10);
-            heroTooltip.padding = ScenePadding;
-            monsterTooltip.padding = ScenePadding;
+            skillTooltip.Padding = scenePadding;
+            gearTooltip.Padding = scenePadding;
+            unitTooltip.Padding = scenePadding;
+            basicTooltip.Padding = new Vector2(10,10);
+            heroTooltip.Padding = scenePadding;
+            monsterTooltip.Padding = scenePadding;
             
-            onSkillTooltip_ON.EventListeners += EventTrigger_SkillTooltip_ON;
-            onSkillTooltip_OFF.EventListeners += EventTrigger_SkillTooltip_OFF;
+            onSkillTooltipOn.EventListeners += EventTrigger_SkillTooltip_ON;
+            onSkillTooltipOff.EventListeners += EventTrigger_SkillTooltip_OFF;
             
-            onGearTooltip_ON.EventListeners += EventTrigger_GearTooltip_ON;
-            onGearTooltip_OFF.EventListeners += EventTrigger_GearTooltip_OFF;
+            onGearTooltipOn.EventListeners += EventTrigger_GearTooltip_ON;
+            onGearTooltipOff.EventListeners += EventTrigger_GearTooltip_OFF;
             
-            onUnitTooltip_ON.EventListeners += EventTrigger_UnitTooltip_ON;
-            onUnitTooltip_OFF.EventListeners += EventTrigger_UnitTooltip_OFF;
+            onUnitTooltipOn.EventListeners += EventTrigger_UnitTooltip_ON;
+            onUnitTooltipOff.EventListeners += EventTrigger_UnitTooltip_OFF;
             
-            onHeroTooltip_ON.EventListeners += EventTrigger_HeroTooltip_ON;
-            onHeroTooltip_OFF.EventListeners += EventTrigger_HeroTooltip_OFF;
+            onHeroTooltipOn.EventListeners += EventTrigger_HeroTooltip_ON;
+            onHeroTooltipOff.EventListeners += EventTrigger_HeroTooltip_OFF;
             
-            onMonsterTooltip_ON.EventListeners += EventTrigger_MonsterTooltip_ON;
-            onMonsterTooltip_OFF.EventListeners += EventTrigger_MonsterTooltip_OFF;
+            onMonsterTooltipOn.EventListeners += EventTrigger_MonsterTooltip_ON;
+            onMonsterTooltipOff.EventListeners += EventTrigger_MonsterTooltip_OFF;
             
-            onTooltip_ON.EventListeners += EventTrigger_Tooltip_ON;
-            onTooltip_OFF.EventListeners += EventTrigger_Tooltip_OFF;
+            onTooltipOn.EventListeners += EventTrigger_Tooltip_ON;
+            onTooltipOff.EventListeners += EventTrigger_Tooltip_OFF;
         }
         
         // Remove Listener on Destroy
         private void OnDestroy()
         {
-            onSkillTooltip_ON.EventListeners -= EventTrigger_SkillTooltip_ON;
-            onSkillTooltip_OFF.EventListeners -= EventTrigger_SkillTooltip_OFF;
+            onSkillTooltipOn.EventListeners -= EventTrigger_SkillTooltip_ON;
+            onSkillTooltipOff.EventListeners -= EventTrigger_SkillTooltip_OFF;
             
-            onGearTooltip_ON.EventListeners -= EventTrigger_GearTooltip_ON;
-            onGearTooltip_OFF.EventListeners -= EventTrigger_GearTooltip_OFF;
+            onGearTooltipOn.EventListeners -= EventTrigger_GearTooltip_ON;
+            onGearTooltipOff.EventListeners -= EventTrigger_GearTooltip_OFF;
             
-            onUnitTooltip_ON.EventListeners -= EventTrigger_UnitTooltip_ON;
-            onUnitTooltip_OFF.EventListeners -= EventTrigger_UnitTooltip_OFF;
+            onUnitTooltipOn.EventListeners -= EventTrigger_UnitTooltip_ON;
+            onUnitTooltipOff.EventListeners -= EventTrigger_UnitTooltip_OFF;
             
-            onHeroTooltip_ON.EventListeners -= EventTrigger_HeroTooltip_ON;
-            onHeroTooltip_OFF.EventListeners -= EventTrigger_HeroTooltip_OFF;
+            onHeroTooltipOn.EventListeners -= EventTrigger_HeroTooltip_ON;
+            onHeroTooltipOff.EventListeners -= EventTrigger_HeroTooltip_OFF;
             
-            onMonsterTooltip_ON.EventListeners -= EventTrigger_MonsterTooltip_ON;
-            onMonsterTooltip_OFF.EventListeners -= EventTrigger_MonsterTooltip_OFF;
+            onMonsterTooltipOn.EventListeners -= EventTrigger_MonsterTooltip_ON;
+            onMonsterTooltipOff.EventListeners -= EventTrigger_MonsterTooltip_OFF;
             
-            onTooltip_ON.EventListeners -= EventTrigger_Tooltip_ON;
-            onTooltip_OFF.EventListeners -= EventTrigger_Tooltip_OFF;
+            onTooltipOn.EventListeners -= EventTrigger_Tooltip_ON;
+            onTooltipOff.EventListeners -= EventTrigger_Tooltip_OFF;
         }
     }
 }

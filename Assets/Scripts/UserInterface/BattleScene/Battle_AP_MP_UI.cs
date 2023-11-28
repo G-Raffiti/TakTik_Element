@@ -2,13 +2,16 @@
 using StateMachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UserInterface.BattleScene
 {
-    public class Battle_AP_MP_UI : MonoBehaviour
+    public class BattleAPMpUI : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI AP;
-        [SerializeField] private TextMeshProUGUI MP;
+        [FormerlySerializedAs("AP")]
+        [SerializeField] private TextMeshProUGUI ap;
+        [FormerlySerializedAs("MP")]
+        [SerializeField] private TextMeshProUGUI mp;
         
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onStartTurn;
@@ -35,11 +38,11 @@ namespace UserInterface.BattleScene
 
         public void UpdateDisplay()
         {
-            AP.text = "" + (int)BattleStateManager.instance.PlayingUnit.BattleStats.AP;
-            MP.text = "" + (int)BattleStateManager.instance.PlayingUnit.BattleStats.MP;
+            ap.text = "" + (int)BattleStateManager.instance.PlayingUnit.battleStats.ap;
+            mp.text = "" + (int)BattleStateManager.instance.PlayingUnit.battleStats.mp;
         }
 
-        public void OnEventRaised<T>(T item)
+        public void OnEventRaised<T>(T _item)
         {
             UpdateDisplay();
         }

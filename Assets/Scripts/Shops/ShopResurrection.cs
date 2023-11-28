@@ -6,6 +6,7 @@ using SceneManagement;
 using TMPro;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UserInterface;
 
@@ -15,45 +16,46 @@ namespace Shops
     {
         [SerializeField] private TextMeshProUGUI pointsTxt;
         private List<Hero> heroes;
-        private Hero ActualHero;
+        private Hero actualHero;
         [SerializeField] private GameObject sprite;
-        [SerializeField] private List<Image> HeroSelector;
+        [FormerlySerializedAs("HeroSelector")]
+        [SerializeField] private List<Image> heroSelector;
 
         private void UpdateDisplay()
         {
-            pointsTxt.text = $"You have {PlayerData.getInstance().ResurrectionPoints}";
-            for (int i = 0; i < HeroSelector.Count; i++)
+            pointsTxt.text = $"You have {PlayerData.GetInstance().ResurrectionPoints}";
+            for (int _i = 0; _i < heroSelector.Count; _i++)
             {
-                HeroSelector[i].GetComponentInChildren<PersonalInventory>().Initialize(heroes[i]);
+                heroSelector[_i].GetComponentInChildren<PersonalInventory>().Initialize(heroes[_i]);
             }
         }
 
         private void Start()
         {
-            heroes = PlayerData.getInstance().Heroes;
+            heroes = PlayerData.GetInstance().Heroes;
             UpdateDisplay();
             ChangeActualHero(0);
         }
 
         public void Resurrection()
         {
-            if (!ActualHero.isDead) return;
-            if (PlayerData.getInstance().ResurrectionPoints < 1) return;
-            PlayerData.getInstance().ResurrectionPoints--;
-            ActualHero.isDead = false;
-            ActualHero.HealHP(50);
+            if (!actualHero.isDead) return;
+            if (PlayerData.GetInstance().ResurrectionPoints < 1) return;
+            PlayerData.GetInstance().ResurrectionPoints--;
+            actualHero.isDead = false;
+            actualHero.HealHp(50);
             sprite.GetComponent<Animation>().Play("Resurrection");
             UpdateDisplay();
         }
 
-        public void ChangeActualHero(int index)
+        public void ChangeActualHero(int _index)
         {
-            ActualHero = heroes[index];
-            foreach (Image _image in HeroSelector)
+            actualHero = heroes[_index];
+            foreach (Image _image in heroSelector)
             {
                 _image.color = new Color(0.1568628f, 0.1568628f, 0.1568628f);
             }
-            HeroSelector[index].color = Color.yellow;
+            heroSelector[_index].color = Color.yellow;
             StartCoroutine(FadeOff());
         }
 
@@ -64,7 +66,7 @@ namespace Shops
             while (sprite.GetComponent<Animation>().isPlaying)
             {
                 yield return null;}
-            sprite.GetComponent<SpriteRenderer>().sprite = ActualHero.UnitSprite;
+            sprite.GetComponent<SpriteRenderer>().sprite = actualHero.UnitSprite;
         }
     }
 }

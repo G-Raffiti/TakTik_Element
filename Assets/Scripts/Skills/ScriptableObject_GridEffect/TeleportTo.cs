@@ -9,19 +9,19 @@ namespace Skills.ScriptableObject_GridEffect
     [CreateAssetMenu(fileName = "GridEffect_Teleport_to", menuName = "Scriptable Object/Skills/Grid Effect Teleport to")]
     public class TeleportTo : SkillGridEffect
     {
-        public override void Use(Cell _cell, SkillInfo _skillInfo)
+        public override void Use(Cell _targetCell, SkillInfo _skillInfo)
         {
-            if (_cell.IsWalkable)
+            if (_targetCell.IsWalkable)
             {
-                Teleport(_cell, _skillInfo.Unit);
+                Teleport(_targetCell, _skillInfo.unit);
             }
             else
             {
-                List<Cell> Neighbours = _cell.Neighbours.Where(_neighbour => _neighbour.IsWalkable).ToList();
-                Neighbours.Sort((c1,c2) => c1.GetDistance(_skillInfo.Unit.Cell).CompareTo(c2.GetDistance(_skillInfo.Unit.Cell)));
+                List<Cell> _neighbours = _targetCell.Neighbours.Where(_neighbour => _neighbour.IsWalkable).ToList();
+                _neighbours.Sort((_c1,_c2) => _c1.GetDistance(_skillInfo.unit.Cell).CompareTo(_c2.GetDistance(_skillInfo.unit.Cell)));
                 
-                if (Neighbours.Count >= 1)
-                    Teleport(Neighbours[0], _skillInfo.Unit);
+                if (_neighbours.Count >= 1)
+                    Teleport(_neighbours[0], _skillInfo.unit);
             }
         }
 
@@ -47,7 +47,7 @@ namespace Skills.ScriptableObject_GridEffect
 
         public override bool CanUse(Cell _cell, SkillInfo _skillInfo)
         {
-            return _cell.IsWalkable || _cell.Neighbours.Any(_neighbour => _neighbour.IsWalkable || _skillInfo.Unit.Cell == _cell);
+            return _cell.IsWalkable || _cell.Neighbours.Any(_neighbour => _neighbour.IsWalkable || _skillInfo.unit.Cell == _cell);
         }
     }
 }

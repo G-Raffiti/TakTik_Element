@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 namespace Stats
 {
     [CreateAssetMenu(fileName = "Affix_", menuName = "Scriptable Object/New Affix")]
-    public class AffixSO : ScriptableObject
+    public class AffixSo : ScriptableObject
     {
         [SerializeField] protected EAffix type;
         [SerializeField] private Color color;
@@ -23,42 +23,42 @@ namespace Stats
         public Color Color => color;
         public int[] Tier => tier;
 
-        public BattleStats GenerateBS(float value)
+        public BattleStats GenerateBs(float _value)
         {
-            BattleStats ret = new BattleStats(0);
+            BattleStats _ret = new BattleStats(0);
 
             switch (Type)
             {
-                case EAffix.HP: ret.HP = (int) value;
+                case EAffix.Hp: _ret.hp = (int) _value;
                     break;
-                case EAffix.AP: ret.AP = (int) value;
+                case EAffix.AP: _ret.ap = (int) _value;
                     break;
-                case EAffix.MP: ret.MP = (int) value;
+                case EAffix.Mp: _ret.mp = (int) _value;
                     break;
-                case EAffix.Speed: ret.Speed = (int) value;
+                case EAffix.Speed: _ret.speed = (int) _value;
                     break;
-                case EAffix.Shield: ret.Shield = (int) value;
+                case EAffix.Shield: _ret.shield = (int) _value;
                     break;
-                case EAffix.Fire: ret.Affinity.Fire = value;
+                case EAffix.Fire: _ret.affinity.fire = _value;
                     break;
-                case EAffix.Nature: ret.Affinity.Nature = value;
+                case EAffix.Nature: _ret.affinity.nature = _value;
                     break;
-                case EAffix.Water: ret.Affinity.Water = value;
+                case EAffix.Water: _ret.affinity.water = _value;
                     break;
-                case EAffix.Power: ret.Power = (int) value;
+                case EAffix.Power: _ret.power = (int) _value;
                     break;
-                case EAffix.Range: ret.gridRange.RangeValue = (int) value;
+                case EAffix.Range: _ret.gridRange.rangeValue = (int) _value;
                     break;
-                case EAffix.Zone: ret.gridRange.Radius = (int) value;
+                case EAffix.Zone: _ret.gridRange.radius = (int) _value;
                     break;
-                case EAffix.Focus: ret.Focus = (int) value;
+                case EAffix.Focus: _ret.focus = (int) _value;
                     break;
                 default:
                     Debug.LogError("Error in Affix Type");
                     break;
             }
 
-            return ret;
+            return _ret;
         }
         
         
@@ -72,17 +72,17 @@ namespace Stats
                 
         }
         
-        public int getValue(int _stage)
+        public int GetValue(int _stage)
         {
-            return getValueOfTier(_stage + 1);
+            return GetValueOfTier(_stage + 1);
         }
 
-        public int getValueOfTier(int _tier)
+        public int GetValueOfTier(int _tier)
         {
-            int Min = tier[Math.Max(0, _tier - 1)];
-            int Max = tier[Math.Min(_tier, tier.Length -1)] + 1;
-            int value = Random.Range(Min, Max);
-            return value;
+            int _min = tier[Math.Max(0, _tier - 1)];
+            int _max = tier[Math.Min(_tier, tier.Length -1)] + 1;
+            int _value = Random.Range(_min, _max);
+            return _value;
         }
     }
 }

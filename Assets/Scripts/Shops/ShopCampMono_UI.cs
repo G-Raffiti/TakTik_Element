@@ -3,14 +3,17 @@ using _EventSystem.CustomEvents;
 using Skills;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Shops
 {
-    public class ShopCampMono_UI : MonoBehaviour
+    public class ShopCampMonoUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI txtCampPoint;
-        [SerializeField] private SlotDragAndDrop SlotSkillDuplicate;
-        [SerializeField] private SlotDragAndDrop SlotForgetSkill;
+        [FormerlySerializedAs("SlotSkillDuplicate")]
+        [SerializeField] private SlotDragAndDrop slotSkillDuplicate;
+        [FormerlySerializedAs("SlotForgetSkill")]
+        [SerializeField] private SlotDragAndDrop slotForgetSkill;
         
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onDuplicateSkill;
@@ -25,31 +28,31 @@ namespace Shops
 
         private void OnEnable()
         {
-            onCampPointUsed.EventListeners += actualiseCampPoint;
+            onCampPointUsed.EventListeners += ActualiseCampPoint;
         }
 
         private void OnDisable()
         {
-            onCampPointUsed.EventListeners -= actualiseCampPoint;
+            onCampPointUsed.EventListeners -= ActualiseCampPoint;
         }
 
-        private void actualiseCampPoint(int campPoint)
+        private void ActualiseCampPoint(int _campPoint)
         {
-            txtCampPoint.text = $"You have {campPoint} Camp Points Left";
+            txtCampPoint.text = $"You have {_campPoint} Camp Points Left";
             EmptySlots();
         }
 
         public void ForgetSkillButton()
         {
-            if (SlotForgetSkill.GetInfoSkill() == null) return;
-            SkillForget = SlotForgetSkill.GetInfoSkill();
+            if (slotForgetSkill.GetInfoSkill() == null) return;
+            SkillForget = slotForgetSkill.GetInfoSkill();
             onForgetSkill.Raise();
         }
 
         public void DuplicateSkillButton()
         {
-            if (SlotSkillDuplicate.GetInfoSkill() == null) return;
-            SkillDuplicate = SlotSkillDuplicate.GetInfoSkill();
+            if (slotSkillDuplicate.GetInfoSkill() == null) return;
+            SkillDuplicate = slotSkillDuplicate.GetInfoSkill();
             onDuplicateSkill.Raise();
         }
 
@@ -60,8 +63,8 @@ namespace Shops
 
         public void EmptySlots()
         {
-            SlotSkillDuplicate.RemoveItem();
-            SlotForgetSkill.RemoveItem();
+            slotSkillDuplicate.RemoveItem();
+            slotForgetSkill.RemoveItem();
         }
     }
 }

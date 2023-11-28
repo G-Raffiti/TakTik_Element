@@ -8,7 +8,7 @@ namespace Score
 {
     public static class ScoreHolder
     {
-        public static List<MonsterSO> Bosses { get; private set; } = new List<MonsterSO>();
+        public static List<MonsterSo> Bosses { get; private set; } = new List<MonsterSo>();
         public static int DamageDealtTotal { get; private set; } = 0;
         public static int DamageDealtBiggest { get; private set; } = 0;
         public static int DamageTakenTotal { get; private set; } = 0;
@@ -17,31 +17,31 @@ namespace Score
         public static int GearSalvaged { get; private set; } = 0;
         public static int CraftingMaterialCollected { get; private set; } = 0;
 
-        public static void AddBoss(MonsterSO _monster)
+        public static void AddBoss(MonsterSo _monster)
         {
             if (_monster.Type != EMonster.Boss) return;
             Bosses.Add(_monster);
         }
 
-        public static void Damage(object sender, EventArgs _e)
+        public static void Damage(object _sender, EventArgs _e)
         {
-            AttackEventArgs e = (AttackEventArgs) _e;
-            if (e.Defender == e.Attacker) return;
-            if (e.Attacker.playerType == EPlayerType.HUMAN)
+            AttackEventArgs _attackEvent = (AttackEventArgs) _e;
+            if (_attackEvent.Defender == _attackEvent.Attacker) return;
+            if (_attackEvent.Attacker.playerType == EPlayerType.Human)
             {
-                DamageDealtTotal += e.Damage;
-                DamageDealtBiggest = DamageDealtBiggest.Max(e.Damage);
+                DamageDealtTotal += _attackEvent.Damage;
+                DamageDealtBiggest = DamageDealtBiggest.Max(_attackEvent.Damage);
             }
-            if (e.Defender.playerType == EPlayerType.HUMAN)
+            if (_attackEvent.Defender.playerType == EPlayerType.Human)
             {
-                DamageTakenTotal += e.Damage;
-                DamageTakenBiggest = DamageTakenBiggest.Max(e.Damage);
+                DamageTakenTotal += _attackEvent.Damage;
+                DamageTakenBiggest = DamageTakenBiggest.Max(_attackEvent.Damage);
             }
         }
 
-        public static void AddDistance(int pathCount)
+        public static void AddDistance(int _pathCount)
         {
-            CellWalked += pathCount;
+            CellWalked += _pathCount;
         }
 
         public static void AddGearSalvaged()
@@ -49,14 +49,14 @@ namespace Score
             GearSalvaged++;
         }
 
-        public static void AddCraftingMaterial(int number)
+        public static void AddCraftingMaterial(int _number)
         {
-            CraftingMaterialCollected += number;
+            CraftingMaterialCollected += _number;
         }
 
         public static int GameScore()
         {
-            int score = CellWalked * 3
+            int _score = CellWalked * 3
                         + Bosses.Count * 100
                         + DamageDealtTotal
                         + DamageDealtBiggest * 10
@@ -64,7 +64,7 @@ namespace Score
                         - DamageTakenBiggest * 5
                         + GearSalvaged * 7
                         + CraftingMaterialCollected * 2;
-            return score;
+            return _score;
         }
     }
 }

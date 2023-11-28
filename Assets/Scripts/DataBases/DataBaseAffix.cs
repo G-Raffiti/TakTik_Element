@@ -9,9 +9,9 @@ namespace DataBases
 {
     public enum EAffix
     {
-        HP,
+        Hp,
         AP,
-        MP,
+        Mp,
         Speed,
         Shield,
 
@@ -29,32 +29,32 @@ namespace DataBases
     [CreateAssetMenu(fileName = "DataBase_Affix", menuName = "Scriptable Object/DataBase/Affix")]
     public class DataBaseAffix : ScriptableObject
     {
-        [SerializeField] private List<AffixSO> affixes;
+        [SerializeField] private List<AffixSo> affixes;
         
-        public List<AffixSO> AllAffixes => affixes;
+        public List<AffixSo> AllAffixes => affixes;
 
-        public Dictionary<EAffix, AffixSO> Affixes => GetAffixes();
+        public Dictionary<EAffix, AffixSo> Affixes => GetAffixes();
         
-        private Dictionary<EAffix, AffixSO> GetAffixes()
+        private Dictionary<EAffix, AffixSo> GetAffixes()
         {
-            Dictionary<EAffix, AffixSO> ret = new Dictionary<EAffix, AffixSO>();
-            affixes.ForEach(_affix => ret.Add(_affix.Type, _affix));
-            return ret;
+            Dictionary<EAffix, AffixSo> _ret = new Dictionary<EAffix, AffixSo>();
+            affixes.ForEach(_affix => _ret.Add(_affix.Type, _affix));
+            return _ret;
         }
 
-        public AffixSO GetRandomBut(IEnumerable<AffixSO> _nonAffixes)
+        public AffixSo GetRandomBut(IEnumerable<AffixSo> _nonAffixes)
         {
-            List<AffixSO> aff = new List<AffixSO>(affixes.Except(_nonAffixes));
-            List<AffixSO> weigthedAffixes = new List<AffixSO>();
-            foreach (AffixSO _affix in aff)
+            List<AffixSo> _aff = new List<AffixSo>(affixes.Except(_nonAffixes));
+            List<AffixSo> _weigthedAffixes = new List<AffixSo>();
+            foreach (AffixSo _affix in _aff)
             {
-                for (int i = 0; i < _affix.Rarity + BattleStage.Stage; i++)
+                for (int _i = 0; _i < _affix.Rarity + BattleStage.Stage; _i++)
                 {
-                    weigthedAffixes.Add(_affix);
+                    _weigthedAffixes.Add(_affix);
                 }
             }
 
-            return weigthedAffixes.GetRandom();
+            return _weigthedAffixes.GetRandom();
         }
     }
 }

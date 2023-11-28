@@ -1,19 +1,22 @@
 ﻿using System.Collections.Generic;
 using Buffs;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cells
 {
     [CreateAssetMenu(fileName = "DataBase_Cell", menuName = "Scriptable Object/DataBase/Cell")]
     public class DataBaseCell : ScriptableObject
     {
-        [SerializeField] private List<CellSO> AllCells;
+        [FormerlySerializedAs("AllCells")]
+        [SerializeField] private List<CellSo> allCells;
 
         [SerializeField] private GameObject tilePrefab;
         [SerializeField] private GameObject gridObjectPrefab;
-        [SerializeField] private StatusSO corruptionSO;
+        [FormerlySerializedAs("corruptionSO")]
+        [SerializeField] private StatusSo corruptionSo;
 
-        public StatusSO CorruptionSO => corruptionSO;
+        public StatusSo CorruptionSo => corruptionSo;
 
         public GameObject GridObjectPrefab => gridObjectPrefab;
         public GameObject TilePrefab => tilePrefab;

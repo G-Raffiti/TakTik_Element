@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace DevsButton
 {
-    public class test :MonoBehaviour
+    public class Test :MonoBehaviour
     {
         void Start()
         {
@@ -19,11 +19,11 @@ namespace DevsButton
             {
                 if (EventSystem.current.IsPointerOverGameObject())
                     Debug.Log("hit");
-                PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-                eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-                List<RaycastResult> results = new List<RaycastResult>();
-                EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-                foreach (RaycastResult _result in results)
+                PointerEventData _eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+                _eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                List<RaycastResult> _results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(_eventDataCurrentPosition, _results);
+                foreach (RaycastResult _result in _results)
                 {
                     Debug.Log(_result.gameObject + _result.gameObject.transform.parent.name);
                 }

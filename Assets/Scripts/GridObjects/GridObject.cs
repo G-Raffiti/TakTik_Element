@@ -7,39 +7,42 @@ using StateMachine.GridStates;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace GridObjects
 {
     [RequireComponent(typeof(Animation))]
-    public class GridObject : IMovable
+    public class GridObject : Movable
     {
         [Header("Unity References")]
-        [SerializeField] private GridObjectSO gridObject;
+        [SerializeField] private GridObjectSo gridObject;
         [SerializeField] private SpriteRenderer spriteRenderer;
         
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onActionDone;
         [SerializeField] private GridObjectEvent gridObjectDestroyed;
-        [SerializeField] private InfoEvent onInfoTooltip_ON;
-        [SerializeField] private VoidEvent onInfoTooltip_OFF;
+        [FormerlySerializedAs("onInfoTooltip_ON")]
+        [SerializeField] private InfoEvent onInfoTooltipOn;
+        [FormerlySerializedAs("onInfoTooltip_OFF")]
+        [SerializeField] private VoidEvent onInfoTooltipOff;
         
         private bool isDying = false;
         private bool isUsed = false;
-        public GridObjectSO GridObjectSO
+        public GridObjectSo GridObjectSo
         {
             get => gridObject;
             set => gridObject = value;
         }
         public bool IsDying => isDying;
         public override SpriteRenderer MovableSprite => spriteRenderer;
-        public override string getName => GridObjectSO.Name;
+        public override string GetName => GridObjectSo.Name;
         
         
         //////////////////// IMovable //////////////////////////////////////////////////////////////////////////////////
-        public override List<Cell> Move(Cell destinationCell, List<Cell> path)
+        public override List<Cell> Move(Cell _destinationCell, List<Cell> _completePath)
         {
-            if (!GridObjectSO.Movable) return new List<Cell>();
-            return base.Move(destinationCell, path);
+            if (!GridObjectSo.Movable) return new List<Cell>();
+            return base.Move(_destinationCell, _completePath);
         }
  
         
@@ -55,7 +58,7 @@ namespace GridObjects
         /// </summary>
         public bool IsInteractableFrom(Cell _cell)
         {
-            return GridObjectSO.GetZoneOfInteraction(Cell).Contains(_cell) && !isUsed;
+            return GridObjectSo.GetZoneOfInteraction(Cell).Contains(_cell) && !isUsed;
         }
         
         /// <summary>
@@ -73,15 +76,15 @@ namespace GridObjects
         public void OnPointerEnter()
         {
             if (BattleStateManager.instance.BattleState.State == EBattleState.Unit)
-                GridObjectSO.ShowAction(BattleStateManager.instance.PlayingUnit, Cell);
+                GridObjectSo.ShowAction(BattleStateManager.instance.PlayingUnit, Cell);
             //if (!EventSystem.current.IsPointerOverGameObject())
-            onInfoTooltip_ON.Raise(gridObject);
+            onInfoTooltipOn.Raise(gridObject);
         }
 
         public void OnPointerExit()
         {
             //if (!EventSystem.current.IsPointerOverGameObject())
-            onInfoTooltip_OFF.Raise();
+            onInfoTooltipOff.Raise();
         }
         
 
@@ -89,8 +92,8 @@ namespace GridObjects
         public void Initialize()
         {
             spriteRenderer.sprite = gridObject.Image;
-            float halfHeight = spriteRenderer.bounds.size.y/2;
-            spriteRenderer.gameObject.transform.localPosition = new Vector3(0, halfHeight-0.4f);
+            float _halfHeight = spriteRenderer.bounds.size.y/2;
+            spriteRenderer.gameObject.transform.localPosition = new Vector3(0, _halfHeight-0.4f);
             AutoSortOrder();
             Cell.Take(this);
         }
@@ -98,9 +101,9 @@ namespace GridObjects
         public override IEnumerator OnDestroyed()
         {
             gridObjectDestroyed.Raise(this);
-            Animation anim = GetComponent<Animation>();
+            Animation _anim = GetComponent<Animation>();
             isDying = true;
-            yield return new WaitWhile(() => anim.isPlaying);
+            yield return new WaitWhile(() => _anim.isPlaying);
             Cell.FreeTheCell();
             isDying = false;
             yield return new WaitForSeconds(0.1f);

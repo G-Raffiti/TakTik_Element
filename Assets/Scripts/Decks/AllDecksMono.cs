@@ -3,21 +3,24 @@ using Players;
 using Skills;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Void = _EventSystem.CustomEvents.Void;
 
 namespace Decks
 {
     public class AllDecksMono : MonoBehaviour
     {
-        public DeckMono Deck;
-        private static GameObject instance;
+        [FormerlySerializedAs("Deck")]
+        public DeckMono deck;
+        private static GameObject _instance;
 
         [Header("Event Sender")] 
         [SerializeField] private VoidEvent onDraw;
         [SerializeField] private VoidEvent onReDraw;
         
+        [FormerlySerializedAs("OnUIDisable")]
         [Header("Event Listener")] 
-        [SerializeField] private VoidEvent OnUIDisable;
+        [SerializeField] private VoidEvent onUIDisable;
         [SerializeField] private UnitEvent onUnitStartTurn;
         [SerializeField] private VoidEvent onEndTurn;
         [SerializeField] private VoidEvent onBattleStart;
@@ -25,17 +28,17 @@ namespace Decks
         private void Start()
         {
             DontDestroyOnLoad(gameObject.transform);
-            if (instance == null)
-                instance = gameObject;
+            if (_instance == null)
+                _instance = gameObject;
             else
                 Destroy(gameObject);
 
-            Deck = transform.GetComponentInChildren<DeckMono>();
+            deck = transform.GetComponentInChildren<DeckMono>();
             
             onUnitStartTurn.EventListeners += OnUnitStartTurn;
             onBattleStart.EventListeners += FirstShuffle;
             onEndTurn.EventListeners += EndTurn;
-            OnUIDisable.EventListeners += ActualizeHand;
+            onUIDisable.EventListeners += ActualizeHand;
         }
 
         private void OnDestroy()
@@ -43,35 +46,35 @@ namespace Decks
             onUnitStartTurn.EventListeners -= OnUnitStartTurn;
             onBattleStart.EventListeners -= FirstShuffle;
             onEndTurn.EventListeners -= EndTurn;
-            OnUIDisable.EventListeners -= ActualizeHand;
+            onUIDisable.EventListeners -= ActualizeHand;
         }
 
-        private void ActualizeHand(Void empty)
+        private void ActualizeHand(Void _empty)
         {
             onReDraw.Raise();
         }
 
         public void EndTurn(Void _obj)
         {
-            Deck.ClearHandSkills();
+            deck.ClearHandSkills();
             onDraw.Raise();
         }
 
         private void FirstShuffle(Void _obj)
         {
-            Deck.Initialize();
+            deck.Initialize();
         }
 
-        private void OnUnitStartTurn(Unit item)
+        private void OnUnitStartTurn(Unit _item)
         {
-            if (item.playerType != EPlayerType.HUMAN) return;
-            Deck.DrawNewHand();
+            if (_item.playerType != EPlayerType.Human) return;
+            deck.DrawNewHand();
             onDraw.Raise();
         }
 
-        public void LearnSkill(SkillSO _skillSO, Skill learning)
+        public void LearnSkill(SkillSo _skillSo, Skill _learning)
         {
-            Deck.LearnSkill(_skillSO, learning);
+            deck.LearnSkill(_skillSo, _learning);
         }
     }
 }

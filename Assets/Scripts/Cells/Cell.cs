@@ -11,6 +11,7 @@ using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Cells
 {
@@ -29,24 +30,25 @@ namespace Cells
         [SerializeField] private ColorSet colorSet;
         [SerializeField] private Sprite selectFrame;
         [SerializeField] private Sprite fullFrame;
-        public Sprite full { get; set; }
-        private Dictionary<EColor, Color> Colors = new Dictionary<EColor, Color>();
+        public Sprite Full { get; set; }
+        private Dictionary<EColor, Color> colors = new Dictionary<EColor, Color>();
         private CellState state;
         public CellState State => state;
         
         /// <summary>
         /// instance variable <c>CellSO</c> contain all the base information and sprites of the Cell
         /// </summary>
-        [SerializeField] protected CellSO cellSO;
+        [FormerlySerializedAs("cellSO")]
+        [SerializeField] protected CellSo cellSo;
 
-        public CellSO CellSO => cellSO;
+        public CellSo CellSo => cellSo;
         
         
         ////////////////////////// Coordinate in the grid / Neighbours /////////////////////////////////////////////////
         /// <summary>
         /// instance variable <c>_directions</c> Offset Directions to get Neighbours
         /// </summary>
-        private static readonly Vector2[] _directions =
+        private static readonly Vector2[] Directions =
         {
             new Vector2(1, 0), new Vector2(-1, 0), new Vector2(0, 1), new Vector2(0, -1)
         };
@@ -68,7 +70,8 @@ namespace Cells
         /// <summary>
         /// Instance variable <c>IsSpawnPlace</c> bool that return if the Cell is a Forced SpawnPlace for BattleHeroes.
         /// </summary>
-        public bool IsSpawnPlace;
+        [FormerlySerializedAs("IsSpawnPlace")]
+        public bool isSpawnPlace;
         
         
 
@@ -91,8 +94,9 @@ namespace Cells
         /// <summary>
         /// Cost of moving through the cell.
         /// </summary>
+        [FormerlySerializedAs("MovementCost")]
         [HideInInspector]
-        public float MovementCost = 1;
+        public float movementCost = 1;
 
         ////////////////////////// Current I Movable ///////////////////////////////////////////////////////////////////
         /// <summary>
@@ -108,7 +112,7 @@ namespace Cells
         /// <summary>
         /// method <c>GetCurrentIMovable</c> Return the Unit or the GridObject on the Cell
         /// </summary>
-        public IMovable GetCurrentIMovable()
+        public Movable GetCurrentIMovable()
         {
             if (CurrentUnit != null) return CurrentUnit;
             if (CurrentGridObject != null) return CurrentGridObject;
@@ -119,7 +123,7 @@ namespace Cells
         /// <summary>
         /// property <c>isCorrupted</c> return true if the Cell has the Buff Corruption applied to it.
         /// </summary>
-        public bool isCorrupted { get; set; }
+        public bool IsCorrupted { get; set; }
 
         /// <summary>
         /// property <c>Buffs</c> return the List of all Buff applied to the Cell
@@ -152,9 +156,9 @@ namespace Cells
         {
             if (CurrentUnit != null)
             {
-                Buffs.ForEach(b =>
+                Buffs.ForEach(_b =>
                 {
-                    b.Undo(CurrentUnit);
+                    _b.Undo(CurrentUnit);
                 });
             }
             CurrentUnit = null;
@@ -164,7 +168,7 @@ namespace Cells
         /// <summary>
         /// Method that put the IMovable as the Current Unit or GridObject turn isTaken to true
         /// </summary>
-        public void Take(IMovable _movable)
+        public void Take(Movable _movable)
         {
             if (_movable.Cell != null)
                 _movable.Cell.FreeTheCell();
@@ -178,9 +182,9 @@ namespace Cells
             if (_movable is Unit _unit)
             {
                 CurrentUnit = _unit;
-                Buffs.ForEach(b =>
+                Buffs.ForEach(_b =>
                 {
-                    b.Effect.OnUnitTakeCell(b, CurrentUnit);
+                    _b.Effect.OnUnitTakeCell(_b, CurrentUnit);
                 });
             }
             
@@ -193,7 +197,7 @@ namespace Cells
         /// <summary>
         /// Method Called on Check to be sure IMovable are on the Good Cells.
         /// </summary>
-        public void ForceTake(IMovable _movable)
+        public void ForceTake(Movable _movable)
         {
             if (_movable.Cell != null)
                 _movable.Cell.FreeTheCell();
@@ -224,7 +228,7 @@ namespace Cells
         {
             if (!IsUnderGround) return;
             FreeTheCell();
-            background.sprite = full;
+            background.sprite = Full;
             IsUnderGround = false;
         }
         #endregion
@@ -234,25 +238,25 @@ namespace Cells
         /// <summary>
         /// Method returns distance to a cell that is given as parameter. 
         /// </summary>
-        public int GetDistance(Cell other)
+        public int GetDistance(Cell _other)
         {
-            return (int)(Mathf.Abs(OffsetCoord.x - other.OffsetCoord.x) + Mathf.Abs(OffsetCoord.y - other.OffsetCoord.y));
+            return (int)(Mathf.Abs(OffsetCoord.x - _other.OffsetCoord.x) + Mathf.Abs(OffsetCoord.y - _other.OffsetCoord.y));
         }//Distance is given using Manhattan Norm.
 
         /// <summary>
         /// Method returns cells adjacent to current cell, from list of cells given as parameter.
         /// </summary>
-        public List<Cell> GetNeighbours(List<Cell> cells)
+        public List<Cell> GetNeighbours(List<Cell> _cells)
         {
             if (Neighbours == null)
             {
                 Neighbours = new List<Cell>(4);
-                foreach (Vector2 direction in _directions)
+                foreach (Vector2 _direction in Directions)
                 {
-                    Cell neighbour = cells.Find(c => c.OffsetCoord == OffsetCoord + direction);
-                    if (neighbour == null) continue;
+                    Cell _neighbour = _cells.Find(_c => _c.OffsetCoord == OffsetCoord + _direction);
+                    if (_neighbour == null) continue;
 
-                    Neighbours.Add(neighbour);
+                    Neighbours.Add(_neighbour);
                 }
             }
 
@@ -273,9 +277,9 @@ namespace Cells
         /// <summary>
         /// method <c>SetCellSO</c> called on <code>Board.Load()</code> to set the Type of Cell
         /// </summary>
-        public void SetCellSO(CellSO _savedCellType)
+        public void SetCellSo(CellSo _savedCellType)
         {
-            cellSO = _savedCellType;
+            cellSo = _savedCellType;
         }
         
         /// <summary>
@@ -283,23 +287,23 @@ namespace Cells
         /// </summary>
         public void Initialize()
         {
-            isCorrupted = false;
+            IsCorrupted = false;
             Buffs = new List<Buff>();
-            cellSO.Spawn(this);
-            Colors = colorSet.GetColors();
+            cellSo.Spawn(this);
+            colors = colorSet.GetColors();
             AutoSort();
-            if(cellSO.BasicBuff.Effect != null)
-                AddBuff(new Buff(cellSO.BasicBuff));
+            if(cellSo.BasicBuff.Effect != null)
+                AddBuff(new Buff(cellSo.BasicBuff));
         }
         
         private void AutoSort()
         {
-            int position = (int) (transform.position.y / (GetCellDimensions().y/2f));
-            frame.sortingOrder = 300 - position;
-            fade.sortingOrder = 200 - position;
-            element.sortingOrder = 500 - position;
-            effect.sortingOrder = 100 - position;
-            background.sortingOrder = 0 - position;
+            int _position = (int) (transform.position.y / (GetCellDimensions().y/2f));
+            frame.sortingOrder = 300 - _position;
+            fade.sortingOrder = 200 - _position;
+            element.sortingOrder = 500 - _position;
+            effect.sortingOrder = 100 - _position;
+            background.sortingOrder = 0 - _position;
         }
         #endregion
         
@@ -367,8 +371,8 @@ namespace Cells
         /// </summary>
         public void MarkAsReachable()
         {
-            state = new CellState(selectFrame, Colors[EColor.reachable],
-                Colors[EColor.reachable] * Colors[EColor.transparency]);
+            state = new CellState(selectFrame, colors[EColor.Reachable],
+                colors[EColor.Reachable] * colors[EColor.Transparency]);
             MarkAs(state);
         }
         
@@ -377,8 +381,8 @@ namespace Cells
         /// </summary>
         public void MarkAsUnReachable()
         {
-            state = new CellState(null, Colors[EColor.unMark],
-                Colors[EColor.reachable] * Colors[EColor.transparency]);
+            state = new CellState(null, colors[EColor.UnMark],
+                colors[EColor.Reachable] * colors[EColor.Transparency]);
             MarkAs(state);
         }
         
@@ -387,8 +391,8 @@ namespace Cells
         /// </summary>
         public void MarkAsPath()
         {
-            state = new CellState(selectFrame, Colors[EColor.path],
-                Colors[EColor.path] * Colors[EColor.transparency]);
+            state = new CellState(selectFrame, colors[EColor.Path],
+                colors[EColor.Path] * colors[EColor.Transparency]);
             MarkAs(state);
         }
         
@@ -399,17 +403,17 @@ namespace Cells
         {
             try
             {
-                state = new CellState(fullFrame, Colors[EColor.highlighted],
-                    Colors[EColor.highlighted] * Colors[EColor.transparency]);
+                state = new CellState(fullFrame, colors[EColor.Highlighted],
+                    colors[EColor.Highlighted] * colors[EColor.Transparency]);
                 MarkAs(state);
             }
-            catch (KeyNotFoundException e)
+            catch (KeyNotFoundException _e)
             {
-                Debug.Log(e.StackTrace);
+                Debug.Log(_e.StackTrace);
             }
-            catch (Exception e)
+            catch (Exception _e)
             {
-                Debug.Log(e.StackTrace);
+                Debug.Log(_e.StackTrace);
             }
             
         }
@@ -418,8 +422,8 @@ namespace Cells
         /// </summary>
         public void UnMark()
         {
-            state = new CellState(null, Colors[EColor.unMark],
-                Colors[EColor.none]);
+            state = new CellState(null, colors[EColor.UnMark],
+                colors[EColor.None]);
             MarkAs(state);
         }
 
@@ -428,8 +432,8 @@ namespace Cells
         /// </summary>
         public void MarkAsInteractable()
         {
-            state = new CellState(selectFrame, Colors[EColor.usable],
-                Colors[EColor.usable] * Colors[EColor.transparency]);
+            state = new CellState(selectFrame, colors[EColor.Usable],
+                colors[EColor.Usable] * colors[EColor.Transparency]);
             MarkAs(state);
         }
 
@@ -438,8 +442,8 @@ namespace Cells
         /// </summary>
         public void MarkAsEnemyCell()
         {
-            state = new CellState(selectFrame, Colors[EColor.enemy],
-                Colors[EColor.enemy] * Colors[EColor.transparency]);
+            state = new CellState(selectFrame, colors[EColor.Enemy],
+                colors[EColor.Enemy] * colors[EColor.Transparency]);
             MarkAs(state);
         }
         #endregion
@@ -452,25 +456,25 @@ namespace Cells
         public void AddBuff(Buff _buff)
         {
             if (_buff == null) return;
-            Buff buff = new Buff(_buff);
-            buff.onFloor = true;
+            Buff _newBuff = new Buff(_buff);
+            _newBuff.onFloor = true;
             
-            bool applied = false;
+            bool _applied = false;
             
-            for (int i = 0; i < Buffs.Count; i++)
+            for (int _i = 0; _i < Buffs.Count; _i++)
             {
-                if (Buffs[i].Effect == buff.Effect)
+                if (Buffs[_i].Effect == _newBuff.Effect)
                 {
-                    Buffs[i] += buff;
-                    applied = true;
+                    Buffs[_i] += _newBuff;
+                    _applied = true;
                     break;
                 }
             }
 
-            if (!applied)
+            if (!_applied)
             {
-                Buffs.Add(buff);
-                effect.sprite = buff.Effect.OnFloorSprite;
+                Buffs.Add(_buff);
+                effect.sprite = _buff.Effect.OnFloorSprite;
             }
         }
 
@@ -479,14 +483,14 @@ namespace Cells
         /// </summary>
         public void OnEndTurn()
         {
-            Buffs.ForEach(b =>
+            Buffs.ForEach(_b =>
             {
-                b.OnEndTurn(CurrentUnit);
+                _b.OnEndTurn(CurrentUnit);
             });
 
-            List<Buff> newList = new List<Buff>(Buffs.Where(b => b.Effect != cellSO.BasicBuff.Effect && b.Effect != DataBase.Cell.CorruptionSO));
+            List<Buff> _newList = new List<Buff>(Buffs.Where(_b => _b.Effect != cellSo.BasicBuff.Effect && _b.Effect != DataBase.Cell.CorruptionSo));
 
-            foreach (Buff _buff in newList.Where(_buff => _buff.Duration <= 0))
+            foreach (Buff _buff in _newList.Where(_buff => _buff.duration <= 0))
             {
                 if (CurrentUnit != null) _buff.Undo(CurrentUnit);
                 Buffs.Remove(_buff);
@@ -500,18 +504,18 @@ namespace Cells
         
         ///////////////////////// IEqualable / IGraphNode //////////////////////////////////////////////////////////////
         # region IEqualable / IGraphNode
-        public virtual bool Equals(Cell other) => 
-            OffsetCoord.x == other.OffsetCoord.x && OffsetCoord.y == other.OffsetCoord.y;
+        public virtual bool Equals(Cell _other) => 
+            OffsetCoord.x == _other.OffsetCoord.x && OffsetCoord.y == _other.OffsetCoord.y;
 
-        public override bool Equals(object other)
+        public override bool Equals(object _other)
         {
-            if (!(other is Cell))
+            if (!(_other is Cell))
                 return false;
 
-            return Equals(other as Cell);
+            return Equals(_other as Cell);
         }
         
-        public int GetDistance(IGraphNode other) =>GetDistance(other as Cell);
+        public int GetDistance(IGraphNode _other) =>GetDistance(_other as Cell);
         
         public override int GetHashCode()
         {

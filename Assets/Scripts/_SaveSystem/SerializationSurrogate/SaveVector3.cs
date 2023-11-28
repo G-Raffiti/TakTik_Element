@@ -4,22 +4,22 @@ namespace _SaveSystem.SerializationSurrogate
 {
     public class SaveVector3 : ISerializationSurrogate
     {
-        public void GetObjectData(object obj, SerializationInfo info, StreamingContext context)
+        public void GetObjectData(object _obj, SerializationInfo _info, StreamingContext _context)
         {
-            Vector3 vector3 = (Vector3) obj;
-            info.AddValue("x", vector3.X);
-            info.AddValue("y", vector3.Y);
-            info.AddValue("z", vector3.Z);
+            Vector3 _vector3 = (Vector3) _obj;
+            _info.AddValue("x", _vector3.X);
+            _info.AddValue("y", _vector3.Y);
+            _info.AddValue("z", _vector3.Z);
         }
 
-        public object SetObjectData(object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
+        public object SetObjectData(object _obj, SerializationInfo _info, StreamingContext _context, ISurrogateSelector _selector)
         {
             Vector3 _vector3 = new Vector3();
-            _vector3.X = (float) info.GetValue("x", typeof(float));
-            _vector3.Y = (float) info.GetValue("y", typeof(float));
-            _vector3.Z = (float) info.GetValue("z", typeof(float));
-            obj = _vector3;
-            return obj;
+            _vector3.X = (float) _info.GetValue("x", typeof(float));
+            _vector3.Y = (float) _info.GetValue("y", typeof(float));
+            _vector3.Z = (float) _info.GetValue("z", typeof(float));
+            _obj = _vector3;
+            return _obj;
         }
     }
 }

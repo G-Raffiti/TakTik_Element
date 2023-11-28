@@ -12,7 +12,7 @@ namespace UserInterface.ToolTips
         [SerializeField] protected Vector2 lockPosition;
         protected bool lockInPlace;
         [SerializeField] protected Vector3 offset;
-        public Vector2 padding { get; set; }
+        public Vector2 Padding { get; set; }
         public bool LockInPlace => lockInPlace;
 
         private void Awake()
@@ -54,13 +54,13 @@ namespace UserInterface.ToolTips
         {
             Vector3 _newPos = Input.mousePosition + offset;
             _newPos.z = 0f;
-            float _rightEdgeToScreenEdgeDistance = Screen.width - (_newPos.x + backgroundRectTransform.rect.width * popupCanvas.scaleFactor) - padding.x;
+            float _rightEdgeToScreenEdgeDistance = Screen.width - (_newPos.x + backgroundRectTransform.rect.width * popupCanvas.scaleFactor) - Padding.x;
             if (_rightEdgeToScreenEdgeDistance < 0)
             {
                 _newPos.x = Input.mousePosition.x - backgroundRectTransform.rect.width * popupCanvas.scaleFactor - offset.x;
             }
 
-            float _topEdgeToScreenEdgeDistance = Screen.height - (_newPos.y + backgroundRectTransform.rect.height * popupCanvas.scaleFactor) - padding.y;
+            float _topEdgeToScreenEdgeDistance = Screen.height - (_newPos.y + backgroundRectTransform.rect.height * popupCanvas.scaleFactor) - Padding.y;
             if (_topEdgeToScreenEdgeDistance < 0)
             {
                 _newPos.y += _topEdgeToScreenEdgeDistance;

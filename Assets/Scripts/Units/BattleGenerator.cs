@@ -8,22 +8,22 @@ namespace Units
 {
     public static class BattleGenerator
     {
-        public static List<MonsterSO> GenerateEnemies(EConditionType BattleType)
+        public static List<MonsterSo> GenerateEnemies(EConditionType _battleType)
         {
-            switch (BattleType)
+            switch (_battleType)
             {
-                case EConditionType.LootBox : return new List<MonsterSO>();
+                case EConditionType.LootBox : return new List<MonsterSo>();
                 case EConditionType.Death: return GenerateMinions();
                 case EConditionType.Boss:
                 {
-                    List<MonsterSO> _ret = new List<MonsterSO>();
+                    List<MonsterSo> _ret = new List<MonsterSo>();
                     _ret.Add(DataBase.Monster.AllBosses[Random.Range(0, DataBase.Monster.AllBosses.Count)]);
                     _ret.AddRange(GenerateMinions());
                     return _ret;
                 }
                 case EConditionType.Last:
                 {
-                    List<MonsterSO> _ret = new List<MonsterSO>();
+                    List<MonsterSo> _ret = new List<MonsterSo>();
                     _ret.Add(DataBase.Monster.AllBosses[Random.Range(0, DataBase.Monster.AllBosses.Count)]);
                     _ret.AddRange(GenerateMinions());
                     return _ret;
@@ -32,14 +32,14 @@ namespace Units
             }
         }
 
-        private static List<MonsterSO> GenerateMinions()
+        private static List<MonsterSo> GenerateMinions()
         {
             int _totalLvl = Random.Range(BattleStage.Stage, BattleStage.Stage * 2) + 1 + Math.Max(0, BattleStage.BattleNumber);
-            List<MonsterSO> _ret = new List<MonsterSO>();
+            List<MonsterSo> _ret = new List<MonsterSo>();
             int _actualLvl = 0;
             while (_actualLvl < _totalLvl)
             {
-                MonsterSO _randomMonster = DataBase.Monster.AllMinions[Random.Range(0, DataBase.Monster.AllMinions.Count)];
+                MonsterSo _randomMonster = DataBase.Monster.AllMinions[Random.Range(0, DataBase.Monster.AllMinions.Count)];
                 _ret.Add(_randomMonster);
                 _actualLvl += _randomMonster.Level;
             }

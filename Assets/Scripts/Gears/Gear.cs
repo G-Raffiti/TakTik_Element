@@ -8,24 +8,24 @@ namespace Gears
     [Serializable]
     public class Gear
     {
-        public GearSO GearSO { get; private set; }
+        public GearSo GearSo { get; private set; }
         public List<Affix> Affixes { get; private set; }
         public int Stage { get; private set; }
 
         public Gear() {}
-        public Gear(Gear gear)
+        public Gear(Gear _gear)
         {
-            GearSO = gear.GearSO;
-            Affixes = gear.Affixes;
-            Stage = gear.Stage;
+            GearSo = _gear.GearSo;
+            Affixes = _gear.Affixes;
+            Stage = _gear.Stage;
         }
 
         public BattleStats GetStats()
         {
-            BattleStats ret = new BattleStats(0);
-            Affixes.ForEach(affix => ret += affix.affix.GenerateBS(affix.value));
-            ret += GearSO.MainStat.affix.GenerateBS(GearSO.MainStat.value);
-            return ret;
+            BattleStats _ret = new BattleStats(0);
+            Affixes.ForEach(_affix => _ret += _affix.affix.GenerateBs(_affix.value));
+            _ret += GearSo.MainStat.affix.GenerateBs(GearSo.MainStat.value);
+            return _ret;
         }
         
         /// <summary>
@@ -34,38 +34,38 @@ namespace Gears
         /// <param name="_stage"> the stage in the game (1 2 or 3)</param>
         public void CreateGear()
         {
-            GearSO = DataBase.Gear.GetRandom();
+            GearSo = DataBase.Gear.GetRandom();
             Affixes = new List<Affix>();
             Stage = BattleStage.Stage;
 
-            List<AffixSO> nonAffixes = new List<AffixSO>();
-            nonAffixes.AddRange(GearSO.NonAffixs);
-            for (int i = 0; i < GearSO.Rarity.Affixes; i++)
+            List<AffixSo> _nonAffixes = new List<AffixSo>();
+            _nonAffixes.AddRange(GearSo.NonAffixs);
+            for (int _i = 0; _i < GearSo.Rarity.Affixes; _i++)
             {
-                if (DataBase.Affix.Affixes.Count <= nonAffixes.Count) break;
-                AffixSO affix = DataBase.Affix.GetRandomBut(nonAffixes);
-                int value = affix.getValue(Stage);
-                if (value == 0)
+                if (DataBase.Affix.Affixes.Count <= _nonAffixes.Count) break;
+                AffixSo _affix = DataBase.Affix.GetRandomBut(_nonAffixes);
+                int _value = _affix.GetValue(Stage);
+                if (_value == 0)
                 {
-                    i--;
-                    nonAffixes.Add(affix);
+                    _i--;
+                    _nonAffixes.Add(_affix);
                     continue;
                 }
-                Affixes.Add(new Affix(affix, value, Stage + 1));
-                nonAffixes.Add(affix);
+                Affixes.Add(new Affix(_affix, _value, Stage + 1));
+                _nonAffixes.Add(_affix);
             }
         }
 
-        public Gear CraftNewGear(Dictionary<AffixSO, int> _gearStats)
+        public Gear CraftNewGear(Dictionary<AffixSo, int> _gearStats)
         {
-            GearSO = DataBase.Gear.GetRandom();
+            GearSo = DataBase.Gear.GetRandom();
             Affixes = new List<Affix>();
             Stage = BattleStage.Stage;
 
-            foreach (AffixSO _affix in _gearStats.Keys)
+            foreach (AffixSo _affix in _gearStats.Keys)
             {
-                int value = _affix.getValueOfTier(_gearStats[_affix]);
-                Affixes.Add(new Affix(_affix, value, _gearStats[_affix]));
+                int _value = _affix.GetValueOfTier(_gearStats[_affix]);
+                Affixes.Add(new Affix(_affix, _value, _gearStats[_affix]));
             }
 
             return this;
@@ -73,19 +73,19 @@ namespace Gears
         
         public void CreateGearObject(Gear _gear)
         {
-            GearSO = _gear.GearSO;
+            GearSo = _gear.GearSo;
             Affixes = _gear.Affixes;
             Stage = _gear.Stage;
         }
 
         public override string ToString()
         {
-            return $"{GearSO.Name}, Affix 1 = {Affixes[0].ToString()}";
+            return $"{GearSo.Name}, Affix 1 = {Affixes[0].ToString()}";
         }
 
-        public void SetAffixes(List<Affix> newAffixes)
+        public void SetAffixes(List<Affix> _newAffixes)
         {
-            Affixes = newAffixes;
+            Affixes = _newAffixes;
         }
     }
 }

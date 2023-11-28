@@ -22,7 +22,7 @@ namespace Units
         [SerializeField] private Sprite unitSprite;
         [SerializeField] private Sprite icon;
         [SerializeField] private Inventory inventory;
-        [SerializeField] private List<RelicSO> relics = new List<RelicSO>();
+        [SerializeField] private List<RelicSo> relics = new List<RelicSo>();
 
 
         private Unit unit;
@@ -30,13 +30,13 @@ namespace Units
         public string UnitName => unitName;
         public BattleStats BattleStats => battleStats;
         public BattleStats TotalStats => new BattleStats(battleStats + Inventory.GearStats() + GetRelic().BattleStats);
-        public int ActualHP { get; private set; }
+        public int ActualHp { get; private set; }
         public GameObject Prefab => prefab;
         public Sprite UnitSprite => unitSprite;
         public Sprite Icon => icon;
         public Inventory Inventory => inventory;
 
-        public List<RelicSO> Relics => relics;
+        public List<RelicSo> Relics => relics;
         public Unit Unit => unit;
 
         public bool isPlaced = false;
@@ -46,7 +46,7 @@ namespace Units
         {
             if (BattleStage.currentState == EConditionType.LootBox)
             {
-                ActualHP = BattleStats.HP;
+                ActualHp = BattleStats.hp;
             }
             BattleHero _hero = _pref.GetComponent<BattleHero>();
             if (_hero != null)
@@ -59,9 +59,9 @@ namespace Units
             unit.UnitDestroyed += Unit_UnitDestroyed;
         }
 
-        public void UpdateHP()
+        public void UpdateHp()
         {
-            ActualHP = unit.BattleStats.HP;
+            ActualHp = unit.battleStats.hp;
         }
         private void Unit_UnitDestroyed(object _sender, DeathEventArgs _e)
         {
@@ -70,18 +70,18 @@ namespace Units
 
         private void Unit_UnitAttacked(object _sender, AttackEventArgs _e)
         {
-            UpdateHP();
+            UpdateHp();
         }
         
         
-        public void HealHP(int percent)
+        public void HealHp(int _percent)
         {
-            ActualHP = Math.Min(TotalStats.HP, ActualHP + (int) (TotalStats.HP * (percent / 100f)));
+            ActualHp = Math.Min(TotalStats.hp, ActualHp + (int) (TotalStats.hp * (_percent / 100f)));
         }
         
-        public void HealFixValueHP(int fixValue)
+        public void HealFixValueHp(int _fixValue)
         {
-            ActualHP = Math.Min(TotalStats.HP, ActualHP + fixValue);
+            ActualHp = Math.Min(TotalStats.hp, ActualHp + _fixValue);
         }
 
         public Relic GetRelic()
@@ -109,7 +109,7 @@ namespace Units
             inventory = new Inventory(_save.inventory);
         }
 
-        public void AddRelic(RelicSO _relic)
+        public void AddRelic(RelicSo _relic)
         {
             relics.Add(_relic);
         }

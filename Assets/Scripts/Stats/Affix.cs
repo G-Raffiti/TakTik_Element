@@ -7,13 +7,13 @@ namespace Stats
     [Serializable]
     public struct Affix
     {
-        public AffixSO affix;
+        public AffixSo affix;
         public float value;
         public int min;
         public int max;
         public int tier;
 
-        public Affix(AffixSO _affix, float _value, int _tier)
+        public Affix(AffixSo _affix, float _value, int _tier)
         {
             affix = _affix;
             value = _value;

@@ -2,16 +2,19 @@
 using Skills;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.ToolTips
 {
     public class SkillTooltip : Tooltip
     {
+        [FormerlySerializedAs("Skill")]
         [HideInInspector]
-        public SkillInfo Skill;
+        public SkillInfo skill;
 
-        [SerializeField] private TextMeshProUGUI Name;
+        [FormerlySerializedAs("Name")]
+        [SerializeField] private TextMeshProUGUI name;
         [SerializeField] private Image elementIcon;
         [SerializeField] private TextMeshProUGUI cost;
         [SerializeField] private Image illustration;
@@ -25,24 +28,24 @@ namespace UserInterface.ToolTips
 
         protected override void ShowToolTip()
         {
-            Name.text = Skill.skill.BaseSkill.Name;
-            elementIcon.sprite = Skill.skill.Element.Icon;
-            cost.text = $"{Skill.skill.Cost}";
-            illustration.sprite = Skill.GetIcon();
-            effectTxt.text = Skill.GetInfoLeft();
-            rangeTxt.text = Skill.GetInfoRight();
-            frame.color = Skill.skill.Element.TextColour;
-            illustrationFrame.color = Skill.skill.Element.TextColour;
-            foreach (Buff _buff in Skill.skill.Buffs)
+            name.text = skill.skill.BaseSkill.Name;
+            elementIcon.sprite = skill.skill.Element.Icon;
+            cost.text = $"{skill.skill.Cost}";
+            illustration.sprite = skill.GetIcon();
+            effectTxt.text = skill.GetInfoLeft();
+            rangeTxt.text = skill.GetInfoRight();
+            frame.color = skill.skill.Element.TextColour;
+            illustrationFrame.color = skill.skill.Element.TextColour;
+            foreach (Buff _buff in skill.skill.Buffs)
             {
                 GameObject _pref = Instantiate(buffPref.gameObject, buffsHolder);
                 _pref.GetComponent<BuffInfo>().Buff = _buff;
                 _pref.GetComponent<BuffInfo>().DisplayIcon();
             }
-            if (Skill.skill.BaseSkill.Monster != null)
+            if (skill.skill.BaseSkill.Monster != null)
             {
                 shadowEffect.color = new Color(0,0,0,0.8f);
-                shadowEffect.sprite = Skill.skill.BaseSkill.Monster.UnitSprite;
+                shadowEffect.sprite = skill.skill.BaseSkill.Monster.UnitSprite;
             }
             else shadowEffect.color = Color.clear;
         }

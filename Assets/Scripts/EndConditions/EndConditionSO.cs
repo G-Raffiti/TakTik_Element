@@ -10,12 +10,12 @@ namespace EndConditions
         Boss,
         Last,
     }
-    public abstract class EndConditionSO : ScriptableObject
+    public abstract class EndConditionSo : ScriptableObject
     {
         [SerializeField] private EConditionType type;
         public EConditionType Type => type;
 
-        public abstract bool battleIsOver(BattleStateManager StateManager);
+        public abstract bool BattleIsOver(BattleStateManager _stateManager);
 
         public bool WinCondition { get; protected set; }
     }

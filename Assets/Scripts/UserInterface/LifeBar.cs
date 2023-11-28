@@ -7,6 +7,7 @@ using TMPro;
 using UISetupState;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Void = _EventSystem.CustomEvents.Void;
 
@@ -14,8 +15,9 @@ namespace UserInterface
 {
     public class LifeBar : MonoBehaviour
     {
+        [FormerlySerializedAs("fillHP")]
         [Header("Unity References")]
-        [SerializeField] private Image fillHP;
+        [SerializeField] private Image fillHp;
         [SerializeField] private Image fillShield;
         [SerializeField] private Transform buffsHolder;
         [SerializeField] private Unit unit;
@@ -54,7 +56,7 @@ namespace UserInterface
         public void Initialize()
         {
             ClearBuffs();
-            maxShield = unit.BattleStats.Shield;
+            maxShield = unit.battleStats.shield;
             Display(new Void());
         }
 
@@ -66,16 +68,16 @@ namespace UserInterface
             }
         }
 
-        private void Display(Void empty)
+        private void Display(Void _empty)
         {
-            lifeTxt.text = $"{unit.BattleStats.HP}/{unit.Total.HP}";
-            shieldTxt.text = $"{unit.BattleStats.Shield}";
+            lifeTxt.text = $"{unit.battleStats.hp}/{unit.Total.hp}";
+            shieldTxt.text = $"{unit.battleStats.shield}";
             
-            if (unit.BattleStats.Shield > maxShield)
-                maxShield = unit.BattleStats.Shield;
+            if (unit.battleStats.shield > maxShield)
+                maxShield = unit.battleStats.shield;
             
-            fillHP.fillAmount = unit.BattleStats.HP / (float) unit.Total.HP;
-            fillShield.fillAmount = unit.BattleStats.Shield / (float) maxShield;
+            fillHp.fillAmount = unit.battleStats.hp / (float) unit.Total.hp;
+            fillShield.fillAmount = unit.battleStats.shield / (float) maxShield;
 
             ClearBuffs();
 
@@ -86,7 +88,7 @@ namespace UserInterface
             }
         }
 
-        private void Display(Unit u)
+        private void Display(Unit _u)
         {
             Display(new Void());
         }
@@ -100,13 +102,13 @@ namespace UserInterface
         {
             AutoSortOrder();
             LeanTween.scale(canvas.gameObject, Vector3.one * 0.01f, 0.1f);
-            if (!UI_Manager.ActiveLifeBar)
+            if (!UIManager.ActiveLifeBar)
                 LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 0, 0.1f);
         }
 
-        public void Activate(bool isActive)
+        public void Activate(bool _isActive)
         {
-            if (isActive)
+            if (_isActive)
             {
                 Display(new Void());
                 LeanTween.alphaCanvas(canvas.GetComponent<CanvasGroup>(), 1, 0.1f);

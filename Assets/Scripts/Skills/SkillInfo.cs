@@ -13,6 +13,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using _LeanTween.Framework;
 using Players;
+using UnityEngine.Serialization;
 
 namespace Skills
 {
@@ -31,14 +32,18 @@ namespace Skills
         
         [Header("Event Sender")] 
         [SerializeField] private SkillEvent onSkillSelected;
-        [SerializeField] private VoidEvent OnSkillUsed;
+        [FormerlySerializedAs("OnSkillUsed")]
+        [SerializeField] private VoidEvent onSkillUsed;
         
+        [FormerlySerializedAs("SkillTooltip_ON")]
         [Header("Tooltip Events")] 
-        [SerializeField] private SkillEvent SkillTooltip_ON;
-        [SerializeField] private VoidEvent SkillTooltip_OFF;
+        [SerializeField] private SkillEvent skillTooltipOn;
+        [FormerlySerializedAs("SkillTooltip_OFF")]
+        [SerializeField] private VoidEvent skillTooltipOff;
 
+        [FormerlySerializedAs("Unit")]
         [Header("Only if Needed")]
-        public Unit Unit;
+        public Unit unit;
         public Skill skill;
 
         /// <summary>
@@ -48,48 +53,48 @@ namespace Skills
         /// <returns></returns>
         public void UseSkill(Cell _cell)
         {
-            if (skill.Unit.playerType == EPlayerType.HUMAN)
+            if (skill.Unit.playerType == EPlayerType.Human)
                 if (!skill.Deck.UseSkill(skill)) return;
-            if (Unit.BattleStats.AP < skill.Cost) return;
+            if (unit.battleStats.ap < skill.Cost) return;
             if (skill.Effects.Any(_effect => !_effect.CanUse(_cell, this)))
                 return;
-            Debug.Log($"{Unit.ColouredName()} Use {ColouredName()}");
+            Debug.Log($"{unit.ColouredName()} Use {ColouredName()}");
             if (skill.Effects.Find(_effect => _effect is Learning) != null)
             {
                 skill.Effects.Find(_effect => _effect is Learning).Use(_cell, this);
-                OnSkillUsed.Raise();
+                onSkillUsed.Raise();
                 return;
             }
             
-            Unit.BattleStats.AP -= skill.Cost;
+            unit.battleStats.ap -= skill.Cost;
             
             //TODO : Play Skill animation
             List<Cell> _zone = Zone.GetZone(skill.GridRange, _cell);
             _zone.Sort((_cell1, _cell2) =>
-                _cell1.GetDistance(Unit.Cell).CompareTo(_cell2.GetDistance(Unit.Cell)));
+                _cell1.GetDistance(unit.Cell).CompareTo(_cell2.GetDistance(unit.Cell)));
             StartCoroutine(HighlightZone(_zone));
             
-            foreach (IEffect _effect in skill.Effects)
+            foreach (Effect _effect in skill.Effects)
             {
                 _effect.Use(_cell, this);
             }
 
-            OnSkillUsed.Raise();
+            onSkillUsed.Raise();
         }
         
-        private static IEnumerator HighlightZone(List<Cell> zone)
+        private static IEnumerator HighlightZone(List<Cell> _zone)
         {
-            foreach (Cell _cell in zone)
+            foreach (Cell _cell in _zone)
             {
                 _cell.MarkAsHighlighted();
                 yield return new WaitForSeconds(0.05f);
             }
-            foreach (Cell _cell in zone)
+            foreach (Cell _cell in _zone)
             {
                 _cell.MarkAsHighlighted();
             }
             yield return new WaitForSeconds(0.2f);
-            zone.ForEach(c => c.UnMark());
+            _zone.ForEach(_c => _c.UnMark());
         }
 
         /// <summary>
@@ -104,7 +109,7 @@ namespace Skills
         
         public List<Cell> GetRangeFrom(Cell _cell)
         {
-            return skill.GridRange.NeedView ? Zone.CellsInView(skill, _cell) : Zone.CellsInRange(skill, _cell);
+            return skill.GridRange.needView ? Zone.CellsInView(skill, _cell) : Zone.CellsInRange(skill, _cell);
         }
         
         #region IInfo
@@ -115,9 +120,9 @@ namespace Skills
 
         public override string GetInfoLeft()
         {
-            string str = "";
-            skill.Effects.ForEach(effect => str += effect.InfoEffect(this) + "\n");
-            return str;
+            string _str = "";
+            skill.Effects.ForEach(_effect => _str += _effect.InfoEffect(this) + "\n");
+            return _str;
         }
 
         public override string GetInfoRight()
@@ -127,9 +132,9 @@ namespace Skills
 
         public override string GetInfoDown()
         {
-            string str = "";
-            skill.Buffs.ForEach(buff => str += buff.InfoBuff());
-            return str;
+            string _str = "";
+            skill.Buffs.ForEach(_buff => _str += _buff.InfoBuff());
+            return _str;
         }
 
         public override Sprite GetIcon()
@@ -143,24 +148,24 @@ namespace Skills
             return $"<color=#{_hexColor}>{skill.BaseSkill.Name}</color>";
         }
 
-        public override void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData _eventData)
         {
-            SkillTooltip_ON?.Raise(this);
+            skillTooltipOn?.Raise(this);
             if (!isHandSkill) return;
             LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1), 0.2f);
         }
 
-        public override void OnPointerExit(PointerEventData eventData)
+        public override void OnPointerExit(PointerEventData _eventData)
         {
-            SkillTooltip_OFF?.Raise();
+            skillTooltipOff?.Raise();
             if (!isHandSkill) return;
             LeanTween.scale(this.gameObject, Vector3.one, 0.2f);
         }
 
-        public override void OnPointerClick(PointerEventData eventData)
+        public override void OnPointerClick(PointerEventData _eventData)
         {
             if (!isHandSkill) return;
-            if (Unit.BattleStats.AP >= skill.Cost)
+            if (unit.battleStats.ap >= skill.Cost)
                 onSkillSelected.Raise(this);
         }
         
@@ -182,8 +187,8 @@ namespace Skills
             if (canUse == null) return;
             if (!isHandSkill) return;
 
-            canUse.color = skill.Cost <= skill.Unit.BattleStats.AP ? Color.white : Color.grey;
-            illustration.color = skill.Cost <= skill.Unit.BattleStats.AP ? Color.white : new Color(1, 1, 1, 0.5f);
+            canUse.color = skill.Cost <= skill.Unit.battleStats.ap ? Color.white : Color.grey;
+            illustration.color = skill.Cost <= skill.Unit.battleStats.ap ? Color.white : new Color(1, 1, 1, 0.5f);
         }
 
         #endregion

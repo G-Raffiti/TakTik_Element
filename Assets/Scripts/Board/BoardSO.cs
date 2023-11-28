@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Cells
 {
     [CreateAssetMenu(fileName = "Board_", menuName = "Scriptable Object/New Board")]
-    public class BoardSO : ScriptableObject
+    public class BoardSo : ScriptableObject
     {
         [SerializeField] private Sprite background;
         public Sprite Background => background;
@@ -18,8 +18,8 @@ namespace Cells
         [SerializeField] private CameraSaved camera;
         public CameraSaved Camera => camera;
         
-        [SerializeField] private EndConditionSO endCondition;
-        public EndConditionSO EndCondition => endCondition;
+        [SerializeField] private EndConditionSo endCondition;
+        public EndConditionSo EndCondition => endCondition;
 
         /// <summary>
         /// Modify a BoardSO to save the actual scene
@@ -29,9 +29,9 @@ namespace Cells
 #if UNITY_EDITOR
             cells = new List<SavedCell>();
             
-            foreach (SavedCell _Cell in _list)
+            foreach (SavedCell _cell in _list)
             {
-                cells.Add(_Cell);
+                cells.Add(_cell);
             }
 
             background = _background;

@@ -12,19 +12,15 @@ namespace _CSVFiles
 {
     public struct RawMonster
     {
-        public readonly string UnitName;
-        public readonly Element Element;
-
+        public string UnitName;
+        public Element Element;
         public BattleStats BasicStats;
-
-        public readonly Sprite UnitSprite;
-
-        public readonly int Level;
-        
-        public readonly RelicSO Relic;
-        public readonly EReward RewardType;
-        public readonly EMonster Type;
-        public readonly Archetype Archetype;
+        public Sprite UnitSprite;
+        public int Level;
+        public RelicSo Relic;
+        public EReward RewardType;
+        public EMonster Type;
+        public Archetype Archetype;
         
         public RawMonster(IReadOnlyDictionary<string, object> _csvMonster)
         {
@@ -43,12 +39,12 @@ namespace _CSVFiles
             int.TryParse(_csvMonster["Focus"].ToString(), out int _focus);
             BasicStats = new BattleStats
             {
-                HP = _hp,
-                Shield = _shield,
-                Speed = _speed,
-                Power = _power,
-                MP = _mp,
-                AP = _ap,
+                hp = _hp,
+                shield = _shield,
+                speed = _speed,
+                power = _power,
+                mp = _mp,
+                ap = _ap,
                 gridRange = new GridRange(EZone.Basic, EZone.Basic, _range, _zone),
             };
             UnitSprite = UnityEngine.Resources.Load<Sprite>($"Sprite/Monsters/{_csvMonster["Sprite"].ToString()}");

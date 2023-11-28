@@ -13,7 +13,7 @@ namespace Cells
         SpaceLeef,
     }
     [CreateAssetMenu(fileName = "CellType_", menuName = "Scriptable Object/new Cell")]
-    public class CellSO : ScriptableObject
+    public class CellSo : ScriptableObject
     {
         [SerializeField] private Sprite background;
         [SerializeField] private Sprite element;
@@ -30,12 +30,12 @@ namespace Cells
         public Sprite Element => element;
         public ECellType Type => tileType;
 
-        public void Spawn(Cell tile)
+        public void Spawn(Cell _tile)
         {
-            tile.IsUnderGround = isUnderground;
-            tile.background.sprite = background;
-            tile.element.sprite = element;
-            tile.full = full;
+            _tile.IsUnderGround = isUnderground;
+            _tile.background.sprite = background;
+            _tile.element.sprite = element;
+            _tile.Full = full;
         }
     }
 }

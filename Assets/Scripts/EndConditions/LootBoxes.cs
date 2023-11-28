@@ -9,14 +9,14 @@ using UnityEngine;
 namespace EndConditions
 {
     [CreateAssetMenu(fileName = "EndCondition_LootBoxes", menuName = "Scriptable Object/End Conditions/LootBoxes")]
-    public class LootBoxes : EndConditionSO
+    public class LootBoxes : EndConditionSo
     {
-        public override bool battleIsOver(BattleStateManager StateManager)
+        public override bool BattleIsOver(BattleStateManager _stateManager)
         {
-            List<Unit> playerHeroes = StateManager.Units.Where(unit => unit.playerType == EPlayerType.HUMAN).ToList();
-            WinCondition = playerHeroes.Count > 0;
+            List<Unit> _playerHeroes = _stateManager.Units.Where(_unit => _unit.playerType == EPlayerType.Human).ToList();
+            WinCondition = _playerHeroes.Count > 0;
             
-            return StateManager.GridObjects.Count == 0 || StateManager.Turn >= 3 || playerHeroes.Count == 0;
+            return _stateManager.GridObjects.Count == 0 || _stateManager.Turn >= 3 || _playerHeroes.Count == 0;
         }
     }
 }

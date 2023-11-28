@@ -38,20 +38,20 @@ namespace Shops
 
         public int CampPoint { get; private set; }
 
-        void DuplicateSkills(Void empty)
+        void DuplicateSkills(Void _empty)
         {
             if (CampPoint < 1) return;
             CampPoint -= 1;
-            ShopCampMono_UI _shopCampMonoUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<ShopCampMono_UI>();
+            ShopCampMonoUI _shopCampMonoUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<ShopCampMonoUI>();
             SkillInfo _duplicate = _shopCampMonoUI.SkillDuplicate;
-            _duplicate.skill.Deck.DrawPile.Add(_duplicate.skill.BaseSkill);
+            _duplicate.skill.Deck.drawPile.Add(_duplicate.skill.BaseSkill);
             onCampPointUsed.Raise(CampPoint);
         }
 
-        public void ForgetSkill(Void empty)
+        public void ForgetSkill(Void _empty)
         {
             if (CampPoint < 1) return;
-            ShopCampMono_UI _shopCampMonoUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<ShopCampMono_UI>();
+            ShopCampMonoUI _shopCampMonoUI = GameObject.Find("CampFire/Background/CampUI").GetComponent<ShopCampMonoUI>();
             if (FindObjectOfType<DeckMono>().RemoveSkill(_shopCampMonoUI.SkillForget.skill.BaseSkill))
             {
                 CampPoint -= 1;
@@ -59,11 +59,11 @@ namespace Shops
             }
         }
 
-        private void HealHeroes(Void empty)
+        private void HealHeroes(Void _empty)
         {
             if (CampPoint < 1) return;
             CampPoint -= 1;
-            PlayerData.getInstance().Heroes.ForEach(h => h.HealHP(30));
+            PlayerData.GetInstance().Heroes.ForEach(_h => _h.HealHp(30));
             onCampPointUsed.Raise(CampPoint);
         }
     }

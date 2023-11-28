@@ -1,6 +1,7 @@
 ﻿using Resources.ToolTip.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _DragAndDropSystem
@@ -11,21 +12,22 @@ namespace _DragAndDropSystem
 	[RequireComponent(typeof(InfoBehaviour))]
 	public class ItemDragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 	{
+		[FormerlySerializedAs("DraggedImage")]
 		[Header("If this is not filled, it will drag the Background of the Object")]
-		[SerializeField] private Image DraggedImage;
+		[SerializeField] private Image draggedImage;
 		public static bool dragDisabled = false;										// Drag start global disable
 
-		public static ItemDragAndDrop _draggedItem;                                      // Item that is dragged now
+		public static ItemDragAndDrop DraggedItem;                                      // Item that is dragged now
 		public static GameObject icon;                                                  // Icon of dragged item
-		public static SlotDragAndDrop _sourceSlot;                                       // From this cell dragged item is
+		public static SlotDragAndDrop SourceSlot;                                       // From this cell dragged item is
 
-		public delegate void DragEvent(ItemDragAndDrop item);
+		public delegate void DragEvent(ItemDragAndDrop _item);
 		public static event DragEvent OnItemDragStartEvent;                             // Drag start event
 		public static event DragEvent OnItemDragEndEvent;                               // Drag end event
 
-		private static Canvas canvas;                                                   // Canvas for item drag operation
-		private static string canvasName = "DragAndDropCanvas";                   		// Name of canvas
-		private static int canvasSortOrder = 5000;										// Sort order for canvas
+		private static Canvas _canvas;                                                   // Canvas for item drag operation
+		private static string _canvasName = "DragAndDropCanvas";                   		// Name of canvas
+		private static int _canvasSortOrder = 5000;										// Sort order for canvas
 
 		[Header("Type to change in the Prefabs")]
 		[SerializeField] private SlotDragAndDrop.ContainType type;
@@ -36,19 +38,19 @@ namespace _DragAndDropSystem
 		/// </summary>
 		void Awake()
 		{
-			if (canvas == null)
+			if (_canvas == null)
 			{
-				GameObject canvasObj = new GameObject(canvasName);
-				canvas = canvasObj.AddComponent<Canvas>();
-				canvas.renderMode = RenderMode.ScreenSpaceCamera;
-				canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-				canvas.sortingOrder = canvasSortOrder;
-				CanvasScaler canvasScaler = canvasObj.AddComponent<CanvasScaler>();
-				canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-				canvasScaler.referenceResolution = new Vector2(1920, 1080);
-				canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-				canvasScaler.matchWidthOrHeight = 0;
-				canvasScaler.referencePixelsPerUnit = 100;
+				GameObject _canvasObj = new GameObject(_canvasName);
+				_canvas = _canvasObj.AddComponent<Canvas>();
+				_canvas.renderMode = RenderMode.ScreenSpaceCamera;
+				_canvas.worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+				_canvas.sortingOrder = _canvasSortOrder;
+				CanvasScaler _canvasScaler = _canvasObj.AddComponent<CanvasScaler>();
+				_canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+				_canvasScaler.referenceResolution = new Vector2(1920, 1080);
+				_canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+				_canvasScaler.matchWidthOrHeight = 0;
+				_canvasScaler.referencePixelsPerUnit = 100;
 			}
 		}
 
@@ -56,30 +58,30 @@ namespace _DragAndDropSystem
 		/// This item started to drag.
 		/// </summary>
 		/// <param name="eventData"></param>
-		public void OnBeginDrag(PointerEventData eventData)
+		public void OnBeginDrag(PointerEventData _eventData)
 		{
 			if (dragDisabled == false)
 			{
-				_sourceSlot = GetCell();                       							// Remember source cell
-				_draggedItem = this;                                             		// Set as dragged item
+				SourceSlot = GetCell();                       							// Remember source cell
+				DraggedItem = this;                                             		// Set as dragged item
 				// Create item's icon
 				icon = new GameObject();
-				icon.transform.SetParent(canvas.transform);
+				icon.transform.SetParent(_canvas.transform);
 				icon.name = "Icon";
-				Image myImage = GetComponent<Image>();
-				myImage.raycastTarget = false;                                        	// Disable icon's raycast for correct drop handling
-				Image iconImage = icon.AddComponent<Image>();
-				iconImage.raycastTarget = false;
-				iconImage.sprite = DraggedImage == null ? myImage.sprite : DraggedImage.sprite;
+				Image _myImage = GetComponent<Image>();
+				_myImage.raycastTarget = false;                                        	// Disable icon's raycast for correct drop handling
+				Image _iconImage = icon.AddComponent<Image>();
+				_iconImage.raycastTarget = false;
+				_iconImage.sprite = draggedImage == null ? _myImage.sprite : draggedImage.sprite;
 				
-				RectTransform iconRect = icon.GetComponent<RectTransform>();
+				RectTransform _iconRect = icon.GetComponent<RectTransform>();
 				// Set icon's dimensions
-				RectTransform myRect = GetComponent<RectTransform>();
-				iconRect.pivot = new Vector2(0.5f, 0.5f);
-				iconRect.anchorMin = new Vector2(0.5f, 0.5f);
-				iconRect.anchorMax = new Vector2(0.5f, 0.5f);
-				iconRect.sizeDelta = new Vector2(myRect.rect.width, myRect.rect.height);
-				iconRect.localScale = Vector3.one;
+				RectTransform _myRect = GetComponent<RectTransform>();
+				_iconRect.pivot = new Vector2(0.5f, 0.5f);
+				_iconRect.anchorMin = new Vector2(0.5f, 0.5f);
+				_iconRect.anchorMax = new Vector2(0.5f, 0.5f);
+				_iconRect.sizeDelta = new Vector2(_myRect.rect.width, _myRect.rect.height);
+				_iconRect.localScale = Vector3.one;
 
 				if (OnItemDragStartEvent != null)
 				{
@@ -92,13 +94,13 @@ namespace _DragAndDropSystem
 		/// Every frame on this item drag.
 		/// </summary>
 		/// <param name="data"></param>
-		public void OnDrag(PointerEventData data)
+		public void OnDrag(PointerEventData _data)
 		{
 			if (icon != null)
 			{
-				Vector3 screenPoint = Input.mousePosition;
-				screenPoint.z = canvas.planeDistance;                                          //distance of the plane from the camera
-				icon.transform.position = canvas.worldCamera.ScreenToWorldPoint(screenPoint);  // Item's icon follows to cursor in screen pixels
+				Vector3 _screenPoint = Input.mousePosition;
+				_screenPoint.z = _canvas.planeDistance;                                          //distance of the plane from the camera
+				icon.transform.position = _canvas.worldCamera.ScreenToWorldPoint(_screenPoint);  // Item's icon follows to cursor in screen pixels
 			}
 		}
 
@@ -106,7 +108,7 @@ namespace _DragAndDropSystem
 		/// This item is dropped.
 		/// </summary>
 		/// <param name="eventData"></param>
-		public void OnEndDrag(PointerEventData eventData)
+		public void OnEndDrag(PointerEventData _eventData)
 		{
 			ResetConditions();
 		}
@@ -124,21 +126,21 @@ namespace _DragAndDropSystem
 			{
 				OnItemDragEndEvent(this);                                       		// Notify all cells about item drag end
 			}
-			_draggedItem = null;
+			DraggedItem = null;
 			icon = null;
-			_sourceSlot = null;
+			SourceSlot = null;
 		}
 
 		/// <summary>
 		/// Enable item's raycast.
 		/// </summary>
 		/// <param name="condition"> true - enable, false - disable </param>
-		public void MakeRaycast(bool condition)
+		public void MakeRaycast(bool _condition)
 		{
-			Image image = GetComponent<Image>();
-			if (image != null)
+			Image _image = GetComponent<Image>();
+			if (_image != null)
 			{
-				image.raycastTarget = condition;
+				_image.raycastTarget = _condition;
 			}
 		}
 

@@ -3,44 +3,48 @@ using Cells;
 using StateMachine;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Buffs
 {
     [Serializable]
     public class Buff
     {
-        public int Duration;
-        public float Value;
+        [FormerlySerializedAs("Duration")]
+        public int duration;
+        [FormerlySerializedAs("Value")]
+        public float value;
         public bool onFloor;
 
-        [SerializeField] private StatusSO StatusEffect;
-        public StatusSO Effect => StatusEffect;
+        [FormerlySerializedAs("StatusEffect")]
+        [SerializeField] private StatusSo statusEffect;
+        public StatusSo Effect => statusEffect;
         public Buff(Buff _buff)
         {
-            Duration = _buff.Duration;
-            Value = _buff.Value;
-            StatusEffect = _buff.StatusEffect;
+            duration = _buff.duration;
+            value = _buff.value;
+            statusEffect = _buff.statusEffect;
         }
 
-        public static Buff operator +(Buff a, Buff b)
+        public static Buff operator +(Buff _a, Buff _b)
         {
-            if (a.Effect != b.Effect) return a;
-            Buff ret = a.Effect.AddBuff(a, b);
-            return ret;
+            if (_a.Effect != _b.Effect) return _a;
+            Buff _ret = _a.Effect.AddBuff(_a, _b);
+            return _ret;
         }
         
-        public Buff (Unit sender, StatusSO _status)
+        public Buff (Unit _sender, StatusSo _status)
         {
-            StatusEffect = _status;
-            Duration = StatusEffect.GetBuffDuration(sender);
-            Value = StatusEffect.GetBuffValue(sender);
+            statusEffect = _status;
+            duration = statusEffect.GetBuffDuration(_sender);
+            value = statusEffect.GetBuffValue(_sender);
         }
         
-        public Buff (Cell tile, StatusSO _status)
+        public Buff (Cell _tile, StatusSo _status)
         {
-            StatusEffect = _status;
-            Duration = 0;
-            Value = 10;
+            statusEffect = _status;
+            duration = 0;
+            value = 10;
         }
 
         /// <summary>
@@ -50,20 +54,20 @@ namespace Buffs
         {
             if (_unit == null)
             {
-                Duration -= 1;
+                duration -= 1;
                 return;
             }
             
-            if (StatusEffect.BetweenTurn)
+            if (statusEffect.BetweenTurn)
             {
-                StatusEffect.ActiveEffect(this, _unit);
-                Duration -= 1;
+                statusEffect.ActiveEffect(this, _unit);
+                duration -= 1;
             }
 
             else if (_unit == BattleStateManager.instance.PlayingUnit)
             {
-                StatusEffect.ActiveEffect(this, _unit);
-                Duration -= 1;
+                statusEffect.ActiveEffect(this, _unit);
+                duration -= 1;
             }
         }
 
@@ -71,18 +75,18 @@ namespace Buffs
         /// Add all the Stats Bonus or Malus from the Buff to the affected Unit
         /// </summary>
         /// <param name="unit"></param>
-        public void Apply(Unit unit)
+        public void Apply(Unit _unit)
         {
-            StatusEffect.PassiveEffect(this, unit);
+            statusEffect.PassiveEffect(this, _unit);
         }
 
         /// <summary>
         /// Remove all the Stats Bonus or Malus from the Buff from the affected Unit
         /// </summary>
         /// <param name="unit"></param>
-        public void Undo(Unit unit)
+        public void Undo(Unit _unit)
         {
-            StatusEffect.EndPassiveEffect(this, unit);
+            statusEffect.EndPassiveEffect(this, _unit);
         }
 
         /// <summary>
@@ -90,7 +94,7 @@ namespace Buffs
         /// </summary>
         public string InfoBuff()
         {
-            return StatusEffect.InfoEffect(this);
+            return statusEffect.InfoEffect(this);
         }
 
         /// <summary>
@@ -98,7 +102,7 @@ namespace Buffs
         /// </summary>
         public string InfoOnUnit(Buff _buff, Unit _unit)
         {
-            return StatusEffect.InfoOnUnit(_buff, _unit);
+            return statusEffect.InfoOnUnit(_buff, _unit);
         }
 
         /// <summary>
@@ -107,7 +111,7 @@ namespace Buffs
         /// <returns></returns>
         public string InfoBuffOnCell(Cell _cell)
         {
-            return StatusEffect.InfoOnFloor(_cell, this);
+            return statusEffect.InfoOnFloor(_cell, this);
         }
     }
 }

@@ -15,24 +15,24 @@ namespace Cells
         /// <summary>
         /// BoardSO to Save or to test
         /// </summary>
-        [SerializeField] private BoardSO boardTest;
-        private List<SavedCell> SavedCells = new List<SavedCell>();
+        [SerializeField] private BoardSo boardTest;
+        private List<SavedCell> savedCells = new List<SavedCell>();
         [SerializeField] private Image background;
         [SerializeField] private Camera mainCamera;
         
         /// <summary>
         /// return the Conditions that will ends the Battle and a Bool "isWin ?"
         /// </summary>
-        public EndConditionSO EndCondition { get; private set; }
+        public EndConditionSo EndCondition { get; private set; }
 
         
         /// <summary>
         /// return a Board Stage 1 = 1Loot, 3Fight, 1Boss, Stage 2 = 3Fight, 1Boss, Stage 3 = 1Loot, 2Fight, 1Boss.
         /// </summary>
         /// <returns></returns>
-        private static BoardSO randomize(EConditionType state)
+        private static BoardSo Randomize(EConditionType _state)
         {
-            switch (state)
+            switch (_state)
             {
                 case EConditionType.LootBox:
                     return DataBase.Board.LootBoxBoards[Random.Range(0, DataBase.Board.LootBoxBoards.Count)];
@@ -52,7 +52,7 @@ namespace Cells
         public void SaveBoard()
         {
             dataBase.InstantiateDataBases();
-            SavedCells = new List<SavedCell>();
+            savedCells = new List<SavedCell>();
 
             List<GridObject> _gridObjects = new List<GridObject>();
             foreach (Transform _child in GameObject.Find("Objects").transform)
@@ -72,33 +72,33 @@ namespace Cells
             
             foreach (Transform _child in transform)
             {
-                Cell _Cell = _child.gameObject.GetComponent<Cell>();
-                if (_Cell.CellSO == null)
+                Cell _cell = _child.gameObject.GetComponent<Cell>();
+                if (_cell.CellSo == null)
                 {
-                    Debug.LogWarning($"cell ({_Cell.OffsetCoord.x}/{_Cell.OffsetCoord.y}) missing CellSO");
+                    Debug.LogWarning($"cell ({_cell.OffsetCoord.x}/{_cell.OffsetCoord.y}) missing CellSO");
                 }
-                if (_Cell != null)
+                if (_cell != null)
                 {
-                    SavedCells.Add(new SavedCell(_child.gameObject.GetComponent<TileIsometric>()));
+                    savedCells.Add(new SavedCell(_child.gameObject.GetComponent<TileIsometric>()));
                 }
             }
             
-            boardTest.SaveBoard(SavedCells, background.sprite, mainCamera);
+            boardTest.SaveBoard(savedCells, background.sprite, mainCamera);
             Debug.Log($"Board SO saved in {boardTest.name}");
         }
         
         /// <summary>
         /// method Called at the beginning of each Battle to choose and create the Board
         /// </summary>
-        public void LoadBoard(EConditionType state)
+        public void LoadBoard(EConditionType _state)
         {
-            LoadBoard(randomize(state));
+            LoadBoard(Randomize(_state));
         }
         
         /// <summary>
         /// Instantiate all the Cells and GridObjects from a Saved BoardSO
         /// </summary>
-        private void LoadBoard(BoardSO _data)
+        private void LoadBoard(BoardSo _data)
         {
             while (transform.childCount > 0)
             {
@@ -113,28 +113,28 @@ namespace Cells
             //dataBase.InstantiateDataBases();
             background.sprite = null;
             
-            foreach (SavedCell _SavedCell in _data.Cells)
+            foreach (SavedCell _savedCell in _data.Cells)
             {
 
-                GameObject instance = GameObject.Instantiate(DataBase.Cell.TilePrefab);
-                instance.transform.SetParent(transform);
-                instance.transform.position = new Vector3(_SavedCell.position[0],_SavedCell.position[1],_SavedCell.position[2]);
-                TileIsometric _cell = instance.GetComponent<TileIsometric>();
+                GameObject _instance = GameObject.Instantiate(DataBase.Cell.TilePrefab);
+                _instance.transform.SetParent(transform);
+                _instance.transform.position = new Vector3(_savedCell.position[0],_savedCell.position[1],_savedCell.position[2]);
+                TileIsometric _cell = _instance.GetComponent<TileIsometric>();
                 if (_cell != null)
                 {
-                    _cell.SetCellSO(_SavedCell.type);
-                    _cell.OffsetCoord = new Vector2(_SavedCell.offsetCoord[0], _SavedCell.offsetCoord[1]);
-                    _cell.IsSpawnPlace = _SavedCell.isSpawn;
+                    _cell.SetCellSo(_savedCell.type);
+                    _cell.OffsetCoord = new Vector2(_savedCell.offsetCoord[0], _savedCell.offsetCoord[1]);
+                    _cell.isSpawnPlace = _savedCell.isSpawn;
                     _cell.Initialize();
                 }
 
-                if (_SavedCell.gridObject == null) continue;
-                GameObject gridObject = Instantiate(DataBase.Cell.GridObjectPrefab) as GameObject;
-                gridObject.transform.SetParent(GameObject.Find("Objects").transform);
-                gridObject.transform.position = new Vector3(_SavedCell.position[0],_SavedCell.position[1],_SavedCell.position[2]);
-                gridObject.GetComponent<GridObject>().GridObjectSO = _SavedCell.gridObject;
+                if (_savedCell.gridObject == null) continue;
+                GameObject _gridObject = Instantiate(DataBase.Cell.GridObjectPrefab) as GameObject;
+                _gridObject.transform.SetParent(GameObject.Find("Objects").transform);
+                _gridObject.transform.position = new Vector3(_savedCell.position[0],_savedCell.position[1],_savedCell.position[2]);
+                _gridObject.GetComponent<GridObject>().GridObjectSo = _savedCell.gridObject;
                 
-                _cell.Take(gridObject.GetComponent<GridObject>());
+                _cell.Take(_gridObject.GetComponent<GridObject>());
             }
 
             background.sprite = _data.Background;

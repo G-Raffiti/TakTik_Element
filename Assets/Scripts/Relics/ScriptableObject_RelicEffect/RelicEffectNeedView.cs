@@ -7,9 +7,9 @@ namespace Relics.ScriptableObject_RelicEffect
     public class RelicEffectNeedView : RelicEffect
     {
         
-        public override void ChangeSkill(Skill _skill, RelicSO _relic)
+        public override void ChangeSkill(Skill _skill, RelicSo _relic)
         {
-            _skill.ChangeNeedView(_relic.BattleStats.gridRange.NeedView);
+            _skill.ChangeNeedView(_relic.BattleStats.gridRange.needView);
         }
     }
 }

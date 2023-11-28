@@ -9,7 +9,7 @@ namespace Editor.GridGenerators
     /// Generates rectangular shaped grid of isos.
     /// </summary>
     [ExecuteInEditMode()]
-    public class RectIsoGridGenerator : ICellGridGenerator
+    public class RectIsoGridGenerator : CellGridGenerator
     {
         public GameObject IsoPrefab;
 
@@ -18,7 +18,7 @@ namespace Editor.GridGenerators
 
         public override GridInfo GenerateGrid()
         {
-            List<Cell> ret = new List<Cell>();
+            List<Cell> _ret = new List<Cell>();
 
             if (IsoPrefab.GetComponent<Cell>() == null)
             {
@@ -26,53 +26,53 @@ namespace Editor.GridGenerators
                 return null;
             }
 
-            Vector3 isoSize = IsoPrefab.GetComponent<Cell>().GetCellDimensions();
+            Vector3 _isoSize = IsoPrefab.GetComponent<Cell>().GetCellDimensions();
             
-            for (int i = 0; i < Width; i++)
+            for (int _i = 0; _i < Width; _i++)
             {
-                for (int j = 0; j < Height; j++)
+                for (int _j = 0; _j < Height; _j++)
                 {
-                    GameObject iso = PrefabUtility.InstantiatePrefab(IsoPrefab) as GameObject;
+                    GameObject _iso = PrefabUtility.InstantiatePrefab(IsoPrefab) as GameObject;
 
-                    iso.transform.position = new Vector3(i * isoSize.x, j * isoSize.y, 0);
+                    _iso.transform.position = new Vector3(_i * _isoSize.x, _j * _isoSize.y, 0);
 
-                    int x = i+j;
-                    int y = Width - 1 + j - i;
-                    iso.GetComponent<Cell>().OffsetCoord = new Vector2(x, y);
-                    iso.GetComponent<Cell>().MovementCost = 1;
-                    ret.Add(iso.GetComponent<Cell>());
+                    int _x = _i+_j;
+                    int _y = Width - 1 + _j - _i;
+                    _iso.GetComponent<Cell>().OffsetCoord = new Vector2(_x, _y);
+                    _iso.GetComponent<Cell>().movementCost = 1;
+                    _ret.Add(_iso.GetComponent<Cell>());
 
-                    iso.transform.parent = CellsParent;
+                    _iso.transform.parent = CellsParent;
                 }
             }
             
-            for (int i = 0; i < Width-1; i++)
+            for (int _i = 0; _i < Width-1; _i++)
             {
-                for (int j = 0; j < Height-1; j++)
+                for (int _j = 0; _j < Height-1; _j++)
                 {
-                    GameObject iso = PrefabUtility.InstantiatePrefab(IsoPrefab) as GameObject;
+                    GameObject _iso = PrefabUtility.InstantiatePrefab(IsoPrefab) as GameObject;
 
-                    int x = i + j + 1;
-                    int y = Width - 1 + j - i;
+                    int _x = _i + _j + 1;
+                    int _y = Width - 1 + _j - _i;
 
-                    iso.transform.position = new Vector3(isoSize.x/2 + i * isoSize.x, isoSize.y/2 + j * isoSize.y, 0);
-                    iso.GetComponent<Cell>().OffsetCoord = new Vector2(x, y);
-                    iso.GetComponent<Cell>().MovementCost = 1;
-                    ret.Add(iso.GetComponent<Cell>());
+                    _iso.transform.position = new Vector3(_isoSize.x/2 + _i * _isoSize.x, _isoSize.y/2 + _j * _isoSize.y, 0);
+                    _iso.GetComponent<Cell>().OffsetCoord = new Vector2(_x, _y);
+                    _iso.GetComponent<Cell>().movementCost = 1;
+                    _ret.Add(_iso.GetComponent<Cell>());
 
-                    iso.transform.parent = CellsParent;
+                    _iso.transform.parent = CellsParent;
                 }
             }
             
             
-            Vector3 cellDimensions = IsoPrefab.GetComponent<Cell>().GetCellDimensions();
+            Vector3 _cellDimensions = IsoPrefab.GetComponent<Cell>().GetCellDimensions();
 
-            GridInfo gridInfo = new GridInfo();
-            gridInfo.Cells = ret;
-            gridInfo.Dimensions = new Vector3(cellDimensions.x * (Width - 1), cellDimensions.y * (Height - 1), cellDimensions.z);
-            gridInfo.Center = gridInfo.Dimensions / 2;
+            GridInfo _gridInfo = new GridInfo();
+            _gridInfo.Cells = _ret;
+            _gridInfo.Dimensions = new Vector3(_cellDimensions.x * (Width - 1), _cellDimensions.y * (Height - 1), _cellDimensions.z);
+            _gridInfo.Center = _gridInfo.Dimensions / 2;
 
-            return gridInfo;
+            return _gridInfo;
         }
     }
 }

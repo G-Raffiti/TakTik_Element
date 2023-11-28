@@ -16,16 +16,16 @@ namespace Skills.ScriptableObject_Effect
         Learning,
         FloorBuff,
     }
-    public abstract class SkillEffect : IEffect
+    public abstract class SkillEffect : Effect
     {
         [SerializeField] private ESkill type;
         public ESkill Type => type;
         
         public override Dictionary<Cell, int> DamageValue(Cell _cell, SkillInfo _skillInfo)
         {
-            Dictionary<Cell, int> ret = new Dictionary<Cell, int>();
+            Dictionary<Cell, int> _ret = new Dictionary<Cell, int>();
 
-            return ret;
+            return _ret;
         }
     }
 }

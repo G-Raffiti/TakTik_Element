@@ -12,7 +12,7 @@ namespace UserInterface.BattleScene
     {
         [Header("Event Listener")]
         [SerializeField] private BoolEvent onBattleEnd;
-        [SerializeField] private BattleInventory_UI inventory;
+        [SerializeField] private BattleInventoryUI inventory;
         [SerializeField] private VoidEvent onEndTurn;
 
         private void OnEnable()
@@ -25,7 +25,7 @@ namespace UserInterface.BattleScene
             onBattleEnd.EventListeners -= SetInactive;
         }
 
-        private void SetInactive(bool winCondition)
+        private void SetInactive(bool _winCondition)
         {
             GetComponent<Button>().onClick.RemoveAllListeners();
         }

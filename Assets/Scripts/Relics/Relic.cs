@@ -8,39 +8,39 @@ namespace Relics
 {
     public class Relic
     {
-        public List<RelicSO> RelicEffects { get; private set; }
-        public List<IEffect> Effects { get; private set; }
+        public List<RelicSo> RelicEffects { get; private set; }
+        public List<Effect> Effects { get; private set; }
         public EAffect Affect { get; private set; }
         public BattleStats BattleStats { get; private set; }
-        public List<StatusSO> StatusEffects { get; private set; }
+        public List<StatusSo> StatusEffects { get; private set; }
 
         public Relic()
         {
-            RelicEffects = new List<RelicSO>();
-            Effects = new List<IEffect>();
+            RelicEffects = new List<RelicSo>();
+            Effects = new List<Effect>();
             Affect = EAffect.All;
             BattleStats = new BattleStats();
-            StatusEffects = new List<StatusSO>();
+            StatusEffects = new List<StatusSo>();
         }
-        public static Relic CreateRelic(List<RelicSO> relics)
+        public static Relic CreateRelic(List<RelicSo> _relics)
         {
-            Relic relic = new Relic();
+            Relic _relic = new Relic();
 
-            relic.BattleStats = new BattleStats();
-            relic.StatusEffects = new List<StatusSO>();
-            relic.Effects = new List<IEffect>();
-            relic.RelicEffects = relics;
+            _relic.BattleStats = new BattleStats();
+            _relic.StatusEffects = new List<StatusSo>();
+            _relic.Effects = new List<Effect>();
+            _relic.RelicEffects = _relics;
             
-            foreach (RelicSO _relic in relics)
+            foreach (RelicSo _relicSo in _relics)
             {
-                relic.BattleStats += _relic.BattleStats;
-                relic.StatusEffects.AddRange(_relic.StatusEffects);
+                _relic.BattleStats += _relicSo.BattleStats;
+                _relic.StatusEffects.AddRange(_relicSo.StatusEffects);
                 
-                if (_relic.Effect != null) relic.Effects.Add(_relic.Effect);
-                if (_relic.GridEffect != null) relic.Effects.Add(_relic.GridEffect);
+                if (_relicSo.Effect != null) _relic.Effects.Add(_relicSo.Effect);
+                if (_relicSo.GridEffect != null) _relic.Effects.Add(_relicSo.GridEffect);
             }
 
-            return relic;
+            return _relic;
         }
     }
 }

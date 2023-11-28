@@ -45,23 +45,22 @@
     <Analyzer Include="C:\Dev\GameDev\Unity_Engine\2022.3.11f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\CustomUnitGeneratorHelper.cs" />
-     <Compile Include="Assets\Editor\GridGenerators\TriangularHexGridGenerator.cs" />
-     <Compile Include="Assets\Editor\GridGenerators\RectangularSquareGridGenerator.cs" />
-     <Compile Include="Assets\Editor\GridGenerators\EquilateralHexGridGenerator.cs" />
-     <Compile Include="Assets\Editor\GridGenerators\HexagonalHexGridGenerator.cs" />
+     <Compile Include="Assets\_LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
      <Compile Include="Assets\Editor\Data\SOGenerator.cs" />
      <Compile Include="Assets\Editor\GridGenerators\ICellGridGenerator.cs" />
      <Compile Include="Assets\Editor\Data\CSVReader.cs" />
-     <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
+     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Editor\OpenInFileBrowser.cs" />
+     <Compile Include="Assets\UnityFileDebug\Lib\Editor\PackageAsset.cs" />
+     <Compile Include="Assets\UnityFileDebug\Lib\Logger\Editor\UnityFileDebugEditor.cs" />
      <Compile Include="Assets\Editor\GridHelper.cs" />
-     <Compile Include="Assets\Editor\GridGenerators\RectangularHexGridGenerator.cs" />
      <Compile Include="Assets\Editor\GridHelperUtils.cs" />
      <Compile Include="Assets\Editor\GridGenerators\RectIsoGridGenerator.cs" />
      <Folder Include="Assets\Editor\Data" />
      <Folder Include="Assets\Editor\GridGenerators" />
-     <Folder Include="Assets\LeanTween\Editor" />
+     <Folder Include="Assets\_LeanTween\Editor" />
+     <Folder Include="Assets\UnityFileDebug\Lib\Editor" />
      <Folder Include="Assets\Editor" />
+     <Folder Include="Assets\UnityFileDebug\Lib\Logger\Editor" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Dev\GameDev\Unity_Engine\2022.3.11f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>

@@ -7,7 +7,7 @@ namespace ScreenResolutionManager
 {
     public class CameraMovement : MonoBehaviour
     {
-        private float Speed = 0.05f;
+        private float speed = 0.05f;
         private float maxX;
         private float maxY;
         private float minX;
@@ -21,14 +21,14 @@ namespace ScreenResolutionManager
 
         private void Awake()
         {
-            onBordLoaded.EventListeners += setMax;
+            onBordLoaded.EventListeners += SetMax;
         }
         private void OnDestroy()
         {
-            onBordLoaded.EventListeners -= setMax;
+            onBordLoaded.EventListeners -= SetMax;
         }
 
-        public void setMax(Void empty)
+        public void SetMax(Void _empty)
         {
             foreach (Transform _cell in GameObject.Find("CellGrid").transform)
             {
@@ -52,15 +52,15 @@ namespace ScreenResolutionManager
  
         void Update()
         {
-            float xAxisValue = Input.GetAxis("Horizontal") * Speed;
-            float yAxisValue = Input.GetAxis("Vertical") * Speed;
+            float _xAxisValue = Input.GetAxis("Horizontal") * speed;
+            float _yAxisValue = Input.GetAxis("Vertical") * speed;
 
-            float xPos = Mathf.Clamp(transform.position.x + xAxisValue, minX, maxX);
-            float yPos = Mathf.Clamp(transform.position.y + yAxisValue, minY, maxY);
+            float _xPos = Mathf.Clamp(transform.position.x + _xAxisValue, minX, maxX);
+            float _yPos = Mathf.Clamp(transform.position.y + _yAxisValue, minY, maxY);
 
-            newbackPos = new Vector3(backGround.position.x + (transform.position.x - xPos) * 0.5f, backGround.position.y + (transform.position.y - yPos) * 0.5f,
+            newbackPos = new Vector3(backGround.position.x + (transform.position.x - _xPos) * 0.5f, backGround.position.y + (transform.position.y - _yPos) * 0.5f,
                 backGround.position.z);
-            newCameraPos = new Vector3(xPos,yPos, transform.position.z);
+            newCameraPos = new Vector3(_xPos,_yPos, transform.position.z);
         }
 
         private void LateUpdate()

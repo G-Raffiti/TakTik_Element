@@ -7,9 +7,9 @@ namespace Relics.ScriptableObject_RelicEffect
     [CreateAssetMenu(fileName = "Relic_Effect_Affect_", menuName = "Scriptable Object/Relics/Relic Effect Affect Change")]
     public class RelicEffectAffectChange : RelicEffect
     {
-        public override void ChangeSkill(Skill skill, RelicSO relic)
+        public override void ChangeSkill(Skill _skill, RelicSo _relic)
         {
-            skill.ChangeAffect(relic.Affect);
+            _skill.ChangeAffect(_relic.Affect);
         }
     }
 }

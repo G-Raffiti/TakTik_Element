@@ -10,7 +10,7 @@ using UnityEngine;
 namespace GridObjects
 {
     public enum EGridObject {Tree, Stone, LootBox}
-    public abstract class GridObjectSO : ScriptableObject, IInfo
+    public abstract class GridObjectSo : ScriptableObject, IInfo
     {
         [SerializeField] private EGridObject type;
         [SerializeField] private bool movable;
@@ -22,24 +22,24 @@ namespace GridObjects
         public EGridObject Type => type;
         public virtual string Name => name;
 
-        public virtual void Interact(Unit actor, Cell location)
+        public virtual void Interact(Unit _actor, Cell _location)
         {
-            if (!GetZoneOfInteraction(location).Contains(actor.Cell)) return;
+            if (!GetZoneOfInteraction(_location).Contains(_actor.Cell)) return;
         }
 
-        public virtual List<Cell> GetZoneOfInteraction(Cell location)
+        public virtual List<Cell> GetZoneOfInteraction(Cell _location)
         {
-            return Zone.GetRange(new GridRange(EZone.Contact, EZone.Basic, 1, 0), location).ToList();
+            return Zone.GetRange(new GridRange(EZone.Contact, EZone.Basic, 1, 0), _location).ToList();
         }
 
-        public virtual void MarkAsInteractable(Cell location)
+        public virtual void MarkAsInteractable(Cell _location)
         {
-            location.MarkAsReachable();
+            _location.MarkAsReachable();
         }
 
-        public virtual void ShowAction(Unit actor, Cell location)
+        public virtual void ShowAction(Unit _actor, Cell _location)
         {
-            if (!GetZoneOfInteraction(location).Contains(actor.Cell)) return;
+            if (!GetZoneOfInteraction(_location).Contains(_actor.Cell)) return;
         }
 
         #region IInfo

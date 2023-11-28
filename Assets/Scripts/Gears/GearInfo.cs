@@ -3,6 +3,7 @@ using DataBases;
 using Resources.ToolTip.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Gears
 {
@@ -10,56 +11,58 @@ namespace Gears
     {
         public Gear Gear { get; set; }
         
+        [FormerlySerializedAs("GearTooltip_ON")]
         [Header("Tooltip Events")] 
-        [SerializeField] private GearInfoEvent GearTooltip_ON;
-        [SerializeField] private VoidEvent GearTooltip_OFF;
+        [SerializeField] private GearInfoEvent gearTooltipOn;
+        [FormerlySerializedAs("GearTooltip_OFF")]
+        [SerializeField] private VoidEvent gearTooltipOff;
 
-        public override void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
-            GearTooltip_ON.Raise(this);
+            gearTooltipOn.Raise(this);
         }
 
-        public override void OnPointerExit(PointerEventData eventData)
+        public override void OnPointerExit(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
-            GearTooltip_OFF.Raise();
+            gearTooltipOff.Raise();
         }
 
 
         public override string GetInfoMain()
         {
-            return $"{Gear.GearSO.Rarity.Name}\n{Gear.GearSO.Type}";
+            return $"{Gear.GearSo.Rarity.Name}\n{Gear.GearSo.Type}";
         }
 
         public override string GetInfoLeft()
         {
-            string ret = "Stats:\n";
-            ret += Gear.GearSO.MainStat.ToString();
-            Gear.Affixes.ForEach(affix => ret += $"\n{affix.ToString()}");
-            return ret;
+            string _ret = "Stats:\n";
+            _ret += Gear.GearSo.MainStat.ToString();
+            Gear.Affixes.ForEach(_affix => _ret += $"\n{_affix.ToString()}");
+            return _ret;
         }
 
         public override string GetInfoRight()
         {
-            string ret = "\n(implicit)";
-            Gear.Affixes.ForEach(affix => ret += $"\n{affix.TierRangeToString()}");
-            return ret;
+            string _ret = "\n(implicit)";
+            Gear.Affixes.ForEach(_affix => _ret += $"\n{_affix.TierRangeToString()}");
+            return _ret;
         }
 
         public override string GetInfoDown()
         {
-            return Gear.GearSO.SpecialEffect != null ? Gear.GearSO.SpecialEffect.InfoEffect() : "";
+            return Gear.GearSo.SpecialEffect != null ? Gear.GearSo.SpecialEffect.InfoEffect() : "";
         }
 
         public override Sprite GetIcon()
         {
-            return Gear.GearSO.Icon;
+            return Gear.GearSo.Icon;
         }
 
         public override string ColouredName()
         {
-            return $"<color={ColorSet.HexColor(Gear.GearSO.Rarity.TextColour)}>{Gear.GearSO.Name}</color>";
+            return $"<color={ColorSet.HexColor(Gear.GearSo.Rarity.TextColour)}>{Gear.GearSo.Name}</color>";
         }
     }
 }

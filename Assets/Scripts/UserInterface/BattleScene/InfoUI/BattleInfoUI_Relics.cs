@@ -3,28 +3,32 @@ using _Instances;
 using Relics;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UserInterface.BattleScene.InfoUI
 {
-    public class BattleInfoUI_Relics : MonoBehaviour
+    public class BattleInfoUIRelics : MonoBehaviour
     {
-        [SerializeField] private PersonalInventory PortraitPrefab;
-        [SerializeField] private GameObject HolderPrefab;
-        [SerializeField] private RelicInfo RelicPrefab;
+        [FormerlySerializedAs("PortraitPrefab")]
+        [SerializeField] private PersonalInventory portraitPrefab;
+        [FormerlySerializedAs("HolderPrefab")]
+        [SerializeField] private GameObject holderPrefab;
+        [FormerlySerializedAs("RelicPrefab")]
+        [SerializeField] private RelicInfo relicPrefab;
 
 
         private void OnEnable()
         {
-            foreach (Hero hero in PlayerData.getInstance().Heroes)
+            foreach (Hero _hero in PlayerData.GetInstance().Heroes)
             {
-                GameObject holder = Instantiate(HolderPrefab, transform);
-                GameObject portrait = Instantiate(PortraitPrefab.gameObject, holder.transform);
-                portrait.GetComponent<PersonalInventory>().Initialize(hero);
-                foreach (RelicSO _relic in hero.Relics)
+                GameObject _holder = Instantiate(holderPrefab, transform);
+                GameObject _portrait = Instantiate(portraitPrefab.gameObject, _holder.transform);
+                _portrait.GetComponent<PersonalInventory>().Initialize(_hero);
+                foreach (RelicSo _relic in _hero.Relics)
                 {
-                    GameObject relicObj = Instantiate(RelicPrefab.gameObject, holder.transform);
-                    relicObj.GetComponent<RelicInfo>().CreateRelic(_relic);
-                    relicObj.GetComponent<RelicInfo>().DisplayIcon();
+                    GameObject _relicObj = Instantiate(relicPrefab.gameObject, _holder.transform);
+                    _relicObj.GetComponent<RelicInfo>().CreateRelic(_relic);
+                    _relicObj.GetComponent<RelicInfo>().DisplayIcon();
                 }
             }
         }

@@ -9,12 +9,12 @@ namespace DataBases
     public class DataBaseElement : ScriptableObject
     {
         [SerializeField] private List<Element> elements;
-        public Dictionary<EElement, Element> Elements => getElements();
-        private Dictionary<EElement, Element> getElements()
+        public Dictionary<EElement, Element> Elements => GetElements();
+        private Dictionary<EElement, Element> GetElements()
         {
-            Dictionary<EElement, Element> ret = new Dictionary<EElement, Element>();
-            elements.ForEach(_element => ret.Add(_element.Type, _element));
-            return ret;
+            Dictionary<EElement, Element> _ret = new Dictionary<EElement, Element>();
+            elements.ForEach(_element => _ret.Add(_element.Type, _element));
+            return _ret;
         }
     }
 }

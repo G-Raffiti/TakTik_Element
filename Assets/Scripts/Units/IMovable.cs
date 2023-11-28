@@ -6,10 +6,11 @@ using Cells;
 using Gears;
 using StateMachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Units
 {
-    public abstract class IMovable : MonoBehaviour
+    public abstract class Movable : MonoBehaviour
     {
         protected static DijkstraPathfinding pathfinder = new DijkstraPathfinding();
         protected static Pathfinding fallbackPathfinder = new AStarPathfinding();
@@ -18,7 +19,8 @@ namespace Units
         /// </summary>
         [Header("IMovable")]
         [SerializeField] protected float movementAnimationSpeed;
-        public Inventory Inventory;
+        [FormerlySerializedAs("Inventory")]
+        public Inventory inventory;
         public float MovementAnimationSpeed => movementAnimationSpeed;
         public abstract SpriteRenderer MovableSprite { get; }
         
@@ -34,19 +36,19 @@ namespace Units
                 return null;
             }
         }
-        public abstract string getName { get; }
+        public abstract string GetName { get; }
         public bool IsMoving { get; set; }
         
-        public virtual List<Cell> Move(Cell destinationCell, List<Cell> path)
+        public virtual List<Cell> Move(Cell _destinationCell, List<Cell> _completePath)
         {
-            return Movement.Move(this, destinationCell, path);
+            return Movement.Move(this, _destinationCell, _completePath);
         }
 
-        public virtual IEnumerator MovementAnimation(List<Cell> path)
+        public virtual IEnumerator MovementAnimation(List<Cell> _path)
         {
             IsMoving = true;
-            path.Reverse();
-            foreach (Cell _cell in path)
+            _path.Reverse();
+            foreach (Cell _cell in _path)
             {
                 _cell.Take(this);
                 Vector3 _destinationPos = new Vector3(_cell.transform.localPosition.x, _cell.transform.localPosition.y,
@@ -73,7 +75,7 @@ namespace Units
         /// </summary>
         public virtual IEnumerator Fall(Cell _destination)
         {
-            Inventory = new Inventory();
+            inventory = new Inventory();
             while (IsMoving)
                 yield return null;
             _destination.FallIn();

@@ -12,28 +12,28 @@ namespace DataBases
     [CreateAssetMenu(fileName = "DataBase_Gear", menuName = "Scriptable Object/DataBase/Gear")]
     public class DataBaseGear : ScriptableObject
     {
-        [SerializeField] private List<GearSO> gears;
+        [SerializeField] private List<GearSo> gears;
 
-        public List<GearSO> Gears => gears;
+        public List<GearSo> Gears => gears;
         
-        public GearSO GetRandom()
+        public GearSo GetRandom()
         {
-            List<GearSO> weightedList = new List<GearSO>();
-            foreach (GearSO _gear in Gears)
+            List<GearSo> _weightedList = new List<GearSo>();
+            foreach (GearSo _gear in Gears)
             {
-                for (int i = 0; i < Math.Abs(_gear.Rarity.Affixes - 5); i++)
+                for (int _i = 0; _i < Math.Abs(_gear.Rarity.Affixes - 5); _i++)
                 {
-                    weightedList.Add(_gear);
+                    _weightedList.Add(_gear);
                 }
             }
-            return weightedList.GetRandom();
+            return _weightedList.GetRandom();
         }
 
-        public void AddGear(GearSO newGear)
+        public void AddGear(GearSo _newGear)
         {
-            if (gears.Contains(newGear)) return;
+            if (gears.Contains(_newGear)) return;
             #if (UNITY_EDITOR)
-            gears.Add(newGear);
+            gears.Add(_newGear);
             EditorUtility.SetDirty(this); 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -43,7 +43,7 @@ namespace DataBases
         public void ClearDataBase()
         {
             #if (UNITY_EDITOR)
-            gears = new List<GearSO>();
+            gears = new List<GearSo>();
             #endif
         }
     }

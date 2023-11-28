@@ -8,37 +8,59 @@ using TMPro;
 using UISetupState;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.ToolTips
 {
     public class UnitTooltip : Tooltip
     {
-        [HideInInspector] public Unit Unit;
+        [FormerlySerializedAs("Unit")]
+        [HideInInspector] public Unit unit;
         
         [Header("Unity References")]
         [SerializeField] private TextMeshProUGUI nameTxt;
         [SerializeField] private Image unitSprite;
-        [SerializeField] private TextMeshProUGUI HPTxt;
-        [SerializeField] private Image HPFill;
-        [SerializeField] private TextMeshProUGUI ShieldTxt;
-        [SerializeField] private Image ShieldFill;
-        [SerializeField] private TextMeshProUGUI WaterTxt;
-        [SerializeField] private Image WaterFill;
-        [SerializeField] private TextMeshProUGUI NatureTxt;
-        [SerializeField] private Image NatureFill;
-        [SerializeField] private TextMeshProUGUI FireTxt;
-        [SerializeField] private Image FireFill;
-        [SerializeField] private TextMeshProUGUI PowerTxt;
-        [SerializeField] private Image PowerFill;
-        [SerializeField] private TextMeshProUGUI SpeedTxt;
-        [SerializeField] private TextMeshProUGUI FocusTxt;
-        [SerializeField] private TextMeshProUGUI APTxt;
-        [SerializeField] private TextMeshProUGUI MPTxt;
-        [SerializeField] private TextMeshProUGUI MainElementTxt;
-        [SerializeField] private TextMeshProUGUI OtherElementTxt;
-        [SerializeField] private TextMeshProUGUI RangeTxt;
-        [SerializeField] protected GameObject StatsBlock;
+        [FormerlySerializedAs("HPTxt")]
+        [SerializeField] private TextMeshProUGUI hpTxt;
+        [FormerlySerializedAs("HPFill")]
+        [SerializeField] private Image hpFill;
+        [FormerlySerializedAs("ShieldTxt")]
+        [SerializeField] private TextMeshProUGUI shieldTxt;
+        [FormerlySerializedAs("ShieldFill")]
+        [SerializeField] private Image shieldFill;
+        [FormerlySerializedAs("WaterTxt")]
+        [SerializeField] private TextMeshProUGUI waterTxt;
+        [FormerlySerializedAs("WaterFill")]
+        [SerializeField] private Image waterFill;
+        [FormerlySerializedAs("NatureTxt")]
+        [SerializeField] private TextMeshProUGUI natureTxt;
+        [FormerlySerializedAs("NatureFill")]
+        [SerializeField] private Image natureFill;
+        [FormerlySerializedAs("FireTxt")]
+        [SerializeField] private TextMeshProUGUI fireTxt;
+        [FormerlySerializedAs("FireFill")]
+        [SerializeField] private Image fireFill;
+        [FormerlySerializedAs("PowerTxt")]
+        [SerializeField] private TextMeshProUGUI powerTxt;
+        [FormerlySerializedAs("PowerFill")]
+        [SerializeField] private Image powerFill;
+        [FormerlySerializedAs("SpeedTxt")]
+        [SerializeField] private TextMeshProUGUI speedTxt;
+        [FormerlySerializedAs("FocusTxt")]
+        [SerializeField] private TextMeshProUGUI focusTxt;
+        [FormerlySerializedAs("APTxt")]
+        [SerializeField] private TextMeshProUGUI apTxt;
+        [FormerlySerializedAs("MPTxt")]
+        [SerializeField] private TextMeshProUGUI mpTxt;
+        [FormerlySerializedAs("MainElementTxt")]
+        [SerializeField] private TextMeshProUGUI mainElementTxt;
+        [FormerlySerializedAs("OtherElementTxt")]
+        [SerializeField] private TextMeshProUGUI otherElementTxt;
+        [FormerlySerializedAs("RangeTxt")]
+        [SerializeField] private TextMeshProUGUI rangeTxt;
+        [FormerlySerializedAs("StatsBlock")]
+        [SerializeField] protected GameObject statsBlock;
         [SerializeField] private List<Image> frames;
         [SerializeField] private Transform buffsHolder;
         
@@ -49,56 +71,56 @@ namespace UserInterface.ToolTips
         
         protected override void ShowToolTip()
         {
-            StatsBlock.SetActive(UI_Manager.CompleteStats);
-            nameTxt.text = Unit.GetInfoMain();
-            unitSprite.sprite = Unit.GetIcon();
-            HPTxt.text = $"{Unit.BattleStats.HP}/{Unit.Total.HP}";
-            HPFill.fillAmount = Unit.BattleStats.HP / (float) Unit.Total.HP;
-            ShieldTxt.text = $"{Unit.BattleStats.Shield}";
-            ShieldFill.fillAmount = Unit.BattleStats.Shield / (float) Mathf.Max(Unit.Total.HP, Unit.BattleStats.Shield);
-            WaterTxt.text = $"{(int) Unit.BattleStats.Affinity.Water}";
-            FireTxt.text = $"{(int) Unit.BattleStats.Affinity.Fire}";
-            NatureTxt.text = $"{(int) Unit.BattleStats.Affinity.Nature}";
-            PowerTxt.text = $"{Unit.BattleStats.Power}";
+            statsBlock.SetActive(UIManager.CompleteStats);
+            nameTxt.text = unit.GetInfoMain();
+            unitSprite.sprite = unit.GetIcon();
+            hpTxt.text = $"{unit.battleStats.hp}/{unit.Total.hp}";
+            hpFill.fillAmount = unit.battleStats.hp / (float) unit.Total.hp;
+            shieldTxt.text = $"{unit.battleStats.shield}";
+            shieldFill.fillAmount = unit.battleStats.shield / (float) Mathf.Max(unit.Total.hp, unit.battleStats.shield);
+            waterTxt.text = $"{(int) unit.battleStats.affinity.water}";
+            fireTxt.text = $"{(int) unit.battleStats.affinity.fire}";
+            natureTxt.text = $"{(int) unit.battleStats.affinity.nature}";
+            powerTxt.text = $"{unit.battleStats.power}";
             SetDamageBar();
-            SpeedTxt.text = $"{Unit.BattleStats.Speed}<sprite name=Speed>";
-            FocusTxt.text = $"{Unit.BattleStats.Focus}<sprite name=Focus>";
-            APTxt.text = $"{Unit.BattleStats.AP}";
-            MPTxt.text = $"{Unit.BattleStats.MP}";
-            MainElementTxt.text = Unit.GetInfoDown();
-            OtherElementTxt.text = Unit.GetElements();
-            RangeTxt.text = Unit.GetInfoRight();
-            frames.ForEach(i => i.color = Unit.GetTeamColor());
+            speedTxt.text = $"{unit.battleStats.speed}<sprite name=Speed>";
+            focusTxt.text = $"{unit.battleStats.focus}<sprite name=Focus>";
+            apTxt.text = $"{unit.battleStats.ap}";
+            mpTxt.text = $"{unit.battleStats.mp}";
+            mainElementTxt.text = unit.GetInfoDown();
+            otherElementTxt.text = unit.GetElements();
+            rangeTxt.text = unit.GetInfoRight();
+            frames.ForEach(_i => _i.color = unit.GetTeamColor());
 
-            foreach (Buff _buff in Unit.Buffs)
+            foreach (Buff _buff in unit.Buffs)
             {
-                GameObject pref = Instantiate(buffPref.gameObject, buffsHolder);
-                pref.GetComponent<BuffInfo>().Unit = Unit;
-                pref.GetComponent<BuffInfo>().Buff = _buff;
-                pref.GetComponent<BuffInfo>().DisplayIcon();
+                GameObject _pref = Instantiate(buffPref.gameObject, buffsHolder);
+                _pref.GetComponent<BuffInfo>().Unit = unit;
+                _pref.GetComponent<BuffInfo>().Buff = _buff;
+                _pref.GetComponent<BuffInfo>().DisplayIcon();
             }
         }
 
         private void SetDamageBar()
         {
-            float[] values = 
+            float[] _values = 
                 {
-                    Unit.BattleStats.GetPower(EElement.Fire), 
-                    Unit.BattleStats.GetPower(EElement.Water), 
-                    Unit.BattleStats.GetPower(EElement.Nature), 
-                    Unit.BattleStats.GetPower(EElement.None)
+                    unit.battleStats.GetPower(EElement.Fire), 
+                    unit.battleStats.GetPower(EElement.Water), 
+                    unit.battleStats.GetPower(EElement.Nature), 
+                    unit.battleStats.GetPower(EElement.None)
                 };
-            float max = Mathf.Max(values);
-            float min = Mathf.Min(values);
-            if (min < 0)
+            float _max = Mathf.Max(_values);
+            float _min = Mathf.Min(_values);
+            if (_min < 0)
             {
-                max += Mathf.Abs(min);
+                _max += Mathf.Abs(_min);
             }
-            else min = 0;
-            FireFill.fillAmount = (Unit.BattleStats.Affinity.Fire - min) / max;
-            WaterFill.fillAmount = (Unit.BattleStats.Affinity.Water - min) / max;
-            NatureFill.fillAmount = (Unit.BattleStats.Affinity.Nature - min) / max;
-            PowerFill.fillAmount = (Unit.BattleStats.Power - min) / max;
+            else _min = 0;
+            fireFill.fillAmount = (unit.battleStats.affinity.fire - _min) / _max;
+            waterFill.fillAmount = (unit.battleStats.affinity.water - _min) / _max;
+            natureFill.fillAmount = (unit.battleStats.affinity.nature - _min) / _max;
+            powerFill.fillAmount = (unit.battleStats.power - _min) / _max;
         }
 
         public override void HideTooltip()
@@ -112,15 +134,15 @@ namespace UserInterface.ToolTips
 
         protected override Vector3 Position()
         {
-            Vector3 _newPos = Camera.main.WorldToScreenPoint(Unit.transform.position) + offset;
+            Vector3 _newPos = Camera.main.WorldToScreenPoint(unit.transform.position) + offset;
             
-            float _rightEdgeToScreenEdgeDistance = Screen.width - (_newPos.x + backgroundRectTransform.rect.width * popupCanvas.scaleFactor) - padding.x;
+            float _rightEdgeToScreenEdgeDistance = Screen.width - (_newPos.x + backgroundRectTransform.rect.width * popupCanvas.scaleFactor) - Padding.x;
             if (_rightEdgeToScreenEdgeDistance < 0)
             {
                 _newPos.x += _rightEdgeToScreenEdgeDistance;
             }
 
-            float _topEdgeToScreenEdgeDistance = Screen.height - (_newPos.y + backgroundRectTransform.rect.height * popupCanvas.scaleFactor) - padding.y;
+            float _topEdgeToScreenEdgeDistance = Screen.height - (_newPos.y + backgroundRectTransform.rect.height * popupCanvas.scaleFactor) - Padding.y;
             if (_topEdgeToScreenEdgeDistance < 0)
             {
                 _newPos.y += _topEdgeToScreenEdgeDistance;

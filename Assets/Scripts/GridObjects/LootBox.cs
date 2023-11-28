@@ -7,46 +7,48 @@ using Cells;
 using Gears;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GridObjects
 {
     [CreateAssetMenu(fileName = "GridObject_LootBox", menuName = "Scriptable Object/Grid Objects/LootBox")]
-    public class LootBox : GridObjectSO
+    public class LootBox : GridObjectSo
     {
-        [SerializeField] private GridObjectEvent OnLootBoxOpen;
+        [FormerlySerializedAs("OnLootBoxOpen")]
+        [SerializeField] private GridObjectEvent onLootBoxOpen;
         [SerializeField] private List<Sprite> lootBoxesSprites;
         public override Sprite Image => lootBoxesSprites.GetRandom();
-        public override void Interact(Unit actor, Cell location)
+        public override void Interact(Unit _actor, Cell _location)
         {
-            if (location.CurrentGridObject.Inventory.gears.Count == 0)
+            if (_location.CurrentGridObject.inventory.gears.Count == 0)
             {
-                location.CurrentGridObject.Inventory = new Inventory();
+                _location.CurrentGridObject.inventory = new Inventory();
                 Gear _gear = new Gear();
                 _gear.CreateGear();
-                location.CurrentGridObject.Inventory.gears.Add(_gear);
+                _location.CurrentGridObject.inventory.gears.Add(_gear);
                 
-                if (location.isCorrupted)
+                if (_location.IsCorrupted)
                 {
-                    Gear gear2 = new Gear();
-                    gear2.CreateGear();
-                    location.CurrentGridObject.Inventory.gears.Add(gear2);
+                    Gear _gear2 = new Gear();
+                    _gear2.CreateGear();
+                    _location.CurrentGridObject.inventory.gears.Add(_gear2);
                 }
             }
             
-            OnLootBoxOpen.Raise(location.CurrentGridObject);
+            onLootBoxOpen.Raise(_location.CurrentGridObject);
             
-            Utility.RunCoroutine(DestroyAfterUse(location.CurrentGridObject));
+            Utility.RunCoroutine(DestroyAfterUse(_location.CurrentGridObject));
         }
 
-        public IEnumerator DestroyAfterUse(GridObject lootBox)
+        public IEnumerator DestroyAfterUse(GridObject _lootBox)
         {
             yield return new WaitForSeconds(0.1f);
-            GameObject inventory = GameObject.Find("InventoryUI");
-            while (inventory.activeSelf)
+            GameObject _inventory = GameObject.Find("InventoryUI");
+            while (_inventory.activeSelf)
                 yield return null;
-            if (lootBox.Inventory.gears.Count == 0)
+            if (_lootBox.inventory.gears.Count == 0)
             {
-                Utility.RunCoroutine(lootBox.OnDestroyed());
+                Utility.RunCoroutine(_lootBox.OnDestroyed());
             }
         }
     }

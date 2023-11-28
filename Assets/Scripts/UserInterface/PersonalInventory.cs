@@ -9,6 +9,7 @@ using Stats;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface
@@ -20,14 +21,17 @@ namespace UserInterface
         [SerializeField] private Image health;
         [SerializeField] private Image shield;
         [SerializeField] private List<SlotDragAndDrop> slots;
-        [SerializeField] private GameObject GearInfoPrefab;
-        private BattleStats BattleStats;
+        [FormerlySerializedAs("GearInfoPrefab")]
+        [SerializeField] private GameObject gearInfoPrefab;
+        private BattleStats battleStats;
         private BattleStats baseStats;
         private BattleStats total;
         
+        [FormerlySerializedAs("UnitTooltip_ON")]
         [Header("Tooltip Events")] 
-        [SerializeField] private UnitEvent UnitTooltip_ON;
-        [SerializeField] private VoidEvent UnitTooltip_OFF;
+        [SerializeField] private UnitEvent unitTooltipOn;
+        [FormerlySerializedAs("UnitTooltip_OFF")]
+        [SerializeField] private VoidEvent unitTooltipOff;
 
         public Hero Hero { get; private set; }
 
@@ -43,44 +47,44 @@ namespace UserInterface
 
         public void FillInventory()
         {
-            for (int i = 0; i < Hero.Inventory.gears.Count; i++)
+            for (int _i = 0; _i < Hero.Inventory.gears.Count; _i++)
             {
-                GameObject gearObj = Instantiate(GearInfoPrefab, slots[i].transform);
-                gearObj.GetComponent<GearInfo>().Gear = Hero.Inventory.gears[i];
-                gearObj.GetComponent<GearInfo>().DisplayIcon();
-                slots[i].UpdateMyItem();
-                slots[i].UpdateBackgroundState();
+                GameObject _gearObj = Instantiate(gearInfoPrefab, slots[_i].transform);
+                _gearObj.GetComponent<GearInfo>().Gear = Hero.Inventory.gears[_i];
+                _gearObj.GetComponent<GearInfo>().DisplayIcon();
+                slots[_i].UpdateMyItem();
+                slots[_i].UpdateBackgroundState();
             }
         }
 
-        private void UpdateHP(int ActualHP)
+        private void UpdateHp(int _actualHp)
         {
             if (health == null) return;
-            health.fillAmount = ActualHP / (float)total.HP;
-            shield.fillAmount = total.Shield / (float) total.HP;
+            health.fillAmount = _actualHp / (float)total.hp;
+            shield.fillAmount = total.shield / (float) total.hp;
         }
 
         public void UpdateStats()
         {
             baseStats = Hero.BattleStats;
-            BattleStats = new BattleStats(baseStats + Hero.Inventory.GearStats() + Hero.GetRelic().BattleStats);
-            total = BattleStats;
-            BattleStats.HP = Hero.ActualHP;
-            UpdateHP(Hero.ActualHP);
+            battleStats = new BattleStats(baseStats + Hero.Inventory.GearStats() + Hero.GetRelic().BattleStats);
+            total = battleStats;
+            battleStats.hp = Hero.ActualHp;
+            UpdateHp(Hero.ActualHp);
             
             icon.color = Hero.isDead ? Color.black : Color.white;
         }
         
-        public override void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
-            UnitTooltip_ON?.Raise(Hero.Unit);
+            unitTooltipOn?.Raise(Hero.Unit);
         }
 
-        public override void OnPointerExit(PointerEventData eventData)
+        public override void OnPointerExit(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
-            UnitTooltip_OFF?.Raise();
+            unitTooltipOff?.Raise();
         }
 
         public override string GetInfoMain()
@@ -91,38 +95,38 @@ namespace UserInterface
         
         public override string GetInfoLeft()
         {
-            string str = "";
-            str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)total.AP}</color>    ";
-            str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.MP)}>{(int)total.MP}</color> \n";
-            str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.HP)}>{BattleStats.HP} </color>/ {total.HP}    ";
-            str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{BattleStats.Shield}</color> \n";
-            str += $"<sprite name=Fire> <color={colorSet.HexColor(EAffix.Fire)}>{BattleStats.GetPower(EElement.Fire)}</color>  <sprite name=Water> <color={colorSet.HexColor(EAffix.Water)}>{BattleStats.GetPower(EElement.Water)}</color>  <sprite name=Nature> <color={colorSet.HexColor(EAffix.Nature)}>{BattleStats.GetPower(EElement.Nature)}</color>";
+            string _str = "";
+            _str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)total.ap}</color>    ";
+            _str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.Mp)}>{(int)total.mp}</color> \n";
+            _str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.Hp)}>{battleStats.hp} </color>/ {total.hp}    ";
+            _str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{battleStats.shield}</color> \n";
+            _str += $"<sprite name=Fire> <color={colorSet.HexColor(EAffix.Fire)}>{battleStats.GetPower(EElement.Fire)}</color>  <sprite name=Water> <color={colorSet.HexColor(EAffix.Water)}>{battleStats.GetPower(EElement.Water)}</color>  <sprite name=Nature> <color={colorSet.HexColor(EAffix.Nature)}>{battleStats.GetPower(EElement.Nature)}</color>";
 
-            return str;
+            return _str;
         }
 
         public override string GetInfoRight()
         {
-            string str = "";
-            str += BattleStats.gridRange.ToString()+ "\n";
-            str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{BattleStats.Speed} </color> \n";
-            return str;
+            string _str = "";
+            _str += battleStats.gridRange.ToString()+ "\n";
+            _str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{battleStats.speed} </color> \n";
+            return _str;
         }
         
         public override string GetInfoDown()
         {
-            string str = "";
-            foreach (RelicSO _heroRelic in Hero.Relics)
+            string _str = "";
+            foreach (RelicSo _heroRelic in Hero.Relics)
             {
-                str += _heroRelic.Name + "\n";
+                _str += _heroRelic.Name + "\n";
             }
 
-            return str; 
+            return _str; 
         }
 
         public override string ColouredName()
         {
-            return $"<color={colorSet.HexColor(EColor.ally)}>{Hero.UnitName}</color>";
+            return $"<color={colorSet.HexColor(EColor.Ally)}>{Hero.UnitName}</color>";
         }
 
         public override Sprite GetIcon()

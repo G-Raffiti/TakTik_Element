@@ -1,6 +1,7 @@
 ﻿using _EventSystem.CustomEvents;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace _EventSystem.Listeners
 {
@@ -10,33 +11,35 @@ namespace _EventSystem.Listeners
     /// <typeparam name="T">Tvpe of Data Sent</typeparam>
     /// <typeparam name="GE">GameEvent Type</typeparam>
     /// <typeparam name="UER">Unity Event</typeparam>
-    public abstract class BaseGameEventListener<T, GE, UER> : MonoBehaviour
-        where GE : BaseGameEvent<T>
-        where UER : UnityEvent<T>
+    public abstract class BaseGameEventListener<T, TGe, TUer> : MonoBehaviour
+        where TGe : BaseGameEvent<T>
+        where TUer : UnityEvent<T>
     {
+        [FormerlySerializedAs("_GameEvent")]
         [SerializeField]
-        protected GE _GameEvent;
+        protected TGe gameEvent;
 
+        [FormerlySerializedAs("_UnityEventResponse")]
         [SerializeField]
-        protected UER _UnityEventResponse;
+        protected TUer unityEventResponse;
 
         protected void OnEnable()
         {
-            if (_GameEvent is null) return;
-            _GameEvent.EventListeners += TriggerResponses; // Subscribe
+            if (gameEvent is null) return;
+            gameEvent.EventListeners += TriggerResponses; // Subscribe
         }
 
         protected void OnDisable()
         {
-            if (_GameEvent is null) return;
-            _GameEvent.EventListeners -= TriggerResponses; // Unsubscribe
+            if (gameEvent is null) return;
+            gameEvent.EventListeners -= TriggerResponses; // Unsubscribe
         }
 
         [ContextMenu("Trigger Responses")]
-        public void TriggerResponses(T val)
+        public void TriggerResponses(T _val)
         {
             //No need to nullcheck here, UnityEvents do that for us (lets avoid the double nullcheck)
-            _UnityEventResponse.Invoke(val);
+            unityEventResponse.Invoke(_val);
         }
     }
 }

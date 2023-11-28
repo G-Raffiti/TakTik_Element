@@ -14,43 +14,43 @@ using UnityEngine;
 namespace GridObjects
 {
     [CreateAssetMenu(fileName = "GridObject_Stone_", menuName = "Scriptable Object/Grid Objects/Stone")]
-    public class Stone : GridObjectSO
+    public class Stone : GridObjectSo
     {
         [SerializeField] private int pushDistance;
         [SerializeField] private List<Sprite> stonesSprites;
         public override Sprite Image => stonesSprites.GetRandom();
 
-        public override void Interact(Unit actor, Cell location)
+        public override void Interact(Unit _actor, Cell _location)
         {
-            base.Interact(actor, location);
-            Utility.RunCoroutine(Push(actor, location.CurrentGridObject, pushDistance));
+            base.Interact(_actor, _location);
+            Utility.RunCoroutine(Push(_actor, _location.CurrentGridObject, pushDistance));
             //TODO : créer une variable de distance à la place de strength
         }
 
-        private static Cell GetDestination(IMovable target, int strength, Cell _targetedCell, Unit actor)
+        private static Cell GetDestination(Movable _target, int _strength, Cell _targetedCell, Unit _actor)
         {
             // find the destination
-            Cell destination = target.Cell;
+            Cell _destination = _target.Cell;
             
-            for (int i = 1; i <= strength; i++)
+            for (int _i = 1; _i <= _strength; _i++)
             {
-                Cell arrival = BattleStateManager.instance.Cells.Find(c =>
-                    c.OffsetCoord == target.Cell.OffsetCoord + Zone.Direction(actor.Cell, _targetedCell) * i);
-                if (arrival == null) break;
-                destination = arrival;
+                Cell _arrival = BattleStateManager.instance.Cells.Find(_c =>
+                    _c.OffsetCoord == _target.Cell.OffsetCoord + Zone.Direction(_actor.Cell, _targetedCell) * _i);
+                if (_arrival == null) break;
+                _destination = _arrival;
             }
 
-            return destination;
+            return _destination;
         }
-        private static IEnumerator Push(Unit actor, IMovable target, int strength)
+        private static IEnumerator Push(Unit _actor, Movable _target, int _strength)
         {
             // find the target
-            if (target == null) yield break;
-            Cell _targetedCell = target.Cell;
-            target.IsMoving = true;
+            if (_target == null) yield break;
+            Cell _targetedCell = _target.Cell;
+            _target.IsMoving = true;
 
             // find destination 
-            Cell destination = GetDestination(target, strength, _targetedCell, actor);
+            Cell _destination = GetDestination(_target, _strength, _targetedCell, _actor);
             
             // find the shortest path between target and destination
             Dictionary<Cell, Dictionary<Cell, float>> _edges = new Dictionary<Cell, Dictionary<Cell, float>>();
@@ -62,35 +62,35 @@ namespace GridObjects
                     _edges[_cell][_neighbour] = 1;
                 }
             }
-            DijkstraPathfinding pathfinder = new DijkstraPathfinding();
-            Dictionary<Cell, List<Cell>> _paths = pathfinder.FindAllPaths(_edges, _targetedCell);
-            List<Cell> _path = _paths[destination];
-            _path = _path.OrderBy(c => _targetedCell.GetDistance(c)).Reverse().ToList();
+            DijkstraPathfinding _pathfinder = new DijkstraPathfinding();
+            Dictionary<Cell, List<Cell>> _paths = _pathfinder.FindAllPaths(_edges, _targetedCell);
+            List<Cell> _path = _paths[_destination];
+            _path = _path.OrderBy(_c => _targetedCell.GetDistance(_c)).Reverse().ToList();
 
             // Move
-            int _distance = Units.Movement.Move(target, destination, _path).Count;
+            int _distance = Units.Movement.Move(_target, _destination, _path).Count;
             if(_distance != 0)
-                while (target.IsMoving) yield return null;
+                while (_target.IsMoving) yield return null;
             
             // If an Unit hit an other object, both take damage
-            if (_distance < strength)
+            if (_distance < _strength)
             {
-                Cell obstacleCell = BattleStateManager.instance.Cells.Find(c =>
-                    c.OffsetCoord == target.Cell.OffsetCoord + Zone.Direction(actor.Cell, _targetedCell));
-                if (obstacleCell == null) yield break;
-                Unit obstacle = obstacleCell.CurrentUnit;
-                if (obstacle != null)
-                    obstacle.DefendHandler(actor,
-                        (strength - _distance) * actor.BattleStats.Power, Element.None());
+                Cell _obstacleCell = BattleStateManager.instance.Cells.Find(_c =>
+                    _c.OffsetCoord == _target.Cell.OffsetCoord + Zone.Direction(_actor.Cell, _targetedCell));
+                if (_obstacleCell == null) yield break;
+                Unit _obstacle = _obstacleCell.CurrentUnit;
+                if (_obstacle != null)
+                    _obstacle.DefendHandler(_actor,
+                        (_strength - _distance) * _actor.battleStats.power, Element.None());
             }
         }
 
         private Dictionary<Cell, CellState> savedMark;
-        public override void ShowAction(Unit actor, Cell location)
+        public override void ShowAction(Unit _actor, Cell _location)
         {
-            base.ShowAction(actor, location);
+            base.ShowAction(_actor, _location);
 
-            GetDestination(location.CurrentGridObject, pushDistance, location, actor).MarkAsHighlighted();
+            GetDestination(_location.CurrentGridObject, pushDistance, _location, _actor).MarkAsHighlighted();
         }
 
         //public override void UnShowAction(Unit actor, Cell location)

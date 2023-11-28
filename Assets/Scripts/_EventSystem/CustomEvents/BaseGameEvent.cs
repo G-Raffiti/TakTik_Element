@@ -10,9 +10,9 @@ namespace _EventSystem.CustomEvents
         // Public because anyone can subscribe(+=), and unsubscribe(-=) to/from this event
         public event Action<T> EventListeners = delegate {};
         
-        public void Raise(T item)
+        public void Raise(T _item)
         {
-            EventListeners(item);
+            EventListeners(_item);
         }
     }
 }

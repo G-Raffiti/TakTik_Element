@@ -6,21 +6,27 @@ using Relics;
 using Skills;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Decks
 {
     public class DeckMono : MonoBehaviour
     {
         [SerializeField] private BoolEvent onEndBattle;
-        [SerializeField] public List<SkillSO> DrawPile = new List<SkillSO>();
+        [FormerlySerializedAs("DrawPile")]
+        [SerializeField] public List<SkillSo> drawPile = new List<SkillSo>();
 
-        public List<SkillSO> HandSkills = new List<SkillSO>();
-        public List<SkillSO> DiscardPile = new List<SkillSO>();
-        public List<SkillSO> ConsumedSkills = new List<SkillSO>();
-        public List<RelicSO> Relics = new List<RelicSO>();
+        [FormerlySerializedAs("HandSkills")]
+        public List<SkillSo> handSkills = new List<SkillSo>();
+        [FormerlySerializedAs("DiscardPile")]
+        public List<SkillSo> discardPile = new List<SkillSo>();
+        [FormerlySerializedAs("ConsumedSkills")]
+        public List<SkillSo> consumedSkills = new List<SkillSo>();
+        [FormerlySerializedAs("Relics")]
+        public List<RelicSo> relics = new List<RelicSo>();
         public Relic Relic = new Relic();
 
-        public static int HAND_SIZE = 5;
+        public static int HandSize = 5;
 
         private void Start()
         {
@@ -34,14 +40,14 @@ namespace Decks
 
         public void DrawNewHand()
         {
-            if (HandSkills.Count >= HAND_SIZE) return;
-            Draw(HAND_SIZE - HandSkills.Count);
+            if (handSkills.Count >= HandSize) return;
+            Draw(HandSize - handSkills.Count);
         }
 
         public void ClearHandSkills()
         {
-            DiscardPile.AddRange(HandSkills);
-            HandSkills = new List<SkillSO>();
+            discardPile.AddRange(handSkills);
+            handSkills = new List<SkillSo>();
         }
 
         /// <summary>
@@ -49,28 +55,28 @@ namespace Decks
         /// </summary>
         public void ShuffleDeck()
         {
-            DrawPile.AddRange(DiscardPile);
-            DiscardPile = new List<SkillSO>();
+            drawPile.AddRange(discardPile);
+            discardPile = new List<SkillSo>();
             
-            DrawPile.Shuffle();
+            drawPile.Shuffle();
         }
 
         /// <summary>
         /// Draw n skills.
         /// </summary>
-        public void Draw(int n)
+        public void Draw(int _n)
         {
-            int maxRange = (DrawPile.Count < n) ? DrawPile.Count : n;
-            int remainRange = n - maxRange;
+            int _maxRange = (drawPile.Count < _n) ? drawPile.Count : _n;
+            int _remainRange = _n - _maxRange;
             
-            HandSkills.AddRange(DrawPile.GetRange(0, maxRange));
-            DrawPile.RemoveRange(0, maxRange);
+            handSkills.AddRange(drawPile.GetRange(0, _maxRange));
+            drawPile.RemoveRange(0, _maxRange);
 
-            if (remainRange > 0)
+            if (_remainRange > 0)
             {
                 ShuffleDeck();
-                HandSkills.AddRange(DrawPile.GetRange(0, Math.Min(remainRange, DrawPile.Count)));
-                DrawPile.RemoveRange(0, Math.Min(remainRange, DrawPile.Count));
+                handSkills.AddRange(drawPile.GetRange(0, Math.Min(_remainRange, drawPile.Count)));
+                drawPile.RemoveRange(0, Math.Min(_remainRange, drawPile.Count));
             }
         }
         
@@ -80,88 +86,88 @@ namespace Decks
         /// </summary>
         public void UpdateDeck()
         {
-            Relic = Relic.CreateRelic(Relics);
+            Relic = Relic.CreateRelic(relics);
         }
         
-        public List<Skill> GetHandSkills(Unit unit)
+        public List<Skill> GetHandSkills(Unit _unit)
         {
-            List<Skill> skills = new List<Skill>();
+            List<Skill> _skills = new List<Skill>();
             
-            foreach (SkillSO skill in HandSkills)
+            foreach (SkillSo _skill in handSkills)
             {
-                skills.Add(Skill.CreateSkill(skill, this, unit));
+                _skills.Add(Skill.CreateSkill(_skill, this, _unit));
             }
 
-            return skills;
+            return _skills;
         }
         
         /// <summary>
         /// Method Called when a Skill is Used.
         /// </summary>
-        public bool UseSkill(Skill skill)
+        public bool UseSkill(Skill _skill)
         {
-            if (!HandSkills.Contains(skill.BaseSkill)) return false;
+            if (!handSkills.Contains(_skill.BaseSkill)) return false;
             
-            if (skill.BaseSkill.Consumable) 
-                ConsumedSkills.Add(skill.BaseSkill);
-            else DiscardPile.Add(skill.BaseSkill);
+            if (_skill.BaseSkill.Consumable) 
+                consumedSkills.Add(_skill.BaseSkill);
+            else discardPile.Add(_skill.BaseSkill);
 
-            HandSkills.Remove(skill.BaseSkill);
+            handSkills.Remove(_skill.BaseSkill);
             
             return true;
         }
 
         public void Initialize()
         {
-            DrawPile.AddRange(ConsumedSkills);
-            ConsumedSkills = new List<SkillSO>();
-            DrawPile.AddRange(DiscardPile);
-            DiscardPile = new List<SkillSO>();
-            DrawPile.AddRange(HandSkills);
-            HandSkills = new List<SkillSO>();
+            drawPile.AddRange(consumedSkills);
+            consumedSkills = new List<SkillSo>();
+            drawPile.AddRange(discardPile);
+            discardPile = new List<SkillSo>();
+            drawPile.AddRange(handSkills);
+            handSkills = new List<SkillSo>();
             ShuffleDeck();
             UpdateDeck();
         }
 
         public void InitializeForCamp()
         {
-            DrawPile.AddRange(ConsumedSkills);
-            ConsumedSkills = new List<SkillSO>();
-            DrawPile.AddRange(DiscardPile);
-            DiscardPile = new List<SkillSO>();
-            DrawPile.AddRange(HandSkills);
-            HandSkills = new List<SkillSO>();
-            DrawPile.Sort((s, s2) => String.Compare(s.Name, s2.Name, StringComparison.Ordinal));
-            DrawPile.Sort((s, s2) => s.Cost.CompareTo(s2.Cost));
+            drawPile.AddRange(consumedSkills);
+            consumedSkills = new List<SkillSo>();
+            drawPile.AddRange(discardPile);
+            discardPile = new List<SkillSo>();
+            drawPile.AddRange(handSkills);
+            handSkills = new List<SkillSo>();
+            drawPile.Sort((_s, _s2) => String.Compare(_s.Name, _s2.Name, StringComparison.Ordinal));
+            drawPile.Sort((_s, _s2) => _s.Cost.CompareTo(_s2.Cost));
         }
 
-        private void OnBattleEndRaised(bool item)
+        private void OnBattleEndRaised(bool _item)
         {
             Initialize();
         }
 
-        public void LearnSkill(SkillSO _monsterSkill, Skill learning)
+        public void LearnSkill(SkillSo _monsterSkill, Skill _learning)
         {
-            List<SkillSO> _newList = new List<SkillSO> {_monsterSkill};
-            _newList.AddRange(HandSkills);
-            HandSkills = new List<SkillSO>(_newList);
+            List<SkillSo> _newList = new List<SkillSo> {_monsterSkill};
+            _newList.AddRange(handSkills);
+            handSkills = new List<SkillSo>(_newList);
         }
 
         /// <summary>
         /// Used in Camp to Swap Skill or in Event to Forget a Skill Completly
         /// </summary>
-        /// <param name="_Skill"></param>
+        /// <param name="_skill"></param>
         /// <returns></returns>
-        public bool RemoveSkill(SkillSO _Skill)
+        public bool RemoveSkill(SkillSo _skill)
         {
-            if (!DrawPile.Contains(_Skill)) return false;
-            DrawPile.Remove(_Skill);
+            if (!drawPile.Contains(_skill)) return false;
+            drawPile.Remove(_skill);
             return true;
         }
 
-        public void AddHandSkill(SkillSO _skill)
+        public void AddHandSkill(SkillSo _skill)
         {
-            HandSkills.Add(_skill);
+            handSkills.Add(_skill);
         }
     }
 }

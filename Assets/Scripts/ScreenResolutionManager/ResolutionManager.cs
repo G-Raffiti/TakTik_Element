@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ScreenResolutionManager
 {
@@ -20,7 +21,10 @@ namespace ScreenResolutionManager
         int[] resolutions = new int[] { 600, 800, 1024, 1280, 1400, 1600, 1920 };
 
         public Resolution DisplayResolution;
-        public List<Vector2> WindowedResolutions, FullscreenResolutions;
+        [FormerlySerializedAs("WindowedResolutions")]
+        public List<Vector2> windowedResolutions;
+        [FormerlySerializedAs("FullscreenResolutions")]
+        public List<Vector2> fullscreenResolutions;
 
         int currWindowedRes, currFullscreenRes;
 
@@ -34,7 +38,7 @@ namespace ScreenResolutionManager
             StartCoroutine(StartRoutine());
         }
 
-        private void printResolution()
+        private void PrintResolution()
         {
             Debug.Log("Current res: " + Screen.currentResolution.width + "x" + Screen.currentResolution.height);
         }
@@ -49,7 +53,7 @@ namespace ScreenResolutionManager
             {
                 if (Screen.fullScreen)
                 {
-                    Resolution r = Screen.currentResolution;
+                    Resolution _r = Screen.currentResolution;
                     Screen.fullScreen = false;
 
                     yield return null;
@@ -57,7 +61,7 @@ namespace ScreenResolutionManager
 
                     DisplayResolution = Screen.currentResolution;
 
-                    Screen.SetResolution(r.width, r.height, true);
+                    Screen.SetResolution(_r.width, _r.height, true);
 
                     yield return null;
                 }
@@ -72,93 +76,93 @@ namespace ScreenResolutionManager
 
         private void InitResolutions()
         {
-            float screenAspect = (float)DisplayResolution.width / DisplayResolution.height;
+            float _screenAspect = (float)DisplayResolution.width / DisplayResolution.height;
 
-            WindowedResolutions = new List<Vector2>();
-            FullscreenResolutions = new List<Vector2>();
+            windowedResolutions = new List<Vector2>();
+            fullscreenResolutions = new List<Vector2>();
 
-            foreach (int w in resolutions)
+            foreach (int _w in resolutions)
             {
-                if (w < DisplayResolution.width)
+                if (_w < DisplayResolution.width)
                 {
                     // Adding resolution only if it's 20% smaller than the screen
-                    if (w < DisplayResolution.width * 0.8f)
+                    if (_w < DisplayResolution.width * 0.8f)
                     {
-                        Vector2 windowedResolution = new Vector2(w, Mathf.Round(w / (FixedAspectRatio ? TargetAspectRatio : WindowedAspectRatio)));
-                        if (windowedResolution.y < DisplayResolution.height * 0.8f)
-                            WindowedResolutions.Add(windowedResolution);
+                        Vector2 _windowedResolution = new Vector2(_w, Mathf.Round(_w / (FixedAspectRatio ? TargetAspectRatio : WindowedAspectRatio)));
+                        if (_windowedResolution.y < DisplayResolution.height * 0.8f)
+                            windowedResolutions.Add(_windowedResolution);
 
-                        FullscreenResolutions.Add(new Vector2(w, Mathf.Round(w / screenAspect)));
+                        fullscreenResolutions.Add(new Vector2(_w, Mathf.Round(_w / _screenAspect)));
                     }
                 }
             }
 
             // Adding fullscreen native resolution
-            FullscreenResolutions.Add(new Vector2(DisplayResolution.width, DisplayResolution.height));
+            fullscreenResolutions.Add(new Vector2(DisplayResolution.width, DisplayResolution.height));
 
             // Adding half fullscreen native resolution
-            Vector2 halfNative = new Vector2(DisplayResolution.width * 0.5f, DisplayResolution.height * 0.5f);
-            if (halfNative.x > resolutions[0] && FullscreenResolutions.IndexOf(halfNative) == -1)
-                FullscreenResolutions.Add(halfNative);
+            Vector2 _halfNative = new Vector2(DisplayResolution.width * 0.5f, DisplayResolution.height * 0.5f);
+            if (_halfNative.x > resolutions[0] && fullscreenResolutions.IndexOf(_halfNative) == -1)
+                fullscreenResolutions.Add(_halfNative);
 
-            FullscreenResolutions = FullscreenResolutions.OrderBy(resolution => resolution.x).ToList();
+            fullscreenResolutions = fullscreenResolutions.OrderBy(_resolution => _resolution.x).ToList();
 
-            bool found = false;
+            bool _found = false;
 
             if (Screen.fullScreen)
             {
-                currWindowedRes = WindowedResolutions.Count - 1;
+                currWindowedRes = windowedResolutions.Count - 1;
 
-                for (int i = 0; i < FullscreenResolutions.Count; i++)
+                for (int _i = 0; _i < fullscreenResolutions.Count; _i++)
                 {
-                    if (FullscreenResolutions[i].x == Screen.width && FullscreenResolutions[i].y == Screen.height)
+                    if (fullscreenResolutions[_i].x == Screen.width && fullscreenResolutions[_i].y == Screen.height)
                     {
-                        currFullscreenRes = i;
-                        found = true;
+                        currFullscreenRes = _i;
+                        _found = true;
                         break;
                     }
                 }
 
-                if (!found)
-                    SetResolution(FullscreenResolutions.Count - 1, true);
+                if (!_found)
+                    SetResolution(fullscreenResolutions.Count - 1, true);
             }
             else
             {
-                currFullscreenRes = FullscreenResolutions.Count - 1;
+                currFullscreenRes = fullscreenResolutions.Count - 1;
 
-                for (int i = 0; i < WindowedResolutions.Count; i++)
+                for (int _i = 0; _i < windowedResolutions.Count; _i++)
                 {
-                    if (WindowedResolutions[i].x == Screen.width && WindowedResolutions[i].y == Screen.height)
+                    if (windowedResolutions[_i].x == Screen.width && windowedResolutions[_i].y == Screen.height)
                     {
-                        found = true;
-                        currWindowedRes = i;
+                        _found = true;
+                        currWindowedRes = _i;
                         break;
                     }
                 }
 
-                if (!found)
-                    SetResolution(WindowedResolutions.Count - 1, false);
+                if (!_found)
+                    SetResolution(windowedResolutions.Count - 1, false);
             }
         }
 
-        public void SetResolution(int index, bool fullscreen)
+        public void SetResolution(int _index, bool _fullscreen)
         {
-            Vector2 r = new Vector2();
-            if (fullscreen)
+            Vector2 _r = new Vector2();
+            if (_fullscreen)
             {
-                currFullscreenRes = index;
-                r = FullscreenResolutions[currFullscreenRes];
+                currFullscreenRes = _index;
+                _r = fullscreenResolutions[currFullscreenRes];
             }
             else
             {
-                currWindowedRes = index;
-                r = WindowedResolutions[currWindowedRes];
+                currWindowedRes = _index;
+                _r = windowedResolutions[currWindowedRes];
             }
 
-            bool fullscreen2windowed = Screen.fullScreen & !fullscreen;
+            bool _fullscreen2Windowed = Screen.fullScreen & !_fullscreen;
 
-            Debug.Log("Setting resolution to " + (int)r.x + "x" + (int)r.y);
-            Screen.SetResolution((int)r.x, (int)r.y, fullscreen);
+            Debug.Log("Setting resolution to " + (int)_r.x + "x" + (int)_r.y);
+            Screen.SetResolution((int)_r.x, (int)_r.y, _fullscreen);
 
             // On OSX the application will pass from fullscreen to windowed with an animated transition of a couple of seconds.
             // After this transition, the first time you exit fullscreen you have to call SetResolution again to ensure that the window is resized correctly.
@@ -168,30 +172,30 @@ namespace ScreenResolutionManager
                 StopAllCoroutines();
 
                 // Resize the window again after the end of the resize transition
-                if (fullscreen2windowed) StartCoroutine(SetResolutionAfterResize(r));
+                if (_fullscreen2Windowed) StartCoroutine(SetResolutionAfterResize(_r));
             }
         }
 
-        private IEnumerator SetResolutionAfterResize(Vector2 r)
+        private IEnumerator SetResolutionAfterResize(Vector2 _r)
         {
-            int maxTime = 5; // Max wait for the end of the resize transition
-            float time = Time.time;
+            int _maxTime = 5; // Max wait for the end of the resize transition
+            float _time = Time.time;
 
             // Skipping a couple of frames during which the screen size will change
             yield return null;
             yield return null;
 
-            int lastW = Screen.width;
-            int lastH = Screen.height;
+            int _lastW = Screen.width;
+            int _lastH = Screen.height;
 
             // Waiting for another screen size change at the end of the transition animation
-            while (Time.time - time < maxTime)
+            while (Time.time - _time < _maxTime)
             {
-                if (lastW != Screen.width || lastH != Screen.height)
+                if (_lastW != Screen.width || _lastH != Screen.height)
                 {
                     Debug.Log("Resize! " + Screen.width + "x" + Screen.height);
 
-                    Screen.SetResolution((int)r.x, (int)r.y, Screen.fullScreen);
+                    Screen.SetResolution((int)_r.x, (int)_r.y, Screen.fullScreen);
                     yield break;
                 }
 

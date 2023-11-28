@@ -4,8 +4,8 @@ namespace ScreenResolutionManager
 {
     public class AspectUtility : MonoBehaviour
     {
-        static Camera backgroundCam;
-        static Camera staticCam; // This is the last camera where Awake is called. It is used for the static getter methods.
+        static Camera _backgroundCam;
+        static Camera _staticCam; // This is the last camera where Awake is called. It is used for the static getter methods.
         Camera cam;
 
         void Awake()
@@ -22,7 +22,7 @@ namespace ScreenResolutionManager
                 return;
             }
 
-            staticCam = cam;
+            _staticCam = cam;
 
             UpdateCamera ();
         }
@@ -31,103 +31,103 @@ namespace ScreenResolutionManager
         {
             if (!ResolutionManager.FixedAspectRatio || !cam) return;
 
-            float currentAspectRatio = (float)Screen.width / Screen.height;
+            float _currentAspectRatio = (float)Screen.width / Screen.height;
 
             // If the current aspect ratio is already approximately equal to the desired aspect ratio,
             // use a full-screen Rect (in case it was set to something else previously)
-            if ((int)(currentAspectRatio * 100) / 100.0f == (int)(ResolutionManager.TargetAspectRatio * 100) / 100.0f)
+            if ((int)(_currentAspectRatio * 100) / 100.0f == (int)(ResolutionManager.TargetAspectRatio * 100) / 100.0f)
             {
                 cam.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
-                if (backgroundCam)
+                if (_backgroundCam)
                 {
-                    Destroy(backgroundCam.gameObject);
+                    Destroy(_backgroundCam.gameObject);
                 }
                 return;
             }
 
             // Pillarbox
-            if (currentAspectRatio > ResolutionManager.TargetAspectRatio)
+            if (_currentAspectRatio > ResolutionManager.TargetAspectRatio)
             {
-                float inset = 1.0f - ResolutionManager.TargetAspectRatio / currentAspectRatio;
-                cam.rect = new Rect(inset / 2, 0.0f, 1.0f - inset, 1.0f);
+                float _inset = 1.0f - ResolutionManager.TargetAspectRatio / _currentAspectRatio;
+                cam.rect = new Rect(_inset / 2, 0.0f, 1.0f - _inset, 1.0f);
             }
             // Letterbox
             else
             {
-                float inset = 1.0f - currentAspectRatio / ResolutionManager.TargetAspectRatio;
-                cam.rect = new Rect(0.0f, inset / 2, 1.0f, 1.0f - inset);
+                float _inset = 1.0f - _currentAspectRatio / ResolutionManager.TargetAspectRatio;
+                cam.rect = new Rect(0.0f, _inset / 2, 1.0f, 1.0f - _inset);
             }
 
-            if (!backgroundCam)
+            if (!_backgroundCam)
             {
                 // Make a new camera behind the normal camera which displays black; otherwise the unused space is undefined
-                backgroundCam = new GameObject("BackgroundCam", typeof(Camera)).GetComponent<Camera>();
-                backgroundCam.depth = int.MinValue;
-                backgroundCam.clearFlags = CameraClearFlags.SolidColor;
-                backgroundCam.backgroundColor = Color.black;
-                backgroundCam.cullingMask = 0;
+                _backgroundCam = new GameObject("BackgroundCam", typeof(Camera)).GetComponent<Camera>();
+                _backgroundCam.depth = int.MinValue;
+                _backgroundCam.clearFlags = CameraClearFlags.SolidColor;
+                _backgroundCam.backgroundColor = Color.black;
+                _backgroundCam.cullingMask = 0;
             }
         }
 
-        public static int screenHeight
+        public static int ScreenHeight
         {
             get
             {
-                return (int)(Screen.height * staticCam.rect.height);
+                return (int)(Screen.height * _staticCam.rect.height);
             }
         }
 
-        public static int screenWidth
+        public static int ScreenWidth
         {
             get
             {
-                return (int)(Screen.width * staticCam.rect.width);
+                return (int)(Screen.width * _staticCam.rect.width);
             }
         }
 
-        public static int xOffset
+        public static int XOffset
         {
             get
             {
-                return (int)(Screen.width * staticCam.rect.x);
+                return (int)(Screen.width * _staticCam.rect.x);
             }
         }
 
-        public static int yOffset
+        public static int YOffset
         {
             get
             {
-                return (int)(Screen.height * staticCam.rect.y);
+                return (int)(Screen.height * _staticCam.rect.y);
             }
         }
 
-        public static Rect screenRect
+        public static Rect ScreenRect
         {
             get
             {
-                return new Rect(staticCam.rect.x * Screen.width, staticCam.rect.y * Screen.height, staticCam.rect.width * Screen.width, staticCam.rect.height * Screen.height);
+                return new Rect(_staticCam.rect.x * Screen.width, _staticCam.rect.y * Screen.height, _staticCam.rect.width * Screen.width, _staticCam.rect.height * Screen.height);
             }
         }
 
-        public static Vector3 mousePosition
+        public static Vector3 MousePosition
         {
             get
             {
-                Vector3 mousePos = Input.mousePosition;
-                mousePos.y -= (int)(staticCam.rect.y * Screen.height);
-                mousePos.x -= (int)(staticCam.rect.x * Screen.width);
-                return mousePos;
+                Vector3 _mousePos = Input.mousePosition;
+                _mousePos.y -= (int)(_staticCam.rect.y * Screen.height);
+                _mousePos.x -= (int)(_staticCam.rect.x * Screen.width);
+                return _mousePos;
             }
         }
 
-        public static Vector2 guiMousePosition
+        public static Vector2 GUIMousePosition
         {
             get
             {
-                Vector2 mousePos = Event.current.mousePosition;
-                mousePos.y = Mathf.Clamp(mousePos.y, staticCam.rect.y * Screen.height, staticCam.rect.y * Screen.height + staticCam.rect.height * Screen.height);
-                mousePos.x = Mathf.Clamp(mousePos.x, staticCam.rect.x * Screen.width, staticCam.rect.x * Screen.width + staticCam.rect.width * Screen.width);
-                return mousePos;
+                Vector2 _mousePos = Event.current.mousePosition;
+                _mousePos.y = Mathf.Clamp(_mousePos.y, _staticCam.rect.y * Screen.height, _staticCam.rect.y * Screen.height + _staticCam.rect.height * Screen.height);
+                _mousePos.x = Mathf.Clamp(_mousePos.x, _staticCam.rect.x * Screen.width, _staticCam.rect.x * Screen.width + _staticCam.rect.width * Screen.width);
+                return _mousePos;
             }
         }
 

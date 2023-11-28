@@ -9,8 +9,8 @@ namespace Cells
     {
         public float[] position = new float[3];
         public float[] offsetCoord = new float[2];
-        public CellSO type;
-        public GridObjectSO gridObject = null;
+        public CellSo type;
+        public GridObjectSo gridObject = null;
         public bool isSpawn;
 
         public SavedCell(TileIsometric _toSave)
@@ -24,14 +24,14 @@ namespace Cells
             offsetCoord[0] = _offsetCoord.x;
             offsetCoord[1] = _offsetCoord.y;
                 
-            type = _toSave.CellSO;
+            type = _toSave.CellSo;
 
             if (_toSave.IsTaken && _toSave.CurrentGridObject != null)
             {
-                gridObject = _toSave.CurrentGridObject.GridObjectSO;
+                gridObject = _toSave.CurrentGridObject.GridObjectSo;
             }
 
-            isSpawn = _toSave.IsSpawnPlace;
+            isSpawn = _toSave.isSpawnPlace;
         }
     }
 }

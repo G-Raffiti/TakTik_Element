@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace SceneManagement
 {
-    public class EndRun_UI : MonoBehaviour
+    public class EndRunUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI winLoose;
 
-        public void Open(bool winCondition)
+        public void Open(bool _winCondition)
         {
-            winLoose.text = winCondition ? "Victory !" : "Game Over !";
+            winLoose.text = _winCondition ? "Victory !" : "Game Over !";
         }
     }
 }

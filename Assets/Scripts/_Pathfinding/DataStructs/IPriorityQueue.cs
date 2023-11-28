@@ -15,7 +15,7 @@ namespace _Pathfinding.DataStructs
         /// <summary>
         /// Method adds item to the queue.
         /// </summary>
-        void Enqueue(T item, float priority);
+        void Enqueue(T _item, float _priority);
         /// <summary>
         /// Method returns item with the LOWEST priority value.
         /// </summary>
@@ -30,15 +30,15 @@ namespace _Pathfinding.DataStructs
         public T Item { get; private set; }
         public float Priority { get; private set; }
 
-        public PriorityQueueNode(T item, float priority)
+        public PriorityQueueNode(T _item, float _priority)
         {
-            Item = item;
-            Priority = priority;
+            Item = _item;
+            Priority = _priority;
         }
 
-        public int CompareTo(object obj)
+        public int CompareTo(object _obj)
         {
-            return Priority.CompareTo((obj as PriorityQueueNode<T>).Priority);
+            return Priority.CompareTo((_obj as PriorityQueueNode<T>).Priority);
         }
     }
 }

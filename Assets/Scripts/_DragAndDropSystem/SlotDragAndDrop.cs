@@ -43,8 +43,8 @@ namespace _DragAndDropSystem
 		public class DropEventDescriptor                                        // Info about item's drop event
 		{
 			public TriggerType triggerType;                                     // Type of drag and drop trigger
-			public SlotDragAndDrop _sourceSlot;                                  // From this cell item was dragged
-			public SlotDragAndDrop _destinationSlot;                             // Into this cell item was dropped
+			public SlotDragAndDrop SourceSlot;                                  // From this cell item was dragged
+			public SlotDragAndDrop DestinationSlot;                             // Into this cell item was dropped
 			public ItemDragAndDrop item;                                        // Dropped item
 			public bool permission;                                             // Decision need to be made on request
 		}
@@ -60,7 +60,7 @@ namespace _DragAndDropSystem
 		[Tooltip("What the Cell can contain")] 
 		public ContainType containType = ContainType.Gear;
 
-		private ItemDragAndDrop _currentItem;										// Item of this DaD cell
+		private ItemDragAndDrop currentItem;										// Item of this DaD cell
 
 		void OnEnable()
 		{
@@ -81,13 +81,13 @@ namespace _DragAndDropSystem
 		/// On any item drag start need to disable all items raycast for correct drop operation
 		/// </summary>
 		/// <param name="item"> dragged item </param>
-		private void OnAnyItemDragStart(ItemDragAndDrop item)
+		private void OnAnyItemDragStart(ItemDragAndDrop _item)
 		{
 			UpdateMyItem();
-			if (_currentItem != null)
+			if (currentItem != null)
 			{
-				_currentItem.MakeRaycast(false);                                  	// Disable item's raycast for correct drop handling
-				if (_currentItem == item)                                         	// If item dragged from this cell
+				currentItem.MakeRaycast(false);                                  	// Disable item's raycast for correct drop handling
+				if (currentItem == _item)                                         	// If item dragged from this cell
 				{
 					// Check cell's type
 					switch (cellType)
@@ -104,12 +104,12 @@ namespace _DragAndDropSystem
 		/// On any item drag end enable all items raycast
 		/// </summary>
 		/// <param name="item"> dragged item </param>
-		private void OnAnyItemDragEnd(ItemDragAndDrop item)
+		private void OnAnyItemDragEnd(ItemDragAndDrop _item)
 		{
 			UpdateMyItem();
-			if (_currentItem != null)
+			if (currentItem != null)
 			{
-				_currentItem.MakeRaycast(true);                                  	// Enable item's raycast
+				currentItem.MakeRaycast(true);                                  	// Enable item's raycast
 			}
 			UpdateBackgroundState();
 			onItemMoved?.Raise();
@@ -119,19 +119,19 @@ namespace _DragAndDropSystem
 		/// Item is dropped in this cell
 		/// </summary>
 		/// <param name="data"></param>
-		public void OnDrop(PointerEventData data)
+		public void OnDrop(PointerEventData _data)
 		{
 			
 			if (ItemDragAndDrop.icon != null)
 			{
-				ItemDragAndDrop item = ItemDragAndDrop._draggedItem;
-				if (containType != item.Type) return;
-				SlotDragAndDrop _sourceSlot = ItemDragAndDrop._sourceSlot;
+				ItemDragAndDrop _item = ItemDragAndDrop.DraggedItem;
+				if (containType != _item.Type) return;
+				SlotDragAndDrop _sourceSlot = ItemDragAndDrop.SourceSlot;
 				if (ItemDragAndDrop.icon.activeSelf == true)                    // If icon inactive do not need to drop item into cell
 				{
-					if ((item != null) && (_sourceSlot != this))
+					if ((_item != null) && (_sourceSlot != this))
 					{
-						DropEventDescriptor desc = new DropEventDescriptor();
+						DropEventDescriptor _desc = new DropEventDescriptor();
 						switch (cellType)                                       // Check this cell's type
 						{
 							case CellType.Swap:                                 // Item in destination cell can be swapped
@@ -140,61 +140,61 @@ namespace _DragAndDropSystem
 								{
 									case CellType.Swap:                         // Item in source cell can be swapped
 										// Fill event descriptor
-										desc.item = item;
-										desc._sourceSlot = _sourceSlot;
-										desc._destinationSlot = this;
-										SendRequest(desc);                      // Send drop request
-										StartCoroutine(NotifyOnDragEnd(desc));  // Send notification after drop will be finished
-										if (desc.permission == true)            // If drop permitted by application
+										_desc.item = _item;
+										_desc.SourceSlot = _sourceSlot;
+										_desc.DestinationSlot = this;
+										SendRequest(_desc);                      // Send drop request
+										StartCoroutine(NotifyOnDragEnd(_desc));  // Send notification after drop will be finished
+										if (_desc.permission == true)            // If drop permitted by application
 										{
-											if (_currentItem != null)            // If destination cell has item
+											if (currentItem != null)            // If destination cell has item
 											{
 												// Fill event descriptor
-												DropEventDescriptor descAutoswap = new DropEventDescriptor();
-												descAutoswap.item = _currentItem;
-												descAutoswap._sourceSlot = this;
-												descAutoswap._destinationSlot = _sourceSlot;
-												SendRequest(descAutoswap);                      // Send drop request
-												StartCoroutine(NotifyOnDragEnd(descAutoswap));  // Send notification after drop will be finished
-												if (descAutoswap.permission == true)            // If drop permitted by application
+												DropEventDescriptor _descAutoswap = new DropEventDescriptor();
+												_descAutoswap.item = currentItem;
+												_descAutoswap.SourceSlot = this;
+												_descAutoswap.DestinationSlot = _sourceSlot;
+												SendRequest(_descAutoswap);                      // Send drop request
+												StartCoroutine(NotifyOnDragEnd(_descAutoswap));  // Send notification after drop will be finished
+												if (_descAutoswap.permission == true)            // If drop permitted by application
 												{
 													SwapItems(_sourceSlot, this);                // Swap items between cells
 												}
 												else
 												{
-													PlaceItem(item, _sourceSlot);            // Delete old item and place dropped item into this cell
+													PlaceItem(_item, _sourceSlot);            // Delete old item and place dropped item into this cell
 												}
 											}
 											else
 											{
-												PlaceItem(item, _sourceSlot);                // Place dropped item into this empty cell
+												PlaceItem(_item, _sourceSlot);                // Place dropped item into this empty cell
 											}
 										}
 										break;
 									default:                                    // Item in source cell can not be swapped
 										// Fill event descriptor
-										desc.item = item;
-										desc._sourceSlot = _sourceSlot;
-										desc._destinationSlot = this;
-										SendRequest(desc);                      // Send drop request
-										StartCoroutine(NotifyOnDragEnd(desc));  // Send notification after drop will be finished
-										if (desc.permission == true)            // If drop permitted by application
+										_desc.item = _item;
+										_desc.SourceSlot = _sourceSlot;
+										_desc.DestinationSlot = this;
+										SendRequest(_desc);                      // Send drop request
+										StartCoroutine(NotifyOnDragEnd(_desc));  // Send notification after drop will be finished
+										if (_desc.permission == true)            // If drop permitted by application
 										{
-											PlaceItem(item, _sourceSlot);                    // Place dropped item into this cell
+											PlaceItem(_item, _sourceSlot);                    // Place dropped item into this cell
 										}
 										break;
 								}
 								break;
 							case CellType.DropOnly:                             // Item only can be dropped into destination cell
 								// Fill event descriptor
-								desc.item = item;
-								desc._sourceSlot = _sourceSlot;
-								desc._destinationSlot = this;
-								SendRequest(desc);                              // Send drop request
-								StartCoroutine(NotifyOnDragEnd(desc));          // Send notification after drop will be finished
-								if (desc.permission == true)                    // If drop permitted by application
+								_desc.item = _item;
+								_desc.SourceSlot = _sourceSlot;
+								_desc.DestinationSlot = this;
+								SendRequest(_desc);                              // Send drop request
+								StartCoroutine(NotifyOnDragEnd(_desc));          // Send notification after drop will be finished
+								if (_desc.permission == true)                    // If drop permitted by application
 								{
-									PlaceItem(item, _sourceSlot);                            // Place dropped item in this cell
+									PlaceItem(_item, _sourceSlot);                            // Place dropped item in this cell
 								}
 								break;
 							default:
@@ -202,11 +202,11 @@ namespace _DragAndDropSystem
 						}
 					}
 				}
-				if (item != null)
+				if (_item != null)
 				{
-					if (item.GetComponentInParent<SlotDragAndDrop>() == null)   // If item have no cell after drop
+					if (_item.GetComponentInParent<SlotDragAndDrop>() == null)   // If item have no cell after drop
 					{
-						Destroy(item.gameObject);                               // Destroy it
+						Destroy(_item.gameObject);                               // Destroy it
 					}
 				}
 				UpdateMyItem();
@@ -220,27 +220,27 @@ namespace _DragAndDropSystem
 		/// Put item into this cell.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		private void PlaceItem(ItemDragAndDrop item, SlotDragAndDrop _sourceSlot)
+		private void PlaceItem(ItemDragAndDrop _item, SlotDragAndDrop _sourceSlot)
 		{
-			if (item != null)
+			if (_item != null)
 			{
 				DestroyItem();                                            	// Remove current item from this cell
-				_currentItem = null;
-				SlotDragAndDrop cell = item.GetComponentInParent<SlotDragAndDrop>();
-				if (cell != null)
+				currentItem = null;
+				SlotDragAndDrop _cell = _item.GetComponentInParent<SlotDragAndDrop>();
+				if (_cell != null)
 				{
-					if (cell.unlimitedSource == true)
+					if (_cell.unlimitedSource == true)
 					{
-						string itemName = item.name;
-						item = Instantiate(item);                               // Clone item from source cell
-						item.name = itemName;
-						CloneItem(item, _sourceSlot);
+						string _itemName = _item.name;
+						_item = Instantiate(_item);                               // Clone item from source cell
+						_item.name = _itemName;
+						CloneItem(_item, _sourceSlot);
 					}
 				}
-				item.transform.SetParent(transform, false);
-				item.transform.localPosition = Vector3.zero;
-				item.MakeRaycast(true);
-				_currentItem = item;
+				_item.transform.SetParent(transform, false);
+				_item.transform.localPosition = Vector3.zero;
+				_item.MakeRaycast(true);
+				currentItem = _item;
 			}
 			UpdateBackgroundState();
 		}
@@ -250,25 +250,25 @@ namespace _DragAndDropSystem
 		/// </summary>
 		/// <param name="item"></param>
 		/// <param name="_sourceSlot"></param>
-		private void CloneItem(ItemDragAndDrop item, SlotDragAndDrop _sourceSlot)
+		private void CloneItem(ItemDragAndDrop _item, SlotDragAndDrop _sourceSlot)
 		{
 			
 			switch (containType)
 			{
 				case ContainType.Skill:
 				{
-					item.GetComponent<SkillInfo>().skill = _sourceSlot.GetInfoSkill().skill;
-					item.GetComponent<SkillInfo>().Unit = _sourceSlot.GetInfoSkill().Unit;
+					_item.GetComponent<SkillInfo>().skill = _sourceSlot.GetInfoSkill().skill;
+					_item.GetComponent<SkillInfo>().unit = _sourceSlot.GetInfoSkill().unit;
 				}
 					break;
 				case ContainType.Gear:
 				{
-					item.GetComponent<GearInfo>().Gear = _sourceSlot.GetInfoGear().Gear;
+					_item.GetComponent<GearInfo>().Gear = _sourceSlot.GetInfoGear().Gear;
 				}
 					break;
 				case ContainType.Relic:
 				{
-					item.GetComponent<RelicInfo>().CreateRelic(_sourceSlot.GetInfoRelic().Relic);
+					_item.GetComponent<RelicInfo>().CreateRelic(_sourceSlot.GetInfoRelic().Relic);
 				}
 					break;
 			}
@@ -279,21 +279,21 @@ namespace _DragAndDropSystem
 		private void DestroyItem()
 		{
 			UpdateMyItem();
-			if (_currentItem != null)
+			if (currentItem != null)
 			{
-				DropEventDescriptor desc = new DropEventDescriptor();
+				DropEventDescriptor _desc = new DropEventDescriptor();
 				// Fill event descriptor
-				desc.triggerType = TriggerType.ItemWillBeDestroyed;
-				desc.item = _currentItem;
-				desc._sourceSlot = this;
-				desc._destinationSlot = this;
-				SendNotification(desc);                                         // Notify application about item destruction
-				if (_currentItem != null)
+				_desc.triggerType = TriggerType.ItemWillBeDestroyed;
+				_desc.item = currentItem;
+				_desc.SourceSlot = this;
+				_desc.DestinationSlot = this;
+				SendNotification(_desc);                                         // Notify application about item destruction
+				if (currentItem != null)
 				{
-					Destroy(_currentItem.gameObject);
+					Destroy(currentItem.gameObject);
 				}
 			}
-			_currentItem = null;
+			currentItem = null;
 			UpdateBackgroundState();
 		}
 
@@ -301,12 +301,12 @@ namespace _DragAndDropSystem
 		/// Send drag and drop information to application
 		/// </summary>
 		/// <param name="desc"> drag and drop event descriptor </param>
-		private void SendNotification(DropEventDescriptor desc)
+		private void SendNotification(DropEventDescriptor _desc)
 		{
-			if (desc != null)
+			if (_desc != null)
 			{
 				// Send message with DragAndDrop info to parents GameObjects
-				gameObject.SendMessageUpwards("OnSimpleDragAndDropEvent", desc, SendMessageOptions.DontRequireReceiver);
+				gameObject.SendMessageUpwards("OnSimpleDragAndDropEvent", _desc, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 
@@ -315,17 +315,17 @@ namespace _DragAndDropSystem
 		/// </summary>
 		/// <param name="desc"> drag and drop event descriptor </param>
 		/// <returns> result from desc.permission </returns>
-		private bool SendRequest(DropEventDescriptor desc)
+		private bool SendRequest(DropEventDescriptor _desc)
 		{
-			bool result = false;
-			if (desc != null)
+			bool _result = false;
+			if (_desc != null)
 			{
-				desc.triggerType = TriggerType.DropRequest;
-				desc.permission = true;
-				SendNotification(desc);
-				result = desc.permission;
+				_desc.triggerType = TriggerType.DropRequest;
+				_desc.permission = true;
+				SendNotification(_desc);
+				_result = _desc.permission;
 			}
-			return result;
+			return _result;
 		}
 
 		/// <summary>
@@ -333,15 +333,15 @@ namespace _DragAndDropSystem
 		/// </summary>
 		/// <param name="desc"> drag and drop event descriptor </param>
 		/// <returns></returns>
-		private IEnumerator NotifyOnDragEnd(DropEventDescriptor desc)
+		private IEnumerator NotifyOnDragEnd(DropEventDescriptor _desc)
 		{
 			// Wait end of drag operation
-			while (ItemDragAndDrop._draggedItem != null)
+			while (ItemDragAndDrop.DraggedItem != null)
 			{
 				yield return new WaitForEndOfFrame();
 			}
-			desc.triggerType = TriggerType.DropEventEnd;
-			SendNotification(desc);
+			_desc.triggerType = TriggerType.DropEventEnd;
+			SendNotification(_desc);
 		}
 
 		/// <summary>
@@ -352,7 +352,7 @@ namespace _DragAndDropSystem
 		{
 			if (frame != null)
 			{
-				frame.color = _currentItem != null ? full : empty;
+				frame.color = currentItem != null ? full : empty;
 			}
 
 			if (rarity != null)
@@ -360,7 +360,7 @@ namespace _DragAndDropSystem
 				rarity.color = Color.clear;
 				if (containType == ContainType.Gear)
 				{
-					rarity.color = _currentItem != null ? _currentItem.GetComponent<GearInfo>().Gear.GearSO.Rarity.TextColour : Color.black;
+					rarity.color = currentItem != null ? currentItem.GetComponent<GearInfo>().Gear.GearSo.Rarity.TextColour : Color.black;
 				}
 			}
 		}
@@ -370,7 +370,7 @@ namespace _DragAndDropSystem
 		/// </summary>
 		public void UpdateMyItem()
 		{
-			_currentItem = GetComponentInChildren<ItemDragAndDrop>();
+			currentItem = GetComponentInChildren<ItemDragAndDrop>();
 		}
 
 		/// <summary>
@@ -379,7 +379,7 @@ namespace _DragAndDropSystem
 		/// <returns> Item </returns>
 		public ItemDragAndDrop GetItem()
 		{
-			return _currentItem;
+			return currentItem;
 		}
 		
 		/// <summary>
@@ -415,13 +415,13 @@ namespace _DragAndDropSystem
 			if (_newItem != null)
 			{
 				PlaceItem(_newItem, this);
-				DropEventDescriptor desc = new DropEventDescriptor();
+				DropEventDescriptor _desc = new DropEventDescriptor();
 				// Fill event descriptor
-				desc.triggerType = TriggerType.ItemAdded;
-				desc.item = _newItem;
-				desc._sourceSlot = this;
-				desc._destinationSlot = this;
-				SendNotification(desc);
+				_desc.triggerType = TriggerType.ItemAdded;
+				_desc.item = _newItem;
+				_desc.SourceSlot = this;
+				_desc.DestinationSlot = this;
+				SendNotification(_desc);
 			}
 		}
 

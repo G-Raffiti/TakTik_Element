@@ -10,19 +10,23 @@ using TMPro;
 using TMPro.SpriteAssetUtilities;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.BattleScene
 {
-    public class BattleRelicChoice_UI : MonoBehaviour
+    public class BattleRelicChoiceUI : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI MonsterName;
+        [FormerlySerializedAs("MonsterName")]
+        [SerializeField] private TextMeshProUGUI monsterName;
         [SerializeField] private Image monsterSprite;
         [SerializeField] private GameObject prefabRelic;
-        [SerializeField] private List<SlotDragAndDrop> MonsterSlots;
+        [FormerlySerializedAs("MonsterSlots")]
+        [SerializeField] private List<SlotDragAndDrop> monsterSlots;
         [SerializeField] private List<HeroRelicSlot> heroRelicSlots;
-        private List<RelicSO> monsterRelics;
-        [SerializeField] private GameObject Blur;
+        private List<RelicSo> monsterRelics;
+        [FormerlySerializedAs("Blur")]
+        [SerializeField] private GameObject blur;
 
         [Header("Event Sender")]
         [SerializeField] private VoidEvent onUIEnable;
@@ -32,49 +36,49 @@ namespace UserInterface.BattleScene
         private void OnEnable()
         {
             onUIEnable.Raise();
-            Blur.SetActive(true);
+            blur.SetActive(true);
         }
 
         private void OnDisable()
         {
-            Blur.SetActive(false);
+            blur.SetActive(false);
         }
 
         public void ShowOnKill(Unit _unit)
         {
             Monster _monster = (Monster) _unit;
-            for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
+            for (int _i = 0; _i < PlayerData.GetInstance().Heroes.Count; _i++)
             {
-                heroRelicSlots[i].Initialize(PlayerData.getInstance().Heroes[i]);
+                heroRelicSlots[_i].Initialize(PlayerData.GetInstance().Heroes[_i]);
             }
             
-            MonsterSlots.ForEach(cell => cell.RemoveItem());
-            MonsterName.text = _monster.UnitName;
+            monsterSlots.ForEach(_cell => _cell.RemoveItem());
+            monsterName.text = _monster.unitName;
             monsterSprite.sprite = _monster.UnitSprite;
 
-            monsterRelics = new List<RelicSO>();
+            monsterRelics = new List<RelicSo>();
             monsterRelics.AddRange(_monster.Relics);
 
-            showRelics();
+            ShowRelics();
 
         }
 
-        private void showRelics()
+        private void ShowRelics()
         {
-            for (int i = 0; i < monsterRelics.Count; i++)
+            for (int _i = 0; _i < monsterRelics.Count; _i++)
             {
-                GameObject pref = Instantiate(prefabRelic, MonsterSlots[i].transform);
-                pref.GetComponent<RelicInfo>().CreateRelic(monsterRelics[i]);
-                pref.GetComponent<RelicInfo>().DisplayIcon();
-                MonsterSlots[i].UpdateMyItem();
-                MonsterSlots[i].UpdateBackgroundState();
+                GameObject _pref = Instantiate(prefabRelic, monsterSlots[_i].transform);
+                _pref.GetComponent<RelicInfo>().CreateRelic(monsterRelics[_i]);
+                _pref.GetComponent<RelicInfo>().DisplayIcon();
+                monsterSlots[_i].UpdateMyItem();
+                monsterSlots[_i].UpdateBackgroundState();
             }
 
-            foreach (SlotDragAndDrop _slot in MonsterSlots.Where(m => m.GetInfoRelic() == null))
+            foreach (SlotDragAndDrop _slot in monsterSlots.Where(_m => _m.GetInfoRelic() == null))
             {
-                GameObject pref = Instantiate(prefabRelic, _slot.transform);
-                pref.GetComponent<RelicInfo>().CreateRelic(DataBase.Relic.GetRandom());
-                pref.GetComponent<RelicInfo>().DisplayIcon();
+                GameObject _pref = Instantiate(prefabRelic, _slot.transform);
+                _pref.GetComponent<RelicInfo>().CreateRelic(DataBase.Relic.GetRandom());
+                _pref.GetComponent<RelicInfo>().DisplayIcon();
                 _slot.UpdateMyItem();
                 _slot.UpdateBackgroundState();
             }
@@ -84,9 +88,9 @@ namespace UserInterface.BattleScene
         {
             if (monsterRelics != null)
             {
-                monsterRelics = new List<RelicSO>();
+                monsterRelics = new List<RelicSo>();
                 
-                foreach (SlotDragAndDrop _slot in MonsterSlots)
+                foreach (SlotDragAndDrop _slot in monsterSlots)
                 {
                     if(_slot.GetInfoRelic() != null)
                         monsterRelics.Add(_slot.GetInfoRelic().Relic);

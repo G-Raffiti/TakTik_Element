@@ -9,11 +9,11 @@ namespace Skills.ScriptableObject_Effect
     [CreateAssetMenu(fileName = "SkillEffect_Learning", menuName = "Scriptable Object/Skills/Learning")]
     public class Learning : SkillEffect
     {
-        public override void Use(Cell _cell, SkillInfo _skillInfo)
+        public override void Use(Cell _targetCell, SkillInfo _skillInfo)
         {
-            if (Zone.GetUnitAffected(_cell, _skillInfo) is Monster _monster)
+            if (Zone.GetUnitAffected(_targetCell, _skillInfo) is Monster _monster)
             {
-                FindObjectOfType<AllDecksMono>().LearnSkill(_monster.monsterSkill.BaseSkill, _skillInfo.skill);
+                FindObjectOfType<AllDecksMono>().LearnSkill(_monster.MonsterSkill.BaseSkill, _skillInfo.skill);
             }
         }
 

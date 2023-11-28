@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.UI_Menu
 {
     public class MenuPanel : MonoBehaviour
     {
-        [SerializeField] private Transform MenuBtns;
-        [SerializeField] public Transform Panels;
+        [FormerlySerializedAs("MenuBtns")]
+        [SerializeField] private Transform menuBtns;
+        [FormerlySerializedAs("Panels")]
+        [SerializeField] public Transform panels;
         [SerializeField] private bool showOnStart = true;
-        [SerializeField] private MovingPanelMenu MovingMenu;
+        [FormerlySerializedAs("MovingMenu")]
+        [SerializeField] private MovingPanelMenu movingMenu;
 
         [Header("the alpha Value of the actif Menu Button")]
         [SerializeField] private float aValue = 1;
@@ -19,24 +23,24 @@ namespace UserInterface.UI_Menu
 
         private void Start()
         {
-            if (MovingMenu == null)
+            if (movingMenu == null)
             {
-                for (int i = 0; i < MenuBtns.childCount; i++)
+                for (int _i = 0; _i < menuBtns.childCount; _i++)
                 {
-                    if (MenuBtns.GetChild(i).GetComponent<ButtonPanel>() != null) continue;
+                    if (menuBtns.GetChild(_i).GetComponent<ButtonPanel>() != null) continue;
                 
-                    MenuBtns.GetChild(i).gameObject.AddComponent<ButtonPanel>();
-                    MenuBtns.GetChild(i).GetComponent<ButtonPanel>().MenuPanel = this;
+                    menuBtns.GetChild(_i).gameObject.AddComponent<ButtonPanel>();
+                    menuBtns.GetChild(_i).GetComponent<ButtonPanel>().menuPanel = this;
                 }
             }
             else
             {
-                for (int i = 0; i < MenuBtns.childCount; i++)
+                for (int _i = 0; _i < menuBtns.childCount; _i++)
                 {
-                    if (MenuBtns.GetChild(i).GetComponent<MovingButtonPanel>() != null) continue;
+                    if (menuBtns.GetChild(_i).GetComponent<MovingButtonPanel>() != null) continue;
                 
-                    MenuBtns.GetChild(i).gameObject.AddComponent<MovingButtonPanel>();
-                    MenuBtns.GetChild(i).GetComponent<MovingButtonPanel>().MenuPanel = MovingMenu;
+                    menuBtns.GetChild(_i).gameObject.AddComponent<MovingButtonPanel>();
+                    menuBtns.GetChild(_i).GetComponent<MovingButtonPanel>().menuPanel = movingMenu;
                 }
             }
             Close();
@@ -44,34 +48,34 @@ namespace UserInterface.UI_Menu
                 Menu(0);
         }
 
-        public void Menu(int index)
+        public void Menu(int _index)
         {
-            foreach (Transform _btn in MenuBtns)
+            foreach (Transform _btn in menuBtns)
             {
                 Color _c = _btn.GetComponent<Image>().color;
                 _c.a = 0.5f;
                 _btn.GetComponent<Image>().color = _c;
             }
-            foreach (Transform _panel in Panels)
+            foreach (Transform _panel in panels)
             {
                 _panel.gameObject.SetActive(false);
             }
-            Panels.GetChild(index).gameObject.SetActive(true);
+            panels.GetChild(_index).gameObject.SetActive(true);
             
-            Color _a = MenuBtns.GetChild(index).GetComponent<Image>().color;
+            Color _a = menuBtns.GetChild(_index).GetComponent<Image>().color;
             _a.a = aValue;
-            MenuBtns.GetChild(index).GetComponent<Image>().color = _a;
+            menuBtns.GetChild(_index).GetComponent<Image>().color = _a;
         }
 
         public void Close()
         {
-            foreach (Transform _btn in MenuBtns)
+            foreach (Transform _btn in menuBtns)
             {
                 Color _c = _btn.GetComponent<Image>().color;
                 _c.a = 0.5f;
                 _btn.GetComponent<Image>().color = _c;
             }
-            foreach (Transform _panel in Panels)
+            foreach (Transform _panel in panels)
             {
                 _panel.gameObject.SetActive(false);
             }

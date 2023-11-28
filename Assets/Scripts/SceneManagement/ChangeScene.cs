@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace SceneManagement
@@ -10,7 +11,8 @@ namespace SceneManagement
     [RequireComponent(typeof(Image))]
     public class ChangeScene : MonoBehaviour
     {
-        [SerializeField] private Image Fader;
+        [FormerlySerializedAs("Fader")]
+        [SerializeField] private Image fader;
         [SerializeField] private Animator anim;
 
         private void Start()
@@ -18,16 +20,16 @@ namespace SceneManagement
             anim.Play("SceneManager_Fade_1_to_0");
         }
 
-        public void LoadScene(string scene)
+        public void LoadScene(string _scene)
         {
-            StartCoroutine(Fading(scene));
+            StartCoroutine(Fading(_scene));
         }
 
-        private IEnumerator Fading(string sceneName)
+        private IEnumerator Fading(string _sceneName)
         {
             anim.Play("SceneManager_Fade_0_to_1");
-            yield return new WaitUntil(()=>Math.Abs(Fader.color.a - 1) < 0.08f);
-            SceneManager.LoadScene(sceneName);
+            yield return new WaitUntil(()=>Math.Abs(fader.color.a - 1) < 0.08f);
+            SceneManager.LoadScene(_sceneName);
             anim.Play("SceneManager_Fade_1_to_0");
         }
 

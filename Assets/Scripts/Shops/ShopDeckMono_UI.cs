@@ -8,11 +8,12 @@ using Relics;
 using Skills;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UserInterface;
 
 namespace Shops
 {
-    public class ShopDeckMono_UI : MonoBehaviour
+    public class ShopDeckMonoUI : MonoBehaviour
     {
         [SerializeField] private SlotDragAndDrop prefabSlot;
 
@@ -20,9 +21,10 @@ namespace Shops
 
         [SerializeField] private Transform deckPlaceHolder;
         [SerializeField] private List<PersonalInventory> portraits;
-        [SerializeField] private List<BattleHero> BattlesHeroes;
+        [FormerlySerializedAs("BattlesHeroes")]
+        [SerializeField] private List<BattleHero> battlesHeroes;
         private BattleHero actualHero;
-        private List<SkillInfo> allSkills { get; set; }
+        private List<SkillInfo> AllSkills { get; set; }
 
         [Header("Event Listener")] 
         [SerializeField] private IntEvent onCampPointUsed;
@@ -34,13 +36,13 @@ namespace Shops
             onCampPointUsed.EventListeners += InitializeDisplay;
             
 
-            for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
+            for (int _i = 0; _i < PlayerData.GetInstance().Heroes.Count; _i++)
             {
-                PlayerData.getInstance().Heroes[i].Spawn(BattlesHeroes[i]);
-                portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
+                PlayerData.GetInstance().Heroes[_i].Spawn(battlesHeroes[_i]);
+                portraits[_i].Initialize(PlayerData.GetInstance().Heroes[_i]);
             }
 
-            actualHero = BattlesHeroes[0];
+            actualHero = battlesHeroes[0];
             
             InitializeDisplay(0);
         }
@@ -52,30 +54,30 @@ namespace Shops
         }
 
 
-        private void InitializeDisplay(int empty)
+        private void InitializeDisplay(int _empty)
         {
             ClearDecks();
 
-            DeckMono Deck = GameObject.FindObjectOfType<DeckMono>();
-            Deck.UpdateDeck();
-            Deck.InitializeForCamp();
+            DeckMono _deck = GameObject.FindObjectOfType<DeckMono>();
+            _deck.UpdateDeck();
+            _deck.InitializeForCamp();
             
-            foreach (SkillSO _skillSO in Deck.DrawPile)
+            foreach (SkillSo _skillSo in _deck.drawPile)
             {
                 GameObject _slot = GameObject.Instantiate(prefabSlot.gameObject, deckPlaceHolder);
                 _slot.GetComponent<SlotDragAndDrop>().cellType = SlotDragAndDrop.CellType.DragOnly;
                 _slot.GetComponent<SlotDragAndDrop>().unlimitedSource = true;
                 _slot.GetComponent<SlotDragAndDrop>().containType = SlotDragAndDrop.ContainType.Skill;
 
-                GameObject pref = GameObject.Instantiate(prefabSkill.gameObject, _slot.transform);
-                pref.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, Deck, actualHero);
-                pref.GetComponent<SkillInfo>().Unit = actualHero;
-                pref.GetComponent<SkillInfo>().DisplayIcon();
+                GameObject _pref = GameObject.Instantiate(prefabSkill.gameObject, _slot.transform);
+                _pref.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSo, _deck, actualHero);
+                _pref.GetComponent<SkillInfo>().unit = actualHero;
+                _pref.GetComponent<SkillInfo>().DisplayIcon();
                 
                 _slot.GetComponent<SlotDragAndDrop>().UpdateMyItem();
                 _slot.GetComponent<SlotDragAndDrop>().UpdateBackgroundState();
 
-                allSkills.Add(pref.GetComponent<SkillInfo>());
+                AllSkills.Add(_pref.GetComponent<SkillInfo>());
             }
         }
 
@@ -84,17 +86,17 @@ namespace Shops
             
             deckPlaceHolder.Clear();
 
-            allSkills = new List<SkillInfo>();
+            AllSkills = new List<SkillInfo>();
         }
 
         private void ChangeHero(int _index)
         {
-            DeckMono Deck = GameObject.FindObjectOfType<DeckMono>();
-            actualHero = BattlesHeroes[_index];
-            foreach (SkillInfo _skill in allSkills)
+            DeckMono _deck = GameObject.FindObjectOfType<DeckMono>();
+            actualHero = battlesHeroes[_index];
+            foreach (SkillInfo _skill in AllSkills)
             {
-                SkillSO s = _skill.skill.BaseSkill;
-                _skill.skill = Skill.CreateSkill(s, Deck, actualHero);
+                SkillSo _s = _skill.skill.BaseSkill;
+                _skill.skill = Skill.CreateSkill(_s, _deck, actualHero);
             }
         }
     }

@@ -23,66 +23,66 @@ namespace Skills
         public int Cost { get; private set; }
         public ESkill Type { get; private set; }
         public List<Buff> Buffs { get; private set; }
-        public List<IEffect> Effects { get; private set; }
-        public SkillSO BaseSkill { get; private set; }
+        public List<Effect> Effects { get; private set; }
+        public SkillSo BaseSkill { get; private set; }
 
 
-        public static Skill CreateSkill(SkillSO skillSO, DeckMono deck, Unit user)
+        public static Skill CreateSkill(SkillSo _skillSo, DeckMono _deck, Unit _user)
         {
             Skill _skill = new Skill();
-            _skill.Deck = deck;
-            Relic relic = user.Relic;
-            _skill.Unit = user;
-            _skill.Relic = relic;
-            if (skillSO.GridRange.CanBeModified)
-                _skill.GridRange = skillSO.GridRange + user.BattleStats.gridRange;
+            _skill.Deck = _deck;
+            Relic _relic = _user.Relic;
+            _skill.Unit = _user;
+            _skill.Relic = _relic;
+            if (_skillSo.GridRange.canBeModified)
+                _skill.GridRange = _skillSo.GridRange + _user.battleStats.gridRange;
             else
-                _skill.GridRange = skillSO.GridRange;
-            _skill.Power = skillSO.Power + user.BattleStats.Power;
-            _skill.Element = skillSO.Element;
-            _skill.Affect = skillSO.Affect;
-            _skill.Cost = skillSO.Cost;
-            _skill.Type = skillSO.Type;
+                _skill.GridRange = _skillSo.GridRange;
+            _skill.Power = _skillSo.Power + _user.battleStats.power;
+            _skill.Element = _skillSo.Element;
+            _skill.Affect = _skillSo.Affect;
+            _skill.Cost = _skillSo.Cost;
+            _skill.Type = _skillSo.Type;
             _skill.Buffs = new List<Buff>();
             
-            foreach (StatusSO _skillSOStatus in skillSO.StatusEffects)
+            foreach (StatusSo _skillSoStatus in _skillSo.StatusEffects)
             {
-                Buff buff = new Buff(user, _skillSOStatus);
-                _skill.Buffs.Add(buff);
+                Buff _buff = new Buff(_user, _skillSoStatus);
+                _skill.Buffs.Add(_buff);
             }
             
-            foreach (StatusSO _deckStatus in relic.StatusEffects)
+            foreach (StatusSo _deckStatus in _relic.StatusEffects)
             {
-                Buff buff = new Buff(user, _deckStatus);
-                _skill.Buffs.Add(buff);
+                Buff _buff = new Buff(_user, _deckStatus);
+                _skill.Buffs.Add(_buff);
             }
 
-            _skill.Effects = new List<IEffect>();
+            _skill.Effects = new List<Effect>();
 
-            foreach (SkillEffect _effect in skillSO.Effects)
+            foreach (SkillEffect _effect in _skillSo.Effects)
             {
                 if (_effect.IsUnique && _skill.Effects.Contains(_effect))
                     continue;
                 _skill.Effects.Add(_effect);
             }
             
-            if(skillSO.GridEffect != null)
-                _skill.Effects.Add(skillSO.GridEffect);
+            if(_skillSo.GridEffect != null)
+                _skill.Effects.Add(_skillSo.GridEffect);
             
-            foreach (IEffect _effect in relic.Effects)
+            foreach (Effect _effect in _relic.Effects)
             {
                 if (_effect.IsUnique && _skill.Effects.Contains(_effect))
                     continue;
                 _skill.Effects.Add(_effect);
             }
 
-            _skill.BaseSkill = skillSO;
+            _skill.BaseSkill = _skillSo;
             
-            foreach (RelicSO _relic in relic.RelicEffects)
+            foreach (RelicSo _relicSo in _relic.RelicEffects)
             {
-                foreach (RelicEffect _effect in _relic.RelicEffects)
+                foreach (RelicEffect _effect in _relicSo.RelicEffects)
                 {
-                    _effect.ChangeSkill(_skill, _relic);
+                    _effect.ChangeSkill(_skill, _relicSo);
                 }
             }
             return _skill;
@@ -111,9 +111,9 @@ namespace Skills
             /// </summary>
             public void ChangeRangeType(EZone _rangeType)
             {
-                GridRange gridRange = new GridRange(GridRange);
-                gridRange.RangeType = _rangeType;
-                GridRange = gridRange;
+                GridRange _gridRange = new GridRange(GridRange);
+                _gridRange.rangeType = _rangeType;
+                GridRange = _gridRange;
             }
             
             /// <summary>
@@ -121,9 +121,9 @@ namespace Skills
             /// </summary>
             public void ChangeZoneType(EZone _zoneType)
             {
-                GridRange gridRange = new GridRange(GridRange);
-                gridRange.ZoneType = _zoneType;
-                GridRange = gridRange;
+                GridRange _gridRange = new GridRange(GridRange);
+                _gridRange.zoneType = _zoneType;
+                GridRange = _gridRange;
             }
             
             /// <summary> 
@@ -131,9 +131,9 @@ namespace Skills
             /// </summary>
             public void ChangeNeedView(bool _needView)
             {
-                GridRange gridRange = new GridRange(GridRange);
-                gridRange.NeedView = _needView;
-                GridRange = gridRange;
+                GridRange _gridRange = new GridRange(GridRange);
+                _gridRange.needView = _needView;
+                GridRange = _gridRange;
             }
             
             /// <summary> 

@@ -12,13 +12,13 @@ namespace StateMachine.GridStates
         private List<Cell> setupCells;
         private BattleStateManager stateManager;
         private List<Hero> heroes;
-        private List<MonsterSO> monsters;
+        private List<MonsterSo> monsters;
         private Dictionary<BattleHero, GameObject> battleHeroes;
         private GameObject sprite;
 
-        private BattleHero actualHero { get; set; }
+        private BattleHero ActualHero { get; set; }
         
-        public BattleStateBeginning(BattleStateManager _stateManager, List<MonsterSO> _monsters) : base(_stateManager)
+        public BattleStateBeginning(BattleStateManager _stateManager, List<MonsterSo> _monsters) : base(_stateManager)
         {
             State = EBattleState.Beginning;
             stateManager = _stateManager;
@@ -30,9 +30,9 @@ namespace StateMachine.GridStates
 
         public override void OnStateEnter()
         {
-            stateManager.Cells.ForEach(c => c.UnMark());
+            stateManager.Cells.ForEach(_c => _c.UnMark());
             
-            List<Cell> _freeCells = stateManager.Cells.FindAll(c => c.IsWalkable && c.Buffs.Count == 0 && !c.IsSpawnPlace);
+            List<Cell> _freeCells = stateManager.Cells.FindAll(_c => _c.IsWalkable && _c.Buffs.Count == 0 && !_c.isSpawnPlace);
             
             List<Cell> _enemiesCells = new List<Cell>();
             while (_enemiesCells.Count < monsters.Count)
@@ -42,9 +42,9 @@ namespace StateMachine.GridStates
                 _freeCells.Remove(_freeCells[_cellIndex]);
             }
 
-            for (int i = 0; i < monsters.Count; i++)
+            for (int _i = 0; _i < monsters.Count; _i++)
             {
-                monsters[i].Spawn(_enemiesCells[i]);
+                monsters[_i].Spawn(_enemiesCells[_i]);
             }
             
             foreach (Hero _hero in GameObject.Find("Player").GetComponentsInChildren<Hero>())
@@ -57,7 +57,7 @@ namespace StateMachine.GridStates
             List<Cell> _spawnCells = new List<Cell>();
             foreach (Cell _cell in StateManager.Cells)
             {
-                if (_cell.IsSpawnPlace)
+                if (_cell.isSpawnPlace)
                 {
                     _spawnCells.Add(_cell);
                 }
@@ -79,15 +79,15 @@ namespace StateMachine.GridStates
                 _setupCell.MarkAsReachable();
             }
 
-            for (int i = 0; i < heroes.Count; i++)
+            for (int _i = 0; _i < heroes.Count; _i++)
             {
-                GameObject _pref = Object.Instantiate(heroes[i].Prefab, GameObject.Find("Units").transform);
-                heroes[i].Spawn(_pref.GetComponent<BattleHero>());
-                _pref.transform.position = setupCells[i].transform.position;
+                GameObject _pref = Object.Instantiate(heroes[_i].Prefab, GameObject.Find("Units").transform);
+                heroes[_i].Spawn(_pref.GetComponent<BattleHero>());
+                _pref.transform.position = setupCells[_i].transform.position;
                 _pref.GetComponent<Unit>().InitializeSprite();
                 battleHeroes.Add(_pref.GetComponent<BattleHero>(), _pref);
-                setupCells[i].Take(_pref.GetComponent<Unit>());
-                heroes[i].isPlaced = true;
+                setupCells[_i].Take(_pref.GetComponent<Unit>());
+                heroes[_i].isPlaced = true;
             }
             sprite = GameObject.Find("Layer/Sprite");
         }
@@ -107,36 +107,36 @@ namespace StateMachine.GridStates
             }
         }
 
-        private void ChangeHero(Unit hero)
+        private void ChangeHero(Unit _hero)
         {
-            actualHero = (BattleHero) hero;
+            ActualHero = (BattleHero) _hero;
         }
 
         private void PlaceHero(Cell _cell)
         {
-            actualHero.transform.position = _cell.transform.position;
-            _cell.Take(actualHero);
-            actualHero.Hero.isPlaced = true;
-            actualHero = null;
+            ActualHero.transform.position = _cell.transform.position;
+            _cell.Take(ActualHero);
+            ActualHero.Hero.isPlaced = true;
+            ActualHero = null;
         }
 
         private void CheckCells()
         {
             // Check if 2 Heroes are on the same Cell
-            List<IMovable> heroesOnSameCell = StateManager.ObjectCells
-                .GroupBy(z => z.Value)
-                .Where(z => z.Count() > 1)
-                .SelectMany(z => z)
-                .Select(z => z.Key)
+            List<Movable> _heroesOnSameCell = StateManager.ObjectCells
+                .GroupBy(_z => _z.Value)
+                .Where(_z => _z.Count() > 1)
+                .SelectMany(_z => _z)
+                .Select(_z => _z.Key)
                 .ToList();
-            if (heroesOnSameCell.Count > 1)
+            if (_heroesOnSameCell.Count > 1)
             {
-                foreach (IMovable _movable in heroesOnSameCell)
+                foreach (Movable _movable in _heroesOnSameCell)
                 {
-                    Debug.Log(((BattleHero) _movable).UnitName);
+                    Debug.Log(((BattleHero) _movable).unitName);
                 }
-                heroesOnSameCell[0].Cell.Take(heroesOnSameCell[0]);
-                ChangeHero((BattleHero) heroesOnSameCell[1]);
+                _heroesOnSameCell[0].Cell.Take(_heroesOnSameCell[0]);
+                ChangeHero((BattleHero) _heroesOnSameCell[1]);
                 return;
             }
 
@@ -155,47 +155,47 @@ namespace StateMachine.GridStates
             // Check if something happens
             if (!setupCells.Contains(_cell))
             {
-                if (actualHero != null)
-                    if (actualHero.Cell != null)
-                        actualHero = null;
+                if (ActualHero != null)
+                    if (ActualHero.Cell != null)
+                        ActualHero = null;
                 CheckCells();
                 return;
             }
-            if (actualHero == null && !_cell.IsTaken) 
+            if (ActualHero == null && !_cell.IsTaken) 
             {
                 CheckCells();
                 return;
             }
             
-            BattleHero nextHero = null;
+            BattleHero _nextHero = null;
             if (_cell.CurrentUnit != null)
             {
-                nextHero = (BattleHero) _cell.CurrentUnit;
+                _nextHero = (BattleHero) _cell.CurrentUnit;
             }
             
             // Set the position of the ActualHero on the Cell
-            if (actualHero != null) PlaceHero(_cell);
+            if (ActualHero != null) PlaceHero(_cell);
 
-            if (nextHero != null)
+            if (_nextHero != null)
             {
-                ChangeHero(nextHero);
+                ChangeHero(_nextHero);
                 return;
             }
             
             CheckCells();
         }
 
-        public override void OnCellSelected(Cell _selectedCell)
+        public override void OnCellSelected(Cell _targetCell)
         {
-            if (actualHero == null) return;
-            sprite.transform.position = _selectedCell.transform.position + new Vector3(0, 0.7f);
-            sprite.GetComponent<SpriteRenderer>().sprite = actualHero.UnitSprite;
+            if (ActualHero == null) return;
+            sprite.transform.position = _targetCell.transform.position + new Vector3(0, 0.7f);
+            sprite.GetComponent<SpriteRenderer>().sprite = ActualHero.UnitSprite;
             
-            if (!setupCells.Contains(_selectedCell)) return;
-            _selectedCell.MarkAsPath();
+            if (!setupCells.Contains(_targetCell)) return;
+            _targetCell.MarkAsPath();
         }
 
-        public override void OnCellDeselected(Cell _unselectedCell)
+        public override void OnCellDeselected(Cell _targetCell)
         {
             sprite.GetComponent<SpriteRenderer>().sprite = null;
 

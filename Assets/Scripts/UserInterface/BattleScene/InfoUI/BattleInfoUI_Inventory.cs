@@ -6,43 +6,43 @@ using UnityEngine;
 
 namespace UserInterface.BattleScene.InfoUI
 {
-    public class BattleInfoUI_Inventory : MonoBehaviour
+    public class BattleInfoUIInventory : MonoBehaviour
     {
         [SerializeField] private GameObject inventoryPrefab;
 
         private void OnEnable()
         {
-            foreach (Hero _hero in PlayerData.getInstance().Heroes)
+            foreach (Hero _hero in PlayerData.GetInstance().Heroes)
             {
-                GameObject inventoryObj = Instantiate(inventoryPrefab, transform);
-                inventoryObj.GetComponentInChildren<PersonalInventory>().Initialize(_hero);
-                inventoryObj.GetComponentInChildren<PersonalInventory>().FillInventory();
+                GameObject _inventoryObj = Instantiate(inventoryPrefab, transform);
+                _inventoryObj.GetComponentInChildren<PersonalInventory>().Initialize(_hero);
+                _inventoryObj.GetComponentInChildren<PersonalInventory>().FillInventory();
             }
 
-            foreach (SlotDragAndDrop slot in inventoryPrefab.GetComponentsInChildren<SlotDragAndDrop>())
+            foreach (SlotDragAndDrop _slot in inventoryPrefab.GetComponentsInChildren<SlotDragAndDrop>())
             {
-                slot.cellType = SlotDragAndDrop.CellType.DropOnly;
+                _slot.cellType = SlotDragAndDrop.CellType.DropOnly;
             }
         }
 
         private void OnDisable()
         {
-            int i = 0;
+            int _i = 0;
             //Array to hold all child obj
-            GameObject[] allChildren = new GameObject[transform.childCount - 1];
+            GameObject[] _allChildren = new GameObject[transform.childCount - 1];
 
             //Find all child obj and store to that array
-            foreach (Transform child in transform)
+            foreach (Transform _child in transform)
             {
-                if (child.GetComponentInChildren<PersonalInventory>() == null) continue;
-                allChildren[i] = child.gameObject;
-                i += 1;
+                if (_child.GetComponentInChildren<PersonalInventory>() == null) continue;
+                _allChildren[_i] = _child.gameObject;
+                _i += 1;
             }
 
             //Now destroy them
-            foreach (GameObject child in allChildren)
+            foreach (GameObject _child in _allChildren)
             {
-                DestroyImmediate(child.gameObject);
+                DestroyImmediate(_child.gameObject);
             }
         }
     }

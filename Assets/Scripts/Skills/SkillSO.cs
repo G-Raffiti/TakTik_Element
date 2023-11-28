@@ -13,7 +13,7 @@ using UnityEngine.Serialization;
 namespace Skills
 {
     [CreateAssetMenu(fileName = "Skill_", menuName = "Scriptable Object/New Skill")]
-    public class SkillSO : ScriptableObject
+    public class SkillSo : ScriptableObject
     {
         [SerializeField] private new string name;
         [SerializeField] private Element element;
@@ -25,12 +25,12 @@ namespace Skills
         
         [FormerlySerializedAs("range")] [SerializeField] private GridRange gridRange;
         [SerializeField] private int power;
-        [SerializeField] private List<StatusSO> statusEffects;
+        [SerializeField] private List<StatusSo> statusEffects;
 
         [SerializeField] private bool consumable;
         [SerializeField] private int cost;
         [SerializeField] private EArchetype archetype;
-        [SerializeField] private MonsterSO monster;
+        [SerializeField] private MonsterSo monster;
 
         public string Name => name;
         public Element Element => element;
@@ -41,26 +41,26 @@ namespace Skills
         public EAffect Affect => affect;
         public GridRange GridRange => gridRange;
         public int Power => power;
-        public List<StatusSO> StatusEffects => statusEffects;
+        public List<StatusSo> StatusEffects => statusEffects;
         public bool Consumable => consumable;
         public int Cost => cost;
         public EArchetype Archetype => archetype;
-        public MonsterSO Monster => monster;
+        public MonsterSo Monster => monster;
 
-        public void SetDATA(RawSkill _rawSkill)
+        public void SetData(RawSkill _rawSkill)
         {
             name = _rawSkill.Name;
             element = _rawSkill.Element;
             affect = _rawSkill.Affect;
             gridRange = new GridRange
             {
-                RangeValue = _rawSkill.RangeValue,
-                CanBeModified = _rawSkill.CanBeModified,
-                NeedTarget = _rawSkill.NeedTarget,
-                NeedView = _rawSkill.NeedView,
-                Radius = _rawSkill.Radius,
-                RangeType = _rawSkill.RangeType,
-                ZoneType = _rawSkill.ZoneType,
+                rangeValue = _rawSkill.RangeValue,
+                canBeModified = _rawSkill.CanBeModified,
+                needTarget = _rawSkill.NeedTarget,
+                needView = _rawSkill.NeedView,
+                radius = _rawSkill.Radius,
+                rangeType = _rawSkill.RangeType,
+                zoneType = _rawSkill.ZoneType,
             };
             power = _rawSkill.Power;
             consumable = _rawSkill.Consumable;
@@ -74,7 +74,7 @@ namespace Skills
 
             if (_rawSkill.GridEffect != null) gridEffect = _rawSkill.GridEffect;
 
-            statusEffects = new List<StatusSO>();
+            statusEffects = new List<StatusSo>();
             if (_rawSkill.Status != null) statusEffects.Add(_rawSkill.Status);
 
             icon = _rawSkill.Icon;

@@ -8,13 +8,13 @@ namespace Skills.ScriptableObject_Effect
     [CreateAssetMenu(fileName = "SkillEffect_ApplyBuff", menuName = "Scriptable Object/Skills/Skill Effect Buff")]
     public class ApplyBuff : SkillEffect
     {
-        public override void Use(Cell _cell, SkillInfo _skillInfo)
+        public override void Use(Cell _targetCell, SkillInfo _skillInfo)
         {
-            foreach (Cell cell in Zone.GetZone(_skillInfo.skill.GridRange, _cell).Where(cell => cell.CurrentUnit != null))
+            foreach (Cell _cell in Zone.GetZone(_skillInfo.skill.GridRange, _targetCell).Where(_cell => _cell.CurrentUnit != null))
             {
                 _skillInfo.skill.Buffs.ForEach(_buff =>
                 {
-                    cell.CurrentUnit.ApplyBuff(_buff);
+                    _cell.CurrentUnit.ApplyBuff(_buff);
                 });
             }
         }
@@ -26,9 +26,9 @@ namespace Skills.ScriptableObject_Effect
 
         public override string InfoEffect(SkillInfo _skillInfo)
         {
-            string str = "Apply ";
-            _skillInfo.skill.Buffs.ForEach(_buff => str += $"{_buff.Effect.Name} ");
-            return str;
+            string _str = "Apply ";
+            _skillInfo.skill.Buffs.ForEach(_buff => _str += $"{_buff.Effect.Name} ");
+            return _str;
         }
         
         public override string InfoEffect()

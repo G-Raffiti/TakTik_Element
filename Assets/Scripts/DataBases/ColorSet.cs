@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DataBases
 {
         
-    public enum EColor {none, unMark, highlighted, usable, reachable, path, transparency, enemy, ally, elementShadow, elementFull, TurnPoint, Buff, Debuff}
+    public enum EColor {None, UnMark, Highlighted, Usable, Reachable, Path, Transparency, Enemy, Ally, ElementShadow, ElementFull, TurnPoint, Buff, Debuff}
     
     [CreateAssetMenu(fileName = "ColorSet_", menuName = "Scriptable Object/UI/Color Set")]
     public class ColorSet : ScriptableObject
@@ -27,42 +27,42 @@ namespace DataBases
 
         public Dictionary<EColor, Color> GetColors()
         {
-            Dictionary<EColor, Color> Colors = new Dictionary<EColor, Color>
+            Dictionary<EColor, Color> _colors = new Dictionary<EColor, Color>
             {
-                {EColor.none, Color.clear},
-                {EColor.unMark, unMarkColor},
-                {EColor.highlighted, highlightedColor},
-                {EColor.reachable, reachableColor},
-                {EColor.usable, usableColor},
-                {EColor.path, pathColor},
-                {EColor.transparency, transparency},
-                {EColor.enemy, enemyColor},
-                {EColor.ally, allyColor},
-                {EColor.elementShadow, elementShadow},
-                {EColor.elementFull, Color.white},
+                {EColor.None, Color.clear},
+                {EColor.UnMark, unMarkColor},
+                {EColor.Highlighted, highlightedColor},
+                {EColor.Reachable, reachableColor},
+                {EColor.Usable, usableColor},
+                {EColor.Path, pathColor},
+                {EColor.Transparency, transparency},
+                {EColor.Enemy, enemyColor},
+                {EColor.Ally, allyColor},
+                {EColor.ElementShadow, elementShadow},
+                {EColor.ElementFull, Color.white},
                 {EColor.TurnPoint, turnPoint},
                 {EColor.Buff, buff},
                 {EColor.Debuff, debuff},
             };
 
-            return Colors;
+            return _colors;
         }
 
         public static Dictionary<EAffix, Color> GetAffixColors()
         {
-            Dictionary<EAffix, Color> Colors = new Dictionary<EAffix, Color>();
-            foreach (KeyValuePair<EAffix,AffixSO> _dataAffix in DataBase.Affix.Affixes)
+            Dictionary<EAffix, Color> _colors = new Dictionary<EAffix, Color>();
+            foreach (KeyValuePair<EAffix,AffixSo> _dataAffix in DataBase.Affix.Affixes)
             {
-                Colors.Add(_dataAffix.Key, _dataAffix.Value.Color);
+                _colors.Add(_dataAffix.Key, _dataAffix.Value.Color);
             }
 
-            return Colors;
+            return _colors;
         }
         
 
-        public string HexColor(EColor color)
+        public string HexColor(EColor _color)
         {
-            return $"#{ColorUtility.ToHtmlStringRGB(GetColors()[color])}";
+            return $"#{ColorUtility.ToHtmlStringRGB(GetColors()[_color])}";
         }
         
         public string HexColor(EAffix _affix)
@@ -70,9 +70,9 @@ namespace DataBases
             return $"#{ColorUtility.ToHtmlStringRGB(GetAffixColors()[_affix])}";
         }
         
-        public static string HexColor(Color color)
+        public static string HexColor(Color _color)
         {
-            return $"#{ColorUtility.ToHtmlStringRGB(color)}";
+            return $"#{ColorUtility.ToHtmlStringRGB(_color)}";
         }
     }
 }

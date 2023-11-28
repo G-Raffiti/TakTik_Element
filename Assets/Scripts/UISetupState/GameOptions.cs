@@ -1,24 +1,26 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 using UserInterface;
 
 namespace UISetupState
 {
     public class GameOptions : MonoBehaviour
     {
-        [SerializeField] private UI_Manager Manager;
+        [FormerlySerializedAs("Manager")]
+        [SerializeField] private UIManager manager;
 
-        public void isLifeBarActive(bool isActive)
+        public void IsLifeBarActive(bool _isActive)
         {
-            Manager.MenuActiveLifeBar(isActive);
+            manager.MenuActiveLifeBar(_isActive);
             foreach (LifeBar _bar in FindObjectsOfType<LifeBar>())
             {
-                _bar.Activate(isActive);
+                _bar.Activate(_isActive);
             }
         }
 
-        public void isCompleteSats(bool isActive)
+        public void IsCompleteSats(bool _isActive)
         {
-            Manager.MenuActiveCompleteStats(isActive);
+            manager.MenuActiveCompleteStats(_isActive);
         }
     }
 }

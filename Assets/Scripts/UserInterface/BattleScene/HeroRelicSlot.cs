@@ -27,7 +27,7 @@ namespace UserInterface.BattleScene
             heroNameTxt.text = hero.UnitName;
             heroPortrait.sprite = hero.UnitSprite;
 
-            foreach (RelicSO _relic in hero.Relics)
+            foreach (RelicSo _relic in hero.Relics)
             {
                 GameObject _pref = Instantiate(relicPrefab.gameObject, relicsHolder);
                 _pref.GetComponent<RelicInfo>().CreateRelic(_relic);

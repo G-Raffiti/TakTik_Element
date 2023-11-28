@@ -6,6 +6,7 @@ using TMPro;
 using Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Buffs
@@ -17,17 +18,20 @@ namespace Buffs
         
         [Header("References Unity")]
         [SerializeField] private Image icon;
-        [SerializeField] private TextMeshProUGUI Duration;
+        [FormerlySerializedAs("Duration")]
+        [SerializeField] private TextMeshProUGUI duration;
         [SerializeField] private List<Image> frame;
         [SerializeField] private ColorSet colorSet;
         
+        [FormerlySerializedAs("InfoTooltip_ON")]
         [Header("Tooltip Events")] 
-        [SerializeField] private InfoEvent InfoTooltip_ON;
-        [SerializeField] private VoidEvent InfoTooltip_OFF;
+        [SerializeField] private InfoEvent infoTooltipOn;
+        [FormerlySerializedAs("InfoTooltip_OFF")]
+        [SerializeField] private VoidEvent infoTooltipOff;
 
         public override string GetInfoMain()
         {
-            return $"{ColouredName()} {Buff.Duration}<sprite name=Duration>";
+            return $"{ColouredName()} {Buff.duration}<sprite name=Duration>";
         }
 
         public override string GetInfoLeft()
@@ -58,27 +62,27 @@ namespace Buffs
             return $"<color=#{_hexColor}>{Buff.Effect.Name}</color>";
         }
 
-        public override void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
-            InfoTooltip_ON.Raise(this);
+            infoTooltipOn.Raise(this);
         }
 
-        public override void OnPointerExit(PointerEventData eventData)
+        public override void OnPointerExit(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
-            InfoTooltip_OFF.Raise();
+            infoTooltipOff.Raise();
         }
 
         public override void DisplayIcon()
         {
             icon.sprite = GetIcon();
-            frame.ForEach(i => i.color = Buff.Effect.Type == EBuff.Buff
+            frame.ForEach(_i => _i.color = Buff.Effect.Type == EBuff.Buff
                 ? colorSet.GetColors()[EColor.Buff]
                 : colorSet.GetColors()[EColor.Debuff]);
-            Duration.text = Buff.Effect.IsDefinitive 
+            duration.text = Buff.Effect.IsDefinitive 
                 ? $"<sprite name=Infinity>" 
-                : $"{Buff.Duration}";
+                : $"{Buff.duration}";
         }
 
         public BuffInfo Initialize(Buff _buff, Unit _unit)

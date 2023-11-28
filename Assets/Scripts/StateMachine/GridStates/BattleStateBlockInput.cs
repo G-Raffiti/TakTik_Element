@@ -23,15 +23,15 @@ namespace StateMachine.GridStates
         {
         }
 
-        public override void OnCellSelected(Cell cell)
+        public override void OnCellSelected(Cell _targetCell)
         {
         }
 
-        public override void OnCellDeselected(Cell cell)
+        public override void OnCellDeselected(Cell _targetCell)
         {
         }
 
-        public override void OnCellClicked(Cell cell)
+        public override void OnCellClicked(Cell _cell)
         {
         }
     }

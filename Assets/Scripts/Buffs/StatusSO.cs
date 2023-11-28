@@ -10,7 +10,7 @@ namespace Buffs
         Buff,
         Debuff,
     }
-    public abstract class StatusSO : ScriptableObject
+    public abstract class StatusSo : ScriptableObject
     {
         [SerializeField] private EBuff type;
         [SerializeField] private bool betweenTurn;
@@ -30,7 +30,7 @@ namespace Buffs
         public abstract void ActiveEffect(Buff _buff, Unit _unit);
         public abstract void PassiveEffect(Buff _buff, Unit _unit);
         public abstract void EndPassiveEffect(Buff _buff, Unit _unit);
-        public abstract float GetBuffValue(Unit sender);
+        public abstract float GetBuffValue(Unit _sender);
         
         /// <summary>
         /// Method called when a Unit Step by a Cell affected by this Buff
@@ -40,21 +40,21 @@ namespace Buffs
             ActiveEffect(_buff, _unit);
         }
         
-        public virtual int GetBuffDuration(Unit sender)
+        public virtual int GetBuffDuration(Unit _sender)
         {
-            return baseDuration + sender.BattleStats.GetFocus();
+            return baseDuration + _sender.battleStats.GetFocus();
         }
         public abstract string InfoEffect(Buff _buff);
         public abstract string InfoOnUnit(Buff _buff, Unit _unit);
 
-        public virtual Buff AddBuff(Buff a, Buff b)
+        public virtual Buff AddBuff(Buff _a, Buff _b)
         {
-            if (a.Effect != b.Effect) return a;
-            Buff ret = new Buff(a);
-            ret.Duration += b.Duration;
-            ret.Value += b.Value;
+            if (_a.Effect != _b.Effect) return _a;
+            Buff _ret = new Buff(_a);
+            _ret.duration += _b.duration;
+            _ret.value += _b.value;
 
-            return ret;
+            return _ret;
         }
         public abstract string InfoOnFloor(Cell _cell, Buff _buff);
     }

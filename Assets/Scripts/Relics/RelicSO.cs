@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Relics
 {
     [CreateAssetMenu(fileName = "Relic_", menuName = "Scriptable Object/New Relic")]
-    public class RelicSO : ScriptableObject
+    public class RelicSo : ScriptableObject
     {
         [SerializeField] private new string name;
         [SerializeField] private Element element;
@@ -25,7 +25,7 @@ namespace Relics
 
         [SerializeField] private BattleStats battleStats;
         [SerializeField] private int cost;
-        [SerializeField] private List<StatusSO> statusEffects;
+        [SerializeField] private List<StatusSo> statusEffects;
 
         [SerializeField] private string description;
         [SerializeField] private string flavour;
@@ -41,7 +41,7 @@ namespace Relics
         public BattleStats BattleStats => battleStats;
 
         public int Cost => cost;
-        public List<StatusSO> StatusEffects => statusEffects;
+        public List<StatusSo> StatusEffects => statusEffects;
 
         public string Description => description;
         public string Flavour => flavour;

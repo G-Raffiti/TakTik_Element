@@ -4,15 +4,17 @@ using StateMachine;
 using TMPro;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Void = _EventSystem.CustomEvents.Void;
 
 namespace UserInterface.BattleScene
 {
-    public class BattleTurnOrder_UI : MonoBehaviour
+    public class BattleTurnOrderUI : MonoBehaviour
     {
         [SerializeField] private GameObject prefabUnitIcon;
-        [SerializeField] private TextMeshProUGUI Turn;
-        private Dictionary<Unit, GameObject> Icons = new Dictionary<Unit, GameObject>();
+        [FormerlySerializedAs("Turn")]
+        [SerializeField] private TextMeshProUGUI turn;
+        private Dictionary<Unit, GameObject> icons = new Dictionary<Unit, GameObject>();
         
         [Header("Event Listener")] 
         [SerializeField] private UnitEvent onUnitStartTurn;
@@ -29,38 +31,38 @@ namespace UserInterface.BattleScene
             onUnitStartTurn.EventListeners -= UpdateDisplay;
         }
 
-        public void Initialize(Void v)
+        public void Initialize(Void _v)
         {
-            BattleStateManager cellGrid = BattleStateManager.instance; 
-            Turn.text = $"{cellGrid.Turn}";
-            Turn.color = Color.white;
-            foreach (Unit _unit1 in cellGrid.Units)
+            BattleStateManager _cellGrid = BattleStateManager.instance; 
+            turn.text = $"{_cellGrid.Turn}";
+            turn.color = Color.white;
+            foreach (Unit _unit1 in _cellGrid.Units)
             {
                 Unit _unit = (Unit) _unit1;
                 if (_unit == null) continue;
                 GameObject _pref = Instantiate(prefabUnitIcon, transform);
                 _pref.GetComponent<TurnOrderPrefab>().Initialize(_unit);
                 _pref.transform.SetAsLastSibling();
-                Icons.Add(_unit, _pref);
+                icons.Add(_unit, _pref);
             }
         }
 
-        public void UpdateDisplay(Unit u)
+        public void UpdateDisplay(Unit _u)
         {
-            BattleStateManager cellGrid = BattleStateManager.instance; 
-            if (cellGrid.NextCorruptionTurn > cellGrid.Turn)
-                Turn.text = $"{cellGrid.Turn} \n<size=20>Next Corruption in {cellGrid.NextCorruptionTurn} Turn";
-            else Turn.text = $"{cellGrid.Turn}";
-            Turn.color *= new Color(1, 0.97f, 0.97f);
+            BattleStateManager _cellGrid = BattleStateManager.instance; 
+            if (_cellGrid.NextCorruptionTurn > _cellGrid.Turn)
+                turn.text = $"{_cellGrid.Turn} \n<size=20>Next Corruption in {_cellGrid.NextCorruptionTurn} Turn";
+            else turn.text = $"{_cellGrid.Turn}";
+            turn.color *= new Color(1, 0.97f, 0.97f);
             
-            foreach (Unit _unit1 in cellGrid.Units)
+            foreach (Unit _unit1 in _cellGrid.Units)
             {
                 Unit _unit = _unit1;
                 if (_unit == null) continue;
-                Icons[_unit].transform.SetAsLastSibling();
+                icons[_unit].transform.SetAsLastSibling();
             }
             
-            Icons[u].transform.SetSiblingIndex(0);
+            icons[_u].transform.SetSiblingIndex(0);
         }
     }
 }

@@ -16,8 +16,8 @@ namespace Editor
 {
     class GridHelper : EditorWindow
     {
-        private static string MAP_TYPE_3D = "XZ Plane (3D)";
-        private static string MAP_TYPE_2D = "XY Plane (2D)";
+        private static string _mapType3D = "XZ Plane (3D)";
+        private static string _mapType2D = "XY Plane (2D)";
 
         public bool useMovableCamera = false;
         public float cameraScrollSpeed = 15f;
@@ -42,7 +42,7 @@ namespace Editor
         Dictionary<string, object> parameterValues;
 
         BoolWrapper tileEditModeOn = new BoolWrapper(false);
-        [SerializeField] private CellSO cellType;
+        [SerializeField] private CellSo cellType;
         int tilePaintingRadius = 1;
         int lastPaintedHash = -1;
 
@@ -65,8 +65,8 @@ namespace Editor
         [MenuItem("Window/Grid Helper")]
         public static void ShowWindow()
         {
-            EditorWindow window = GetWindow(typeof(GridHelper));
-            window.titleContent.text = "Grid Helper";
+            EditorWindow _window = GetWindow(typeof(GridHelper));
+            _window.titleContent.text = "Grid Helper";
         }
 
         void Initialize()
@@ -78,27 +78,27 @@ namespace Editor
 
             if (generators == null)
             {
-                Type generatorInterface = typeof(ICellGridGenerator);
-                Assembly assembly = generatorInterface.Assembly;
+                Type _generatorInterface = typeof(CellGridGenerator);
+                Assembly _assembly = _generatorInterface.Assembly;
 
                 generators = new List<Type>();
-                foreach (Type t in assembly.GetTypes())
+                foreach (Type _t in _assembly.GetTypes())
                 {
-                    if (generatorInterface.IsAssignableFrom(t) && t != generatorInterface)
-                        generators.Add(t);
+                    if (_generatorInterface.IsAssignableFrom(_t) && _t != _generatorInterface)
+                        generators.Add(_t);
                 }
             }
 
             if (generatorNames == null)
             {
-                generatorNames = generators.Select(t => t.Name).ToArray();
+                generatorNames = generators.Select(_t => _t.Name).ToArray();
             }
 
             if (mapTypes == null)
             {
                 mapTypes = new string[2];
-                mapTypes[0] = MAP_TYPE_2D;
-                mapTypes[1] = MAP_TYPE_3D;
+                mapTypes[0] = _mapType2D;
+                mapTypes[1] = _mapType3D;
             }
         }
 
@@ -106,11 +106,11 @@ namespace Editor
         {
             Initialize();
 
-            GameObject gridGameObject = GameObject.Find("CellGrid");
-            GameObject unitsGameObject = GameObject.Find("Objects");
+            GameObject _gridGameObject = GameObject.Find("CellGrid");
+            GameObject _unitsGameObject = GameObject.Find("Objects");
 
-            gridGameObjectPresent = gridGameObject != null;
-            unitsGameObjectPresent = unitsGameObject != null;
+            gridGameObjectPresent = _gridGameObject != null;
+            unitsGameObjectPresent = _unitsGameObject != null;
 
             tileEditModeOn = new BoolWrapper(false);
             unitEditModeOn = new BoolWrapper(false);
@@ -133,17 +133,17 @@ namespace Editor
 
         void OnHierarchyChange()
         {
-            GameObject gridGameObject = GameObject.Find("CellGrid");
-            GameObject unitsGameObject = GameObject.Find("Objects");
+            GameObject _gridGameObject = GameObject.Find("CellGrid");
+            GameObject _unitsGameObject = GameObject.Find("Objects");
 
-            gridGameObjectPresent = gridGameObject != null;
-            unitsGameObjectPresent = unitsGameObject != null;
+            gridGameObjectPresent = _gridGameObject != null;
+            unitsGameObjectPresent = _unitsGameObject != null;
 
-            if (unitsGameObject != null)
+            if (_unitsGameObject != null)
             {
                 this.unitsGameObject = null;
             }
-            if (gridGameObject != null)
+            if (_gridGameObject != null)
             {
                 this.gridGameObject = null;
             }
@@ -159,8 +159,8 @@ namespace Editor
             UnitPaintingGUI();
             PrefabHelperGUI();
 
-            Event e = Event.current;
-            if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.R)
+            Event _e = Event.current;
+            if (_e.type == EventType.KeyDown && _e.control && _e.keyCode == KeyCode.R)
             {
                 ToggleEditMode();
             }
@@ -188,20 +188,20 @@ namespace Editor
 
             if (GUILayout.Button("Selection to prefabs"))
             {
-                string path = EditorUtility.SaveFolderPanel("Save prefabs", "", "");
-                if (path.Length != 0)
+                string _path = EditorUtility.SaveFolderPanel("Save prefabs", "", "");
+                if (_path.Length != 0)
                 {
-                    path = path.Replace(Application.dataPath, "Assets");
+                    _path = _path.Replace(Application.dataPath, "Assets");
 
-                    GameObject[] objectArray = Selection.gameObjects;
-                    for (int i = 0; i < objectArray.Length; i++)
+                    GameObject[] _objectArray = Selection.gameObjects;
+                    for (int _i = 0; _i < _objectArray.Length; _i++)
                     {
-                        GameObject gameObject = objectArray[i];
-                        string localPath = path + "/" + gameObject.name + ".prefab";
-                        localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
-                        PrefabUtility.SaveAsPrefabAssetAndConnect(gameObject, localPath, InteractionMode.UserAction);
+                        GameObject _gameObject = _objectArray[_i];
+                        string _localPath = _path + "/" + _gameObject.name + ".prefab";
+                        _localPath = AssetDatabase.GenerateUniqueAssetPath(_localPath);
+                        PrefabUtility.SaveAsPrefabAssetAndConnect(_gameObject, _localPath, InteractionMode.UserAction);
                     }
-                    Debug.Log(string.Format("{0} prefabs saved to {1}", objectArray.Length, path));
+                    Debug.Log(string.Format("{0} prefabs saved to {1}", _objectArray.Length, _path));
                 }
             }
         }
@@ -213,9 +213,9 @@ namespace Editor
             {
                 if (unitsGameObject == null)
                 {
-                    GUIStyle style = new GUIStyle(EditorStyles.boldLabel);
-                    style.normal.textColor = Color.red;
-                    GUILayout.Label("Unit parent GameObject missing", style);
+                    GUIStyle _style = new GUIStyle(EditorStyles.boldLabel);
+                    _style.normal.textColor = Color.red;
+                    GUILayout.Label("Unit parent GameObject missing", _style);
                 }
                 unitsGameObject = (GameObject)EditorGUILayout.ObjectField("Units parent", unitsGameObject, typeof(GameObject), true, new GUILayoutOption[0]);
             }
@@ -239,8 +239,8 @@ namespace Editor
                 tileEditModeOn = new BoolWrapper(false);
                 toToggle = unitEditModeOn;
 
-                GameObject UnitsParent = unitsGameObjectPresent ? GameObject.Find("Objects") : unitsGameObject;
-                if (UnitsParent == null)
+                GameObject _unitsParent = unitsGameObjectPresent ? GameObject.Find("Objects") : unitsGameObject;
+                if (_unitsParent == null)
                 {
                     Debug.LogError("Units parent gameObject is missing, assign it in GridHelper");
                 }
@@ -266,15 +266,15 @@ namespace Editor
             {
                 if (gridGameObject == null)
                 {
-                    GUIStyle style = new GUIStyle(EditorStyles.boldLabel);
-                    style.normal.textColor = Color.red;
-                    GUILayout.Label("CellGrid GameObject missing", style);
+                    GUIStyle _style = new GUIStyle(EditorStyles.boldLabel);
+                    _style.normal.textColor = Color.red;
+                    GUILayout.Label("CellGrid GameObject missing", _style);
                 }
                 gridGameObject = (GameObject)EditorGUILayout.ObjectField("CellGrid", gridGameObject, typeof(GameObject), true, new GUILayoutOption[0]);
             }
             tilePaintingRadius = EditorGUILayout.IntSlider(new GUIContent("Brush radius"), tilePaintingRadius, 1, 4);
             EditorGUI.BeginChangeCheck();
-            cellType = (CellSO)EditorGUILayout.ObjectField("Tile prefab", cellType, typeof(CellSO), true, new GUILayoutOption[0]);
+            cellType = (CellSo)EditorGUILayout.ObjectField("Tile prefab", cellType, typeof(CellSo), true, new GUILayoutOption[0]);
             if (EditorGUI.EndChangeCheck())
             {
                 lastPaintedHash = -1;
@@ -297,8 +297,8 @@ namespace Editor
                 toToggle = tileEditModeOn;
                 EnableSceneViewInteraction();
 
-                GameObject CellGrid = gridGameObjectPresent ? GameObject.Find("CellGrid") : gridGameObject;
-                if (CellGrid == null)
+                GameObject _cellGrid = gridGameObjectPresent ? GameObject.Find("CellGrid") : gridGameObject;
+                if (_cellGrid == null)
                 {
                     Debug.LogError("CellGrid gameobject is missing, assign it in GridHelper");
                 }
@@ -342,29 +342,29 @@ namespace Editor
                 parameterValues = new Dictionary<string, object>();
             }
 
-            foreach (FieldInfo field in generators[generatorIndex].GetFields().Where(f => f.IsPublic))
+            foreach (FieldInfo _field in generators[generatorIndex].GetFields().Where(_f => _f.IsPublic))
             {
-                if (field.FieldType == typeof(int))
+                if (_field.FieldType == typeof(int))
                 {
-                    int x = 0;
-                    if (parameterValues.ContainsKey(field.Name))
+                    int _x = 0;
+                    if (parameterValues.ContainsKey(_field.Name))
                     {
-                        x = (int)(parameterValues[field.Name]);
+                        _x = (int)(parameterValues[_field.Name]);
                     }
-                    x = EditorGUILayout.IntField(new GUIContent(field.Name), x);
-                    parameterValues[field.Name] = x;
+                    _x = EditorGUILayout.IntField(new GUIContent(_field.Name), _x);
+                    parameterValues[_field.Name] = _x;
                 }
-                else if (field.FieldType == typeof(GameObject))
+                else if (_field.FieldType == typeof(GameObject))
                 {
-                    GameObject g = null;
-                    if (parameterValues.ContainsKey(field.Name))
+                    GameObject _g = null;
+                    if (parameterValues.ContainsKey(_field.Name))
                     {
-                        g = (GameObject)(parameterValues[field.Name]);
+                        _g = (GameObject)(parameterValues[_field.Name]);
                     }
-                    g = (GameObject)EditorGUILayout.ObjectField(field.Name, g, typeof(GameObject), false, new GUILayoutOption[0]);
-                    parameterValues[field.Name] = g;
+                    _g = (GameObject)EditorGUILayout.ObjectField(_field.Name, _g, typeof(GameObject), false, new GUILayoutOption[0]);
+                    parameterValues[_field.Name] = _g;
 
-                    if (mapTypes[mapTypeIndex].Equals(MAP_TYPE_3D) && g != null && g.GetComponent<Collider2D>() != null)
+                    if (mapTypes[mapTypeIndex].Equals(_mapType3D) && _g != null && _g.GetComponent<Collider2D>() != null)
                     {
                         shouldDisplayCollider2DWarning = true;
                     }
@@ -377,21 +377,21 @@ namespace Editor
 
             if (shouldDisplayCollider2DWarning)
             {
-                GUIStyle style = new GUIStyle(EditorStyles.wordWrappedLabel);
-                style.fontStyle = FontStyle.Bold;
-                style.normal.textColor = Color.red;
-                GUILayout.Label("You are trying to generate a map on XZ plane with a prefab containg a 2D collider. 2D colliders will not work in XZ axis. Add a 3D collider to your tile prefab or select XY plane", style);
+                GUIStyle _style = new GUIStyle(EditorStyles.wordWrappedLabel);
+                _style.fontStyle = FontStyle.Bold;
+                _style.normal.textColor = Color.red;
+                GUILayout.Label("You are trying to generate a map on XZ plane with a prefab containg a 2D collider. 2D colliders will not work in XZ axis. Add a 3D collider to your tile prefab or select XY plane", _style);
             }
 
             if (GUILayout.Button("Generate scene"))
             {
-                string dialogTitle = "Confirm delete";
-                string dialogMessage = "This will delete all objects on the scene. Do you wish to continue?";
-                string dialogOK = "Ok";
-                string dialogCancel = "Cancel";
+                string _dialogTitle = "Confirm delete";
+                string _dialogMessage = "This will delete all objects on the scene. Do you wish to continue?";
+                string _dialogOk = "Ok";
+                string _dialogCancel = "Cancel";
 
-                bool shouldDelete = EditorUtility.DisplayDialog(dialogTitle, dialogMessage, dialogOK, dialogCancel);
-                if (shouldDelete)
+                bool _shouldDelete = EditorUtility.DisplayDialog(_dialogTitle, _dialogMessage, _dialogOk, _dialogCancel);
+                if (_shouldDelete)
                 {
                     Undo.ClearAll();
                     GenerateBaseStructure();
@@ -405,13 +405,13 @@ namespace Editor
             
             if (GUILayout.Button("Clear scene"))
             {
-                string dialogTitle = "Confirm delete";
-                string dialogMessage = "This will delete all objects on the scene. Do you wish to continue?";
-                string dialogOK = "Ok";
-                string dialogCancel = "Cancel";
+                string _dialogTitle = "Confirm delete";
+                string _dialogMessage = "This will delete all objects on the scene. Do you wish to continue?";
+                string _dialogOk = "Ok";
+                string _dialogCancel = "Cancel";
 
-                bool shouldDelete = EditorUtility.DisplayDialog(dialogTitle, dialogMessage, dialogOK, dialogCancel);
-                if (shouldDelete)
+                bool _shouldDelete = EditorUtility.DisplayDialog(_dialogTitle, _dialogMessage, _dialogOk, _dialogCancel);
+                if (_shouldDelete)
                 {
                     Undo.ClearAll();
                     GridHelperUtils.ClearScene();
@@ -419,10 +419,10 @@ namespace Editor
             }
         }
 
-        private void OnSceneGUI(SceneView sceneView)
+        private void OnSceneGUI(SceneView _sceneView)
         {
-            Event e = Event.current;
-            if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.R)
+            Event _e = Event.current;
+            if (_e.type == EventType.KeyDown && _e.control && _e.keyCode == KeyCode.R)
             {
                 ToggleEditMode();
             }
@@ -444,83 +444,83 @@ namespace Editor
 
         private void PaintUnits()
         {
-            GameObject UnitsParent = unitsGameObjectPresent ? GameObject.Find("Objects") : unitsGameObject;
-            if (UnitsParent == null)
+            GameObject _unitsParent = unitsGameObjectPresent ? GameObject.Find("Objects") : unitsGameObject;
+            if (_unitsParent == null)
             {
                 return;
             }
 
-            Cell selectedCell = GetSelectedCell();
-            if (selectedCell == null)
+            Cell _selectedCell = GetSelectedCell();
+            if (_selectedCell == null)
             {
                 return;
             }
 
-            string mapType = mapTypes[mapTypeIndex];
+            string _mapType = mapTypes[mapTypeIndex];
             Handles.color = Color.red;
-            Handles.DrawWireDisc(selectedCell.transform.position, Vector3.up, selectedCell.GetCellDimensions().y / 2);
-            Handles.DrawWireDisc(selectedCell.transform.position, Vector3.forward, selectedCell.GetCellDimensions().y / 2);
+            Handles.DrawWireDisc(_selectedCell.transform.position, Vector3.up, _selectedCell.GetCellDimensions().y / 2);
+            Handles.DrawWireDisc(_selectedCell.transform.position, Vector3.forward, _selectedCell.GetCellDimensions().y / 2);
             HandleUtility.Repaint();
             if (Event.current.button == 0 && (Event.current.type == EventType.MouseDrag || Event.current.type == EventType.MouseDown)) 
             {
-                if (unitEditModeOn.value && selectedCell.IsTaken)
+                if (unitEditModeOn.value && _selectedCell.IsTaken)
                 {
                     return;
                 }
 
                 Undo.SetCurrentGroupName("Unit painting");
-                int group = Undo.GetCurrentGroup();
+                int _group = Undo.GetCurrentGroup();
 
-                Undo.RecordObject(selectedCell, "Unit painting");
+                Undo.RecordObject(_selectedCell, "Unit painting");
                 
-                GridObject newUnit = (PrefabUtility.InstantiatePrefab(unitPrefab.gameObject) as GameObject).GetComponent<GridObject>();
-                selectedCell.Take(newUnit);
+                GridObject _newUnit = (PrefabUtility.InstantiatePrefab(unitPrefab.gameObject) as GameObject).GetComponent<GridObject>();
+                _selectedCell.Take(_newUnit);
 
-                Vector3 offset = new Vector3(0, 0, selectedCell.GetCellDimensions().z);
-                newUnit.transform.position = selectedCell.transform.position;
-                newUnit.transform.parent = UnitsParent.transform;
-                newUnit.transform.localPosition -= offset;
-                newUnit.transform.rotation = selectedCell.transform.rotation;
+                Vector3 _offset = new Vector3(0, 0, _selectedCell.GetCellDimensions().z);
+                _newUnit.transform.position = _selectedCell.transform.position;
+                _newUnit.transform.parent = _unitsParent.transform;
+                _newUnit.transform.localPosition -= _offset;
+                _newUnit.transform.rotation = _selectedCell.transform.rotation;
 
-                Undo.RegisterCreatedObjectUndo(newUnit.gameObject, "Unit painting");
+                Undo.RegisterCreatedObjectUndo(_newUnit.gameObject, "Unit painting");
             }
         }
 
         private void PaintTiles()
         {
-            GameObject CellGrid = gridGameObjectPresent ? GameObject.Find("CellGrid") : gridGameObject;
-            if (CellGrid == null)
+            GameObject _cellGrid = gridGameObjectPresent ? GameObject.Find("CellGrid") : gridGameObject;
+            if (_cellGrid == null)
             {
                 return;
             }
 
-            Cell selectedCell = GetSelectedCell();
-            if (selectedCell == null)
+            Cell _selectedCell = GetSelectedCell();
+            if (_selectedCell == null)
             {
                 return;
             }
 
-            string mapType = mapTypes[mapTypeIndex];
+            string _mapType = mapTypes[mapTypeIndex];
             Handles.color = Color.red;
-            Handles.DrawWireDisc(selectedCell.transform.position, Vector3.up, selectedCell.GetCellDimensions().y * (tilePaintingRadius - 0.5f));
-            Handles.DrawWireDisc(selectedCell.transform.position, Vector3.forward, selectedCell.GetCellDimensions().y * (tilePaintingRadius - 0.5f));
+            Handles.DrawWireDisc(_selectedCell.transform.position, Vector3.up, _selectedCell.GetCellDimensions().y * (tilePaintingRadius - 0.5f));
+            Handles.DrawWireDisc(_selectedCell.transform.position, Vector3.forward, _selectedCell.GetCellDimensions().y * (tilePaintingRadius - 0.5f));
             HandleUtility.Repaint();
-            int selectedCellHash = selectedCell.GetHashCode();
-            if (lastPaintedHash != selectedCellHash)
+            int _selectedCellHash = _selectedCell.GetHashCode();
+            if (lastPaintedHash != _selectedCellHash)
             {
                 if (Event.current.button == 0 && (Event.current.type == EventType.MouseDrag || Event.current.type == EventType.MouseDown))
                 {
-                    lastPaintedHash = selectedCellHash;
+                    lastPaintedHash = _selectedCellHash;
                     Undo.SetCurrentGroupName("Tile painting");
-                    int group = Undo.GetCurrentGroup();
-                    Cell[] cells = CellGrid.GetComponentsInChildren<Cell>();
-                    List<Cell> cellsInRange = cells.Where(c => c.GetDistance(selectedCell) <= tilePaintingRadius - 1).ToList();
-                    foreach (Cell c in cellsInRange)
+                    int _group = Undo.GetCurrentGroup();
+                    Cell[] _cells = _cellGrid.GetComponentsInChildren<Cell>();
+                    List<Cell> _cellsInRange = _cells.Where(_c => _c.GetDistance(_selectedCell) <= tilePaintingRadius - 1).ToList();
+                    foreach (Cell _c in _cellsInRange)
                     {
-                        c.SetCellSO(cellType);
-                        cellType.Spawn(c as TileIsometric);
+                        _c.SetCellSo(cellType);
+                        cellType.Spawn(_c as TileIsometric);
                     }
-                    Undo.CollapseUndoOperations(group);
+                    Undo.CollapseUndoOperations(_group);
                     Undo.IncrementCurrentGroup();
                 }
             }
@@ -528,17 +528,17 @@ namespace Editor
 
         private Cell GetSelectedCell()
         {
-            RaycastHit2D raycastHit2D = Physics2D.GetRayIntersection(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), Mathf.Infinity);
-            if (raycastHit2D.transform != null && raycastHit2D.transform.GetComponent<Cell>() != null)
+            RaycastHit2D _raycastHit2D = Physics2D.GetRayIntersection(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), Mathf.Infinity);
+            if (_raycastHit2D.transform != null && _raycastHit2D.transform.GetComponent<Cell>() != null)
             {
-                return raycastHit2D.transform.GetComponent<Cell>();
+                return _raycastHit2D.transform.GetComponent<Cell>();
             }
 
-            RaycastHit raycastHit3D;
-            bool isRaycast3D = Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out raycastHit3D);
-            if (isRaycast3D && raycastHit3D.transform.GetComponent<Cell>() != null)
+            RaycastHit _raycastHit3D;
+            bool _isRaycast3D = Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out _raycastHit3D);
+            if (_isRaycast3D && _raycastHit3D.transform.GetComponent<Cell>() != null)
             {
-                return raycastHit3D.transform.GetComponent<Cell>();
+                return _raycastHit3D.transform.GetComponent<Cell>();
             }
 
             return null;
@@ -553,21 +553,21 @@ namespace Editor
 
             GridHelperUtils.ClearScene();
             
-            string mapType = mapTypes[mapTypeIndex];
-            Camera camera = Camera.main;
-            if (camera == null)
+            string _mapType = mapTypes[mapTypeIndex];
+            Camera _camera = Camera.main;
+            if (_camera == null)
             {
-                GameObject cameraObject = new GameObject("Main Camera");
-                cameraObject.tag = "MainCamera";
-                cameraObject.AddComponent<Camera>();
-                camera = cameraObject.GetComponent<Camera>();
+                GameObject _cameraObject = new GameObject("Main Camera");
+                _cameraObject.tag = "MainCamera";
+                _cameraObject.AddComponent<Camera>();
+                _camera = _cameraObject.GetComponent<Camera>();
             }
 
             if (useMovableCamera)
             {
-                camera.gameObject.AddComponent<CameraController>();
-                camera.gameObject.GetComponent<CameraController>().scrollSpeed = cameraScrollSpeed;
-                camera.gameObject.GetComponent<CameraController>().scrollEdge = cameraScrollEdge;
+                _camera.gameObject.AddComponent<CameraController>();
+                _camera.gameObject.GetComponent<CameraController>().scrollSpeed = cameraScrollSpeed;
+                _camera.gameObject.GetComponent<CameraController>().scrollEdge = cameraScrollEdge;
             }
 
             cellGrid = new GameObject("CellGrid");
@@ -576,55 +576,55 @@ namespace Editor
             guiController = new GameObject("GUIController");
 
             directionalLight = new GameObject("DirectionalLight");
-            Light light = directionalLight.AddComponent<Light>();
-            light.type = LightType.Directional;
-            light.transform.Rotate(45f, 0, 0);
+            Light _light = directionalLight.AddComponent<Light>();
+            _light.type = LightType.Directional;
+            _light.transform.Rotate(45f, 0, 0);
 
-            for (int i = 0; i < nHumanPlayer; i++)
+            for (int _i = 0; _i < nHumanPlayer; _i++)
             {
-                GameObject player = new GameObject(string.Format("Player_{0}", players.transform.childCount));
-                player.AddComponent<HumanPlayer>();
-                player.transform.parent = players.transform;
+                GameObject _player = new GameObject(string.Format("Player_{0}", players.transform.childCount));
+                _player.AddComponent<HumanPlayer>();
+                _player.transform.parent = players.transform;
             }
 
-            for (int i = 0; i < nComputerPlayer; i++)
+            for (int _i = 0; _i < nComputerPlayer; _i++)
             {
-                GameObject aiPlayer = new GameObject(string.Format("AI_Player_{0}", players.transform.childCount));
-                aiPlayer.AddComponent<AIPlayer>();
-                aiPlayer.transform.parent = players.transform;
+                GameObject _aiPlayer = new GameObject(string.Format("AI_Player_{0}", players.transform.childCount));
+                _aiPlayer.AddComponent<AIPlayer>();
+                _aiPlayer.transform.parent = players.transform;
             }
 
-            Type selectedGenerator = generators[generatorIndex];
+            Type _selectedGenerator = generators[generatorIndex];
 
-            BattleStateManager cellGridScript = cellGrid.AddComponent<BattleStateManager>();
-            ICellGridGenerator generator = (ICellGridGenerator)Activator.CreateInstance(selectedGenerator);
-            generator.CellsParent = cellGrid.transform;
+            BattleStateManager _cellGridScript = cellGrid.AddComponent<BattleStateManager>();
+            CellGridGenerator _generator = (CellGridGenerator)Activator.CreateInstance(_selectedGenerator);
+            _generator.CellsParent = cellGrid.transform;
 
-            foreach (string fieldName in parameterValues.Keys)
+            foreach (string _fieldName in parameterValues.Keys)
             {
-                FieldInfo prop = generator.GetType().GetField(fieldName);
-                if (null != prop)
+                FieldInfo _prop = _generator.GetType().GetField(_fieldName);
+                if (null != _prop)
                 {
-                    prop.SetValue(generator, parameterValues[fieldName]);
+                    _prop.SetValue(_generator, parameterValues[_fieldName]);
                 }
             }
-            GridInfo gridInfo = generator.GenerateGrid();
+            GridInfo _gridInfo = _generator.GenerateGrid();
 
-            camera.transform.position = gridInfo.Center;
-            camera.transform.position -= new Vector3(0, 0, (gridInfo.Dimensions.x > gridInfo.Dimensions.y ? gridInfo.Dimensions.x : gridInfo.Dimensions.y) * Mathf.Sqrt(3) / 2);
+            _camera.transform.position = _gridInfo.Center;
+            _camera.transform.position -= new Vector3(0, 0, (_gridInfo.Dimensions.x > _gridInfo.Dimensions.y ? _gridInfo.Dimensions.x : _gridInfo.Dimensions.y) * Mathf.Sqrt(3) / 2);
 
-            if (mapType.Equals(MAP_TYPE_3D))
+            if (_mapType.Equals(_mapType3D))
             {
-                Vector3 rotationVector = new Vector3(90f, 0f, 0f);
+                Vector3 _rotationVector = new Vector3(90f, 0f, 0f);
 
-                camera.transform.parent = cellGrid.transform;
-                cellGrid.transform.Rotate(rotationVector);
-                players.transform.Rotate(rotationVector);
-                objects.transform.Rotate(rotationVector);
-                directionalLight.transform.Rotate(rotationVector);
+                _camera.transform.parent = cellGrid.transform;
+                cellGrid.transform.Rotate(_rotationVector);
+                players.transform.Rotate(_rotationVector);
+                objects.transform.Rotate(_rotationVector);
+                directionalLight.transform.Rotate(_rotationVector);
 
-                camera.transform.parent = null;
-                camera.transform.SetAsFirstSibling();
+                _camera.transform.parent = null;
+                _camera.transform.SetAsFirstSibling();
             }
         }
         
@@ -639,7 +639,7 @@ namespace Editor
             players = GameObject.Find("Players");
             objects = GameObject.Find("Objects");
             guiController = GameObject.Find("GUIController");
-            Image background = GameObject.Find("Environment/Canvas/Background").GetComponent<Image>();
+            Image _background = GameObject.Find("Environment/Canvas/Background").GetComponent<Image>();
 
             while (cellGrid.transform.childCount > 0)
             {
@@ -651,43 +651,43 @@ namespace Editor
                 DestroyImmediate(GameObject.Find("Objects").transform.GetChild(0).gameObject);
             }
             
-            background.sprite = null;
+            _background.sprite = null;
             
-            string mapType = mapTypes[mapTypeIndex];
+            string _mapType = mapTypes[mapTypeIndex];
 
-            Type selectedGenerator = generators[generatorIndex];
+            Type _selectedGenerator = generators[generatorIndex];
 
-            ICellGridGenerator generator = (ICellGridGenerator)Activator.CreateInstance(selectedGenerator);
-            generator.CellsParent = cellGrid.transform;
+            CellGridGenerator _generator = (CellGridGenerator)Activator.CreateInstance(_selectedGenerator);
+            _generator.CellsParent = cellGrid.transform;
 
-            foreach (string fieldName in parameterValues.Keys)
+            foreach (string _fieldName in parameterValues.Keys)
             {
-                FieldInfo prop = generator.GetType().GetField(fieldName);
-                if (null != prop)
+                FieldInfo _prop = _generator.GetType().GetField(_fieldName);
+                if (null != _prop)
                 {
-                    prop.SetValue(generator, parameterValues[fieldName]);
+                    _prop.SetValue(_generator, parameterValues[_fieldName]);
                 }
             }
-            GridInfo gridInfo = generator.GenerateGrid();
+            GridInfo _gridInfo = _generator.GenerateGrid();
             
-            Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-            camera.transform.position = gridInfo.Center;
-            camera.transform.position -= new Vector3(0, 0, (gridInfo.Dimensions.x > gridInfo.Dimensions.y ? gridInfo.Dimensions.x : gridInfo.Dimensions.y) * Mathf.Sqrt(3) / 2);
-            camera.orthographicSize = camera.transform.position.x + 1;
-            background.transform.position = gridInfo.Center;
+            Camera _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            _camera.transform.position = _gridInfo.Center;
+            _camera.transform.position -= new Vector3(0, 0, (_gridInfo.Dimensions.x > _gridInfo.Dimensions.y ? _gridInfo.Dimensions.x : _gridInfo.Dimensions.y) * Mathf.Sqrt(3) / 2);
+            _camera.orthographicSize = _camera.transform.position.x + 1;
+            _background.transform.position = _gridInfo.Center;
 
-            if (mapType.Equals(MAP_TYPE_3D))
+            if (_mapType.Equals(_mapType3D))
             {
-                Vector3 rotationVector = new Vector3(90f, 0f, 0f);
+                Vector3 _rotationVector = new Vector3(90f, 0f, 0f);
 
-                camera.transform.parent = cellGrid.transform;
-                cellGrid.transform.Rotate(rotationVector);
-                players.transform.Rotate(rotationVector);
-                objects.transform.Rotate(rotationVector);
-                directionalLight.transform.Rotate(rotationVector);
+                _camera.transform.parent = cellGrid.transform;
+                cellGrid.transform.Rotate(_rotationVector);
+                players.transform.Rotate(_rotationVector);
+                objects.transform.Rotate(_rotationVector);
+                directionalLight.transform.Rotate(_rotationVector);
 
-                camera.transform.parent = null;
-                camera.transform.SetAsFirstSibling();
+                _camera.transform.parent = null;
+                _camera.transform.SetAsFirstSibling();
             }
         }
 
@@ -727,11 +727,11 @@ namespace Editor
                         lastPaintedHash = -1;
                         if (PrefabUtility.GetPrefabInstanceStatus(Selection.activeGameObject) == PrefabInstanceStatus.Connected)
                         {
-                            cellType = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject).GetComponent<Cell>().CellSO;
+                            cellType = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject).GetComponent<Cell>().CellSo;
                         }
                         else
                         {
-                            cellType = Selection.activeGameObject.GetComponent<Cell>().CellSO;
+                            cellType = Selection.activeGameObject.GetComponent<Cell>().CellSo;
                         }
                         Repaint();
                     }
@@ -763,9 +763,9 @@ namespace Editor
         internal class BoolWrapper
         {
             public bool value;
-            public BoolWrapper(bool value)
+            public BoolWrapper(bool _value)
             {
-                this.value = value;
+                this.value = _value;
             }
         }
     }

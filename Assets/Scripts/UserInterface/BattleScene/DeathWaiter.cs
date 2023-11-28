@@ -2,37 +2,42 @@
 using StateMachine;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UserInterface.BattleScene
 {
     public class DeathWaiter : MonoBehaviour    
     {
-        [SerializeField] private BattleInventory_UI Inventory;
-        [SerializeField] private BattleRelicChoice_UI Relic;
-        [SerializeField] private GameObject CloseInventoryBtn;
-        [SerializeField] private GameObject CloseRelicBtn;
+        [FormerlySerializedAs("Inventory")]
+        [SerializeField] private BattleInventoryUI inventory;
+        [FormerlySerializedAs("Relic")]
+        [SerializeField] private BattleRelicChoiceUI relic;
+        [FormerlySerializedAs("CloseInventoryBtn")]
+        [SerializeField] private GameObject closeInventoryBtn;
+        [FormerlySerializedAs("CloseRelicBtn")]
+        [SerializeField] private GameObject closeRelicBtn;
 
-        private bool RelicLooted = false;
+        private bool relicLooted = false;
         private void Update()
         {
             if (BattleStateManager.instance.DeadThisTurn.Count == 0 
-                || Inventory.gameObject.activeSelf 
-                || Relic.gameObject.activeSelf) 
+                || inventory.gameObject.activeSelf 
+                || relic.gameObject.activeSelf) 
                 return;
 
-            if (!RelicLooted 
+            if (!relicLooted 
                 && BattleStateManager.instance.DeadThisTurn[0].Type == EMonster.Boss)
             {
-                CloseRelicBtn.SetActive(true);
-                Relic.gameObject.SetActive(true);
-                Relic.ShowOnKill(BattleStateManager.instance.DeadThisTurn[0]);
-                RelicLooted = true;
+                closeRelicBtn.SetActive(true);
+                relic.gameObject.SetActive(true);
+                relic.ShowOnKill(BattleStateManager.instance.DeadThisTurn[0]);
+                relicLooted = true;
                 return;
             }
                 
-            CloseInventoryBtn.SetActive(true);
-            Inventory.gameObject.SetActive(true);
-            Inventory.ShowOnKill(BattleStateManager.instance.DeadThisTurn[0]);
+            closeInventoryBtn.SetActive(true);
+            inventory.gameObject.SetActive(true);
+            inventory.ShowOnKill(BattleStateManager.instance.DeadThisTurn[0]);
         }
     }
 }

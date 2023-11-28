@@ -7,9 +7,9 @@ namespace Relics.ScriptableObject_RelicEffect
     public class RelicEffectRangeType : RelicEffect
     {
         
-        public override void ChangeSkill(Skill _skill, RelicSO _relic)
+        public override void ChangeSkill(Skill _skill, RelicSo _relic)
         {
-            _skill.ChangeRangeType(_relic.BattleStats.gridRange.RangeType);
+            _skill.ChangeRangeType(_relic.BattleStats.gridRange.rangeType);
         }
     }
 }

@@ -15,22 +15,22 @@ namespace UserInterface.ToolTips
 
         protected override void ShowToolTip()
         {
-            for (int i = 0; i < Unit.Inventory.gears.Count; i++)
+            for (int _i = 0; _i < unit.inventory.gears.Count; _i++)
             {
-                GameObject pref = Instantiate(gearPref.gameObject, inventory[i].transform);
-                pref.GetComponent<GearInfo>().Gear = Unit.Inventory.gears[i];
-                pref.GetComponent<GearInfo>().DisplayIcon();
-                inventory[i].UpdateBackgroundState();
+                GameObject _pref = Instantiate(gearPref.gameObject, inventory[_i].transform);
+                _pref.GetComponent<GearInfo>().Gear = unit.inventory.gears[_i];
+                _pref.GetComponent<GearInfo>().DisplayIcon();
+                inventory[_i].UpdateBackgroundState();
             }
 
-            foreach (RelicSO _relicSO in Unit.Relic.RelicEffects)
+            foreach (RelicSo _relicSo in unit.Relic.RelicEffects)
             {
-                GameObject pref = Instantiate(relicPref.gameObject, relicHolder);
-                pref.GetComponent<RelicInfo>().CreateRelic(_relicSO);
-                pref.GetComponent<RelicInfo>().DisplayIcon();
+                GameObject _pref = Instantiate(relicPref.gameObject, relicHolder);
+                _pref.GetComponent<RelicInfo>().CreateRelic(_relicSo);
+                _pref.GetComponent<RelicInfo>().DisplayIcon();
             }
             base.ShowToolTip();
-            StatsBlock.SetActive(true);
+            statsBlock.SetActive(true);
         }
 
         public override void HideTooltip()

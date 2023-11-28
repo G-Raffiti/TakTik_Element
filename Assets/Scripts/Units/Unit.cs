@@ -19,6 +19,7 @@ using Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UserInterface;
 
 namespace Units
@@ -27,7 +28,7 @@ namespace Units
     /// class <c>Unit</c> represents all units in the game.
     /// </summary>
     [ExecuteInEditMode]
-    public abstract class Unit : IMovable, IInfo
+    public abstract class Unit : Movable, IInfo
     {
         ////////////////////// Unity References ////////////////////////////////////////////////////////////////////////
         
@@ -38,8 +39,9 @@ namespace Units
         public abstract Sprite UnitSprite { get; }
         public override SpriteRenderer MovableSprite => unitSpriteRenderer;
         private LifeBar lifeBar;
-        [HideInInspector] public string UnitName;
-        public override string getName => UnitName;
+        [FormerlySerializedAs("UnitName")]
+        [HideInInspector] public string unitName;
+        public override string GetName => unitName;
         
         
         //////////////////// Events ////////////////////////////////////////////////////////////////////////////////////
@@ -52,8 +54,9 @@ namespace Units
         /// </summary>
         public event EventHandler<DeathEventArgs> UnitDestroyed;
         
+        [FormerlySerializedAs("onUnitTooltip_ON")]
         [Header("Events Sender")]
-        [SerializeField] private UnitEvent onUnitTooltip_ON;
+        [SerializeField] private UnitEvent onUnitTooltipOn;
         [SerializeField] private UnitEvent onUnitMoved;
         
         
@@ -63,13 +66,15 @@ namespace Units
         /// <summary>
         /// it represent the initiative of the unit, this point are used to take a round
         /// </summary>
+        [FormerlySerializedAs("TurnPoint")]
         [Header("Unit's Stats")]
-        public int TurnPoint;
+        public int turnPoint;
         
         /// <summary>
         /// Actual Stats of the Unit, Can be modified from all Sources,
         /// </summary>
-        public BattleStats BattleStats;
+        [FormerlySerializedAs("BattleStats")]
+        public BattleStats battleStats;
         
         /// <summary>
         /// The Stats of the Unit before any alteration. 
@@ -101,7 +106,7 @@ namespace Units
         /// A list of buffs that are applied to the unit.
         /// </summary>
         protected List<Buff> buffs = new List<Buff>();
-        public bool isDying { get; set; }
+        public bool IsDying { get; set; }
         public EElement Main { get; private set; }
         public EElement Weakness { get; private set; }
         public EElement Resist { get; private set; }
@@ -130,7 +135,7 @@ namespace Units
         }
         public virtual void OnRightClick()
         {
-            onTooltip_ON.Raise(this);
+            OnTooltipOn.Raise(this);
         }
 
 
@@ -141,54 +146,54 @@ namespace Units
         /// <param name="_buff"></param>
         public void ApplyBuff(Buff _buff)
         {
-            bool applied = false;
-            Buff buff = new Buff(_buff);
-            buff.onFloor = false;
+            bool _applied = false;
+            Buff _newBuff = new Buff(_buff);
+            _newBuff.onFloor = false;
             
-            for (int i = 0; i < buffs.Count; i++)
+            for (int _i = 0; _i < buffs.Count; _i++)
             {
-                if (buffs[i].Effect == buff.Effect)
+                if (buffs[_i].Effect == _newBuff.Effect)
                 {
-                    buffs[i].Undo(this);
-                    buffs[i] += buff;
-                    buffs[i].Apply(this);
-                    applied = true;
+                    buffs[_i].Undo(this);
+                    buffs[_i] += _newBuff;
+                    buffs[_i].Apply(this);
+                    _applied = true;
                     break;
                 }
             }
 
-            if (!applied)
+            if (!_applied)
             {
-                buffs.Add(buff);
-                _buff.Apply(this);
+                buffs.Add(_newBuff);
+                _newBuff.Apply(this);
             }
         }
 
-        public void RemoveBuff(StatusSO effect)
+        public void RemoveBuff(StatusSo _effect)
         {
-            if (Buffs.Any(b => b.Effect == effect))
-                Buffs.Remove(Buffs.Find(b => b.Effect == effect));
+            if (Buffs.Any(_b => _b.Effect == _effect))
+                Buffs.Remove(Buffs.Find(_b => _b.Effect == _effect));
         }
         
         
         /////////////////////// I Movable Overrides ////////////////////////////////////////////////////////////////////
         #region IMovable
-        public override List<Cell> Move(Cell destinationCell, List<Cell> path)
+        public override List<Cell> Move(Cell _destinationCell, List<Cell> _completePath)
         {
-            List<Cell> _path = Movement.Move(this, destinationCell, path);
-            int cost = _path.Count;
+            List<Cell> _path = Movement.Move(this, _destinationCell, _completePath);
+            int _cost = _path.Count;
             if (BattleStateManager.instance.PlayingUnit == this)
-                BattleStats.MP -= cost;
+                battleStats.mp -= _cost;
             return _path;
         }
 
         public override IEnumerator Fall(Cell _destination)
         {
-            Inventory = new Inventory();
+            inventory = new Inventory();
             while (IsMoving)
                 yield return null;
             _destination.FallIn();
-            if (isDying) yield break;
+            if (IsDying) yield break;
             StartCoroutine(OnDestroyed());
         }
 
@@ -197,13 +202,13 @@ namespace Units
         /// </summary>
         /// <param name="path">List of Cells in Order of the path to take</param>
         /// <returns></returns>
-        public override IEnumerator MovementAnimation(List<Cell> path)
+        public override IEnumerator MovementAnimation(List<Cell> _path)
         {
             lifeBar.HideForced();
             CellState _state = Cell.State;
-            yield return base.MovementAnimation(path);
+            yield return base.MovementAnimation(_path);
             MarkBack(_state);
-            OnMoveFinished(path.Count);
+            OnMoveFinished(_path.Count);
         }
         
         /// <summary>
@@ -232,11 +237,11 @@ namespace Units
         /// <summary>
         /// Method returns all cells that the unit is capable of moving to.
         /// </summary>
-        public HashSet<Cell> GetAvailableDestinations(List<Cell> cells)
+        public HashSet<Cell> GetAvailableDestinations(List<Cell> _cells)
         {
             cachedPaths = new Dictionary<Cell, List<Cell>>();
 
-            Dictionary<Cell, List<Cell>> _paths = CachePaths(cells);
+            Dictionary<Cell, List<Cell>> _paths = CachePaths(_cells);
             foreach (Cell _key in _paths.Keys)
             {
                 if (!IsCellMovableTo(_key))
@@ -245,8 +250,8 @@ namespace Units
                 }
                 List<Cell> _path = _paths[_key];
 
-                float _pathCost = _path.Sum(c => c.MovementCost);
-                if (_pathCost <= BattleStats.MP)
+                float _pathCost = _path.Sum(_c => _c.movementCost);
+                if (_pathCost <= battleStats.mp)
                 {
                     cachedPaths.Add(_key, _path);
                 }
@@ -254,53 +259,53 @@ namespace Units
             return new HashSet<Cell>(cachedPaths.Keys);
         }
 
-        private Dictionary<Cell, List<Cell>> CachePaths(List<Cell> cells)
+        private Dictionary<Cell, List<Cell>> CachePaths(List<Cell> _cells)
         {
-            Dictionary<Cell, Dictionary<Cell, float>> _edges = GetGraphEdges(cells);
+            Dictionary<Cell, Dictionary<Cell, float>> _edges = GetGraphEdges(_cells);
             Dictionary<Cell, List<Cell>> _paths = pathfinder.FindAllPaths(_edges, Cell);
             return _paths;
         }
 
-        public List<Cell> FindPath(List<Cell> cells, Cell destination)
+        public List<Cell> FindPath(List<Cell> _cells, Cell _destination)
         {
-            if (destination == Cell)
+            if (_destination == Cell)
                 return new List<Cell>() {Cell};
-            if (cachedPaths != null && cachedPaths.ContainsKey(destination))
+            if (cachedPaths != null && cachedPaths.ContainsKey(_destination))
             {
-                return cachedPaths[destination];
+                return cachedPaths[_destination];
             }
             else
             {
-                return fallbackPathfinder.FindPath(GetGraphEdges(cells), Cell, destination);
+                return fallbackPathfinder.FindPath(GetGraphEdges(_cells), Cell, _destination);
             }
         }
         
-        public List<Cell> FindPathFrom(List<Cell> cells, Cell origin, Cell destination)
+        public List<Cell> FindPathFrom(List<Cell> _cells, Cell _origin, Cell _destination)
         {
-            if (cachedPaths != null && cachedPaths.ContainsKey(destination))
+            if (cachedPaths != null && cachedPaths.ContainsKey(_destination))
             {
-                return cachedPaths[destination];
+                return cachedPaths[_destination];
             }
             else
             {
-                return fallbackPathfinder.FindPath(GetGraphEdges(cells), origin, destination);
+                return fallbackPathfinder.FindPath(GetGraphEdges(_cells), _origin, _destination);
             }
         }
         
         /// <summary>
         /// Method returns graph representation of cell grid for pathfinding.
         /// </summary>
-        private Dictionary<Cell, Dictionary<Cell, float>> GetGraphEdges(List<Cell> cells)
+        private Dictionary<Cell, Dictionary<Cell, float>> GetGraphEdges(List<Cell> _cells)
         {
             Dictionary<Cell, Dictionary<Cell, float>> _ret = new Dictionary<Cell, Dictionary<Cell, float>>();
-            foreach (Cell _cell in cells)
+            foreach (Cell _cell in _cells)
             {
                 if (IsCellTraversable(_cell) || _cell.Equals(Cell))
                 {
                     _ret[_cell] = new Dictionary<Cell, float>();
-                    foreach (Cell _neighbour in _cell.GetNeighbours(cells).FindAll(IsCellTraversable))
+                    foreach (Cell _neighbour in _cell.GetNeighbours(_cells).FindAll(IsCellTraversable))
                     {
-                        _ret[_cell][_neighbour] = _neighbour.MovementCost;
+                        _ret[_cell][_neighbour] = _neighbour.movementCost;
                     }
                 }
             }
@@ -317,13 +322,13 @@ namespace Units
         ///////////////////// Fight / Damage Handler / Defence /////////////////////////////////////////////////////////
         # region Fight & Damage Handler
 
-        private List<string> DamageReccorded = new List<string>();
+        private List<string> damageReccorded = new List<string>();
 
-        public float DamageModifier(Element dmgElement)
+        public float DamageModifier(Element _dmgElement)
         {
-            if (dmgElement.Type == EElement.None) return 1;
-            if (dmgElement.Type == Main) return 1;
-            if (dmgElement.Type == Resist) return 0.75f;
+            if (_dmgElement.Type == EElement.None) return 1;
+            if (_dmgElement.Type == Main) return 1;
+            if (_dmgElement.Type == Resist) return 0.75f;
             return 1.5f;
         }
         
@@ -333,51 +338,51 @@ namespace Units
         /// <param name="aggressor">Unit that performed the attack</param>
         /// <param name="damage">Amount of damge that the attack caused</param>
         /// <param name="element">Element Type of the attack</param>
-        public void DefendHandler(Unit aggressor, float damage, Element element)
+        public void DefendHandler(Unit _aggressor, float _damage, Element _element)
         {
-            if (isDying) return;
-            if (BattleStats.HP <= 0)
+            if (IsDying) return;
+            if (battleStats.hp <= 0)
             {
                 StartCoroutine(OnDestroyed());
                 return;
             }
 
             int _damageTaken = 0;
-            if (damage > 0)
-                _damageTaken = DamageTaken(damage, element);
-            else _damageTaken = BattleStats.GetHealTaken(damage, element.Type);
+            if (_damage > 0)
+                _damageTaken = DamageTaken(_damage, _element);
+            else _damageTaken = battleStats.GetHealTaken(_damage, _element.Type);
 
-            Debug.Log($"Damage : {aggressor.ColouredName()} did {_damageTaken} {element.Name} damage to {ColouredName()} on {Cell.OffsetCoord}");
+            Debug.Log($"Damage : {_aggressor.ColouredName()} did {_damageTaken} {_element.Name} damage to {ColouredName()} on {Cell.OffsetCoord}");
 
-            int ShieldDamage = 0;
+            int _shieldDamage = 0;
             if (_damageTaken > 0)
             {
-                if (BattleStats.Shield > 0)
+                if (battleStats.shield > 0)
                 {
-                    if (BattleStats.Shield < _damageTaken)
+                    if (battleStats.shield < _damageTaken)
                     {
-                        ShieldDamage = BattleStats.Shield;
-                        _damageTaken -= BattleStats.Shield;
-                        BattleStats.Shield = 0;
+                        _shieldDamage = battleStats.shield;
+                        _damageTaken -= battleStats.shield;
+                        battleStats.shield = 0;
                     }
                     else
                     {
-                        ShieldDamage = _damageTaken;
-                        BattleStats.Shield -= _damageTaken;
+                        _shieldDamage = _damageTaken;
+                        battleStats.shield -= _damageTaken;
                         _damageTaken = 0;
                     }
                 }
             }
-            RecordHit(_damageTaken, ShieldDamage, element);
+            RecordHit(_damageTaken, _shieldDamage, _element);
 
-            BattleStats.HP -= _damageTaken;
-            if (BattleStats.HP > total.HP) 
-                BattleStats.HP = total.HP;
+            battleStats.hp -= _damageTaken;
+            if (battleStats.hp > total.hp) 
+                battleStats.hp = total.hp;
 
-            UnitAttacked?.Invoke(this, new AttackEventArgs(aggressor, this, _damageTaken));
-            if (BattleStats.HP > 0) return;
+            UnitAttacked?.Invoke(this, new AttackEventArgs(_aggressor, this, _damageTaken));
+            if (battleStats.hp > 0) return;
             
-            if (isDying) return;
+            if (IsDying) return;
             StartCoroutine(OnDestroyed());
         }
 
@@ -387,9 +392,9 @@ namespace Units
         /// <param name="damage"></param>
         /// <param name="element"></param>
         /// <returns></returns>
-        public int DamageTaken(float damage, Element element)
+        public int DamageTaken(float _damage, Element _element)
         {
-            return (int) (damage * DamageModifier(element));
+            return (int) (_damage * DamageModifier(_element));
         }
         
         /// <summary>
@@ -397,14 +402,14 @@ namespace Units
         /// </summary>
         public override IEnumerator OnDestroyed()
         {
-            isDying = true;
-            UnitAttacked?.Invoke(this, new AttackEventArgs(this, this, BattleStats.HP));
-            BattleStats.HP = 0;
+            IsDying = true;
+            UnitAttacked?.Invoke(this, new AttackEventArgs(this, this, battleStats.hp));
+            battleStats.hp = 0;
             Cell.FreeTheCell();
             MarkAsDestroyed();
             yield return new WaitUntil(() => LeanTween.tweensRunning <= 0);
             UnitDestroyed?.Invoke(this, new DeathEventArgs(this));
-            isDying = false;
+            IsDying = false;
             yield return new WaitForSeconds(0.1f);
             if (Cell != null)
             {
@@ -420,7 +425,7 @@ namespace Units
         private void Update()
         {
             if (isPlayingAnim) return;
-            if (DamageReccorded.Count > 0)
+            if (damageReccorded.Count > 0)
             {
                 StartCoroutine(MarkAsTakingDamage());
             }
@@ -430,12 +435,12 @@ namespace Units
         private IEnumerator MarkAsTakingDamage()
         {
             isPlayingAnim = true;
-            info.text = DamageReccorded[0];
+            info.text = damageReccorded[0];
             LeanTween.alphaCanvas(info.GetComponent<CanvasGroup>(), 1, 0.3f);
             LeanTween.moveLocal(info.gameObject, new Vector3(0, 50), 1);
             LeanTween.alphaCanvas(info.GetComponent<CanvasGroup>(), 0, 0.1f).setDelay(0.9f);
             LeanTween.moveLocal(info.gameObject, Vector3.zero, 0).setDelay(1f);
-            DamageReccorded.RemoveAt(0);
+            damageReccorded.RemoveAt(0);
             yield return new WaitUntil(() => LeanTween.tweensRunning <= 0);
             isPlayingAnim = false;
         }
@@ -455,9 +460,9 @@ namespace Units
         /// <summary>
         /// Method to set to the Marking
         /// </summary>
-        public void MarkBack(CellState state)
+        public void MarkBack(CellState _state)
         {
-            ((TileIsometric)Cell).MarkAs(state);
+            ((TileIsometric)Cell).MarkAs(_state);
         }
         
         /// <summary>
@@ -479,24 +484,24 @@ namespace Units
         /// <summary>
         /// Method to Show to the player what happened and how much damage was done
         /// </summary>
-        private void RecordHit(int HPDamage, int ShieldDamage, Element element)
+        private void RecordHit(int _hpDamage, int _shieldDamage, Element _element)
         {
-            if (HPDamage == 0 && ShieldDamage == 0) return;
-            string _hexColor = ColorUtility.ToHtmlStringRGB(element.TextColour);
-            string ret = "";
-            if (HPDamage == 0){}
-            else if (HPDamage > 0)
-                ret += $"  - <color=#{_hexColor}>{HPDamage}</color> <sprite name=HP>";
+            if (_hpDamage == 0 && _shieldDamage == 0) return;
+            string _hexColor = ColorUtility.ToHtmlStringRGB(_element.TextColour);
+            string _ret = "";
+            if (_hpDamage == 0){}
+            else if (_hpDamage > 0)
+                _ret += $"  - <color=#{_hexColor}>{_hpDamage}</color> <sprite name=HP>";
             else
-                ret += $"  + {-HPDamage} <sprite name=HP>";
+                _ret += $"  + {-_hpDamage} <sprite name=HP>";
             
-            if (ShieldDamage == 0) {}
-            else if (ShieldDamage > 0)
-                ret += $"  - <color=#{_hexColor}>{ShieldDamage}</color> <sprite name=Shield>";
+            if (_shieldDamage == 0) {}
+            else if (_shieldDamage > 0)
+                _ret += $"  - <color=#{_hexColor}>{_shieldDamage}</color> <sprite name=Shield>";
             else
-                ret += $"  + {-ShieldDamage} <sprite name=Shield>";
+                _ret += $"  + {-_shieldDamage} <sprite name=Shield>";
 
-            DamageReccorded.Add(ret);
+            damageReccorded.Add(_ret);
         }
 
         /// <summary>
@@ -505,7 +510,7 @@ namespace Units
         /// <param name="aggressor">
         /// Unit that is attacking.
         /// </param>
-        public void MarkAsDefending(Unit aggressor)
+        public void MarkAsDefending(Unit _aggressor)
         {
         }
 
@@ -528,7 +533,7 @@ namespace Units
         {
             buffs = new List<Buff>();
 
-            Inventory ??= new Inventory();
+            inventory ??= new Inventory();
         }
 
         /// <summary>
@@ -536,8 +541,8 @@ namespace Units
         /// </summary>
         public virtual void StartTurn()
         {
-            BattleStats.MP = total.MP;
-            BattleStats.AP = total.AP;
+            battleStats.mp = total.mp;
+            battleStats.ap = total.ap;
         }
         
         /// <summary>
@@ -553,12 +558,12 @@ namespace Units
         /// </summary>
         public void OnTurnEnds()
         {
-            buffs.ForEach(b =>
+            buffs.ForEach(_b =>
             {
-                b.OnEndTurn(this);
+                _b.OnEndTurn(this);
             });
             
-            List<Buff> _buffs = buffs.Where(_buff => _buff.Duration <= 0).ToList();
+            List<Buff> _buffs = buffs.Where(_buff => _buff.duration <= 0).ToList();
             _buffs.ForEach(_buff =>
             {
                 _buff.Undo(this);
@@ -578,22 +583,22 @@ namespace Units
         # region Stats
         public virtual void UpdateStats()
         {
-            buffs.ForEach(buff => buff.Undo(this));
+            buffs.ForEach(_buff => _buff.Undo(this));
             
-            BattleStats newTotal = baseStats + Inventory.GearStats();
-            BattleStats diff = newTotal - Total;
-            BattleStats actual = new BattleStats(newTotal)
+            BattleStats _newTotal = baseStats + inventory.GearStats();
+            BattleStats _diff = _newTotal - Total;
+            BattleStats _actual = new BattleStats(_newTotal)
             {
-                Shield = BattleStats.Shield + Math.Max(0, diff.Shield),
-                HP = BattleStats.HP + Math.Max(0, diff.HP),
-                AP = BattleStats.AP + Math.Max(0, diff.AP),
-                MP = BattleStats.MP + Math.Max(0, diff.MP),
+                shield = battleStats.shield + Math.Max(0, _diff.shield),
+                hp = battleStats.hp + Math.Max(0, _diff.hp),
+                ap = battleStats.ap + Math.Max(0, _diff.ap),
+                mp = battleStats.mp + Math.Max(0, _diff.mp),
             };
 
-            BattleStats = new BattleStats(actual);
-            total = new BattleStats(newTotal);
+            battleStats = new BattleStats(_actual);
+            total = new BattleStats(_newTotal);
             
-            buffs.ForEach(buff => buff.Apply(this));
+            buffs.ForEach(_buff => _buff.Apply(this));
             MainElement();
         }
         
@@ -603,13 +608,13 @@ namespace Units
         /// <returns></returns>
         public void MainElement()
         {
-            Dictionary<EElement, float> Elements = new Dictionary<EElement, float>()
+            Dictionary<EElement, float> _elements = new Dictionary<EElement, float>()
             {
-                {EElement.Fire, BattleStats.Affinity.Fire},
-                {EElement.Water, BattleStats.Affinity.Water},
-                {EElement.Nature, BattleStats.Affinity.Nature},
+                {EElement.Fire, battleStats.affinity.fire},
+                {EElement.Water, battleStats.affinity.water},
+                {EElement.Nature, battleStats.affinity.nature},
             };
-            Main = Elements.GetKeyOfMaxValue();
+            Main = _elements.GetKeyOfMaxValue();
 
             switch (Main)
             {
@@ -638,21 +643,21 @@ namespace Units
 
         public string GetInfoLeft()
         {
-            string str = "";
-            str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)Total.AP}</color>    ";
-            str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.MP)}>{(int)Total.MP}</color> \n";
-            str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.HP)}>{BattleStats.HP} </color>/ {Total.HP}    ";
-            str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{BattleStats.Shield}</color> \n";
-            str += $"<sprite name=Fire> <color={colorSet.HexColor(EAffix.Fire)}>{BattleStats.GetPower(EElement.Fire)}</color>  <sprite name=Water> <color={colorSet.HexColor(EAffix.Water)}>{BattleStats.GetPower(EElement.Water)}</color>  <sprite name=Nature> <color={colorSet.HexColor(EAffix.Nature)}>{BattleStats.GetPower(EElement.Nature)}</color> \n";
-            str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{BattleStats.Speed} </color>  ";
-            str += $"<sprite name=Focus> <color={colorSet.HexColor(EAffix.Focus)}>{BattleStats.Focus} </color> \n";
+            string _str = "";
+            _str += $"<sprite name=AP> <color={colorSet.HexColor(EAffix.AP)}>{(int)Total.ap}</color>    ";
+            _str += $"<sprite name=MP> <color={colorSet.HexColor(EAffix.Mp)}>{(int)Total.mp}</color> \n";
+            _str += $"<sprite name=HP> <color={colorSet.HexColor(EAffix.Hp)}>{battleStats.hp} </color>/ {Total.hp}    ";
+            _str += $"<sprite name=Shield> <color={colorSet.HexColor(EAffix.Shield)}>{battleStats.shield}</color> \n";
+            _str += $"<sprite name=Fire> <color={colorSet.HexColor(EAffix.Fire)}>{battleStats.GetPower(EElement.Fire)}</color>  <sprite name=Water> <color={colorSet.HexColor(EAffix.Water)}>{battleStats.GetPower(EElement.Water)}</color>  <sprite name=Nature> <color={colorSet.HexColor(EAffix.Nature)}>{battleStats.GetPower(EElement.Nature)}</color> \n";
+            _str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{battleStats.speed} </color>  ";
+            _str += $"<sprite name=Focus> <color={colorSet.HexColor(EAffix.Focus)}>{battleStats.focus} </color> \n";
 
-            return str;
+            return _str;
         }
 
         public string GetInfoRight()
         {
-            return BattleStats.Range.toStringForUnit();
+            return battleStats.gridRange.ToStringForUnit();
         }
 
         public string GetInfoDown()
@@ -667,12 +672,12 @@ namespace Units
 
         public string ColouredName()
         {
-            string hexColour;
-            if (playerType == EPlayerType.HUMAN)
-                hexColour = colorSet.HexColor(EColor.ally);
+            string _hexColour;
+            if (playerType == EPlayerType.Human)
+                _hexColour = colorSet.HexColor(EColor.Ally);
             else 
-                hexColour = colorSet.HexColor(EColor.enemy);
-            return $"<color={hexColour}>{UnitName}</color>";
+                _hexColour = colorSet.HexColor(EColor.Enemy);
+            return $"<color={_hexColour}>{unitName}</color>";
         }
 
         public Sprite GetIcon()
@@ -682,10 +687,10 @@ namespace Units
 
         public Color GetTeamColor()
         {
-            return playerType == EPlayerType.HUMAN ? colorSet.GetColors()[EColor.ally] : colorSet.GetColors()[EColor.enemy];
+            return playerType == EPlayerType.Human ? colorSet.GetColors()[EColor.Ally] : colorSet.GetColors()[EColor.Enemy];
         }
 
-        public abstract UnitEvent onTooltip_ON { get; }
+        public abstract UnitEvent OnTooltipOn { get; }
     }
 
     public class AttackEventArgs : EventArgs
@@ -695,12 +700,12 @@ namespace Units
 
         public int Damage;
 
-        public AttackEventArgs(Unit attacker, Unit defender, int damage)
+        public AttackEventArgs(Unit _attacker, Unit _defender, int _damage)
         {
-            Attacker = attacker;
-            Defender = defender;
+            Attacker = _attacker;
+            Defender = _defender;
 
-            Damage = damage;
+            Damage = _damage;
         }
     }
 

@@ -36,12 +36,12 @@ namespace Plugins.MHLab.AutoSaver.Editor
         /// </summary>
         private static void SaveScene()
         {
-            Scene activeScene = EditorSceneManager.GetActiveScene();
-            if (activeScene.isDirty)
+            Scene _activeScene = EditorSceneManager.GetActiveScene();
+            if (_activeScene.isDirty)
             {
-                EditorSceneManager.SaveScene(activeScene);
+                EditorSceneManager.SaveScene(_activeScene);
                 if (AutosaveAssets) AssetDatabase.SaveAssets();
-                if (IsDebugEnabled) Debug.Log("AutoSaver: " + activeScene.name + " saved successfully!");
+                if (IsDebugEnabled) Debug.Log("AutoSaver: " + _activeScene.name + " saved successfully!");
             }
         }
 
@@ -80,7 +80,7 @@ namespace Plugins.MHLab.AutoSaver.Editor
             }
         }
 
-        private static void OnEnterInPlayMode()
+        private static void OnEnterInPlayMode(PlayModeStateChange _playModeStateChange)
         {
             if (SaveOnPlay && !EditorApplication.isPlaying && EditorApplication.isPlayingOrWillChangePlaymode)
                 SaveScene();
@@ -105,7 +105,7 @@ namespace Plugins.MHLab.AutoSaver.Editor
         {
             _lastAutosaveTime = DateTime.Now;
             EditorApplication.update += OnUpdate;
-            EditorApplication.playmodeStateChanged += OnEnterInPlayMode;
+            EditorApplication.playModeStateChanged += OnEnterInPlayMode;
             IsEnabled = true;
             if (IsDebugEnabled) Debug.Log("AutoSaver: ON");
         }
@@ -116,7 +116,7 @@ namespace Plugins.MHLab.AutoSaver.Editor
         public static void DeactivateAutosaver()
         {
             EditorApplication.update -= OnUpdate;
-            EditorApplication.playmodeStateChanged -= OnEnterInPlayMode;
+            EditorApplication.playModeStateChanged -= OnEnterInPlayMode;
             IsEnabled = false;
             if (IsDebugEnabled) Debug.Log("AutoSaver: OFF");
         }

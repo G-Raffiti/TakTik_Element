@@ -8,20 +8,26 @@ using StateMachine;
 using TMPro;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.BattleScene
 {
-    public class BattleInventory_UI : MonoBehaviour
+    public class BattleInventoryUI : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI HeroName;
+        [FormerlySerializedAs("HeroName")]
+        [SerializeField] private TextMeshProUGUI heroName;
         [SerializeField] private Image heroSprite;
-        [SerializeField] private TextMeshProUGUI MonsterName;
+        [FormerlySerializedAs("MonsterName")]
+        [SerializeField] private TextMeshProUGUI monsterName;
         [SerializeField] private Image monsterSprite;
         [SerializeField] private GameObject prefabGear;
-        [SerializeField] private List<SlotDragAndDrop> HeroSlots;
-        [SerializeField] private List<SlotDragAndDrop> MonsterSlots;
-        [SerializeField] private GameObject Blur;
+        [FormerlySerializedAs("HeroSlots")]
+        [SerializeField] private List<SlotDragAndDrop> heroSlots;
+        [FormerlySerializedAs("MonsterSlots")]
+        [SerializeField] private List<SlotDragAndDrop> monsterSlots;
+        [FormerlySerializedAs("Blur")]
+        [SerializeField] private GameObject blur;
         private Inventory heroInventory;
         private Inventory monsterInventory;
 
@@ -34,30 +40,30 @@ namespace UserInterface.BattleScene
 
         private void OnEnable()
         {
-            Blur.SetActive(true);
+            blur.SetActive(true);
         }
 
         private void OnDisable()
         {
-            Blur.SetActive(false);
+            blur.SetActive(false);
         }
 
-        public void OpenBox(GridObject lootBox)
+        public void OpenBox(GridObject _lootBox)
         {
             onUIEnable.Raise();
             
-            HeroSlots.ForEach(cell => cell.RemoveItem());
-            MonsterSlots.ForEach(cell => cell.RemoveItem());
+            heroSlots.ForEach(_cell => _cell.RemoveItem());
+            monsterSlots.ForEach(_cell => _cell.RemoveItem());
 
-            HeroName.text = BattleStateManager.instance.PlayingUnit.UnitName;
+            heroName.text = BattleStateManager.instance.PlayingUnit.unitName;
             heroSprite.sprite = BattleStateManager.instance.PlayingUnit.GetIcon();
-            MonsterName.text = lootBox.GridObjectSO.Name;
-            monsterSprite.sprite = lootBox.GridObjectSO.GetIcon();
+            monsterName.text = _lootBox.GridObjectSo.Name;
+            monsterSprite.sprite = _lootBox.GridObjectSo.GetIcon();
 
-            monsterInventory = lootBox.Inventory;
-            heroInventory = BattleStateManager.instance.PlayingUnit.Inventory;
+            monsterInventory = _lootBox.inventory;
+            heroInventory = BattleStateManager.instance.PlayingUnit.inventory;
 
-            showGear();
+            ShowGear();
         }
         
         public void ShowOnKill(Unit _monster)
@@ -66,49 +72,49 @@ namespace UserInterface.BattleScene
 
             monster = _monster;
             
-            HeroSlots.ForEach(cell => cell.RemoveItem());
-            MonsterSlots.ForEach(cell => cell.RemoveItem());
+            heroSlots.ForEach(_cell => _cell.RemoveItem());
+            monsterSlots.ForEach(_cell => _cell.RemoveItem());
             
-            HeroName.text = BattleStateManager.instance.PlayingUnit.UnitName;
+            heroName.text = BattleStateManager.instance.PlayingUnit.unitName;
             heroSprite.sprite = BattleStateManager.instance.PlayingUnit.GetIcon();
-            MonsterName.text = monster.UnitName;
+            monsterName.text = monster.unitName;
             monsterSprite.sprite = monster.GetIcon();
             
-            monsterInventory = _monster.Inventory;
-            heroInventory = BattleStateManager.instance.PlayingUnit.Inventory; 
-            showGear();
+            monsterInventory = _monster.inventory;
+            heroInventory = BattleStateManager.instance.PlayingUnit.inventory; 
+            ShowGear();
         }
 
-        private void showGear()
+        private void ShowGear()
         {
             onUIEnable.Raise();
             
-            for (int i = 0; i < heroInventory.gears.Count; i++)
+            for (int _i = 0; _i < heroInventory.gears.Count; _i++)
             {
-                GameObject pref = Instantiate(prefabGear, HeroSlots[i].transform);
-                pref.GetComponent<GearInfo>().Gear = heroInventory.gears[i];
-                pref.GetComponent<GearInfo>().DisplayIcon();
-                HeroSlots[i].UpdateMyItem();
-                HeroSlots[i].UpdateBackgroundState();
+                GameObject _pref = Instantiate(prefabGear, heroSlots[_i].transform);
+                _pref.GetComponent<GearInfo>().Gear = heroInventory.gears[_i];
+                _pref.GetComponent<GearInfo>().DisplayIcon();
+                heroSlots[_i].UpdateMyItem();
+                heroSlots[_i].UpdateBackgroundState();
             }
             
-            for (int i = 0; i < monsterInventory.gears.Count; i++)
+            for (int _i = 0; _i < monsterInventory.gears.Count; _i++)
             {
-                GameObject pref = Instantiate(prefabGear, MonsterSlots[i].transform);
-                pref.GetComponent<GearInfo>().Gear = monsterInventory.gears[i];
-                pref.GetComponent<GearInfo>().DisplayIcon();
-                MonsterSlots[i].UpdateMyItem();
-                MonsterSlots[i].UpdateBackgroundState();
+                GameObject _pref = Instantiate(prefabGear, monsterSlots[_i].transform);
+                _pref.GetComponent<GearInfo>().Gear = monsterInventory.gears[_i];
+                _pref.GetComponent<GearInfo>().DisplayIcon();
+                monsterSlots[_i].UpdateMyItem();
+                monsterSlots[_i].UpdateBackgroundState();
             }
         }
         
-        public void CloseInventory(GameObject closeBtn)
+        public void CloseInventory(GameObject _closeBtn)
         {
             if (monsterInventory != null)
             {
                 monsterInventory.gears = new List<Gear>();
                 
-                foreach (SlotDragAndDrop _dropCell in MonsterSlots)
+                foreach (SlotDragAndDrop _dropCell in monsterSlots)
                 {
                     if(_dropCell.GetInfoGear() != null)
                         monsterInventory.gears.Add(_dropCell.GetInfoGear().Gear);
@@ -117,7 +123,7 @@ namespace UserInterface.BattleScene
                 
             heroInventory.gears = new List<Gear>();
             
-            foreach (SlotDragAndDrop _dropCell in HeroSlots)
+            foreach (SlotDragAndDrop _dropCell in heroSlots)
             {
                 if(_dropCell.GetInfoGear() != null)
                     heroInventory.gears.Add(_dropCell.GetInfoGear().Gear);
@@ -126,10 +132,11 @@ namespace UserInterface.BattleScene
             BattleStateManager.instance.PlayingUnit.UpdateStats();
 
             gameObject.SetActive(false);
-            closeBtn.SetActive(false);
+            _closeBtn.SetActive(false);
             onActionDone.Raise();
-
-            BattleStateManager.instance.DeadThisTurn.Remove(BattleStateManager.instance.DeadThisTurn[0]);
+            
+            if (BattleStateManager.instance.DeadThisTurn.Count > 0)
+                BattleStateManager.instance.DeadThisTurn.Remove(BattleStateManager.instance.DeadThisTurn[0]);
         }
     }
 }

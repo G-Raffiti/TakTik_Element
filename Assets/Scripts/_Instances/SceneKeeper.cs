@@ -4,12 +4,12 @@ namespace _Instances
 {
     public class SceneKeeper : MonoBehaviour
     {
-        private static GameObject instance;
+        private static GameObject _instance;
         private void Start() 
         {
             DontDestroyOnLoad(gameObject.transform);
-            if (instance == null)
-                instance = gameObject;
+            if (_instance == null)
+                _instance = gameObject;
             else
                 Destroy(gameObject);
         }

@@ -9,10 +9,10 @@ namespace DataBases
     [CreateAssetMenu(fileName = "DataBase_Relic", menuName = "Scriptable Object/DataBase/Relic")]
     public class DataBaseRelic : ScriptableObject
     {
-        [SerializeField] private List<RelicSO> allRelics;
-        public List<RelicSO> AllRelics => allRelics;
+        [SerializeField] private List<RelicSo> allRelics;
+        public List<RelicSo> AllRelics => allRelics;
 
-        public RelicSO GetRandom() => AllRelics.GetRandom();
+        public RelicSo GetRandom() => AllRelics.GetRandom();
         
     }
 }

@@ -7,32 +7,32 @@ namespace ScreenResolutionManager.Example
         {
             if (ResolutionManager.Instance == null) return;
 
-            ResolutionManager resolutionManager = ResolutionManager.Instance;
+            ResolutionManager _resolutionManager = ResolutionManager.Instance;
 
             GUILayout.BeginArea(new Rect(20, 10, 200, Screen.height - 10));
 
             GUILayout.Label("Select Resolution");
 
             if (GUILayout.Button(Screen.fullScreen ? "Windowed" : "Fullscreen"))
-                resolutionManager.ToggleFullscreen();
+                _resolutionManager.ToggleFullscreen();
 
-            int i = 0;
-            foreach (Vector2 r in Screen.fullScreen ? resolutionManager.FullscreenResolutions : resolutionManager.WindowedResolutions)
+            int _i = 0;
+            foreach (Vector2 _r in Screen.fullScreen ? _resolutionManager.fullscreenResolutions : _resolutionManager.windowedResolutions)
             {
-                string label = r.x + "x" + r.y;
-                if (r.x == Screen.width && r.y == Screen.height) label += "*";
-                if (r.x == resolutionManager.DisplayResolution.width && r.y == resolutionManager.DisplayResolution.height) label += " (native)";
+                string _label = _r.x + "x" + _r.y;
+                if (_r.x == Screen.width && _r.y == Screen.height) _label += "*";
+                if (_r.x == _resolutionManager.DisplayResolution.width && _r.y == _resolutionManager.DisplayResolution.height) _label += " (native)";
 
-                if (GUILayout.Button(label))
-                    resolutionManager.SetResolution(i, Screen.fullScreen);
+                if (GUILayout.Button(_label))
+                    _resolutionManager.SetResolution(_i, Screen.fullScreen);
 
-                i++;
+                _i++;
             }
 
             if (GUILayout.Button("Get Current Resolution"))
             {
-                Resolution r = Screen.currentResolution;
-                Debug.Log("Display resolution is " + r.width + "x" + r.height);
+                Resolution _r = Screen.currentResolution;
+                Debug.Log("Display resolution is " + _r.width + "x" + _r.height);
             }
 
             GUILayout.EndArea();

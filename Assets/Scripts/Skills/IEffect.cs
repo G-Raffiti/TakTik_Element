@@ -7,7 +7,7 @@ namespace Skills
     /// <summary>
     /// All Effect that can be triggered on a Skill Use
     /// </summary>
-    public abstract class IEffect : ScriptableObject
+    public abstract class Effect : ScriptableObject
     {
         /// <summary>
         /// Time when this effect is Used (before or after the main Skill effect)
@@ -22,9 +22,9 @@ namespace Skills
         /// <summary>
         /// Methode should be called by the Deck
         /// </summary>
-        /// <param name="_cell">the Targeted Cell</param>
+        /// <param name="_targetCell">the Targeted Cell</param>
         /// <param name="_skillInfo">skill that will be used (mainly for the Power and Range)</param>
-        public abstract void Use(Cell _cell, SkillInfo _skillInfo);
+        public abstract void Use(Cell _targetCell, SkillInfo _skillInfo);
 
         /// <summary>
         /// Infos of the Effect with value for the Tooltip

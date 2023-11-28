@@ -5,13 +5,15 @@ using _Instances;
 using Relics;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UserInterface.BattleScene;
 
 namespace Shops
 {
     public class ShopOracleStatue : MonoBehaviour
     {
-        [SerializeField] private SlotDragAndDrop RelicSlot;
+        [FormerlySerializedAs("RelicSlot")]
+        [SerializeField] private SlotDragAndDrop relicSlot;
         
         [SerializeField] private GameObject prefabRelic;
         [SerializeField] private List<HeroRelicSlot> heroRelicSlots;
@@ -19,22 +21,22 @@ namespace Shops
 
         public void Start()
         {
-            for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
+            for (int _i = 0; _i < PlayerData.GetInstance().Heroes.Count; _i++)
             {
-                heroRelicSlots[i].Initialize(PlayerData.getInstance().Heroes[i]);
+                heroRelicSlots[_i].Initialize(PlayerData.GetInstance().Heroes[_i]);
             }
 
-            showRelics();
+            ShowRelics();
 
         }
 
-        private void showRelics()
+        private void ShowRelics()
         {
-            GameObject pref = Instantiate(prefabRelic, RelicSlot.transform);
-            pref.GetComponent<RelicInfo>().CreateRelic(DataBase.Relic.GetRandom());
-            pref.GetComponent<RelicInfo>().DisplayIcon();
-            RelicSlot.UpdateMyItem();
-            RelicSlot.UpdateBackgroundState();
+            GameObject _pref = Instantiate(prefabRelic, relicSlot.transform);
+            _pref.GetComponent<RelicInfo>().CreateRelic(DataBase.Relic.GetRandom());
+            _pref.GetComponent<RelicInfo>().DisplayIcon();
+            relicSlot.UpdateMyItem();
+            relicSlot.UpdateBackgroundState();
         }
         
         public void AscendBtn()
@@ -43,9 +45,9 @@ namespace Shops
             {
                 _heroRelicSlot.ApplyAndClose();
             }
-            for (int i = 0; i < PlayerData.getInstance().Heroes.Count; i++)
+            for (int _i = 0; _i < PlayerData.GetInstance().Heroes.Count; _i++)
             {
-                heroRelicSlots[i].Initialize(PlayerData.getInstance().Heroes[i]);
+                heroRelicSlots[_i].Initialize(PlayerData.GetInstance().Heroes[_i]);
             }
         }
     }

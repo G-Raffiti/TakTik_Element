@@ -9,15 +9,15 @@ namespace Skills.ScriptableObject_Effect
     [CreateAssetMenu(fileName = "SkillEffect_Attack", menuName = "Scriptable Object/Skills/Skill Effect Attack")]
     public class Attack : SkillEffect
     {
-        public override void Use(Cell _cell, SkillInfo _skillInfo)
+        public override void Use(Cell _targetCell, SkillInfo _skillInfo)
         {
             int _damage = _skillInfo.GetPower();
             
-            foreach (Cell _cellAffected in Zone.GetZone(_skillInfo.skill.GridRange, _cell))
+            foreach (Cell _cellAffected in Zone.GetZone(_skillInfo.skill.GridRange, _targetCell))
             {
                 Unit _unitAffected = Zone.GetUnitAffected(_cellAffected, _skillInfo);
                 if (_unitAffected != null)
-                    _unitAffected.DefendHandler(_skillInfo.Unit, _damage, _skillInfo.skill.Element);
+                    _unitAffected.DefendHandler(_skillInfo.unit, _damage, _skillInfo.skill.Element);
             }
         }
 
@@ -29,15 +29,15 @@ namespace Skills.ScriptableObject_Effect
         public override Dictionary<Cell, int> DamageValue(Cell _cell, SkillInfo _skillInfo)
         {
             int _damage = _skillInfo.GetPower();
-            Dictionary<Cell, int> ret = new Dictionary<Cell, int>();
+            Dictionary<Cell, int> _ret = new Dictionary<Cell, int>();
             foreach (Cell _cellInZone in Zone.GetZone(_skillInfo.skill.GridRange, _cell))
             {
                 Unit _unitAffected = Zone.GetUnitAffected(_cellInZone, _skillInfo);
                 if (_unitAffected != null)
-                    ret.Add(_cellInZone, _unitAffected.DamageTaken(_damage, _skillInfo.skill.Element));
+                    _ret.Add(_cellInZone, _unitAffected.DamageTaken(_damage, _skillInfo.skill.Element));
             }
 
-            return ret;
+            return _ret;
         }
 
         public override string InfoEffect(SkillInfo _skillInfo)

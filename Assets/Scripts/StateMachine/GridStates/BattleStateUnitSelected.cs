@@ -27,60 +27,60 @@ namespace StateMachine.GridStates
             cellGrid = _stateManager;
         }
 
-        public override void OnCellClicked(Cell cell)
+        public override void OnCellClicked(Cell _cell)
         {
             if (unit.IsMoving)
                 return;
-            if (cell.IsTaken && cell.CurrentGridObject != null)
+            if (_cell.IsTaken && _cell.CurrentGridObject != null)
             {
-                if (cell.CurrentGridObject.IsInteractable)
+                if (_cell.CurrentGridObject.IsInteractable)
                 {
-                    cell.CurrentGridObject.Interact(unit);
+                    _cell.CurrentGridObject.Interact(unit);
                     return;
                 }
             }
 
-            if (!pathsInRange.Contains(cell))
+            if (!pathsInRange.Contains(_cell))
                 return;
 
-            List<Cell> _path = unit.FindPath(StateManager.Cells, cell);
-            unit.Move(cell, _path);
+            List<Cell> _path = unit.FindPath(StateManager.Cells, _cell);
+            unit.Move(_cell, _path);
         }
 
-        public override void OnCellDeselected(Cell cell)
+        public override void OnCellDeselected(Cell _targetCell)
         {
-            base.OnCellDeselected(cell);
+            base.OnCellDeselected(_targetCell);
             
             MarkCellsBack();
         }
         
-        public override void OnCellSelected(Cell cell)
+        public override void OnCellSelected(Cell _targetCell)
         {
-            base.OnCellSelected(cell);
+            base.OnCellSelected(_targetCell);
             
             
 
-            if (cell.CurrentUnit is Monster _monster)
+            if (_targetCell.CurrentUnit is Monster _monster)
             {
                 _monster.ShowRange();
             }
             
-            if (!pathsInRange.Contains(cell)) return;
+            if (!pathsInRange.Contains(_targetCell)) return;
 
-            currentPath = unit.FindPath(StateManager.Cells, cell);
+            currentPath = unit.FindPath(StateManager.Cells, _targetCell);
             foreach (Cell _cell in currentPath)
             {
                 _cell.MarkAsPath();
             }
             foreach (GridObject _gridObject in cellGrid.GridObjects)
             {
-                if (_gridObject.Cell == cell)
+                if (_gridObject.Cell == _targetCell)
                 {
-                    cell.MarkAsHighlighted();
+                    _targetCell.MarkAsHighlighted();
                     continue;
                 }
 
-                if (_gridObject.IsInteractableFrom(cell))
+                if (_gridObject.IsInteractableFrom(_targetCell))
                 {
                     _gridObject.Cell.MarkAsInteractable();
                 }
@@ -110,7 +110,7 @@ namespace StateMachine.GridStates
                 _cell.MarkAsReachable();
             }
 
-            if (unit.BattleStats.AP <= 0) return;
+            if (unit.battleStats.ap <= 0) return;
 
             foreach (GridObject _object in StateManager.GridObjects)
             {

@@ -10,30 +10,30 @@ namespace _Instances
 {
     public class PlayerData
     {
-        private static PlayerData instance;
-        private IntEvent OnCraftingMaterialAdded;
-        private BoolEvent OnBattleIsEnded;
+        private static PlayerData _instance;
+        private IntEvent onCraftingMaterialAdded;
+        private BoolEvent onBattleIsEnded;
         private List<Hero> heroes;
-        private Dictionary<AffixSO, int> craftingMaterial = new Dictionary<AffixSO, int>();
+        private Dictionary<AffixSo, int> craftingMaterial = new Dictionary<AffixSo, int>();
         public int ResurrectionPoints;
         private bool isVictory;
         public List<Hero> Heroes => heroes;
-        public Dictionary<AffixSO, int> CraftingMaterial => craftingMaterial;
+        public Dictionary<AffixSo, int> CraftingMaterial => craftingMaterial;
         public bool IsVictory => isVictory;
 
-        public static PlayerData getInstance()
+        public static PlayerData GetInstance()
         {
-            if (instance == null)
-                instance = new PlayerData();
-            return instance;
+            if (_instance == null)
+                _instance = new PlayerData();
+            return _instance;
             
         }
 
         private PlayerData()
         {
-            OnCraftingMaterialAdded = UnityEngine.Resources.Load<IntEvent>("Game Event/PlayerData_Int_OnCraftingMaterialAdded");
-            OnBattleIsEnded = UnityEngine.Resources.Load<BoolEvent>("Game Event/BattleManager_Bool_OnBattleIsOver");
-            OnBattleIsEnded.EventListeners += EndVictory;
+            onCraftingMaterialAdded = UnityEngine.Resources.Load<IntEvent>("Game Event/PlayerData_Int_OnCraftingMaterialAdded");
+            onBattleIsEnded = UnityEngine.Resources.Load<BoolEvent>("Game Event/BattleManager_Bool_OnBattleIsOver");
+            onBattleIsEnded.EventListeners += EndVictory;
             heroes = new List<Hero>();
             if (GameObject.Find("Player") != null)
             {
@@ -43,35 +43,35 @@ namespace _Instances
                 }
             }
             
-            foreach (AffixSO _affixSO in DataBase.Affix.AllAffixes)
+            foreach (AffixSo _affixSo in DataBase.Affix.AllAffixes)
             {
-                craftingMaterial.Add(_affixSO, 0);
+                craftingMaterial.Add(_affixSo, 0);
             }
 
             ResurrectionPoints = 2;
         }
 
-        public void AddMaterial(AffixSO _affix, int number)
+        public void AddMaterial(AffixSo _affix, int _number)
         {
             if (!craftingMaterial.ContainsKey(_affix))
-                craftingMaterial.Add(_affix, number);
+                craftingMaterial.Add(_affix, _number);
             else
-                craftingMaterial[_affix] += number;
-            OnCraftingMaterialAdded.Raise(number);
+                craftingMaterial[_affix] += _number;
+            onCraftingMaterialAdded.Raise(_number);
         }
 
-        public void RemoveMaterial(AffixSO _affix, int number)
+        public void RemoveMaterial(AffixSo _affix, int _number)
         {
             if (!craftingMaterial.ContainsKey(_affix))
                 return;
-            craftingMaterial[_affix] -= number;
+            craftingMaterial[_affix] -= _number;
         }
 
-        public void EndVictory(bool isWin)
+        public void EndVictory(bool _isWin)
         {
-            if (BattleStateManager.instance.endCondition.Type == EConditionType.Last || !isWin)
+            if (BattleStateManager.instance.EndCondition.Type == EConditionType.Last || !_isWin)
             {
-                isVictory = isWin;
+                isVictory = _isWin;
             }
         }
     }

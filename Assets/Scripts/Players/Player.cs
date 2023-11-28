@@ -17,7 +17,7 @@ namespace Players
 
     public enum EPlayerType
     {
-        HUMAN,
+        Human,
         AI
     }
 }

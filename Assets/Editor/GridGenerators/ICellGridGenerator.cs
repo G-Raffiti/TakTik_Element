@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Editor.GridGenerators
 {
-    public abstract class ICellGridGenerator
+    public abstract class CellGridGenerator
     {
         public Transform CellsParent;
         public abstract GridInfo GenerateGrid();

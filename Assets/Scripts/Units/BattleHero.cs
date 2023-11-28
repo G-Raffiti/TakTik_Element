@@ -8,6 +8,7 @@ using StateMachine;
 using StateMachine.GridStates;
 using Stats;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Units
 {
@@ -20,9 +21,10 @@ namespace Units
         [SerializeField] private UnitEvent onHeroSelected;
         [SerializeField] private IntEvent onCellWalked;
 
+        [FormerlySerializedAs("onHeroTooltip_ON")]
         [Header("Tooltip Event for HERO")]
-        [SerializeField] private UnitEvent onHeroTooltip_ON;
-        public override UnitEvent onTooltip_ON => onHeroTooltip_ON;
+        [SerializeField] private UnitEvent onHeroTooltipOn;
+        public override UnitEvent OnTooltipOn => onHeroTooltipOn;
         
         private Hero hero;
 
@@ -34,15 +36,15 @@ namespace Units
         {
             hero = _hero;
             
-            UnitName = _hero.UnitName;
+            unitName = _hero.UnitName;
 
-            Inventory = new Inventory() {gears = new List<Gear>()};
-            Inventory.gears.AddRange(_hero.Inventory.gears);
+            inventory = new Inventory() {gears = new List<Gear>()};
+            inventory.gears.AddRange(_hero.Inventory.gears);
             
             baseStats = _hero.BattleStats;
-            BattleStats = new BattleStats(hero.TotalStats);
-            total = new BattleStats(BattleStats);
-            BattleStats.HP = hero.ActualHP;
+            battleStats = new BattleStats(hero.TotalStats);
+            total = new BattleStats(battleStats);
+            battleStats.hp = hero.ActualHp;
             buffs = new List<Buff>();
 
             if (unitSpriteRenderer == null) return;
@@ -56,8 +58,8 @@ namespace Units
         public override void UpdateStats()
         {
             base.UpdateStats();
-            hero.Inventory.gears = new List<Gear>(Inventory.gears);
-            hero.UpdateHP();
+            hero.Inventory.gears = new List<Gear>(inventory.gears);
+            hero.UpdateHp();
         }
 
         public override string GetInfoMain()

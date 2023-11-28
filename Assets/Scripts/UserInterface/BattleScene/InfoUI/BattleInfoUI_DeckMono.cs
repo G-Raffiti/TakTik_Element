@@ -9,83 +9,89 @@ using Skills;
 using StateMachine;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UserInterface.BattleScene.InfoUI
 {
-    public class BattleInfoUI_DeckMono : MonoBehaviour
+    public class BattleInfoUIDeckMono : MonoBehaviour
     {
-        [SerializeField] private SkillInfo SkillPrefab;
-        [SerializeField] private Transform DrawPile;
-        [SerializeField] private Transform DiscardPile;
-        [SerializeField] private Transform ConsumedPile;
-        [SerializeField] private BattleHero Hero;
+        [FormerlySerializedAs("SkillPrefab")]
+        [SerializeField] private SkillInfo skillPrefab;
+        [FormerlySerializedAs("DrawPile")]
+        [SerializeField] private Transform drawPile;
+        [FormerlySerializedAs("DiscardPile")]
+        [SerializeField] private Transform discardPile;
+        [FormerlySerializedAs("ConsumedPile")]
+        [SerializeField] private Transform consumedPile;
+        [FormerlySerializedAs("Hero")]
+        [SerializeField] private BattleHero hero;
         [SerializeField] private Hero blancHero;
         [SerializeField] private DeckMono deck;
 
 
         private void OnEnable()
         {
-            Unit nextHero;
+            Unit _nextHero;
             if (deck == null)
             {
                 deck = GameObject.Find("DeckMono/Deck1").GetComponent<DeckMono>();
             }
             if (BattleStateManager.instance.PlayingUnit == null) return;
-            if (BattleStateManager.instance.PlayingUnit.playerType == EPlayerType.HUMAN)
-                nextHero = BattleStateManager.instance.PlayingUnit;
+            if (BattleStateManager.instance.PlayingUnit.playerType == EPlayerType.Human)
+                _nextHero = BattleStateManager.instance.PlayingUnit;
             else
             {
-                Hero.Spawn(blancHero);
-                nextHero = Hero;
+                hero.Spawn(blancHero);
+                _nextHero = hero;
             }
 
-            SetPile(deck.DrawPile, nextHero, DrawPile);
-            SetPile(deck.DiscardPile, nextHero, DiscardPile);
-            SetPile(deck.ConsumedSkills, nextHero, ConsumedPile);
+            SetPile(deck.drawPile, _nextHero, drawPile);
+            SetPile(deck.discardPile, _nextHero, discardPile);
+            SetPile(deck.consumedSkills, _nextHero, consumedPile);
         }
 
-        private void SetPile(List<SkillSO> Pile, Unit user, Transform holder)
+        private void SetPile(List<SkillSo> _pile, Unit _user, Transform _holder)
         {
-            List<SkillSO> _copie = new List<SkillSO>();
-            _copie.AddRange(Pile);
-            _copie.Sort((s, s1) => String.Compare(s.Name, s1.Name, StringComparison.Ordinal));
-            _copie.Sort((s, s1) => s.Cost.CompareTo(s1.Cost));
-            foreach (SkillSO _skillSO in _copie)
+            List<SkillSo> _copie = new List<SkillSo>();
+            _copie.AddRange(_pile);
+            _copie.Sort((_s, _s1) => String.Compare(_s.Name, _s1.Name, StringComparison.Ordinal));
+            _copie.Sort((_s, _s1) => _s.Cost.CompareTo(_s1.Cost));
+            foreach (SkillSo _skillSo in _copie)
             {
-                GameObject SkillObj = Instantiate(SkillPrefab.gameObject, holder);
+                GameObject _skillObj = Instantiate(skillPrefab.gameObject, _holder);
                 
-                SkillObj.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSO, deck, user);
-                SkillObj.GetComponent<SkillInfo>().Unit = user;
+                _skillObj.GetComponent<SkillInfo>().skill = Skill.CreateSkill(_skillSo, deck, _user);
+                _skillObj.GetComponent<SkillInfo>().unit = _user;
 
-                SkillObj.GetComponent<SkillInfo>().DisplayIcon();
+                _skillObj.GetComponent<SkillInfo>().DisplayIcon();
             }
         }
 
         private void OnDisable()
         {
-            EmptyPile(DrawPile);
-            EmptyPile(DiscardPile);
-            EmptyPile(ConsumedPile);
+            EmptyPile(drawPile);
+            EmptyPile(discardPile);
+            EmptyPile(consumedPile);
         }
 
-        private void EmptyPile(Transform Pile)
+        private void EmptyPile(Transform _pile)
         {
-            int i = 0;
+            int _i = 0;
             //Array to hold all child obj
-            GameObject[] allChildren = new GameObject[Pile.childCount - 2];
+            GameObject[] _allChildren = new GameObject[_pile.childCount - 2];
 
             //Find all child obj and store to that array
-            foreach (Transform child in Pile)
+            foreach (Transform _child in _pile)
             {
-                if (child.GetComponent<SkillInfo>() == null) continue;
-                allChildren[i] = child.gameObject;
-                i += 1;
+                if (_child.GetComponent<SkillInfo>() == null) continue;
+                _allChildren[_i] = _child.gameObject;
+                _i += 1;
             }
 
             //Now destroy them
-            foreach (GameObject child in allChildren)
+            foreach (GameObject _child in _allChildren)
             {
-                DestroyImmediate(child.gameObject);
+                DestroyImmediate(_child.gameObject);
             }
             
         }

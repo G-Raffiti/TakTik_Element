@@ -12,27 +12,27 @@ namespace _CSVFiles
 {
     public struct RawSkill
     {
-        public readonly string Name;
-        public readonly EArchetype Archetype;
-        public readonly Element Element;
-        public readonly int Cost;
-        public readonly SkillEffect Effect1;
-        public readonly SkillEffect Effect2;
-        public readonly SkillEffect Effect3;
-        public readonly SkillGridEffect GridEffect;
-        public readonly StatusSO Status;
-        public readonly EZone RangeType;
-        public readonly int RangeValue;
-        public readonly EZone ZoneType;
-        public readonly int Radius;
-        public readonly bool NeedView;
-        public readonly bool NeedTarget;
-        public readonly EAffect Affect;
-        public readonly bool CanBeModified;
-        public readonly int Power;
-        public readonly bool Consumable;
-        public readonly Sprite Icon;
-        public readonly MonsterSO Monster;
+        public string Name;
+        public EArchetype Archetype;
+        public Element Element;
+        public int Cost;
+        public SkillEffect Effect1;
+        public SkillEffect Effect2;
+        public SkillEffect Effect3;
+        public SkillGridEffect GridEffect;
+        public StatusSo Status;
+        public EZone RangeType;
+        public int RangeValue;
+        public EZone ZoneType;
+        public int Radius;
+        public bool NeedView;
+        public bool NeedTarget;
+        public EAffect Affect;
+        public bool CanBeModified;
+        public int Power;
+        public bool Consumable;
+        public Sprite Icon;
+        public MonsterSo Monster;
 
         public RawSkill(bool _no)
         {
@@ -59,40 +59,40 @@ namespace _CSVFiles
             Monster = null;
         }
 
-        public RawSkill(Dictionary<string, object> _csvSkill)
+        public RawSkill(Dictionary<string, object> _cvsSkill)
         {
             this = new RawSkill(false);
-            Name = _csvSkill["Name"].ToString();
-            Enum.TryParse(_csvSkill["Archetype"].ToString(), out Archetype);
+            Name = _cvsSkill["Name"].ToString();
+            Enum.TryParse(_cvsSkill["Archetype"].ToString(), out Archetype);
             Element = UnityEngine.Resources.Load<Element>(
-                $"ScriptableObject/Elements/Element_{_csvSkill["Element"]}");
-            int.TryParse(_csvSkill["Cost"].ToString(), out Cost);
+                $"ScriptableObject/Elements/Element_{_cvsSkill["Element"]}");
+            int.TryParse(_cvsSkill["Cost"].ToString(), out Cost);
             Effect1 = UnityEngine.Resources.Load<SkillEffect>(
-                $"ScriptableObject/SkillEffects/SkillEffect_{_csvSkill["Effect1"]}");
+                $"ScriptableObject/SkillEffects/SkillEffect_{_cvsSkill["Effect1"]}");
             Effect2 = UnityEngine.Resources.Load<SkillEffect>(
-                $"ScriptableObject/SkillEffects/SkillEffect_{_csvSkill["Effect2"]}");
+                $"ScriptableObject/SkillEffects/SkillEffect_{_cvsSkill["Effect2"]}");
             Effect3 = UnityEngine.Resources.Load<SkillEffect>(
-                $"ScriptableObject/SkillEffects/SkillEffect_{_csvSkill["Effect3"]}");
+                $"ScriptableObject/SkillEffects/SkillEffect_{_cvsSkill["Effect3"]}");
             GridEffect = UnityEngine.Resources.Load<SkillGridEffect>(
-                    $"ScriptableObject/SkillEffects/GridEffect_{_csvSkill["GridEffect"]}");
-            Status = UnityEngine.Resources.Load<StatusSO>(
-                $"ScriptableObject/StatusEffect/Status_{_csvSkill["Status"]}");
-            Enum.TryParse(_csvSkill["RangeType"].ToString(), out RangeType);
-            int.TryParse(_csvSkill["RangeValue"].ToString(), out RangeValue);
-            Enum.TryParse(_csvSkill["ZoneType"].ToString(), out ZoneType);
-            int.TryParse(_csvSkill["Radius"].ToString(), out Radius);
-            bool.TryParse(_csvSkill["NeedView"].ToString(), out NeedView);
-            bool.TryParse(_csvSkill["NeedTarget"].ToString(), out NeedTarget);
-            Enum.TryParse(_csvSkill["Affect"].ToString(), out Affect);
-            bool.TryParse(_csvSkill["CanBeModified"].ToString(), out CanBeModified);
-            int.TryParse(_csvSkill["Power"].ToString(), out Power);
-            bool.TryParse(_csvSkill["Consumable"].ToString(), out Consumable);
+                    $"ScriptableObject/SkillEffects/GridEffect_{_cvsSkill["GridEffect"]}");
+            Status = UnityEngine.Resources.Load<StatusSo>(
+                $"ScriptableObject/StatusEffect/Status_{_cvsSkill["Status"]}");
+            Enum.TryParse(_cvsSkill["RangeType"].ToString(), out RangeType);
+            int.TryParse(_cvsSkill["RangeValue"].ToString(), out RangeValue);
+            Enum.TryParse(_cvsSkill["ZoneType"].ToString(), out ZoneType);
+            int.TryParse(_cvsSkill["Radius"].ToString(), out Radius);
+            bool.TryParse(_cvsSkill["NeedView"].ToString(), out NeedView);
+            bool.TryParse(_cvsSkill["NeedTarget"].ToString(), out NeedTarget);
+            Enum.TryParse(_cvsSkill["Affect"].ToString(), out Affect);
+            bool.TryParse(_cvsSkill["CanBeModified"].ToString(), out CanBeModified);
+            int.TryParse(_cvsSkill["Power"].ToString(), out Power);
+            bool.TryParse(_cvsSkill["Consumable"].ToString(), out Consumable);
             Icon = UnityEngine.Resources.Load<Sprite>(
-                $"Sprite/2000_Icons/All_Skill/{_csvSkill["Icon"]}");
-            bool.TryParse(_csvSkill["BaseSkill"].ToString(), out bool basic);
-            if (!basic)
-                Monster = UnityEngine.Resources.Load<MonsterSO>(
-                $"ScriptableObject/Monsters/{_csvSkill["MonsterType"]}_{Archetype}_{Element.Type}_{CSVSkill["MonsterName"]}");
+                $"Sprite/2000_Icons/All_Skill/{_cvsSkill["Icon"]}");
+            bool.TryParse(_cvsSkill["BaseSkill"].ToString(), out bool _basic);
+            if (!_basic)
+                Monster = UnityEngine.Resources.Load<MonsterSo>(
+                $"ScriptableObject/Monsters/{_cvsSkill["MonsterType"]}_{Archetype}_{Element.Type}_{_cvsSkill["MonsterName"]}");
         }
 
     }

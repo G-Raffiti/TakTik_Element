@@ -6,63 +6,63 @@ namespace Units
 {
     public static class Movement
     {
-        public static List<Cell> Move(IMovable movable, Cell destinationCell, List<Cell> path)
+        public static List<Cell> Move(Movable _movable, Cell _destinationCell, List<Cell> _path)
         {
-            if (movable.Cell == destinationCell)
+            if (_movable.Cell == _destinationCell)
                 return new List<Cell>();
 
-            movable.IsMoving = true;
+            _movable.IsMoving = true;
 
-            Cell destination = destinationCell;
-            path.Sort((_cell, _cell1) => _cell.GetDistance(movable.Cell).CompareTo(_cell1.GetDistance(movable.Cell)));
+            Cell _destination = _destinationCell;
+            _path.Sort((_cell, _cell1) => _cell.GetDistance(_movable.Cell).CompareTo(_cell1.GetDistance(_movable.Cell)));
 
-            List<Cell> deadEnd = path.Where(c => c.IsWalkable != true).ToList();
-            if (deadEnd.Count > 0)
+            List<Cell> _deadEnd = _path.Where(_c => _c.IsWalkable != true).ToList();
+            if (_deadEnd.Count > 0)
             {
-                if (deadEnd[0].IsUnderGround)
-                    destination = deadEnd[0];
+                if (_deadEnd[0].IsUnderGround)
+                    _destination = _deadEnd[0];
                 else
                 {
-                    if (movable.Cell.Neighbours.Contains(deadEnd[0])) return new List<Cell>();
+                    if (_movable.Cell.Neighbours.Contains(_deadEnd[0])) return new List<Cell>();
 
-                    List<Cell> destinations = deadEnd[0].Neighbours;
-                    destinations.Sort((c1, c2) => c1.GetDistance(movable.Cell).CompareTo(c2.GetDistance(movable.Cell)));
-                    destination = destinations[0];
+                    List<Cell> _destinations = _deadEnd[0].Neighbours;
+                    _destinations.Sort((_c1, _c2) => _c1.GetDistance(_movable.Cell).CompareTo(_c2.GetDistance(_movable.Cell)));
+                    _destination = _destinations[0];
                 }
             }
 
-            List<Cell> pathToDestination = new List<Cell>();
+            List<Cell> _pathToDestination = new List<Cell>();
 
-            if (destination != destinationCell)
+            if (_destination != _destinationCell)
             {
-                for (int i = 0; i < path.Count; i++)
+                for (int _i = 0; _i < _path.Count; _i++)
                 {
-                    pathToDestination.Add(path[i]);
-                    if (path[i] == destination)
+                    _pathToDestination.Add(_path[_i]);
+                    if (_path[_i] == _destination)
                         break;
                 }
             }
-            else pathToDestination = path;
+            else _pathToDestination = _path;
 
-            if (movable.MovementAnimationSpeed > 0)
+            if (_movable.MovementAnimationSpeed > 0)
             {
-                pathToDestination.Reverse();
-                movable.StartCoroutine(movable.MovementAnimation(pathToDestination));
+                _pathToDestination.Reverse();
+                _movable.StartCoroutine(_movable.MovementAnimation(_pathToDestination));
             }
             else
             {
-                movable.TeleportTo(destination.transform.position);
+                _movable.TeleportTo(_destination.transform.position);
             }
 
-            if (destination.GetCurrentIMovable() != movable)
-                destination.ForceTake(movable);
+            if (_destination.GetCurrentIMovable() != _movable)
+                _destination.ForceTake(_movable);
 
-            if (destination.IsUnderGround)
+            if (_destination.IsUnderGround)
             {
-                movable.StartCoroutine(movable.Fall(movable.Cell));
+                _movable.StartCoroutine(_movable.Fall(_movable.Cell));
             }
 
-            return pathToDestination;
+            return _pathToDestination;
         }
     }
 }

@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.UI_Menu
 {
     public class MovingPanelMenu : MonoBehaviour
     {
-        [SerializeField] private GameObject MovingPanel;
-        [SerializeField] private MenuPanel Menu;
-        [SerializeField] private Button CloseBtn;
+        [FormerlySerializedAs("MovingPanel")]
+        [SerializeField] private GameObject movingPanel;
+        [FormerlySerializedAs("Menu")]
+        [SerializeField] private MenuPanel menu;
+        [FormerlySerializedAs("CloseBtn")]
+        [SerializeField] private Button closeBtn;
         [SerializeField] private float movementAnimationSpeed;
         [SerializeField] private int offset;
         private int actualPanel = -1;
@@ -17,12 +21,12 @@ namespace UserInterface.UI_Menu
 
         private void Start()
         {
-            minWidth = MovingPanel.GetComponent<RectTransform>().sizeDelta.x +1;
+            minWidth = movingPanel.GetComponent<RectTransform>().sizeDelta.x +1;
         }
 
-        public void ShowPanelBtn(int index)
+        public void ShowPanelBtn(int _index)
         {
-            StartCoroutine(showPanel(index));
+            StartCoroutine(ShowPanel(_index));
         }
 
         public void HidePanelBtn()
@@ -30,23 +34,23 @@ namespace UserInterface.UI_Menu
             StartCoroutine(Hide());
         }
 
-        private IEnumerator showPanel(int index)
+        private IEnumerator ShowPanel(int _index)
         {
-            if (actualPanel == index) yield break;
+            if (actualPanel == _index) yield break;
             if (isOnScreen)
             {
                 yield return Hide();
             }
-            Menu.Menu(index);
-            actualPanel = index;
+            menu.Menu(_index);
+            actualPanel = _index;
             yield return new WaitWhile(() =>
-                MovingPanel.GetComponent<RectTransform>().sizeDelta.x <= minWidth);
-            float width = MovingPanel.GetComponent<RectTransform>().sizeDelta.x;
-            Vector3 pos = MovingPanel.transform.localPosition;
-            Vector3 _destinationPos = new Vector3(pos.x - width - offset, pos.y, pos.z);
-            while (MovingPanel.transform.localPosition != _destinationPos)
+                movingPanel.GetComponent<RectTransform>().sizeDelta.x <= minWidth);
+            float _width = movingPanel.GetComponent<RectTransform>().sizeDelta.x;
+            Vector3 _pos = movingPanel.transform.localPosition;
+            Vector3 _destinationPos = new Vector3(_pos.x - _width - offset, _pos.y, _pos.z);
+            while (movingPanel.transform.localPosition != _destinationPos)
             {
-                MovingPanel.transform.localPosition = Vector3.MoveTowards(MovingPanel.transform.localPosition, _destinationPos,
+                movingPanel.transform.localPosition = Vector3.MoveTowards(movingPanel.transform.localPosition, _destinationPos,
                     Time.deltaTime * movementAnimationSpeed);
                 yield return 0;
             }
@@ -57,30 +61,30 @@ namespace UserInterface.UI_Menu
         private IEnumerator Hide()
         {
             yield return MoveCloseBtn(false);
-            float width = MovingPanel.GetComponent<RectTransform>().sizeDelta.x;
-            Vector3 pos = MovingPanel.transform.localPosition;
-            Vector3 _destinationPos = new Vector3(pos.x + width + offset, pos.y, pos.z);
-            while (MovingPanel.transform.localPosition != _destinationPos)
+            float _width = movingPanel.GetComponent<RectTransform>().sizeDelta.x;
+            Vector3 _pos = movingPanel.transform.localPosition;
+            Vector3 _destinationPos = new Vector3(_pos.x + _width + offset, _pos.y, _pos.z);
+            while (movingPanel.transform.localPosition != _destinationPos)
             {
-                MovingPanel.transform.localPosition = Vector3.MoveTowards(MovingPanel.transform.localPosition, _destinationPos,
+                movingPanel.transform.localPosition = Vector3.MoveTowards(movingPanel.transform.localPosition, _destinationPos,
                     Time.deltaTime * movementAnimationSpeed);
                 yield return 0;
             }
-            Menu.Close();
+            menu.Close();
             isOnScreen = false;
             actualPanel = -1;
         }
 
-        private IEnumerator MoveCloseBtn(bool show)
+        private IEnumerator MoveCloseBtn(bool _show)
         {
-            if (CloseBtn == null) yield break;
-            float height = CloseBtn.GetComponent<RectTransform>().sizeDelta.y;
-            if (!show) height *= -1;
-            Vector3 pos = CloseBtn.transform.localPosition;
-            Vector3 _destinationPos = new Vector3(pos.x, pos.y - height, pos.z);
-            while (CloseBtn.transform.localPosition != _destinationPos)
+            if (closeBtn == null) yield break;
+            float _height = closeBtn.GetComponent<RectTransform>().sizeDelta.y;
+            if (!_show) _height *= -1;
+            Vector3 _pos = closeBtn.transform.localPosition;
+            Vector3 _destinationPos = new Vector3(_pos.x, _pos.y - _height, _pos.z);
+            while (closeBtn.transform.localPosition != _destinationPos)
             {
-                CloseBtn.transform.localPosition = Vector3.MoveTowards(CloseBtn.transform.localPosition, _destinationPos,
+                closeBtn.transform.localPosition = Vector3.MoveTowards(closeBtn.transform.localPosition, _destinationPos,
                     Time.deltaTime * movementAnimationSpeed);
                 yield return 0;
             }

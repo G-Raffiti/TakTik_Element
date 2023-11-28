@@ -10,11 +10,11 @@ namespace Skills.ScriptableObject_Effect
     public class LifeSteel : SkillEffect
     {
         [SerializeField] private float percent;
-        public override void Use(Cell _cell, SkillInfo _skillInfo)
+        public override void Use(Cell _targetCell, SkillInfo _skillInfo)
         {
-            int value = DamageValue(_cell, _skillInfo)[_skillInfo.Unit.Cell];
+            int _value = DamageValue(_targetCell, _skillInfo)[_skillInfo.unit.Cell];
             
-            _skillInfo.Unit.DefendHandler(_skillInfo.Unit, value, Element.None());
+            _skillInfo.unit.DefendHandler(_skillInfo.unit, _value, Element.None());
         }
 
         public override bool CanUse(Cell _cell, SkillInfo _skillInfo)
@@ -35,9 +35,9 @@ namespace Skills.ScriptableObject_Effect
         public override Dictionary<Cell, int> DamageValue(Cell _cell, SkillInfo _skillInfo)
         {
             int _damage = 0;
-            List<IEffect> otherEffects = _skillInfo.skill.Effects.Where(_effect => !(_effect is LifeSteel)).ToList();
+            List<Effect> _otherEffects = _skillInfo.skill.Effects.Where(_effect => !(_effect is LifeSteel)).ToList();
 
-            foreach (IEffect _effect in otherEffects)
+            foreach (Effect _effect in _otherEffects)
             {
                 foreach (int _value in _effect.DamageValue(_cell,_skillInfo).Values)
                 {
@@ -45,12 +45,12 @@ namespace Skills.ScriptableObject_Effect
                 }
             }
 
-            Dictionary<Cell, int> ret = new Dictionary<Cell, int>
+            Dictionary<Cell, int> _ret = new Dictionary<Cell, int>
             {
-                {_skillInfo.Unit.Cell, (int) (-_damage * (percent / 100f))}
+                {_skillInfo.unit.Cell, (int) (-_damage * (percent / 100f))}
             };
 
-            return ret;
+            return _ret;
         }
     }
 }

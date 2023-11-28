@@ -3,6 +3,7 @@ using Resources.ToolTip.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UserInterface.ToolTips
@@ -15,7 +16,8 @@ namespace UserInterface.ToolTips
         [SerializeField] private TextMeshProUGUI left;
         [SerializeField] private TextMeshProUGUI right;
         [SerializeField] private TextMeshProUGUI down;
-        [SerializeField] private LayoutElement Layout;
+        [FormerlySerializedAs("Layout")]
+        [SerializeField] private LayoutElement layout;
         [SerializeField] private int widthMax;
         private CanvasGroup canvasGroup;
 
@@ -35,7 +37,7 @@ namespace UserInterface.ToolTips
         {
             LeanTween.alphaCanvas(canvasGroup, 0, 0);
             LeanTween.alphaCanvas(canvasGroup, 1, 0.1f).delay = 0.4f;
-            Layout.enabled = false;
+            layout.enabled = false;
             icon.sprite = Info.GetIcon();
             main.text = Info.GetInfoMain();
             left.text = Info.GetInfoLeft();
@@ -43,7 +45,7 @@ namespace UserInterface.ToolTips
             down.text = Info.GetInfoDown();
             
             if (left.preferredWidth + right.preferredWidth > widthMax)
-                Layout.enabled = true;
+                layout.enabled = true;
         }
 
         public override void HideTooltip()

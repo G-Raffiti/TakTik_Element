@@ -11,7 +11,7 @@ namespace UserInterface.BattleScene
     /// <summary>
     /// Class that Update the Skills UI on Battle Scene
     /// </summary>
-    public class HandDeckMono_UI : MonoBehaviour
+    public class HandDeckMonoUI : MonoBehaviour
     {
         private DeckMono deck;
 
@@ -26,45 +26,45 @@ namespace UserInterface.BattleScene
 
         private IEnumerator Start()
         {
-            AllDecksMono allDecks = GameObject.Find("DeckMono").GetComponent<AllDecksMono>();
+            AllDecksMono _allDecks = GameObject.Find("DeckMono").GetComponent<AllDecksMono>();
 
             yield return new WaitForSeconds(0.1f);
             
-            deck = allDecks.Deck;
+            deck = _allDecks.deck;
         }
 
         private void OnEnable()
         {
-            onUnitStartTurn.EventListeners += onUnitStartTurnRaised;
+            onUnitStartTurn.EventListeners += OnUnitStartTurnRaised;
             onDraw.EventListeners += OnDrawRaised;
-            onUnitEndTurn.EventListeners += onEndTurn;
+            onUnitEndTurn.EventListeners += OnEndTurn;
             onReDraw.EventListeners += DrawFast;
             onSkillUsed.EventListeners += DrawFast;
         }
 
         private void OnDisable()
         {
-            onUnitStartTurn.EventListeners -= onUnitStartTurnRaised;
+            onUnitStartTurn.EventListeners -= OnUnitStartTurnRaised;
             onDraw.EventListeners -= OnDrawRaised;
-            onUnitEndTurn.EventListeners -= onEndTurn;
+            onUnitEndTurn.EventListeners -= OnEndTurn;
             onReDraw.EventListeners -= DrawFast;
             onSkillUsed.EventListeners -= DrawFast;
         }
 
-        public void onUnitStartTurnRaised(Unit item)
+        public void OnUnitStartTurnRaised(Unit _item)
         {
         }
 
-        public void onEndTurn(Void _obj)
+        public void OnEndTurn(Void _obj)
         {
-            int childs = transform.childCount;
-            for (int i = childs - 1; i > -1; i--)
+            int _childs = transform.childCount;
+            for (int _i = _childs - 1; _i > -1; _i--)
             {
-                GameObject.Destroy(transform.GetChild(i).gameObject);
+                GameObject.Destroy(transform.GetChild(_i).gameObject);
             }
         }
 
-        public void OnDrawRaised<T>(T param)
+        public void OnDrawRaised<T>(T _param)
         {
             StartCoroutine(DrawAnimation());
         }
@@ -75,21 +75,21 @@ namespace UserInterface.BattleScene
             if (drawRunning) yield break;
             drawRunning = true;
             
-            int childs = transform.childCount;
-            for (int i = childs - 1; i > -1; i--)
+            int _childs = transform.childCount;
+            for (int _i = _childs - 1; _i > -1; _i--)
             {
-                GameObject.DestroyImmediate(transform.GetChild(i).gameObject);
+                GameObject.DestroyImmediate(transform.GetChild(_i).gameObject);
             }
             
             if (BattleStateManager.instance.PlayingUnit == null) yield break;
             
-            Unit currentUnit = BattleStateManager.instance.PlayingUnit;
-            foreach (Skill skill in deck.GetHandSkills(currentUnit))
+            Unit _currentUnit = BattleStateManager.instance.PlayingUnit;
+            foreach (Skill _skill in deck.GetHandSkills(_currentUnit))
             {
-                GameObject skillInfo = GameObject.Instantiate(skillBtn, transform);
-                skillInfo.GetComponent<SkillInfo>().skill = skill;
-                skillInfo.GetComponent<SkillInfo>().Unit = currentUnit;
-                skillInfo.GetComponent<SkillInfo>().DisplayIcon();
+                GameObject _skillInfo = GameObject.Instantiate(skillBtn, transform);
+                _skillInfo.GetComponent<SkillInfo>().skill = _skill;
+                _skillInfo.GetComponent<SkillInfo>().unit = _currentUnit;
+                _skillInfo.GetComponent<SkillInfo>().DisplayIcon();
 
                 yield return new WaitForSeconds(0.1f);
             }
@@ -97,23 +97,23 @@ namespace UserInterface.BattleScene
             drawRunning = false;
         }
 
-        private void DrawFast(Void empty)
+        private void DrawFast(Void _empty)
         {
-            int childs = transform.childCount;
-            for (int i = childs - 1; i > -1; i--)
+            int _childs = transform.childCount;
+            for (int _i = _childs - 1; _i > -1; _i--)
             {
-                DestroyImmediate(transform.GetChild(i).gameObject);
+                DestroyImmediate(transform.GetChild(_i).gameObject);
             }
             
             if (BattleStateManager.instance.PlayingUnit == null) return;
             
-            Unit currentUnit = BattleStateManager.instance.PlayingUnit;
-            foreach (Skill skill in deck.GetHandSkills(currentUnit))
+            Unit _currentUnit = BattleStateManager.instance.PlayingUnit;
+            foreach (Skill _skill in deck.GetHandSkills(_currentUnit))
             {
-                GameObject skillInfo = Instantiate(skillBtn, transform);
-                skillInfo.GetComponent<SkillInfo>().skill = skill;
-                skillInfo.GetComponent<SkillInfo>().Unit = currentUnit;
-                skillInfo.GetComponent<SkillInfo>().DisplayIcon();
+                GameObject _skillInfo = Instantiate(skillBtn, transform);
+                _skillInfo.GetComponent<SkillInfo>().skill = _skill;
+                _skillInfo.GetComponent<SkillInfo>().unit = _currentUnit;
+                _skillInfo.GetComponent<SkillInfo>().DisplayIcon();
             }
         }
     }

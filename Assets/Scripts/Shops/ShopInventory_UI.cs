@@ -5,14 +5,16 @@ using _Instances;
 using Gears;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UserInterface;
 using Void = _EventSystem.CustomEvents.Void;
 
 namespace Shops
 {
-    public class ShopInventory_UI : MonoBehaviour
+    public class ShopInventoryUI : MonoBehaviour
     {
-        [SerializeField] private List<PersonalInventory> Portraits;
+        [FormerlySerializedAs("Portraits")]
+        [SerializeField] private List<PersonalInventory> portraits;
         [SerializeField] private GameObject prefabGear;
         [SerializeField] private List<BattleHero> battleHeroes;
 
@@ -20,11 +22,11 @@ namespace Shops
 
         private void Start()
         {
-            for (int i = 0; i < Portraits.Count; i++)
+            for (int _i = 0; _i < portraits.Count; _i++)
             {
-                PlayerData.getInstance().Heroes[i].Spawn(battleHeroes[i]);
-                Portraits[i].Initialize(PlayerData.getInstance().Heroes[i]);
-                Portraits[i].FillInventory();
+                PlayerData.GetInstance().Heroes[_i].Spawn(battleHeroes[_i]);
+                portraits[_i].Initialize(PlayerData.GetInstance().Heroes[_i]);
+                portraits[_i].FillInventory();
             }
             onItemMoved.EventListeners += UpdateInventories;
         }
@@ -34,19 +36,19 @@ namespace Shops
             onItemMoved.EventListeners -= UpdateInventories;
         }
 
-        private void UpdateInventories(Void empty)
+        private void UpdateInventories(Void _empty)
         {
-            for (int i = 0; i < Portraits.Count; i++)
+            for (int _i = 0; _i < portraits.Count; _i++)
             {
-                Portraits[i].Hero.Inventory.gears = new List<Gear>();
+                portraits[_i].Hero.Inventory.gears = new List<Gear>();
             
-                foreach (SlotDragAndDrop _dropCell in Portraits[i].Slots)
+                foreach (SlotDragAndDrop _dropCell in portraits[_i].Slots)
                 {
                     if(_dropCell.GetInfoGear() != null)
-                        Portraits[i].Hero.Inventory.gears.Add(_dropCell.GetInfoGear().Gear);
+                        portraits[_i].Hero.Inventory.gears.Add(_dropCell.GetInfoGear().Gear);
                 }
                 
-                Portraits[i].UpdateStats();
+                portraits[_i].UpdateStats();
             }
         }
     }

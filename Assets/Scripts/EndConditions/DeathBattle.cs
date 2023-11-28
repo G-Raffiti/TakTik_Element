@@ -8,13 +8,13 @@ using UnityEngine;
 namespace EndConditions
 {
     [CreateAssetMenu(fileName = "EndCondition_DeathBattle", menuName = "Scriptable Object/End Conditions/Normal Battle")]
-    public class DeathBattle : EndConditionSO
+    public class DeathBattle : EndConditionSo
     {
-        public override bool battleIsOver(BattleStateManager StateManager)
+        public override bool BattleIsOver(BattleStateManager _stateManager)
         {
-            List<EPlayerType> _totalPlayersAlive = StateManager.Units.Select(u => u.playerType).Distinct().ToList();
-            List<Unit> playerHeroes = StateManager.Units.Where(unit => unit.playerType == EPlayerType.HUMAN).ToList();
-            WinCondition = playerHeroes.Count > 0;
+            List<EPlayerType> _totalPlayersAlive = _stateManager.Units.Select(_u => _u.playerType).Distinct().ToList();
+            List<Unit> _playerHeroes = _stateManager.Units.Where(_unit => _unit.playerType == EPlayerType.Human).ToList();
+            WinCondition = _playerHeroes.Count > 0;
             return _totalPlayersAlive.Count == 1;
         }
     }

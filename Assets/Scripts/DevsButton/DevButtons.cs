@@ -4,6 +4,7 @@ using _Instances;
 using Decks;
 using Skills;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DevsButton
 {
@@ -11,7 +12,8 @@ namespace DevsButton
     {
         [SerializeField] private DeckMono deck;
 
-        [SerializeField] private SkillSO OnePunchMan;
+        [FormerlySerializedAs("OnePunchMan")]
+        [SerializeField] private SkillSo onePunchMan;
 
         [SerializeField] private VoidEvent onReDraw;
 
@@ -21,7 +23,7 @@ namespace DevsButton
             {
                 deck = GameObject.Find("DeckMono/Deck1").GetComponent<DeckMono>();
             }
-            deck.AddHandSkill(OnePunchMan);
+            deck.AddHandSkill(onePunchMan);
             onReDraw.Raise();
         }
 

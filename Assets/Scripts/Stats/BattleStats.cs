@@ -10,158 +10,166 @@ namespace Stats
     [Serializable]
     public struct BattleStats
     {
-        public int HP;
-        public int Shield;
-        public int Speed;
-        public int Power;
-        public int Focus;
-        public Affinity Affinity;
-        public float MP;
-        public float AP;
+        [FormerlySerializedAs("HP")]
+        public int hp;
+        [FormerlySerializedAs("Shield")]
+        public int shield;
+        [FormerlySerializedAs("Speed")]
+        public int speed;
+        [FormerlySerializedAs("Power")]
+        public int power;
+        [FormerlySerializedAs("Focus")]
+        public int focus;
+        [FormerlySerializedAs("Affinity")]
+        public Affinity affinity;
+        [FormerlySerializedAs("MP")]
+        public float mp;
+        [FormerlySerializedAs("AP")]
+        public float ap;
         [FormerlySerializedAs("Range")] public GridRange gridRange;
 
         public float GetDamageTaken(float _damage, EElement _element) =>
-            Math.Max(1, _damage - (_damage * Affinity.GetAffinity(_element) / 50));
+            Math.Max(1, _damage - (_damage * affinity.GetAffinity(_element) / 50));
         
-        public int GetHealTaken(float _heal, EElement _element) => (int)(_heal + (_heal * Affinity.GetAffinity(_element) / 50));
+        public int GetHealTaken(float _heal, EElement _element) => (int)(_heal + (_heal * affinity.GetAffinity(_element) / 50));
 
         public BattleStats(BattleStats _battleStats)
         {
-            HP = _battleStats.HP;
-            Shield = _battleStats.Shield;
-            Speed = _battleStats.Speed;
-            Power = _battleStats.Power;
-            Focus = _battleStats.Focus;
-            Affinity = _battleStats.Affinity;
-            MP = _battleStats.MP;
-            AP = _battleStats.AP;
+            hp = _battleStats.hp;
+            shield = _battleStats.shield;
+            speed = _battleStats.speed;
+            power = _battleStats.power;
+            focus = _battleStats.focus;
+            affinity = _battleStats.affinity;
+            mp = _battleStats.mp;
+            ap = _battleStats.ap;
             gridRange = _battleStats.gridRange;
         }
 
-        public static BattleStats operator +(BattleStats a, BattleStats b)
+        public static BattleStats operator +(BattleStats _a, BattleStats _b)
         {
-            BattleStats res = new BattleStats(a);
-            res.HP += b.HP;
-            res.Shield += b.Shield;
-            res.Speed += b.Speed;
-            res.Power += b.Power;
-            res.Focus += b.Focus;
-            res.Affinity += b.Affinity;
-            res.MP += b.MP;
-            res.AP += b.AP;
-            res.gridRange += b.gridRange;
-            return res;
+            BattleStats _res = new BattleStats(_a);
+            _res.hp += _b.hp;
+            _res.shield += _b.shield;
+            _res.speed += _b.speed;
+            _res.power += _b.power;
+            _res.focus += _b.focus;
+            _res.affinity += _b.affinity;
+            _res.mp += _b.mp;
+            _res.ap += _b.ap;
+            _res.gridRange += _b.gridRange;
+            return _res;
         }
         
-        public static BattleStats operator -(BattleStats a, BattleStats b)
+        public static BattleStats operator -(BattleStats _a, BattleStats _b)
         {
-            BattleStats res = new BattleStats(a);
-            res.HP -= b.HP;
-            res.Shield -= b.Shield;
-            res.Speed -= b.Speed;
-            res.Power -= b.Power;
-            res.Focus -= b.Focus;
-            res.Affinity -= b.Affinity;
-            res.MP -= b.MP;
-            res.AP -= b.AP;
-            res.gridRange -= b.gridRange;
-            return res;
+            BattleStats _res = new BattleStats(_a);
+            _res.hp -= _b.hp;
+            _res.shield -= _b.shield;
+            _res.speed -= _b.speed;
+            _res.power -= _b.power;
+            _res.focus -= _b.focus;
+            _res.affinity -= _b.affinity;
+            _res.mp -= _b.mp;
+            _res.ap -= _b.ap;
+            _res.gridRange -= _b.gridRange;
+            return _res;
         }
         
-        public static BattleStats operator *(BattleStats a, BattleStats b)
+        public static BattleStats operator *(BattleStats _a, BattleStats _b)
         {
-            BattleStats res = new BattleStats(a);
-            res.HP *= b.HP;
-            res.Shield *= b.Shield;
-            res.Speed *= b.Speed;
-            res.Power *= b.Power;
-            res.Focus *= b.Focus;
-            res.Affinity *= b.Affinity;
-            res.MP *= b.MP;
-            res.AP *= b.AP;
-            res.gridRange *= b.gridRange;
-            return res;
+            BattleStats _res = new BattleStats(_a);
+            _res.hp *= _b.hp;
+            _res.shield *= _b.shield;
+            _res.speed *= _b.speed;
+            _res.power *= _b.power;
+            _res.focus *= _b.focus;
+            _res.affinity *= _b.affinity;
+            _res.mp *= _b.mp;
+            _res.ap *= _b.ap;
+            _res.gridRange *= _b.gridRange;
+            return _res;
         }
         
-        public static BattleStats operator +(BattleStats a, float b)
+        public static BattleStats operator +(BattleStats _a, float _b)
         {
-            BattleStats res = new BattleStats(a);
-            res.HP += (int)b;
-            res.Shield += (int)b;
-            res.Speed += (int)b;
-            res.Power += (int)b;
-            res.Focus += (int)b;
-            res.Affinity += (int) b;
-            res.MP += b;
-            res.AP += b;
-            res.gridRange += b;
-            return res;
+            BattleStats _res = new BattleStats(_a);
+            _res.hp += (int)_b;
+            _res.shield += (int)_b;
+            _res.speed += (int)_b;
+            _res.power += (int)_b;
+            _res.focus += (int)_b;
+            _res.affinity += (int) _b;
+            _res.mp += _b;
+            _res.ap += _b;
+            _res.gridRange += _b;
+            return _res;
         }
         
-        public static BattleStats operator *(BattleStats a, float b)
+        public static BattleStats operator *(BattleStats _a, float _b)
         {
-            BattleStats res = new BattleStats(a);
-            res.HP = (int)(res.HP * b);
-            res.Shield = (int)(res.Shield * b);
-            res.Speed = (int)(res.Speed * b);
-            res.Power = (int)(res.Power * b);
-            res.Focus = (int)(res.Focus * b);
-            res.Affinity *= b;
-            res.MP *= b;
-            res.AP *= b;
-            res.gridRange *= b;
-            return res;
+            BattleStats _res = new BattleStats(_a);
+            _res.hp = (int)(_res.hp * _b);
+            _res.shield = (int)(_res.shield * _b);
+            _res.speed = (int)(_res.speed * _b);
+            _res.power = (int)(_res.power * _b);
+            _res.focus = (int)(_res.focus * _b);
+            _res.affinity *= _b;
+            _res.mp *= _b;
+            _res.ap *= _b;
+            _res.gridRange *= _b;
+            return _res;
         }
 
-        public static BattleStats Randomize(BattleStats min, BattleStats max)
+        public static BattleStats Randomize(BattleStats _min, BattleStats _max)
         {
-            BattleStats ret = new BattleStats()
+            BattleStats _ret = new BattleStats()
             {
-                HP = Random.Range(min.HP, max.HP),
-                Shield = Random.Range(min.Shield, max.Shield),
-                Speed = Random.Range(min.Speed, max.Speed),
-                Power = Random.Range(min.Power, max.Power),
-                Focus = Random.Range(min.Focus, max.Focus),
-                Affinity = Affinity.Random(max.Affinity, max.Affinity),
-                MP = Random.Range(min.MP, max.MP),
-                AP = Random.Range(min.AP, max.AP),
-                gridRange = GridRange.Randomize(min.gridRange, max.gridRange)
+                hp = Random.Range(_min.hp, _max.hp),
+                shield = Random.Range(_min.shield, _max.shield),
+                speed = Random.Range(_min.speed, _max.speed),
+                power = Random.Range(_min.power, _max.power),
+                focus = Random.Range(_min.focus, _max.focus),
+                affinity = Affinity.Random(_max.affinity, _max.affinity),
+                mp = Random.Range(_min.mp, _max.mp),
+                ap = Random.Range(_min.ap, _max.ap),
+                gridRange = GridRange.Randomize(_min.gridRange, _max.gridRange)
             };
 
-            return ret;
+            return _ret;
         }
         
-        public BattleStats(float a)
+        public BattleStats(float _a)
         {
-            HP = (int) a;
-            Shield = (int) a;
-            Speed = (int) a;
-            Power = (int) a;
-            Focus = (int) a;
-            Affinity = new Affinity(a);
-            MP = a;
-            AP = a;
-            gridRange = new GridRange(a);
+            hp = (int) _a;
+            shield = (int) _a;
+            speed = (int) _a;
+            power = (int) _a;
+            focus = (int) _a;
+            affinity = new Affinity(_a);
+            mp = _a;
+            ap = _a;
+            gridRange = new GridRange(_a);
         }
 
-        public void Randomize(float min, float max)
+        public void Randomize(float _min, float _max)
         {
-            Randomize(new BattleStats(min), new BattleStats(max));
+            Randomize(new BattleStats(_min), new BattleStats(_max));
         }
 
-        public void Randomize(float a)
+        public void Randomize(float _a)
         {
-            Randomize(0,a);
+            Randomize(0,_a);
         }
 
-        public int GetPower(EElement element)
+        public int GetPower(EElement _element)
         {
-            return (int) (Power + Affinity.GetAffinity(element));
+            return (int) (power + affinity.GetAffinity(_element));
         }
         
         public int GetFocus()
         {
-            return Focus;
+            return focus;
         }
     }
 }

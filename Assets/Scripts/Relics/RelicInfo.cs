@@ -3,6 +3,7 @@ using Relics.ScriptableObject_RelicEffect;
 using Resources.ToolTip.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Relics
@@ -12,30 +13,32 @@ namespace Relics
     /// </summary>
     public class RelicInfo: InfoBehaviour
     {
-        public RelicSO Relic { get; private set; }
+        public RelicSo Relic { get; private set; }
         [SerializeField] private Image icon;
         
+        [FormerlySerializedAs("InfoTooltip_ON")]
         [Header("Tooltip Events")] 
-        [SerializeField] private InfoEvent InfoTooltip_ON;
-        [SerializeField] private VoidEvent InfoTooltip_OFF;
+        [SerializeField] private InfoEvent infoTooltipOn;
+        [FormerlySerializedAs("InfoTooltip_OFF")]
+        [SerializeField] private VoidEvent infoTooltipOff;
 
-        public void CreateRelic(RelicSO _relic)
+        public void CreateRelic(RelicSo _relic)
         {
             Relic = _relic;
         }
 
         #region InfoBehaviour
         
-        public override void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
-            InfoTooltip_ON.Raise(this);
+            infoTooltipOn.Raise(this);
         }
 
-        public override void OnPointerExit(PointerEventData eventData)
+        public override void OnPointerExit(PointerEventData _eventData)
         {
             if (Input.GetMouseButton(0)) return;
-            InfoTooltip_OFF.Raise();
+            infoTooltipOff.Raise();
         }
         
         public override string GetInfoMain()
@@ -45,10 +48,10 @@ namespace Relics
 
         public override string GetInfoLeft()
         {
-            string str = "";
-            if (Relic.GridEffect != null) str += Relic.GridEffect.InfoEffect() + "\n";
-            if (Relic.Effect != null) str += Relic.Effect.InfoEffect() + "\n";
-            return str;
+            string _str = "";
+            if (Relic.GridEffect != null) _str += Relic.GridEffect.InfoEffect() + "\n";
+            if (Relic.Effect != null) _str += Relic.Effect.InfoEffect() + "\n";
+            return _str;
         }
 
         public override string GetInfoRight()

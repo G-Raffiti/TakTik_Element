@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using _EventSystem.CustomEvents;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace SceneManagement
 {
-    public class ShopChoice_UI : MonoBehaviour 
+    public class ShopChoiceUI : MonoBehaviour 
     {
-        [SerializeField] private Button Btn1;
-        [SerializeField] private Button Btn2;
-        [SerializeField] private List<string> Shops;
-        [SerializeField] private List<Sprite> ShopIcons;
+        [FormerlySerializedAs("Btn1")]
+        [SerializeField] private Button btn1;
+        [FormerlySerializedAs("Btn2")]
+        [SerializeField] private Button btn2;
+        [FormerlySerializedAs("Shops")]
+        [SerializeField] private List<string> shops;
+        [FormerlySerializedAs("ShopIcons")]
+        [SerializeField] private List<Sprite> shopIcons;
         [SerializeField] private int indexBtn1;
         [SerializeField] private int indexBtn2;
 
@@ -28,14 +33,14 @@ namespace SceneManagement
         /// </summary>
         private void RandomizeShops()
         {
-            indexBtn1 = Random.Range(0, Shops.Count);
-            indexBtn2 = Random.Range(0, Shops.Count);
+            indexBtn1 = Random.Range(0, shops.Count);
+            indexBtn2 = Random.Range(0, shops.Count);
             if (indexBtn1 == indexBtn2)
             {
                 if (indexBtn1 > 0)
                     indexBtn1 -= Random.Range(1, indexBtn1 + 1);
                 else
-                    indexBtn2 += Random.Range(1, Shops.Count);
+                    indexBtn2 += Random.Range(1, shops.Count);
             }
         }
 
@@ -44,21 +49,21 @@ namespace SceneManagement
         /// </summary>
         private void SetButtons()
         {
-            BattleFade fade = FindObjectOfType<BattleFade>();
-            Btn1.onClick.AddListener(() => fade.GoToShop(Shops[indexBtn1]));
-            Btn1.onClick.AddListener(() => gameObject.SetActive(false));
-            Btn2.onClick.AddListener(() => fade.GoToShop(Shops[indexBtn2]));
-            Btn2.onClick.AddListener(() => gameObject.SetActive(false));
-            Btn1.transform.Find("text").GetComponent<TextMeshProUGUI>().text = $"Go to {Shops[indexBtn1]}";
-            Btn2.transform.Find("text").GetComponent<TextMeshProUGUI>().text = $"Go to {Shops[indexBtn2]}";
-            Btn1.transform.Find("icon").GetComponent<Image>().sprite = ShopIcons[indexBtn1];
-            Btn2.transform.Find("icon").GetComponent<Image>().sprite = ShopIcons[indexBtn2];
+            BattleFade _fade = FindObjectOfType<BattleFade>();
+            btn1.onClick.AddListener(() => _fade.GoToShop(shops[indexBtn1]));
+            btn1.onClick.AddListener(() => gameObject.SetActive(false));
+            btn2.onClick.AddListener(() => _fade.GoToShop(shops[indexBtn2]));
+            btn2.onClick.AddListener(() => gameObject.SetActive(false));
+            btn1.transform.Find("text").GetComponent<TextMeshProUGUI>().text = $"Go to {shops[indexBtn1]}";
+            btn2.transform.Find("text").GetComponent<TextMeshProUGUI>().text = $"Go to {shops[indexBtn2]}";
+            btn1.transform.Find("icon").GetComponent<Image>().sprite = shopIcons[indexBtn1];
+            btn2.transform.Find("icon").GetComponent<Image>().sprite = shopIcons[indexBtn2];
         }
 
         private void OnDisable()
         {
-            Btn1.onClick.RemoveAllListeners();
-            Btn2.onClick.RemoveAllListeners();
+            btn1.onClick.RemoveAllListeners();
+            btn2.onClick.RemoveAllListeners();
         }
     }
 }

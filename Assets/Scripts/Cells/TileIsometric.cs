@@ -10,25 +10,25 @@ namespace Cells
 
         public string GetInfoMain()
         {
-            return $"{cellSO.Type}";
+            return $"{cellSo.Type}";
         }
 
         public string GetInfoLeft()
         {
-            string str = "";
+            string _str = "";
             if (IsTaken)
             {
-                str += "the Cell is "; 
-                str += CurrentUnit ? $"Occupied by: {CurrentUnit.UnitName}" : "not walkable";
-                str += CurrentGridObject ? $"Taken by: a {CurrentGridObject.GridObjectSO.Type}" : "not walkable";
+                _str += "the Cell is "; 
+                _str += CurrentUnit ? $"Occupied by: {CurrentUnit.unitName}" : "not walkable";
+                _str += CurrentGridObject ? $"Taken by: a {CurrentGridObject.GridObjectSo.Type}" : "not walkable";
             }
 
-            if (isCorrupted)
+            if (IsCorrupted)
             {
-                str += "the Cell is Corrupted";
+                _str += "the Cell is Corrupted";
             }
 
-            return str;
+            return _str;
         }
 
         public string GetInfoRight()
@@ -38,13 +38,13 @@ namespace Cells
 
         public string GetInfoDown()
         {
-            string str = "";
+            string _str = "";
             foreach (Buff _buff in Buffs)
             {
-                str += $"{_buff.InfoBuffOnCell(this)}\n";
+                _str += $"{_buff.InfoBuffOnCell(this)}\n";
             }
 
-            return str;
+            return _str;
         }
 
         public Sprite GetIcon()

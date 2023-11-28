@@ -55,7 +55,7 @@ namespace StateMachine
         }
         
         /// <value>Property <c>endCondition</c> define the end condition type of the board.</value>
-        public EndConditionSO endCondition { get; private set; }
+        public EndConditionSo EndCondition { get; private set; }
         /// <value>Property <c>Players</c> list of all <c>Player</c>.</value>
         private List<Player> Players { get; set; }
         /// <value>Property <c>Cells</c> list of all <c>Cell</c>.</value>
@@ -67,14 +67,14 @@ namespace StateMachine
         {
             get
             {
-                List<Monster> monsters = new List<Monster>();
-                foreach (Unit unit in Units.Where(u => u.playerType != EPlayerType.HUMAN)) 
+                List<Monster> _monsters = new List<Monster>();
+                foreach (Unit _unit in Units.Where(_u => _u.playerType != EPlayerType.Human)) 
                 {
-                    if (unit is Monster monster)
-                        monsters.Add(monster);
+                    if (_unit is Monster _monster)
+                        _monsters.Add(_monster);
                 }
 
-                return monsters;
+                return _monsters;
             }
         }
         /// <value>Property <c>DeadThisTurn</c> list of all <c>Monster</c> dead during this turn.</value>
@@ -108,23 +108,23 @@ namespace StateMachine
 
         /// <summary> Constant variable <c>TurnCost</c> is the point's amount subtracted to the
         /// <c>PlayingUnit</c>'s turn points. </summary>
-        private const int TurnCost = 20;
+        private const int TURN_COST = 20;
 
         /// <summary> Constant variable <c>CorruptionTurn</c> represents the number of turn before corruption
         /// started. </summary>
-        private const int CorruptionTurn = 3;
+        private const int CORRUPTION_TURN = 3;
 
         /// <value> Property <c>NextCorruptionTurn</c> represents the number of turn before next corruption. </value>
         public int NextCorruptionTurn { get; private set; }
 
         /// <summary> Instance variable <c>TurnCount</c> represents the turn counter. </summary>
-        private float TurnCount = 1;
+        private float turnCount = 1;
 
         /// <value> Property <c>Turn</c> represents the number of actual turn. </value>
-        public int Turn => (int)TurnCount;
+        public int Turn => (int)turnCount;
 
         /// <summary> Instance variable <c>ObjectCells</c> store cells for each movable objects. </summary>
-        public Dictionary<IMovable, Cell> ObjectCells { get; private set; } = new Dictionary<IMovable, Cell>();
+        public Dictionary<Movable, Cell> ObjectCells { get; private set; } = new Dictionary<Movable, Cell>();
 
         
         ////////////////////// METHODS /////////////////////////////////////////////////////////////////////////////////
@@ -165,9 +165,9 @@ namespace StateMachine
         /// Method <c>SetStateSkillSelected</c> transition to skill selected state.
         /// </summary>
         /// <param name="skill">the selected skill</param>
-        private void SetStateSkillSelected(SkillInfo skill)
+        private void SetStateSkillSelected(SkillInfo _skill)
         {
-            BattleState = new BattleStateSkillSelected(this, skill);
+            BattleState = new BattleStateSkillSelected(this, _skill);
         }
         
         /// <summary>
@@ -182,9 +182,9 @@ namespace StateMachine
         /// Method <c>SetStateUnitSelected</c> transition to unit selected state.
         /// </summary>
         /// <param name="unit">the selected unit</param>
-        private void SetStateUnitSelected(Unit unit)
+        private void SetStateUnitSelected(Unit _unit)
         {
-            BattleState = new BattleStateUnitSelected(this, unit);
+            BattleState = new BattleStateUnitSelected(this, _unit);
         }
         
         #endregion
@@ -200,7 +200,7 @@ namespace StateMachine
             CheckPlayingUnitAlive();
         }
         
-        private void EndTurn(Void item)
+        private void EndTurn(Void _item)
         {
             EndTurn();
         }
@@ -218,33 +218,33 @@ namespace StateMachine
         /// <summary>
         /// Link the CellsEvent to the BattleState Deselected
         /// </summary>
-        private void OnCellUnselected(object sender, EventArgs e)
+        private void OnCellUnselected(object _sender, EventArgs _e)
         {
-            BattleState.OnCellDeselected(sender as Cell);
+            BattleState.OnCellDeselected(_sender as Cell);
         }
 
         /// <summary>
         /// Link the CellsEvent to the BattleState Selected
         /// </summary>
-        private void OnCellSelected(object sender, EventArgs e)
+        private void OnCellSelected(object _sender, EventArgs _e)
         {
-            BattleState.OnCellSelected(sender as Cell);
+            BattleState.OnCellSelected(_sender as Cell);
         }
 
         /// <summary>
         /// Link the CellsEvent to the BattleState Clicked
         /// </summary>
-        private void OnCellClicked(object sender, EventArgs e)
+        private void OnCellClicked(object _sender, EventArgs _e)
         {
-            BattleState.OnCellClicked(sender as Cell);
+            BattleState.OnCellClicked(_sender as Cell);
         }
 
         /// <summary>
         /// Method Called by a DeathEvent to Start the On UnitDestroyed Coroutine
         /// </summary>
-        private void TriggerOnUnitDestroyed(object sender, DeathEventArgs e)
+        private void TriggerOnUnitDestroyed(object _sender, DeathEventArgs _e)
         {
-            StartCoroutine(UnitDestroyed(sender));
+            StartCoroutine(UnitDestroyed(_sender));
         }
         
         /// <summary>
@@ -253,14 +253,14 @@ namespace StateMachine
         private void UnitsEndBattle(Void _obj)
         {
             //TODO: A mettre dans Unit -> catch event battleisover
-            foreach (Unit hero in Units.Where(u => u.playerType == EPlayerType.HUMAN))
+            foreach (Unit _unit in Units.Where(_u => _u.playerType == EPlayerType.Human))
             {
-                Hero _hero = ((BattleHero)hero).Hero;
-                foreach (RelicSO _relicSO in _hero.Relics)
+                Hero _hero = ((BattleHero)_unit).Hero;
+                foreach (RelicSo _relicSo in _hero.Relics)
                 {
-                    foreach (RelicEffect _effect in _relicSO.RelicEffects)
+                    foreach (RelicEffect _effect in _relicSo.RelicEffects)
                     {
-                        _effect.OnEndFight(_hero, _relicSO);
+                        _effect.OnEndFight(_hero, _relicSo);
                     }
                 }
             }
@@ -286,8 +286,8 @@ namespace StateMachine
             InitializeCells();
             InitializeGridObjects();
             
-            NextCorruptionTurn = CorruptionTurn;
-            BattleState = new BattleStateBeginning(this, BattleGenerator.GenerateEnemies(endCondition.Type));
+            NextCorruptionTurn = CORRUPTION_TURN;
+            BattleState = new BattleStateBeginning(this, BattleGenerator.GenerateEnemies(EndCondition.Type));
         }
 
         /// <summary>
@@ -295,12 +295,12 @@ namespace StateMachine
         /// </summary>
         private void InitializePlayers()
         {
-            Transform playersParent = GameObject.Find("Players").transform;
+            Transform _playersParent = GameObject.Find("Players").transform;
             
             Players = new List<Player>();
-            for (int _i = 0; _i < playersParent.childCount; _i++)
+            for (int _i = 0; _i < _playersParent.childCount; _i++)
             {
-                Player _player = playersParent.GetChild(_i).GetComponent<Player>();
+                Player _player = _playersParent.GetChild(_i).GetComponent<Player>();
                 if (_player != null)
                     Players.Add(_player);
                 else
@@ -316,7 +316,7 @@ namespace StateMachine
             Board _board = GetComponent<Board>();
 
             _board.LoadBoard(BattleStage.currentState);
-            endCondition = _board.EndCondition;
+            EndCondition = _board.EndCondition;
             
             Cells = new List<Cell>();
             for (int _i = 0; _i < transform.childCount; _i++)
@@ -347,7 +347,7 @@ namespace StateMachine
             {
                 GridObjects.Add(_transform.gameObject.GetComponent<GridObject>());
             }
-            GridObjects.ForEach(g => g.Initialize());
+            GridObjects.ForEach(_g => _g.Initialize());
         }
 
         /// <summary>
@@ -356,21 +356,21 @@ namespace StateMachine
         private void InitializeUnits()
         {
             Units = GameObject.Find("Units").GetComponentsInChildren<Unit>().ToList();
-            foreach (Unit unit in Units)
+            foreach (Unit _unit in Units)
             {
-                unit.UnitDestroyed += TriggerOnUnitDestroyed;
+                _unit.UnitDestroyed += TriggerOnUnitDestroyed;
             }
 
-            Units.Sort((u1, u2) => u1.BattleStats.Speed.CompareTo(u2.BattleStats.Speed));
+            Units.Sort((_u1, _u2) => _u1.battleStats.speed.CompareTo(_u2.battleStats.speed));
 
-            for (int i = 0; i < Units.Count; i++)
+            for (int _i = 0; _i < Units.Count; _i++)
             {
-                Units[i].TurnPoint += TurnCost * 2 + Units[i].BattleStats.Speed + i;
+                Units[_i].turnPoint += TURN_COST * 2 + Units[_i].battleStats.speed + _i;
             }
             Units.Reverse();
             PlayingUnit = Units[0];
 
-            foreach (Cell _cell in Cells.Where(c => c.GetCurrentIMovable() != null))
+            foreach (Cell _cell in Cells.Where(_c => _c.GetCurrentIMovable() != null))
             {
                 if (!ObjectCells.Keys.Contains(_cell.GetCurrentIMovable()))
                     ObjectCells.Add(_cell.GetCurrentIMovable(), _cell);
@@ -395,14 +395,14 @@ namespace StateMachine
         /// </summary>
         private void EndTurn()
         {
-            if (instance.Monsters.Where(m => m.isDying).ToList().Count > 0) return;
+            if (instance.Monsters.Where(_m => _m.IsDying).ToList().Count > 0) return;
             if (PlayingUnit != null && PlayingUnit is Monster {isPlaying: true}) return;
             
             BattleState = new BattleStateBlockInput(this);
 
             if (Check()) return;
             
-            Cells.ForEach(c => c.OnEndTurn());
+            Cells.ForEach(_c => _c.OnEndTurn());
 
             foreach (Unit _unit in Units)
             {
@@ -433,7 +433,7 @@ namespace StateMachine
 
             PlayingUnit = Units[0];
             
-            TurnCount += 1f / Units.Count;
+            turnCount += 1f / Units.Count;
             foreach (Unit _unit in Units)
             {
                 _unit.OnTurnStarts();
@@ -444,22 +444,22 @@ namespace StateMachine
                 _gridObject.OnStartTurn();
             }
 
-            Debug.Log(PlayingUnit.playerType == EPlayerType.HUMAN ? $"Player's Turn {PlayingUnit.ColouredName()}" : $"IA's Turn {PlayingUnit.ColouredName()}", DLogType.Error);
+            Debug.Log(PlayingUnit.playerType == EPlayerType.Human ? $"Player's Turn {PlayingUnit.ColouredName()}" : $"IA's Turn {PlayingUnit.ColouredName()}", DLogType.Error);
 
             // TODO: mettre dans Unit
-            PlayingUnit.TurnPoint -= TurnCost;
+            PlayingUnit.turnPoint -= TURN_COST;
             foreach (Unit _unit in Units.Where(_unit => _unit != PlayingUnit))
             {
-                _unit.TurnPoint += _unit.BattleStats.Speed;
+                _unit.turnPoint += _unit.battleStats.speed;
             }
 
-            Players.Find(p => p.playerType == PlayingUnit.playerType).Play(this);
+            Players.Find(_p => _p.playerType == PlayingUnit.playerType).Play(this);
             onUnitStartTurn.Raise(PlayingUnit);
         }
         
         private void SortByTurnPoints()
         {
-            Units.Sort((u1, u2) => u1.TurnPoint.CompareTo(u2.TurnPoint));
+            Units.Sort((_u1, _u2) => _u1.turnPoint.CompareTo(_u2.turnPoint));
             Units.Reverse();
         }
         
@@ -471,13 +471,13 @@ namespace StateMachine
             NextCorruptionTurn += 1;
             
             //TODO: la cellule gère sa propre corruption (send corruption event a toute les cellules)
-            if (NextCorruptionTurn <= CorruptionTurn + 1)
+            if (NextCorruptionTurn <= CORRUPTION_TURN + 1)
             {
-                Cells.Where(c => c.Neighbours.Count < 4).ToList().ForEach(CorruptCell);
+                Cells.Where(_c => _c.Neighbours.Count < 4).ToList().ForEach(CorruptCell);
                 return;
             }
             
-            Cells.Where(_cell => _cell.Neighbours.Any(_neighbourTile => _neighbourTile.isCorrupted)).ToList().ForEach(CorruptCell);
+            Cells.Where(_cell => _cell.Neighbours.Any(_neighbourTile => _neighbourTile.IsCorrupted)).ToList().ForEach(CorruptCell);
         }
 
         /// <summary>
@@ -486,8 +486,8 @@ namespace StateMachine
         /// <param name="_cell">the cell to corrupt</param>
         private void CorruptCell(Cell _cell)
         {
-            _cell.AddBuff(new Buff(_cell, DataBase.Cell.CorruptionSO));
-            _cell.isCorrupted = true;
+            _cell.AddBuff(new Buff(_cell, DataBase.Cell.CorruptionSo));
+            _cell.IsCorrupted = true;
         }
             
         /// <summary>
@@ -503,7 +503,7 @@ namespace StateMachine
             }
 
             // This Method Work only during the Player Turn
-            if (PlayingUnit.playerType != EPlayerType.HUMAN) return;
+            if (PlayingUnit.playerType != EPlayerType.Human) return;
             SetStateUnitSelected(PlayingUnit);
         }
         
@@ -513,10 +513,10 @@ namespace StateMachine
         /// <returns>true if the end condition is satisfied, false otherwise</returns>
         public bool Check()
         {
-            if (endCondition.battleIsOver(this))
+            if (EndCondition.BattleIsOver(this))
             {
                 BattleState = new BattleStateBlockInput(this);
-                onBattleIsOver.Raise(endCondition.WinCondition);
+                onBattleIsOver.Raise(EndCondition.WinCondition);
                 return true;
             }
 
@@ -527,9 +527,9 @@ namespace StateMachine
         /// method <c>UnitMoved</c> called each time a unit finish a move.
         /// </summary>
         /// <param name="unit">the moved unit</param>
-        private void UnitMoved(Unit unit)
+        private void UnitMoved(Unit _unit)
         {
-            if (unit == PlayingUnit)
+            if (_unit == PlayingUnit)
                 SetStateUnitSelected(PlayingUnit);
         }
 
@@ -546,28 +546,28 @@ namespace StateMachine
         /// <summary>
         /// Coroutine Called when a Unit is Dying
         /// </summary>
-        private IEnumerator UnitDestroyed(object sender)
+        private IEnumerator UnitDestroyed(object _sender)
         {
-            while (((Unit) sender).isDying)
+            while (((Unit) _sender).IsDying)
                 yield return null;
            
-            Units.Remove((Unit) sender);
-            ObjectCells.Remove((Unit) sender);
+            Units.Remove((Unit) _sender);
+            ObjectCells.Remove((Unit) _sender);
 
-            if (sender is BattleHero)
+            if (_sender is BattleHero)
             {
                 Check();
             }
 
-            if (sender is Monster _sender)
+            if (_sender is Monster _monster)
             {
-                if (_sender.Inventory.gears.Count > 0 
-                    || _sender.Type == EMonster.Boss)
-                    DeadThisTurn.Add(_sender);
+                if (_monster.inventory.gears.Count > 0 
+                    || _monster.Type == EMonster.Boss)
+                    DeadThisTurn.Add(_monster);
             }
                 
             
-            if ((Unit) sender == PlayingUnit)
+            if ((Unit) _sender == PlayingUnit)
             {
                 PlayingUnit = null;
                 EndTurn();
@@ -579,7 +579,7 @@ namespace StateMachine
         /// </summary>
         /// <param name="_movable">the object to move</param>
         /// <param name="_cell">the destination cell</param>
-        public void OnIMovableMoved(IMovable _movable, Cell _cell)
+        public void OnIMovableMoved(Movable _movable, Cell _cell)
         {
             if (_cell == null && ObjectCells.Keys.Contains(_movable))
             {
@@ -597,9 +597,9 @@ namespace StateMachine
                 CheckCells();
             }
 
-            if (ObjectCells.Values.Any(c => c == null))
+            if (ObjectCells.Values.Any(_c => _c == null))
             {
-                foreach (KeyValuePair<IMovable,Cell> _keyValuePair in ObjectCells)
+                foreach (KeyValuePair<Movable,Cell> _keyValuePair in ObjectCells)
                 {
                     if (_keyValuePair.Value == null)
                     {
@@ -618,29 +618,29 @@ namespace StateMachine
             {
                 _cell.FreeTheCell();
             }
-            Dictionary<Cell, IMovable> getMovable = new Dictionary<Cell, IMovable>();
-            foreach (KeyValuePair<IMovable,Cell> _pair in ObjectCells)
+            Dictionary<Cell, Movable> _getMovable = new Dictionary<Cell, Movable>();
+            foreach (KeyValuePair<Movable,Cell> _pair in ObjectCells)
             {
-                if (getMovable.ContainsKey(_pair.Value))
+                if (_getMovable.ContainsKey(_pair.Value))
                 {
                     Debug.Log($"more than one Movable on Cell ({_pair.Value.OffsetCoord})");
-                    List<IMovable> objSharingCell = ObjectCells
-                        .GroupBy(z => z.Value)
-                        .Where(z => z.Count() > 1)
-                        .SelectMany(z => z)
-                        .Select(z => z.Key)
+                    List<Movable> _objSharingCell = ObjectCells
+                        .GroupBy(_z => _z.Value)
+                        .Where(_z => _z.Count() > 1)
+                        .SelectMany(_z => _z)
+                        .Select(_z => _z.Key)
                         .ToList();
 
-                    SnapToNearestCell(objSharingCell);
+                    SnapToNearestCell(_objSharingCell);
                     
                     continue;
                 }
-                getMovable.Add(_pair.Value, _pair.Key);
+                _getMovable.Add(_pair.Value, _pair.Key);
             }
-            Dictionary<IMovable, Cell> getCellCopy = new Dictionary<IMovable, Cell> (ObjectCells);
-            foreach (Cell _cell in getCellCopy.Values)
+            Dictionary<Movable, Cell> _getCellCopy = new Dictionary<Movable, Cell> (ObjectCells);
+            foreach (Cell _cell in _getCellCopy.Values)
             {
-                _cell.ForceTake(getMovable[_cell]);
+                _cell.ForceTake(_getMovable[_cell]);
             }
             foreach (Unit _unit in Units)
             {
@@ -656,15 +656,15 @@ namespace StateMachine
         /// <summary>
         /// method <c>SnapToNearestCell</c> find an empty cell near the shared cell and move one of the object there.
         /// </summary>
-        private void SnapToNearestCell(List<IMovable> objSharingCell)
+        private void SnapToNearestCell(List<Movable> _objSharingCell)
         {
-            Cell shared = ObjectCells[objSharingCell[0]];
-            for (int i = 1 ; i < objSharingCell.Count ; i ++)
+            Cell _shared = ObjectCells[_objSharingCell[0]];
+            for (int _i = 1 ; _i < _objSharingCell.Count ; _i ++)
             {
-                List<Cell> destinations = new List<Cell>(shared.Neighbours.Where(c => c.IsWalkable));
-                if (destinations.Count == 0)
-                    destinations.AddRange(shared.Neighbours[0].Neighbours.Where(c => c.IsWalkable));
-                destinations[0].ForceTake(objSharingCell[i]);
+                List<Cell> _destinations = new List<Cell>(_shared.Neighbours.Where(_c => _c.IsWalkable));
+                if (_destinations.Count == 0)
+                    _destinations.AddRange(_shared.Neighbours[0].Neighbours.Where(_c => _c.IsWalkable));
+                _destinations[0].ForceTake(_objSharingCell[_i]);
             }
         }
 
@@ -672,10 +672,10 @@ namespace StateMachine
         /// Adds unit to the game
         /// </summary>
         /// <param name="unit">Unit to add</param>
-        private void AddUnit(Transform unit)
+        private void AddUnit(Transform _unit)
         {
-            Units.Add(unit.GetComponent<Unit>());
-            unit.GetComponent<Unit>().UnitDestroyed += TriggerOnUnitDestroyed;
+            Units.Add(_unit.GetComponent<Unit>());
+            _unit.GetComponent<Unit>().UnitDestroyed += TriggerOnUnitDestroyed;
         }
     }
 }

@@ -5,13 +5,13 @@ namespace Relics.ScriptableObject_RelicEffect
 {
     public class RelicEffectHealOnEndFight : RelicEffect
     {
-        public override void ChangeSkill(Skill skill, RelicSO relic)
+        public override void ChangeSkill(Skill _skill, RelicSo _relic)
         {
         }
 
-        public override void OnEndFight(Hero hero, RelicSO relic)
+        public override void OnEndFight(Hero _hero, RelicSo _relic)
         {
-            hero.HealFixValueHP((int)relic.EffectFactor);
+            _hero.HealFixValueHp((int)_relic.EffectFactor);
         }
     }
 }

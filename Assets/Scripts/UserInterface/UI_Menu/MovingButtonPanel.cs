@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace UserInterface.UI_Menu
 {
     public class MovingButtonPanel : MonoBehaviour, IPointerClickHandler
     {
-        public MovingPanelMenu MenuPanel;
+        [FormerlySerializedAs("MenuPanel")]
+        public MovingPanelMenu menuPanel;
         
-        public void OnPointerClick(PointerEventData eventData)
+        public void OnPointerClick(PointerEventData _eventData)
         {
-            MenuPanel.ShowPanelBtn(transform.GetSiblingIndex());
+            menuPanel.ShowPanelBtn(transform.GetSiblingIndex());
         }
     }
 }

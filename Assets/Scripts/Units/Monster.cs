@@ -14,6 +14,7 @@ using Skills._Zone;
 using StateMachine;
 using Stats;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Units
 {
@@ -30,24 +31,26 @@ namespace Units
         [Header("Event Sender")]
         [SerializeField] private UnitEvent onDeathLoot;
         [SerializeField] private UnitEvent onDeathRelic;
-        [SerializeField] private SkillEvent onSkillTooltip_ON;
+        [FormerlySerializedAs("onSkillTooltip_ON")]
+        [SerializeField] private SkillEvent onSkillTooltipOn;
         
         [Header("Event Listener")]
         [SerializeField] private UnitEvent onInventoryClosed;
         
+        [FormerlySerializedAs("onMonsterTooltip_ON")]
         [Header("Tooltip Event for MONSTER")]
-        [SerializeField] private UnitEvent onMonsterTooltip_ON;
-        public override UnitEvent onTooltip_ON => onMonsterTooltip_ON;
+        [SerializeField] private UnitEvent onMonsterTooltipOn;
+        public override UnitEvent OnTooltipOn => onMonsterTooltipOn;
         
         public bool isPlaying;
 
-        public MonsterSO MonsterSO { get; private set; }
-        public Skill monsterSkill { get; private set; }
+        public MonsterSo MonsterSo { get; private set; }
+        public Skill MonsterSkill { get; private set; }
         public Archetype Archetype { get; private set; }
-        public List<RelicSO> Relics { get; private set; }
+        public List<RelicSo> Relics { get; private set; }
         public EReward RewardType { get; private set; }
         public EMonster Type { get; private set; }
-        public override Sprite UnitSprite => MonsterSO.UnitSprite;
+        public override Sprite UnitSprite => MonsterSo.UnitSprite;
 
         private void Start()
         {
@@ -62,7 +65,7 @@ namespace Units
         public override void OnRightClick()
         {
             base.OnRightClick();
-            onSkillTooltip_ON.Raise(skill);
+            onSkillTooltipOn.Raise(skill);
         }
 
 
@@ -71,47 +74,47 @@ namespace Units
         /// </summary>
         /// <param name="monster"></param>
         /// <param name="Stage"></param>
-        public void Spawn(MonsterSO monster, int Stage)
+        public void Spawn(MonsterSo _monster, int _stage)
         {
-            MonsterSO = monster;
-            UnitName = monster.Name;
-            unitSpriteRenderer.sprite = monster.UnitSprite;
-            RewardType = monster.RewardType;
-            Type = monster.Type;
-            Archetype = monster.Archetype;
+            MonsterSo = _monster;
+            unitName = _monster.Name;
+            unitSpriteRenderer.sprite = _monster.UnitSprite;
+            RewardType = _monster.RewardType;
+            Type = _monster.Type;
+            Archetype = _monster.Archetype;
             
-            Relics = new List<RelicSO>();
-            if (monster.Relic != null)
+            Relics = new List<RelicSo>();
+            if (_monster.Relic != null)
             {
-                Relics.Add(monster.Relic);
+                Relics.Add(_monster.Relic);
             }
 
             buffs = new List<Buff>();
             
-            Inventory = new Inventory();
+            inventory = new Inventory();
             if(BattleStage.Stage >= 0) 
-                Inventory.GenerateGearFor(monster);
+                inventory.GenerateGearFor(_monster);
 
-            if (monster.Type == EMonster.Boss && BattleStage.Stage >= 0)
+            if (_monster.Type == EMonster.Boss && BattleStage.Stage >= 0)
             {
                 Relics.Add(DataBase.Relic.GetRandom());
             }
 
-            deck.Relics = new List<RelicSO>(Relics);
+            deck.relics = new List<RelicSo>(Relics);
             deck.UpdateDeck();
 
-            baseStats = monster.Stats();
-            BattleStats = new BattleStats(baseStats + Inventory.GearStats());
-            total = BattleStats;
-            if (monster.Skill == null)
-                monsterSkill = Skill.CreateSkill(DataBase.Skill.GetSkillFor(monster), deck, this);
-            else monsterSkill = Skill.CreateSkill(monster.Skill, deck, this);
+            baseStats = _monster.Stats();
+            battleStats = new BattleStats(baseStats + inventory.GearStats());
+            total = battleStats;
+            if (_monster.Skill == null)
+                MonsterSkill = Skill.CreateSkill(DataBase.Skill.GetSkillFor(_monster), deck, this);
+            else MonsterSkill = Skill.CreateSkill(_monster.Skill, deck, this);
 
-            if (monsterSkill.Cost > total.AP)
-                total.AP = monsterSkill.Cost;
+            if (MonsterSkill.Cost > total.ap)
+                total.ap = MonsterSkill.Cost;
             
-            skill.skill = monsterSkill;
-            skill.Unit = this;
+            skill.skill = MonsterSkill;
+            skill.unit = this;
 
             MainElement();
             InitializeSprite();
@@ -122,12 +125,12 @@ namespace Units
         public override void EndTurn()
         {
             base.EndTurn();
-            skill.skill = monsterSkill;
+            skill.skill = MonsterSkill;
         }
 
         public override string GetInfoMain()
         {
-            return $"{ColouredName()} {MonsterSO.Archetype.Type}";
+            return $"{ColouredName()} {MonsterSo.Archetype.Type}";
         }
 
         public void ShowRange()
@@ -149,7 +152,7 @@ namespace Units
         
         public override IEnumerator OnDestroyed()
         {
-            isDying = true;
+            IsDying = true;
             if (RewardType == EReward.Gear && BattleStateManager.instance.PlayingUnit is BattleHero)
             {
                 onDeathLoot.Raise(this);
@@ -163,11 +166,11 @@ namespace Units
             yield return base.OnDestroyed();
         }
         
-        private void DestroyUnit(Unit unit)
+        private void DestroyUnit(Unit _unit)
         {
             if (BattleStateManager.instance.DeadThisTurn.Count == 0)
                 BattleStateManager.instance.Check();
-            if (unit == this)
+            if (_unit == this)
                 Destroy(this);
         }
     }

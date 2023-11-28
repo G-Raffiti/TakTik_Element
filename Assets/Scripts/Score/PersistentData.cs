@@ -4,16 +4,18 @@ using _Extension;
 using _SaveSystem;
 using Players;
 using Units;
+using UnityEngine.Serialization;
 
 namespace Score
 {
     [Serializable]
     public class PersistentData : ISaveable
     {
-        private static PersistentData instance;
-        public static PersistentData Instance => instance ??= new PersistentData();
-        public int SaveNumber;
-        public string Id => "this is the Only Save you have" + SaveNumber;
+        private static PersistentData _instance;
+        public static PersistentData Instance => _instance ??= new PersistentData();
+        [FormerlySerializedAs("SaveNumber")]
+        public int saveNumber;
+        public string Id => "this is the Only Save you have" + saveNumber;
         public int WinStrike { get; private set; } = 0;
         public int BestWinStrike { get; private set; } = 0;
         public int DamageDealtTotal { get; private set; } = 0;
@@ -49,12 +51,12 @@ namespace Score
             MaxScore = _data.MaxScore;
         }
 
-        public void SetScore(bool isWin)
+        public void SetScore(bool _isWin)
         {
-            if (isWin)
+            if (_isWin)
                 WinStrike++;
             BestWinStrike = BestWinStrike.Max(WinStrike);
-            if (!isWin)
+            if (!_isWin)
                 WinStrike = 0;
             
             SetDamage();
@@ -94,13 +96,13 @@ namespace Score
 
         public object CaptureState()
         {
-            return instance;
+            return _instance;
         }
 
         public void RestoreState(object _state)
         {
             PersistentData _data = (PersistentData) _state;
-            instance = new PersistentData(_data);
+            _instance = new PersistentData(_data);
         }
     }
 }

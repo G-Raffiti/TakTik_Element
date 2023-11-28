@@ -16,15 +16,15 @@ namespace _Pathfinding.Algorithms
         /// <returns>
         /// If a path exist, method returns list of nodes that the path consists of. Otherwise, empty list is returned.
         /// </returns>
-        public abstract List<T> FindPath<T>(Dictionary<T, Dictionary<T, float>> edges, T originNode, T destinationNode) where T : IGraphNode;
+        public abstract List<T> FindPath<T>(Dictionary<T, Dictionary<T, float>> _edges, T _originNode, T _destinationNode) where T : IGraphNode;
 
-        protected List<T> GetNeigbours<T>(Dictionary<T, Dictionary<T, float>> edges, T node) where T : IGraphNode
+        protected List<T> GetNeigbours<T>(Dictionary<T, Dictionary<T, float>> _edges, T _node) where T : IGraphNode
         {
-            if (!edges.ContainsKey(node))
+            if (!_edges.ContainsKey(_node))
             {
                 return new List<T>();
             }
-            return edges[node].Keys.ToList();
+            return _edges[_node].Keys.ToList();
         }
     }
 }

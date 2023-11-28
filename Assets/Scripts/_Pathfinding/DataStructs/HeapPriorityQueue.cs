@@ -19,9 +19,9 @@ namespace _Pathfinding.DataStructs
             get { return queue.Count; }
         }
 
-        public void Enqueue(T item, float priority)
+        public void Enqueue(T _item, float _priority)
         {
-            queue.Add(new PriorityQueueNode<T>(item, priority));
+            queue.Add(new PriorityQueueNode<T>(_item, _priority));
             int _ci = queue.Count - 1;
             while (_ci > 0)
             {
