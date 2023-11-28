@@ -149,17 +149,14 @@ namespace Players
             // Move one Last Time at the best Place
             if (canMove && best.Destination != monster.Cell)
             {
-                Debug.LogWarning($"Last Move\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}\nCan Play = {canPlay}, Can Move = {canMove}");
                 // Move
                 List<Cell> path = monster.FindPath(stateManager.Cells, best.Destination);
                 path.Sort((_cell, _cell1) => _cell.GetDistance(monster.Cell).CompareTo(_cell1.GetDistance(monster.Cell)));
                 monster.Move(best.Destination, path);
 
                 yield return new WaitUntil(() => !monster.IsMoving);
-                Debug.LogWarning($"Last Move Done\nLoop number : {loop}\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}\nCan Play = {canPlay}, Can Move = {canMove}");
             }
 
-            Debug.LogWarning($"Loop Out\n{monster.UnitName} AP = {monster.BattleStats.AP} MP = {monster.BattleStats.MP}\n{TestPrint(best)}\nCan Play = {canPlay}, Can Move = {canMove}\n End Turn");
             
             // End Turn
             monster.isPlaying = false;
@@ -196,12 +193,12 @@ namespace Players
             AI_SkillInfo.skill = _monster.monsterSkill;
             
             // If the MonsterSkill have Zone Get all TargetCell to evaluate
-            if (AI_SkillInfo.skill.Range.ZoneType != EZone.Self || AI_SkillInfo.skill.Range.Radius > 0)
+            if (AI_SkillInfo.skill.GridRange.ZoneType != EZone.Self || AI_SkillInfo.skill.GridRange.Radius > 0)
             {
                 foreach (Cell destination in destinations.Keys)
                 {
                     List<Cell> inRange = 
-                        AI_SkillInfo.skill.Range.NeedView ? 
+                        AI_SkillInfo.skill.GridRange.NeedView ? 
                             Zone.CellsInView(AI_SkillInfo.skill, destination) : 
                             Zone.CellsInRange(AI_SkillInfo.skill, destination);
                     foreach (Cell _cellInRange in inRange)
@@ -215,7 +212,7 @@ namespace Players
             EvaluateCells(_monster, stateManager);
             
             // Evaluate the SkillUse Potential
-            if (AI_SkillInfo.skill.Range.ZoneType == EZone.Self || AI_SkillInfo.skill.Range.Radius < 1)
+            if (AI_SkillInfo.skill.GridRange.ZoneType == EZone.Self || AI_SkillInfo.skill.GridRange.Radius < 1)
                 EvaluateDirectTarget(stateManager, AI_SkillInfo);
             else EvaluateZoneTarget(AI_SkillInfo);
             
@@ -333,7 +330,7 @@ namespace Players
             foreach (Unit _unit in stateManager.Units)
             {
                 List<Cell> inRange = new List<Cell>();
-                inRange.AddRange(skill.skill.Range.NeedView ? Zone.CellsInView(skill.skill, _unit.Cell) : Zone.CellsInRange(skill.skill, _unit.Cell));
+                inRange.AddRange(skill.skill.GridRange.NeedView ? Zone.CellsInView(skill.skill, _unit.Cell) : Zone.CellsInRange(skill.skill, _unit.Cell));
                 
                 foreach (Cell _cell in inRange.Where(_cell => destinations.ContainsKey(_cell)))
                 {
@@ -389,7 +386,7 @@ namespace Players
                 destinationOfMaxValue = destinations.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
             
             Cell targetOfMaxValue = null;
-            if (AI_SkillInfo.skill.Range.ZoneType != EZone.Self || AI_SkillInfo.skill.Range.Radius > 0)
+            if (AI_SkillInfo.skill.GridRange.ZoneType != EZone.Self || AI_SkillInfo.skill.GridRange.Radius > 0)
             {
                 if (skillTargets[destinationOfMaxValue].Count != 0)
                 {

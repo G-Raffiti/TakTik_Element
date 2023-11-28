@@ -306,7 +306,7 @@ TextureImporter:
       213: -4878945269940318002
     second: ZoneLine
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -323,10 +323,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -365,6 +367,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -376,6 +380,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -388,6 +393,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -400,6 +406,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -412,6 +419,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -424,6 +432,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -436,6 +445,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -448,6 +458,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -460,6 +471,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1216,7 +1241,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: fba8b760d667d4cc0800000000000000
-      internalID: -3725191106133259585
+      internalID: 386163853250017358
       vertices: []
       indices: 
       edges: []
@@ -1258,7 +1283,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: cddaefcfa9dac6750800000000000000
-      internalID: 6299600859965599196
+      internalID: 8071858763138826635
       vertices: []
       indices: 
       edges: []
@@ -1300,7 +1325,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4c03c7dec218ddb00800000000000000
-      internalID: 854981534233145540
+      internalID: 4015559671970811094
       vertices: []
       indices: 
       edges: []
@@ -1321,7 +1346,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 26853cfc6c0b9c490800000000000000
-      internalID: -7725449317841676190
+      internalID: 2126428779705721235
       vertices: []
       indices: 
       edges: []
@@ -1342,7 +1367,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d1af5ce0db45f66b0800000000000000
-      internalID: -5300925065418376675
+      internalID: 6299600859965599196
       vertices: []
       indices: 
       edges: []
@@ -1363,7 +1388,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2025ba1682ccc0630800000000000000
-      internalID: 3894712251578012162
+      internalID: -3725191106133259585
       vertices: []
       indices: 
       edges: []
@@ -1399,9 +1424,52 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      AP: 471798507305556546
+      Affinity: -3442739876244863934
+      Cell: 2083303402929909565
+      Dext: 2088439131066545440
+      Direction: -2868358445743897955
+      Dodge: -8704445861031847142
+      DontNeedView: 4015559671970811094
+      Duration: 2126428779705721235
+      Fire: 4318182838925834494
+      Focus: -3725191106133259585
+      HP: 1691171236485598953
+      IconSheet_32: -2603701149161815134
+      IconSheet_33: -5119920500355900490
+      IconSheet_34: 4662878539807792844
+      IconSheet_37: 4523609631395898344
+      IconSheet_41: 6299600859965599196
+      IconSheet_5: 5189895594162850017
+      Impact: 8355217360322311386
+      Intel: 232150873447088180
+      MP: -3423523915659562612
+      Nature: -5110383940922716173
+      NeedTarget: 8071858763138826635
+      Power: -1332074616804940506
+      Pull: 2478943349938514664
+      Push: 3026120706474155957
+      Range: 3757187234903106793
+      Shield: 5100933664924272752
+      Speed: 5741803583742810439
+      Strength: -2169701665137666330
+      TP: 6290505010227241238
+      Teleport: -7377170927877912761
+      Water: 5767261474912130180
+      Zone: 386163853250017358
+      ZoneBasic: -2199010660018958039
+      ZoneCone: 2559641795510209015
+      ZoneContact: 2143921053122410539
+      ZoneCross: -4377234821059566129
+      ZoneLine: 6600980279118368528
+      ZonePerpendicular: 6125533129827454030
+      ZoneRanged: 6041939498930117340
+      ZoneSelf: -4735702177497203188
+      ZoneSquare: -555512977839398266
+      ZoneStar: -1534666794635269733
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

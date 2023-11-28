@@ -104,7 +104,7 @@ namespace UserInterface
         public override string GetInfoRight()
         {
             string str = "";
-            str += BattleStats.Range.ToString()+ "\n";
+            str += BattleStats.gridRange.ToString()+ "\n";
             str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{BattleStats.Speed} </color> \n";
             return str;
         }

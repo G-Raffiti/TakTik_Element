@@ -29,7 +29,7 @@ namespace GridObjects
 
         public virtual List<Cell> GetZoneOfInteraction(Cell location)
         {
-            return Zone.GetRange(new Range(EZone.Contact, EZone.Basic, 1, 0), location).ToList();
+            return Zone.GetRange(new GridRange(EZone.Contact, EZone.Basic, 1, 0), location).ToList();
         }
 
         public virtual void MarkAsInteractable(Cell location)

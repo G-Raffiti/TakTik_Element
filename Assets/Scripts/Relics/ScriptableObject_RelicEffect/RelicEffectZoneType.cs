@@ -8,7 +8,7 @@ namespace Relics.ScriptableObject_RelicEffect
     {
         public override void ChangeSkill(Skill _skill, RelicSO _relic)
         {
-            _skill.ChangeZoneType(_relic.BattleStats.Range.ZoneType);
+            _skill.ChangeZoneType(_relic.BattleStats.gridRange.ZoneType);
         }
     }
 }

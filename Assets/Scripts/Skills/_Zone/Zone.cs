@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cells;
 using GridObjects;
+using JetBrains.Annotations;
 using StateMachine;
 using Stats;
 using Units;
@@ -49,7 +50,7 @@ namespace Skills._Zone
         /// <param name="range">skill Range</param>
         /// <param name="cell">Targeted Cell</param>
         /// <returns></returns>
-        public static List<Cell> GetZone(Range range, Cell cell)
+        public static List<Cell> GetZone(GridRange range, Cell cell)
         {
             switch (range.ZoneType)
             {
@@ -71,7 +72,7 @@ namespace Skills._Zone
         /// <param name="range">skill Range</param>
         /// <param name="cell">unit's Cell who play the skill</param>
         /// <returns></returns>
-        public static List<Cell> GetRange(Range range, Cell cell)
+        public static List<Cell> GetRange(GridRange range, Cell cell)
         {
             switch (range.RangeType)
             {
@@ -232,9 +233,9 @@ namespace Skills._Zone
         {
             List<Cell> _inRange = new List<Cell>();
             
-            foreach (Cell _cell in GetRange(skill.Range, _startCell))
+            foreach (Cell _cell in GetRange(skill.GridRange, _startCell))
             {
-                if (!skill.Range.NeedTarget && !_inRange.Contains(_cell))
+                if (!skill.GridRange.NeedTarget && !_inRange.Contains(_cell))
                     _inRange.Add(_cell);
                 
                 else if (GetAffected(_cell, skill) != null && !_inRange.Contains(_cell))
@@ -254,9 +255,9 @@ namespace Skills._Zone
         {
             List<Cell> _inRange = new List<Cell>();
 
-            foreach (Cell _cell in FieldOfView(_startCell, GetRange(skill.Range, _startCell)))
+            foreach (Cell _cell in FieldOfView(_startCell, GetRange(skill.GridRange, _startCell)))
             {
-                if (!skill.Range.NeedTarget)
+                if (!skill.GridRange.NeedTarget)
                     _inRange.Add(_cell);
                 
                 else if (GetAffected(_cell, skill) != null)
@@ -349,6 +350,7 @@ namespace Skills._Zone
         /// </summary>
         /// <param name="_cell">the cell that have to be tested</param>
         /// <returns></returns>
+        [CanBeNull]
         public static IMovable GetAffected(Cell _cell, Skill skill)
         {
             IMovable _affected = null;
@@ -436,7 +438,7 @@ namespace Skills._Zone
         public static List<Unit> GetUnitsAffected(SkillInfo _skillInfo, Cell _targetCell)
         {
             List<Unit> ret = new List<Unit>();
-            foreach (Cell _cell in GetZone(_skillInfo.skill.Range, _targetCell))
+            foreach (Cell _cell in GetZone(_skillInfo.skill.GridRange, _targetCell))
             {
                 if (GetUnitAffected(_cell, _skillInfo) != null)
                     ret.Add(GetUnitAffected(_cell, _skillInfo));

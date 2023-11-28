@@ -19,7 +19,7 @@ namespace Skills.ScriptableObject_GridEffect
         
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.GridRange, _cell);
 
             List<IMovable> affecteds = new List<IMovable>();
             foreach (Cell _cellAffected in _zone)

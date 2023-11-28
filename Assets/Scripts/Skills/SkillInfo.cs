@@ -64,7 +64,7 @@ namespace Skills
             Unit.BattleStats.AP -= skill.Cost;
             
             //TODO : Play Skill animation
-            List<Cell> _zone = Zone.GetZone(skill.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(skill.GridRange, _cell);
             _zone.Sort((_cell1, _cell2) =>
                 _cell1.GetDistance(Unit.Cell).CompareTo(_cell2.GetDistance(Unit.Cell)));
             StartCoroutine(HighlightZone(_zone));
@@ -99,12 +99,12 @@ namespace Skills
         /// <returns></returns>
         public List<Cell> GetZoneOfEffect(Cell _cell)
         {
-            return Zone.GetZone(skill.Range, _cell);
+            return Zone.GetZone(skill.GridRange, _cell);
         }
         
         public List<Cell> GetRangeFrom(Cell _cell)
         {
-            return skill.Range.NeedView ? Zone.CellsInView(skill, _cell) : Zone.CellsInRange(skill, _cell);
+            return skill.GridRange.NeedView ? Zone.CellsInView(skill, _cell) : Zone.CellsInRange(skill, _cell);
         }
         
         #region IInfo
@@ -122,7 +122,7 @@ namespace Skills
 
         public override string GetInfoRight()
         {
-            return skill.Range.ToString();
+            return skill.GridRange.ToString();
         }
 
         public override string GetInfoDown()

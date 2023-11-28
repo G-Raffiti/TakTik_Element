@@ -19,7 +19,7 @@ namespace Skills.ScriptableObject_GridEffect
         
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.Range, _cell);
+            List<Cell> _zone = Zone.GetZone(_skillInfo.skill.GridRange, _cell);
             _zone.Sort((_cell1, _cell2) =>
                 _cell1.GetDistance(_skillInfo.Unit.Cell).CompareTo(_cell2.GetDistance(_skillInfo.Unit.Cell)));
             foreach (Cell _cellAffected in _zone)
@@ -128,7 +128,7 @@ namespace Skills.ScriptableObject_GridEffect
             }
             else str += "Cell";
 
-            if (_skillInfo.skill.Range.Radius == 0 || _skillInfo.skill.Range.ZoneType == EZone.Self)
+            if (_skillInfo.skill.GridRange.Radius == 0 || _skillInfo.skill.GridRange.ZoneType == EZone.Self)
             {
                 str += " to you";
             }

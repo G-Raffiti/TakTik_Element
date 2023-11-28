@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Stats
@@ -17,7 +18,7 @@ namespace Stats
         public Affinity Affinity;
         public float MP;
         public float AP;
-        public Range Range;
+        [FormerlySerializedAs("Range")] public GridRange gridRange;
 
         public float GetDamageTaken(float _damage, EElement _element) =>
             Math.Max(1, _damage - (_damage * Affinity.GetAffinity(_element) / 50));
@@ -34,7 +35,7 @@ namespace Stats
             Affinity = _battleStats.Affinity;
             MP = _battleStats.MP;
             AP = _battleStats.AP;
-            Range = _battleStats.Range;
+            gridRange = _battleStats.gridRange;
         }
 
         public static BattleStats operator +(BattleStats a, BattleStats b)
@@ -48,7 +49,7 @@ namespace Stats
             res.Affinity += b.Affinity;
             res.MP += b.MP;
             res.AP += b.AP;
-            res.Range += b.Range;
+            res.gridRange += b.gridRange;
             return res;
         }
         
@@ -63,7 +64,7 @@ namespace Stats
             res.Affinity -= b.Affinity;
             res.MP -= b.MP;
             res.AP -= b.AP;
-            res.Range -= b.Range;
+            res.gridRange -= b.gridRange;
             return res;
         }
         
@@ -78,7 +79,7 @@ namespace Stats
             res.Affinity *= b.Affinity;
             res.MP *= b.MP;
             res.AP *= b.AP;
-            res.Range *= b.Range;
+            res.gridRange *= b.gridRange;
             return res;
         }
         
@@ -93,7 +94,7 @@ namespace Stats
             res.Affinity += (int) b;
             res.MP += b;
             res.AP += b;
-            res.Range += b;
+            res.gridRange += b;
             return res;
         }
         
@@ -108,7 +109,7 @@ namespace Stats
             res.Affinity *= b;
             res.MP *= b;
             res.AP *= b;
-            res.Range *= b;
+            res.gridRange *= b;
             return res;
         }
 
@@ -124,7 +125,7 @@ namespace Stats
                 Affinity = Affinity.Random(max.Affinity, max.Affinity),
                 MP = Random.Range(min.MP, max.MP),
                 AP = Random.Range(min.AP, max.AP),
-                Range = Range.Randomize(min.Range, max.Range)
+                gridRange = GridRange.Randomize(min.gridRange, max.gridRange)
             };
 
             return ret;
@@ -140,7 +141,7 @@ namespace Stats
             Affinity = new Affinity(a);
             MP = a;
             AP = a;
-            Range = new Range(a);
+            gridRange = new GridRange(a);
         }
 
         public void Randomize(float min, float max)

@@ -43,7 +43,7 @@ namespace Gears
         /// </summary>
         public List<AffixSO> NonAffixs => nonAffixs;
 
-        public void SetDATA(rawGear _rawGear)
+        public void SetDATA(RawGear _rawGear)
         {
             rarity = _rawGear.Rarity;
             type = _rawGear.Type;

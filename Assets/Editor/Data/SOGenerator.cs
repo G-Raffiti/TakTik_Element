@@ -171,7 +171,7 @@ namespace Editor.Data
         private static void CreateScriptableObjectSkill(Dictionary<string, object> csvSkill)
         {
             SkillSO newSkill = ScriptableObject.CreateInstance<SkillSO>();
-            rawSkill rawSkill = new rawSkill(csvSkill);
+            RawSkill rawSkill = new RawSkill(csvSkill);
             newSkill.SetDATA(rawSkill);
             
             if (DataBase.Skill.AllSkills.Find(skill => skill.Name == newSkill.Name)) return;
@@ -187,7 +187,7 @@ namespace Editor.Data
         private static void CreateScriptableObjectGear(Dictionary<string, object> csvGear)
         {
             GearSO newGear = ScriptableObject.CreateInstance<GearSO>();
-            rawGear rawGear = new rawGear(csvGear);
+            RawGear rawGear = new RawGear(csvGear);
             newGear.SetDATA(rawGear);
             
             if (DataBase.Gear.Gears.Find(gear => gear.Name == newGear.Name)) return;
@@ -203,18 +203,18 @@ namespace Editor.Data
         private static void CreateScriptableObjectMonster(Dictionary<string, object> csvMonster)
         {
             MonsterSO newMonster = ScriptableObject.CreateInstance<MonsterSO>();
-            rawMonster rawMonster = new rawMonster(csvMonster);
+            RawMonster rawMonster = new RawMonster(csvMonster);
             newMonster.SetDATA(rawMonster);
             
             if (DataBase.Monster.Monsters.Count != 0)
                 if (DataBase.Monster.Monsters.Find(monster => monster.Name == newMonster.Name)) return;
             
-            AssetDatabase.CreateAsset(newMonster, $"Assets/Resources/ScriptableObject/Monsters/{rawMonster.type}_{newMonster.Archetype.Type}_{newMonster.Element.Type}_{rawMonster.unitName}.asset");
+            AssetDatabase.CreateAsset(newMonster, $"Assets/Resources/ScriptableObject/Monsters/{rawMonster.Type}_{newMonster.Archetype.Type}_{newMonster.Element.Type}_{rawMonster.UnitName}.asset");
             AssetDatabase.SaveAssets();
 
             DataBase.Monster.AddMonster(
                 UnityEngine.Resources.Load<MonsterSO>(
-                    $"ScriptableObject/Monsters/{rawMonster.type}_{newMonster.Archetype.Type}_{newMonster.Element.Type}_{rawMonster.unitName}"));
+                    $"ScriptableObject/Monsters/{rawMonster.Type}_{newMonster.Archetype.Type}_{newMonster.Element.Type}_{rawMonster.UnitName}"));
         }
         
         private static bool IsCSVFile(string path)

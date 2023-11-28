@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8de8c55-d779-471a-a325-f9992edee85b" name="Default Changelist" comment="" />
+    <list default="true" id="3f6cd4a7-5beb-4d98-9174-5921aa0ec532" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TakTik Ele/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TakTik Ele/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TakTik Ele/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TakTik Ele/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TakTik Ele/.idea/riderModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TakTik Ele/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TakTik Ele/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor-firstpass.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprite/IconSpriteSheet/IconSheet.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sprite/IconSpriteSheet/IconSheet.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gears/GearSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gears/GearSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObjectSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectRangeType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectRangeType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectZoneType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectZoneType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/ApplyBuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/ApplyBuff.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/FloorStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/FloorStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Healing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Healing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Medicine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Medicine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Spell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_Effect/Spell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/Pull.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/Pull.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFromImpact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFromImpact.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/Skill.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/SkillSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateSkillSelected.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateSkillSelected.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/BattleStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/BattleStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/Range.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/GridRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/Range.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/GridRange.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawGear.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawGear.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawMonster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawMonster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawSkill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_CSVFiles/rawSkill.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,107 +69,112 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/08/f26161a3/IList`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTween.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanSmooth.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTweenExt.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTDescrOptional.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTSeq.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/26BACF2A-B3E7-4E5B-9AB6-134973DBE886/3f/250959fa/ICollection`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SubMeshUI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanAudio.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_LeanTween/Framework/LTDescr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/ResolutionManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.5.7/Editor/Collaborate/UserInterface/CollaborateWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127E81E1-CB34-41CC-97D2-6B1910DAAE77/25/6239b0bb/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/DragAndDropCell.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/AspectUtility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A3963A5-666E-4BE9-BAC6-94932D6FD3C7/ce/dc9cfc0e/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/LeanTween/Editor/LeanTweenDocumentationEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127E81E1-CB34-41CC-97D2-6B1910DAAE77/df/323f48a6/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2C24F0C1-857D-4078-B6D4-53F88E061A29/65/57c4e238/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-<<<<<<< Updated upstream
-=======
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleRelicChoice_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BattleInventory_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Extension/Extension.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Inventory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_Relics.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DevsButton/DevButtons.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/HeroTooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopDeckMono_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_DragAndDropSystem/ItemDragAndDrop.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/MonsterTooltip.cs" />
->>>>>>> Stashed changes
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/UnitTooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopForge.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/UI_Menu/MenuPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Buffs/BuffInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gears/GearInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/RelicInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopInventory_UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shops/ShopResurrection.cs" />
-      <option value="$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanAudio.cs" />
-      <option value="$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanSmooth.cs" />
-      <option value="$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTween.cs" />
-      <option value="$PROJECT_DIR$/Assets/_LeanTween/Framework/LeanTweenExt.cs" />
-      <option value="$PROJECT_DIR$/Assets/_LeanTween/Framework/LTDescr.cs" />
-      <option value="$PROJECT_DIR$/Assets/_LeanTween/Framework/LTDescrOptional.cs" />
-      <option value="$PROJECT_DIR$/Assets/_LeanTween/Framework/LTSeq.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/LifeBar.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Movement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/PersonalInventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectHealOnEndFight.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectNeedView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectRangeType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Relics/ScriptableObject_RelicEffect/RelicEffectZoneType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/ShopChoice_UI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/BattleFade.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/Tooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/BasicTooltip.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/DeathWaiter.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Affix.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/MonsterSO.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/BattleStage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/ToolTips/TooltipManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BtnEndTurn.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
-<<<<<<< Updated upstream
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Players/Player.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Tree.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/Stone.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/LootBox.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/BattleHero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreSceneUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/EndRun_UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/Logger/UnityFileDebugEditor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Players/AIPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreEventHandler.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Score/ScoreHolder.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/_Zone/Zone.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/UnitGenerators/RandomUnitGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/TurnOrderPrefab.cs" />
-      <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Decks/AllDecksMono.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/BossBattle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/DeathBattle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/LastBattle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/EndConditions/LootBoxes.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
-=======
-      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Isometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/TileIsometric.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/Example/ResolutionSelector.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/AspectUtility.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScreenResolutionManager/ResolutionManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/ScriptableObject_GridEffect/PushFix.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Skills/SkillInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/UnitGenerators/CustomUnitGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AffixSO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Hero.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/InfoUI/BattleInfoUI_DeckMono.cs" />
+      <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LeanAudio.cs" />
+      <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LeanTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LeanTween.cs" />
+      <option value="$PROJECT_DIR$/Assets/LeanTween/Framework/LTDescr.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/Data/SOGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/EquilateralHexGridGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/HexagonalHexGridGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectangularHexGridGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectangularSquareGridGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/RectIsoGridGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridGenerators/TriangularHexGridGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/_Instances/KeepBetweenScene.cs" />
+      <option value="$PROJECT_DIR$/Assets/Editor/GridHelper.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cells/Cell.cs" />
->>>>>>> Stashed changes
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Monster.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/UnitGenerators/RandomUnitGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBlockInput.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateSkillSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/IMovable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateUnitSelected.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UserInterface/BattleScene/BtnEndTurn.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/BattleStateManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GridObjects/GridObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StateMachine/GridStates/BattleStateBeginning.cs" />
     </changedPaths>
   </component>
-  <component name="ProjectId" id="24Y3WXaGG2rz1oYsQKXtVFY8oWm" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="1ts8H2xMmZ0SMINWcAwZytdAqsU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Discover.Launch.Via.Unity" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Raffi\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Raffi\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\Raffi\\AppData\\Local\\Symbols\\src"
+    ]
+  }
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../exe\TakTik Ele.exe" />
@@ -129,19 +184,37 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Dev\GameDev\Unity_Engine\2022.3.11f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Dev\GameDev\Unity_Projects\TakTik_Element -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Dev\GameDev\Unity_Projects\TakTik_Element" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Dev\GameDev\Unity_Engine\2022.3.11f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Dev\GameDev\Unity_Projects\TakTik_Element -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Dev\GameDev\Unity_Projects\TakTik_Element" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11048">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="11048" />
+      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -151,15 +224,24 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d8de8c55-d779-471a-a325-f9992edee85b" name="Default Changelist" comment="" />
-      <created>1645008383616</created>
+      <changelist id="3f6cd4a7-5beb-4d98-9174-5921aa0ec532" name="Default Changelist" comment="" />
+      <created>1633649099781</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1645008383616</updated>
-      <workItem from="1645008504632" duration="16645000" />
+      <updated>1633649099781</updated>
+      <workItem from="1633649133169" duration="5345000" />
+      <workItem from="1639680652734" duration="6448000" />
+      <workItem from="1701155641038" duration="922000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
 </project>
