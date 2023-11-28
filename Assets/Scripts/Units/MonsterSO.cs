@@ -131,17 +131,17 @@ namespace Units
             _cell.Take(_monster);
         }
 
-        public void SetDATA(rawMonster _rawMonster)
+        public void SetDATA(RawMonster _rawMonster)
         {
-            unitName = _rawMonster.unitName;
-            element = _rawMonster.element;
-            basicStats = _rawMonster.basicStats;
-            unitSprite = _rawMonster.unitSprite;
-            level = _rawMonster.level;
-            relic = _rawMonster.relic;
-            rewardType = _rawMonster.rewardType;
-            type = _rawMonster.type;
-            archetype = _rawMonster.archetype;
+            unitName = _rawMonster.UnitName;
+            element = _rawMonster.Element;
+            basicStats = _rawMonster.BasicStats;
+            unitSprite = _rawMonster.UnitSprite;
+            level = _rawMonster.Level;
+            relic = _rawMonster.Relic;
+            rewardType = _rawMonster.RewardType;
+            type = _rawMonster.Type;
+            archetype = _rawMonster.Archetype;
             prefab = UnityEngine.Resources.Load<GameObject>($"Prefabs/Units/PrefabMonster");
         }
     }

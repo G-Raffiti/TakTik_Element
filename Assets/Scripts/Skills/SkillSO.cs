@@ -8,6 +8,7 @@ using Stats;
 using StatusEffect;
 using Units;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Skills
 {
@@ -22,7 +23,7 @@ namespace Skills
         [SerializeField] private SkillGridEffect gridEffect;
         [SerializeField] private EAffect affect;
         
-        [SerializeField] private Range range;
+        [FormerlySerializedAs("range")] [SerializeField] private GridRange gridRange;
         [SerializeField] private int power;
         [SerializeField] private List<StatusSO> statusEffects;
 
@@ -37,19 +38,19 @@ namespace Skills
         public List<SkillEffect> Effects => effects;
         public SkillGridEffect GridEffect => gridEffect;
         public EAffect Affect => affect;
-        public Range Range => range;
+        public GridRange GridRange => gridRange;
         public int Power => power;
         public List<StatusSO> StatusEffects => statusEffects;
         public bool Consumable => consumable;
         public int Cost => cost;
         public EArchetype Archetype => archetype;
 
-        public void SetDATA(rawSkill _rawSkill)
+        public void SetDATA(RawSkill _rawSkill)
         {
             name = _rawSkill.Name;
             element = _rawSkill.Element;
             affect = _rawSkill.Affect;
-            range = new Range
+            gridRange = new GridRange
             {
                 RangeValue = _rawSkill.RangeValue,
                 CanBeModified = _rawSkill.CanBeModified,

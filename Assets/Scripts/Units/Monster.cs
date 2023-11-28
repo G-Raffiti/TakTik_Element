@@ -120,7 +120,7 @@ namespace Units
             {           
                 _cell.UnMark();
             }
-            foreach (Cell _cellInRange in Zone.GetRange(skill.skill.Range, Cell))
+            foreach (Cell _cellInRange in Zone.GetRange(skill.skill.GridRange, Cell))
             {
                 _cellInRange.MarkAsUnReachable();
             }

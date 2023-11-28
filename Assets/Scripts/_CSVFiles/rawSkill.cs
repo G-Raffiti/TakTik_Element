@@ -10,30 +10,30 @@ using UnityEngine;
 
 namespace _CSVFiles
 {
-    public struct rawSkill
+    public struct RawSkill
     {
-        public string Name;
-        public EArchetype Archetype;
-        public Element Element;
-        public int Cost;
-        public SkillEffect Effect1;
-        public SkillEffect Effect2;
-        public SkillEffect Effect3;
-        public SkillGridEffect GridEffect;
-        public StatusSO Status;
-        public EZone RangeType;
-        public int RangeValue;
-        public EZone ZoneType;
-        public int Radius;
-        public bool NeedView;
-        public bool NeedTarget;
-        public EAffect Affect;
-        public bool CanBeModified;
-        public int Power;
-        public bool Consumable;
-        public Sprite Icon;
+        public readonly string Name;
+        public readonly EArchetype Archetype;
+        public readonly Element Element;
+        public readonly int Cost;
+        public readonly SkillEffect Effect1;
+        public readonly SkillEffect Effect2;
+        public readonly SkillEffect Effect3;
+        public readonly SkillGridEffect GridEffect;
+        public readonly StatusSO Status;
+        public readonly EZone RangeType;
+        public readonly int RangeValue;
+        public readonly EZone ZoneType;
+        public readonly int Radius;
+        public readonly bool NeedView;
+        public readonly bool NeedTarget;
+        public readonly EAffect Affect;
+        public readonly bool CanBeModified;
+        public readonly int Power;
+        public readonly bool Consumable;
+        public readonly Sprite Icon;
 
-        public rawSkill(bool no)
+        public RawSkill(bool _no)
         {
             Name = "";
             Archetype = EArchetype.None;
@@ -57,36 +57,36 @@ namespace _CSVFiles
             Icon = null;
         }
 
-        public rawSkill(Dictionary<string, object> CSVSkill)
+        public RawSkill(Dictionary<string, object> _csvSkill)
         {
-            this = new rawSkill(false);
-            Name = CSVSkill["Name"].ToString();
-            Enum.TryParse(CSVSkill["Archetype"].ToString(), out Archetype);
+            this = new RawSkill(false);
+            Name = _csvSkill["Name"].ToString();
+            Enum.TryParse(_csvSkill["Archetype"].ToString(), out Archetype);
             Element = UnityEngine.Resources.Load<Element>(
-                $"ScriptableObject/Elements/Element_{CSVSkill["Element"]}");
-            int.TryParse(CSVSkill["Cost"].ToString(), out Cost);
+                $"ScriptableObject/Elements/Element_{_csvSkill["Element"]}");
+            int.TryParse(_csvSkill["Cost"].ToString(), out Cost);
             Effect1 = UnityEngine.Resources.Load<SkillEffect>(
-                $"ScriptableObject/SkillEffects/SkillEffect_{CSVSkill["Effect1"]}");
+                $"ScriptableObject/SkillEffects/SkillEffect_{_csvSkill["Effect1"]}");
             Effect2 = UnityEngine.Resources.Load<SkillEffect>(
-                $"ScriptableObject/SkillEffects/SkillEffect_{CSVSkill["Effect2"]}");
+                $"ScriptableObject/SkillEffects/SkillEffect_{_csvSkill["Effect2"]}");
             Effect3 = UnityEngine.Resources.Load<SkillEffect>(
-                $"ScriptableObject/SkillEffects/SkillEffect_{CSVSkill["Effect3"]}");
+                $"ScriptableObject/SkillEffects/SkillEffect_{_csvSkill["Effect3"]}");
             GridEffect = UnityEngine.Resources.Load<SkillGridEffect>(
-                    $"ScriptableObject/SkillEffects/GridEffect_{CSVSkill["GridEffect"]}");
+                    $"ScriptableObject/SkillEffects/GridEffect_{_csvSkill["GridEffect"]}");
             Status = UnityEngine.Resources.Load<StatusSO>(
-                $"ScriptableObject/StatusEffect/Status_{CSVSkill["Status"]}");
-            Enum.TryParse(CSVSkill["RangeType"].ToString(), out RangeType);
-            int.TryParse(CSVSkill["RangeValue"].ToString(), out RangeValue);
-            Enum.TryParse(CSVSkill["ZoneType"].ToString(), out ZoneType);
-            int.TryParse(CSVSkill["Radius"].ToString(), out Radius);
-            bool.TryParse(CSVSkill["NeedView"].ToString(), out NeedView);
-            bool.TryParse(CSVSkill["NeedTarget"].ToString(), out NeedTarget);
-            Enum.TryParse(CSVSkill["Affect"].ToString(), out Affect);
-            bool.TryParse(CSVSkill["CanBeModified"].ToString(), out CanBeModified);
-            int.TryParse(CSVSkill["Power"].ToString(), out Power);
-            bool.TryParse(CSVSkill["Consumable"].ToString(), out Consumable);
+                $"ScriptableObject/StatusEffect/Status_{_csvSkill["Status"]}");
+            Enum.TryParse(_csvSkill["RangeType"].ToString(), out RangeType);
+            int.TryParse(_csvSkill["RangeValue"].ToString(), out RangeValue);
+            Enum.TryParse(_csvSkill["ZoneType"].ToString(), out ZoneType);
+            int.TryParse(_csvSkill["Radius"].ToString(), out Radius);
+            bool.TryParse(_csvSkill["NeedView"].ToString(), out NeedView);
+            bool.TryParse(_csvSkill["NeedTarget"].ToString(), out NeedTarget);
+            Enum.TryParse(_csvSkill["Affect"].ToString(), out Affect);
+            bool.TryParse(_csvSkill["CanBeModified"].ToString(), out CanBeModified);
+            int.TryParse(_csvSkill["Power"].ToString(), out Power);
+            bool.TryParse(_csvSkill["Consumable"].ToString(), out Consumable);
             Icon = UnityEngine.Resources.Load<Sprite>(
-                $"Sprite/2000_Icons/All_Skill/{CSVSkill["Icon"]}");
+                $"Sprite/2000_Icons/All_Skill/{_csvSkill["Icon"]}");
         }
 
     }

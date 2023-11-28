@@ -658,7 +658,7 @@ namespace Units
             if (!Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt))
                 return "";
             string str = "";
-            str += BattleStats.Range.ToString(this)+ "\n";
+            str += BattleStats.gridRange.ToString(this)+ "\n";
             str += $"<sprite name=TP> <color={colorSet.HexColor(EColor.TurnPoint)}>{TurnPoint} </color> \n";
             return str;
         }

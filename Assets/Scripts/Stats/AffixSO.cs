@@ -47,9 +47,9 @@ namespace Stats
                     break;
                 case EAffix.Power: ret.Power = (int) value;
                     break;
-                case EAffix.Range: ret.Range.RangeValue = (int) value;
+                case EAffix.Range: ret.gridRange.RangeValue = (int) value;
                     break;
-                case EAffix.Zone: ret.Range.Radius = (int) value;
+                case EAffix.Zone: ret.gridRange.Radius = (int) value;
                     break;
                 case EAffix.Focus: ret.Focus = (int) value;
                     break;

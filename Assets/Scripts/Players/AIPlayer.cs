@@ -227,12 +227,12 @@ namespace Players
             skillInfo.skill = Skill.CreateSkill(_skill, _monster.monsterSkill.Deck, _monster);
             
             // If the MonsterSkill have Zone Get all TargetCell to evaluate
-            if (skillInfo.skill.Range.ZoneType != EZone.Self || skillInfo.skill.Range.Radius > 0)
+            if (skillInfo.skill.GridRange.ZoneType != EZone.Self || skillInfo.skill.GridRange.Radius > 0)
             {
                 foreach (Cell destination in destinations.Keys)
                 {
                     List<Cell> inRange = new List<Cell>();
-                    inRange.AddRange(skillInfo.skill.Range.NeedView ? Zone.CellsInView(skillInfo.skill, destination) : Zone.CellsInRange(skillInfo.skill, destination));
+                    inRange.AddRange(skillInfo.skill.GridRange.NeedView ? Zone.CellsInView(skillInfo.skill, destination) : Zone.CellsInRange(skillInfo.skill, destination));
                     foreach (Cell _cellInRange in inRange)
                     {
                         skillTargets[destination].Add(_cellInRange, 0);
@@ -244,7 +244,7 @@ namespace Players
             EvaluateCells(_monster, stateManager);
             
             // Evaluate the SkillUse Potential
-            if (skillInfo.skill.Range.ZoneType == EZone.Self || skillInfo.skill.Range.Radius < 1)
+            if (skillInfo.skill.GridRange.ZoneType == EZone.Self || skillInfo.skill.GridRange.Radius < 1)
                 EvaluateDirectTarget(stateManager, skillInfo);
             else EvaluateZoneTarget(skillInfo);
             
@@ -255,7 +255,7 @@ namespace Players
             if (Best.Target == null)
             {
                 skillInfo.skill = Skill.CreateSkill(DataBase.Skill.MonsterAttack, skillInfo.skill.Deck, _monster);
-                if (skillInfo.skill.Range.ZoneType == EZone.Self || skillInfo.skill.Range.Radius < 1)
+                if (skillInfo.skill.GridRange.ZoneType == EZone.Self || skillInfo.skill.GridRange.Radius < 1)
                     EvaluateDirectTarget(stateManager, skillInfo);
                 else EvaluateZoneTarget(skillInfo);
                 
@@ -372,7 +372,7 @@ namespace Players
             foreach (Unit _unit in stateManager.Units)
             {
                 List<Cell> inRange = new List<Cell>();
-                inRange.AddRange(skill.skill.Range.NeedView ? Zone.CellsInView(skill.skill, _unit.Cell) : Zone.CellsInRange(skill.skill, _unit.Cell));
+                inRange.AddRange(skill.skill.GridRange.NeedView ? Zone.CellsInView(skill.skill, _unit.Cell) : Zone.CellsInRange(skill.skill, _unit.Cell));
                 
                 foreach (Cell _cell in inRange.Where(_cell => destinations.ContainsKey(_cell)))
                 {
@@ -428,7 +428,7 @@ namespace Players
                 destinationOfMaxValue = destinations.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
             
             Cell targetOfMaxValue = null;
-            if (skillInfo.skill.Range.ZoneType != EZone.Self || skillInfo.skill.Range.Radius > 0)
+            if (skillInfo.skill.GridRange.ZoneType != EZone.Self || skillInfo.skill.GridRange.Radius > 0)
             {
                 if (skillTargets[destinationOfMaxValue].Count != 0)
                 {

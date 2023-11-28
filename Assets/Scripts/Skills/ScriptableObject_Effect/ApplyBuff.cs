@@ -10,7 +10,7 @@ namespace Skills.ScriptableObject_Effect
     {
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            foreach (Cell cell in Zone.GetZone(_skillInfo.skill.Range, _cell).Where(cell => cell.CurrentUnit != null))
+            foreach (Cell cell in Zone.GetZone(_skillInfo.skill.GridRange, _cell).Where(cell => cell.CurrentUnit != null))
             {
                 _skillInfo.skill.Buffs.ForEach(_buff =>
                 {

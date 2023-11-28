@@ -91,7 +91,7 @@ namespace UserInterface
         {
             Unit u = null;
             string str = "";
-            str += BattleStats.Range.ToString(u)+ "\n";
+            str += BattleStats.gridRange.ToString(u)+ "\n";
             str += $"<sprite name=Speed> <color={colorSet.HexColor(EAffix.Speed)}>{BattleStats.Speed} </color> \n";
             return str;
         }

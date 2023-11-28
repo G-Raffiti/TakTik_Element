@@ -16,7 +16,7 @@ namespace Skills
         public Unit Unit { get; private set; }
         public DeckMono Deck { get; private set; }
         public Relic Relic { get; private set; }
-        public Range Range { get; private set; }
+        public GridRange GridRange { get; private set; }
         public int Power { get; private set; }
         public Element Element { get; private set; }
         public EAffect Affect { get; private set; }
@@ -34,10 +34,10 @@ namespace Skills
             Relic relic = user.Relic;
             _skill.Unit = user;
             _skill.Relic = relic;
-            if (skillSO.Range.CanBeModified)
-                _skill.Range = skillSO.Range + user.BattleStats.Range;
+            if (skillSO.GridRange.CanBeModified)
+                _skill.GridRange = skillSO.GridRange + user.BattleStats.gridRange;
             else
-                _skill.Range = skillSO.Range;
+                _skill.GridRange = skillSO.GridRange;
             _skill.Power = skillSO.Power + user.BattleStats.Power;
             _skill.Element = skillSO.Element;
             _skill.Affect = skillSO.Affect;
@@ -99,9 +99,9 @@ namespace Skills
             /// </summary>
             public void ChangeRangeType(EZone _rangeType)
             {
-                Range range = new Range(Range);
-                range.RangeType = _rangeType;
-                Range = range;
+                GridRange gridRange = new GridRange(GridRange);
+                gridRange.RangeType = _rangeType;
+                GridRange = gridRange;
             }
             
             /// <summary>
@@ -109,9 +109,9 @@ namespace Skills
             /// </summary>
             public void ChangeZoneType(EZone _zoneType)
             {
-                Range range = new Range(Range);
-                range.ZoneType = _zoneType;
-                Range = range;
+                GridRange gridRange = new GridRange(GridRange);
+                gridRange.ZoneType = _zoneType;
+                GridRange = gridRange;
             }
             
             /// <summary> 
@@ -119,9 +119,9 @@ namespace Skills
             /// </summary>
             public void ChangeNeedView(bool _needView)
             {
-                Range range = new Range(Range);
-                range.NeedView = _needView;
-                Range = range;
+                GridRange gridRange = new GridRange(GridRange);
+                gridRange.NeedView = _needView;
+                GridRange = gridRange;
             }
             
             /// <summary> 

@@ -10,57 +10,57 @@ using UnityEngine;
 
 namespace _CSVFiles
 {
-    public struct rawMonster
+    public struct RawMonster
     {
-        public string unitName;
-        public Element element;
+        public readonly string UnitName;
+        public readonly Element Element;
 
-        public BattleStats basicStats;
+        public BattleStats BasicStats;
 
-        public Sprite unitSprite;
+        public readonly Sprite UnitSprite;
 
-        public int level;
+        public readonly int Level;
         
-        public RelicSO relic;
-        public EReward rewardType;
-        public EMonster type;
-        public Archetype archetype;
+        public readonly RelicSO Relic;
+        public readonly EReward RewardType;
+        public readonly EMonster Type;
+        public readonly Archetype Archetype;
         
-        public rawMonster(Dictionary<string, object> csvMonster)
+        public RawMonster(IReadOnlyDictionary<string, object> _csvMonster)
         {
-            unitName = csvMonster["Name"].ToString();
-            element = UnityEngine.Resources.Load<Element>(
-                $"ScriptableObject/Elements/Element_{csvMonster["Element"]}");
-            int.TryParse(csvMonster["HP"].ToString(), out int hp);
-            int.TryParse(csvMonster["Shield"].ToString(), out int shield);
-            int.TryParse(csvMonster["Dodge"].ToString(), out int dodge);
-            int.TryParse(csvMonster["Speed"].ToString(), out int speed);
-            int.TryParse(csvMonster["Power"].ToString(), out int power);
-            int.TryParse(csvMonster["MP"].ToString(), out int mp);
-            int.TryParse(csvMonster["AP"].ToString(), out int ap);
-            int.TryParse(csvMonster["Range"].ToString(), out int range);
-            int.TryParse(csvMonster["Zone"].ToString(), out int zone);
-            int.TryParse(csvMonster["Focus"].ToString(), out int focus);
-            basicStats = new BattleStats
+            UnitName = _csvMonster["Name"].ToString();
+            Element = UnityEngine.Resources.Load<Element>(
+                $"ScriptableObject/Elements/Element_{_csvMonster["Element"]}");
+            int.TryParse(_csvMonster["HP"].ToString(), out int _hp);
+            int.TryParse(_csvMonster["Shield"].ToString(), out int _shield);
+            int.TryParse(_csvMonster["Dodge"].ToString(), out int _dodge);
+            int.TryParse(_csvMonster["Speed"].ToString(), out int _speed);
+            int.TryParse(_csvMonster["Power"].ToString(), out int _power);
+            int.TryParse(_csvMonster["MP"].ToString(), out int _mp);
+            int.TryParse(_csvMonster["AP"].ToString(), out int _ap);
+            int.TryParse(_csvMonster["Range"].ToString(), out int _range);
+            int.TryParse(_csvMonster["Zone"].ToString(), out int _zone);
+            int.TryParse(_csvMonster["Focus"].ToString(), out int _focus);
+            BasicStats = new BattleStats
             {
-                HP = hp,
-                Shield = shield,
-                Speed = speed,
-                Power = power,
-                MP = mp,
-                AP = ap,
-                Range = new Range(EZone.Basic, EZone.Basic, range, zone),
+                HP = _hp,
+                Shield = _shield,
+                Speed = _speed,
+                Power = _power,
+                MP = _mp,
+                AP = _ap,
+                gridRange = new GridRange(EZone.Basic, EZone.Basic, _range, _zone),
             };
-            unitSprite = UnityEngine.Resources.Load<Sprite>($"Sprite/Monsters/{csvMonster["Sprite"].ToString()}");
-            int.TryParse(csvMonster["Level"].ToString(), out level);
-            Enum.TryParse(csvMonster["RewardType"].ToString(), out rewardType);
-            Enum.TryParse(csvMonster["Type"].ToString(), out type);
-            Enum.TryParse(csvMonster["Archetype"].ToString(), out EArchetype _archetype);
-            archetype = UnityEngine.Resources.Load<Archetype>($"ScriptableObject/Archetypes/Archetype_{csvMonster["Archetype"].ToString()}");
-            relic = null;
-            if (rewardType == EReward.Relic || type == EMonster.Boss)
+            UnitSprite = UnityEngine.Resources.Load<Sprite>($"Sprite/Monsters/{_csvMonster["Sprite"].ToString()}");
+            int.TryParse(_csvMonster["Level"].ToString(), out Level);
+            Enum.TryParse(_csvMonster["RewardType"].ToString(), out RewardType);
+            Enum.TryParse(_csvMonster["Type"].ToString(), out Type);
+            Enum.TryParse(_csvMonster["Archetype"].ToString(), out EArchetype _archetype);
+            Archetype = UnityEngine.Resources.Load<Archetype>($"ScriptableObject/Archetypes/Archetype_{_csvMonster["Archetype"].ToString()}");
+            Relic = null;
+            if (RewardType == EReward.Relic || Type == EMonster.Boss)
             {
-                relic = DataBase.Relic.AllRelics.Find(r => r.Name == csvMonster["Relic"].ToString());
+                Relic = DataBase.Relic.AllRelics.Find(_r => _r.Name == _csvMonster["Relic"].ToString());
             }
         }
     }

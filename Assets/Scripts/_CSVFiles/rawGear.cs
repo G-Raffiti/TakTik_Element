@@ -10,38 +10,38 @@ using UnityEngine;
 
 namespace _CSVFiles
 {
-    public struct rawGear
+    public struct RawGear
     {
-        public Rarity Rarity;
-        public EGear Type;
-        public Sprite Icon;
-        public string Name;
+        public readonly Rarity Rarity;
+        public readonly EGear Type;
+        public readonly Sprite Icon;
+        public readonly string Name;
         public Affix MainStat;
-        public SkillGridEffect SpecialEffect;
-        public List<AffixSO> NonAffix;
+        public readonly SkillGridEffect SpecialEffect;
+        public readonly List<AffixSO> NonAffix;
 
-        public rawGear(Dictionary<string, object> CSVGear)
+        public RawGear(Dictionary<string, object> _csvGear)
         {
             Rarity = UnityEngine.Resources.Load<Rarity>(
-                $"ScriptableObject/Rarities/Rarity_{CSVGear["Rarity"]}");
-            Enum.TryParse(CSVGear["Type"].ToString(), out Type);
+                $"ScriptableObject/Rarities/Rarity_{_csvGear["Rarity"]}");
+            Enum.TryParse(_csvGear["Type"].ToString(), out Type);
             Icon = UnityEngine.Resources.Load<Sprite>(
-                $"Sprite/2000_Icons/{CSVGear["Icon"]}");
-            Name = CSVGear["Name"].ToString();
-            Enum.TryParse(CSVGear[$"Implicit"].ToString(), out EAffix mainStat);
-            AffixSO affix = DataBase.Affix.AllAffixes.Find(a => a.Type == mainStat);
-            float.TryParse(CSVGear["ImplicitValue"].ToString(), out float value);
-            MainStat = new Affix(affix, value, 1);
+                $"Sprite/2000_Icons/{_csvGear["Icon"]}");
+            Name = _csvGear["Name"].ToString();
+            Enum.TryParse(_csvGear[$"Implicit"].ToString(), out EAffix _mainStat);
+            AffixSO _affix = DataBase.Affix.AllAffixes.Find(_a => _a.Type == _mainStat);
+            float.TryParse(_csvGear["ImplicitValue"].ToString(), out float _value);
+            MainStat = new Affix(_affix, _value, 1);
             SpecialEffect = UnityEngine.Resources.Load<SkillGridEffect>(
-                $"ScriptableObject/SkillEffects/GridEffect_{CSVGear["SpecialEffect"]}");
+                $"ScriptableObject/SkillEffects/GridEffect_{_csvGear["SpecialEffect"]}");
             NonAffix = new List<AffixSO>();
-            for (int i = 0; i < 11; i++)
+            for (int _i = 0; _i < 11; _i++)
             {
-                if(CSVGear[$"Non{i}"].ToString() == String.Empty) continue;
-                Enum.TryParse(CSVGear[$"Non{i}"].ToString(), out EAffix nonAffix);
-                AffixSO toAdd = DataBase.Affix.AllAffixes.Find(a => a.Type == nonAffix);
-                if (!NonAffix.Contains(toAdd))
-                    NonAffix.Add(toAdd);
+                if(_csvGear[$"Non{_i}"].ToString() == String.Empty) continue;
+                Enum.TryParse(_csvGear[$"Non{_i}"].ToString(), out EAffix _nonAffix);
+                AffixSO _toAdd = DataBase.Affix.AllAffixes.Find(_a => _a.Type == _nonAffix);
+                if (!NonAffix.Contains(_toAdd))
+                    NonAffix.Add(_toAdd);
             }
         }
     }

@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 namespace Stats
 {
     [Serializable]
-    public struct Range
+    public struct GridRange
     {
         public EZone RangeType;
         public int RangeValue;
@@ -16,7 +16,7 @@ namespace Stats
         public bool NeedTarget;
         public bool CanBeModified;
 
-        public Range(EZone _rangeType, EZone _zoneType, float range, float radius)
+        public GridRange(EZone _rangeType, EZone _zoneType, float range, float radius)
         {
             RangeType = _rangeType;
             RangeValue = (int) range;
@@ -26,18 +26,18 @@ namespace Stats
             NeedTarget = false;
             CanBeModified = true;
         }
-        public Range(Range range)
+        public GridRange(GridRange _grid_range)
         {
-            RangeType = range.RangeType;
-            RangeValue = range.RangeValue;
-            ZoneType = range.ZoneType;
-            Radius = range.Radius;
-            NeedView = range.NeedView;
-            NeedTarget = range.NeedTarget;
-            CanBeModified = range.CanBeModified;
+            RangeType = _grid_range.RangeType;
+            RangeValue = _grid_range.RangeValue;
+            ZoneType = _grid_range.ZoneType;
+            Radius = _grid_range.Radius;
+            NeedView = _grid_range.NeedView;
+            NeedTarget = _grid_range.NeedTarget;
+            CanBeModified = _grid_range.CanBeModified;
         }
 
-        public Range(float a)
+        public GridRange(float a)
         {
             RangeType = EZone.Basic;
             RangeValue = (int)a;
@@ -48,54 +48,54 @@ namespace Stats
             CanBeModified = true;
         }
 
-        public static Range operator +(Range a, Range b)
+        public static GridRange operator +(GridRange a, GridRange b)
         {
-            Range _ret = new Range(a);
+            GridRange _ret = new GridRange(a);
             _ret.RangeValue += b.RangeValue;
             _ret.Radius += b.Radius;
             return _ret;
         }
         
-        public static Range operator +(Range a, float b)
+        public static GridRange operator +(GridRange a, float b)
         {
-            Range _ret = new Range(a);
+            GridRange _ret = new GridRange(a);
             _ret.RangeValue = (int)(_ret.RangeValue * b);
             _ret.Radius = (int)(_ret.Radius * b);
             return _ret;
         }
         
-        public static Range operator -(Range a, Range b)
+        public static GridRange operator -(GridRange a, GridRange b)
         {
-            Range _ret = new Range(a);
+            GridRange _ret = new GridRange(a);
             _ret.RangeValue -= b.RangeValue;
             _ret.Radius -= b.Radius;
             return _ret;
         }
-        public static Range operator -(Range a, float b)
+        public static GridRange operator -(GridRange a, float b)
         {
-            Range _ret = new Range(a);
+            GridRange _ret = new GridRange(a);
             _ret.RangeValue = (int)(_ret.RangeValue * b);
             _ret.Radius = (int)(_ret.Radius * b);
             return _ret;
         }
-        public static Range operator *(Range a, Range b)
+        public static GridRange operator *(GridRange a, GridRange b)
         {
-            Range _ret = new Range(a);
+            GridRange _ret = new GridRange(a);
             _ret.RangeValue *= b.RangeValue;
             _ret.Radius *= b.Radius;
             return _ret;
         }
-        public static Range operator *(Range a, float b)
+        public static GridRange operator *(GridRange a, float b)
         {
-            Range _ret = new Range(a);
+            GridRange _ret = new GridRange(a);
             _ret.RangeValue = (int)(_ret.RangeValue * b);
             _ret.Radius = (int)(_ret.Radius * b);
             return _ret;
         }
 
-        public static Range Randomize(Range min, Range max)
+        public static GridRange Randomize(GridRange min, GridRange max)
         {
-            Range ret = new Range();
+            GridRange ret = new GridRange();
             
             int r = Random.Range(0, 2);
             ret.RangeType = min.RangeType;

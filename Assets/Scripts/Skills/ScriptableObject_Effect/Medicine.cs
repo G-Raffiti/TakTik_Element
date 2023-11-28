@@ -13,7 +13,7 @@ namespace Skills.ScriptableObject_Effect
         {
             int _heal = - _skillInfo.GetPower();
             
-            foreach (Cell _cellAffected in Zone.GetZone(_skillInfo.skill.Range, _cell))
+            foreach (Cell _cellAffected in Zone.GetZone(_skillInfo.skill.GridRange, _cell))
             {
                 Unit _unitAffected = Zone.GetUnitAffected(_cellAffected, _skillInfo);
                 if (_unitAffected != null)
@@ -40,7 +40,7 @@ namespace Skills.ScriptableObject_Effect
         {
             int _heal = - _skillInfo.GetPower();
             Dictionary<Cell, int> ret = new Dictionary<Cell, int>();
-            foreach (Cell _cellInZone in Zone.GetZone(_skillInfo.skill.Range, _cell))
+            foreach (Cell _cellInZone in Zone.GetZone(_skillInfo.skill.GridRange, _cell))
             {
                 Unit _unitAffected = Zone.GetUnitAffected(_cellInZone, _skillInfo);
                 if (_unitAffected != null)

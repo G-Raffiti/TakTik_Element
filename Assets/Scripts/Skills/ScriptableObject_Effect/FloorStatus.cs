@@ -9,7 +9,7 @@ namespace Skills.ScriptableObject_Effect
     {
         public override void Use(Cell _cell, SkillInfo _skillInfo)
         {
-            Zone.GetZone(_skillInfo.skill.Range, _cell).ForEach(c =>
+            Zone.GetZone(_skillInfo.skill.GridRange, _cell).ForEach(c =>
             {
                 _skillInfo.skill.Buffs.ForEach(c.AddBuff);
             });
